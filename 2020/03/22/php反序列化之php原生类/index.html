@@ -414,7 +414,7 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：957字</p>
+      <p>字数：955字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
@@ -509,7 +509,7 @@
 
 <h2 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h2><p>只适用于php7版本</p>
 <p><strong>XSS:</strong></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$a = <span class="keyword">new</span> <span class="built_in">Exception</span>(<span class="string">&quot;&lt;script&gt;alert(1)&lt;/script&gt;&quot;</span>);</span><br><span class="line">$b = serialize($a);</span><br><span class="line"><span class="comment">// echo urlencode($b);</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//Test</span></span><br><span class="line">$c = urldecode(<span class="string">&#x27;O%3A9%3A%22Exception%22%3A7%3A%7Bs%3A10%3A%22%00%2A%00message%22%3Bs%3A25%3A%22%3Cscript%3Ealert%281%29%3C%2Fscript%3E%22%3Bs%3A17%3A%22%00Exception%00string%22%3Bs%3A0%3A%22%22%3Bs%3A7%3A%22%00%2A%00code%22%3Bi%3A0%3Bs%3A7%3A%22%00%2A%00file%22%3Bs%3A43%3A%22D%3A%5CEnvironment%5CPHP%5CPHPTutorial%5CWWW%5Cpost.php%22%3Bs%3A7%3A%22%00%2A%00line%22%3Bi%3A2%3Bs%3A16%3A%22%00Exception%00trace%22%3Ba%3A0%3A%7B%7Ds%3A19%3A%22%00Exception%00previous%22%3BN%3B%7D&#x27;</span>);</span><br><span class="line"><span class="keyword">echo</span> unserialize($c);</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$a = <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;&lt;script&gt;alert(1)&lt;/script&gt;&quot;</span>);</span><br><span class="line">$b = serialize($a);</span><br><span class="line"><span class="keyword">echo</span> urlencode($b);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Test</span></span><br><span class="line">$t = urldecode(<span class="string">&#x27;O%3A5%3A%22Error%22%3A7%3A%7Bs%3A10%3A%22%00%2A%00message%22%3Bs%3A25%3A%22%3Cscript%3Ealert%281%29%3C%2Fscript%3E%22%3Bs%3A13%3A%22%00Error%00string%22%3Bs%3A0%3A%22%22%3Bs%3A7%3A%22%00%2A%00code%22%3Bi%3A0%3Bs%3A7%3A%22%00%2A%00file%22%3Bs%3A18%3A%22%2Fusercode%2Ffile.php%22%3Bs%3A7%3A%22%00%2A%00line%22%3Bi%3A2%3Bs%3A12%3A%22%00Error%00trace%22%3Ba%3A0%3A%7B%7Ds%3A15%3A%22%00Error%00previous%22%3BN%3B%7D&#x27;</span>);</span><br><span class="line">$c = unserialize($t);</span><br><span class="line"><span class="keyword">echo</span> $c;</span><br></pre></td></tr></table></figure>
 
 <h2 id="Exception"><a href="#Exception" class="headerlink" title="Exception"></a>Exception</h2><p>适用于php5、7版本</p>
 <p><strong>XSS:</strong></p>
@@ -575,10 +575,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-04-28T15:28:50+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-03T15:26:20+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年4月28日</p>
+    <p>更新于：2020年10月3日</p>
   </a>
 </div>
 

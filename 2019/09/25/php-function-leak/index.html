@@ -591,6 +591,9 @@ var_dump(is_numeric(&quot;\f\f1&quot;)); // true
 var_dump(is_numeric(&quot;1\f&quot;)); // false</code></pre>
 <p>如果有两个is_numeric判断的时候用and连接起来，and后面的is_numberic判断可忽略</p>
 <pre><code>is_numeric(&#39;1&#39;) and is_numeric(&#39;a&#39;)        //true</code></pre>
+<p>这个函数在对16进制形式字符串识别时在php7和5不同</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">var_dump(is_numeric(<span class="string">&#x27;0x233333&#x27;</span>)); <span class="comment">// php7 bool(false)</span></span><br><span class="line">var_dump(is_numeric(<span class="string">&#x27;0x233333&#x27;</span>)); <span class="comment">// php5 bool(ture)</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="ereg-函数"><a href="#ereg-函数" class="headerlink" title="ereg()函数"></a>ereg()函数</h2><p>ereg()函数用指定的模式搜索一个字符串中指定的字符串,如果匹配成功返回true,否则,则返回false。</p>
 <p>如果没有传递入可选参数 regs 或者所匹配的字符串长度为 0，则本函数返回 1</p>
 <pre><code>int ereg ( string $pattern , string $string [, array &amp;$regs ] ) </code></pre>
@@ -677,10 +680,10 @@ var_dump(is_numeric(&quot;1\f&quot;)); // false</code></pre>
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-06T15:00:37+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-06T21:15:28+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年9月6日</p>
+    <p>更新于：2020年10月6日</p>
   </a>
 </div>
 

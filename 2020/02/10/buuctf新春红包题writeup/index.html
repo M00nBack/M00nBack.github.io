@@ -493,7 +493,7 @@
 <p>大概思路已经清晰，bypass一些限制：</p>
 <ol>
 <li>文件名那里可以用<code>.php/.</code>而绕过</li>
-<li>死亡退出那个地方可以用伪协议<code>php://filter/write=convert.base64-decode/resource</code>进行base64解码写入，可将shell先base64编码，注意要先把前半部分补齐去掉<code>&lt;?;&gt;()</code>这些无法被base64的字符，<code>php//exit</code>一共9个字符，再加上12个0，共21个，base64编码4个一组，因此我们需要再加3个</li>
+<li>死亡退出那个地方可以用伪协议<code>php://filter/write=convert.base64-decode/resource</code>进行base64解码写入，可将shell先base64编码，注意要先把前半部分补齐去掉<code>&lt;?;&gt;()</code>这些无法被base64解码的字符，<code>php//exit</code>一共9个字符，再加上12个0，共21个，base64编码4个一组，因此我们需要再加3个</li>
 </ol>
 <p>以上是ezpop的思路，题目的变量便是文件名不可控，有三种思路：</p>
 <h3 id="方式1-system"><a href="#方式1-system" class="headerlink" title="方式1(system)"></a>方式1(system)</h3><p>参见安全客文章:<a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/194036">https://www.anquanke.com/post/id/194036</a></p>
@@ -574,10 +574,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-11T21:23:39+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-05T14:51:49+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年2月11日</p>
+    <p>更新于：2020年10月5日</p>
   </a>
 </div>
 
