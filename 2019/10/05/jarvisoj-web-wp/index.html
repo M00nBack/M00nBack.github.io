@@ -515,7 +515,7 @@
 <p>恢复出来的关键代码</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">$auth = <span class="literal">false</span>;</span><br><span class="line">$role = <span class="string">&quot;guest&quot;</span>;</span><br><span class="line">$salt = </span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_COOKIE[<span class="string">&quot;role&quot;</span>])) &#123;</span><br><span class="line">	$role = unserialize($_COOKIE[<span class="string">&quot;role&quot;</span>]);</span><br><span class="line">	$hsh = $_COOKIE[<span class="string">&quot;hsh&quot;</span>];</span><br><span class="line">	<span class="keyword">if</span> ($role===<span class="string">&quot;admin&quot;</span> &amp;&amp; $hsh === md5($salt.strrev($_COOKIE[<span class="string">&quot;role&quot;</span>]))) &#123;</span><br><span class="line">		$auth = <span class="literal">true</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		$auth = <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	$s = serialize($role);</span><br><span class="line">	setcookie(<span class="string">&#x27;role&#x27;</span>,$s);</span><br><span class="line">	$hsh = md5($salt.strrev($s));</span><br><span class="line">	setcookie(<span class="string">&#x27;hsh&#x27;</span>,$hsh);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> ($auth) &#123;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">&quot;&lt;h3&gt;Welcome Admin. Your flag is </span></span><br><span class="line"><span class="string">&#125; else &#123;</span></span><br><span class="line"><span class="string">	echo &quot;</span>&lt;h3&gt;Only Admin can see the flag!!&lt;/h3&gt;<span class="string">&quot;;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">?&gt;</span></span><br></pre></td></tr></table></figure>
 <p>这段代码的意思就是反序列化Cookie里的role，将salt(未知)和反转后的role拼接一起并MD5加密，然后与Cookie里的hash比较，相等就会输出flag</p>
-<p>这就要用到hash扩展攻击的知识参见我的另外一篇博客：<a target="_blank" rel="noopener" href="https://www.moonback.xyz/2019/12/16/hash-extend-attack/">https://www.moonback.xyz/2019/12/16/hash-extend-attack/</a></p>
+<p>这就要用到hash扩展攻击的知识参见我的另外一篇博客：<a href="https://www.moonback.xyz/2019/12/16/hash-extend-attack/">https://www.moonback.xyz/2019/12/16/hash-extend-attack/</a></p>
 <p>由于我们不知道$salt的长度，所以我们需要对其长度爆破，爆破之前，我们需要知道的是反序列化函数存在00截断，为保证<code>$role===&quot;admin&quot;</code>，我们必须<code>s:5:&quot;guest&quot;;</code>在前面，注意服务端在md5加密的是反转的role的键值。所以我们构造的payload应该为以下内容，最终知道salt的长度为12(0c)</p>
 <p><img src="/2019/10/05/jarvisoj-web-wp/0191230142702.png"></p>
 <p>这里有个脚本，需要装个hashpumpy库</p>
@@ -672,7 +672,7 @@ payload2:?id=0e&amp;a=data:,1112 is a nice lab!&amp;b=%00411111</code></pre>
       <blockquote>
         
           
-            <p>本文永久链接是：<a href=http://www.m00nback.xyz/2019/10/05/jarvisoj-web-wp/>http://www.m00nback.xyz/2019/10/05/jarvisoj-web-wp/</a></p>
+            <p>本文永久链接是：<a href=http://www.moonback.xyz/2019/10/05/jarvisoj-web-wp/>http://www.moonback.xyz/2019/10/05/jarvisoj-web-wp/</a></p>
           
         
       </blockquote>
@@ -727,7 +727,7 @@ payload2:?id=0e&amp;a=data:,1112 is a nice lab!&amp;b=%00411111</code></pre>
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.m00nback.xyz/2019/10/05/jarvisoj-web-wp/&title=jarvisoj web部分writeup - 明月归的小站&summary=本篇博客介绍了jarvisOJ上web部分题writeup！！！"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.moonback.xyz/2019/10/05/jarvisoj-web-wp/&title=jarvisoj web部分writeup - 明月归的小站&summary=本篇博客介绍了jarvisOJ上web部分题writeup！！！"
           
           >
           
@@ -739,7 +739,7 @@ payload2:?id=0e&amp;a=data:,1112 is a nice lab!&amp;b=%00411111</code></pre>
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.m00nback.xyz/2019/10/05/jarvisoj-web-wp/&title=jarvisoj web部分writeup - 明月归的小站&summary=本篇博客介绍了jarvisOJ上web部分题writeup！！！"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.moonback.xyz/2019/10/05/jarvisoj-web-wp/&title=jarvisoj web部分writeup - 明月归的小站&summary=本篇博客介绍了jarvisOJ上web部分题writeup！！！"
           
           >
           
@@ -751,7 +751,7 @@ payload2:?id=0e&amp;a=data:,1112 is a nice lab!&amp;b=%00411111</code></pre>
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.m00nback.xyz/2019/10/05/jarvisoj-web-wp/&title=jarvisoj web部分writeup - 明月归的小站&summary=本篇博客介绍了jarvisOJ上web部分题writeup！！！"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.moonback.xyz/2019/10/05/jarvisoj-web-wp/&title=jarvisoj web部分writeup - 明月归的小站&summary=本篇博客介绍了jarvisOJ上web部分题writeup！！！"
           
           >
           
