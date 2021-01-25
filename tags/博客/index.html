@@ -489,66 +489,13 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>本篇博客介绍了如何将hexo博客部署到自己的服务器上，github实在是太慢了2333333……</p>
-<h2 id="服务器安装必要环境"><a href="#服务器安装必要环境" class="headerlink" title="服务器安装必要环境"></a>服务器安装必要环境</h2><p><strong>安装git</strong></p>
-<pre><code>apt-get install git</code></pre>
-<p><strong>安装nginx(宝塔一键安装)</strong></p>
-<pre><code>apt-get install nginx</code></pre>
-<p>本地环境配置就不介绍了</p>
-<h2 id="配置ssh-仓库-网站根目录"><a href="#配置ssh-仓库-网站根目录" class="headerlink" title="配置ssh,仓库,网站根目录"></a>配置ssh,仓库,网站根目录</h2><p><strong>添加用户</strong></p>
-<pre><code>useradd git    //添加git用户
-
-passwd git    //为git用户设个密码</code></pre>
-<p><strong>配置ssh</strong></p>
-<pre><code>cd /home</code></pre>
-<p>如果没有git文件夹创建一个</p>
-<pre><code>mkdir /home/git</code></pre>
-<p>有的话跳过</p>
-<pre><code>su git    //切换git用户
-
-mkdir /home/git/.ssh    
-
-touch /home/git/.ssh/authorized_keys
-
-vi /home/git/.ssh/authorized_keys</code></pre>
-<p>里面内容填本机里得对应用户目录下的<code>.ssh/id_rsa.pub</code>的内容</p>
-<p>配置完可以ssh登陆一下</p>
-<p><strong>配置仓库</strong></p>
-<p>可以在<code>/home/git/</code>下新建一个blog.git文件夹，用于建立git仓库</p>
-<pre><code>git init --bare blog.git</code></pre>
-<p>建立钩子(本地部署到服务器会执行)</p>
-<pre><code>vi ~/blog.git/hooks/post-receive</code></pre>
-<p>填入以下内容，work-tree是网站目录，git-dir是git仓库目录</p>
-<pre><code>git --work-tree=/home/git/hexo --git-dir=/home/git/blog.git checkout -f</code></pre>
-<p>建立hexo文件夹</p>
-<pre><code>mkdir /home/git/hexo</code></pre>
-<p>将git文件夹所有者更改为git用户，并将用户目录权限改为775，即允许git用户写入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chown -R git:git git	&#x2F;&#x2F;权限问题可能会是报错的主要原因</span><br><span class="line">chmod -R git 775</span><br></pre></td></tr></table></figure>
-
-<img src="/2019/10/19/hexo-deploy-aliyun/TIM截图20200120212501.png" style="zoom:50%;">
-
-<p><strong>配置网站根目录</strong></p>
-<pre><code>nginx -t //查看nginx配置文件位置</code></pre>
-<p><img src="/2019/10/19/hexo-deploy-aliyun/20191019172010.png"></p>
-<pre><code>cat /www/server/nginx/conf/nginx.conf</code></pre>
-<img src="/2019/10/19/hexo-deploy-aliyun/20191019172243.png" style="zoom: 67%;">    
-
-<p>没有发现有和网站相关的，但是发现了包含了文件</p>
-<pre><code>cd /www/server/panel/vhost/nginx/
-ls</code></pre>
-<p>发现都是网站的配置文件，我用宝塔一键创建的网站(不知道为啥源码不能放在<code>/www/wwwroot</code>下)，所以里面有<code>网站.conf</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    listen [::]:80;</span><br><span class="line">    server_name 你的服务器地址;</span><br><span class="line">    index index.php index.html index.htm default.php default.htm default.html;</span><br><span class="line">    root &#x2F;home&#x2F;git&#x2F;hexo;</span><br><span class="line">	....</span><br></pre></td></tr></table></figure>
-
-<p>宝塔可以一键修改目录</p>
-<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>更改本地<code>_config.yml</code>文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo:</span><br><span class="line">    aliyun: git@你的服务器地址:&#x2F;home&#x2F;git&#x2F;blog.git,master</span><br></pre></td></tr></table></figure>
-<p>然后<br>    hexo g<br>    hexo d</p>
-<p>还要手动运行一下之前设置那个钩子，用宝塔创建可能会生成<code>.user.ini</code>文件，可能会干扰，建议删除</p>
-<p>就可以部署到<code>/home/git/hexo</code>文件夹里了</p>
-<p>​    </p>
-
       
     </div>
     
+      
+        <a class= "readmore" href="/2019/10/19/hexo-deploy-aliyun/">
+          阅读全文 <i class="fas fa-chevron-right"></i>
+        </a>
       
     
   </section>
