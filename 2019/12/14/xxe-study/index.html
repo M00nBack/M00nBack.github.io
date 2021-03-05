@@ -503,7 +503,7 @@
 <p>实体可在内部或外部进行声明，一般分为字符实体，命名实体，外部实体，参数实体，所有实体（除参数实体外）都以一个与字符（&amp;）开始，以一个分号（;）结束。</p>
 <p><strong>字符实体：</strong></p>
 <p>对于字符实体，我们可以用十进制格式（<code>&amp;#nnn;</code>，其中 <em>nnn</em> 是字符的十进制值）或十六进制格式（<code>&amp;#xhhh;</code>，其中<em>hhh</em> 是字符的十六进制值）来指定任意 Unicode 字符。</p>
-<p>举个例子：大写字母 A 是 Unicode 字符 <code>U+0065</code>。如果想将其表示为一个字符实体，可以输入 <code>&amp;#65;</code>（十进制值）或 <code>&amp;#xa9;</code>（十六进制值）</p>
+<p>举个例子：大写字母 A 是 Unicode 字符 <code>U+0065</code>。如果想将其表示为一个字符实体，可以输入 <code>&amp;#65;</code>（十进制值）或 <code>&amp;#x41;</code>（十六进制值）</p>
 <p><strong>命名实体(内部实体)：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!ENTITY 实体名称 &quot;实体的值&quot;&gt;</span><br></pre></td></tr></table></figure>
 <p>命名实体在 DTD 或内部子集（即文档中 &lt;!DOCTYPE&gt; 语句的一部分）中声明，在文档中用作引用。在 XML 文档解析过程中，实体引用将由它的表示替代。</p>
@@ -633,10 +633,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-25T20:31:00+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-25T12:31:46+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年2月25日</p>
+    <p>更新于：2021年2月25日</p>
   </a>
 </div>
 

