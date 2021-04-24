@@ -414,13 +414,13 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：955字</p>
+      <p>字数：1.1k字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：4分钟</p>
+      <p>时长：5分钟</p>
     </a>
   </div>
 
@@ -517,8 +517,43 @@
 
 
 
+<h2 id="列目录读文件"><a href="#列目录读文件" class="headerlink" title="列目录读文件"></a>列目录读文件</h2><p>SLP类中存在能够进行文件处理和迭代的类：</p>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DirectoryIterator</td>
+<td>遍历目录</td>
+</tr>
+<tr>
+<td>FilesystemIterator</td>
+<td>遍历目录</td>
+</tr>
+<tr>
+<td>GlobIterator</td>
+<td>遍历目录，但是不同的点在于它可以通配例如/var/html/www/flag*</td>
+</tr>
+<tr>
+<td>SplFileObject</td>
+<td>读取文件，按行读取，多行需要遍历</td>
+</tr>
+<tr>
+<td>finfo/finfo_open()</td>
+<td>需要两个参数</td>
+</tr>
+</tbody></table>
+<p>可以控制进行列目录</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$a = <span class="keyword">new</span> <span class="built_in">DirectoryIterator</span>(<span class="string">&#x27;glob:///*&#x27;</span>);</span><br><span class="line"><span class="keyword">foreach</span>($a <span class="keyword">as</span> $f)&#123;</span><br><span class="line">  <span class="keyword">echo</span>($f-&gt;__toString().<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 <p>参考：</p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/iamstudy/articles/unserialize_in_php_inner_class.html">https://www.cnblogs.com/iamstudy/articles/unserialize_in_php_inner_class.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.plasf.cn/articles/dasctf202103.html">https://www.plasf.cn/articles/dasctf202103.html</a></p>
 
           
             <div class='article_footer'>
@@ -575,10 +610,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-03T15:26:20+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-05T22:47:20+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年10月3日</p>
+    <p>更新于：2021年4月5日</p>
   </a>
 </div>
 
@@ -723,7 +758,7 @@ MISC最简单的misc下载下来是secret.zip，zip伪加密，搜索标志位14
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SoapClient"><span class="toc-text">SoapClient</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Error"><span class="toc-text">Error</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Exception"><span class="toc-text">Exception</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SoapClient"><span class="toc-text">SoapClient</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Error"><span class="toc-text">Error</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Exception"><span class="toc-text">Exception</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%97%E7%9B%AE%E5%BD%95%E8%AF%BB%E6%96%87%E4%BB%B6"><span class="toc-text">列目录读文件</span></a></li></ol>
     </div>
   </section>
 
