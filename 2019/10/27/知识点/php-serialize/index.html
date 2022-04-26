@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>php序列化和反序列化 - 明月归的小站</title>
+  
+    <meta name="keywords" content="web,ctf,反序列化">
+  
+
+  
+    <meta name="description" content="本篇博客介绍了php序列化和反序列化的相关知识！">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="/static/js-css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="/static/js-css/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">php序列化和反序列化</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2019/10/27/%E7%9F%A5%E8%AF%86%E7%82%B9/php-serialize/">
+      php序列化和反序列化
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2019年10月27日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：2.4k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：9分钟</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2019/10/27/%E7%9F%A5%E8%AF%86%E7%82%B9/php-serialize/" class="leancloud_visitors" data-flag-title="php序列化和反序列化">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2019/10/27/%E7%9F%A5%E8%AF%86%E7%82%B9/php-serialize/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2019/10/27/%E7%9F%A5%E8%AF%86%E7%82%B9/php-serialize/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>本篇博客介绍了php序列化和反序列化的相关知识！</p>
+<a id="more"></a>
+
+<h2 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h2><p><strong>什么是序列化和反序列化？</strong></p>
+<p>**序列化:**把复杂的数据类型压缩到一个字符串中，数据类型可以是数组，字符串，对象等 </p>
+<p>**反序列化:**恢复原先被序列化的变量</p>
+<h2 id="相关函数"><a href="#相关函数" class="headerlink" title="相关函数"></a>相关函数</h2><pre><code>serialize()     //将一个对象转换成一个字符串
+
+unserialize()   //将字符串还原成一个对象</code></pre>
+<h3 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h3><p>例如下面一段代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">    class test</span><br><span class="line">    &#123;</span><br><span class="line">        private $flag &#x3D; &quot;flag&#123;233&#125;&quot;;</span><br><span class="line">        public $a &#x3D; &quot;aaa&quot;;</span><br><span class="line">        static $b &#x3D; &quot;bbb&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    $test &#x3D; new test;</span><br><span class="line">    $data &#x3D; serialize($test);</span><br><span class="line">    echo $data;</span><br><span class="line"> ?&gt;</span><br></pre></td></tr></table></figure>
+<p>看一下运行结果</p>
+<p><img src="/2019/10/27/%E7%9F%A5%E8%AF%86%E7%82%B9/php-serialize/20191027202418.png"></p>
+<pre><code>O:4:&quot;test&quot;:2:&#123;s:10:&quot; test flag&quot;;s:9:&quot;flag&#123;233&#125;&quot;;s:1:&quot;a&quot;;s:3:&quot;aaa&quot;;&#125;</code></pre>
+<p>序列化的结果满足：</p>
+<pre><code>O:&lt;class_name_length&gt;:&quot;&lt;class_name&gt;&quot;:&lt;number_of_properties&gt;:&#123;&lt;properties&gt;&#125;</code></pre>
+<p>这里说明一下序列化字符串的含义：</p>
+<ol>
+<li><p><code>O:4:&quot;test&quot;</code>指Object(对象) 4个字符:test</p>
+</li>
+<li><p><code>:2</code>对象属性个数为2</p>
+</li>
+<li><p><code>&#123;&#125;</code>中为属性字符数：属性值</p>
+</li>
+</ol>
+<p><strong>注意：</strong>可以看到testflag的长度为8，序列化中却显示长度为10。这是因为它是private属性，翻阅文档就可以看到说明，它会在两侧加入空字节</p>
+<p><code>\x00 + 类名 + \x00 + 变量名 </code>反序列化出来的是private变量, <code>\x00 + * + \x00 + 变量名 </code>反序列化出来的是protected变量 直接变量名反序列化出来的是public变量</p>
+<p><img src="/2019/10/27/%E7%9F%A5%E8%AF%86%E7%82%B9/php-serialize/20191027202418.png"></p>
+<h3 id="反序列化"><a href="#反序列化" class="headerlink" title="反序列化"></a>反序列化</h3><p>下面一段代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">    $str &#x3D; &#39;O%3A4%3A%22test%22%3A2%3A%7Bs%3A10%3A%22%00test%00flag%22%3Bs%3A9%3A%22flag%7B233%7D%22%3Bs%3A1%3A%22a%22%3Bs%3A3%3A%22aaa%22%3B%7D&#39;;</span><br><span class="line">    $data &#x3D; urldecode($str);</span><br><span class="line">    $obj &#x3D; unserialize($data);</span><br><span class="line"></span><br><span class="line">    var_dump($obj);</span><br><span class="line"> ?&gt;	</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/10/27/%E7%9F%A5%E8%AF%86%E7%82%B9/php-serialize/20191027210508.png"></p>
+<h2 id="魔术方法"><a href="#魔术方法" class="headerlink" title="魔术方法"></a>魔术方法</h2><p>PHP中把以两个下划线<code>__</code>开头的方法称为魔术方法(Magic methods)</p>
+<p><img src="/2019/10/27/%E7%9F%A5%E8%AF%86%E7%82%B9/php-serialize/20191027210743.png"></p>
+<p><strong>比较重要的几个函数：</strong></p>
+<p><strong>__sleep()</strong></p>
+<p><code>serialize()</code> 函数会检查类中是否存在一个魔术方法 <code>__sleep()</code>。如果存在，该方法会先被调用，然后才执行序列化操作。此功能可以用于清理对象，并返回一个包含对象中所有应被序列化的变量名称的数组。如果该方法未返回任何内容，则 NULL 被序列化，并产生一个 <code>E_NOTICE</code> 级别的错误。</p>
+<p><strong>__wakeup()</strong></p>
+<p><code>unserialize()</code> 会检查是否存在一个 <code>__wakeup()</code> 方法。如果存在，则会先调用 <code>__wakeup</code> 方法，预先准备对象需要的资源。</p>
+<p><strong>__toString()</strong></p>
+<p><code>__toString()</code> 方法用于一个类被当成字符串时应怎样回应。例如 <code>echo $obj;</code> 应该显示些什么。此方法必须返回一个字符串，否则将发出一条 <code>E_RECOVERABLE_ERROR</code> 级别的致命错误。</p>
+<p><strong>__destruct()</strong></p>
+<p>析构函数会在到某个对象的所有引用都被删除或者当对象被显式销毁时执行</p>
+<p><strong>__construct()</strong></p>
+<p>造方法是对象创建完成后第一个被对象自动调用的方法。在每个类中都有一个构造方法，如果没有显示声明它，那么类中都会默认存在一个没有参数且内容为空的构造方法。通常构造方法被用来执行一些有用的初始化任务，如对成员属性在创建对象时赋予初始值。</p>
+<h2 id="魔术方法执行流程"><a href="#魔术方法执行流程" class="headerlink" title="魔术方法执行流程"></a>魔术方法执行流程</h2><p><strong>举个例子：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line"></span><br><span class="line">         <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                  <span class="keyword">echo</span> <span class="string">&#x27;construct run&#x27;</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         </span><br><span class="line">         <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                  <span class="keyword">echo</span> <span class="string">&#x27;destruct run&#x27;</span>;</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">         <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                  <span class="keyword">echo</span> <span class="string">&#x27;toString run&#x27;</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         </span><br><span class="line">         <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__sleep</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                  <span class="keyword">echo</span> <span class="string">&#x27;sleep run&#x27;</span>;</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">         <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                  <span class="keyword">echo</span> <span class="string">&#x27;wakeup run&#x27;</span>;</span><br><span class="line">         &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$test= <span class="keyword">new</span> Test();</span><br><span class="line">$sTest= serialize($test);</span><br><span class="line">$usTest= unserialize($sTest);</span><br><span class="line">$string= <span class="string">&#x27;hello class &#x27;</span> . $test;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>分析一下执行过程：</strong></p>
+<p>new了一个对象，对象被创建，执行<code>__construct</code>方法</p>
+<p>serialize了一个对象，对象被序列化，先执行<code>__sleep</code>方法，再序列化</p>
+<p>unserialize了一个序列化字符串，对象被反序列化，先反序列化，再执行<code>__wakeup</code>方法</p>
+<p>把Test这个对象当做字符串使用了，执行<code>__toString</code>方法</p>
+<p>程序运行完毕，对象自动销毁，执行<code>__destruct</code>方法</p>
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><h3 id="CVE-2016-7124"><a href="#CVE-2016-7124" class="headerlink" title="CVE-2016-7124"></a>CVE-2016-7124</h3><p>这个漏洞主要是用于绕过<code>__wakeup()</code>方法的</p>
+<p><strong>利用方式：</strong></p>
+<p><strong>当序列化字符串中表示对象属性个数的值大于真实的属性个数时会跳过__wakeup的执行</strong></p>
+<p>例如：</p>
+<p>构造序列化对象：</p>
+<pre><code>O:5:&quot;SoFun&quot;:1:&#123;S:7:&quot;\00*\00file&quot;;s:8:&quot;flag.php&quot;;&#125;</code></pre>
+<p>绕过__wakeup：</p>
+<pre><code>O:5:&quot;SoFun&quot;:2:&#123;S:7:&quot;\00*\00file&quot;;s:8:&quot;flag.php&quot;;&#125;</code></pre>
+<p>这个\00在url传输时使用%00的</p>
+<h3 id="session反序列化漏洞"><a href="#session反序列化漏洞" class="headerlink" title="session反序列化漏洞"></a>session反序列化漏洞</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>PHP在session存储和读取时,都会有一个序列化和反序列化的过程，PHP内置了多种处理器用于存取 <code>$_SESSION </code>数据，都会对数据进行序列化和反序列化</p>
+<p>在php.ini中有以下关于session配置项(通过phpinfo)：</p>
+<p><img src="/2019/10/27/%E7%9F%A5%E8%AF%86%E7%82%B9/php-serialize/20191031204827.png"></p>
+<p><strong>有几个重要的配置：</strong></p>
+<p><code>session.save_path</code> 设置session的存储路径</p>
+<p><code>session.save_handler</code> 设定用户自定义存储函数</p>
+<p><code>session.auto_start</code> 指定会话模块是否在请求开始时启动一个会话</p>
+<p><code>session.serialize_handler</code> 定义用来序列化/反序列化的处理器名字。默认使用php<br>除了默认的session序列化引擎php外，还有几种引擎，不同引擎存储方式不同:</p>
+<ol>
+<li><strong>php_binary：</strong> 键名的长度对应的ASCII字符＋键名＋经过<code>serialize()</code> 函数反序列处理的值</li>
+<li><strong>php：</strong> 键名＋竖线＋经过<code>serialize()</code>函数反序列处理的值</li>
+<li><strong>php_serialize：</strong> <code>serialize()</code>函数反序列处理数组方式</li>
+</ol>
+<h4 id="存储机制"><a href="#存储机制" class="headerlink" title="存储机制"></a>存储机制</h4><p>php中的session内容是以文件方式来存储的，由<code>session.save_handler</code>来决定。文件名由<code>sess_+sessionid</code>命名，文件内容则为session序列化后的值。</p>
+<p>而这个sessionid是可以在浏览器里查出来的<br><img src="/2019/10/27/%E7%9F%A5%E8%AF%86%E7%82%B9/php-serialize/20191031210527.png"></p>
+<p>来测试一个demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    ini_set(&#39;session.serialize_handler&#39;,&#39;php_serialize&#39;);</span><br><span class="line">    session_start();</span><br><span class="line"></span><br><span class="line">    $_SESSION[&#39;name&#39;] &#x3D; &#39;twosmi1e&#39;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>运行后在配置文件设定的路径中会生成一个session文件，其内容为</p>
+<pre><code>a:1:&#123;s:4:&quot;name&quot;;s:8:&quot;twosmi1e&quot;;&#125;</code></pre>
+<p>改变<code>session.save_handler</code>发现：</p>
+<p>随着存储引擎变化，其内容的格式也会变化</p>
+<h4 id="利用方式"><a href="#利用方式" class="headerlink" title="利用方式"></a>利用方式</h4><p>通过上面对存储格式的分析，如果 PHP 在反序列化存储的 <code>$_SESSION</code> 数据时的使用的处理器和序列化时使用的处理器不同，会导致数据无法正确反序列化，通过特殊的构造，甚至可以伪造任意数据：</p>
+<pre><code>$_SESSION[&#39;ryat&#39;] = &#39;|O:8:&quot;stdClass&quot;:0:&#123;&#125;&#39;;</code></pre>
+<p>例如上面的 <code>$_SESSION</code> 数据，在存储时使用的序列化处理器为 <code>php_serialize</code>，存储的格式如下：</p>
+<pre><code>a:1:&#123;s:4:&quot;ryat&quot;;s:20:&quot;|O:8:&quot;stdClass&quot;:0:&#123;&#125;&quot;;&#125;</code></pre>
+<p>在读取数据时如果用的反序列化处理器不是 <code>php_serialize</code>，而是 <code>php</code> 的话，那么反序列化后的数据将会变成：</p>
+<pre><code>// var_dump($_SESSION);
+array(1) &#123;
+  [&quot;a:1:&#123;s:4:&quot;ryat&quot;;s:20:&quot;&quot;]=&gt;
+  object(stdClass)#1 (0) &#123;
+  &#125;
+&#125;</code></pre>
+<p>可以看到，通过注入 <code>|</code> 字符伪造了对象的序列化数据，成功实例化了 <code>stdClass</code> 对象</p>
+<p>那么就存在两种情况：</p>
+<p><strong>当 session.auto_start＝Off 时</strong></p>
+<p>当配置选项 session.auto_start＝Off，存在两个脚本注册 Session 会话时使用的序列化处理器不同，就会出现安全问题，如下面的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;foo1.php</span><br><span class="line"></span><br><span class="line">ini_set(&#39;session.serialize_handler&#39;, &#39;php_serialize&#39;);</span><br><span class="line">session_start();</span><br><span class="line"></span><br><span class="line">$_SESSION[&#39;ryat&#39;] &#x3D; $_GET[&#39;ryat&#39;];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;foo2.php</span><br><span class="line"></span><br><span class="line">ini_set(&#39;session.serialize_handler&#39;, &#39;php&#39;);</span><br><span class="line">&#x2F;&#x2F;or session.serialize_handler set to php in php.ini </span><br><span class="line">session_start();</span><br><span class="line"></span><br><span class="line">class ryat &#123;</span><br><span class="line">	var $hi;</span><br><span class="line">	</span><br><span class="line">	function __wakeup() &#123;</span><br><span class="line">		echo &#39;hi&#39;;</span><br><span class="line">	&#125;</span><br><span class="line">	function __destruct() &#123;</span><br><span class="line">		echo $this-&gt;hi;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当访问 foo1.php 时，提交数据如下：</p>
+<pre><code>foo1.php?ryat=|O:4:&quot;ryat&quot;:1:&#123;s:2:&quot;hi&quot;;s:4:&quot;ryat&quot;;&#125;</code></pre>
+<p>脚本会按照 php_serialize 处理器的序列化格式存储数据，访问 foo2.php 时，则会按照 php 处理器的反序列化格式读取数据，这时将会反序列化伪造的数据，成功实例化了 ryat 对象，并将会执行类中的 <code>__wakeup</code> 方法和 <code>__destruct</code> 方法</p>
+<p><strong>当 session.auto_start＝On 时</strong></p>
+<p>当配置选项 <code>session.auto_start＝On</code>，会自动注册 Session 会 话，因为该过程是发生在脚本代码执行前，所以在脚本中设定 的包括序列化处理器在内的 session 相关配选项的设置是不起 作用的，因此一些需要在脚本中设置序列化处理器配置的程序 会在 <code>session.auto_start＝On</code> 时，销毁自动生成的 Session 会 话，然后设置需要的序列化处理器，再调用 session_start() 函 数注册会话，这时如果脚本中设置的序列化处理器与 php.ini 中 设置的不同，就会出现安全问题,如下面的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;foo.php</span><br><span class="line"></span><br><span class="line">if (ini_get(&#39;session.auto_start&#39;)) &#123;</span><br><span class="line">	session_destroy();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ini_set(&#39;session.serialize_handler&#39;, &#39;php_serialize&#39;);</span><br><span class="line">session_start();</span><br><span class="line"></span><br><span class="line">$_SESSION[&#39;ryat&#39;] &#x3D; $_GET[&#39;ryat&#39;];</span><br></pre></td></tr></table></figure>
+<p>当第一次访问该脚本，并提交数据如下：</p>
+<pre><code>foo.php?ryat=|O:8:&quot;stdClass&quot;:0:&#123;&#125;</code></pre>
+<p>脚本会按照 php_serialize 处理器的序列化格式存储数据：</p>
+<pre><code>a:1:&#123;s:4:&quot;ryat&quot;;s:20:&quot;|O:8:&quot;stdClass&quot;:0:&#123;&#125;&quot;;&#125;</code></pre>
+<p>当第二次访问该脚本时，PHP 会按照 php.ini 里设置的序列化处理器反序列化存储的数据，这时如果 php.ini 里设置的是 php 处理器的话，将会反序列化伪造的数据，成功实例化了 stdClass 对象：）</p>
+<p>这里需要注意的是，因为 PHP 自动注册 Session 会话是在脚本执行前，所以通过该方式只能注入 PHP 的内置类。</p>
+<h3 id="Jarvisoj上的一道题"><a href="#Jarvisoj上的一道题" class="headerlink" title="Jarvisoj上的一道题"></a>Jarvisoj上的一道题</h3><p>具体参考：<a href="http://www.moonback.xyz/2019/10/05/jarvisoj-web-wp/">http://www.moonback.xyz/2019/10/05/jarvisoj-web-wp/</a></p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.moonback.xyz/2019/10/27/%E7%9F%A5%E8%AF%86%E7%82%B9/php-serialize/>http://www.moonback.xyz/2019/10/27/%E7%9F%A5%E8%AF%86%E7%82%B9/php-serialize/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-01T15:14:54+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年2月1日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/web/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>web</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/ctf/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>ctf</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>反序列化</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.moonback.xyz/2019/10/27/%E7%9F%A5%E8%AF%86%E7%82%B9/php-serialize/&title=php序列化和反序列化 - 明月归的小站&summary=本篇博客介绍了php序列化和反序列化的相关知识！"
+          
+          >
+          
+            <img src="/static/images/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.moonback.xyz/2019/10/27/%E7%9F%A5%E8%AF%86%E7%82%B9/php-serialize/&title=php序列化和反序列化 - 明月归的小站&summary=本篇博客介绍了php序列化和反序列化的相关知识！"
+          
+          >
+          
+            <img src="/static/images/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.moonback.xyz/2019/10/27/%E7%9F%A5%E8%AF%86%E7%82%B9/php-serialize/&title=php序列化和反序列化 - 明月归的小站&summary=本篇博客介绍了php序列化和反序列化的相关知识！"
+          
+          >
+          
+            <img src="/static/images/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2019/11/02/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/aircrack-wifi/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Aircrack-ng学习使用</p>
+                <p class='content'>本篇博客主要介绍了Aircrack-ng的使用，以及用此工具破解wifi的教程！
+
+
+Aircrack-ng是什么？Aircrack-ng是一个与802.11标准的无线网络分析有关的安全套件。
+...</p>
+              </a>
+            
+            
+              <a class='next' href='/2019/10/26/%E6%AF%94%E8%B5%9B/2019/hackgame-wp/'>
+                <p class='title'>hackgame2019部分题目writeup<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>本篇博客主要介绍了hackgame2019部分题目的writeup!
+
+
+白与夜将图片down下来，用Stegsolve打开
+
+信息安全 2077抓到post包，将If-Unmodified-S...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-text">相关概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0"><span class="toc-text">相关函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">序列化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">反序列化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">魔术方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-text">魔术方法执行流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-text">漏洞利用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2016-7124"><span class="toc-text">CVE-2016-7124</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#session%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E"><span class="toc-text">session反序列化漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E6%9C%BA%E5%88%B6"><span class="toc-text">存储机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-text">利用方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Jarvisoj%E4%B8%8A%E7%9A%84%E4%B8%80%E9%81%93%E9%A2%98"><span class="toc-text">Jarvisoj上的一道题</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="/static/js-css/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="/static/js-css/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="/static/js-css/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/static/images/1.jpg", "/static/images/2.jpg", "/static/images/3.jpg", "/static/images/4.jpg", "/static/images/5.jpg", "/static/images/6.jpg", "/static/images/7.jpg", "/static/images/8.jpg", "/static/images/9.jpg", "/static/images/10.jpg", "/static/images/11.jpg", "/static/images/12.jpg", "/static/images/13.jpg", "/static/images/14.jpg", "/static/images/15.jpg", "/static/images/16.jpg", "/static/images/17.jpg", "/static/images/18.jpg", "/static/images/19.jpg", "/static/images/20.jpg", "/static/images/21.jpg", "/static/images/22.jpg", "/static/images/23.jpg", "/static/images/24.jpg", "/static/images/25.jpg", "/static/images/26.jpg", "/static/images/27.jpg", "/static/images/28.jpg", "/static/images/29.jpg", "/static/images/30.jpg", "/static/images/31.jpg", "/static/images/32.jpg", "/static/images/33.jpg", "/static/images/34.jpg", "/static/images/35.jpg", "/static/images/36.jpg", "/static/images/37.jpg", "/static/images/38.jpg", "/static/images/39.jpg", "/static/images/40.jpg", "/static/images/41.jpg", "/static/images/42.jpg", "/static/images/43.jpg", "/static/images/44.jpg", "/static/images/45.jpg", "/static/images/46.jpg", "/static/images/47.jpg", "/static/images/48.jpg", "/static/images/49.jpg", "/static/images/50.jpg", "/static/images/51.jpg", "/static/images/52.jpg", "/static/images/53.jpg", "/static/images/54.jpg", "/static/images/55.jpg", "/static/images/56.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="/static/js-css/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="/static/js-css/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="/static/js-css/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="/static/js-css/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="/static/js-css/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="/static/js-css/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="/static/js-css/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="/static/js-css/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

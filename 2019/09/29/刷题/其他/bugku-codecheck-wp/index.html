@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>bugku代码审计writeup - 明月归的小站</title>
+  
+    <meta name="keywords" content="writeup,bugku,代码审计">
+  
+
+  
+    <meta name="description" content="本篇博客介绍了bugku上web代码审计部分的writeup!">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="/static/js-css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="/static/js-css/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">bugku代码审计writeup</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2019/09/29/%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/bugku-codecheck-wp/">
+      bugku代码审计writeup
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2019年9月29日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：3.6k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：17分钟</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2019/09/29/%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/bugku-codecheck-wp/" class="leancloud_visitors" data-flag-title="bugku代码审计writeup">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2019/09/29/%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/bugku-codecheck-wp/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2019/09/29/%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/bugku-codecheck-wp/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>本篇博客介绍了bugku上web代码审计部分的writeup!</p>
+<a id="more"></a>
+
+<h2 id="extract变量覆盖"><a href="#extract变量覆盖" class="headerlink" title="extract变量覆盖"></a>extract变量覆盖</h2><p>题目给出的源码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$flag&#x3D;&#39;xxx&#39;;</span><br><span class="line">extract($_GET); </span><br><span class="line">if(isset($shiyan)) </span><br><span class="line">&#123; </span><br><span class="line"> $content&#x3D;trim(file_get_contents($flag)); </span><br><span class="line"> if($shiyan&#x3D;&#x3D;$content)</span><br><span class="line">  &#123; </span><br><span class="line">   echo&#39;flag&#123;xxx&#125;&#39;;</span><br><span class="line">  &#125; </span><br><span class="line"> else </span><br><span class="line">  &#123;</span><br><span class="line">   echo&#39;Oh.no&#39;;</span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>函数解释：</strong></p>
+<p><strong>extract()函数</strong></p>
+<p>用途：从数组中将变量导入到当前的符号表，返回值(int型)是成功导入到符号表中的变量数目</p>
+<p>什么是符号表？</p>
+<p>符号表是指当前php页面中，所有变量名称的集合</p>
+<p><strong>isset()函数</strong></p>
+<p>用途：检测变量是否设置，并且不是 NULL</p>
+<p>注意：$_GET传过来的参数的键值为string类型</p>
+<p><strong>file_get_contents()函数</strong></p>
+<p>用途：file_get_contents() 函数把整个文件读入一个字符串中<br>如果失败，file_get_contents() 将返回 FALSE</p>
+<p><strong>trim()函数</strong></p>
+<p>用途：移除字符串两侧的空白字符或其他预定义字符</p>
+<p><strong>解题思路：</strong></p>
+<p>首先要GET传一个参数shiyan</p>
+<p>然后读取了$flag所代表文件的内容</p>
+<pre><code>payload: ?shiyan=&amp;flag=1</code></pre>
+<p>此时$shiyan=’’(空字符串),而不是NULL,flag只需传除存在的文件名以外任意值,空字符串弱等于FALSE,输出flag</p>
+<pre><code>flag&#123;bugku-dmsj-p2sm3N&#125;</code></pre>
+<h2 id="strcmp比较字符串"><a href="#strcmp比较字符串" class="headerlink" title="strcmp比较字符串"></a>strcmp比较字符串</h2><p>题目代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$flag &#x3D; &quot;flag&#123;xxxxx&#125;&quot;;</span><br><span class="line">if (isset($_GET[&#39;a&#39;])) &#123;</span><br><span class="line">    if (strcmp($_GET[&#39;a&#39;], $flag) &#x3D;&#x3D; 0) </span><br><span class="line">    &#x2F;&#x2F;如果 str1 小于 str2 返回 &lt; 0； 如果 str1大于 str2返回 &gt; 0，如果两者相等，返回 0。</span><br><span class="line">    &#x2F;&#x2F;比较两个字符串（区分大小写）</span><br><span class="line">    die(&#39;Flag: &#39;.$flag);</span><br><span class="line">    else</span><br><span class="line">    print &#39;No&#39;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>分析代码可知需要传递个参数a</p>
+<p>比较a和$flag的值，相同就会输出flag并结束</p>
+<p>这里可以传入数组，strcmp()函数当比较数组和字符串的时候，返回是NULL即可绕过</p>
+<pre><code>payload：?a[]=1
+
+flag&#123;bugku_dmsj_912k&#125;</code></pre>
+<h2 id="urldecode二次编码绕过"><a href="#urldecode二次编码绕过" class="headerlink" title="urldecode二次编码绕过"></a>urldecode二次编码绕过</h2><p>题目代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">if(eregi(&quot;hackerDJ&quot;,$_GET[id])) &#123;</span><br><span class="line">    echo(&quot;</span><br><span class="line"></span><br><span class="line">    not allowed!</span><br><span class="line"></span><br><span class="line">    &quot;);</span><br><span class="line">    exit();</span><br><span class="line">&#125;</span><br><span class="line">$_GET[id] &#x3D; urldecode($_GET[id]);</span><br><span class="line">if($_GET[id] &#x3D;&#x3D; &quot;hackerDJ&quot;)</span><br><span class="line">&#123;</span><br><span class="line">    echo &quot;</span><br><span class="line">    Access granted!</span><br><span class="line"></span><br><span class="line">    &quot;;</span><br><span class="line">    echo &quot;</span><br><span class="line">    flag</span><br><span class="line"></span><br><span class="line">    &quot;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>函数解释：</strong></p>
+<p><strong>eregi()函数</strong></p>
+<pre><code>int eregi(string pattern, string string, [array regs]);</code></pre>
+<p>eregi()函数在一个字符串搜索指定的模式的字符串。搜索不区分大小写,如果没有找到匹配或出错则返回 FALSE</p>
+<p>处理数组将返回NULL</p>
+<p><strong>urldecode()函数</strong></p>
+<p>解码给出的已编码字符串中的任何 %##。 加号（’+’）被解码成一个空格字符</p>
+<p>分析代码可知不能让eregi()函数成功匹配，要让<code>$_GET[id] == &quot;hackerDJ&quot;</code>成立</p>
+<p>php在处理传递过来的参数是会进行一次url解码</p>
+<p>可以二次编码进行绕过</p>
+<pre><code>payload:?id=hackerD%254A</code></pre>
+<p>%25是%的url编码，%4A是J的url编码</p>
+<p>这样经过php解析会得到</p>
+<pre><code>?id=hackerD%4A</code></pre>
+<p>再次经过函数解析会得到</p>
+<pre><code>?id=hackerDJ</code></pre>
+<h2 id="md5-函数"><a href="#md5-函数" class="headerlink" title="md5()函数"></a>md5()函数</h2><p>题目代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">$flag &#x3D; &#39;flag&#123;test&#125;&#39;;</span><br><span class="line">if (isset($_GET[&#39;username&#39;]) and isset($_GET[&#39;password&#39;]))</span><br><span class="line"> &#123; </span><br><span class="line">    if ($_GET[&#39;username&#39;] &#x3D;&#x3D; $_GET[&#39;password&#39;]) </span><br><span class="line">        print &#39;Your password can not be your username.&#39;;</span><br><span class="line">     else if (md5($_GET[&#39;username&#39;]) &#x3D;&#x3D;&#x3D; md5($_GET[&#39;password&#39;])) </span><br><span class="line">        die(&#39;Flag: &#39;.$flag); </span><br><span class="line">    else </span><br><span class="line">        print &#39;Invalid password&#39;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>函数解释：</strong></p>
+<p><strong>md5()函数</strong></p>
+<p>用途：以 32 字符十六进制数字形式返回散列值</p>
+<p>**绕过方法:**md5()函数不能处理数组</p>
+<pre><code>payload:?password[]=1&amp;username[]=2</code></pre>
+<p>md5()函数在处理数组时会返回NULL</p>
+<p><strong>md5碰撞</strong></p>
+<p>两个MD5值相同的不同字符串</p>
+<pre><code>Param1=%4d%c9%68%ff%0e%e3%5c%20%95%72%d4%77%7b%72%15%87%d3%6f%a7%b2%1b%dc%56%b7%4a%3d%c0%78%3e%7b%95%18%af%bf%a2%00%a8%28%4b%f3%6e%8e%4b%55%b3%5f%42%75%93%d8%49%67%6d%a0%d1%55%5d%83%60%fb%5f%07%fe%a2
+和
+Param2=%4d%c9%68%ff%0e%e3%5c%20%95%72%d4%77%7b%72%15%87%d3%6f%a7%b2%1b%dc%56%b7%4a%3d%c0%78%3e%7b%95%18%af%bf%a2%02%a8%28%4b%f3%6e%8e%4b%55%b3%5f%42%75%93%d8%49%67%6d%a0%d1%d5%5d%83%60%fb%5f%07%fe%a2
+
+`flag&#123;bugk1u-ad8-3dsa-2&#125;`</code></pre>
+<h2 id="数组返回NULL绕过"><a href="#数组返回NULL绕过" class="headerlink" title="数组返回NULL绕过"></a>数组返回NULL绕过</h2><p>题目代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$flag &#x3D; &quot;flag&quot;;</span><br><span class="line"></span><br><span class="line">if (isset ($_GET[&#39;password&#39;])) &#123;</span><br><span class="line">if (ereg (&quot;^[a-zA-Z0-9]+$&quot;, $_GET[&#39;password&#39;]) &#x3D;&#x3D;&#x3D; FALSE)</span><br><span class="line">echo &#39;You password must be alphanumeric&#39;;</span><br><span class="line">else if (strpos ($_GET[&#39;password&#39;], &#39;--&#39;) !&#x3D;&#x3D; FALSE)</span><br><span class="line">die(&#39;Flag: &#39; . $flag);</span><br><span class="line">else</span><br><span class="line">echo &#39;Invalid password&#39;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>函数解释：</strong></p>
+<p><strong>strpos()函数</strong></p>
+<p>用于查找字符串首次出现的位置</p>
+<pre><code>int strpos( string $haystack, mixed $needle[, int $offset = 0] )</code></pre>
+<p>如果没找到 needle，将返回 FALSE</p>
+<p>当$haystack为数组时，函数返回NULL,当$needle为数组时函数返回FALSE</p>
+<pre><code>payload:?password[]=1</code></pre>
+<p><code>ereg (&quot;^[a-zA-Z0-9]+$&quot;, $_GET[&#39;password&#39;])</code>和<code>strpos ($_GET[&#39;password&#39;], &#39;--&#39;)</code>的返回结果都是NULL,不强等于FALSE</p>
+<pre><code>flag&#123;ctf-bugku-ad-2131212&#125;</code></pre>
+<h2 id="弱类型整数大小比较绕过"><a href="#弱类型整数大小比较绕过" class="headerlink" title="弱类型整数大小比较绕过"></a>弱类型整数大小比较绕过</h2><p>题目代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$temp &#x3D; $_GET[&#39;password&#39;];</span><br><span class="line">is_numeric($temp)?die(&quot;no numeric&quot;):NULL;</span><br><span class="line">if($temp&gt;1336)&#123;</span><br><span class="line">echo $flag;</span><br></pre></td></tr></table></figure>
+<p>分析题目可知GET传参password，且不能为纯数字</p>
+<pre><code>payload1:?password=2000a</code></pre>
+<p>字符串进行数学运算时，会自动转换为数字后再进行运算</p>
+<pre><code>payload2:?password[]=1</code></pre>
+<p>is_numeric()函数处理数组时会返回FALSE</p>
+<p>数组大于任一数字</p>
+<pre><code>flag&#123;bugku_null_numeric&#125;</code></pre>
+<h2 id="sha-函数比较绕过"><a href="#sha-函数比较绕过" class="headerlink" title="sha()函数比较绕过"></a>sha()函数比较绕过</h2><p>题目代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$flag &#x3D; &quot;flag&quot;;</span><br><span class="line">if (isset($_GET[&#39;name&#39;]) and isset($_GET[&#39;password&#39;]))</span><br><span class="line">&#123;</span><br><span class="line">var_dump($_GET[&#39;name&#39;]);</span><br><span class="line">echo &quot;&quot;;</span><br><span class="line">var_dump($_GET[&#39;password&#39;]);</span><br><span class="line">var_dump(sha1($_GET[&#39;name&#39;]));</span><br><span class="line">var_dump(sha1($_GET[&#39;password&#39;]));</span><br><span class="line">if ($_GET[&#39;name&#39;] &#x3D;&#x3D; $_GET[&#39;password&#39;])</span><br><span class="line">echo &#39;</span><br><span class="line"></span><br><span class="line">Your password can not be your name!</span><br><span class="line"></span><br><span class="line">&#39;;</span><br><span class="line">else if (sha1($_GET[&#39;name&#39;]) &#x3D;&#x3D;&#x3D; sha1($_GET[&#39;password&#39;]))</span><br><span class="line">die(&#39;Flag: &#39;.$flag);</span><br><span class="line">else</span><br><span class="line">echo &#39;</span><br><span class="line">Invalid password.</span><br><span class="line"></span><br><span class="line">&#39;;</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">echo &#39;</span><br><span class="line">Login first!</span><br><span class="line"></span><br><span class="line">&#39;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>传两个参数，name和password</p>
+<p>并且这两个参数要经过sha1()加密还要相等才能输出flag</p>
+<p>这里便想到了传入数组将返回NULL</p>
+<pre><code>payload1:?name[]=1&amp;password[]=2</code></pre>
+<p>sha1()碰撞</p>
+<pre><code>payload2:?name=%25PDF-1.3%0A%25%E2%E3%CF%D3%0A%0A%0A1%200%20obj%0A%3C%3C/Width%202%200%20R/Height%203%200%20R/Type%204%200%20R/Subtype%205%200%20R/Filter%206%200%20R/ColorSpace%207%200%20R/Length%208%200%20R/BitsPerComponent%208%3E%3E%0Astream%0A%FF%D8%FF%FE%00%24SHA-1%20is%20dead%21%21%21%21%21%85/%EC%09%239u%9C9%B1%A1%C6%3CL%97%E1%FF%FE%01sF%DC%91f%B6%7E%11%8F%02%9A%B6%21%B2V%0F%F9%CAg%CC%A8%C7%F8%5B%A8Ly%03%0C%2B%3D%E2%18%F8m%B3%A9%09%01%D5%DFE%C1O%26%FE%DF%B3%DC8%E9j%C2/%E7%BDr%8F%0EE%BC%E0F%D2%3CW%0F%EB%14%13%98%BBU.%F5%A0%A8%2B%E31%FE%A4%807%B8%B5%D7%1F%0E3.%DF%93%AC5%00%EBM%DC%0D%EC%C1%A8dy%0Cx%2Cv%21V%60%DD0%97%91%D0k%D0%AF%3F%98%CD%A4%BCF%29%B1&amp;password=%25PDF-1.3%0A%25%E2%E3%CF%D3%0A%0A%0A1%200%20obj%0A%3C%3C/Width%202%200%20R/Height%203%200%20R/Type%204%200%20R/Subtype%205%200%20R/Filter%206%200%20R/ColorSpace%207%200%20R/Length%208%200%20R/BitsPerComponent%208%3E%3E%0Astream%0A%FF%D8%FF%FE%00%24SHA-1%20is%20dead%21%21%21%21%21%85/%EC%09%239u%9C9%B1%A1%C6%3CL%97%E1%FF%FE%01%7FF%DC%93%A6%B6%7E%01%3B%02%9A%AA%1D%B2V%0BE%CAg%D6%88%C7%F8K%8CLy%1F%E0%2B%3D%F6%14%F8m%B1i%09%01%C5kE%C1S%0A%FE%DF%B7%608%E9rr/%E7%ADr%8F%0EI%04%E0F%C20W%0F%E9%D4%13%98%AB%E1.%F5%BC%94%2B%E35B%A4%80-%98%B5%D7%0F%2A3.%C3%7F%AC5%14%E7M%DC%0F%2C%C1%A8t%CD%0Cx0Z%21Vda0%97%89%60k%D0%BF%3F%98%CD%A8%04F%29%A1</code></pre>
+<p>好像直接显示不出来，需要查看源代码或者抓包</p>
+<pre><code>flag&#123;bugku--daimasj-a2&#125;</code></pre>
+<h2 id="md5加密相等绕过"><a href="#md5加密相等绕过" class="headerlink" title="md5加密相等绕过"></a>md5加密相等绕过</h2><p>题目代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$md51 &#x3D; md5(&#39;QNKCDZO&#39;);</span><br><span class="line">$a &#x3D; @$_GET[&#39;a&#39;];</span><br><span class="line">$md52 &#x3D; @md5($a);</span><br><span class="line">if(isset($a))&#123;</span><br><span class="line">if ($a !&#x3D; &#39;QNKCDZO&#39; &amp;&amp; $md51 &#x3D;&#x3D; $md52) &#123;</span><br><span class="line">echo &quot;flag&#123;*&#125;&quot;;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">echo &quot;false!!!&quot;;</span><br><span class="line">&#125;&#125;</span><br><span class="line">else&#123;echo &quot;please input a&quot;;&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>看到<code>QNKCDZO</code>立马想到了md5弱比较</p>
+<p>即php会把每一个以”0E”开头的哈希值都解释为0</p>
+<pre><code>payload:?a=s878926199a</code></pre>
+<p>其中<code>QNKCDZO</code>和<code>s878926199a</code> md5加密后都是0e开头</p>
+<pre><code>flag&#123;bugku-dmsj-am9ls&#125;</code></pre>
+<h2 id="十六进制与数字比较"><a href="#十六进制与数字比较" class="headerlink" title="十六进制与数字比较"></a>十六进制与数字比较</h2><p>题目代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">function noother_says_correct($temp)</span><br><span class="line">&#123;</span><br><span class="line">$flag &#x3D; &#39;flag&#123;test&#125;&#39;;</span><br><span class="line">$one &#x3D; ord(&#39;1&#39;); &#x2F;&#x2F;ord — 返回字符的 ASCII 码值</span><br><span class="line">$nine &#x3D; ord(&#39;9&#39;); &#x2F;&#x2F;ord — 返回字符的 ASCII 码值</span><br><span class="line">$number &#x3D; &#39;3735929054&#39;;</span><br><span class="line">&#x2F;&#x2F; Check all the input characters!</span><br><span class="line">for ($i &#x3D; 0; $i &lt; strlen($number); $i++)</span><br><span class="line">&#123;</span><br><span class="line">&#x2F;&#x2F; Disallow all the digits!</span><br><span class="line">$digit &#x3D; ord($temp&#123;$i&#125;);</span><br><span class="line">if ( ($digit &gt;&#x3D; $one) &amp;&amp; ($digit &lt;&#x3D; $nine) )</span><br><span class="line">&#123;</span><br><span class="line">&#x2F;&#x2F; Aha, digit not allowed!</span><br><span class="line">return &quot;flase&quot;;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">if($number &#x3D;&#x3D; $temp)</span><br><span class="line">return $flag;</span><br><span class="line">&#125;</span><br><span class="line">$temp &#x3D; $_GET[&#39;password&#39;];</span><br><span class="line">echo noother_says_correct($temp);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>输出flag的条件$temp要弱等于<code>$number = ‘3735929054’</code>，$temp为传入参数password的值，并且遍历$temp的每个字符还不能在1—-9之间</p>
+<p>看着题目名称便想到了转换16进制</p>
+<pre><code>payload:?password=0xdeadc0de</code></pre>
+<p>0xdeadc0de为3735929054十六进制形式</p>
+<pre><code>flag&#123;Bugku-admin-ctfdaimash&#125;</code></pre>
+<h2 id="变量覆盖"><a href="#变量覆盖" class="headerlink" title="变量覆盖"></a>变量覆盖</h2><h2 id="ereg正则-00截断"><a href="#ereg正则-00截断" class="headerlink" title="ereg正则%00截断"></a>ereg正则%00截断</h2><p>题目代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$flag &#x3D; &quot;xxx&quot;;</span><br><span class="line">if (isset ($_GET[&#39;password&#39;]))</span><br><span class="line">&#123;</span><br><span class="line">    if (ereg (&quot;^[a-zA-Z0-9]+$&quot;, $_GET[&#39;password&#39;]) &#x3D;&#x3D;&#x3D; FALSE)</span><br><span class="line">    &#123;</span><br><span class="line">    echo &#39;</span><br><span class="line"></span><br><span class="line">    You password must be alphanumeric</span><br><span class="line"></span><br><span class="line">    &#39;;</span><br><span class="line">    &#125;</span><br><span class="line">    else if (strlen($_GET[&#39;password&#39;]) &lt; 8 &amp;&amp; $_GET[&#39;password&#39;] &gt; 9999999)</span><br><span class="line">    &#123;</span><br><span class="line">        if (strpos ($_GET[&#39;password&#39;], &#39;-&#39;) !&#x3D;&#x3D; FALSE) &#x2F;&#x2F;strpos — 查找字符串首次出现的位置</span><br><span class="line">        &#123;</span><br><span class="line">        die(&#39;Flag: &#39; . $flag);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">        echo(&#39;</span><br><span class="line">        - have not been found</span><br><span class="line"></span><br><span class="line">        &#39;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">    echo &#39;</span><br><span class="line">    Invalid password</span><br><span class="line"></span><br><span class="line">    &#39;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>ereg函数存在00截断漏洞，当ereg读取字符串string时,如果遇到了%00,后面的字符串就不会被解析</p>
+<pre><code>payload: ?password=1e9%00*-*</code></pre>
+<p>1e9是科学计数法，代表1x10^9</p>
+<p>利用ereg()函数00截断漏洞，绕过匹配</p>
+<p>*-*，应该是题目出错了，不过提示里有</p>
+<p>另外也可以直接传数组</p>
+<pre><code>payload: ?password[]=1
+
+flag&#123;bugku-dm-sj-a12JH8&#125;</code></pre>
+<h2 id="strpos数组绕过"><a href="#strpos数组绕过" class="headerlink" title="strpos数组绕过"></a>strpos数组绕过</h2><p>题目代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$flag &#x3D; &quot;flag&quot;;</span><br><span class="line">if (isset ($_GET[&#39;ctf&#39;])) &#123;</span><br><span class="line">if (@ereg (&quot;^[1-9]+$&quot;, $_GET[&#39;ctf&#39;]) &#x3D;&#x3D;&#x3D; FALSE)</span><br><span class="line">echo &#39;必须输入数字才行&#39;;</span><br><span class="line">else if (strpos ($_GET[&#39;ctf&#39;], &#39;#biubiubiu&#39;) !&#x3D;&#x3D; FALSE)</span><br><span class="line">die(&#39;Flag: &#39;.$flag);</span><br><span class="line">else</span><br><span class="line">echo &#39;骚年，继续努力吧啊~&#39;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line">ereg()函数传入数组会返回NULL,不强等于FALSE,进入else if</span><br><span class="line"></span><br><span class="line">strpos()函数传入数组会返回NULL,不强不等于FALSE,条件成立</span><br><span class="line"></span><br><span class="line">payload:?ctf[]&#x3D;</span><br><span class="line"></span><br><span class="line">flag&#123;Bugku-D-M-S-J572&#125;</span><br><span class="line">数字验证正则绕过</span><br><span class="line">题目代码：</span><br><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">$flag &#x3D; &#39;flag&#123;test&#125;&#39;;</span><br><span class="line">if (&quot;POST&quot; &#x3D;&#x3D; $_SERVER[&#39;REQUEST_METHOD&#39;])</span><br><span class="line">&#123;</span><br><span class="line">$password &#x3D; $_POST[&#39;password&#39;];</span><br><span class="line">if (0 &gt;&#x3D; preg_match(&#39;&#x2F;^[[:graph:]]&#123;12,&#125;$&#x2F;&#39;, $password)) &#x2F;&#x2F;preg_match — 执行一个正则表达式匹配</span><br><span class="line">&#123;</span><br><span class="line">echo &#39;flag&#39;;</span><br><span class="line">exit;</span><br><span class="line">&#125;</span><br><span class="line">while (TRUE)</span><br><span class="line">&#123;</span><br><span class="line">$reg &#x3D; &#39;&#x2F;([[:punct:]]+|[[:digit:]]+|[[:upper:]]+|[[:lower:]]+)&#x2F;&#39;;</span><br><span class="line">if (6 &gt; preg_match_all($reg, $password, $arr))</span><br><span class="line">break;</span><br><span class="line">$c &#x3D; 0;</span><br><span class="line">$ps &#x3D; array(&#39;punct&#39;, &#39;digit&#39;, &#39;upper&#39;, &#39;lower&#39;); &#x2F;&#x2F;[[:punct:]] 任何标点符号 [[:digit:]] 任何数字 [[:upper:]] 任何大写字母 [[:lower:]] 任何小写字母</span><br><span class="line">foreach ($ps as $pt)</span><br><span class="line">&#123;</span><br><span class="line">if (preg_match(&quot;&#x2F;[[:$pt:]]+&#x2F;&quot;, $password))</span><br><span class="line">$c +&#x3D; 1;</span><br><span class="line">&#125;</span><br><span class="line">if ($c &lt; 3) break;</span><br><span class="line">&#x2F;&#x2F;&gt;&#x3D;3，必须包含四种类型三种与三种以上</span><br><span class="line">if (&quot;42&quot; &#x3D;&#x3D; $password) echo $flag;</span><br><span class="line">else echo &#39;Wrong password&#39;;</span><br><span class="line">exit;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>$_SERVER 是一个包含了诸如头信息(header)、路径(path)、以及脚本位置(script locations)等等信息的数组。这个数组中的项目由 Web 服务器创建</p>
+<p>这里的$_SERVER[‘REQUEST_METHOD’]指的是请求提交数据的方式</p>
+<p>可以看到需要POST一个参数为password的变量</p>
+<p>下面是代码中的一些正则表达式语法</p>
+<pre><code>[:alpha:]
+匹配当前归类中的大写和小写字母字符。例如，&#39;[0-9]&#123;3&#125;[[:alpha:]]&#123;2&#125;&#39; 匹配三个数字，后跟两个字母。
+
+[:alnum:]    
+匹配当前归类中的数字、大写和小写字母字符。例如，&#39;[[:alnum:]]+&#39; 匹配含有一个或多个字母和数字的字符串。
+
+[:digit:]    
+匹配当前归类中的数字。例如，&#39;[[:digit:]-]+&#39; 匹配含有一个或多个数字或横线的字符串。同样，&#39;[^[:digit:]-]+&#39; 匹配含有一个或多个不是数字或横线的字符的字符串。
+
+[:lower:]    
+匹配当前归类中的小写字母字符。例如，&#39;[[:lower:]]&#39; 不匹配 A，因为 A 为大写。
+
+[:space:]    
+匹配单个空格 (&#39; &#39;）
+
+[:upper:]    
+匹配当前归类中的大写字母字符。例如，&#39;[[:upper:]ab]&#39; 与以下其中一项匹配：任何大写字母、a 或 b。
+
+[:whitespace:]    
+匹配一个空白字符，例如，空格、制表符、换页符和回车符。
+
+[:ascii:]    
+匹配任何七位的 ASCII 字符（0 到 127 之间的顺序值）。
+
+[:blank:]    
+匹配一个空白区或水平制表符。
+
+[[:blank:]] 等效于 [ \t]。
+
+[:cntrl:]    
+匹配顺序值小于 32 或字符值为 127 的 ASCII 字符（控制字符）。控制字符包括换行符、换页符、退格符，等等。
+
+[:graph:]    
+匹配打印字符。
+
+[[:graph:]] 等效于 [[:alnum:][:punct:]]。
+
+[:print:]    
+匹配打印字符和空格。
+
+[[:print:]] 等效于 [[:graph:][:whitespace:]]。
+
+[:punct:]    
+匹配其中一个字符： !&quot;#$%&amp;&#39;()*+,-./:;&lt;=&gt;?@[\]^_`&#123;|&#125;~.
+
+[:punct:] 子字符类不能包括当前归类中可用的非 ASCII 标点字符。
+
+[:word:]    
+匹配当前归类中的字母、数字或下划线字符。
+
+[[:word:]] 等效于 [[:alnum:]_]。
+
+[:xdigit:]    
+匹配字符类 [0-9A-Fa-f] 中的字符。</code></pre>
+<p>preg_match() 函数返回 pattern 的匹配次数。 它的值将是 0 次（不匹配）或 1 次，因为 preg_match() 在第一次匹配后 将会停止搜索</p>
+<pre><code>int preg_match ( string $pattern , string $subject [, array &amp;$matches [, int $flags = 0 [, int $offset = 0 ]]] )</code></pre>
+<p>$pattern: 要搜索的模式，字符串形式</p>
+<p>$subject: 输入字符串</p>
+<p>分析代码可知，传入参数必须使用POST方法，这题好像出错了，只要POST<br>一个数据就可以得到flag</p>
+<p><strong>正确的解题方法应该是：</strong></p>
+<p>由要让<code>0 &gt;= preg_match(&#39;/^[[:graph:]]&#123;12,&#125;$/&#39;, $password)</code>为FALSE可知password的长度应该在12个字符及以上(非空格非TAB之外的内容)</p>
+<p>由</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$reg &#x3D; &#39;&#x2F;([[:punct:]]+|[[:digit:]]+|[[:upper:]]+|[[:lower:]]+)&#x2F;&#39;; </span><br><span class="line">if (6 &gt; preg_match_all($reg, $password, $arr))</span><br></pre></td></tr></table></figure>
+<p>可知，匹配到的次数要大于6次（任意字符或大小写字母或数字）</p>
+<p>由</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ps &#x3D; array(&#39;punct&#39;, &#39;digit&#39;, &#39;upper&#39;, &#39;lower&#39;); &#x2F;&#x2F;[[:punct:]] 任何标点符号 [[:digit:]] 任何数字  [[:upper:]] 任何大写字母  [[:lower:]] 任何小写字母 </span><br><span class="line">foreach ($ps as $pt) </span><br><span class="line">&#123; </span><br><span class="line">    if (preg_match(&quot;&#x2F;[[:$pt:]]+&#x2F;&quot;, $password)) </span><br><span class="line">        $c +&#x3D; 1; </span><br><span class="line">&#125; </span><br><span class="line">if ($c &lt; 3) break; </span><br></pre></td></tr></table></figure>
+<p>可知，必须要有大小写字母，数字，字符内容三种与三种以上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if (&quot;42&quot; &#x3D;&#x3D; $password) echo $flag; </span><br></pre></td></tr></table></figure>
+<p>必须弱等于42</p>
+<pre><code>payload：POST过去
+password=42.0000e%2b000000000
+password=420.000000000000e-1
+%2b为+号的url编码，-号的url编码为-</code></pre>
+<p>这里用的是科学计数法绕过</p>
+<p>出现<code>flag&#123;test&#125;</code>才意味着得到真正的flag</p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.moonback.xyz/2019/09/29/%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/bugku-codecheck-wp/>http://www.moonback.xyz/2019/09/29/%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/bugku-codecheck-wp/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-10-17T13:57:26+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2019年10月17日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/writeup/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>writeup</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/bugku/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>bugku</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>代码审计</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.moonback.xyz/2019/09/29/%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/bugku-codecheck-wp/&title=bugku代码审计writeup - 明月归的小站&summary=本篇博客介绍了bugku上web代码审计部分的writeup!"
+          
+          >
+          
+            <img src="/static/images/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.moonback.xyz/2019/09/29/%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/bugku-codecheck-wp/&title=bugku代码审计writeup - 明月归的小站&summary=本篇博客介绍了bugku上web代码审计部分的writeup!"
+          
+          >
+          
+            <img src="/static/images/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.moonback.xyz/2019/09/29/%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/bugku-codecheck-wp/&title=bugku代码审计writeup - 明月归的小站&summary=本篇博客介绍了bugku上web代码审计部分的writeup!"
+          
+          >
+          
+            <img src="/static/images/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2019/10/01/%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/bugku-web-partquestion/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>bugku web部分题目writeup</p>
+                <p class='content'>本篇博客介绍了bugku中web部分题的writeup,感觉这些题自己收获还挺多的，包括以下题目：
+
+cookies欺骗
+welcome to bugkuctf
+
+
+
+cookies欺骗打开题目...</p>
+              </a>
+            
+            
+              <a class='next' href='/2019/09/25/%E7%9F%A5%E8%AF%86%E7%82%B9/php-function-leak/'>
+                <p class='title'>php一些常见函数漏洞<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>本篇博客介绍了php的一些常见函数的漏洞！
+
+
+md5()函数md5弱比较PHP在处理哈希字符串时，会利用”!=”或”==”来对哈希值进行比较，它把每一个以”0E”开头的哈希值都解释为0，所以如...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#extract%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96"><span class="toc-text">extract变量覆盖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#strcmp%E6%AF%94%E8%BE%83%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">strcmp比较字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#urldecode%E4%BA%8C%E6%AC%A1%E7%BC%96%E7%A0%81%E7%BB%95%E8%BF%87"><span class="toc-text">urldecode二次编码绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#md5-%E5%87%BD%E6%95%B0"><span class="toc-text">md5()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E8%BF%94%E5%9B%9ENULL%E7%BB%95%E8%BF%87"><span class="toc-text">数组返回NULL绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%B1%E7%B1%BB%E5%9E%8B%E6%95%B4%E6%95%B0%E5%A4%A7%E5%B0%8F%E6%AF%94%E8%BE%83%E7%BB%95%E8%BF%87"><span class="toc-text">弱类型整数大小比较绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sha-%E5%87%BD%E6%95%B0%E6%AF%94%E8%BE%83%E7%BB%95%E8%BF%87"><span class="toc-text">sha()函数比较绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#md5%E5%8A%A0%E5%AF%86%E7%9B%B8%E7%AD%89%E7%BB%95%E8%BF%87"><span class="toc-text">md5加密相等绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E4%B8%8E%E6%95%B0%E5%AD%97%E6%AF%94%E8%BE%83"><span class="toc-text">十六进制与数字比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96"><span class="toc-text">变量覆盖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ereg%E6%AD%A3%E5%88%99-00%E6%88%AA%E6%96%AD"><span class="toc-text">ereg正则%00截断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#strpos%E6%95%B0%E7%BB%84%E7%BB%95%E8%BF%87"><span class="toc-text">strpos数组绕过</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="/static/js-css/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="/static/js-css/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="/static/js-css/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/static/images/1.jpg", "/static/images/2.jpg", "/static/images/3.jpg", "/static/images/4.jpg", "/static/images/5.jpg", "/static/images/6.jpg", "/static/images/7.jpg", "/static/images/8.jpg", "/static/images/9.jpg", "/static/images/10.jpg", "/static/images/11.jpg", "/static/images/12.jpg", "/static/images/13.jpg", "/static/images/14.jpg", "/static/images/15.jpg", "/static/images/16.jpg", "/static/images/17.jpg", "/static/images/18.jpg", "/static/images/19.jpg", "/static/images/20.jpg", "/static/images/21.jpg", "/static/images/22.jpg", "/static/images/23.jpg", "/static/images/24.jpg", "/static/images/25.jpg", "/static/images/26.jpg", "/static/images/27.jpg", "/static/images/28.jpg", "/static/images/29.jpg", "/static/images/30.jpg", "/static/images/31.jpg", "/static/images/32.jpg", "/static/images/33.jpg", "/static/images/34.jpg", "/static/images/35.jpg", "/static/images/36.jpg", "/static/images/37.jpg", "/static/images/38.jpg", "/static/images/39.jpg", "/static/images/40.jpg", "/static/images/41.jpg", "/static/images/42.jpg", "/static/images/43.jpg", "/static/images/44.jpg", "/static/images/45.jpg", "/static/images/46.jpg", "/static/images/47.jpg", "/static/images/48.jpg", "/static/images/49.jpg", "/static/images/50.jpg", "/static/images/51.jpg", "/static/images/52.jpg", "/static/images/53.jpg", "/static/images/54.jpg", "/static/images/55.jpg", "/static/images/56.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="/static/js-css/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="/static/js-css/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="/static/js-css/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="/static/js-css/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="/static/js-css/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="/static/js-css/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="/static/js-css/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="/static/js-css/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

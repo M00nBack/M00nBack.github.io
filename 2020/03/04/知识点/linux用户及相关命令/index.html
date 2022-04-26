@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>linux相关内容学习 - 明月归的小站</title>
+  
+    <meta name="keywords" content="linux">
+  
+
+  
+    <meta name="description" content="本篇博客主要介绍了和linux用户及权限的相关内容，权限的东西经常弄混，记一下！">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="/static/js-css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="/static/js-css/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">linux相关内容学习</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2020/03/04/%E7%9F%A5%E8%AF%86%E7%82%B9/linux%E7%94%A8%E6%88%B7%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/">
+      linux相关内容学习
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年3月4日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：4.6k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：16分钟</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2020/03/04/%E7%9F%A5%E8%AF%86%E7%82%B9/linux%E7%94%A8%E6%88%B7%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/" class="leancloud_visitors" data-flag-title="linux相关内容学习">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2020/03/04/%E7%9F%A5%E8%AF%86%E7%82%B9/linux%E7%94%A8%E6%88%B7%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2020/03/04/%E7%9F%A5%E8%AF%86%E7%82%B9/linux%E7%94%A8%E6%88%B7%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>本篇博客主要介绍了和linux用户及权限的相关内容，权限的东西经常弄混，记一下！</p>
+<a id="more"></a>
+
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h3 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h3><p>我们可以用<code>ls -l</code>查看详细信息</p>
+<p>linux下的权限可分为三种：</p>
+<ul>
+<li>r表示读，数字表示为4。对文件来说表示可以读取此文件的实际内容，而对目录来说表示可以读取目录结构列表，即可以查看目录下的文件名和子目录名，注意仅仅是名字</li>
+<li>w表示写，数字表示2。对文件来说可以编辑、添加或者是修改该文件的内容，但不包含删除该文件，而对目录来说表示具有更改该目录结构列表的权限，包括新建删除重命名移动文件或者文件夹</li>
+<li>x表示执行，数字表示1。对文件来说表示该文件具有可以被系统执行的权限，而对目录来说表示用户可以进入该目录成为工作目录，如果用户对于某个目录不具有x权限，则无法切换到该目录下，也就无法执行该目录下的任何命令，即使具有该目录的r权限。</li>
+</ul>
+<img src="/2020/03/04/%E7%9F%A5%E8%AF%86%E7%82%B9/linux%E7%94%A8%E6%88%B7%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/TIM截图20200304230610.png" style="zoom:80%;">
+
+<p>以图<code>conf.d</code>为例：</p>
+<ul>
+<li>d代表是目录，-代表文件</li>
+<li><code>rwx</code>代表文件或目录所有者的拥有的权限</li>
+<li><code>r-x</code>代表文件或目录组群的拥有的权限</li>
+<li><code>r-x</code>代表文件或目录其它人的拥有的权限</li>
+<li>数字2代表 链接占用的节点个数，如果是目录则表示该目录所含子目录或文件的个数</li>
+<li>第一个root表示文件或目录所有者</li>
+<li>第二个root代表文件或目录所属组</li>
+<li>4096代表的是文件或文件夹的大小，单位字节</li>
+<li>然后就是时间了，这里显示的是最后修改时间</li>
+</ul>
+<h3 id="软连接和硬连接"><a href="#软连接和硬连接" class="headerlink" title="软连接和硬连接"></a>软连接和硬连接</h3><p>linux系统中有种文件是链接文件，可以为解决文件的共享使用。链接的方式可以分为两种，一种是硬链接（Hard Link），另一种是软链接或者也称为符号链接（Symbolic Link）。</p>
+<h4 id="硬连接"><a href="#硬连接" class="headerlink" title="硬连接"></a>硬连接</h4><p>硬链接是指通过索引节点来进行链接。在Linux的文件系统中，保存在磁盘分区中的文件不管是什么类型都会给它分配一个编号，这个编号被称为索引节点编号号(Inode Index)或者Inode，它是文件或者目录在一个文件系统中的唯一标识，文件的实际数据放置在数据区域（data block），它存储着文件重要参数信息，也就是元数据 （metadata），比如创建时间、修改时间、文件大小、属主、归属的用户组、读写权限、数据所在block号等，如下图所示。</p>
+<img src="/2020/03/04/%E7%9F%A5%E8%AF%86%E7%82%B9/linux%E7%94%A8%E6%88%B7%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/824470-20180531151753197-400006785.png">
+
+<p> 在Linux系统中，多个文件名指向同一索引节点(Inode)是正常且允许的。一般这种链接就称为硬链接。硬链接的作用之一是允许一个文件拥有多个有效路径名，这样用户就可以建立硬链接到重要的文件，以防止“误删”源数据，不过硬链接只能在同一文件系统中的文件之间进行链接，不能对目录进行创建。之所以文件建立了硬链接就会防止数据误删，是因为文件系统的原理是，只要文件的索引节点还有一个以上的链接（仅删除了该文件的指向），只删除其中一个链接并不影响索引节点本身和其他的链接（数据的实体并未删除），只有当最后一个链接被删除后，此时如果有新数据要存储到磁盘上，被删除的文件的数据块及目录的链接才会被释放，空间被新数据暂用覆盖。</p>
+<h4 id="软连接"><a href="#软连接" class="headerlink" title="软连接"></a>软连接</h4><p> 软链接（也叫符号链接），类似于windows系统中的快捷方式，与硬链接不同，软链接就是一个普通文件，只是数据块内容有点特殊，文件用户数据块中存放的内容是另一文件的路径名的指向，通过这个方式可以快速定位到软连接所指向的源文件实体。软链接可对文件或目录创建。</p>
+<h4 id="ln命令"><a href="#ln命令" class="headerlink" title="ln命令"></a>ln命令</h4><p>n命令格式： </p>
+<p> ln [参数] [源文件或目录] [目标文件或目录]</p>
+<p>主要参数：</p>
+<ul>
+<li>-i 交互模式，文件存在则提示用户是否覆盖。</li>
+<li>-s 软链接(符号链接)。</li>
+<li>-d 允许超级用户制作目录的硬链接。</li>
+<li>-b 删除，覆盖以前建立的链接</li>
+</ul>
+<ol>
+<li>软链接 （符号链接） <code>ln -s  source target</code> </li>
+<li>硬链接 （实体链接）<code>ln source  target</code></li>
+</ol>
+<h3 id="三种时间"><a href="#三种时间" class="headerlink" title="三种时间"></a>三种时间</h3><p>对于文件来说，三种时间有不同的含义：</p>
+<ol>
+<li>访问时间（atime：access time）：读一次文件的内容，atime就会更新。比如对这个文件运用 more、cat等命令。另外ls、stat命令都不会修改文件的访问时间。</li>
+<li>修改时间（mtime：modifiy time）：mtime是文件内容最后一次被修改时间。例如vi后保存文件。ls -l列出的时间就是这个时间。</li>
+<li>状态改动时间（ctime：change time）：ctime是在写入文件、更改所有者、权限或链接设置时随i节点的内容更改而更改的，是该文件的i节点最后一次被修改的时间，通过chmod、chown命令修改一次文件属性，这个时间就会更新。</li>
+</ol>
+<p>可以用<code>stat</code>命令查看三种时间，也可以用ls命令加参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls -lc filename 列出文件的 ctime （最后状态更改时间） </span><br><span class="line">ls -lu filename 列出文件的 atime（最后访问时间） </span><br><span class="line">ls -l filename 列出文件的 mtime （最后修改时间）</span><br></pre></td></tr></table></figure>
+
+<h3 id="三个重要文件"><a href="#三个重要文件" class="headerlink" title="三个重要文件"></a>三个重要文件</h3><h4 id="etc-passwd"><a href="#etc-passwd" class="headerlink" title="/etc/passwd"></a>/etc/passwd</h4><p>以下图为例</p>
+<img src="/2020/03/04/%E7%9F%A5%E8%AF%86%E7%82%B9/linux%E7%94%A8%E6%88%B7%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/TIM截图20200305220338.png" style="zoom:80%;">
+
+<p><code>/etc/passwd</code>文件中一行记录对应着一个用户，每行记录又被冒号(:)分隔为7个字段，其格式和具体含义如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">用户名:口令:用户标识号:组标识号:注释性描述:主目录:登录Shell</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>用户名(login_name):是代表用户账号的字符串。</p>
+</li>
+<li><p>口令(passwd):一些系统中，存放着加密后的用户口令字。虽然这个字段存放的只是用户口令的加密串，不是明文，但是由于/etc/passwd文件对所有用户都可读，所以这仍是一个安全隐患。因此，现在许多Linux系统（如SVR4）都使用了shadow技术，把真正的加密后的用户口令字存放到/etc/shadow文件中，而在/etc/passwd文件的口令字段中只存放一个特殊的字符，例如“x”或者“*”。</p>
+</li>
+<li><p>用户标识号(UID):是一个整数，系统内部用它来标识用户。一般情况下它与用户名是一一对应的。如果几个用户名对应的用户标识号是一样的，系统内部将把它们视为同一个用户，但是它们可以有不同的口令、不同的主目录以及不同的登录Shell等。取值范围是0-65535。0是超级用户root的标识号，1-99由系统保留，作为管理账号，普通用户的标识号从100开始。在Linux系统中，这个界限是500。</p>
+</li>
+<li><p>组标识号(GID):字段记录的是用户所属的用户组。它对应着/etc/group文件中的一条记录。</p>
+</li>
+<li><p>注释性描述(users):字段记录着用户的一些个人情况，例如用户的真实姓名、电话、地址等，这个字段并没有什么实际的用途。在不同的Linux系统中，这个字段的格式并没有统一。在许多Linux系统中，这个字段存放的是一段任意的注释性描述文字，用做finger命令的输出。</p>
+</li>
+<li><p>主目录(home_directory):也就是用户的起始工作目录，它是用户在登录到系统之后所处的目录。在大多数系统中，各用户的主目录都被组织在同一个特定的目录下，而用户主目录的名称就是该用户的登录名。各用户对自己的主目录有读、写、执行（搜索）权限，其他用户对此目录的访问权限则根据具体情况设置。</p>
+</li>
+<li><p>登录Shell(Shell):用户登录后，要启动一个进程，负责将用户的操作传给内核，这个进程是用户登录到系统后运行的命令解释器或某个特定的程序，即Shell。Shell是用户与Linux系统之间的接口。Linux的Shell有许多种，每种都有不同的特点。常用的有sh(BourneShell),csh(CShell),ksh(KornShell),tcsh(TENEX/TOPS-20typeCShell),bash(BourneAgainShell)等。系统管理员可以根据系统情况和用户习惯为用户指定某个Shell。如果不指定Shell，那么系统使用sh为默认的登录Shell，即这个字段的值为/bin/sh。</p>
+</li>
+</ol>
+<p>我们可以看到系统中还有一些默认的帐号，如daemon、bin等。这些帐号有着特殊的用途，一般用于进行系统管理。这些帐号的口令大部分用（x）号表示，代表它们不能在登录时使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bin拥有可执行的用户命令文件 </span><br><span class="line">sys拥有系统文件 </span><br><span class="line">adm拥有帐户文件 </span><br><span class="line">uucpUUCP使用 </span><br><span class="line">lplp或lpd子系统使用 </span><br><span class="line">nobodyNFS使用</span><br></pre></td></tr></table></figure>
+
+<p>了上面列出的伪用户外，还有许多标准的伪用户，例如：audit,cron,mail,usenet等，它们也都各自为相关的进程和文件所需要。</p>
+<h4 id="etc-group"><a href="#etc-group" class="headerlink" title="/etc/group"></a>/etc/group</h4><img src="/2020/03/04/%E7%9F%A5%E8%AF%86%E7%82%B9/linux%E7%94%A8%E6%88%B7%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/TIM截图20200305222550.png" style="zoom: 67%;">
+
+<p>/etc/group 文件是用户组的配置文件，内容包括用户和用户组，并且能显示出用户是归属哪个用户组或哪几个用户组，因为一个用户可以归属一个或多个不同的用户组；同一用 户组的用户之间具有相似的特征。比如我们把某一用户加入到root用户组，那么这个用户就可以浏览root用户家目录的文件，如果root用户把某个文件 的读写执行权限开放，root用户组的所有用户都可以修改此文件，如果是可执行的文件（比如脚本），root用户组的用户也是可以执行的。</p>
+<p>在/etc/group 中的每条记录分四个字段：<br>第一字段：用户组名称；<br>第二字段：用户组密码；<br>第三字段：GID<br>第四字段：用户列表，每个用户之间用,号分割；本字段可以为空；如果字段为空表示用户组为GID的用户名；</p>
+<h4 id="etc-shadow"><a href="#etc-shadow" class="headerlink" title="/etc/shadow"></a>/etc/shadow</h4><p>如下例子：</p>
+<img src="/2020/03/04/%E7%9F%A5%E8%AF%86%E7%82%B9/linux%E7%94%A8%E6%88%B7%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/TIM截图20200305221647.png" style="zoom:80%;">
+
+<p>第一列为账户名称</p>
+<p>第二列为密码（账户未设置密码时为!!，设置密码后加密显示）</p>
+<p>第三列为上次修改密码的时间距离1970年01月01日多少天</p>
+<p>第四列为密码最短有效天数，0表示无限制</p>
+<p>第五列为密码最长有效天数（默认位99999天，可以理解为永不过期）</p>
+<p>第六列为密码过期后的宽限天数（密码过期后，预留几天给账号修改密码，此时已无法使用旧密码登录）</p>
+<p>第八列为账户失效日期（从1970年01月01日起多少天后账户失效）</p>
+<p>第九列暂时保留未使用</p>
+<p>由示例可知，加密的密码具有固定格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$id$salt$encrypted</span><br></pre></td></tr></table></figure>
+
+<p>id表示加密算法，1代表<code>MD5</code>，5代表<code>SHA-256</code>，6代表<code>SHA-512</code> salt表示密码学中的Salt,系统随机生成 encrypted表示密码的hash</p>
+<h3 id="三个重要命令"><a href="#三个重要命令" class="headerlink" title="三个重要命令"></a>三个重要命令</h3><h4 id="chmod"><a href="#chmod" class="headerlink" title="chmod"></a>chmod</h4><p>Linux/Unix 的文件调用权限分为三级 : 文件拥有者、群组、其他。利用 chmod 可以藉以控制文件如何被他人所调用。</p>
+<p><strong>使用权限</strong> : 所有使用者</p>
+<h5 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod [-cfvR] [--help] [--version] mode file...</span><br></pre></td></tr></table></figure>
+
+<h5 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h5><p>mode : 权限设定字串，格式如下 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ugoa...][[+-&#x3D;][rwxX]...][,...]</span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<ul>
+<li>u 表示该文件的拥有者，g 表示与该文件的拥有者属于同一个群体(group)者，o 表示其他以外的人，a 表示这三者皆是。</li>
+<li>+ 表示增加权限、- 表示取消权限、= 表示唯一设定权限。</li>
+<li>r 表示可读取，w 表示可写入，x 表示可执行，X 表示只有当该文件是个子目录或者该文件已经被设定过为可执行。</li>
+</ul>
+<h5 id="其他参数说明"><a href="#其他参数说明" class="headerlink" title="其他参数说明"></a>其他参数说明</h5><ul>
+<li>-c : 若该文件权限确实已经更改，才显示其更改动作</li>
+<li>-f : 若该文件权限无法被更改也不要显示错误讯息</li>
+<li>-v : 显示权限变更的详细资料</li>
+<li>-R : 对目前目录下的所有文件与子目录进行相同的权限变更(即以递回的方式逐个变更)</li>
+<li>–help : 显示辅助说明</li>
+<li>–version : 显示版本</li>
+</ul>
+<h4 id="chown"><a href="#chown" class="headerlink" title="chown"></a>chown</h4><p>Linux/Unix 是多人多工操作系统，所有的文件皆有拥有者。利用 chown 将指定文件的拥有者改为指定的用户或组，用户可以是用户名或者用户ID；组可以是组名或者组ID；文件是以空格分开的要改变权限的文件列表，支持通配符。 。</p>
+<p>一般来说，这个指令只有是由系统管理者(root)所使用，一般使用者没有权限可以改变别人的文件拥有者，也没有权限可以自己的文件拥有者改设为别人。只有系统管理者(root)才有这样的权限。</p>
+<p><strong>使用权限</strong> : root</p>
+<h5 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown [-cfhvR] [--help] [--version] user[:group] file...</span><br></pre></td></tr></table></figure>
+
+<h5 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h5><ul>
+<li>user : 新的文件拥有者的使用者 ID</li>
+<li>group : 新的文件拥有者的使用者群体(group)</li>
+<li>-c : 若该文件拥有者确实已经更改，才显示其更改动作</li>
+<li>-f : 若该文件拥有者无法被更改也不要显示错误讯息</li>
+<li>-h : 只对于连结(link)进行变更，而非该 link 真正指向的文件</li>
+<li>-v : 显示拥有者变更的详细资料</li>
+<li>-R : 对目前目录下的所有文件与子目录进行相同的拥有者变更(即以递回的方式逐个变更)</li>
+<li>–help : 显示辅助说明</li>
+<li>–version : 显示版本</li>
+</ul>
+<h5 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h5><p>将文件 file1.txt 的拥有者设为 users 群体的使用者 jessie :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown jessie:users file1.txt</span><br></pre></td></tr></table></figure>
+
+<p>将目前目录下的所有文件与子目录的拥有者皆设为 users 群体的使用者 lamport :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -R lamport:users *</span><br></pre></td></tr></table></figure>
+
+<h4 id="chgrp"><a href="#chgrp" class="headerlink" title="chgrp"></a>chgrp</h4><p>Linux chgrp命令用于变更文件或目录的所属群组。</p>
+<p>在UNIX系统家族里，文件或目录权限的掌控以拥有者及所属群组来管理。您可以使用chgrp指令去变更文件与目录的所属群组，设置方式采用群组名称或群组识别码皆可。</p>
+<h5 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chgrp [-cfhRv][--help][--version][所属群组][文件或目录...] 或 chgrp [-cfhRv][--help][--reference&#x3D;&lt;参考文件或目录&gt;][--version][文件或目录...]</span><br></pre></td></tr></table></figure>
+
+<h5 id="参数说明-1"><a href="#参数说明-1" class="headerlink" title="参数说明"></a>参数说明</h5><p>-c或–changes 效果类似”-v”参数，但仅回报更改的部分。</p>
+<p>-f或–quiet或–silent 　不显示错误信息。</p>
+<p>-h或–no-dereference 　只对符号连接的文件作修改，而不更动其他任何相关文件。</p>
+<p>-R或–recursive 　递归处理，将指定目录下的所有文件及子目录一并处理。</p>
+<p>-v或–verbose 　显示指令执行过程。</p>
+<p>–help 　在线帮助。</p>
+<p>–reference=&lt;参考文件或目录&gt; 　把指定文件或目录的所属群组全部设成和参考文件或目录的所属群组相同。</p>
+<p>–version 　显示版本信息。</p>
+<h5 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h5><p>实例1：改变文件的群组属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chgrp -v bin log2012.log</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# ll</span><br><span class="line">---xrw-r-- 1 root root 302108 11-13 06:03 log2012.log</span><br><span class="line">[root@localhost test]# chgrp -v bin log2012.log</span><br></pre></td></tr></table></figure>
+
+<p>“log2012.log” 的所属组已更改为 bin</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# ll</span><br><span class="line">---xrw-r-- 1 root bin  302108 11-13 06:03 log2012.log</span><br></pre></td></tr></table></figure>
+
+<p>说明： 将log2012.log文件由root群组改为bin群组</p>
+<p>实例2：根据指定文件改变文件的群组属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chgrp --reference&#x3D;log2012.log log2013.log</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# ll</span><br><span class="line">---xrw-r-- 1 root bin  302108 11-13 06:03 log2012.log</span><br><span class="line">-rw-r--r-- 1 root root     61 11-13 06:03 log2013.log</span><br><span class="line">[root@localhost test]#  chgrp --reference&#x3D;log2012.log log2013.log </span><br><span class="line">[root@localhost test]# ll</span><br><span class="line">---xrw-r-- 1 root bin  302108 11-13 06:03 log2012.log</span><br><span class="line">-rw-r--r-- 1 root bin      61 11-13 06:03 log2013.log</span><br></pre></td></tr></table></figure>
+
+<p>说明： 改变文件log2013.log 的群组属性，使得文件log2013.log的群组属性和参考文件log2012.log的群组属性相同</p>
+<h3 id="一些常用的命令"><a href="#一些常用的命令" class="headerlink" title="一些常用的命令"></a>一些常用的命令</h3><p><strong>创建一个用户</strong></p>
+<p>创建一个名为shell的用户，不创建家目录，shell为<code>/bin/bash</code>，指定UID号为8888，注释为backdoor</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd -c <span class="string">&quot;backdoor&quot;</span> -M -s /bin/bash -u 8888 shell</span><br></pre></td></tr></table></figure>
+
+<p>详细参数信息：</p>
+<table>
+<thead>
+<tr>
+<th align="center">-g</th>
+<th align="center">指定所属组</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-u</td>
+<td align="center">指定UID号</td>
+</tr>
+<tr>
+<td align="center">-s</td>
+<td align="center">指定登录的shell</td>
+</tr>
+<tr>
+<td align="center">-d</td>
+<td align="center">指定家目录</td>
+</tr>
+<tr>
+<td align="center">-G</td>
+<td align="center">指定属于多个组（附属组）</td>
+</tr>
+<tr>
+<td align="center">-M</td>
+<td align="center">指定不创建家目录</td>
+</tr>
+<tr>
+<td align="center">-m</td>
+<td align="center">指定创建家目录</td>
+</tr>
+<tr>
+<td align="center">-e</td>
+<td align="center">账号终止日期，日期指定的格式为MM/DD/YY</td>
+</tr>
+<tr>
+<td align="center">-f</td>
+<td align="center">账号过期几日后永久停权。当值为0时账号立即停权，为-1时则关闭此功能，预设值为-1。</td>
+</tr>
+<tr>
+<td align="center">-c</td>
+<td align="center">注释</td>
+</tr>
+</tbody></table>
+<p><strong>删除用户</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userdel -r admin</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-r  删除主目录和邮件池</li>
+<li>-f  强制删除，即使登录中</li>
+</ul>
+<p><strong>更改密码</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> 123123|passwd --stdin useradmin -n 3 -x 30 -w 7 -i 5</span><br></pre></td></tr></table></figure>
+
+<p>非交互式修改密码为123123，3天内不能更改密码，30天后要求更改密码，密码过期前7天提醒，密码过期后5天禁用账号。</p>
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>-l</th>
+<th>锁定用户</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-U</td>
+<td>解除用户锁定</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>删除用户密码</td>
+</tr>
+<tr>
+<td>-S （大写）</td>
+<td>查看用户状态</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>表示多少天内不能更改密码</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>表示多少天以后要求更改密码</td>
+</tr>
+<tr>
+<td>-w</td>
+<td>表示账户密码过期前多少天提醒</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>表示密码过期后多少天账号被禁用</td>
+</tr>
+<tr>
+<td>–stdin</td>
+<td>非交互式修改密码</td>
+</tr>
+</tbody></table>
+<p><strong>更改登陆shell</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/bash apache</span><br></pre></td></tr></table></figure>
+
+<p>更改apache用户登录shell为<code>/bin/bash</code></p>
+<p>参数：</p>
+<ul>
+<li>-s    指定登录shell</li>
+<li>-l     打印shell列表并退出</li>
+</ul>
+<p><strong>who命令</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">who -b    #列出上次系统启动时间</span><br><span class="line">who -q    #列出所有已登录用户的用户名与用户数量</span><br><span class="line">who -u    #列出已登录的用户</span><br></pre></td></tr></table></figure>
+
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/songgj/p/9115954.html">https://www.cnblogs.com/songgj/p/9115954.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/a1154490629/article/details/52190801">https://blog.csdn.net/a1154490629/article/details/52190801</a></p>
+<p><a target="_blank" rel="noopener" href="https://ipcmen.com/">https://ipcmen.com</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34010566/article/details/93026151">https://blog.csdn.net/weixin_34010566/article/details/93026151</a></p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.moonback.xyz/2020/03/04/%E7%9F%A5%E8%AF%86%E7%82%B9/linux%E7%94%A8%E6%88%B7%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/>http://www.moonback.xyz/2020/03/04/%E7%9F%A5%E8%AF%86%E7%82%B9/linux%E7%94%A8%E6%88%B7%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-24T22:52:28+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年6月24日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/linux/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>linux</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.moonback.xyz/2020/03/04/%E7%9F%A5%E8%AF%86%E7%82%B9/linux%E7%94%A8%E6%88%B7%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/&title=linux相关内容学习 - 明月归的小站&summary=本篇博客主要介绍了和linux用户及权限的相关内容，权限的东西经常弄混，记一下！"
+          
+          >
+          
+            <img src="/static/images/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.moonback.xyz/2020/03/04/%E7%9F%A5%E8%AF%86%E7%82%B9/linux%E7%94%A8%E6%88%B7%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/&title=linux相关内容学习 - 明月归的小站&summary=本篇博客主要介绍了和linux用户及权限的相关内容，权限的东西经常弄混，记一下！"
+          
+          >
+          
+            <img src="/static/images/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.moonback.xyz/2020/03/04/%E7%9F%A5%E8%AF%86%E7%82%B9/linux%E7%94%A8%E6%88%B7%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/&title=linux相关内容学习 - 明月归的小站&summary=本篇博客主要介绍了和linux用户及权限的相关内容，权限的东西经常弄混，记一下！"
+          
+          >
+          
+            <img src="/static/images/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2020/03/06/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/Vulhub%E4%B9%8Btomcat/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Vulhub之tomcat</p>
+                <p class='content'>本篇博客主要介绍了Vulhub上tomcat的漏洞复现，有个还热乎的🤭！
+
+
+CVE-2020-1938漏洞简介2020年2月20日，国家信息安全漏洞共享平台（CNVD）发布了Apache T...</p>
+              </a>
+            
+            
+              <a class='next' href='/2020/02/26/%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%BF%9C%E7%A8%8B%E5%BC%B1%E5%8F%A3%E4%BB%A4%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/'>
+                <p class='title'>远程弱口令攻击学习<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>本篇博客主要介绍了弱口令攻击的一些方式！
+
+
+ftphydra1hydra -l root -w 10 -P pass.txt -t 10 -v -f 127.0.0.1 ftp 
+
+参数解释：...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux"><span class="toc-text">Linux</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%83%E9%99%90"><span class="toc-text">权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E8%BF%9E%E6%8E%A5%E5%92%8C%E7%A1%AC%E8%BF%9E%E6%8E%A5"><span class="toc-text">软连接和硬连接</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AC%E8%BF%9E%E6%8E%A5"><span class="toc-text">硬连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E8%BF%9E%E6%8E%A5"><span class="toc-text">软连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ln%E5%91%BD%E4%BB%A4"><span class="toc-text">ln命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E6%97%B6%E9%97%B4"><span class="toc-text">三种时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E4%B8%AA%E9%87%8D%E8%A6%81%E6%96%87%E4%BB%B6"><span class="toc-text">三个重要文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#etc-passwd"><span class="toc-text">&#x2F;etc&#x2F;passwd</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#etc-group"><span class="toc-text">&#x2F;etc&#x2F;group</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#etc-shadow"><span class="toc-text">&#x2F;etc&#x2F;shadow</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E4%B8%AA%E9%87%8D%E8%A6%81%E5%91%BD%E4%BB%A4"><span class="toc-text">三个重要命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#chmod"><span class="toc-text">chmod</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="toc-text">参数说明</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="toc-text">其他参数说明</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#chown"><span class="toc-text">chown</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95-1"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%82%E6%95%B0"><span class="toc-text">参数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-text">实例</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#chgrp"><span class="toc-text">chgrp</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95-2"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-1"><span class="toc-text">参数说明</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B-1"><span class="toc-text">实例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-text">一些常用的命令</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="/static/js-css/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="/static/js-css/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="/static/js-css/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/static/images/1.jpg", "/static/images/2.jpg", "/static/images/3.jpg", "/static/images/4.jpg", "/static/images/5.jpg", "/static/images/6.jpg", "/static/images/7.jpg", "/static/images/8.jpg", "/static/images/9.jpg", "/static/images/10.jpg", "/static/images/11.jpg", "/static/images/12.jpg", "/static/images/13.jpg", "/static/images/14.jpg", "/static/images/15.jpg", "/static/images/16.jpg", "/static/images/17.jpg", "/static/images/18.jpg", "/static/images/19.jpg", "/static/images/20.jpg", "/static/images/21.jpg", "/static/images/22.jpg", "/static/images/23.jpg", "/static/images/24.jpg", "/static/images/25.jpg", "/static/images/26.jpg", "/static/images/27.jpg", "/static/images/28.jpg", "/static/images/29.jpg", "/static/images/30.jpg", "/static/images/31.jpg", "/static/images/32.jpg", "/static/images/33.jpg", "/static/images/34.jpg", "/static/images/35.jpg", "/static/images/36.jpg", "/static/images/37.jpg", "/static/images/38.jpg", "/static/images/39.jpg", "/static/images/40.jpg", "/static/images/41.jpg", "/static/images/42.jpg", "/static/images/43.jpg", "/static/images/44.jpg", "/static/images/45.jpg", "/static/images/46.jpg", "/static/images/47.jpg", "/static/images/48.jpg", "/static/images/49.jpg", "/static/images/50.jpg", "/static/images/51.jpg", "/static/images/52.jpg", "/static/images/53.jpg", "/static/images/54.jpg", "/static/images/55.jpg", "/static/images/56.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="/static/js-css/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="/static/js-css/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="/static/js-css/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="/static/js-css/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="/static/js-css/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="/static/js-css/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="/static/js-css/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="/static/js-css/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

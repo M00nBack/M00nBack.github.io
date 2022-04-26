@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>内网渗透初探之Windows基础 - 明月归的小站</title>
+  
+    <meta name="keywords" content="内网渗透">
+  
+
+  
+    <meta name="description" content="记一下，忘了方便看！！！">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="/static/js-css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="/static/js-css/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">内网渗透初探之Windows基础</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2020/06/24/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">
+      内网渗透初探之Windows基础
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年6月24日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：4.1k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：15分钟</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2020/06/24/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="leancloud_visitors" data-flag-title="内网渗透初探之Windows基础">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2020/06/24/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2020/06/24/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>记一下，忘了方便看！！！</p>
+<a id="more"></a>
+
+<h2 id="推荐资源"><a href="#推荐资源" class="headerlink" title="推荐资源"></a>推荐资源</h2><p>关于kerberos、NTLM 、LDAP等windows协议：<a target="_blank" rel="noopener" href="https://github.com/daikerSec/windows_protocol">https://github.com/daikerSec/windows_protocol</a></p>
+<p>关于CobaltStrike：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://wbglil.gitbook.io/cobalt-strike/">https://wbglil.gitbook.io/cobalt-strike/</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/aleenzz/Cobalt_Strike_wiki">https://github.com/aleenzz/Cobalt_Strike_wiki</a></li>
+</ul>
+<p>内网渗透TIPS：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/Ridter/Intranet_Penetration_Tips">https://github.com/Ridter/Intranet_Penetration_Tips</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/chriskaliX/AD-Pentest-Notes">https://github.com/chriskaliX/AD-Pentest-Notes</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/SeikoSrp/Pentest-Notes">https://github.com/SeikoSrp/Pentest-Notes</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/JohnnyZhouX/Hack_For_Intranet">https://github.com/JohnnyZhouX/Hack_For_Intranet</a></li>
+</ul>
+<h2 id="Windows用户和用户组"><a href="#Windows用户和用户组" class="headerlink" title="Windows用户和用户组"></a>Windows用户和用户组</h2><h3 id="常见用户"><a href="#常见用户" class="headerlink" title="常见用户"></a>常见用户</h3><h4 id="Administrator"><a href="#Administrator" class="headerlink" title="Administrator"></a>Administrator</h4><p>系统管理员，计算机的管理员账户拥有对全系统的控制权，能改变系统设置，可以安装和删除程序，能访问计算机上所有的文件。除此之外，它还拥有控制其他用户的权限。Windows7中至少要有一个计算机管理员账户。在只有一个计算机管理员账户的情况下，该账户不能将自己改成受限制账户。</p>
+<h4 id="User"><a href="#User" class="headerlink" title="User"></a>User</h4><p>标准用户账户是受到一定限制的账户，在系统中可以创建多个此类账户，也可以改变其账户类型。该账户可以访问已经安装在计算机上的程序，可以设置自己账户的图片、密码等，但无权更改大多数计算机的设置。</p>
+<h4 id="System"><a href="#System" class="headerlink" title="System"></a>System</h4><p>SYSTEM是系统保留拥有最高权限的超级管理员帐户。默认情况下，我们无法直接在登录对话框上以SYSTEM帐户的身份登录到Windows桌面环境。</p>
+<h3 id="用户组"><a href="#用户组" class="headerlink" title="用户组"></a>用户组</h3><h4 id="基本用户组"><a href="#基本用户组" class="headerlink" title="基本用户组"></a>基本用户组</h4><p><strong>Administrators</strong></p>
+<p>　　属于该administators本地组内的用户，都具备系统管理员的权限，它们拥有对这台计算机最大的控制权限，可以执行整台计算机的管理任务。内置的系统管理员账号Administrator就是本地组的成员，而且无法将它从该组删除。</p>
+<p>　　如果这台计算机已加入域，则域的Domain Admins会自动地加入到该计算机的Administrators组内。也就是说，域上的系统管理员在这台计算机上也具备着系统管理员的权限。</p>
+<p><strong>Backup OPerators</strong></p>
+<p>　　在该组内的成员，不论它们是否有权访问这台计算机中的文件夹或文件，都可以通过“开始”－“所有程序”－“附件”－“系统工具”－“备份”的途径，备份与还原这些文件夹与文件。</p>
+<p><strong>Guests</strong></p>
+<p>　　该组是提供没有用户帐户，但是需要访问本地计算机内资源的用户使用，该组的成员无法永久地改变其桌面的工作环境。该组最常见的默认成员为用户帐号Guest。</p>
+<p><strong>Network Configuration Operators</strong></p>
+<p>　　该组内的用户可以在客户端执行一般的网络设置任务，例如更改IP地址，但是不可以安装/删除驱动程序与服务，也不可以执行与网络服务器设置有关的任务，例如DNS服务器、DHCP服务器的设置。</p>
+<p><strong>Power Users</strong></p>
+<p>　　该组内的用户具备比Users组更多的权利，但是比Administrators组拥有的权利更少一些，例如，可以：</p>
+<p>　　创建、删除、更改本地用户帐户</p>
+<p>　　创建、删除、管理本地计算机内的共享文件夹与共享打印机</p>
+<p>　　自定义系统设置，例如更改计算机时间、关闭计算机等</p>
+<p>　　但是不可以更改Administrators与Backup Operators、无法夺取文件的所有权、无法备份与还原文件、无法安装删除与删除设备驱动程序、无法管理安全与审核日志。</p>
+<p><strong>Remote Desktop Users</strong></p>
+<p>　　该组的成员可以通过远程计算机登录，例如，利用终端服务器从远程计算机登录。</p>
+<p><strong>Users</strong></p>
+<p>　　该组员只拥有一些基本的权利，例如运行应用程序，但是他们不能修改操作系统的设置、不能更改其它用户的数据、不能关闭服务器级的计算机。</p>
+<p>　　所有添加的本地用户帐户者自动属于该组。如果这台计算机已经加入域，则域的Domain Users会自动地被加入到该计算机的Users组中。</p>
+<p><strong>SYSTEM</strong></p>
+<p>​        拥有和Administrators一样、甚至比其还高的权限，但是这个组不允许任何用户的加入，在察看用户组的时候，它也不会被显示出来，它就是SYSTEM组。系统和系统级的服务正常运行所需要的权限都是靠它赋予的。由于该组只有这一个用户SYSTEM，可以理解成linux的root用户</p>
+<h4 id="内置特殊组"><a href="#内置特殊组" class="headerlink" title="内置特殊组"></a>内置特殊组</h4><p><strong>Everone</strong></p>
+<p>　　任何一个用户都属于这个组。注意，如果Guest帐号被启用时，则给Everone这个组指派权限时必须小心，因为当一个没有帐户的用户连接计算机时，他被允许自动利用Guest帐户连接，但是因为Guest也是属于Everone组，所以他将具备Everyone所拥有的权限。</p>
+<p><strong>Authenticated Users</strong></p>
+<p>　　任何一个利用有效的用户帐户连接的用户都属于这个组。建议在设置权限时，尽量针对Authenticated Users组进行设置，而不要针对Everone进行设置。</p>
+<p><strong>Interactive</strong></p>
+<p>　　任何在本地登录的用户都属于这个组。</p>
+<p><strong>Network</strong></p>
+<p>　　任何通过网络连接此计算机的用户都属于这个组。</p>
+<p><strong>Creator Owner</strong></p>
+<p>　　文件夹、文件或打印文件等资源的创建者，就是该资源的Creator Owner（创建所有者）。不过，如果创建者是属于Administrators组内的成员，则其Creator Owner为Administrators组。</p>
+<p><strong>Anonymous Logon</strong></p>
+<p>　　任何未利用有效的Windows Server 2003帐户连接的用户，都属于这个组。注意，在windows 2003内，Everone 组内并不包含“Anonymous Logon”组</p>
+<h3 id="SID"><a href="#SID" class="headerlink" title="SID"></a>SID</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>SID也就是安全标识符（Security Identifiers），是标识用户、组和计算机帐户的唯一的号码。在第一次创建该帐户时，将给网络上的每一个帐户发布一个唯一的 SID。Windows 2000 中的内部进程将引用帐户的 SID 而不是帐户的用户或组名。如果创建帐户，再删除帐户，然后使用相同的用户名创建另一个帐户，则新帐户将不具有授权给前一个帐户的权力或权限，原因是该帐户具有不同的 SID 号。安全标识符也被称为安全 ID 或 SID。</p>
+<h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><p>用户通过验证后，登陆进程会给用户一个访问令牌，该令牌相当于用户访问系统资源的票证，当用户试图访问系统资源时，将访问令牌提供给 Windows NT，然后 Windows NT 检查用户试图访问对象上的访问控制列表。如果用户被允许访问该对象，Windows NT将会分配给用户适当的访问权限。</p>
+<p>访问令牌是用户在通过验证的时候有登陆进程所提供的，所以改变用户的权限需要注销后重新登陆，重新获取访问令牌。</p>
+<h4 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h4><p>如果存在两个同样SID的用户，这两个帐户将被鉴别为同一个帐户，原理上如果帐户无限制增加的时候，会产生同样的SID，在通常的情况下SID是唯一的，他由计算机名、当前时间、当前用户态线程的CPU耗费时间的总和三个参数决定以保证它的唯一性。</p>
+<p>一个完整的SID包括：</p>
+<ul>
+<li>用户和组的安全描述</li>
+<li>48-bit的ID authority</li>
+<li>修订版本</li>
+<li>可变的验证值Variable sub-authority values</li>
+</ul>
+<p>例：<code>S-1-5-21-310440588-250036847-580389505-500</code></p>
+<p>我们来先分析这个重要的SID。第一项S表示该字符串是SID；第二项是SID的版本号，对于2000来说，这个就是1；然后是标志符的颁发机构（identifier authority），对于2000内的帐户，颁发机构就是NT，值是5。然后表示一系列的子颁发机构，前面几项是标志域的，最后一个标志着域内的帐户和组。</p>
+<h4 id="SID的获得"><a href="#SID的获得" class="headerlink" title="SID的获得"></a>SID的获得</h4><p>开始－运行－regedt32－<code>HKEY_LOCAL_MACHINE\SAM\SAM\Domains\Builtin\Aliases\Members</code>，找到本地的域的代码，展开后，得到的就是本地帐号的所有SID列表。</p>
+<p>其中很多值都是固定的，比如第一个000001F4（16进制），换算成十进制是500，说明是系统建立的内置管理员帐号administrator，000001F5换算成10进制是501，也就是GUEST帐号了，详细的参照后面的列表。</p>
+<p>这一项默认是system可以完全控制，这也就是为什么要获得这个需要一个System的Cmd的Shell的原因了，当然如果权限足够的话你可以把你要添加的帐号添加进去。</p>
+<p>或者使用Support Tools的Reg工具：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg query &quot;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList</span><br></pre></td></tr></table></figure>
+
+<p>还有一种方法可以获得SID和用户名称的对应关系：</p>
+<ol>
+<li>Regedt32:<br><code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion \ProfileList</code></li>
+<li>这个时候可以在左侧的窗口看到SID的值，可以在右侧的窗口中ProfileImagePath看到不同的SID关联的用户名，<br>比如<code>%SystemDrive%\Documents and Settings\Administrator.momo</code>这个对应的就是本地机器的管理员SID<br><code>%SystemDrive%\Documents and Settings\Administrator.domain</code>这个就是对应域的管理员的帐户</li>
+</ol>
+<p>另外微软的ResourceKit里面也提供了工具getsid，sysinternals的工具包里面也有Psgetsid，其实感觉原理都是读取注册表的值罢了，就是省了一些事情。</p>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">net user											# 查看用户</span><br><span class="line">net user Administrator								# 查看administrator用户详细信息</span><br><span class="line">net user moonback 1314 /add							# 添加用户名moonback密码为1314的用户，需要管理员权限(注意密码复杂度)</span><br><span class="line">net user moonback /delete							# 删除moonback用户</span><br><span class="line">net user moonback /active:no						# 禁用moonback用户</span><br><span class="line">net user moonback /active:yes						# 启用moonback用户</span><br><span class="line">net user moonback /passwordchg:yes					# 用户moonback可以改变密码</span><br><span class="line">net user moonback /passwordreq:yes					# 用户moonback必须拥有密码</span><br><span class="line">net user moonback /expires:never					# 用户moonback永不过期</span><br><span class="line">net localgroup										# 查看用户组</span><br><span class="line">net localgroup Administrators						# 查看管理员组成员</span><br><span class="line">net localgroup Administrators moonback /del 		# 将moonback用户从管理员组删除</span><br><span class="line">net localgroup Administrators moonback /add 		# 将moonback用户添加到管理员组</span><br><span class="line">net localgroup hack /add 							# 添加hack用户组</span><br><span class="line">whoami /user										# 查看SID</span><br><span class="line">query user											# 查看在线用户</span><br><span class="line">tasklist											# 查看进程</span><br><span class="line">tasklist /svc										# 查看进程及对应的pid和服务</span><br><span class="line">tasklist /svc | findstr &quot;TeamService.exe&quot;			# 查看远程桌面进程</span><br><span class="line">taskkill /f /im pid									# 强制杀死pid号进程</span><br><span class="line">netstat -ano										# 显示网络信息</span><br><span class="line">netstat -ano | findstr &quot;3389&quot;						# 查看3389端口状态</span><br><span class="line">REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal&quot; &quot;Server /v fDenyTSConnections /t REG_DWORD /d 00000000 /f										  # 开启3389</span><br><span class="line">REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal&quot; &quot;Server /v fDenyTSConnections /t REG_DWORD /d 11111111 /f										  # 关闭3389</span><br><span class="line">REG query HKLM\SYSTEM\CurrentControlSet\Control\Terminal&quot; &quot;Server\WinStations\RDP-Tcp /v PortNumber</span><br><span class="line"><span class="meta">			#</span><span class="bash"> 查看远程桌面端口</span></span><br><span class="line">ver													# 查看系统版本，5.1=&gt;2003 5.2=&gt;xp 6.1=&gt;win7、2008 6.2=&gt;win8、2012 10=&gt;win10</span><br><span class="line">systeminfo											# 查看windows详细信息</span><br></pre></td></tr></table></figure>
+
+<h2 id="Windows认证及密码"><a href="#Windows认证及密码" class="headerlink" title="Windows认证及密码"></a>Windows认证及密码</h2><h2 id="Windows防护方案"><a href="#Windows防护方案" class="headerlink" title="Windows防护方案"></a>Windows防护方案</h2><h3 id="UAC"><a href="#UAC" class="headerlink" title="UAC"></a>UAC</h3><p>Windows Vista 开始引入了 UAC(User Account Control，用户账户控制)，最直观的表现是当应用试图安装软件或更改计算机、或者更改了 Windows 设置时将弹出 UAC 提示框。</p>
+<p>从 Windows Vista 开始，进程在创建的时候，可以得到一个访问令牌（Access Token），这个令牌有四个完整性级别：</p>
+<ul>
+<li>System（系统）</li>
+<li>High（高）</li>
+<li>Medium（中）</li>
+<li>Low（低）</li>
+</ul>
+<p>System 令牌是对系统完全操作的令牌，对应 SYSTEM 用户拥有的最高权限，可以对 Windows 操作系统做任何事。通常一个服务进程会以 SYSTEM 用户启动，拿到 System 令牌。</p>
+<p>High 对应 Administrators 组拥有的最高权限，也就是前面所说的 Administrator 用户和用户自己创建的管理员账户的权限级别。此权限级别用来管理计算机，可以修改其他用户，可以修改系统的设置，这些设置可能会造成安全问题（比如更改系统时间可能导致杀毒软件失效）。</p>
+<p>Medium 对应 Users 组拥有的最高权限，也就是前面所说的用户自己创建的标准用户。此权限级别用来日常使用。Medium 权限在 Windows Vista（实际上是其内核 NT6）中相比于之前版本的 Windows 有一些权限的提升，不危及系统安全性的操作在 Medium 下即可以完成，不需要切换到 High 级别。Users 组的用户是没有 High 和 System 令牌的，程序在此用户账户下，无论如何也无法拿到 High 和 System 令牌的，因为这个用户没有这样的令牌；如果要权限提升，需要输入管理员账号密码，而这时拿到的是这个管理员账号的 High 和 System 令牌。</p>
+<p>Low 并不对应者一个用户组，这是为了一些需要特殊保护的应用程序准备的。有些应用容易受到攻击，那么使用 Low 令牌启动这些应用程序，可以最大程度减少利用这些应用对系统造成攻击。比如 IE 浏览器的页面进程使用 Low 令牌运行，其对系统很难做出什么改动，甚至也影响不了当前用户的文件；当需要需系统计算机进行交互的时候，会与 IE 的 UI 进程（Medium 令牌）进行通信，请求协助完成。</p>
+<p>当 UAC 是开启状态，无论是管理员账户还是标准账户，Windows 资源管理器进程（explorer.exe）都是以 Medium 令牌启动进程。由于子进程通常能够继承父进程的令牌完整性级别，所以这样的设定可以防止用户双击打开的程序得到过高的令牌，从而在用户不知情的情况下危及系统安全。</p>
+<h3 id="ASR"><a href="#ASR" class="headerlink" title="ASR"></a>ASR</h3><h3 id="Applocker"><a href="#Applocker" class="headerlink" title="Applocker"></a>Applocker</h3><h2 id="域和工作组"><a href="#域和工作组" class="headerlink" title="域和工作组"></a>域和工作组</h2><h3 id="工作组"><a href="#工作组" class="headerlink" title="工作组"></a>工作组</h3><p>所有的计算机都是对等的，没有计算机可以控制另一台计算机。</p>
+<p>每台计算机都具有一组用户帐户。若要登录到工作组中的任何计算机，您必须具有该计算机上的帐户。</p>
+<p>通常情况下，计算机的数量不超过二十台。工作组不受密码保护。所有的计算机必须在同一本地网络或子网中。</p>
+<h3 id="域"><a href="#域" class="headerlink" title="域"></a>域</h3><p>有一台或多台计算机为服务器。网络管理员使用服务器控制域中所有计算机的安全和权限。这使得更容易进行更改，因为更改会自动应用到所有的计算机。域用户在每次访问域时必须提供密码或其他凭据。</p>
+<p>如果具有域上的用户帐户，您就可以登录到域中的任何计算机，而无需具有该计算机上的帐户。</p>
+<p>由于网络管理员经常要确保计算机之间的一致性，所以，只能对计算机的设置进行有限制地更改。</p>
+<p>一个域中可以有几千台计算机。计算机可以位于不同的本地网络中。</p>
+<p>域是由域控制器(Domain Controller)和成员计算机组成，域控制器就是安装了活动 目录(Active Directory)的计算机。活动目录提供了存储网络上对象信息并使用网络使用该数据的方法。</p>
+<h4 id="内网常用命令"><a href="#内网常用命令" class="headerlink" title="内网常用命令"></a>内网常用命令</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">将Windows Server Core 加入到域</span></span><br><span class="line">netdom renamecomputer FileServer /newname:ProfileServer #更改计算机名称为ProfileServer</span><br><span class="line">netsh interface ipv4 set address name=&quot;本地连接&quot; source=static addr=192.168.10.212 mask= 255.255.255.0 gateway=192.168.10.1</span><br><span class="line">netsh interface ipv4 set dnsserver &quot;本地连接&quot; static 192.168.10.200 primary</span><br><span class="line">netdom join %computername% /domain:http://ESS.COM /userd:administrator /passwordD:a1! /REBoot:5</span><br><span class="line"></span><br><span class="line">net user ------&gt; 本机用户列表</span><br><span class="line">net localhroup administrators ------&gt; 本机管理员[通常含有域用户]</span><br><span class="line">net user /domain ------&gt; 查询域用户</span><br><span class="line">net group /domain ------&gt; 查询域里面的工作组</span><br><span class="line">net group &quot;domain admins&quot; /domain ------&gt; 查询域管理员用户组</span><br><span class="line">net localgroup administrators /domain ------&gt; 登录本机的域管理员</span><br><span class="line">net localgroup administrators workgroup\user001 /add -----&gt;域用户添加到本机</span><br><span class="line">net group &quot;Domain controllers&quot; -------&gt; 查看域控制器(如果有多台)</span><br><span class="line">ipconfig /all ------&gt; 查询本机IP段，所在域等</span><br><span class="line">net view ------&gt; 查询同一域内机器列表</span><br><span class="line">net view /domain ------&gt; 查询域列表</span><br><span class="line">net view /domain:domainname -----&gt; 查看workgroup域中计算机列表</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="域用户和普通用户"><a href="#域用户和普通用户" class="headerlink" title="域用户和普通用户"></a>域用户和普通用户</h2><p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lip-blog/p/7658839.html">https://www.cnblogs.com/lip-blog/p/7658839.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/WPwalter/article/details/89838881">https://blog.csdn.net/WPwalter/article/details/89838881</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/32287774">https://zhuanlan.zhihu.com/p/32287774</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/mq0036/p/3518542.html">https://www.cnblogs.com/mq0036/p/3518542.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://daiker.gitbook.io/windows-protocol/ldap-pian/10#4-cha-kan-yu-yong-hu-deng-lu-guo-de-zhu-ji">https://daiker.gitbook.io/windows-protocol/ldap-pian/10#4-cha-kan-yu-yong-hu-deng-lu-guo-de-zhu-ji</a></p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.moonback.xyz/2020/06/24/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/>http://www.moonback.xyz/2020/06/24/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-09-09T21:42:40+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年9月9日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>内网渗透</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.moonback.xyz/2020/06/24/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/&title=内网渗透初探之Windows基础 - 明月归的小站&summary=记一下，忘了方便看！！！"
+          
+          >
+          
+            <img src="/static/images/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.moonback.xyz/2020/06/24/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/&title=内网渗透初探之Windows基础 - 明月归的小站&summary=记一下，忘了方便看！！！"
+          
+          >
+          
+            <img src="/static/images/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.moonback.xyz/2020/06/24/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/&title=内网渗透初探之Windows基础 - 明月归的小站&summary=记一下，忘了方便看！！！"
+          
+          >
+          
+            <img src="/static/images/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2020/08/25/%E6%AF%94%E8%B5%9B/2020/%E5%9B%BD%E8%B5%9B2020%E5%88%9D%E8%B5%9B-wp/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>国赛CISCN2020初赛-wp</p>
+                <p class='content'>学长带我们打了打😀
+
+
+Webeasyphp源码：
+1234567891011121314151617&lt;?php    //题目环境：php:7.4.8-apache    $pid =...</p>
+              </a>
+            
+            
+              <a class='next' href='/2020/05/24/%E6%AF%94%E8%B5%9B/2020/GKCTF2020-writeup/'>
+                <p class='title'>GKCTF2020 writeup<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>由防灾科技学院&amp;Bugfor举办的比赛，记一下！
+
+
+webCheckINbase64加密一下，先往/tmp下写个马，然后包含这个马，蚁剑连上LD_PRELOAD bypass disa...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A8%E8%8D%90%E8%B5%84%E6%BA%90"><span class="toc-text">推荐资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84"><span class="toc-text">Windows用户和用户组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%94%A8%E6%88%B7"><span class="toc-text">常见用户</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Administrator"><span class="toc-text">Administrator</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#User"><span class="toc-text">User</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#System"><span class="toc-text">System</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%BB%84"><span class="toc-text">用户组</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%88%B7%E7%BB%84"><span class="toc-text">基本用户组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E7%BD%AE%E7%89%B9%E6%AE%8A%E7%BB%84"><span class="toc-text">内置特殊组</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SID"><span class="toc-text">SID</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-text">作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%84%E6%88%90"><span class="toc-text">组成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SID%E7%9A%84%E8%8E%B7%E5%BE%97"><span class="toc-text">SID的获得</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">常用命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows%E8%AE%A4%E8%AF%81%E5%8F%8A%E5%AF%86%E7%A0%81"><span class="toc-text">Windows认证及密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows%E9%98%B2%E6%8A%A4%E6%96%B9%E6%A1%88"><span class="toc-text">Windows防护方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#UAC"><span class="toc-text">UAC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ASR"><span class="toc-text">ASR</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Applocker"><span class="toc-text">Applocker</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%9F%E5%92%8C%E5%B7%A5%E4%BD%9C%E7%BB%84"><span class="toc-text">域和工作组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E7%BB%84"><span class="toc-text">工作组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%9F"><span class="toc-text">域</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E7%BD%91%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">内网常用命令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%9F%E7%94%A8%E6%88%B7%E5%92%8C%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7"><span class="toc-text">域用户和普通用户</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="/static/js-css/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="/static/js-css/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="/static/js-css/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/static/images/1.jpg", "/static/images/2.jpg", "/static/images/3.jpg", "/static/images/4.jpg", "/static/images/5.jpg", "/static/images/6.jpg", "/static/images/7.jpg", "/static/images/8.jpg", "/static/images/9.jpg", "/static/images/10.jpg", "/static/images/11.jpg", "/static/images/12.jpg", "/static/images/13.jpg", "/static/images/14.jpg", "/static/images/15.jpg", "/static/images/16.jpg", "/static/images/17.jpg", "/static/images/18.jpg", "/static/images/19.jpg", "/static/images/20.jpg", "/static/images/21.jpg", "/static/images/22.jpg", "/static/images/23.jpg", "/static/images/24.jpg", "/static/images/25.jpg", "/static/images/26.jpg", "/static/images/27.jpg", "/static/images/28.jpg", "/static/images/29.jpg", "/static/images/30.jpg", "/static/images/31.jpg", "/static/images/32.jpg", "/static/images/33.jpg", "/static/images/34.jpg", "/static/images/35.jpg", "/static/images/36.jpg", "/static/images/37.jpg", "/static/images/38.jpg", "/static/images/39.jpg", "/static/images/40.jpg", "/static/images/41.jpg", "/static/images/42.jpg", "/static/images/43.jpg", "/static/images/44.jpg", "/static/images/45.jpg", "/static/images/46.jpg", "/static/images/47.jpg", "/static/images/48.jpg", "/static/images/49.jpg", "/static/images/50.jpg", "/static/images/51.jpg", "/static/images/52.jpg", "/static/images/53.jpg", "/static/images/54.jpg", "/static/images/55.jpg", "/static/images/56.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="/static/js-css/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="/static/js-css/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="/static/js-css/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="/static/js-css/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="/static/js-css/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="/static/js-css/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="/static/js-css/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="/static/js-css/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

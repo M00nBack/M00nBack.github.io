@@ -2331,7 +2331,7 @@
                 var n = window.AV.version || window.AV.VERSION;
                 parseInt(n.split(".")[0]) > 2 ? i = !!AV.applicationId && !!AV.applicationKey : o.default.deleteInWin("AV", 0)
             }
-            i ? t && t() : o.default.sdkLoader("//cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js", "AV", function(n) {
+            i ? t && t() : o.default.sdkLoader("/static/js-css/av-min.js", "AV", function(n) {
                 var r = "https://"
                   , o = ""
                   , a = e.app_id || e.appId

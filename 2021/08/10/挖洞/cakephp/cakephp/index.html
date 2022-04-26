@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>CakePHP反序列化POP链挖掘 - 明月归的小站</title>
+  
+    <meta name="keywords" content="反序列化,cakephp">
+  
+
+  
+    <meta name="description" content="CakePHP反序列化POP链挖掘">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="/static/js-css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="/static/js-css/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">CakePHP反序列化POP链挖掘</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/">
+      CakePHP反序列化POP链挖掘
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年8月10日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：2.1k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：8分钟</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/" class="leancloud_visitors" data-flag-title="CakePHP反序列化POP链挖掘">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>CakePHP反序列化POP链挖掘</p>
+<a id="more"></a>
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>闲来无事 做了下队里大师傅出的CodeIgniter框架反序列化题目（大师傅自己挖的链）</p>
+<p>在大师傅的指引下花费了几天终于调通了 学到了不少东西 想着自己能不能也挖下某些框架的链呢</p>
+<p>于是找了下常用的php web框架 发现貌似CakePHP框架还没有公布什么链子 于是就有了此文</p>
+<p>菜鸡第一次发文章 如有错误 请师傅们指出 轻点喷…</p>
+<h2 id="php调用函数的特性"><a href="#php调用函数的特性" class="headerlink" title="php调用函数的特性"></a>php调用函数的特性</h2><p>php各版本在线运行网站：<a target="_blank" rel="noopener" href="https://3v4l.org/">https://3v4l.org/</a></p>
+<h3 id="有参无参调用"><a href="#有参无参调用" class="headerlink" title="有参无参调用"></a>有参无参调用</h3><p>demo:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">a</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params">$a</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;aaa&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">cccc</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;cccc&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$a = <span class="keyword">new</span> a();</span><br><span class="line">$a-&gt;aaa();</span><br><span class="line">$a-&gt;cccc(<span class="number">123</span>,<span class="number">456</span>);</span><br></pre></td></tr></table></figure>
+
+<p>php7.0.33运行结果：</p>
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210801221730326.png" alt="image-20210801221730326"></p>
+<p>虽然有个warning 但是两个函数都执行了</p>
+<p>php7.1.0运行结果：</p>
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210801221906346.png" alt="image-20210801221906346"></p>
+<p>直接报Fatal error了 后面的代码都不执行了 调换下顺序 执行下试试</p>
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210801222343690.png" alt="image-20210801222343690"></p>
+<p>发现有参调用无参函数是不影响的</p>
+<p>总结下：</p>
+<ul>
+<li>无参函数可以有参调用</li>
+<li>当php version ≥ 7.1.0，有参函数不能无参调用，会直接报Fatal error</li>
+<li>当php version ≤ 7.0.33，有参函数可以无参调用，但会有个警告（Warning: Missing argument）</li>
+</ul>
+<p>这个问题在奶权师傅挖的thinkphp3 反序列化利用链也有遇到</p>
+<p>具体参见：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/S3Un1EM-cftFXr8hxG4qfA">https://mp.weixin.qq.com/s/S3Un1EM-cftFXr8hxG4qfA</a></p>
+<h2 id="反序列化入口"><a href="#反序列化入口" class="headerlink" title="反序列化入口"></a>反序列化入口</h2><p>提到php反序列化，肯定首先要找入口，一般就__destruct方法和__wakeup这两个方法</p>
+<p>刚开始找的时候直接用的目前最新版本（4.2.8）只发现了两处可以进一步利用的点（太菜 没找到其他口子）而且这两处还有限制</p>
+<h3 id="第一处"><a href="#第一处" class="headerlink" title="第一处"></a>第一处</h3><p>一处是位于</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vendor\cakephp\cakephp\src\Mailer\Transport\SmtpTransport.php</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210801231223365.png" alt="image-20210801231223365"></p>
+<p>跟进disconnect方法</p>
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210801231309675.png" alt="image-20210801231309675"></p>
+<p>$this-&gt;connected()的返回值是可控的</p>
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210801231413492.png" alt="image-20210801231413492"></p>
+<p>这里有可能触发__get方法 但实际上有个__wakeup方法直接把 $this-&gt;_socket 设置成空了 </p>
+<p>我们知道__wakeup方法是先于__destruct方法执行的 因此这里利用不了</p>
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210801231515036.png" alt="image-20210801231515036"></p>
+<p>再回头看下$this-&gt;_disconnect方法吧</p>
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210801232103504.png" alt="image-20210801232103504"></p>
+<p>跟进_smtpSend方法 此时$data不为空 进入_socket函数</p>
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210801232249235.png" alt="image-20210801232249235"></p>
+<p>由于__wakeup方法直接把 $this-&gt;_socket 设置成空 这里直接抛出异常了</p>
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210801232400578.png" alt="image-20210801232400578"></p>
+<p>因此这条路整体上就不通 其实这个对应一个CVE编号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;cve.mitre.org&#x2F;cgi-bin&#x2F;cvename.cgi?name&#x3D;CVE-2019-11458</span><br></pre></td></tr></table></figure>
+
+<p>官方的commit</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;cakephp&#x2F;cakephp&#x2F;commit&#x2F;1a74e798309192a9895c9cedabd714ceee345f4e</span><br></pre></td></tr></table></figure>
+
+<p>对应修复的版本是3.7.7   4.x版本最开始就是已经修复的</p>
+<p>详细的补丁信息：<a target="_blank" rel="noopener" href="https://github.com/advisories/GHSA-qhrx-hcm6-pmrw">https://github.com/advisories/GHSA-qhrx-hcm6-pmrw</a></p>
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210801234355684.png" alt="image-20210801234355684"></p>
+<p>在版本小于上面patch的版本 这个类也可以作为入口 这里就不探讨了</p>
+<h3 id="第二处"><a href="#第二处" class="headerlink" title="第二处"></a>第二处</h3><p>位于</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vendor\symfony\process\Process.php</span><br></pre></td></tr></table></figure>
+
+<p>__destruct方法有 貌似可以调用任意类的__call方法或者是调用含有close方法的类的close方法</p>
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210801234954908.png" alt="image-20210801234954908"></p>
+<p>然而最新的版本仍然有个__wakeup方法限制 直接抛出异常了</p>
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210801235340674.png" alt="image-20210801235340674"></p>
+<p>往下找一下版本 如果直接在Github仓库直接找会发现是找不到这个类的 因为Github放的只是cakephp这个组件的代码 而这个类是symfony组件里面的</p>
+<p>去releases下载完整的web项目包，在里面测试发现以下版本该类是没有__wakeup方法那个限制的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">? &lt; 4.x ≤ 4.2.3</span><br><span class="line">? &lt; 3.x ≤ 3.9.6</span><br></pre></td></tr></table></figure>
+
+<p>还有个问题是 这个利用点在某些版本__destruct方法是不一样的</p>
+<p>在比较老的版本中 大概是下面版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">? &lt; 4.x ≤ 4.1.6</span><br><span class="line">? &lt; 3.x ≤ 3.9.4</span><br></pre></td></tr></table></figure>
+
+<p>__destruct方法是这样的</p>
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210803233806611.png" alt="image-20210803233806611"></p>
+<p>相当于新版本的进入了else分支 因此想新版旧版都通用可以从这里下手</p>
+<p>跟进stop方法发现 进行了判断</p>
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210803233847256.png" alt="image-20210803233847256"></p>
+<p>跟进isRunning方法 $this-&gt;status可控 </p>
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210803233930058.png" alt="image-20210803233930058"></p>
+<p>再跟进updateStatus方法 发现里面调用了proc_get_status函数 用来获取由 <a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.proc-open.php">proc_open()</a> 函数打开的进程的信息</p>
+<p>这个函数我们随便设置个数字或者字符串之类的只有一个Warning 并不会终止</p>
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210803234144528.png" alt="image-20210803234144528"></p>
+<p>再跟进 发现有一个可控对象的readAndWrite方法调用  参数是两个bool值 这里我们就可以让其调用某个类的__call方法了</p>
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210803234355590.png" alt="image-20210803234355590"></p>
+<h2 id="3-x某些版本利用"><a href="#3-x某些版本利用" class="headerlink" title="3.x某些版本利用"></a>3.x某些版本利用</h2><p>测试的时候选用的版本是3.9.6</p>
+<h3 id="call进一步利用"><a href="#call进一步利用" class="headerlink" title="__call进一步利用"></a>__call进一步利用</h3><p>上面可以知道 我们现在可以调用任意一个类的__call方法了 个人用的比较笨的方式 全局搜索__call方法 挨个看 然后就找到一个比较好的点</p>
+<p>位于：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vendor\cakephp\cakephp\src\ORM\Table.php</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210803235614645.png" alt="image-20210803235614645"></p>
+<p>因此通过设置条件 应该可以进入call函数 全局搜索下call函数 有处</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vendor\cakephp\cakephp\src\ORM\BehaviorRegistry.php</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210803235846228.png" alt="image-20210803235846228"></p>
+<p>直接通过call_user_func_array调用的某个类的某个共有方法并传参数 这里类名、方法名均可空，只有参数不可控 回头捋下 发下$args就是我们最初调用__call的$args的值</p>
+<p>再看下条件允不允许</p>
+<p>首先第一个条件hasMethod方法</p>
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210804000515212.png" alt="image-20210804000515212"></p>
+<p>可控 注意转化成小写就行 $method就是触发__call用到的方法</p>
+<p>第二个条件has方法 在其父类ObjectRegistry里 同样也是可控的</p>
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210804000847923.png" alt="image-20210804000847923"></p>
+<p>证明这条路是通的</p>
+<h3 id="寻找可利用的方法"><a href="#寻找可利用的方法" class="headerlink" title="寻找可利用的方法"></a>寻找可利用的方法</h3><p>现在就可以调用任意一个类的共有方法 只不过参数不可控罢了 这里我们就要想 要么那个方法的参数对后续操作没影响或者就那个方法就不接受参数</p>
+<p>不卖关子了 直接上吧 位于</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vendor\cakephp\cakephp\src\Shell\ServerShell.php</span><br></pre></td></tr></table></figure>
+
+<p>该类有个main方法 最终通过system函数执行命令 </p>
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210804001715011.png" alt="image-20210804001715011"></p>
+<p>而命令是经过一系列拼接完成的 明显是可以命令注入的 简单测试下 linux直接用分号多语句执行了 windows可以用&amp; </p>
+<p>但是在windows上利用需要有php环境变量 不然貌似不能执行 不知道为啥是这样 第一个命令不存在第二个命令貌似也不会执行成功 最后也没解决这个问题</p>
+<p>真实情况下win应该比较少吧 2333… 后面还有个更好的思路</p>
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210804002309715.png" alt="image-20210804002309715"></p>
+<p>接着让out方法正常执行 跟进来到了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vendor\cakephp\cakephp\src\Console\Shell.php</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210804003301643.png" alt="image-20210804003301643"></p>
+<p>再跟进发现来到了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vendor\cakephp\cakephp\src\Console\ConsoleIo.php</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210804003455920.png" alt="image-20210804003455920"></p>
+<p>可控 设置条件直接让这个返回true就行了</p>
+<p>这样 整条链就串起来了</p>
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p>poc就不贴了 避免一些问题</p>
+<p>效果如下：</p>
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210804163134840.png" alt="image-20210804163134840"></p>
+<h2 id="4-x某些版本利用"><a href="#4-x某些版本利用" class="headerlink" title="4.x某些版本利用"></a>4.x某些版本利用</h2><p>测试用的版本是4.1.6</p>
+<h3 id="替代ServerShell"><a href="#替代ServerShell" class="headerlink" title="替代ServerShell"></a>替代ServerShell</h3><p>4.x版本前面的整体思路和3.x基本一样 虽然可能部分代码有所改动 但貌似并不影响</p>
+<p>但是比较可惜的就是ServerShell这个类修改了</p>
+<p>修改记录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;cakephp&#x2F;cakephp&#x2F;blob&#x2F;3.x&#x2F;src&#x2F;Shell&#x2F;ServerShell.php</span><br></pre></td></tr></table></figure>
+
+<p>3.x从一开始就有这个类 从4.0开始就移除该类 从src/Shell/ServerShell.php更名到src/Command/ServerCommand.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;cakephp&#x2F;cakephp&#x2F;commit&#x2F;ec40d847d131b0d8aa9c8b7b6fd829570e01036d</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210801123904216.png" alt="image-20210801123904216"></p>
+<p>而新修改的ServerCommand中没有和之前一样main方法一样好用的利用点了</p>
+<p>没办法 只能寻找新的了 最后找到位于</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vendor\cakephp\cakephp\src\Database\Statement\CallbackStatement.php</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210804163830423.png" alt="image-20210804163830423"></p>
+<p>最后又一个动态调用 并且函数名可控 全局搜索fetch方法 有好多可利用点 最好选择cakephp命名空间下的</p>
+<p>最后选用的是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vendor\cakephp\cakephp\src\Database\Statement\BufferedStatement.php</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210804165028103.png" alt="image-20210804165028103"></p>
+<p>设置条件 即可实现上面的参数可控 fetch函数传过来的参数就是之前调用__call方法传过来的bool值 此条路通</p>
+<p>这个类修改记录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;cakephp&#x2F;cakephp&#x2F;commits&#x2F;master&#x2F;src&#x2F;Database&#x2F;Statement&#x2F;BufferedStatement.php</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210804165918775.png" alt="image-20210804165918775"></p>
+<p>因此应该是通杀2019年9月3日之后的版本的 3.x的某些版本也可以用</p>
+<h3 id="效果-1"><a href="#效果-1" class="headerlink" title="效果"></a>效果</h3><p>效果演示：</p>
+<p><img src="/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/image-20210804171312520.png" alt="image-20210804171312520"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>整条链下来 感觉最难的就是找一个可以进入下一步来“扩大战果”的方法 但是本菜鸡还是基于正则的方式来搜索的 2333….</p>
+<p>当然 肯定不止这一个链 中间的好多类或者是方法其实是可以替换使用的 师傅们有更好的思路可以留言或者私信本菜鸡！</p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.moonback.xyz/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/>http://www.moonback.xyz/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-27T18:44:51+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年8月27日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>反序列化</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/cakephp/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>cakephp</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.moonback.xyz/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/&title=CakePHP反序列化POP链挖掘 - 明月归的小站&summary=CakePHP反序列化POP链挖掘"
+          
+          >
+          
+            <img src="/static/images/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.moonback.xyz/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/&title=CakePHP反序列化POP链挖掘 - 明月归的小站&summary=CakePHP反序列化POP链挖掘"
+          
+          >
+          
+            <img src="/static/images/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.moonback.xyz/2021/08/10/%E6%8C%96%E6%B4%9E/cakephp/cakephp/&title=CakePHP反序列化POP链挖掘 - 明月归的小站&summary=CakePHP反序列化POP链挖掘"
+          
+          >
+          
+            <img src="/static/images/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2021/08/12/%E5%88%B7%E9%A2%98/ctfshow/ctfshow%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AEwriteup-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%AF%87/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>ctfshow部分题目writeup-反序列化篇</p>
+                <p class='content'>CTFshow 反序列化篇部分题目writeup
+
+
+web2541234567891011121314151617181920212223242526272829303132333435363...</p>
+              </a>
+            
+            
+              <a class='next' href='/2021/08/08/%E5%88%B7%E9%A2%98/ctftime/2021/8-8%20BSides%20Noida%20CTF%202021/writeup/'>
+                <p class='title'>CTFtime做题-BSides Noida CTF 2021<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>BSides Noida CTF 2021
+
+
+webfreepoint1234567891011121314151617181920212223242526272829303132333435...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0%E7%9A%84%E7%89%B9%E6%80%A7"><span class="toc-text">php调用函数的特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%8F%82%E6%97%A0%E5%8F%82%E8%B0%83%E7%94%A8"><span class="toc-text">有参无参调用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%85%A5%E5%8F%A3"><span class="toc-text">反序列化入口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E5%A4%84"><span class="toc-text">第一处</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E5%A4%84"><span class="toc-text">第二处</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-x%E6%9F%90%E4%BA%9B%E7%89%88%E6%9C%AC%E5%88%A9%E7%94%A8"><span class="toc-text">3.x某些版本利用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#call%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%88%A9%E7%94%A8"><span class="toc-text">__call进一步利用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BB%E6%89%BE%E5%8F%AF%E5%88%A9%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">寻找可利用的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%88%E6%9E%9C"><span class="toc-text">效果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-x%E6%9F%90%E4%BA%9B%E7%89%88%E6%9C%AC%E5%88%A9%E7%94%A8"><span class="toc-text">4.x某些版本利用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%BF%E4%BB%A3ServerShell"><span class="toc-text">替代ServerShell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%88%E6%9E%9C-1"><span class="toc-text">效果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="/static/js-css/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="/static/js-css/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="/static/js-css/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/static/images/1.jpg", "/static/images/2.jpg", "/static/images/3.jpg", "/static/images/4.jpg", "/static/images/5.jpg", "/static/images/6.jpg", "/static/images/7.jpg", "/static/images/8.jpg", "/static/images/9.jpg", "/static/images/10.jpg", "/static/images/11.jpg", "/static/images/12.jpg", "/static/images/13.jpg", "/static/images/14.jpg", "/static/images/15.jpg", "/static/images/16.jpg", "/static/images/17.jpg", "/static/images/18.jpg", "/static/images/19.jpg", "/static/images/20.jpg", "/static/images/21.jpg", "/static/images/22.jpg", "/static/images/23.jpg", "/static/images/24.jpg", "/static/images/25.jpg", "/static/images/26.jpg", "/static/images/27.jpg", "/static/images/28.jpg", "/static/images/29.jpg", "/static/images/30.jpg", "/static/images/31.jpg", "/static/images/32.jpg", "/static/images/33.jpg", "/static/images/34.jpg", "/static/images/35.jpg", "/static/images/36.jpg", "/static/images/37.jpg", "/static/images/38.jpg", "/static/images/39.jpg", "/static/images/40.jpg", "/static/images/41.jpg", "/static/images/42.jpg", "/static/images/43.jpg", "/static/images/44.jpg", "/static/images/45.jpg", "/static/images/46.jpg", "/static/images/47.jpg", "/static/images/48.jpg", "/static/images/49.jpg", "/static/images/50.jpg", "/static/images/51.jpg", "/static/images/52.jpg", "/static/images/53.jpg", "/static/images/54.jpg", "/static/images/55.jpg", "/static/images/56.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="/static/js-css/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="/static/js-css/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="/static/js-css/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="/static/js-css/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="/static/js-css/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="/static/js-css/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="/static/js-css/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="/static/js-css/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

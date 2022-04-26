@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>hackgame2019部分题目writeup - 明月归的小站</title>
+  
+    <meta name="keywords" content="writeup,ctf,hackgame">
+  
+
+  
+    <meta name="description" content="本篇博客主要介绍了hackgame2019部分题目的writeup!">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="/static/js-css/all.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/font-awesome-animation.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/static/js-css/jquery.fancybox.min.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="/static/js-css/waves.min.css">
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+    
+  </div>
+  <div class='b'>
+    <div class='menu navigation dock'>
+      <div class='list-h'>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  </div>
+  
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量--> 
+<!--思路大概是将值藏到重加载的区域内--> 
+ 
+ 
+ 
+<div id="pjax-data" style="display: none"> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">hackgame2019部分题目writeup</div> 
+  <div id="pjax-enable-cover">true</div> 
+  <div id="pjax-comment-path">none</div> 
+  <div id="pjax-comment-placeholder">none</div> 
+</div> 
+ 
+ 
+<script> 
+  // 处理封面 此时 jquery 还没加载 
+  if ("none" == "none") { // 移除封面 
+    document.getElementsByClassName('cover')[0].style.display = "none"; 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+  } else { 
+    if ("none" == "blog") { // 半屏 
+      document.getElementsByClassName('cover')[0].classList.remove("full"); 
+      document.getElementsByClassName('cover')[0].classList.add("half"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+    } else if ("none" == "docs") { // 全屏 
+      document.getElementsByClassName('cover')[0].classList.remove("half"); 
+      document.getElementsByClassName('cover')[0].classList.add("full"); 
+      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+    } 
+    document.getElementsByClassName('cover')[0].style.display = ""; 
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+  } 
+</script> 
+
+      
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2019/10/26/%E6%AF%94%E8%B5%9B/2019/hackgame-wp/">
+      hackgame2019部分题目writeup
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="/pic/youxiang.jpg">
+    <p>MoonBack</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2019年10月26日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：1.8k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：7分钟</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2019/10/26/%E6%AF%94%E8%B5%9B/2019/hackgame-wp/" class="leancloud_visitors" data-flag-title="hackgame2019部分题目writeup">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2019/10/26/%E6%AF%94%E8%B5%9B/2019/hackgame-wp/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2019/10/26/%E6%AF%94%E8%B5%9B/2019/hackgame-wp/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>本篇博客主要介绍了hackgame2019部分题目的writeup!</p>
+<a id="more"></a>
+
+<h2 id="白与夜"><a href="#白与夜" class="headerlink" title="白与夜"></a>白与夜</h2><p>将图片down下来，用Stegsolve打开</p>
+<p><img src="/2019/10/26/%E6%AF%94%E8%B5%9B/2019/hackgame-wp/20191026231318.png"></p>
+<h2 id="信息安全-2077"><a href="#信息安全-2077" class="headerlink" title="信息安全 2077"></a>信息安全 2077</h2><p>抓到post包，将<code>If-Unmodified-Since</code>改成2077之后</p>
+<p><img src="/2019/10/26/%E6%AF%94%E8%B5%9B/2019/hackgame-wp/20191026231622.png"></p>
+<h2 id="宇宙终极问题"><a href="#宇宙终极问题" class="headerlink" title="宇宙终极问题"></a>宇宙终极问题</h2><h3 id="42"><a href="#42" class="headerlink" title="42"></a>42</h3><p><a target="_blank" rel="noopener" href="https://www.huxiu.com/article/317268.html">Google一下</a>就知道了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Give me 3 integers, x, y, and z, such that</span><br><span class="line">x^3 + y^3 + z^3 &#x3D; 42</span><br></pre></td></tr></table></figure>
+<pre><code>42 = (-80538738812075974)³  + 80435758145817515³ + 12602123297335631³</code></pre>
+<h3 id="Everything"><a href="#Everything" class="headerlink" title="Everything"></a>Everything</h3><p>还是<a target="_blank" rel="noopener" href="https://www.alpertron.com.ar/FCUBES.HTM">Google一下</a>就出来了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Since you already know the Answer to Everything, could you give me 8 integers, a, b, c, d, i, j, k and l, such that</span><br><span class="line">a^3 + b^3 + c^3 + d^3 &#x3D; i^2 + j^2 + k^2 + l^2 &#x3D; random_prime(2^256) * random_prime(2^256) &#x3D; 2696202144446753329066703065018205556554521178594549469403210892619232428137856502450273212093761946616284001286324448308517304228289606401398114121525169</span><br></pre></td></tr></table></figure>
+<p>两个求解页面：<a target="_blank" rel="noopener" href="https://www.alpertron.com.ar/FSQUARES.HTM">四平方</a> <a target="_blank" rel="noopener" href="https://www.alpertron.com.ar/FCUBES.HTM">四立方</a></p>
+<p><img src="/2019/10/26/%E6%AF%94%E8%B5%9B/2019/hackgame-wp/20191030231320.png"></p>
+<p><img src="/2019/10/26/%E6%AF%94%E8%B5%9B/2019/hackgame-wp/20191030231450.png"></p>
+<h3 id="Last-question"><a href="#Last-question" class="headerlink" title="Last question"></a>Last question</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">The last question is beyond Everything, but still you can try to solve it, by giving me 2 integers, p and q, such that</span><br><span class="line">p^2 + q^2 &#x3D; randint(2^256) &#x3D; 16803108896636432087843597567919881272571173380668774706039248650282590651651</span><br></pre></td></tr></table></figure>
+<p>这道题就可以多试几次，不可能所有的随机数都可以被分成4个数的平方之和，有的只能分成两个</p>
+<h2 id="网页读取器"><a href="#网页读取器" class="headerlink" title="网页读取器"></a>网页读取器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask, render_template, request, send_from_directory</span><br><span class="line">import requests  # well, requests is designed for humans, and I like it.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app &#x3D; Flask(__name__)</span><br><span class="line">whitelist_hostname &#x3D; [&quot;example.com&quot;,</span><br><span class="line">                     &quot;www.example.com&quot;]</span><br><span class="line">whitelist_scheme &#x3D; [&quot;http:&#x2F;&#x2F;&quot;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def check_hostname(url):</span><br><span class="line">    for i in whitelist_scheme:</span><br><span class="line">        if url.startswith(i):</span><br><span class="line">            url &#x3D; url[len(i):]  # strip scheme</span><br><span class="line">            url &#x3D; url[url.find(&quot;@&quot;) + 1:]  # strip userinfo## 截取要@后面的</span><br><span class="line">            if not url.find(&quot;&#x2F;&quot;) &#x3D;&#x3D; -1:</span><br><span class="line">                url &#x3D; url[:url.find(&quot;&#x2F;&quot;)]  # strip parts after authority## 截取要&#x2F;前的</span><br><span class="line">            if not url.find(&quot;:&quot;) &#x3D;&#x3D; -1:</span><br><span class="line">                url &#x3D; url[:url.find(&quot;:&quot;)]  # strip port	要:前的</span><br><span class="line">            if url not in whitelist_hostname:</span><br><span class="line">                return (False, &quot;hostname &#123;&#125; not in whitelist&quot;.format(url))</span><br><span class="line">            return (True, &quot;ok&quot;)</span><br><span class="line">    return (False, &quot;scheme not in whitelist, only &#123;&#125; allowed&quot;.format(whitelist_scheme))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@app.route(&quot;&#x2F;&quot;)</span><br><span class="line">def index():</span><br><span class="line">    return render_template(&quot;index.html&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@app.route(&quot;&#x2F;request&quot;)</span><br><span class="line">def req_route():</span><br><span class="line">    url &#x3D; request.args.get(&#39;url&#39;)</span><br><span class="line">    status, msg &#x3D; check_hostname(url)</span><br><span class="line">    if status is False:</span><br><span class="line">        # print(msg)</span><br><span class="line">        return msg</span><br><span class="line">    try:</span><br><span class="line">        r &#x3D; requests.get(url, timeout&#x3D;2)</span><br><span class="line">        if not r.status_code &#x3D;&#x3D; 200:</span><br><span class="line">            return &quot;We tried accessing your url, but it does not return HTTP 200. Instead, it returns &#123;&#125;.&quot;.format(r.status_code)</span><br><span class="line">        return r.text</span><br><span class="line">    except requests.Timeout:</span><br><span class="line">        return &quot;We tried our best, but it just timeout.&quot;</span><br><span class="line">    except requests.RequestException:</span><br><span class="line">        return &quot;While accessing your url, an exception occurred. There may be a problem with your url.&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@app.route(&quot;&#x2F;source&quot;)</span><br><span class="line">def get_source():</span><br><span class="line">    return send_from_directory(&quot;&#x2F;static&#x2F;&quot;, &quot;app.py&quot;, as_attachment&#x3D;True)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    app.run(&quot;0.0.0.0&quot;, 8000, debug&#x3D;False)</span><br></pre></td></tr></table></figure>
+
+<p>这道题主要的点就是 URL 的 parser 和 requester 的不一致性导致的意料之外的 SSRF 问题</p>
+<h3 id="关于URI-统一资源标志符"><a href="#关于URI-统一资源标志符" class="headerlink" title="关于URI(统一资源标志符)"></a>关于URI(统一资源标志符)</h3><p>URL（统一资源定位符）是 URI 最常见的一种形式，而 URL 就是我们常说的「网址」</p>
+<p>URI 的语法大概长成下面这个样子：</p>
+<pre><code>scheme:[//authority]path[?query][#fragment]</code></pre>
+<p>其中用 [] 围住的是可选的。然后我们来看一下各部分：</p>
+<ol>
+<li>协议 (scheme)：访问资源使用的协议，比如说 http, https 之类的。</li>
+<li>来源 (authority)：来源中包含了主机名，和可选的用户信息和端口号，比如 <code>www.ustc.edu.cn</code>, <code>admin:admin@www.example.com:2333</code>（使用用户名为 admin，密码为 admin，访问 <a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a> 的 2333 端口获取资源）。</li>
+<li>路径 (path)：比如说 <code>/cgi-bin</code>, <code>/a/b/c/d/e/f/g</code> 等，有等级 (hierarchical) 关系。</li>
+<li>查询 (query)：没有等级 (non-hierarchical) 关系的数据。一般来说，查询中的参数会被网站的后端获取到，然后进行对应的处理，比如 <code>?q=keyword</code>，<code>?a=1&amp;b=2</code>。</li>
+<li>片段 (fragment)：指向一个更低级别的资源，例如 <code>#Examples</code>，浏览器访问时会滚动到 id 为 Examples 的标签。如果写过单页面应用 (SPA) 的同学可能会知道，一些框架处理路由时使用 hash 模式，这里的 hash 就是片段开头的 <code>#</code><h3 id="解题方法"><a href="#解题方法" class="headerlink" title="解题方法"></a>解题方法</h3></li>
+</ol>
+<p>如果我们构造一个奇怪的 URL 会怎么样？如果我们能想办法让 <code>check_hostname</code> 解释出主机名为 <code>example.com</code> 的同时，让 <code>requests.get()</code> 实际访问我们想要的地址，那就成功了。</p>
+<p>预期解就使用到了 fragment（当然用 <code>?</code> 也是可以的）。现有的 requester 都会直接忽略掉 <code>#</code> 后面的东西，毕竟这对请求网站内容是没有意义的。但这里的代码没有对 <code>#</code> 进行任何处理，而且会粗暴地忽略掉 <code>@</code> 前面的所有内容</p>
+<p>当时做这道题一直想的是下面这个思路，试了好久才成功</p>
+<pre><code>http://www.baidu.com@10.10.10.10与http://10.10.10.10 请求是相同的</code></pre>
+<p>所以这道题的payload:</p>
+<pre><code>http://web1/flag#@example.com
+或
+http://web1/flag?@example.com</code></pre>
+<h2 id="达拉崩吧大冒险"><a href="#达拉崩吧大冒险" class="headerlink" title="达拉崩吧大冒险"></a>达拉崩吧大冒险</h2><p>这题我第一时间想到的可能是注入相关的东西，因此抓包改包，最后也没做出来</p>
+<h3 id="一个简单的整数溢出漏洞"><a href="#一个简单的整数溢出漏洞" class="headerlink" title="一个简单的整数溢出漏洞"></a>一个简单的整数溢出漏洞</h3><p>观察到 WebSocket 的 JavaScript 代码中，向服务器通信的代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#send&quot;).click(</span><br><span class="line">    function () &#123;</span><br><span class="line">        let v &#x3D; $(&quot;#input option:selected&quot;).val();</span><br><span class="line">        addMsg(&quot;我&quot;, opts[parseInt(v)]);</span><br><span class="line">        ws.send(v)</span><br><span class="line">    &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>在“料理大市场”买鸡的时候，bp抓包当 <code>v = -1900000000000000000</code> 时候，则会发生大整数溢出，并使得自己的攻击力溢出，而后挑战恶龙即可。</p>
+<p>这个是真的想不到，所以说以后做题还要放开思维</p>
+<h2 id="Happy-LUG"><a href="#Happy-LUG" class="headerlink" title="Happy LUG"></a>Happy LUG</h2><p>直接用Chrome或Firefox访问</p>
+<pre><code>😂.hack.ustclug.org</code></pre>
+<p>会自动转成</p>
+<pre><code>xn--g28h.hack.ustclug.org</code></pre>
+<p>这里是 <code>Unicode</code>的一个域名编码方案 <code>Punycode</code>，<code>😂</code>会被编码成 <code>xn--g28h</code></p>
+<p>另一个考点就是 DNS 记录。一个域名除了可以指向一个或多个 IP 地址（A 或 AAAA 记录）之外还可以包含其他信息，例如指向另一个域名（CNAME 记录），指示接收邮件的服务器（MX 记录），或者提供任意字符串（TXT 记录）等等</p>
+<p>本道题就用了域名指向字符串这一点，可以使用nslookup或者dig</p>
+<pre><code>dig TXT xn--g28h.hack.ustclug.org +noidnout
+
+nslookup -q=txt xn--g28h.hack.ustclug.org</code></pre>
+<p><img src="/2019/10/26/%E6%AF%94%E8%B5%9B/2019/hackgame-wp/20191031165614.png"></p>
+<h2 id="正则验证器"><a href="#正则验证器" class="headerlink" title="正则验证器"></a>正则验证器</h2><p>这题考察的是正则回溯的知识点</p>
+<p>可参见<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/ReDoS">wiki</a></p>
+<p>这里有个<a target="_blank" rel="noopener" href="https://regex101.com/">测试正则的平台</a></p>
+<p>这里说下正则表达式<code>*?+</code>的用法</p>
+<ol>
+<li><code>+</code> 号代表前面的字符必须至少出现一次（1次或多次）</li>
+<li><code>*</code> 号代表字符可以不出现，也可以出现一次或者多次（0次、或1次、或多次）</li>
+<li><code>?</code> 问号代表前面的字符最多只可以出现一次（0次、或1次）</li>
+</ol>
+<p>可以直接利用</p>
+<pre><code>Regex: (a*)*$
+String: aaaaaaaaaaaaaaaaaaaaaaab</code></pre>
+<p>这个正则由于失败时回溯的存在，每增加一个 a 就会使匹配时间翻一倍</p>
+<h2 id="三教奇妙夜"><a href="#三教奇妙夜" class="headerlink" title="三教奇妙夜"></a>三教奇妙夜</h2><p>这题考察的是视频提取不同的帧的操作</p>
+<p>OpenCV 是一个计算机视觉库。我们这里使用 OpenCV 的 Python 接口。其实只需要知道这么几个 API 就可以了：</p>
+<ol>
+<li><code>file = cv2.VideoCapture(filename):</code> 打开一个视频文件。</li>
+<li><code>file.read() -&gt; ret, frame:</code> 读取这个视频文件的一帧，返回状态与对应的帧。</li>
+<li><code>cv2.absdiff(frame1, frame2):</code> 比较两个帧，返回一个 Array。</li>
+<li><code>array.sum():</code> 求 Array 的和。<br>此外为了显示图片，可以使用 <code>matplotlib，from matplotlib import pyplot as plt</code> 然后 <code>plt.imshow(frame)</code> 和 <code>plt.show()</code> 就行。完整的代码如下:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import cv2</span><br><span class="line">from matplotlib import pyplot as plt</span><br><span class="line"></span><br><span class="line">file &#x3D; cv2.VideoCapture(&quot;output-1.mp4&quot;)</span><br><span class="line">ret, preframe &#x3D; file.read()</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">  ret, frame &#x3D; file.read()</span><br><span class="line">  if ret &#x3D;&#x3D; 0:</span><br><span class="line">    break</span><br><span class="line">  diff &#x3D; cv2.absdiff(preframe, frame).sum()</span><br><span class="line">  if diff &gt; 10000:</span><br><span class="line">    print(&quot;diff: &#123;&#125;&quot;.format(diff))</span><br><span class="line">    plt.imshow(frame)</span><br><span class="line">    plt.show()</span><br><span class="line">  preframe &#x3D; frame</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文永久链接是：<a href=http://www.moonback.xyz/2019/10/26/%E6%AF%94%E8%B5%9B/2019/hackgame-wp/>http://www.moonback.xyz/2019/10/26/%E6%AF%94%E8%B5%9B/2019/hackgame-wp/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-01-16T18:05:26+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年1月16日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/writeup/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>writeup</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/ctf/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>ctf</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/hackgame/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>hackgame</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.moonback.xyz/2019/10/26/%E6%AF%94%E8%B5%9B/2019/hackgame-wp/&title=hackgame2019部分题目writeup - 明月归的小站&summary=本篇博客主要介绍了hackgame2019部分题目的writeup!"
+          
+          >
+          
+            <img src="/static/images/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.moonback.xyz/2019/10/26/%E6%AF%94%E8%B5%9B/2019/hackgame-wp/&title=hackgame2019部分题目writeup - 明月归的小站&summary=本篇博客主要介绍了hackgame2019部分题目的writeup!"
+          
+          >
+          
+            <img src="/static/images/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.moonback.xyz/2019/10/26/%E6%AF%94%E8%B5%9B/2019/hackgame-wp/&title=hackgame2019部分题目writeup - 明月归的小站&summary=本篇博客主要介绍了hackgame2019部分题目的writeup!"
+          
+          >
+          
+            <img src="/static/images/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2019/10/27/%E7%9F%A5%E8%AF%86%E7%82%B9/php-serialize/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>php序列化和反序列化</p>
+                <p class='content'>本篇博客介绍了php序列化和反序列化的相关知识！
+
+
+相关概念什么是序列化和反序列化？
+**序列化:**把复杂的数据类型压缩到一个字符串中，数据类型可以是数组，字符串，对象等 
+**反序列化:*...</p>
+              </a>
+            
+            
+              <a class='next' href='/2019/10/25/%E7%9F%A5%E8%AF%86%E7%82%B9/mysql-wrong-injection/'>
+                <p class='title'>Mysql报错注入学习<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>本篇博客主要介绍了sql注入中的报错注入！
+
+
+什么是报错注入?SQL报错注入就是利用数据库的某些机制，人为地制造错误条件，使得查询结果能够出现在错误信息中。
+这种手段在联合查询受限且能返回错误...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%99%BD%E4%B8%8E%E5%A4%9C"><span class="toc-text">白与夜</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8-2077"><span class="toc-text">信息安全 2077</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%87%E5%AE%99%E7%BB%88%E6%9E%81%E9%97%AE%E9%A2%98"><span class="toc-text">宇宙终极问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#42"><span class="toc-text">42</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Everything"><span class="toc-text">Everything</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Last-question"><span class="toc-text">Last question</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E9%A1%B5%E8%AF%BB%E5%8F%96%E5%99%A8"><span class="toc-text">网页读取器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8EURI-%E7%BB%9F%E4%B8%80%E8%B5%84%E6%BA%90%E6%A0%87%E5%BF%97%E7%AC%A6"><span class="toc-text">关于URI(统一资源标志符)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95"><span class="toc-text">解题方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%BE%E6%8B%89%E5%B4%A9%E5%90%A7%E5%A4%A7%E5%86%92%E9%99%A9"><span class="toc-text">达拉崩吧大冒险</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B4%E6%95%B0%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E"><span class="toc-text">一个简单的整数溢出漏洞</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Happy-LUG"><span class="toc-text">Happy LUG</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E9%AA%8C%E8%AF%81%E5%99%A8"><span class="toc-text">正则验证器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E6%95%99%E5%A5%87%E5%A6%99%E5%A4%9C"><span class="toc-text">三教奇妙夜</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+    </div>
+    
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:3300162791@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/BeyondOneself"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/3.0.0" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2019-2020</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <div>
+    
+    
+<script src="/static/js-css/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+  <script async src="/static/js-css/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+  
+  
+    
+<script src="/static/js-css/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/static/images/1.jpg", "/static/images/2.jpg", "/static/images/3.jpg", "/static/images/4.jpg", "/static/images/5.jpg", "/static/images/6.jpg", "/static/images/7.jpg", "/static/images/8.jpg", "/static/images/9.jpg", "/static/images/10.jpg", "/static/images/11.jpg", "/static/images/12.jpg", "/static/images/13.jpg", "/static/images/14.jpg", "/static/images/15.jpg", "/static/images/16.jpg", "/static/images/17.jpg", "/static/images/18.jpg", "/static/images/19.jpg", "/static/images/20.jpg", "/static/images/21.jpg", "/static/images/22.jpg", "/static/images/23.jpg", "/static/images/24.jpg", "/static/images/25.jpg", "/static/images/26.jpg", "/static/images/27.jpg", "/static/images/28.jpg", "/static/images/29.jpg", "/static/images/30.jpg", "/static/images/31.jpg", "/static/images/32.jpg", "/static/images/33.jpg", "/static/images/34.jpg", "/static/images/35.jpg", "/static/images/36.jpg", "/static/images/37.jpg", "/static/images/38.jpg", "/static/images/39.jpg", "/static/images/40.jpg", "/static/images/41.jpg", "/static/images/42.jpg", "/static/images/43.jpg", "/static/images/44.jpg", "/static/images/45.jpg", "/static/images/46.jpg", "/static/images/47.jpg", "/static/images/48.jpg", "/static/images/49.jpg", "/static/images/50.jpg", "/static/images/51.jpg", "/static/images/52.jpg", "/static/images/53.jpg", "/static/images/54.jpg", "/static/images/55.jpg", "/static/images/56.jpg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "快来评论吧~" : $.trim($('#pjax-comment-placeholder').text());
+
+    let ALLPATH = '';
+    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
+      appId: "or2NepulP8NGKXehq1IRSQTc-gzGzoHsz",
+      appKey: "lRlc11XLlqK4AeDJeNJxo17y",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+<!-- darkmodejs -->
+
+
+<!-- 复制 -->
+
+  <script src="/static/js-css/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
+
+<!-- scrollreveal -->
+
+  <script src="/static/js-css/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
+
+<!-- fancybox -->
+<script src="/static/js-css/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="/static/js-css/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="/static/js-css/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="/static/js-css/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="/static/js-css/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="/static/js-css/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('.cover') {
+            $('.cover').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>
